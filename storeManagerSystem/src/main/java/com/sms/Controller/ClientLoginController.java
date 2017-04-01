@@ -52,7 +52,7 @@ public class ClientLoginController {
 	//Test 
 	@RequestMapping(value ="/test", method = RequestMethod.GET)	
 	public String test(){
-		return PAGE_HOME;
+		return PAGE_HOME;sdfsadfas
 	}
 	
 	
