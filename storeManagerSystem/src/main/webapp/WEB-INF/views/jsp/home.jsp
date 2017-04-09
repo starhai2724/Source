@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="">
 	<meta name="author" content="">
-    <title></title>
+    <title>Hệ thống bán hàng</title>
     <%@include file="/WEB-INF/views/jsp/headerInclude.jsp" %>
 </head>
 <body>
@@ -49,7 +49,7 @@
       <div class="sidebar-nav navbar-collapse">
         <ul class="nav" id="side-menu">
           <li>
-            <a href="/storeManagerSystem/home?PAGE_ID=customersSystem.jsp"><i class="fa fa-dashboard fa-fw"></i> Người dùng</a>
+            <a href="/storeManagerSystem/storeOwnerList"><i class="fa fa-dashboard fa-fw"></i> Người dùng</a>
           </li>
           <li>
             <a href="index.html"><i class="fa fa-wrench fa-fw"></i> Cấu hình trang web</a>

@@ -16,6 +16,7 @@ function checkLogin($scope) {
 		valid = false;
 	}
 	if (true == valid) {
+		document.getElementById("loginform").action = "/storeManagerSystem/login";
 		document.getElementById("loginform").submit();
 	}
 }

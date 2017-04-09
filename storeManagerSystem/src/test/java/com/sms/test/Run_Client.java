@@ -12,7 +12,8 @@ public class Run_Client {
 	
 	ClientStoreOwnerController storeOwnerController = new ClientStoreOwnerController();
 //		storeOwnerController.insert("Phạm Ngọc Hiếu", "", "123456789", "testUser", "hai@gmail.com", "123456", new ModelMap(), null);
-		storeOwnerController.getBy("", "testuser", "", "", new ModelMap(), null, new ModelAndView());
-	
+//		storeOwnerController.getBy("", "root", "", "", new ModelMap(), null, new ModelAndView());
+//		storeOwnerController.edit("001001", new ModelMap(), null);
+		
 	}
 }

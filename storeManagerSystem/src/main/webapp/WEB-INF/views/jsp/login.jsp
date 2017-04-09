@@ -19,7 +19,7 @@
 						<h3 class="panel-title">Hệ thống bán hàng</h3>
 					</div>
 					<div class="panel-body" ng-app="login" ng-controller="ctrllogin">
-						<form id="loginform" role="form" method="POST" action="/storeManagerSystem/login" >
+						<form id="loginform" role="form" method="POST" >
 							<fieldset>
 								<div class="form-group">
 								<p style="color: red;">${message}</p>

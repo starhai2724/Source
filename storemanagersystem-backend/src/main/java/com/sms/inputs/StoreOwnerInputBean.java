@@ -1,7 +1,8 @@
-package com.sms.models;
+package com.sms.inputs;
 
-public class StoreOwnerModel {
-	
+public class StoreOwnerInputBean {
+
+
 	private String no = "";
 
 	private String idStoreOwner = "";
@@ -222,5 +223,4 @@ public class StoreOwnerModel {
 		this.no = no;
 	}
 	
-
 }

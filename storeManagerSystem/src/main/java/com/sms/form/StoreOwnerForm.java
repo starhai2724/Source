@@ -1,6 +1,8 @@
-package com.sms.models;
+package com.sms.form;
 
-public class StoreOwnerModel {
+public class StoreOwnerForm {
+
+	private String no = "";
 
 	private String idStoreOwner = "";
 
@@ -25,6 +27,43 @@ public class StoreOwnerModel {
 	private String dateInsert = "";
 
 	private String dateUpdate = "";
+
+	// Disable item when mode update
+	private String disabledFlag = "";
+
+	private String updateFlag = "";
+	
+	private String message = "";
+	
+	private String messageErr = "";
+	
+	/**
+	 * @return the messageErr
+	 */
+	public String getMessageErr() {
+		return messageErr;
+	}
+
+	/**
+	 * @param messageErr the messageErr to set
+	 */
+	public void setMessageErr(String messageErr) {
+		this.messageErr = messageErr;
+	}
+
+	/**
+	 * @return the message
+	 */
+	public String getMessage() {
+		return message;
+	}
+
+	/**
+	 * @param message the message to set
+	 */
+	public void setMessage(String message) {
+		this.message = message;
+	}
 
 	/**
 	 * @return the idStoreOwner
@@ -204,6 +243,43 @@ public class StoreOwnerModel {
 	 */
 	public void setDateUpdate(String dateUpdate) {
 		this.dateUpdate = dateUpdate;
+	}
+
+	/**
+	 * @return the no
+	 */
+	public String getNo() {
+		return no;
+	}
+
+	/**
+	 * @param no
+	 *            the no to set
+	 */
+	public void setNo(String no) {
+		this.no = no;
+	}
+
+	public String getDisabledFlag() {
+		return disabledFlag;
+	}
+
+	public void setDisabledFlag(String disabledFlag) {
+		this.disabledFlag = disabledFlag;
+	}
+
+	/**
+	 * @return the updateFlag
+	 */
+	public String getUpdateFlag() {
+		return updateFlag;
+	}
+
+	/**
+	 * @param updateFlag the updateFlag to set
+	 */
+	public void setUpdateFlag(String updateFlag) {
+		this.updateFlag = updateFlag;
 	}
 
 }
