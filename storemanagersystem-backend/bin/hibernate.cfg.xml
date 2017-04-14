@@ -14,5 +14,7 @@
 	<property name="hibernate.hbm2ddl.auto">update</property>
      <mapping class="com.sms.domain.StoreOwner"/>      
      <mapping class="com.sms.domain.Store"/>      
+     <mapping class="com.sms.domain.SystemControl"/>      
+     <mapping class="com.sms.domain.StoreInformation"/>      
    </session-factory>
 </hibernate-configuration> 

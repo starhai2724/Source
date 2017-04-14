@@ -3,6 +3,9 @@ app.controller('ctrllogin', function($scope) {
 	$scope.btnLogin = function() {
 		checkLogin($scope);
 	}
+	$scope.btnRegister = function(){
+		register();
+	}
 });
 
 function checkLogin($scope) {
@@ -19,4 +22,10 @@ function checkLogin($scope) {
 		document.getElementById("loginform").action = "/storeManagerSystem/login";
 		document.getElementById("loginform").submit();
 	}
+}
+
+
+function register(){
+	document.getElementById("loginform").action = "/storeManagerSystem/registerUser/init";
+	document.getElementById("loginform").submit();
 }

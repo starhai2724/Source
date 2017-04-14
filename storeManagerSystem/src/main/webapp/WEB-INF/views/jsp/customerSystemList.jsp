@@ -123,6 +123,6 @@
 		<!-- /#page-wrapper -->
 	</div>
 </div>
-<script src="views/js/storeOwnerList.js"></script>
+<script src="${pageContext.request.contextPath}/view/js/storeOwnerList.js"></script>
 
 <!-- /#wrapper -->

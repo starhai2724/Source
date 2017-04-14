@@ -48,6 +48,7 @@ function create($scope) {
 	if (true == valid) {
 		if(confirm("Bạn có muốn đăng ký?")){
 			document.getElementById("storeOwnerForm").action = "/storeManagerSystem/storeOwnerInsert";
+			document.getElementById("storeOwnerForm").method = "GET";
 			document.getElementById("storeOwnerForm").submit();
 		}
 	}

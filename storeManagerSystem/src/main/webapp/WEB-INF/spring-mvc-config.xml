@@ -20,7 +20,12 @@
  
 	<!-- <mvc:resources mapping="/fontend/**" location="/WEB-INF/views/fontend/" />
 	<mvc:resources mapping="/js/**" location="/WEB-INF/views/js/" /> -->
-	<mvc:resources mapping="/views/**" location="/WEB-INF/views/" />
+	<!-- <mvc:resources mapping="/view/**" location="/WEB-INF/views/" /> -->
+	
+	<mvc:resources mapping="/view/**" location="/fontend/" />
+	
+	
+	
 	<!-- <mvc:resources mapping="/js/**" location="/WEB-INF/views/js/" /> -->
 	 
 	<mvc:annotation-driven />

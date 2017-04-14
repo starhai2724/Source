@@ -34,8 +34,11 @@
 									ng-init =" password = '${password}'" type="password">
 									<p style="color: red;">{{password_err}}</p>
 								</div>
-								<div class="checkbox">
-									<label> <input name="remember" type="checkbox" value="Remember Me">Ghi nhớ</label>
+								<div class ="form-group">
+									<a ng-click="btnRegister();">Đăng kí</a>
+									</br>
+									<a href ="#">Quên mật khẩu</a>
+									
 								</div>
 								<div>
 									<input type="button" class="btn btn-lg btn-success btn-block" ng-click="btnLogin();" value="Đăng nhập">
@@ -49,6 +52,6 @@
 		</div>
 	</div>
 	<%@include file="/WEB-INF/views/jsp/footerInclude.jsp"%>
-	<script src="views/js/controllerLogin.js"></script>
+	<script src="view/js/controllerLogin.js"></script>
 </body>				
 </html>

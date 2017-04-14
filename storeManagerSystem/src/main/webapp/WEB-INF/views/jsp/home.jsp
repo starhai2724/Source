@@ -64,7 +64,7 @@
     <!-- /.navbar-static-side -->
   </nav>
   <!--Content (S) -->
-  <%@include file="/WEB-INF/views/jsp/center.jsp" %>
+  <%@include file="/WEB-INF/views/jsp/centerSystem.jsp" %>
   <!--Content (E) -->
 <!-- /#wrapper -->
     </div>

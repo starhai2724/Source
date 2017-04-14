@@ -5,6 +5,7 @@ public class SystemURL {
 	
 	public static final String CHECK_LOGIN=systemURL+"login/checklogin";
 	
+	/**StoreOwner 10.04.2017 Hai.NT(S)*/
 	public static final String STOREOWNER_INSERT=systemURL+"storeOwner/insert";
 	
 	public static final String STOREOWNER_LIST=systemURL+"storeOwner/getStoreOwners";
@@ -19,4 +20,19 @@ public class SystemURL {
 	
 	// check username exist
 	public static final String GET_STOREOWNER_BY_USERNAME=systemURL+"storeOwner/getStoreOwnerByUsername";
+	
+	/**StoreOwner 10.04.2017 Hai.NT(E)*/
+	
+	
+	/**PathJSP 10.04.2017 Hai.NT(S)*/
+	//get all category store
+	public static final String PATHJSP_GETPATHJSP = systemURL+"pathJSP/getPathJSP";
+	
+	//get one category store by id
+	public static final String PATHJSP_GETPATHJSPBYID = systemURL+"pathJSP/getPathJSPById";
+	
+	/**PathJSP 10.04.2017 Hai.NT(E)*/
+	
+	
+	
 }

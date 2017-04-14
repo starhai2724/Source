@@ -21,6 +21,7 @@ import com.sms.form.StoreOwnerForm;
 import com.sms.impl.ClientStoreOwnerImpl;
 import com.sms.input.StoreOwnerInputBean;
 import com.sms.models.ResultObject;
+import com.sms.models.User;
 import com.sms.output.StoreOwnerOutputBean;
 
 @Controller
@@ -31,12 +32,14 @@ public class ClientStoreOwnerController {
 	public static final String CUSTOMER_SYSTEM_ENTITY = "customerSystemEntity.jsp";
 	
 	@RequestMapping(value  = "/storeOwnerList")
-	public String getCustomerSystemList(ModelMap modelMap, @ModelAttribute("storeOwnerListForm") StoreOwnerForm storeOwnerForm){
+	public String getCustomerSystemList(ModelMap modelMap, @ModelAttribute("storeOwnerListForm") StoreOwnerForm storeOwnerForm, HttpSession session){
 		//set lai gia tri
 		storeOwnerForm.setUsername("");
 		storeOwnerForm.setTelephone("");
 		storeOwnerForm.setAddress("");
 		storeOwnerForm.setEmail("");
+		User user = (User) session.getAttribute("userLocal");
+		System.out.println("Username: "+ user.getUsername());
 		modelMap.addAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEMLIST);
 		return SystemCommon.PAGE_HOME;
 	}
