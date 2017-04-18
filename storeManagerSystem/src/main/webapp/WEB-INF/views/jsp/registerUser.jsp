@@ -119,5 +119,5 @@
 </div>
     <%@include file="/WEB-INF/views/jsp/footerInclude.jsp" %>
 </body>
-<script src="${pageContext.request.contextPath}/view/js/registerUser.js"></script>
+<script src="/storeManagerSystem/view/js/registerUser.js"></script>
 </html>

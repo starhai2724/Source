@@ -52,6 +52,6 @@
 		</div>
 	</div>
 	<%@include file="/WEB-INF/views/jsp/footerInclude.jsp"%>
-	<script src="view/js/controllerLogin.js"></script>
+	<script src="/storeManagerSystem/view/js/controllerLogin.js"></script>
 </body>				
 </html>

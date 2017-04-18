@@ -104,5 +104,5 @@
 		<!-- /#page-wrapper -->
 	</div>
 </div>
-<script src="${pageContext.request.contextPath}/view/js/storeOwner.js"></script>
+<script src="/storeManagerSystem/view/js/storeOwner.js"></script>
 <!-- /#wrapper -->

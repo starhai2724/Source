@@ -25,7 +25,7 @@ public class ClientRegisterUserController {
 	@RequestMapping(value="/registerUser/init",  method = RequestMethod.POST )
 	public String registerUserInit(@ModelAttribute("registerUserForm") RegisterUserForm form){
 		
-		return "REGISTER_USER";
+		return REGISTER_USER;
 	}
 	
 	
