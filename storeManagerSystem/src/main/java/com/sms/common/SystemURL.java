@@ -34,5 +34,18 @@ public class SystemURL {
 	/**PathJSP 10.04.2017 Hai.NT(E)*/
 	
 	
+	/**Register user 20.04.2017 Hai.NT(S)*/
+	public static final String REGISTERUSER_INSERT = systemURL+"RegisterUser/insert";
+	
+	
+	/**Register user 20.04.2017 Hai.NT(E)*/
+	
+	
+	/**Register product category 20.04.2017 Hai.NT(S)*/
+	public static final String REGISTER_PRODUCT_CATEGORY_INIT = systemURL+"RegisterProductCategory/init";
+	
+	public static final String REGISTER_PRODUCT_CATEGORY_INSERT = systemURL+"RegisterProductCategory/insert";
+	/**Register product category 20.04.2017 Hai.NT(E)*/
+	
 	
 }

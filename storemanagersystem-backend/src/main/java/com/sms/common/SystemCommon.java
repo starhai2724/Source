@@ -5,4 +5,5 @@ public class SystemCommon {
 	public static final String DB = "storesystemmanager.";
 	
 	
+	
 }

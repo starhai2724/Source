@@ -1,6 +1,8 @@
 		
 package com.sms.Controller;
 
+import java.util.LinkedHashMap;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -25,6 +27,7 @@ public class ClientLoginController {
 	public static final String PAGE_REGISTER = "registerUser";
 	
 	
+	
 	@RequestMapping(value ="/", method = RequestMethod.GET)	
 	public String home(){
 		return SystemCommon.PAGE_LOGIN;
@@ -40,15 +43,26 @@ public class ClientLoginController {
 		req.setPassword(password);
 		ClientLoginImpl loginImpl = new ClientLoginImpl();
 		ResultObject response = loginImpl.checkLogin(req);
-//		ResultObject response = new ResultObject(Status.SUCCESS);
 		if(response.getStatus()== Status.SUCCESS){
 			model.addAttribute(PAGE_ID, PAGE_INFO);
-			session.setAttribute("userLocal", req);
-			return SystemCommon.PAGE_HOME;
-		}else{
-			return SystemCommon.PAGE_LOGIN;
+			LinkedHashMap< String, String> linkedHashMap = (LinkedHashMap<String, String>) response.getObj();
+			User userlocal = new User();
+			userlocal.setStore_cd(linkedHashMap.get("store_cd"));
+			userlocal.setUsername(linkedHashMap.get("username"));
+			userlocal.setRole(linkedHashMap.get("role"));
+			// set session userlocal
+			session.setAttribute("userlocal", userlocal);
+			
+			//role User
+			if(SystemCommon.USER.equals(userlocal.getRole())){
+				return SystemCommon.ADMIN_STORE;
+				
+			//role Root
+			}else if(SystemCommon.ROOT.equals(userlocal.getRole())){
+				return SystemCommon.PAGE_HOME;
+			}
 		}
-		
+		return SystemCommon.PAGE_LOGIN;
 	}
 	
 	@RequestMapping(value="/register", method = RequestMethod.POST)

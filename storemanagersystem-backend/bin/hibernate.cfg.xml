@@ -16,5 +16,6 @@
      <mapping class="com.sms.domain.Store"/>      
      <mapping class="com.sms.domain.SystemControl"/>      
      <mapping class="com.sms.domain.StoreInformation"/>      
+     <mapping class="com.sms.domain.ProductCategory"/>      
    </session-factory>
 </hibernate-configuration> 

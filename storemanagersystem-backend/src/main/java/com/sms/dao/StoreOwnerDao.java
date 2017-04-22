@@ -65,17 +65,20 @@ public class StoreOwnerDao implements InterfaceDAO {
 
 	public User getUser(User user) {
 		Session session = HibernateUtil.getSessionDAO();
-		String hql = getSQLUser(user);
+		String hql = getSQLUser();
 		User u = null;
 		try {
 			session.getTransaction().begin();
 			SQLQuery query = session.createSQLQuery(hql);
+			query.setParameter(0, user.getUsername());
+			query.setParameter(1, user.getPassword());
 			List<Object[]> data = query.list();
 			for (Object[] object : data) {
 				u = new User();
 				u.setStore_cd(SMSComons.convertString(object[0]));
 				u.setUsername(SMSComons.convertString(object[1]));
 				u.setPassword(SMSComons.convertString(object[2]));
+				u.setRole(SMSComons.convertString(object[3]));
 			}
 			session.getTransaction().commit();
 
@@ -444,13 +447,19 @@ public class StoreOwnerDao implements InterfaceDAO {
 
 	}
 
-	private String getSQLUser(User user) {
+	private String getSQLUser() {
 		StringBuffer sb = new StringBuffer();
-		sb.append("Select SO.ID_STORE_OWNER , SO.USERNAME, SO.PASSWORD from ");
-		sb.append("STORE_OWNER SO");
-		sb.append(" Where SO.DELETE_FLAG = '"+Contants.DELETE_FLAG+"'");
-		sb.append(" AND SO.USERNAME = '" + user.getUsername() + "'");
-		sb.append(" AND SO.PASSWORD = '" + user.getPassword() + "'");
+		sb.append(" 	SELECT                                                 ");
+		sb.append("    STORE.ID_STORE, SO.USERNAME, SO.PASSWORD, SO.ROLE       ");
+		sb.append(" FROM                                                        ");
+		sb.append("    STORE_OWNER SO                                          ");
+		sb.append("        INNER JOIN                                          ");
+		sb.append("    STORE ON STORE.ID_STORE_OWNER = SO.ID_STORE_OWNER       ");
+		sb.append("        AND STORE.DELETE_FLAG = '"+Contants.DELETE_FLAG+"'  ");
+		sb.append(" WHERE                                                       ");
+		sb.append("    SO.DELETE_FLAG = '"+Contants.DELETE_FLAG+"'             ");
+		sb.append("        AND SO.USERNAME = ?                            ");
+		sb.append("        AND SO.PASSWORD = ?                             ");
 		return sb.toString();
 	}
 

@@ -4,6 +4,7 @@ public class User {
 	private String store_cd;
 	private String username;
 	private String password;
+	private String role;
 	/**
 	 * @return the username
 	 */
@@ -40,4 +41,12 @@ public class User {
 	public void setStore_cd(String store_cd) {
 		this.store_cd = store_cd;
 	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+
 }

@@ -1,5 +1,6 @@
 package com.sms.form;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class RegisterStoreInfomationForm extends AbstractForm {
@@ -18,11 +19,22 @@ public class RegisterStoreInfomationForm extends AbstractForm {
 
 	private String email;
 
-	private Map<String, String> lstCategory;
+	private Map<String, String> lstCategory = new LinkedHashMap<String, String>();
 
 	private String pathJSP;
 
 	private String pathImage;
+	
+	private String categoryed;
+	
+
+	public String getCategoryed() {
+		return categoryed;
+	}
+
+	public void setCategoryed(String categoryed) {
+		this.categoryed = categoryed;
+	}
 
 	public String getStoreName() {
 		return storeName;
@@ -63,6 +75,7 @@ public class RegisterStoreInfomationForm extends AbstractForm {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 
 
 	public Map<String, String> getLstCategory() {

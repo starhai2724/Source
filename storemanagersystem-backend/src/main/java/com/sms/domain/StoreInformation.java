@@ -10,10 +10,7 @@ import javax.persistence.Table;
 public class StoreInformation {
 
 	@Id
-	@Column(name = "ID_STORE_INFO", length = 6)
-	private String idStoreInfo;
-
-	@Column(name = "IDSTORE")
+	@Column(name = "IDSTORE", length=6)
 	private String idStore;
 
 	@Column(name = "STORENAME")
@@ -59,13 +56,6 @@ public class StoreInformation {
 		ImageFooter = imageFooter;
 	}
 
-	public String getIdStoreInfo() {
-		return idStoreInfo;
-	}
-
-	public void setIdStoreInfo(String idStoreInfo) {
-		this.idStoreInfo = idStoreInfo;
-	}
 
 	public String getIdStore() {
 		return idStore;

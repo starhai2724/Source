@@ -58,13 +58,17 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-6">
+			<div class="col-xs-3 selectContainer">
 				<div class="form-group">
-					<label>Loại kinh doanh</label> 
-					<%-- <form:select path="lstCategory">
-					
+					<label>Loại kinh doanh</label>
+					<%-- <form:select class="form-control" path="categoryed"  >	
+					   <c:forEach var="items" items="${registerStoreInfomation.lstCategory }">
+					   	<option value="${items.id}" >${items.content}</option>
+					   </c:forEach>
 					</form:select> --%>
-					<p style="color: red;"></p>
+					<form:select class="form-control" path="categoryed">
+					    <form:options items="${registerStoreInfomation.lstCategory}" />
+					</form:select>
 				</div>
 			</div>
 		</div>
@@ -100,5 +104,5 @@
 </div>
     <%@include file="/WEB-INF/views/jsp/footerInclude.jsp" %>
 </body>
-<script src="view/js/storeOwner.js"></script>
+<script src="/storeManagerSystem/view/js/registerStoreInfomation.js"></script>
 </html>
