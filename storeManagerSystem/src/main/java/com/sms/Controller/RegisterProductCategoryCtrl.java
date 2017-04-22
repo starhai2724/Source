@@ -15,7 +15,6 @@ import com.sms.common.SystemURL;
 import com.sms.form.RegisterProductCategoryForm;
 import com.sms.formRows.RegisterProductCategoryFormRow;
 import com.sms.input.RegisterProductCategoryInputBean;
-import com.sms.input.TestInputBean;
 import com.sms.models.ResultObject;
 import com.sms.models.User;
 import com.sms.output.RegisterProductCategoryOutputBean;

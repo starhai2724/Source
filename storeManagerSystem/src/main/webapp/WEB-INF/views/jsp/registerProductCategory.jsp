@@ -46,7 +46,7 @@
 		<!--Message (E)-->
 		<div class="row">
 			<div class="col-sm-3" >
-				<input type="button" name=""  class="btn btn-info " ng-click="btnCreate()" value="Đăng kí">
+				<input type="button" name=""  class="btn btn-info " ng-click="btnCreate(<%=session.getAttribute("test") %>)" value="Đăng kí">
 			</div>
 		</div>
 		<div class="row">

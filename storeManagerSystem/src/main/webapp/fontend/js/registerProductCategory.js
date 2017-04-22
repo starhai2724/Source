@@ -1,7 +1,8 @@
 var app = angular.module('RegisterProductCategory', []);
-app.controller('ctrl', function($scope) {
-	$scope.btnCreate = function() {
-			create($scope);
+app.controller('ctrl', function($scope, $window) {
+	$scope.btnCreate = function(path) {
+//			create($scope);
+		test($scope, path);
 	}
 	$scope.btnDelete = function(id){
 		remove($scope,id);
@@ -18,6 +19,21 @@ function create($scope) {
 
 	if (true == valid) {
 			document.getElementById("RegisterProductCategory").action = "/storeManagerSystem/registerProductCategory/insert";
+			document.getElementById("RegisterProductCategory").method = "POST";
+			document.getElementById("RegisterProductCategory").submit();
+	}
+}
+
+
+function test($scope, path) {
+	var valid = true;
+	if ($scope.nameProductCategory == "") {
+		$scope.nameProductCategory_err = "Vui lòng nhập tên nhóm sản phẩm!"
+		valid = false;
+	}
+//	alert("path: "+path);
+	if (true == valid) {
+			document.getElementById("RegisterProductCategory").action = "/storeManagerSystem/fashion";
 			document.getElementById("RegisterProductCategory").method = "POST";
 			document.getElementById("RegisterProductCategory").submit();
 	}

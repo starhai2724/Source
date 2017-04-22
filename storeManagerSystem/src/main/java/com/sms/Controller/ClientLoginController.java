@@ -53,6 +53,9 @@ public class ClientLoginController {
 			// set session userlocal
 			session.setAttribute("userlocal", userlocal);
 			
+			// test
+			session.setAttribute("test", "fashion");
+			
 			//role User
 			if(SystemCommon.USER.equals(userlocal.getRole())){
 				return SystemCommon.ADMIN_STORE;
