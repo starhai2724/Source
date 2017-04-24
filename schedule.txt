@@ -1,0 +1,8 @@
+11h bao cao tien do de nhom nam bat dc tinh hinh
+2017/04/24 
+ - Cong viec hom nay cua Thu ki han ki vong hom nay (neu kho qua thi kiu anh Hung support nha kaka)
+		+ Deploy ok source 
+		+ Dieu tra nguyen nhan bi be phong UTF8 khi insert vao DB va khi load len jsp
+		+ Them scoll ngang va doc va table (Demo de mai mot co su dung thi chi can copy)
+ - Cong viec hom nay cua Hai ki han ki vong hom nay
+		+ Chuc nang cau hinh duong dan cho tung cua hang rieng biet. 
