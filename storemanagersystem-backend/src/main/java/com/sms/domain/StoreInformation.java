@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class StoreInformation {
 
 	@Id
-	@Column(name = "IDSTORE", length=6)
+	@Column(name = "ID_STORE", length=6)
 	private String idStore;
 
 	@Column(name = "STORENAME")

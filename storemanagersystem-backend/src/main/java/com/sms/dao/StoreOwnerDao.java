@@ -79,6 +79,7 @@ public class StoreOwnerDao implements InterfaceDAO {
 				u.setUsername(SMSComons.convertString(object[1]));
 				u.setPassword(SMSComons.convertString(object[2]));
 				u.setRole(SMSComons.convertString(object[3]));
+				u.setURLStore(SMSComons.convertString(object[4]));
 			}
 			session.getTransaction().commit();
 
@@ -450,12 +451,14 @@ public class StoreOwnerDao implements InterfaceDAO {
 	private String getSQLUser() {
 		StringBuffer sb = new StringBuffer();
 		sb.append(" 	SELECT                                                 ");
-		sb.append("    STORE.ID_STORE, SO.USERNAME, SO.PASSWORD, SO.ROLE       ");
+		sb.append("    STORE.ID_STORE, SO.USERNAME, SO.PASSWORD, SO.ROLE , SI.PATHJSP      ");
 		sb.append(" FROM                                                        ");
 		sb.append("    STORE_OWNER SO                                          ");
 		sb.append("        INNER JOIN                                          ");
 		sb.append("    STORE ON STORE.ID_STORE_OWNER = SO.ID_STORE_OWNER       ");
 		sb.append("        AND STORE.DELETE_FLAG = '"+Contants.DELETE_FLAG+"'  ");
+		sb.append("   INNER JOIN  STORE_INFO SI ");
+		sb.append("   ON SI.ID_STORE = STORE.ID_STORE ");
 		sb.append(" WHERE                                                       ");
 		sb.append("    SO.DELETE_FLAG = '"+Contants.DELETE_FLAG+"'             ");
 		sb.append("        AND SO.USERNAME = ?                            ");

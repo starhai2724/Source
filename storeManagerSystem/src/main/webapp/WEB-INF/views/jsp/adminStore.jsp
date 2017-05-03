@@ -52,7 +52,7 @@
             <a href="/storeManagerSystem/storeOwnerList"><i class="fa fa-dashboard fa-fw"></i> Người dùng</a>
           </li>
           <li>
-            <a href="/storeManagerSystem/<%=session.getAttribute("test")%>"><i class="fa fa-dashboard fa-fw"></i> Bán hàng</a>
+            <a href="/storeManagerSystem/<%=session.getAttribute("pathURL")%>"><i class="fa fa-dashboard fa-fw"></i> Bán hàng</a>
           </li>
           <li>
             <a href="index.html"><i class="fa fa-wrench fa-fw"></i> Cấu hình trang web</a>

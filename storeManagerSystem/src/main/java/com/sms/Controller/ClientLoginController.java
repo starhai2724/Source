@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,23 +43,19 @@ public class ClientLoginController {
 		req.setUsername(username);
 		req.setPassword(password);
 		ClientLoginImpl loginImpl = new ClientLoginImpl();
-		ResultObject response = loginImpl.checkLogin(req);
-		if(response.getStatus()== Status.SUCCESS){
+		User response = loginImpl.checkLogin(req);
+//		System.out.println("response: "+response.getUsername()+ " ;"+response.getRole());
+		if(null != response && !StringUtils.isEmpty(response.getUsername())){
 			model.addAttribute(PAGE_ID, PAGE_INFO);
-			LinkedHashMap< String, String> linkedHashMap = (LinkedHashMap<String, String>) response.getObj();
-			User userlocal = new User();
-			userlocal.setStore_cd(linkedHashMap.get("store_cd"));
-			userlocal.setUsername(linkedHashMap.get("username"));
-			userlocal.setRole(linkedHashMap.get("role"));
+			User userlocal = response;
 			// set session userlocal
-			session.setAttribute("userlocal", userlocal);
-			
-			// test
-			session.setAttribute("test", "fashion");
+			session.setAttribute("userLocal", userlocal);
 			
 			System.out.println(userlocal.getRole());
 			//role User
 			if(SystemCommon.USER.equals(userlocal.getRole())){
+				session.setAttribute("pathURL", userlocal.getURLStore());
+				System.out.println("url: "+userlocal.getURLStore());
 				return SystemCommon.ADMIN_STORE;
 				
 			//role Root

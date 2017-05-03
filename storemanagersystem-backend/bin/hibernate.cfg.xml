@@ -4,8 +4,10 @@
 <hibernate-configuration>
   <session-factory>
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">
-    jdbc:mysql://localhost:3306/storesystemmanager</property>
+    <!-- <property name="hibernate.connection.url">
+    jdbc:mysql://localhost:3306/storesystemmanager</property> -->
+     <property name="hibernate.connection.url">
+    jdbc:mysql://localhost:3306/storesystemmanager?useUnicode=true&amp;connectionCollation=utf8_general_ci&amp;characterSetResults=utf8&amp;characterEncoding=utf-8</property> 
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">123456</property>
     <property name="hibernate.connection.pool_size">10</property>

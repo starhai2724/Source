@@ -17,16 +17,9 @@ public class LoginController {
 	@Path("/checklogin")
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-	public ResultObject getObject(User resquest) {
-		ResultObject response = new ResultObject(Status.ERROR);
+	public User getObject(User resquest) {
 		User user = LoginImpl.loginImpl.checkLoginIml(resquest);
-		if (null != user) {
-			response.setObj(user);
-			response.setStatus(Status.SUCCESS);
-		} else {
-			response.setStatus(Status.ERROR);
-		}
-		return response;
+		return user;
 	}
 
 }

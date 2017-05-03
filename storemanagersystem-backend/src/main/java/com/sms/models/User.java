@@ -2,6 +2,7 @@ package com.sms.models;
 
 public class User {
 	private String store_cd;
+	private String URLStore;
 	private String username;
 	private String password;
 	private String role;
@@ -46,6 +47,12 @@ public class User {
 	}
 	public void setRole(String role) {
 		this.role = role;
+	}
+	public String getURLStore() {
+		return URLStore;
+	}
+	public void setURLStore(String uRLStore) {
+		URLStore = uRLStore;
 	}
 
 

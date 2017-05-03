@@ -13,8 +13,8 @@ public class ClientLoginImpl {
 	RestTemplate rest = new RestTemplate();
 	String url = "http://localhost:3000/systembackend/get";
 	
-	public ResultObject checkLogin(User user){
-		ResultObject result = rest.postForObject(SystemURL.CHECK_LOGIN, user, ResultObject.class);
+	public User checkLogin(User user){
+		User result = rest.postForObject(SystemURL.CHECK_LOGIN, user, User.class);
 		return result;
 	}
 	
