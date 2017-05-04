@@ -12,6 +12,6 @@ public class TestController {
 	
 	@RequestMapping(value ="/{path}", method = RequestMethod.GET)	
 	public String home(){
-		return "fashion123";
+		return "fashionabc";
 	}
 }
