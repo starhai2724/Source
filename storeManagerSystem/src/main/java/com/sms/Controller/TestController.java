@@ -10,8 +10,16 @@ public class TestController {
 	
 	
 	
-	@RequestMapping(value ="/{path}", method = RequestMethod.GET)	
+	@RequestMapping(value ="/test", method = RequestMethod.GET)	
 	public String home(){
-		return "fashionabc";
+		return "test";
+	}
+	@RequestMapping(value ="/checkout", method = RequestMethod.GET)	
+	public String checkout(){
+		return "checkout";
+	}
+	@RequestMapping(value ="/dresses", method = RequestMethod.GET)	
+	public String dresses(){
+		return "dresses";
 	}
 }
