@@ -1,11 +1,5 @@
 package com.sms.Controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -19,12 +13,9 @@ import com.sms.common.ClientSMSCommons;
 import com.sms.common.Status;
 import com.sms.common.SystemCommon;
 import com.sms.common.SystemURL;
-import com.sms.form.CategoryForm;
 import com.sms.form.RegisterStoreInfomationForm;
 import com.sms.form.RegisterUserForm;
-import com.sms.impl.ClientStoreOwnerImpl;
 import com.sms.input.RegisterUserInputBean;
-import com.sms.input.StoreOwnerInputBean;
 import com.sms.models.ResultObject;
 
 @SuppressWarnings("unchecked")
@@ -57,9 +48,10 @@ public class ClientRegisterStoreInfomationController {
 	public String insert(@ModelAttribute("registerStoreInfomation") RegisterStoreInfomationForm form,HttpSession session){
 		RestTemplate restTemplate = new RestTemplate();
 		
-		RegisterUserForm registerUserForm = (RegisterUserForm) ClientSMSCommons.getAttribute(session, "registerUserForm");
+		RegisterUserForm registerUserForm = (RegisterUserForm) session.getAttribute("registerUserForm");
 		
 		RegisterUserInputBean  registerUserInputBean = new RegisterUserInputBean();
+		//StoreOwner
 		registerUserInputBean.setFullName(registerUserForm.getFullName());
 		registerUserInputBean.setPassword(registerUserForm.getPassword());
 		registerUserInputBean.setUsername(registerUserForm.getUsername());
@@ -67,12 +59,16 @@ public class ClientRegisterStoreInfomationController {
 		registerUserInputBean.setAddressStoreOwner(registerUserForm.getAddress());
 		registerUserInputBean.setEmailStoreOwner(registerUserForm.getEmail());
 		registerUserInputBean.setRole(SystemCommon.USER);
-		// 
+		//Store xu ly o server
+		//Store infomation
 		registerUserInputBean.setAddressStore(form.getAddress());
+		System.out.println("address: "+form.getAddress());
 		registerUserInputBean.setCategoryStore(form.getCategoryed());
 		registerUserInputBean.setStoreName(form.getStoreName());
 		registerUserInputBean.setTelephoneStoreOwner(form.getTelephone());
 		registerUserInputBean.setEmailStore(form.getEmail());
+		System.out.println("email: "+form.getEmail());
+		//Dia chi gian hang
 		registerUserInputBean.setDomain(form.getDomain());
 		
 		// excute
@@ -80,15 +76,15 @@ public class ClientRegisterStoreInfomationController {
 		
 		
 		if(result.getStatus() == Status.ERROR){
-			System.out.println("Error");
+			form.setMessage("");
+			form.setMessageErr("Xử lý đăng kí không thành công!");
 			
 		}else if(result.getStatus() == Status.SUCCESS){
-			System.out.println("Success");
+			form.setMessage("Xử lý đăng kí thành công!");
 		}
 		
 		return REGISTER_STORE_INFOMATION;
 	}
-	
 	
 	
 }

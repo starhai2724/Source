@@ -37,7 +37,7 @@
 				<div class="form-group">
 					<label>Địa chỉ gian hàng</label> 
 					<form:input class="form-control" type="text" path="domain" placeholder="Địa chỉ gian hàng" ng-model ="domain" ng-init="domain='${registerStoreInfomation.domain }'"  />
-					<p style="color: red;">{{address_err}}</p>
+					<p style="color: red;">{{domain_err}}</p>
 				</div>
 			</div>
 		</div>
@@ -69,6 +69,13 @@
 					<form:select class="form-control" path="categoryed">
 					    <form:options items="${registerStoreInfomation.lstCategory}" />
 					</form:select>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label>Địa chỉ cửa hàng</label> 
+					<form:input class="form-control" type="text" path="email" placeholder="Địa chỉ cửa hàng" ng-model ="address" ng-init="address='${registerStoreInfomation.address }'" ng-disabled="mySwitch" />
+					<p style="color: red;">{{address_err}}</p>
 				</div>
 			</div>
 		</div>

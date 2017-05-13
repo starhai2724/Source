@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.sms.common.ClientSMSCommons;
 import com.sms.common.Status;
 import com.sms.form.RegisterUserForm;
 import com.sms.impl.ClientStoreOwnerImpl;
@@ -23,8 +24,17 @@ public class ClientRegisterUserController {
 	 * @return
 	 */
 	@RequestMapping(value="/registerUser/init",  method = RequestMethod.POST )
-	public String registerUserInit(@ModelAttribute("registerUserForm") RegisterUserForm form){
+	public String registerUserInit(@ModelAttribute("registerUserForm") RegisterUserForm form, HttpSession session){
 		
+		// Di chuyen tu dang ki thong tin
+		RegisterUserForm registerUserForm = (RegisterUserForm) session.getAttribute("registerUserForm");
+		if(!ClientSMSCommons.isNull(registerUserForm)){
+			//set tri MH
+			System.out.println(registerUserForm.getFullName());
+			form = registerUserForm; 
+			form.setFullName(registerUserForm.getFullName());
+			System.out.println("abc: "+form.getFullName());
+		}
 		return REGISTER_USER;
 	}
 	
@@ -45,9 +55,11 @@ public class ClientRegisterUserController {
 			if(isNotExistUsername.getStatus() == Status.CANCEL){
 				
 				form.setMessageErr("Tên đăng nhập đã tồn tại.");
+				return REGISTER_USER;
 			}else if(isNotExistUsername.getStatus() == Status.ERROR){
 				
 				form.setMessageErr("Đã xảy ra lỗi.");
+				return REGISTER_USER;
 			}else{
 				//session RegisterUserForm
 				session.setAttribute("registerUserForm", form);

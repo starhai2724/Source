@@ -72,7 +72,7 @@ public class PathJSPDAO implements InterfaceDAO{
 		PathJSPOutputRowBean rowBean;
 		try {
 			SQLQuery query = session.createSQLQuery(hql);
-			query.setParameter(0, inputBean.getIdPathJSP());
+			query.setParameter(0, inputBean.getIdStore());
 			//excuse
 			List<Object[]> data = query.list();
 			for (Object[] object : data) {
@@ -127,14 +127,14 @@ public class PathJSPDAO implements InterfaceDAO{
 	
 	private String SQLGetPathJSPById(){
 		StringBuffer sb = new StringBuffer();
-		sb.append("   SELECT                                     ");
-		sb.append("       *                                        ");
-		sb.append("   FROM                                         ");
-		sb.append("       SYSTEM_CONTROL SC     ");
-		sb.append("   WHERE                                        ");
-		sb.append("    		 SC.PARAMETER_ID = ?                     ");
-		sb.append("   AND    SC.DELETE_FLAG = '0'                     ");
-		
+		sb.append("    	SELECT                                                            ");
+		sb.append("    	SC.PARAMETER_ID, SC.PARAMETER_TXT                                 ");
+		sb.append("    FROM                                                               ");
+		sb.append("    	store_info SI                                                     ");
+		sb.append("    LEFT JOIN system_control SC ON SI.CATEGORY = SC.PARAMETER_ID       ");
+		sb.append("    AND SC.DELETE_FLAG = '0'                                           ");
+		sb.append("    WHERE                                                              ");
+		sb.append("    	SI.ID_STORE = ?                                                  ");
 		return sb.toString();
 	}
 	

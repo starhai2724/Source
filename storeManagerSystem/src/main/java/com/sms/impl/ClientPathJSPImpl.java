@@ -5,6 +5,7 @@ import org.springframework.web.client.RestTemplate;
 import com.sms.common.SystemURL;
 import com.sms.input.PathJSPInputBean;
 import com.sms.models.ResultObject;
+import com.sms.output.PathJSPOutputBean;
 
 public class ClientPathJSPImpl {
 	RestTemplate rest = new RestTemplate();
@@ -24,9 +25,9 @@ public class ClientPathJSPImpl {
 	 * get one category store by id
 	 * @return
 	 */
-	public ResultObject getPathJSPById(PathJSPInputBean request) {
+	public PathJSPOutputBean getPathJSPById(PathJSPInputBean request) {
 
-		ResultObject result = rest.postForObject(SystemURL.PATHJSP_GETPATHJSPBYID,request, ResultObject.class);
+		PathJSPOutputBean result = rest.postForObject(SystemURL.PATHJSP_GETPATHJSPBYID,request, PathJSPOutputBean.class);
 		return result;
 	}
 	

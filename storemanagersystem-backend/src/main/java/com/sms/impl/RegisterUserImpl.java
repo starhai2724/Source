@@ -2,6 +2,7 @@ package com.sms.impl;
 
 import org.jboss.jandex.Main;
 
+import com.sms.common.Calculator;
 import com.sms.common.SMSComons;
 import com.sms.dao.RegisterUserDAO;
 import com.sms.domain.Store;
@@ -24,7 +25,7 @@ public class RegisterUserImpl {
 		
 		String idStoreOwner = RegisterUserDAO.intances.getMaxIdStoreOwner();
 
-		storeOwner.setIdStoreOwner(String.valueOf(Integer.parseInt(idStoreOwner) + 1));
+		storeOwner.setIdStoreOwner(Calculator.plusInt(idStoreOwner, "1"));
 		storeOwner.setUsername(input.getUsername());
 		storeOwner.setPassword(input.getPassword());
 		storeOwner.setRole(input.getRole());
@@ -39,7 +40,7 @@ public class RegisterUserImpl {
 		// bean Store
 		String idStore = RegisterUserDAO.intances.getMaxIdStore();
 		Store store = new Store();
-		store.setIdStore(String.valueOf(Integer.parseInt(idStore)+1));
+		store.setIdStore(Calculator.plusInt(idStore, "1"));
 		store.setIdStoreOwner(storeOwner.getIdStoreOwner());
 		store.setDeleteFlag("0");
 		store.setDateInsert(date);
@@ -53,7 +54,7 @@ public class RegisterUserImpl {
 		storeInformation.setTelephone(input.getTelephoneStore());
 		storeInformation.setAddress(input.getAddressStore());
 		storeInformation.setPathJSP(input.getDomain());
-		
+		storeInformation.setEmail(input.getEmailStore());
 		
 		result = RegisterUserDAO.intances.insertRegisterUser(store, storeOwner, storeInformation);
 		

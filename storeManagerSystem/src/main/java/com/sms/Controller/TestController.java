@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class TestController {
 	
 	
-	
+//	@RequestMapping(value ="/{path}", method = RequestMethod.GET)	
+//	public String home(){
+//		return "fashion";
+//	}
 	
 	@RequestMapping(value ="/index1", method = RequestMethod.GET)	
 	public String home1(){

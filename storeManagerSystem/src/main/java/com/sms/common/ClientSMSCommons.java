@@ -2,7 +2,9 @@ package com.sms.common;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -41,6 +43,32 @@ public class ClientSMSCommons {
 		
 		return String.valueOf(year+""+month+""+day);
 	}
+	/**
+	 * 
+	 * @param obj
+	 * @return true = null
+	 * 		   false <> null
+	 */
+	public static boolean isNull(Object obj){
+		if(null != obj){
+			return false;
+		}
+		return true;
+	}
+	
+	/**
+	 * 
+	 * @param obj
+	 * @return true = null
+	 * 		   false <> null
+	 */
+	public static boolean isNullList(ArrayList<Object> arr){
+		if(null != arr && arr.size() > 0 ){
+			return false;
+		}
+		return true;
+	}
+	
 	
 	
 	public static void main(String[] args) {
