@@ -16,20 +16,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
-<link href="/storeManagerSystem/view/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="/storeManagerSystem/view/css/style.css" rel="stylesheet" type="text/css" media="all" />
-<link href="/storeManagerSystem/view/css/fasthover.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/storeManagerSystem/view/fontend_index1/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/storeManagerSystem/view/fontend_index1/css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="/storeManagerSystem/view/fontend_index1/css/fasthover.css" rel="stylesheet" type="text/css" media="all" />
 <!-- js -->
-<script src="/storeManagerSystem/view/js/jquery.min.js"></script>
+<script src="/storeManagerSystem/view/fontend_index1/js/jquery.min.js"></script>
 <!-- //js -->
 <!-- countdown -->
-<link rel="stylesheet" href="/storeManagerSystem/view/css/jquery.countdown.css" />
+<link rel="stylesheet" href="/storeManagerSystem/view/fontend_index1/css/jquery.countdown.css" />
 <!-- //countdown -->
 <!-- cart -->
-<script src="/storeManagerSystem/view/js/simpleCart.min.js"></script>
+<script src="/storeManagerSystem/view/fontend_index1/js/simpleCart.min.js"></script>
 <!-- cart -->
 <!-- for bootstrap working -->
-<script type="text/javascript" src="/storeManagerSystem/view/js/bootstrap-3.1.1.min.js"></script>
+<script type="text/javascript" src="/storeManagerSystem/view/fontend_index1/js/bootstrap-3.1.1.min.js"></script>
 <!-- //for bootstrap working -->
 <link href='//fonts.googleapis.com/css?family=Glegoo:400,700' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
@@ -97,7 +97,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</div> 			        					            	      
 								</div>	
 							</div>
-							<script src="/storeManagerSystem/view/js/easyResponsiveTabs.js" type="text/javascript"></script>
+							<script src="/storeManagerSystem/view/fontend_index1/js/easyResponsiveTabs.js" type="text/javascript"></script>
 							<script type="text/javascript">
 								$(document).ready(function () {
 									$('#horizontalTab').easyResponsiveTabs({
@@ -156,7 +156,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<a href="checkout.html">
 					<div class="total">
 					<span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
-					<img src="/storeManagerSystem/view/images/bag.png" alt="" />
+					<img src="/storeManagerSystem/view/fontend_index1/images/bag.png" alt="" />
 				</a>
 				<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 				<div class="clearfix"> </div>
@@ -214,7 +214,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<div class="col-sm-4">
 										<div class="w3ls_products_pos">
 											<h4>50%<i>Off/-</i></h4>
-											<img src="/storeManagerSystem/view/images/1.jpg" alt=" " class="img-responsive" />
+											<img src="/storeManagerSystem/view/fontend_index1/images/1.jpg" alt=" " class="img-responsive" />
 										</div>
 									</div>
 									<div class="clearfix"></div>
@@ -248,8 +248,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</a>
 				</div>
 				<!-- pop-up-box -->    
-						<link href="/storeManagerSystem/view/css/popuo-box.css" rel="stylesheet" type="text/css" property="" media="all" />
-						<script src="/storeManagerSystem/view/js/jquery.magnific-popup.js" type="text/javascript"></script>
+						<link href="/storeManagerSystem/view/fontend_index1/css/popuo-box.css" rel="stylesheet" type="text/css" property="" media="all" />
+						<script src="/storeManagerSystem/view/fontend_index1/js/jquery.magnific-popup.js" type="text/javascript"></script>
 					<!--//pop-up-box -->
 					<div id="small-dialog" class="mfp-hide">
 						<iframe src="https://player.vimeo.com/video/23259282?title=0&byline=0&portrait=0"></iframe>
@@ -285,14 +285,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="agile_ecommerce_tabs">
 								<div class="col-md-4 agile_ecommerce_tab_left">
 									<div class="hs-wrapper">
-										<img src="/storeManagerSystem/view/images/6.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/4.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/5.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/3.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/7.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/3.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/5.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/6.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/6.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/4.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/5.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/3.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/7.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/3.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/5.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/6.jpg" alt=" " class="img-responsive" />
 										<div class="w3_hs_bottom">
 											<ul>
 												<li>
@@ -309,14 +309,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 								<div class="col-md-4 agile_ecommerce_tab_left">
 									<div class="hs-wrapper">
-										<img src="/storeManagerSystem/view/images/4.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/6.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/5.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/3.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/7.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/3.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/5.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/6.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/4.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/6.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/5.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/3.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/7.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/3.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/5.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/6.jpg" alt=" " class="img-responsive" />
 										<div class="w3_hs_bottom">
 											<ul>
 												<li>
@@ -333,14 +333,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 								<div class="col-md-4 agile_ecommerce_tab_left">
 									<div class="hs-wrapper">
-										<img src="/storeManagerSystem/view/images/5.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/6.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/4.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/3.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/7.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/3.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/5.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/6.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/5.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/6.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/4.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/3.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/7.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/3.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/5.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/6.jpg" alt=" " class="img-responsive" />
 										<div class="w3_hs_bottom">
 											<ul>
 												<li>
@@ -362,14 +362,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="agile_ecommerce_tabs">
 								<div class="col-md-4 agile_ecommerce_tab_left">
 									<div class="hs-wrapper">
-										<img src="/storeManagerSystem/view/images/8.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/9.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/10.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/8.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/9.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/10.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/8.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/9.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/8.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/9.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/10.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/8.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/9.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/10.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/8.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/9.jpg" alt=" " class="img-responsive" />
 										<div class="w3_hs_bottom">
 											<ul>
 												<li>
@@ -386,14 +386,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 								<div class="col-md-4 agile_ecommerce_tab_left">
 									<div class="hs-wrapper">
-										<img src="/storeManagerSystem/view/images/9.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/8.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/10.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/8.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/9.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/10.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/8.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/9.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/9.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/8.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/10.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/8.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/9.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/10.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/8.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/9.jpg" alt=" " class="img-responsive" />
 										<div class="w3_hs_bottom">
 											<ul>
 												<li>
@@ -410,14 +410,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 								<div class="col-md-4 agile_ecommerce_tab_left">
 									<div class="hs-wrapper">
-										<img src="/storeManagerSystem/view/images/10.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/8.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/9.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/8.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/9.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/10.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/8.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/9.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/10.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/8.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/9.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/8.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/9.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/10.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/8.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/9.jpg" alt=" " class="img-responsive" />
 										<div class="w3_hs_bottom">
 											<ul>
 												<li>
@@ -439,14 +439,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="agile_ecommerce_tabs">
 								<div class="col-md-4 agile_ecommerce_tab_left">
 									<div class="hs-wrapper">
-										<img src="/storeManagerSystem/view/images/11.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/12.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/13.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/11.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/12.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/13.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/11.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/12.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/11.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/12.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/13.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/11.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/12.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/13.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/11.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/12.jpg" alt=" " class="img-responsive" />
 										<div class="w3_hs_bottom">
 											<ul>
 												<li>
@@ -463,14 +463,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 								<div class="col-md-4 agile_ecommerce_tab_left">
 									<div class="hs-wrapper">
-										<img src="/storeManagerSystem/view/images/12.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/11.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/13.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/11.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/12.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/13.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/11.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/12.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/12.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/11.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/13.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/11.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/12.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/13.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/11.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/12.jpg" alt=" " class="img-responsive" />
 										<div class="w3_hs_bottom">
 											<ul>
 												<li>
@@ -487,14 +487,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 								<div class="col-md-4 agile_ecommerce_tab_left">
 									<div class="hs-wrapper">
-										<img src="/storeManagerSystem/view/images/13.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/11.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/12.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/11.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/12.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/13.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/11.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/12.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/13.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/11.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/12.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/11.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/12.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/13.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/11.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/12.jpg" alt=" " class="img-responsive" />
 										<div class="w3_hs_bottom">
 											<ul>
 												<li>
@@ -516,14 +516,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="agile_ecommerce_tabs">
 								<div class="col-md-4 agile_ecommerce_tab_left">
 									<div class="hs-wrapper">
-										<img src="/storeManagerSystem/view/images/14.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/15.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/16.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/14.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/15.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/16.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/14.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/15.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/14.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/15.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/16.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/14.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/15.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/16.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/14.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/15.jpg" alt=" " class="img-responsive" />
 										<div class="w3_hs_bottom">
 											<ul>
 												<li>
@@ -540,14 +540,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 								<div class="col-md-4 agile_ecommerce_tab_left">
 									<div class="hs-wrapper">
-										<img src="/storeManagerSystem/view/images/15.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/14.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/16.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/14.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/15.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/16.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/14.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/15.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/15.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/14.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/16.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/14.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/15.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/16.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/14.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/15.jpg" alt=" " class="img-responsive" />
 										<div class="w3_hs_bottom">
 											<ul>
 												<li>
@@ -564,14 +564,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 								<div class="col-md-4 agile_ecommerce_tab_left">
 									<div class="hs-wrapper">
-										<img src="/storeManagerSystem/view/images/16.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/14.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/15.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/14.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/15.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/16.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/14.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/15.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/16.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/14.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/15.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/14.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/15.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/16.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/14.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/15.jpg" alt=" " class="img-responsive" />
 										<div class="w3_hs_bottom">
 											<ul>
 												<li>
@@ -593,14 +593,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="agile_ecommerce_tabs">
 								<div class="col-md-4 agile_ecommerce_tab_left">
 									<div class="hs-wrapper">
-										<img src="/storeManagerSystem/view/images/17.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/18.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/19.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/17.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/18.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/19.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/17.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/18.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/17.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/18.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/19.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/17.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/18.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/19.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/17.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/18.jpg" alt=" " class="img-responsive" />
 										<div class="w3_hs_bottom">
 											<ul>
 												<li>
@@ -617,14 +617,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 								<div class="col-md-4 agile_ecommerce_tab_left">
 									<div class="hs-wrapper">
-										<img src="/storeManagerSystem/view/images/18.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/17.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/19.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/17.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/18.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/19.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/17.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/18.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/18.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/17.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/19.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/17.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/18.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/19.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/17.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/18.jpg" alt=" " class="img-responsive" />
 										<div class="w3_hs_bottom">
 											<ul>
 												<li>
@@ -641,14 +641,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 								<div class="col-md-4 agile_ecommerce_tab_left">
 									<div class="hs-wrapper">
-										<img src="/storeManagerSystem/view/images/19.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/17.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/18.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/17.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/18.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/19.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/17.jpg" alt=" " class="img-responsive" />
-										<img src="/storeManagerSystem/view/images/18.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/19.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/17.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/18.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/17.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/18.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/19.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/17.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/18.jpg" alt=" " class="img-responsive" />
 										<div class="w3_hs_bottom">
 											<ul>
 												<li>
@@ -678,7 +678,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<section>
 								<div class="modal-body">
 									<div class="col-md-5 modal_body_left">
-										<img src="/storeManagerSystem/view/images/20.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/20.jpg" alt=" " class="img-responsive" />
 									</div>
 									<div class="col-md-7 modal_body_right">
 										<h4>a good look women's shirt</h4>
@@ -691,19 +691,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											deserunt mollit anim id est laborum.</p>
 										<div class="rating">
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star-.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star-.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star-.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star-.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star-.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star-.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="clearfix"> </div>
 										</div>
@@ -736,7 +736,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<section>
 								<div class="modal-body">
 									<div class="col-md-5 modal_body_left">
-										<img src="/storeManagerSystem/view/images/63.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/63.jpg" alt=" " class="img-responsive" />
 									</div>
 									<div class="col-md-7 modal_body_right">
 										<h4>a good look black women's jeans</h4>
@@ -749,19 +749,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											deserunt mollit anim id est laborum.</p>
 										<div class="rating">
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star-.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star-.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star-.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star-.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star-.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star-.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="clearfix"> </div>
 										</div>
@@ -794,7 +794,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<section>
 								<div class="modal-body">
 									<div class="col-md-5 modal_body_left">
-										<img src="/storeManagerSystem/view/images/23.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/23.jpg" alt=" " class="img-responsive" />
 									</div>
 									<div class="col-md-7 modal_body_right">
 										<h4>a good look women's Watch</h4>
@@ -807,19 +807,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											deserunt mollit anim id est laborum.</p>
 										<div class="rating">
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star-.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star-.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star-.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star-.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star-.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star-.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="clearfix"> </div>
 										</div>
@@ -852,7 +852,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<section>
 								<div class="modal-body">
 									<div class="col-md-5 modal_body_left">
-										<img src="/storeManagerSystem/view/images/24.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/24.jpg" alt=" " class="img-responsive" />
 									</div>
 									<div class="col-md-7 modal_body_right">
 										<h4>a good look women's Sandal</h4>
@@ -865,19 +865,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											deserunt mollit anim id est laborum.</p>
 										<div class="rating">
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star-.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star-.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star-.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star-.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star-.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star-.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="clearfix"> </div>
 										</div>
@@ -910,7 +910,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<section>
 								<div class="modal-body">
 									<div class="col-md-5 modal_body_left">
-										<img src="/storeManagerSystem/view/images/22.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/22.jpg" alt=" " class="img-responsive" />
 									</div>
 									<div class="col-md-7 modal_body_right">
 										<h4>a good look women's Necklace</h4>
@@ -923,19 +923,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											deserunt mollit anim id est laborum.</p>
 										<div class="rating">
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star-.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star-.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star-.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star-.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star-.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star-.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="clearfix"> </div>
 										</div>
@@ -968,7 +968,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<section>
 								<div class="modal-body">
 									<div class="col-md-5 modal_body_left">
-										<img src="/storeManagerSystem/view/images/35.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/35.jpg" alt=" " class="img-responsive" />
 									</div>
 									<div class="col-md-7 modal_body_right">
 										<h4>a good look women's Jacket</h4>
@@ -981,19 +981,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											deserunt mollit anim id est laborum.</p>
 										<div class="rating">
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star-.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star-.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star-.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star-.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star-.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star-.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="clearfix"> </div>
 										</div>
@@ -1026,7 +1026,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<section>
 								<div class="modal-body">
 									<div class="col-md-5 modal_body_left">
-										<img src="/storeManagerSystem/view/images/39.jpg" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/39.jpg" alt=" " class="img-responsive" />
 									</div>
 									<div class="col-md-7 modal_body_right">
 										<h4>a good look women's Long Skirt</h4>
@@ -1039,19 +1039,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											deserunt mollit anim id est laborum.</p>
 										<div class="rating">
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star-.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star-.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star-.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star-.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star-.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star-.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="rating-left">
-												<img src="/storeManagerSystem/view/images/star.png" alt=" " class="img-responsive" />
+												<img src="/storeManagerSystem/view/fontend_index1/images/star.png" alt=" " class="img-responsive" />
 											</div>
 											<div class="clearfix"> </div>
 										</div>
@@ -1093,8 +1093,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="timer_wrap">
 					<div id="counter"> </div>
 				</div>
-				<script src="/storeManagerSystem/view/js/jquery.countdown.js"></script>
-				<script src="/storeManagerSystem/view/js/script.js"></script>
+				<script src="/storeManagerSystem/view/fontend_index1/js/jquery.countdown.js"></script>
+				<script src="/storeManagerSystem/view/fontend_index1/js/script.js"></script>
 			</div>
 			<div class="clearfix"> </div>
 		</div>
@@ -1108,7 +1108,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="w3agile_special_deals_grids">
 				<div class="col-md-7 w3agile_special_deals_grid_left">
 					<div class="w3agile_special_deals_grid_left_grid">
-						<img src="/storeManagerSystem/view/images/26.jpg" alt=" " class="img-responsive" />
+						<img src="/storeManagerSystem/view/fontend_index1/images/26.jpg" alt=" " class="img-responsive" />
 						<div class="w3agile_special_deals_grid_left_grid_pos1">
 							<h5>30%<span>Off/-</span></h5>
 						</div>
@@ -1121,7 +1121,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<article style="position: absolute; width: 100%; opacity: 0;"> 
 								<div class="banner-wrap">
 									<div class="w3agile_special_deals_grid_left_grid1">
-										<img src="/storeManagerSystem/view/images/1.png" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/1.png" alt=" " class="img-responsive" />
 										<p>Quis autem vel eum iure reprehenderit qui in ea voluptate 
 											velit esse quam nihil molestiae consequatur, vel illum qui dolorem 
 											eum fugiat quo voluptas nulla pariatur</p>
@@ -1132,7 +1132,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<article style="position: absolute; width: 100%; opacity: 0;"> 
 								<div class="banner-wrap">
 									<div class="w3agile_special_deals_grid_left_grid1">
-										<img src="/storeManagerSystem/view/images/2.png" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/2.png" alt=" " class="img-responsive" />
 										<p>Quis autem vel eum iure reprehenderit qui in ea voluptate 
 											velit esse quam nihil molestiae consequatur, vel illum qui dolorem 
 											eum fugiat quo voluptas nulla pariatur</p>
@@ -1143,7 +1143,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<article style="position: absolute; width: 100%; opacity: 0;"> 
 								<div class="banner-wrap">
 									<div class="w3agile_special_deals_grid_left_grid1">
-										<img src="/storeManagerSystem/view/images/3.png" alt=" " class="img-responsive" />
+										<img src="/storeManagerSystem/view/fontend_index1/images/3.png" alt=" " class="img-responsive" />
 										<p>Quis autem vel eum iure reprehenderit qui in ea voluptate 
 											velit esse quam nihil molestiae consequatur, vel illum qui dolorem 
 											eum fugiat quo voluptas nulla pariatur</p>
@@ -1153,13 +1153,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</article>
 						</div>
 					</div>
-						<script src="/storeManagerSystem/view/js/jquery.wmuSlider.js"></script> 
+						<script src="/storeManagerSystem/view/fontend_index1/js/jquery.wmuSlider.js"></script> 
 						<script>
 							$('.example1').wmuSlider();         
 						</script> 
 				</div>
 				<div class="col-md-5 w3agile_special_deals_grid_right">
-					<img src="/storeManagerSystem/view/images/25.jpg" alt=" " class="img-responsive" />
+					<img src="/storeManagerSystem/view/fontend_index1/images/25.jpg" alt=" " class="img-responsive" />
 					<div class="w3agile_special_deals_grid_right_pos">
 						<h4>Women's <span>Special</span></h4>
 						<h5>save up <span>to</span> 30%</h5>
@@ -1178,14 +1178,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-3 agileinfo_new_products_grid">
 					<div class="agile_ecommerce_tab_left agileinfo_new_products_grid1">
 						<div class="hs-wrapper hs-wrapper1">
-							<img src="/storeManagerSystem/view/images/27.jpg" alt=" " class="img-responsive" />
-							<img src="/storeManagerSystem/view/images/28.jpg" alt=" " class="img-responsive" />
-							<img src="/storeManagerSystem/view/images/29.jpg" alt=" " class="img-responsive" />
-							<img src="/storeManagerSystem/view/images/30.jpg" alt=" " class="img-responsive" />
-							<img src="/storeManagerSystem/view/images/27.jpg" alt=" " class="img-responsive" />
-							<img src="/storeManagerSystem/view/images/28.jpg" alt=" " class="img-responsive" />
-							<img src="/storeManagerSystem/view/images/29.jpg" alt=" " class="img-responsive" />
-							<img src="/storeManagerSystem/view/images/30.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/27.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/28.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/29.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/30.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/27.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/28.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/29.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/30.jpg" alt=" " class="img-responsive" />
 							<div class="w3_hs_bottom w3_hs_bottom_sub">
 								<ul>
 									<li>
@@ -1204,14 +1204,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-3 agileinfo_new_products_grid">
 					<div class="agile_ecommerce_tab_left agileinfo_new_products_grid1">
 						<div class="hs-wrapper hs-wrapper1">
-							<img src="/storeManagerSystem/view/images/31.jpg" alt=" " class="img-responsive" />
-							<img src="/storeManagerSystem/view/images/32.jpg" alt=" " class="img-responsive" />
-							<img src="/storeManagerSystem/view/images/33.jpg" alt=" " class="img-responsive" />
-							<img src="/storeManagerSystem/view/images/34.jpg" alt=" " class="img-responsive" />
-							<img src="/storeManagerSystem/view/images/31.jpg" alt=" " class="img-responsive" />
-							<img src="/storeManagerSystem/view/images/32.jpg" alt=" " class="img-responsive" />
-							<img src="/storeManagerSystem/view/images/33.jpg" alt=" " class="img-responsive" />
-							<img src="/storeManagerSystem/view/images/34.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/31.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/32.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/33.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/34.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/31.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/32.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/33.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/34.jpg" alt=" " class="img-responsive" />
 							<div class="w3_hs_bottom w3_hs_bottom_sub">
 								<ul>
 									<li>
@@ -1230,14 +1230,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-3 agileinfo_new_products_grid">
 					<div class="agile_ecommerce_tab_left agileinfo_new_products_grid1">
 						<div class="hs-wrapper hs-wrapper1">
-							<img src="/storeManagerSystem/view/images/37.jpg" alt=" " class="img-responsive" />
-							<img src="/storeManagerSystem/view/images/30.jpg" alt=" " class="img-responsive" />
-							<img src="/storeManagerSystem/view/images/36.jpg" alt=" " class="img-responsive" />
-							<img src="/storeManagerSystem/view/images/38.jpg" alt=" " class="img-responsive" />
-							<img src="/storeManagerSystem/view/images/37.jpg" alt=" " class="img-responsive" />
-							<img src="/storeManagerSystem/view/images/30.jpg" alt=" " class="img-responsive" />
-							<img src="/storeManagerSystem/view/images/36.jpg" alt=" " class="img-responsive" />
-							<img src="/storeManagerSystem/view/images/38.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/37.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/30.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/36.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/38.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/37.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/30.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/36.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/38.jpg" alt=" " class="img-responsive" />
 							<div class="w3_hs_bottom w3_hs_bottom_sub">
 								<ul>
 									<li>
@@ -1256,14 +1256,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-3 agileinfo_new_products_grid">
 					<div class="agile_ecommerce_tab_left agileinfo_new_products_grid1">
 						<div class="hs-wrapper hs-wrapper1">
-							<img src="/storeManagerSystem/view/images/40.jpg" alt=" " class="img-responsive" />
-							<img src="/storeManagerSystem/view/images/41.jpg" alt=" " class="img-responsive" />
-							<img src="/storeManagerSystem/view/images/42.jpg" alt=" " class="img-responsive" />
-							<img src="/storeManagerSystem/view/images/43.jpg" alt=" " class="img-responsive" />
-							<img src="/storeManagerSystem/view/images/40.jpg" alt=" " class="img-responsive" />
-							<img src="/storeManagerSystem/view/images/41.jpg" alt=" " class="img-responsive" />
-							<img src="/storeManagerSystem/view/images/42.jpg" alt=" " class="img-responsive" />
-							<img src="/storeManagerSystem/view/images/43.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/40.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/41.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/42.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/43.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/40.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/41.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/42.jpg" alt=" " class="img-responsive" />
+							<img src="/storeManagerSystem/view/fontend_index1/images/43.jpg" alt=" " class="img-responsive" />
 							<div class="w3_hs_bottom w3_hs_bottom_sub">
 								<ul>
 									<li>
@@ -1291,19 +1291,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="sliderfig">
 				<ul id="flexiselDemo1">			
 					<li>
-						<img src="/storeManagerSystem/view/images/4.png" alt=" " class="img-responsive" />
+						<img src="/storeManagerSystem/view/fontend_index1/images/4.png" alt=" " class="img-responsive" />
 					</li>
 					<li>
-						<img src="/storeManagerSystem/view/images/5.png" alt=" " class="img-responsive" />
+						<img src="/storeManagerSystem/view/fontend_index1/images/5.png" alt=" " class="img-responsive" />
 					</li>
 					<li>
-						<img src="/storeManagerSystem/view/images/6.png" alt=" " class="img-responsive" />
+						<img src="/storeManagerSystem/view/fontend_index1/images/6.png" alt=" " class="img-responsive" />
 					</li>
 					<li>
-						<img src="/storeManagerSystem/view/images/7.png" alt=" " class="img-responsive" />
+						<img src="/storeManagerSystem/view/fontend_index1/images/7.png" alt=" " class="img-responsive" />
 					</li>
 					<li>
-						<img src="/storeManagerSystem/view/images/46.jpg" alt=" " class="img-responsive" />
+						<img src="/storeManagerSystem/view/fontend_index1/images/46.jpg" alt=" " class="img-responsive" />
 					</li>
 				</ul>
 			</div>
@@ -1334,7 +1334,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								
 							});
 					</script>
-					<script type="text/javascript" src="/storeManagerSystem/view/js/jquery.flexisel.js"></script>
+					<script type="text/javascript" src="/storeManagerSystem/view/fontend_index1/js/jquery.flexisel.js"></script>
 		</div>
 	</div>
 <!-- //top-brands -->
@@ -1410,7 +1410,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="footer-copy">
 			<div class="footer-copy1">
 				<div class="footer-copy-pos">
-					<a href="#home1" class="scroll"><img src="/storeManagerSystem/view/images/arrow.png" alt=" " class="img-responsive" /></a>
+					<a href="#home1" class="scroll"><img src="/storeManagerSystem/view/fontend_index1/images/arrow.png" alt=" " class="img-responsive" /></a>
 				</div>
 			</div>
 			<div class="container">
