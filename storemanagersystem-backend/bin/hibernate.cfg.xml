@@ -19,5 +19,6 @@
      <mapping class="com.sms.domain.SystemControl"/>      
      <mapping class="com.sms.domain.StoreInformation"/>      
      <mapping class="com.sms.domain.ProductCategory"/>      
+     <mapping class="com.sms.domain.Image"/>      
    </session-factory>
 </hibernate-configuration> 
