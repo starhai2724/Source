@@ -3,6 +3,7 @@ package com.sms.Controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,16 +25,14 @@ public class ClientRegisterUserController {
 	 * @return
 	 */
 	@RequestMapping(value="/registerUser/init",  method = RequestMethod.POST )
-	public String registerUserInit(@ModelAttribute("registerUserForm") RegisterUserForm form, HttpSession session){
+	public String registerUserInit(@ModelAttribute("registerUserForm") RegisterUserForm form, HttpSession session, Model model){
 		
 		// Di chuyen tu dang ki thong tin
 		RegisterUserForm registerUserForm = (RegisterUserForm) session.getAttribute("registerUserForm");
 		if(!ClientSMSCommons.isNull(registerUserForm)){
 			//set tri MH
-			System.out.println(registerUserForm.getFullName());
 			form = registerUserForm; 
-			form.setFullName(registerUserForm.getFullName());
-			System.out.println("abc: "+form.getFullName());
+			model.addAttribute("registerUserForm", form);
 		}
 		return REGISTER_USER;
 	}

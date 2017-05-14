@@ -102,7 +102,35 @@ public class RegisterUserDAO {
 		}
 		return result;
 	}
+	/**
+	 * checkExistDomain
+	 * @return
+	 */
 	
+	public boolean checkExistDomain(String domain) {
+		Session session = HibernateUtil.getSessionDAO();
+		String hql = getDomain();
+		boolean result = true;
+		try {
+			session.getTransaction().begin();
+			SQLQuery query = session.createSQLQuery(hql);
+			query.setParameter(0, domain);
+			List<Object> data = query.list();
+			for (Object object : data) {
+				result = SMSComons.isNull(object);
+			}
+			session.getTransaction().commit();
+
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		} finally {
+			session.flush();
+			session.clear();
+			session.close();
+		}
+		return result;
+	}
 	
 	// SQL ------------------------------------------------------------------------------
 
@@ -127,5 +155,17 @@ public class RegisterUserDAO {
 		sb.append("  FROM STORE            ");
 		return sb.toString();
 	}
+	
+	/**
+	 * get domain
+	 * @return
+	 */
+	private String getDomain() {
+		StringBuffer sb = new StringBuffer();
+		sb.append("SELECT COUNT(*) FROM store_info si where si.PATHJSP = ?");
+		return sb.toString();
+	}
+	
+	
 	
 }

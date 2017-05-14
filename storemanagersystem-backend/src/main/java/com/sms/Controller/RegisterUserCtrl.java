@@ -6,6 +6,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.sms.common.Status;
+import com.sms.dao.RegisterUserDAO;
 import com.sms.impl.RegisterUserImpl;
 import com.sms.inputs.RegisterUserInputBean;
 import com.sms.models.ResultObject;
@@ -32,6 +33,13 @@ public class RegisterUserCtrl {
 		}
 
 		return response;
+	}
+	
+	@Path("/checkExistDomain")
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	public boolean checkDoamain(String domain){
+		return  RegisterUserDAO.intances.checkExistDomain(domain);
 	}
 	
 }

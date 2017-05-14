@@ -43,6 +43,7 @@ public class PathJSPDAO implements InterfaceDAO{
 				rowBean = new PathJSPOutputRowBean();
 				rowBean.setIdPathJSP(SMSComons.convertString(object[0]));
 				rowBean.setPathJSP(SMSComons.convertString(object[1]));
+				rowBean.setName(SMSComons.convertString(object[2]));
 				lstResult.getLst().add(rowBean);
 			}
 			tx.commit();
@@ -116,7 +117,9 @@ public class PathJSPDAO implements InterfaceDAO{
 	private String SQLGetPathJSP(){
 		StringBuffer sb = new StringBuffer();
 	sb.append("   	SELECT                                     ");
-	sb.append("       *                                        ");
+	sb.append("       SC.PARAMETER_ID    ");
+	sb.append("       ,SC.PARAMETER_TXT  ");
+	sb.append("       ,SC.PARAMETER_NAME   ");
 	sb.append("   FROM                                         ");
 	sb.append("       SYSTEM_CONTROL SC     ");
 	sb.append("   WHERE                                        ");

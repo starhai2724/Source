@@ -4,7 +4,6 @@ import org.springframework.web.client.RestTemplate;
 
 import com.sms.common.SystemURL;
 import com.sms.input.PathJSPInputBean;
-import com.sms.models.ResultObject;
 import com.sms.output.PathJSPOutputBean;
 
 public class ClientPathJSPImpl {
@@ -15,9 +14,9 @@ public class ClientPathJSPImpl {
 	 * get all category store
 	 * @return
 	 */
-	public ResultObject getPathJSP() {
+	public PathJSPOutputBean getPathJSP() {
 
-		ResultObject result = rest.getForObject(SystemURL.PATHJSP_GETPATHJSP, ResultObject.class);
+		PathJSPOutputBean result = rest.getForObject(SystemURL.PATHJSP_GETPATHJSP, PathJSPOutputBean.class);
 		return result;
 	}
 

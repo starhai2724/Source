@@ -29,9 +29,10 @@
 		<div class="row">
 			<div class="col-sm-6">
 				<div class="form-group">
-					<label>Họ tên</label> 
+					<label>Họ tên *</label> 
 					<form:input class="form-control" type="text" path="fullName" placeholder="Họ tên" name="fullName" ng-model = "fullName"  ng-init ="fullName = '${registerUserForm.fullName}'" />
 					<p style="color: red;">{{fullname_err}}</p>
+					<p style="color: red;">${registerUserForm.fullName }</p>
 				</div>
 			</div>
 		</div>
@@ -45,7 +46,7 @@
 			</div>
 			<div class="col-sm-6">
 				<div class="form-group">
-					<label>Số điện thoại</label> 
+					<label>Số điện thoại *</label> 
 					<form:input class="form-control" type="text" path="telephone" placeholder="Số điện thoại" name="telephone" ng-model ="telephone" ng-init="telephone='${registerUserForm.telephone }'"  />
 					<p style="color: red;">{{telephone_err}}</p>
 				</div>
@@ -54,30 +55,30 @@
 		<div class="row">
 			<div class="col-sm-6">
 				<div class="form-group">
-					<label>Tên đăng nhập</label> 
+					<label>Tên đăng nhập *</label> 
 					<form:input class="form-control" type="text" path="username" placeholder="Tên đăng nhập" name="username" ng-model ="username" ng-init="username='${registerUserForm.username }'" ng-disabled="mySwitch" />
 					<p style="color: red;">{{username_err}}</p>
 				</div>
 			</div>
 			<div class="col-sm-6">
 				<div class="form-group">
-					<label>Địa chỉ email</label> 
-					<form:input class="form-control" path="email" type="email" placeholder="Địa chỉ email" name="email" ng-model ="email" ng-init="email='${registerUserForm.email }'" />
-					<p style="color: red;">{{email_err}}</p>
+					<label>Địa chỉ email *</label> 
+					<form:input class="form-control" path="email" type="text" placeholder="Địa chỉ email" name="email" ng-model ="email" ng-init="email='${registerUserForm.email }'" />
+					<p style="color: red;">{{email_err}}</p>	
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-sm-6">
 				<div class="form-group">
-					<label>Mật khẩu</label> 
+					<label>Mật khẩu *</label> 
 					<form:input class="form-control" type="password" path="password" placeholder="Mật khẩu" name="password" ng-model ="password" ng-init="password='${registerUserForm.password }'" ng-disabled="mySwitch" />
 					<p style="color: red;">{{password_err}}</p>
 				</div>
 			</div>
 			<div class="col-sm-6">
 				<div class="form-group">
-					<label>Xác nhận mật khẩu</label> 
+					<label>Xác nhận mật khẩu *</label> 
 					<input class="form-control" type="password"  placeholder="Xác nhận mật khẩu" name="repassword" ng-model ="repassword" ng-init="repassword=''" ng-disabled="mySwitch" >
 					<p style="color: red;">{{repassword_err}}</p>
 				</div>

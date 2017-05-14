@@ -18,19 +18,10 @@ public class PathJSPController {
 	@Path("/getPathJSP")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public ResultObject getPathJSP() {
-		ResultObject response = new ResultObject(Status.ERROR);
+	public PathJSPOutputBean getPathJSP() {
 		//get category store
 		PathJSPOutputBean result = PathJSPImplment.intances.getPathJSP();
-		
-		if (null != result && result.getLst() != null && result.getLst().size() > 0) {
-			response.setObj(result);
-			response.setStatus(Status.SUCCESS);
-		} else {
-			response.setStatus(Status.ERROR);
-		}
-
-		return response;
+		return result;
 	}
 	
 	@Path("/getPathJSPById")

@@ -16,10 +16,10 @@ public class SMSComons {
 	
 	public static boolean isNull(Object obj) {
 		if (null != obj) {
-			return true;
+			return false;
 		}
 
-		return false;
+		return true;
 	}
 
 	/**

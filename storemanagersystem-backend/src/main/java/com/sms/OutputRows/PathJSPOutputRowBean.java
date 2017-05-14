@@ -5,6 +5,8 @@ public class PathJSPOutputRowBean {
 	private String idPathJSP;
 
 	private String pathJSP;
+	
+	private String name;
 
 	public String getIdPathJSP() {
 		return idPathJSP;
@@ -22,4 +24,13 @@ public class PathJSPOutputRowBean {
 		this.pathJSP = pathJSP;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	
 }

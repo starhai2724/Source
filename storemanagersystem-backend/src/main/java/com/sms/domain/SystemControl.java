@@ -16,6 +16,9 @@ public class SystemControl {
 	@Column(name = "PARAMETER_TXT")
 	private String parameterTXT;
 
+	@Column(name = "PARAMETER_NAME")
+	private String Name;
+
 	@Column(name = "DELETE_FLAG")
 	private String deleteFlag;
 
@@ -41,6 +44,14 @@ public class SystemControl {
 
 	public void setDeleteFlag(String deleteFlag) {
 		this.deleteFlag = deleteFlag;
+	}
+
+	public String getName() {
+		return Name;
+	}
+
+	public void setName(String name) {
+		Name = name;
 	}
 
 }

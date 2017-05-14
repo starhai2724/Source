@@ -24,7 +24,7 @@
 			<!-- /.col-lg-12 -->
 		</div>
 		<!-- /.row -->
-	<form:form id="registerStoreInfomation" role="form" modelAttribute="registerStoreInfomation" method="POST">
+	<form:form id="registerStoreInfomation" role="form" modelAttribute="registerStoreInfomation" >
 		<div class="row">
 			<div class="col-sm-6">
 				<div class="form-group">
@@ -70,6 +70,8 @@
 					    <form:options items="${registerStoreInfomation.lstCategory}" />
 					</form:select>
 				</div>
+			</div>
+			<div class="col-xs-3 selectContainer">
 			</div>
 			<div class="col-sm-6">
 				<div class="form-group">

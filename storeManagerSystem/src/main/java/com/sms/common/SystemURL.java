@@ -37,6 +37,7 @@ public class SystemURL {
 	/**Register user 20.04.2017 Hai.NT(S)*/
 	public static final String REGISTERUSER_INSERT = systemURL+"RegisterUser/insert";
 	
+	public static final String CHECK_EXIST_DOMAIN = systemURL+"RegisterUser/checkExistDomain";
 	
 	/**Register user 20.04.2017 Hai.NT(E)*/
 	

@@ -27,5 +27,6 @@ function checkLogin($scope) {
 
 function register(){
 	document.getElementById("loginform").action = "/storeManagerSystem/registerUser/init";
+	document.getElementById("loginform").method = "POST";
 	document.getElementById("loginform").submit();
 }

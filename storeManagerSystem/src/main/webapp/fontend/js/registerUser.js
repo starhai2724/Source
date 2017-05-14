@@ -11,6 +11,14 @@ app.controller('ctrl', function($scope) {
 
 function create($scope) {
 	var valid = true;
+	//set init message
+	$scope.fullname_err = "";
+	$scope.telephone_err = "";
+	$scope.username_err = "";
+	$scope.email_err = "";
+	$scope.password_err = "";
+	$scope.repassword_err  = "";
+	
 	if ($scope.fullName == "") {
 		$scope.fullname_err = "Vui lòng nhập họ tên!"
 		valid = false;
@@ -26,17 +34,23 @@ function create($scope) {
 	if ($scope.email == "") {
 		$scope.email_err = "Vui lòng nhập email!"
 		valid = false;
+	}else if(!validateEmail($scope.email)){
+		$scope.email_err = "Vui lòng nhập lại email!"
+		valid = false;
 	}
 
 	if ($scope.password == "") {
 		$scope.password_err = "Vui lòng nhập mật khẩu!"
 		valid = false;
+	}else if($scope.password.length < 6){
+		$scope.password_err = "Vui lòng nhập mật khẩu trên 6 kí tự!"; 
+			valid = false;
+	}else if ($scope.password != $scope.repassword) {
+		$scope.repassword_err = "Vui lòng nhập lại mật khẩu xác nhận!";
+		$scope.password_err = "";
+			valid = false;
 	}
-
-	if ($scope.password != $scope.repassword) {
-		$scope.repassword_err = "Vui lòng nhập mật khẩu xác nhận không đúng!"
-		valid = false;
-	}
+	
 
 	if (true == valid) {
 			document.getElementById("registerUser").action = "/storeManagerSystem/registerUser/insert";
@@ -53,7 +67,10 @@ function back(){
 	}
 }
 
-
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
 
 
 

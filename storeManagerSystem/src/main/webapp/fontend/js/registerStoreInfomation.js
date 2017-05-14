@@ -1,5 +1,12 @@
 var app = angular.module('registerStoreInfomation', []);
 app.controller('ctrl', function($scope) {
+	//set "" message
+	$scope.storeName_err = "";
+	$scope.address_err = "";
+	$scope.telephone_err = "";
+	$scope.email_err = "";
+	$scope.domain_err = "";
+	
 	$scope.btnCreate = function() {
 			create($scope);
 	}
@@ -11,6 +18,9 @@ app.controller('ctrl', function($scope) {
 
 function create($scope) {
 	var valid = true;
+	
+	$scope.storeName_err = "";
+	
 	if ($scope.storeName == "") {
 		$scope.storeName_err = "Vui lòng nhập họ tên cửa hàng!"
 		valid = false;
@@ -46,6 +56,7 @@ function create($scope) {
 function back(){
 	if(confirm("Bạn có muốn quay về màn hình trước?")){
 		document.getElementById("registerStoreInfomation").action = "/storeManagerSystem/registerUser/init";
+		document.getElementById("registerStoreInfomation").method = "POST";
 		document.getElementById("registerStoreInfomation").submit();
 	}
 }
