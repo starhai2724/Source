@@ -35,8 +35,6 @@ public class ClientRegisterStoreInfomationController {
 	@RequestMapping(value="/RegisterStoreInfomation/init", method=RequestMethod.GET)
 	public String init(@ModelAttribute("registerStoreInfomation") RegisterStoreInfomationForm form, ModelMap modelMap, Model model){
 		
-		form.getLstCategory().put("01", "Thoi trang");
-		form.getLstCategory().put("02", "Dien thoai");
 		//get category 
 		PathJSPOutputBean pathJSPOutputBean = ClientPathJSPImpl.intances.getPathJSP();
 		for(PathJSPOutputRowBean rowBean: pathJSPOutputBean.getLst()){
@@ -57,12 +55,17 @@ public class ClientRegisterStoreInfomationController {
 		
 		RestTemplate restTemplate = new RestTemplate();
 		String page = "";
+		//get category 
+		PathJSPOutputBean pathJSPOutputBean = ClientPathJSPImpl.intances.getPathJSP();
+		for(PathJSPOutputRowBean rowBean: pathJSPOutputBean.getLst()){
+			form.getLstCategory().put(rowBean.getIdPathJSP(), rowBean.getName());
+		}
 		System.out.println("catergory: "+ form.getLstCategory().get("01"));
 		
 		RegisterUserForm registerUserForm = (RegisterUserForm) session.getAttribute("registerUserForm");
-		// check validation
+		// check validation (true mean exist)
 		boolean validDomain = restTemplate.postForObject(SystemURL.CHECK_EXIST_DOMAIN, form.getDomain(), boolean.class);
-		if(!validDomain){
+		if(validDomain){
 			form.setMessage("");
 			form.setMessageErr("Địa chỉ gian hàng đã tồn tại!");
 			page = REGISTER_STORE_INFOMATION;

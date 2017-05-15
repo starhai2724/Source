@@ -71,12 +71,12 @@
 					</form:select>
 				</div>
 			</div>
-			<div class="col-xs-3 selectContainer">
+			<div class="col-xs-3 selectContainer">	
 			</div>
 			<div class="col-sm-6">
 				<div class="form-group">
 					<label>Địa chỉ cửa hàng</label> 
-					<form:input class="form-control" type="text" path="email" placeholder="Địa chỉ cửa hàng" ng-model ="address" ng-init="address='${registerStoreInfomation.address }'" ng-disabled="mySwitch" />
+					<form:input class="form-control" type="text" path="address" placeholder="Địa chỉ cửa hàng" ng-model ="address" ng-init="address='${registerStoreInfomation.address }'" ng-disabled="mySwitch" />
 					<p style="color: red;">{{address_err}}</p>
 				</div>
 			</div>

@@ -39,6 +39,12 @@ public class RegisterUserDAO {
 			return result;
 		}
 		
+		// create table product
+		result = CreateTableProductDAO.intances.createTableProduct(storeInformation.getPathJSP());
+		if(result != 1){
+			return result;
+		}
+		
 		return result;
 	}
 	
@@ -117,7 +123,11 @@ public class RegisterUserDAO {
 			query.setParameter(0, domain);
 			List<Object> data = query.list();
 			for (Object object : data) {
-				result = SMSComons.isNull(object);
+				if("0".equals(SMSComons.convertString(object))){
+					result = false;
+				}else{
+					result = true;
+				}
 			}
 			session.getTransaction().commit();
 

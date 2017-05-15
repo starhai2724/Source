@@ -33,7 +33,7 @@ public class ClientLoginController {
 	public String checkLogin(@RequestParam("username") String username, @RequestParam("password") String password, ModelMap model, HttpSession session){
 		model.addAttribute("username", username);
 		model.addAttribute("password", password);
-		model.addAttribute("message", "Sai tên hoặc mật khẩu");
+		model.addAttribute("message", "Sai Tên đăng nhập hoặc mật khẩu");
 		User req = new User();
 		req.setUsername(username);
 		req.setPassword(password);

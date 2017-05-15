@@ -9,6 +9,7 @@
 
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
+compileJava {options.encoding = "UTF-8"}  
 apply plugin: 'war'
 apply plugin: 'jetty'
 
@@ -19,6 +20,8 @@ repositories {
     // You can declare any Maven/Ivy/file repository here.
     mavenCentral()
 }
+
+
 
 
 // In this section you declare the dependencies for your production and test code
