@@ -41,7 +41,46 @@ public class RegisterUserDAO {
 		
 		// create table product
 		result = CreateTableProductDAO.intances.createTableProduct(storeInformation.getPathJSP());
-		if(result != 1){
+		if(result != 0){
+			return result;
+		}
+		///--------
+		// create table LoaiSanPhamDAO
+		result = LoaiSanPhamDAO.intances.createTable(storeInformation.getPathJSP());
+		if(result != 0){
+			return result;
+		} 
+		
+		// create table DotKMDAO
+		result = DotKMDAO.intances.createTable(storeInformation.getPathJSP());
+		if(result != 0){
+			return result;
+		} 
+		
+		// create table LoaiKMDAO
+		result = LoaiKMDAO.intances.createTable(storeInformation.getPathJSP());
+		if(result != 0){
+			return result;
+		} 
+		
+		// create table SanPhamKMDAO
+		result = SanPhamKMDAO.intances.createTable(storeInformation.getPathJSP());
+		if(result != 0){
+			return result;
+		} 
+		// create table KhachHangDAO
+		result = KhachHangDAO.intances.createTable(storeInformation.getPathJSP());
+		if(result != 0){
+			return result;
+		} 
+		// create table HoaDonDAO
+		result = HoaDonDAO.intances.createTable(storeInformation.getPathJSP());
+		if(result != 0){
+			return result;
+		} 
+		// create table ChiTietHoaDonDAO
+		result = ChiTietHoaDonDAO.intances.createTable(storeInformation.getPathJSP());
+		if(result != 0){
 			return result;
 		}
 		
@@ -176,6 +215,11 @@ public class RegisterUserDAO {
 		return sb.toString();
 	}
 	
-	
+	public static void main(String[] args) {
+		//cuahangthoitrang
+		StoreInformation  storeInformation = new StoreInformation();
+		storeInformation.setPathJSP("cuahangthoitrang");
+		RegisterUserDAO.intances.insertRegisterUser(null, null, storeInformation);
+	}
 	
 }

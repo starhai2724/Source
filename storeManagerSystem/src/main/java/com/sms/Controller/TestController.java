@@ -33,4 +33,8 @@ public class TestController {
 	public String checkout2(){
 		return "template2/checkout2";
 	}
+	@RequestMapping(value ="/testLayout", method = RequestMethod.GET)	
+	public String testLayout(){
+		return "product";
+	}
 }

@@ -47,4 +47,18 @@ public class SMSComons {
 		
 	}
 	
+	/**
+	 * 
+	 * @param obj
+	 * @return
+	 */
+	public static int convertInt(String obj){
+		if(!"".equals(obj)){
+			return Integer.parseInt(obj);
+		}
+		return 0;
+		
+	}
+	
+	
 }

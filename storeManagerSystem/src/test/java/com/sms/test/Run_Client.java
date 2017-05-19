@@ -16,6 +16,9 @@ public class Run_Client {
 //		storeOwnerController.getBy("", "root", "", "", new ModelMap(), null, new ModelAndView());
 //		storeOwnerController.edit("001001", new ModelMap(), null);
 	ClientLoginController clientLoginController = new ClientLoginController();
-	clientLoginController.checkLogin("root", "123", new ModelMap(), null);
+	clientLoginController.checkLogin("12", "12", new ModelMap(), null);
+//	System.out.println("Nguyễn Trung Hải");
+	
+	
 	}
 }
