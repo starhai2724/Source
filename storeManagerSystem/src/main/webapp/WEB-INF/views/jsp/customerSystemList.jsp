@@ -54,8 +54,8 @@
 			</div>
 		</div>
 		<!--Message (E)-->
-		<div class="row">
-			<div class="col-sm-3">
+		<div class="row" align="right" style="width: 100%">
+			<div >
 				<input type="button" name="" class="btn btn-info " ng-click ="btnAppend()" value="Mới">
 				<input type="button" name="" class="btn btn-info " ng-click="btnSearch()" value="Tìm kiếm">
 				<input type="button" name="" class="btn btn-info " ng-click ="btnClear()" value="Hủy">
@@ -71,53 +71,49 @@
 		
 		
 		<c:if test="${!empty storeOwners }">
-		<div class ="row">
-			<div class="col-lg-12">
-			<table width="100%" class="table table-striped table-bordered table-hover" id="">
-				<thead>
-					<tr>
-						<th>STT</th>
-						<th>Họ tên</th>
-						<th>Tên đăng nhập</th>
-						<th>Địa chỉ</th>
-						<th>Số điện thoại</th>
-						<th>Email</th>
-						<th>Người tạo</th>
-						<th>Ngày Cấp</th>
-						<th>Người cập nhật</th>
-						<th>Ngày cập nhật</th>
-						<th>Thao tác</th>
-					</tr>
-				</thead>
-				<tbody style="overflow: auto; height:50px">
-				<c:forEach var="items" items="${storeOwners }">
-				<tr class="gradeX">
-                     <td class="center" style="text-align: center">${items.no}</td>
-                     <td>${items.fullName}</td>
-                     <td>${items.username}</td>
-                     <td>${items.address }</td>
-                     <td class="center" style="text-align: center">${items.telephone }</td>
-                     <td class="center">${items.email }</td>
-                     <td>${items.userInsert}</td>
-                     <td style="text-align: center">${items.dateInsert }</td>
-                     <td>${items.userUpdate }</td>
-                     <td class="center" style="text-align: center">${items.dateUpdate}</td>
-                     <td style="text-align: center">
-						<button class="btn" type="button" ng-click="btnUpdate(${items.idStoreOwner });">
-							<span class="glyphicon glyphicon-pencil" data-toggle="tooltip" data-original-title="Sửa"></span>
-						</button>
-						<button class="btn" type="button" ng-click="btnDelete(${items.idStoreOwner});" >
-							<span class="glyphicon glyphicon-trash" data-toggle="tooltip" data-original-title="Xóa"></span>
-						</button>
-                     </td>
-                 </tr>
-                </c:forEach> 
-				</tbody>
-			
-			</table>
-			
-			</div>
-		</div>
+		<div class="panel-body">
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 40px;padding-left: 2px;padding-right: 2px;font-size: 13px">STT</th>
+										<th>Họ tên</th>
+										<th style="width: 100px;padding-left: 4px;padding-right: 4px;">Tên tài khoản</th>
+										<th style="padding-left: 10px;padding-right: 4px;">Địa chỉ</th>
+										<th style="padding-left: 10px;padding-right: 4px;">Số điện thoại</th>
+										<th style="padding-left: 10px;padding-right: 4px;">Email</th>
+										<th style="padding-left: 5px;padding-right: 4px;width: 80px;">Người tạo</th>
+										<th style="padding-left: 5px;padding-right: 4px;width: 80px;">Ngày Cấp</th>
+										<th style="padding-left: 5px;padding-right: 4px;width: 120px;">Người cập nhật</th>
+										<th style="padding-left: 5px;padding-right: 4px;width: 120px;">Ngày cập nhật</th>
+										<th style="padding-left: 10px;padding-right: 4px;">Thao tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody style="overflow: auto; height:50px">
+                              		  <c:forEach var="items" items="${storeOwners }">
+		                                <tr class="odd gradeX">
+		                                        <td class="center" style="text-align: center">${items.no}</td>
+		                                        <td>${items.fullName}</td>
+							                     <td>${items.username}</td>
+							                     <td>${items.address }</td>
+		                                      	 <td class="center" style="text-align: center">${items.telephone }</td>
+					                    		 <td class="center">${items.email }</td>
+		                                       		<td>${items.userInsert}</td>
+		                                        <td style="text-align: center">${items.dateInsert }</td>
+		                                         <td>${items.userUpdate }</td>
+		                                        <td class="center" style="text-align: center">${items.dateUpdate}</td>
+		                                        <td class="center" style="text-align: center">
+		                                        		<button class="btn" type="button" ng-click="btnUpdate(${items.idStoreOwner });">
+														<span class="glyphicon glyphicon-pencil" data-toggle="tooltip" data-original-title="Sửa"></span>
+														</button>
+														<button class="btn" type="button" ng-click="btnDelete(${items.idStoreOwner});" >
+															<span class="glyphicon glyphicon-trash" data-toggle="tooltip" data-original-title="Xóa"></span>
+														</button>
+		                                        </td>
+		                                 </tr>
+					                </c:forEach>
+                                </tbody>
+                            </table>
+                        </div>
 		</c:if>
 	</form:form>		
 		<!-- /#page-wrapper -->
