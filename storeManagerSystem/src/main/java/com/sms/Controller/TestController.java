@@ -37,4 +37,8 @@ public class TestController {
 	public String testLayout(){
 		return "product";
 	}
+	@RequestMapping(value ="/dotKhuyenMai", method = RequestMethod.GET)	
+	public String dotKhuyenMai(){
+		return "dotKhuyenMai";
+	}
 }
