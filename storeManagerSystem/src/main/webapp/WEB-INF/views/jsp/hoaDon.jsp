@@ -72,7 +72,7 @@
 	<div id="page-wrapper">
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Đợt Khuyến Mãi</h1>
+				<h1 class="page-header">Quản trị hóa đơn</h1>
 			</div>
 			<i style="font-size:24px;margin-left: 1500px;margin-top: -10px" data-toggle="collapse" data-target="#demo" class="fa">&#xf106;</i>
 			<!-- /.col-lg-12 -->
@@ -82,34 +82,17 @@
 		<div class="row">
 			<div class="col-sm-3">
 				<div class="form-group">
-					<label>Mã đợt KM</label> 
-						<input class="form-control" type="text" placeholder="Mã đợt KM"/>	
+					<label>Mã hóa đơn</label> 
+						<input class="form-control" type="text" placeholder="Mã hóa đơn"/>	
 				</div>
 			</div>
 			<div class="col-sm-3">
 				<div class="form-group">
-					<label>Loại KM</label> 
+					<label>Loại thanh toán</label> 
 					<select name="loaiKM" class="form-control">
-						  <option value="volvo" >--- Chọn loại khuyến mãi ---</option>
-						  <option value="volvo">Theo phần trăm sản hẩm</option>
-						  <option value="saab">Theo phần trăm hóa đơn</option>
-						  <option value="fiat">Tặng kèm sản phầm</option>
-						  <option value="audi">Tặng phiếu giảm giá</option>
-						  <option value="audi">Tặng phiếu quà tặng</option>
-						  <option value="audi">Miễn phí ship hàng</option>
-					</select>
-				</div>
-			</div>
-			<div class="col-sm-3">
-				<div class="form-group">
-					<label>Mức giảm giá</label> 
-					<input class="form-control" type="text" placeholder="Mức" style="width: 100px"/>	
-					<select name="mucGiamGiaKb" class="form-control" style="margin-left: 105px;width: 180px;margin-top: -35px">
-						  <option value="volvo" >--- Chọn ---</option>
-						  <option value="volvo"> % Hóa đơn</option>
-						  <option value="saab"> % Sản phẩm</option>
-						  <option value="fiat"> VNĐ</option>
-						  <option value="audi"> Cái</option>
+						  <option value="volvo" >--- Chọn loại thanh toán ---</option>
+						  <option value="volvo">Thanh toán trực tiếp</option>
+						  <option value="saab">Thanh toán qua ATM</option>
 					</select>
 				</div>
 			</div>
@@ -117,23 +100,49 @@
 		<div class="row">
 			<div class="col-sm-3">
 				<div class="form-group">
-					<label>Tên đợt KM</label> 
-						<input class="form-control" type="text" placeholder="Tên đợt KM" />	
+					<label >Tổng số lượng sản phẩm</label> 
+					<input class="form-control" placeholder="Tổng số lượng sản phẩm" />
 				</div>
 			</div>
-			<div class="col-sm-4">
+			<div class="col-sm-3">
 				<div class="form-group">
-					<label>-----------------------------</label> 
-					<label>-----------------------------</label> 
-					<label>-----------------------------</label> 
-					<h4>Điều kiện để được nhận khuyến mãi</h4> 		
+					<label >Mã khách hàng</label> 
+					<input class="form-control"  placeholder="Mã khách hàng" />
 				</div>
 			</div>
 		</div>
-		 <div class="row">
+		<div class="row">
 			<div class="col-sm-3">
 				<div class="form-group">
-					<label>Ngày bắt đầu KM</label> 
+					<label>Tổng tiền khuyến mãi</label> 
+					<input class="form-control" type="text"  placeholder="Tổng tiền khuyến mãi" />
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<div class="form-group">
+					<label >Điểm tích lũy lần này</label> 
+					<input class="form-control"  placeholder="Điểm tích lũy lần này" />
+				</div>
+			</div>
+		</div> 
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="form-group">
+					<label>Tổng tiền</label> 
+					<input class="form-control"  placeholder="Tổng tiền" />
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<div class="form-group">
+					<label >Tổng điểm tích lũy</label> 
+					<input class="form-control"  placeholder="Tổng điểm tích lũy" />
+				</div>
+			</div>
+		</div> 
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="form-group">
+					<label>Ngày lập</label> 
 							<div class='input-group date' id='datetimepicker1'>
 	                   				 <input type='text' class="form-control" />
 	                    			<span class="input-group-addon">
@@ -144,38 +153,6 @@
 			</div>
 			<div class="col-sm-3">
 				<div class="form-group">
-					<label style="margin-left: 50px">Loại Thẻ</label> 
-					<select name="loaiThe" class="form-control" style="margin-left: 50px;width: 305px">
-						  <option value="volvo" >--- Chọn loại thẻ ---</option>
-						  <option value="volvo">Thẻ khách hàng</option>
-						  <option value="saab">Thẻ thành viên</option>
-						  <option value="fiat">Thẻ vàng</option>
-						  <option value="audi">Thẻ VIP</option>
-					</select>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-3">
-				<div class="form-group">
-					<label>Ngày kết thúc KM</label> 
-							<div class='input-group date' id='datetimepicker1'>
-	                   				 <input type='text' class="form-control" />
-	                    			<span class="input-group-addon">
-	                       			 <span class="glyphicon glyphicon-calendar"></span>
-	                   				 </span>
-	                		</div>
-				</div>
-			</div>
-			<div class="col-sm-3">
-				<div class="form-group">
-					<label style="margin-left: 50px">Tổng số lượng sản phẩm</label> 
-					<input class="form-control" style="margin-left: 50px;width: 305px" placeholder="Tổng số lượng sản phẩm" />
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-3">
 				<div class="form-group">
 					<label>Trạng thái</label> 
 					<select name="status" class="form-control">
@@ -184,11 +161,6 @@
 						  <option value="saab">Không họat động</option>
 					</select>
 				</div>
-			</div>
-			<div class="col-sm-3">
-				<div class="form-group">
-					<label style="margin-left: 50px">Tổng hóa đơn</label> 
-					<input class="form-control" style="margin-left: 50px;width: 305px" placeholder="Tổng hóa đơn" />
 				</div>
 			</div>
 		</div> 
@@ -216,31 +188,31 @@
                                 <thead>
                                     <tr>
                                         <th style="width: 40px;padding-left: 2px;padding-right: 2px;font-size: 13px">STT</th>
-										<th style="width: 100px;">Mã đợt KM</th>
-										<th style="width: 200px;padding-left: 4px;padding-right: 4px;">Tên đợt KM</th>
-										<th style="padding-left: 5px;padding-right: 4px;width: 80px;">Ngày bắt đầu</th>
-										<th style="padding-left: 5px;padding-right: 4px;width: 80px;">Ngày kết thúc</th>
-										<th style="padding-left: 5px;padding-right: 4px;width: 120px;">Loại khuyến mãi</th>
-										<th style="padding-left: 5px;padding-right: 4px;width: 100px;">Mức giảm giá</th>
-										<th style="padding-left: 10px;padding-right: 4px;width: 120px;">ĐK_Loại thẻ</th>
-										<th style="padding-left: 10px;padding-right: 4px;width: 120px;">ĐK_Tổng HĐ</th>
-										<th style="padding-left: 10px;padding-right: 4px;width: 120px;">ĐK_Tổng SLSP</th>
+										<th style="width: 100px;">Mã hóa đon</th>
+										<th style="width: 70px;padding-left: 4px;padding-right: 4px;">Tổng SLSP</th>
+										<th style="padding-left: 5px;padding-right: 4px;width: 80px;">Tổng tiền KM</th>
+										<th style="padding-left: 5px;padding-right: 4px;width: 80px;">Ngày lập</th>
+										<th style="padding-left: 5px;padding-right: 4px;width: 120px;">Tổng tiền</th>
+										<th style="padding-left: 10px;padding-right: 4px;width: 120px;">Thanh toán</th>
+										<th style="padding-left: 10px;padding-right: 4px;width: 120px;">Khách hàng</th>
+										<th style="padding-left: 10px;padding-right: 4px;width: 50px;">Điểm</th>
+										<th style="padding-left: 10px;padding-right: 4px;width: 70px;">Tổng điểm</th>
 										<th style="padding-left: 10px;padding-right: 4px;width: 120px;">Trạng thái</th>
-										<th style="padding-left: 10px;padding-right: 4px;width: 120px;">Thao tác</th>
+										<th style="padding-left: 10px;padding-right: 4px;width: 110px;">Thao tác</th>
                                     </tr>
                                 </thead>
                                 <tbody style="overflow: auto; height:50px">
 		                                <tr class="odd gradeX">
 		                                        <td class="center" style="text-align: center">1</td>
 		                                        <td>AHFGZ12093</td>
-							                     <td>Khuyến mãi cuối năm</td>
-							                     <td>2017/12/01 8.00-22.00</td>
-		                                      	 <td class="center" style="text-align: center">2017/12/29 8.00-22.00</td>
-					                    		 <td class="center">% Hóa đơn</td>
-		                                       		<td>50%</td>
-		                                        <td style="text-align: center">Thẻ VIP</td>
-		                                         <td></td>
-		                                        <td class="center" style="text-align: center"></td>
+							                     <td>5</td>
+							                     <td>200,000</td>
+		                                      	 <td class="center" style="text-align: center">2017/12/29</td>
+					                    		 <td class="center">1,200,000</td>
+		                                       	 <td>Trực tiếp</td>
+		                                         <td style="text-align: center">Ngọc Thư</td>
+		                                         <td style="text-align: center">10</td>
+		                                         <td style="text-align: center">420</td>
 		                                        <td class="center" style="text-align: center">Không hoạt động</td>
 		                                        <td class="center" style="text-align: center">
 		                                        		<button class="btn" type="button" >
@@ -249,26 +221,32 @@
 														<button class="btn" type="button" >
 															<span class="glyphicon glyphicon-trash" data-toggle="tooltip" data-original-title="Xóa"></span>
 														</button>
+														<button class="btn" type="button" >
+															<span class="fa fa-list-alt" data-toggle="tooltip" data-original-title="Chi tiết"></span>
+														</button>
 		                                        </td>
 		                                 </tr>
-		                                 		<tr class="odd gradeX">
+		                                <tr class="odd gradeX">
 		                                        <td class="center" style="text-align: center">2</td>
-		                                        <td>AHFGZ120785</td>
-							                     <td>Khuyến mãi sinh nhật</td>
-							                     <td>2017/10/01 8.00-22.00</td>
-		                                      	 <td class="center" style="text-align: center">2017/10/05 8.00-22.00</td>
-					                    		 <td class="center">Tặng kèm SP</td>
-		                                       		<td>Tặng gấu bông</td>
-		                                        <td style="text-align: center">Thẻ VIP</td>
-		                                        <td>1,000,000 VNĐ</td>
-		                                        <td class="center" style="text-align: center">2</td>
-		                                        <td class="center" style="text-align: center">Hoạt động</td>
+		                                        <td>AHFGZ12093</td>
+							                     <td>5</td>
+							                     <td>200,000</td>
+		                                      	 <td class="center" style="text-align: center">2017/12/29</td>
+					                    		 <td class="center">1,200,000</td>
+		                                       	 <td>Trực tiếp</td>
+		                                         <td style="text-align: center">Ngọc Thư</td>
+		                                         <td style="text-align: center">10</td>
+		                                         <td style="text-align: center">420</td>
+		                                        <td class="center" style="text-align: center">Không hoạt động</td>
 		                                        <td class="center" style="text-align: center">
 		                                        		<button class="btn" type="button" >
 														<span class="glyphicon glyphicon-pencil" data-toggle="tooltip" data-original-title="Sửa"></span>
 														</button>
 														<button class="btn" type="button" >
 															<span class="glyphicon glyphicon-trash" data-toggle="tooltip" data-original-title="Xóa"></span>
+														</button>
+														<button class="btn" type="button" >
+															<span class="fa fa-list-alt" data-toggle="tooltip" data-original-title="Chi tiết"></span>
 														</button>
 		                                        </td>
 		                                 </tr>

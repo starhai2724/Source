@@ -41,4 +41,16 @@ public class TestController {
 	public String dotKhuyenMai(){
 		return "dotKhuyenMai";
 	}
+	@RequestMapping(value ="/hoaDon", method = RequestMethod.GET)	
+	public String hoaDon(){
+		return "hoaDon";
+	}
+	@RequestMapping(value ="/chiTietHoaDon", method = RequestMethod.GET)	
+	public String chiTietHoaDon(){
+		return "chiTietHoaDon";
+	}
+	@RequestMapping(value ="/khachHang", method = RequestMethod.GET)	
+	public String khachHang(){
+		return "khachHang";
+	}
 }
