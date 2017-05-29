@@ -48,5 +48,10 @@ public class SystemURL {
 	public static final String REGISTER_PRODUCT_CATEGORY_INSERT = systemURL+"RegisterProductCategory/insert";
 	/**Register product category 20.04.2017 Hai.NT(E)*/
 	
+	/**Register product  22.05.2017 Hai.NT(S)*/
+	public static final String GET_PRODUCTS = systemURL+"/product/getProducts";
+	
+//	public static final String REGISTER_PRODUCT_CATEGORY_INSERT = systemURL+"RegisterProductCategory/insert";
+	/**Register product  22.05.2017 Hai.NT(E)*/
 	
 }

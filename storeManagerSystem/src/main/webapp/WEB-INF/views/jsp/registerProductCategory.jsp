@@ -29,7 +29,8 @@
 			<div class="col-sm-4">
 				<div class="form-group">
 					<label>Tên nhóm sản phẩm</label> 
-					<form:input class="form-control" type="text" path="nameProductCategory" placeholder="Họ tên" ng-model = "nameProductCategory"  ng-init ="nameProductCategory = '${RegisterProductCategory.nameProductCategory}'" />
+					<form:input class="form-control" type="text" path="nameProductCategory"  ng-model = "nameProductCategory"  ng-init ="nameProductCategory = '${RegisterProductCategory.nameProductCategory}'" />
+					<form:input class="form-control" type="hidden" path="idProductCategory"  />
 					<p style="color: red;">{{nameProductCategory_err}}</p>
 				</div>
 			</div>
@@ -46,7 +47,7 @@
 		<!--Message (E)-->
 		<div class="row">
 			<div class="col-sm-3" >
-				<input type="button" name=""  class="btn btn-info " ng-click="btnCreate(<%=session.getAttribute("test") %>)" value="Đăng kí">
+				<input type="button" name=""  class="btn btn-info " ng-click="btnCreate()" value="Đăng kí">
 			</div>
 		</div>
 		<div class="row">
@@ -56,36 +57,35 @@
 			<div class="col-sm-3">&nbsp</div>
 		</div>
 		<c:if test="${!empty RegisterProductCategory.lst }">
-		<div class ="row">
-			<div class="col-lg-12">
-			<table style="width: 450px" class="table table-striped table-bordered table-hover" id="">
-				<thead>
-					<tr>
-						<th style="width: 50px">STT</th>
-						<th>Tên nhóm sản phẩm</th>
-						<th>Thao tác</th>
-					</tr>
-				</thead>
-				<tbody style="overflow: auto; height:50px">
-				<c:forEach var="items" items="${RegisterProductCategory.lst }">
-				<tr class="gradeX">
-                     <td class="center" style="text-align: center">${items.no}</td>
-                     <td>${items.nameProductCategory}</td>
-                     <td style="text-align: center">
-						<button class="btn" type="button" ng-click="btnDelete(${items.idProductCategory});" >
-							<span class="glyphicon glyphicon-trash" data-toggle="tooltip" data-original-title="Xóa"></span>
-						</button>
-                     </td>
-                 </tr>
-                </c:forEach> 
-				</tbody>
-			
-			</table>
-			
-			</div>
-		</div>
+		<div class="panel-body">
+                            <table style="width: 450px" class="table table-striped table-bordered table-hover" id="dataTables-example">
+				                <thead>
+									<tr>
+										<th style="width: 50px">STT</th>
+										<th>Tên nhóm sản phẩm</th>
+										<th>Thao tác</th>
+									</tr>
+								</thead>
+                                <tbody style="overflow: auto; height:50px">
+                              		  <c:forEach var="items" items="${RegisterProductCategory.lst }">
+										<tr class="gradeX">
+								                   <td class="center" style="text-align: center">${items.no}</td>
+								                   <td>${items.nameProductCategory}</td>
+								                   <td style="text-align: center">
+														<button class="btn" type="button" ng-click="btnGetById('${items.idProductCategory}');" >
+															<span class="glyphicon glyphicon-pencil" data-toggle="tooltip" data-original-title="Sửa"></span>
+														</button>
+														<button class="btn" type="button" ng-click="btnDelete('${items.idProductCategory}');" >
+															<span class="glyphicon glyphicon-trash" data-toggle="tooltip" data-original-title="Xóa"></span>
+														</button>
+								                   </td>
+								         </tr>
+								 	</c:forEach> 
+                                </tbody>
+                            </table>
+         </div>
 		</c:if>
-		
+		<form:input class="form-control" type="hidden"  path="flagUpdate"  name="flagUpdate" ng-model ="flagUpdate" ng-init="flagUpdate='${RegisterProductCategory.flagUpdate}'" />
 	</form:form>		
 		<!-- /#page-wrapper -->
 	</div>

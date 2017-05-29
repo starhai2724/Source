@@ -1,0 +1,24 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+    <!-- <property name="hibernate.connection.url">
+    jdbc:mysql://localhost:3306/storesystemmanager</property> -->
+     <property name="hibernate.connection.url">
+    jdbc:mysql://localhost:3306/storesystemmanager?useUnicode=true&amp;connectionCollation=utf8_general_ci&amp;characterSetResults=utf8&amp;characterEncoding=utf-8</property> 
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">123456</property>
+    <property name="hibernate.connection.pool_size">10</property>
+    <property name="show_sql">true</property>
+    <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+	<property name="hibernate.hbm2ddl.auto">update</property>
+     <mapping class="com.sms.domain.StoreOwner"/>      
+     <mapping class="com.sms.domain.Store"/>      
+     <mapping class="com.sms.domain.SystemControl"/>      
+     <mapping class="com.sms.domain.StoreInformation"/>      
+     <mapping class="com.sms.domain.ProductCategory"/>      
+     <mapping class="com.sms.domain.Image"/>      
+   </session-factory>
+</hibernate-configuration> 

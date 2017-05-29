@@ -55,13 +55,16 @@
             <a href="/storeManagerSystem/<%=session.getAttribute("pathURL")%>"><i class="fa fa-dashboard fa-fw"></i> Bán hàng</a>
           </li>
           <li>
-            <a href="index.html"><i class="fa fa-wrench fa-fw"></i> Cấu hình trang web</a>
+            <a href="/storeManagerSystem/customer/init"><i class="fa fa-wrench fa-fw"></i>Khách hàng</a>
           </li>
           <li>
-            <a href="/storeManagerSystem/registerProductCategory/init"><i class="fa fa-wrench fa-fw"></i> Nhóm sản phẩm(MST01001)</a>
+            <a href="/storeManagerSystem/registerProductCategory/init"><i class="fa fa-wrench fa-fw"></i> Nhóm sản phẩm</a>
           </li>
           <li>
-            <a href="index.html"><i class="fa fa-wrench fa-fw"></i> Sản phẩm(MST01002) </a>
+            <a href="/storeManagerSystem/cardType/init"><i class="fa fa-wrench fa-fw"></i>Loại thẻ</a>
+          </li>
+          <li>
+            <a href="/storeManagerSystem/product/init"><i class="fa fa-wrench fa-fw"></i>Sản phẩm</a>
           </li>
           <li>
             <a href="index.html"><i class="fa fa-bar-chart-o fa-fw"></i> Thống kế</a>

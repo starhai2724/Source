@@ -7,6 +7,17 @@ public class RegisterProductCategoryInputBean {
 	private String idProductCategory;
 
 	private String nameProductCategory;
+	
+	private String pathJSP;
+	
+
+	public String getPathJSP() {
+		return pathJSP;
+	}
+
+	public void setPathJSP(String pathJSP) {
+		this.pathJSP = pathJSP;
+	}
 
 	public String getIdProductCategory() {
 		return idProductCategory;
