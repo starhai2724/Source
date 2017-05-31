@@ -13,6 +13,17 @@ public class RegisterProductCategoryForm extends AbstractForm {
 
 	private List<RegisterProductCategoryFormRow> lst = new ArrayList<>();
 
+	private String flagUpdate;
+	
+	
+	public String getFlagUpdate() {
+		return flagUpdate;
+	}
+
+	public void setFlagUpdate(String flagUpdate) {
+		this.flagUpdate = flagUpdate;
+	}
+
 	public String getIdProductCategory() {
 		return idProductCategory;
 	}

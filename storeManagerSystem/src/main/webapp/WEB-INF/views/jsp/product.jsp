@@ -1,59 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-	<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-	<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="">
-    <title>Hệ thống bán hàng</title>
-    <%@include file="/WEB-INF/views/jsp/headerInclude.jsp" %>
-</head>
-<body>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+
 <div id="wrapper">
-<div id="page-wrapper" ng-app="RegisterProductCategory" ng-controller="ctrl">
+	<!-- Navigation -->
+	<div id="page-wrapper" ng-app="ProductForm" ng-controller="ctrl">
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Đăng kí sản phẩm</h1>
+				<h1 class="page-header">Sản phẩm</h1>
 			</div>
 			<!-- /.col-lg-12 -->
 		</div>
 		<!-- /.row -->
-	<form:form id="RegisterProductCategory"  method="POST">
+	<form:form id="ProductForm" modelAttribute="ProductForm" role="form" method="POST" >
 		<div class="row">
-			<div class="col-sm-3">
+			<div class="col-sm-4">
 				<div class="form-group">
-					<label>Loại xử lý</label> 
-					<input class="form-control" type="text"  placeholder="Họ tên" ng-model = "nameProductCategory"  ng-init ="nameProductCategory = ''" />
-					<p style="color: red;"></p>
+					<label>Tên sản phẩm</label> 
+					<form:input class="form-control" type="text" path="tenSP"  name="tenSP" ng-model = "tenSP"  ng-init ="tenSP = '${ProductForm.tenSP}'" />
+					<form:input class="form-control" type="hidden" path="idSanPham"  name="idSanPham" />
+					<p style="color: red;">{{tenSP_err}}</p>
 				</div>
 			</div>
-			<div class="col-sm-3">
+			<div class="col-sm-4">
 				<div class="form-group">
-					<label>Loại xử lý</label> 
-					<input class="form-control" type="text"  placeholder="Họ tên" ng-model = "nameProductCategory"  ng-init ="nameProductCategory = ''" />
-					<p style="color: red;"></p>
+					<label>Loại sản phẩm</label> 
+					<form:select class="form-control" path="idLoaiSP">
+					    <form:options items="${ProductForm.lstCategory}" />
+					</form:select>
 				</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-3">
+			<div class="col-sm-4">
 				<div class="form-group">
-					<label>Loại xử lý</label> 
-					<input class="form-control" type="text"  placeholder="Họ tên" ng-model = "nameProductCategory"  ng-init ="nameProductCategory = ''" />
-					<p style="color: red;"></p>
+					<label>Giá mua</label> 
+					<form:input class="form-control" type="text"  path="giaMua"  name="giaMua" ng-model ="giaMua" ng-init="giaMua='${ProductForm.giaMua}'"  />
+					<p style="color: red;">{{giaMua_err}}</p>
 				</div>
 			</div>
-			<div class="col-sm-3">
+			<div class="col-sm-4">
 				<div class="form-group">
-					<label>Loại xử lý</label> 
-					<input class="form-control" type="text"  placeholder="Họ tên" ng-model = "nameProductCategory"  ng-init ="nameProductCategory = ''" />
-					<p style="color: red;"></p>
+					<label>Giá bán</label> 
+					<form:input class="form-control" type="text"  path="giaBan"  name="giaBan" ng-model ="giaBan" ng-init="giaBan='${ProductForm.giaBan}'" />
+					<p style="color: red;">{{giaBan_err}}</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="form-group">
+			        <label>File input</label>
+			        <div class="form-group">
+                        <form:input type="file" path="hinh" />
+                    </div>
+    			</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="form-group">
+					<label>Mô tả </label> 
+					<form:textarea  class="form-control"  rows="5"	 path="moTa"  name="moTa" ng-model ="moTa" ng-init="moTa='${ProductForm.moTa}'"  />
+					<p style="color: red;">{{moTa_err}}</p>
 				</div>
 			</div>
 		</div>
@@ -61,96 +73,75 @@
 		<div class="row">
 			<div class="col-sm-4">
 				<div class="form-group">
-				<p style="color: blue; font-weight: bold;"></p>
-				<p style="color: red; font-weight: bold;"></p>
+					<p style="color: blue; font-weight: bold;">${ProductForm.message }</p>
+					<p style="color: red; font-weight: bold;">${ProductForm.messageErr }</p>
 				</div>
 			</div>
 		</div>
 		<!--Message (E)-->
-		<div class="row">
-			<div class="col-sm-3" >
-				<input type="button" name=""  class="btn btn-info " ng-click="btnCreate()" value="Tìm kiếm">
-				<input type="button" name=""  class="btn btn-info " ng-click="btnCreate()" value="In">
-				<input type="button" name=""  class="btn btn-info " ng-click="btnCreate()" value="Hủy">
+		<div class="row" align="right" style="width: 100%">
+			<div >
+				<input type="button" name="" class="btn btn-info " ng-click ="btnCreate()" value="Đăng kí">
+				<input type="button" name="" class="btn btn-info " ng-click="btnIn()" value="In">
+				<input type="button" name="" class="btn btn-info " ng-click ="btnClear()" value="Hủy">
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-sm-3">&nbsp</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-3">&nbsp</div>
-		</div>
-		<%-- <c:if test="${!empty RegisterProductCategory.lst }"> --%>
-		<div class ="row">
-			<div class="col-lg-12">
-			<table style="width: 100%" class="table table-striped table-bordered table-hover" id="">
-				<thead>
-					<tr>
-						<th style="width: 50xp">STT</th>
-						<th>Tên sản phẩm</th>
-						<th>Loại sản phẩm</th>
-						<th>Giá mua</th>
-						<th>Giá bán</th>
-						<th>Thao tác</th>
-					</tr>
-				</thead>
-				<tbody style="overflow: auto; height:50px">
-				<%-- <c:forEach var="items" > --%>
-				<tr class="gradeX">
-                     <td class="center" style="text-align: center"></td>
-                     <td>
-                     <input class="form-control" type="text"  ng-model = "nameProductCategory"  ng-init ="nameProductCategory = ''" />
-                     </td>
-                     <td></td>
-                     <td style="width:100px">
-                     <input style="width:100px" class="form-control" type="text"  ng-model = "nameProductCategory"  ng-init ="nameProductCategory = ''" />
-                     </td>
-                     <td></td>
-                     <td style="text-align: center">
-						<button class="btn" type="button" ng-click="btnDelete();" >
-							<span class="glyphicon glyphicon-trash" data-toggle="tooltip" data-original-title="Xóa"></span>
-						</button>
-                     </td>
-                 </tr>
-				<tr class="gradeX">
-                     <td class="center" style="text-align: center"></td>
-                     <td></td>
-                     <td></td>
-                     <td></td>
-                     <td></td>
-                     <td style="text-align: center">
-						<button class="btn" type="button" ng-click="btnDelete();" >
-							<span class="glyphicon glyphicon-trash" data-toggle="tooltip" data-original-title="Xóa"></span>
-						</button>
-                     </td>
-                 </tr>
-                 <tr class="gradeX">
-                     <td class="center" style="text-align: center"></td>
-                     <td></td>
-                     <td></td>
-                     <td></td>
-                     <td></td>
-                     <td style="text-align: center">
-						<button class="btn" type="button" ng-click="btnDelete();" >
-							<span class="glyphicon glyphicon-trash" data-toggle="tooltip" data-original-title="Xóa"></span>
-						</button>
-                     </td>
-                 </tr>
-               <%--  </c:forEach>  --%>
-				</tbody>
-			
-			</table>
-			
-			</div>
-		</div>
-		<%-- </c:if> --%>
 		
+		<!-- <div class="row">
+			<div class="col-sm-3" style="text-align: center">&nbsp</div>
+		</div -->
+		
+		<c:if test="${!empty ProductForm.lst }">
+		<div class="panel-body">
+                            <table width="1578px" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align: center; width: 40px;">STT</th>
+										<th style="text-align: center; width: 80px">Mã SP</th>
+										<th style="text-align: center; width: 250px">Tên sản phẩm</th>
+										<th style="text-align: center; width: 80px">Loại SP</th>
+										<th style="text-align: center; width: 80px">Giá mua</th>
+										<th style="text-align: center; width: 80px">Giá bán</th>
+										<th style="text-align: center; width: 80px">Ngày tạo</th>
+										<th style="text-align: center; width: 80px">Ngày chỉnh sửa</th>
+										<th style="text-align: center; width: 250px">Mô tả</th>
+										<th style="text-align: center;	width: 60px">Thao tác</th>
+										<th style="text-align: center;	width: 60px"></th>
+                                    </tr>
+                                </thead>
+                                <tbody style="overflow: auto; height:50px">
+                              		  <c:forEach var="items" items="${ProductForm.lst }">
+		                                <tr class="odd gradeX">
+		                                        <td style="text-align: center">${items.no}</td>
+		                                        <td>${items.idSanPham}</td>
+							                     <td>${items.tenSP}</td>
+							                     <td>${items.tenLoaiSP }</td>
+		                                      	 <td style="text-align: right">${items.giaMua }</td>
+					                    		 <td style="text-align: right">${items.giaBan }</td>
+		                                       	<td  style="text-align: center">${items.ngayTao}</td>
+		                                        <td  style="text-align: center">${items.ngayChinhSua }</td>
+		                                         <td>${items.moTa }</td>
+		                                        <td class="center" style="text-align: center">
+		                                        		<button class="btn" type="button" ng-click="btnGetProductById('${items.idSanPham}');">
+															<span class="glyphicon glyphicon-pencil" data-toggle="tooltip" data-original-title="Sửa"></span>
+														</button>
+														<button class="btn" type="button" ng-click="btnDelete('${items.idSanPham}');" >
+															<span class="glyphicon glyphicon-trash" data-toggle="tooltip" data-original-title="Xóa"></span>
+														</button>
+		                                        </td>
+		                                        <td class="center" style="text-align: center">
+		                                        </td>
+		                                 </tr>
+					                </c:forEach>
+                                </tbody>
+                            </table>
+                        </div>
+		</c:if>
+		<form:input class="form-control" type="hidden"  path="flagUpdate"  name="flagUpdate" ng-model ="flagUpdate" ng-init="flagUpdate='${ProductForm.flagUpdate}'" />
 	</form:form>		
 		<!-- /#page-wrapper -->
 	</div>
-
 </div>
-    <%@include file="/WEB-INF/views/jsp/footerInclude.jsp" %>
-</body>
-<script src="/storeManagerSystem/view/js/registerProductCategory.js"></script>
-</html>
+<script src="/storeManagerSystem/view/js/product.js"></script>
+
+<!-- /#wrapper -->
