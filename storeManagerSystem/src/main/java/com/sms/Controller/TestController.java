@@ -49,8 +49,21 @@ public class TestController {
 	public String chiTietHoaDon(){
 		return "chiTietHoaDon";
 	}
-	@RequestMapping(value ="/khachHang", method = RequestMethod.GET)	
-	public String khachHang(){
-		return "khachHang";
+	@RequestMapping(value ="/dangky1", method = RequestMethod.GET)	
+	public String dangky1(){
+		return "dangky1";
 	}
+	@RequestMapping(value ="/dangky2", method = RequestMethod.GET)	
+	public String dangky2(){
+		return "dangky2";
+	}
+	@RequestMapping(value ="/dangky3", method = RequestMethod.GET)	
+	public String dangky3(){
+		return "dangky3";
+	}
+	@RequestMapping(value ="/dangky4", method = RequestMethod.GET)	
+	public String dangky4(){
+		return "dangky4";
+	}
+	
 }

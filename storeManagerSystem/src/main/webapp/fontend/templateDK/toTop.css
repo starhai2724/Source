@@ -1,0 +1,32 @@
+#toTop {
+    background-color: rgba(0, 0, 0, 0.4);
+    background-image: url("../img/ui.totop.html");
+    background-position: left top;
+    background-repeat: no-repeat;
+    border: medium none;
+    border-radius: 2px;
+    bottom: 20px;
+    display: none;
+    height: 51px;
+    overflow: hidden;
+    position: fixed;
+    right: 20px;
+    text-decoration: none;
+    text-indent: -999px;
+    width: 51px;
+    z-index: 9999;
+}
+#toTopHover {
+    background-image: url("../img/ui.totop.html");
+    background-position: left -51px;
+    background-repeat: no-repeat;
+    display: block;
+    float: left;
+    height: 51px;
+    opacity: 0;
+    overflow: hidden;
+    width: 51px;
+}
+#toTop:active, #toTop:focus {
+    outline: medium none;
+}
