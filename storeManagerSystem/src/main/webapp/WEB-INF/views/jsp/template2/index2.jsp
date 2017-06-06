@@ -1,13 +1,14 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
-<title>Eshop a Flat E-Commerce Bootstrap Responsive Website Template | Home :: w3layouts</title>
+
+<title>Cửa hàng thời trang</title>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <link href="/storeManagerSystem/view/fontend_index2/css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="/storeManagerSystem/view/fontend_index2/js/jquery.min.js"></script>
@@ -29,14 +30,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet" href="/storeManagerSystem/view/fontend_index2/css/flexslider.css" type="text/css" media="screen" />
 </head>
 <body>
+<form:form id="LayoutForm" modelAttribute="LayoutForm" role="form" method="POST" >
 	<!-- header-section-starts -->
 	<div class="header">
 		<div class="header-top-strip">
 			<div class="container">
 				<div class="header-top-left">
 					<ul>
-						<li><a href="account.html"><span class="glyphicon glyphicon-user"> </span>Login</a></li>
-						<li><a href="register.html"><span class="glyphicon glyphicon-lock"> </span>Create an Account</a></li>			
+						<li><a href="account.html"><span class="glyphicon glyphicon-user"> </span>Đăng nhập</a></li>
+						<li><a href="register.html"><span class="glyphicon glyphicon-lock"> </span>Tạo tài khoản</a></li>			
 					</ul>
 				</div>
 				<div class="header-right">
@@ -64,16 +66,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		        <span class="icon-bar"></span>
 	        </button>
 				<div class="logo">
-					<h1><a href="index.html"><span>E</span> -Shop</a></h1>
+					<h1><a href="index.html"><span>E</span> -Thời trang</a></h1>
 				</div>
 	    </div>
 	    <!--/.navbar-header-->
 	
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	        <ul class="nav navbar-nav">
-			<li><a href="index.html">Home</a></li>
+			<li><a href="index.html">Trang chủ</a></li>
 		        <li class="dropdown">
-		            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Men <b class="caret"></b></a>
+		            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Nam <b class="caret"></b></a>
 		            <ul class="dropdown-menu multi-column columns-3">
 			            <div class="row">
 				            <div class="col-sm-4">
@@ -115,7 +117,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		            </ul>
 		        </li>
 		        <li class="dropdown">
-		            <a href="#" class="dropdown-toggle" data-toggle="dropdown">women <b class="caret"></b></a>
+		            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Nữ <b class="caret"></b></a>
 		            <ul class="dropdown-menu multi-column columns-3">
 			            <div class="row">
 				            <div class="col-sm-4">
@@ -157,7 +159,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		            </ul>
 		        </li>
 		        <li class="dropdown">
-		        	<a href="#" class="dropdown-toggle" data-toggle="dropdown">kids <b class="caret"></b></a>
+		        	<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tre <b class="caret"></b></a>
 		            <ul class="dropdown-menu multi-column columns-2">
 			            <div class="row">
 				            <div class="col-sm-6">
@@ -182,8 +184,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			            </div>
 		            </ul>
 		        </li>
-					<li><a href="typography.html">TYPO</a></li>
-					<li><a href="contact.html">CONTACT</a></li>
+					<!-- <li><a href="typography.html">TYPO</a></li> -->
+					<li><a href="contact.html">Liên hệ</a></li>
 	        </ul>
 	    </div>
 	    <!--/.navbar-collapse-->
@@ -245,9 +247,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 	<div class="clearfix"> </div>
 </div>
-	<div class="shop">
+<!--Hai.NT (S)  -->
+	<!-- <div class="shop">
 		<a href="single.html">SHOP COLLECTION NOW</a>
-	</div>
+	</div> -->
+<!--Hai.NT (E)  -->
 	</div>
 		</div>
 		<!-- content-section-starts-here -->
@@ -255,27 +259,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="main-content">
 				<div class="online-strip">
 					<div class="col-md-4 follow-us">
-						<h3>follow us : <a class="twitter" href="#"></a><a class="facebook" href="#"></a></h3>
+						<h3>Liên kết  : <a class="twitter" href="#"></a><a class="facebook" href="#"></a></h3>
 					</div>
 					<div class="col-md-4 shipping-grid">
 						<div class="shipping">
 							<img src="/storeManagerSystem/view/fontend_index2/images/shipping.png" alt="" />
 						</div>
 						<div class="shipping-text">
-							<h3>Free Shipping</h3>
-							<p>on orders over $ 199</p>
+							<h3>Miễn phí vận chuyển</h3>
+							<p>trên hóa đơn 500.000đ</p>
 						</div>
 						<div class="clearfix"></div>
 					</div>
 					<div class="col-md-4 online-order">
-						<p>Order online</p>
+						<p>Đặt hàng online</p>
 						<h3>Tel:999 4567 8902</h3>
 					</div>
 					<div class="clearfix"></div>
 				</div>
 				<div class="products-grid">
 				<header>
-					<h3 class="head text-center">Latest Products</h3>
+					<h3 class="head text-center">Sản phẩm mới nhất</h3>
 				</header>
 					<div class="col-md-4 product simpleCart_shelfItem text-center">
 						<a href="single.html"><img src="/storeManagerSystem/view/fontend_index2/images/p1.jpg" alt="" /></a>
@@ -356,7 +360,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		<div class="other-products">
 		<div class="container">
-			<h3 class="like text-center">Featured Collection</h3>        			
+			<h3 class="like text-center">Sản phẩm khác</h3>        			
 				     <ul id="flexiselDemo3">
 						<li><a href="single.html"><img src="/storeManagerSystem/view/fontend_index2/images/l1.jpg" class="img-responsive" alt="" /></a>
 							<div class="product liked-product simpleCart_shelfItem">
@@ -497,9 +501,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<img src="/storeManagerSystem/view/fontend_index2/images/cards.jpg" alt="" />
 		  </div>
 		  <div class="copyright text-center">
-				<p>� 2015 Eshop. All Rights Reserved | Design by   <a href="http://w3layouts.com">  W3layouts</a></p>
+				<p>© 2015 Eshop. All Rights Reserved | Design by   <a href="http://w3layouts.com">  W3layouts</a></p>
 		  </div>
 		</div>
 		</div>
+</form:form>
 </body>
 </html>

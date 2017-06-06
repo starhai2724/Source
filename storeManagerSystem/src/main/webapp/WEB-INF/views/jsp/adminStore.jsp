@@ -67,7 +67,7 @@
             <a href="/storeManagerSystem/product/init"><i class="fa fa-wrench fa-fw"></i>Sản phẩm</a>
           </li>
           <li>
-            <a href="index.html"><i class="fa fa-bar-chart-o fa-fw"></i> Thống kế</a>
+            <a href="/storeManagerSystem/bill/init"><i class="fa fa-bar-chart-o fa-fw"></i> Hóa đơn</a>
           </li>
         </ul>
       </div>

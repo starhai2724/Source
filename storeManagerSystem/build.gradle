@@ -42,6 +42,10 @@ dependencies {
     compile 'com.sun.jersey:jersey-servlet:1.13'
     // https://mvnrepository.com/artifact/javax.servlet/servlet-api
 	compile group: 'javax.servlet', name: 'servlet-api', version: '2.5'
+	//hibernate
+    compile  'org.hibernate:hibernate-core:4.3.6.Final'
+    compile 'mysql:mysql-connector-java:5.1.31'
+    compile 'commons-dbcp:commons-dbcp:1.4'  
     
 }
 
