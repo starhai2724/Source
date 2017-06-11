@@ -1,9 +1,8 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,6 +46,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 <body>
 <!-- header -->
+<div  ng-app="storeOwner" ng-controller="ctrl">
+<form:form id="layoutProcessForm" role="form" modelAttribute="layoutProcessForm" method="GET">
 	<div class="modal fade" id="myModal88" tabindex="-1" role="dialog" aria-labelledby="myModal88"
 		aria-hidden="true">
 		<div class="modal-dialog modal-lg">
@@ -231,8 +232,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 <!-- //header -->
 <!-- banner -->
+<style>
+.banner{
+/* anh banner */
+	background:url(/storeManagerSystem/view/fontend_index1/images/b1.jpg) no-repeat 0px 0px;
+/*-- w3layouts --*/
+	background-size:cover;
+	-webkit-background-size:cover;
+	-moz-background-size:cover;
+	-o-background-size:cover;
+	-ms-background-size:cover;
+	min-height:700px;
+}
+/* video */
+.video-img {
+    background: url(/storeManagerSystem/view/fontend_index1/images/2.jpg)no-repeat center;
+    -webkit-background-size: cover;
+    background-size: cover;
+    -moz-background-size: cover;
+	-o-background-size: cover;
+	-ms-background-size: cover;
+	min-height: 455px;
+}
+</style>
 	<div class="banner" id="home1">
 		<div class="container">
+		<!-- ghi chú banner1, ghi chú baner2 -->
 			<h3>fashions fade, <span>style is eternal</span></h3>
 		</div>
 	</div>
@@ -252,6 +277,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<script src="/storeManagerSystem/view/fontend_index1/js/jquery.magnific-popup.js" type="text/javascript"></script>
 					<!--//pop-up-box -->
 					<div id="small-dialog" class="mfp-hide">
+					<!-- clip -->
 						<iframe src="https://player.vimeo.com/video/23259282?title=0&byline=0&portrait=0"></iframe>
 					</div>
 					<script>
@@ -274,6 +300,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-7 wthree_banner_bottom_right">
 				<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
 					<ul id="myTab" class="nav nav-tabs" role="tablist">
+					<!-- list loại sản phẩm -->
 						<li role="presentation" class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home">T-shirts</a></li>
 						<li role="presentation"><a href="#skirts" role="tab" id="skirts-tab" data-toggle="tab" aria-controls="skirts">Skirts</a></li>
 						<li role="presentation"><a href="#watches" role="tab" id="watches-tab" data-toggle="tab" aria-controls="watches">Watches</a></li>
@@ -283,6 +310,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div id="myTabContent" class="tab-content">
 						<div role="tabpanel" class="tab-pane fade active in" id="home" aria-labelledby="home-tab">
 							<div class="agile_ecommerce_tabs">
+							<!-- list sản phẩm của loại SP1 -->
 								<div class="col-md-4 agile_ecommerce_tab_left">
 									<div class="hs-wrapper">
 										<img src="/storeManagerSystem/view/fontend_index1/images/6.jpg" alt=" " class="img-responsive" />
@@ -307,6 +335,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<p><a class="item_add" href="#">Add to cart</a></p>
 									</div>
 								</div>
+								<!--list sản phẩm của loại SP2 -->
 								<div class="col-md-4 agile_ecommerce_tab_left">
 									<div class="hs-wrapper">
 										<img src="/storeManagerSystem/view/fontend_index1/images/4.jpg" alt=" " class="img-responsive" />
@@ -1419,5 +1448,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 <!-- //footer -->
+	</form:form>
+</div>
+<script src="/storeManagerSystem/view/js/layoutProcess.js"></script>
 </body>
 </html>
