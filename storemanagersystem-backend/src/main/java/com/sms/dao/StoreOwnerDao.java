@@ -548,5 +548,9 @@ public class StoreOwnerDao implements InterfaceDAO {
 		}
 
 	}
-
+public static void main(String[] args) {
+	StoreOwnerDao rs = new StoreOwnerDao();
+	List<StoreOwnerOutputBean> lst = rs.getStoreOwners();
+	System.out.println("size : " + lst.size());
+}
 }

@@ -19,6 +19,7 @@
      <mapping class="com.sms.domain.SystemControl"/>      
      <mapping class="com.sms.domain.StoreInformation"/>      
      <mapping class="com.sms.domain.ProductCategory"/>      
-     <mapping class="com.sms.domain.Image"/>      
+     <mapping class="com.sms.domain.Image"/>  
+     <mapping class="com.sms.domain.cuahangthoitrang_DOTKHUYENMAI"/>    
    </session-factory>
 </hibernate-configuration> 

@@ -1,21 +1,5 @@
-var app = angular.module('test', []);
+var app = angular.module('dotKhuyenMai', []);
 app.controller('ctrl', function($scope, $window) {
-	
-	$scope.btnUpdate = function(id){
-		update($scope,$window, id);
-	}
-	
+	document.getElementById("dotKhuyenMai").action = "/storeManagerSystem/dotKhuyenMai";
+	document.getElementById("dotKhuyenMai").submit();
 });
-
-
-
-
-function update($scope,$window, id){
-	var url = "/storeManagerSystem/"+id+"/init";
-	document.getElementById("test").action = url;
-	document.getElementById("test").method = "POST";
-	document.getElementById("test").submit();
-	
-}
-
-

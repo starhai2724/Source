@@ -68,6 +68,7 @@
   <!--Content (E) -->
 <!-- /#wrapper -->
     </div>
+    
     <%@include file="/WEB-INF/views/jsp/footerInclude.jsp" %>
     <script>
     $(document).ready(function() {
