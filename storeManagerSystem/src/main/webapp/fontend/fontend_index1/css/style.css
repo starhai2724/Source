@@ -295,7 +295,16 @@ ul.multi-column-dropdown h6 {
 }
 /*-- //navigation --*/
 /*-- banner --*/
-
+.banner{
+	background:url(../images/b1.jpg) no-repeat 0px 0px;
+/*-- w3layouts --*/
+	background-size:cover;
+	-webkit-background-size:cover;
+	-moz-background-size:cover;
+	-o-background-size:cover;
+	-ms-background-size:cover;
+	min-height:700px;
+}
 .banner10{
 	background:url(../images/b1.jpg) no-repeat 0px 0px;
 	background-size:cover;
@@ -426,7 +435,15 @@ ul.multi-column-dropdown h6 {
     min-height:400px;
     border: none;
 }
-
+.video-img {
+    background: url(../images/2.jpg)no-repeat center;
+    -webkit-background-size: cover;
+    background-size: cover;
+    -moz-background-size: cover;
+	-o-background-size: cover;
+	-ms-background-size: cover;
+	min-height: 455px;
+}
 .video-img a {
     display: inline-block;
     margin:11em 0em 0 12em;
