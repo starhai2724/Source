@@ -25,7 +25,6 @@ app.controller('ctrl', function($scope, $window) {
 	}
 	
 	$scope.btnDelete = function(id){
-		window.alert("hú hú 1");
 		remove($scope,id);
 	}
 	
@@ -92,8 +91,13 @@ function update($scope) {
 		valid = false;
 	}
 	
-	if ($scope.loaiKM == "") {
+	if ($scope.loaiKM == "" || $scope.loaiKM == "00") {
 		$scope.loaiKM_err = "Hãy chọn loại KM."
+		valid = false;
+	}
+	
+	if ($scope.donViKM == "" || $scope.donViKM == "00") {
+		$scope.mucKM_err = "Hãy chọn loại đơn vị khuyến mãi."
 		valid = false;
 	}
 	
@@ -141,7 +145,6 @@ function clear($scope){
 
 function remove($scope, id){
 	if(confirm("Bạn có muốn xóa?")){
-		window.alert("hú hú 2");
 		var url = "/storeManagerSystem/dotKhuyenMai/delete/" + id;
 		document.getElementById("DotKhuyenMaiForm").action = url;
 		document.getElementById("DotKhuyenMaiForm").method = "POST";
