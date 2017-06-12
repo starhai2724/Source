@@ -34,7 +34,7 @@ public class DotKhuyenMaiForm {
 	// Disable item when mode update
 	private String disabledFlag = "";
 
-	private String flagUpdate = "";
+	private String updateFlag = "";
 	
 	private String message = "";
 	
@@ -126,11 +126,11 @@ public class DotKhuyenMaiForm {
 	public void setDisabledFlag(String disabledFlag) {
 		this.disabledFlag = disabledFlag;
 	}
-	public String getFlagUpdate() {
-		return flagUpdate;
+	public String getUpdateFlag() {
+		return updateFlag;
 	}
-	public void setFlagUpdate(String updateFlag) {
-		this.flagUpdate = updateFlag;
+	public void setUpdateFlag(String updateFlag) {
+		this.updateFlag = updateFlag;
 	}
 	public String getMessage() {
 		return message;
