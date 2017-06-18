@@ -8,6 +8,7 @@ app.controller('ctrl', function($scope, $window) {
 	$scope.dk_loaiThe_err = "";
 	$scope.dk_tongHD_err = "";
 	$scope.dk_tongSL_err = "";
+	$scope.moTa_err = "";
 	
 	$scope.btnCreate = function() {
 		if($scope.flagUpdate == 1){
@@ -20,12 +21,15 @@ app.controller('ctrl', function($scope, $window) {
 		getById($scope,$window, id);
 	}
 	
+	$scope.btnDetail = function(id){
+		showDetail($scope,$window, id);
+	}
+	
 	$scope.btnClear = function(){
 		clear($scope);
 	}
 	
 	$scope.btnDelete = function(id){
-		window.alert("hú hú 1");
 		remove($scope,id);
 	}
 	
@@ -39,15 +43,8 @@ function create($scope) {
 		$scope.tenDKM_err = "Hãy nhập tên đợt khuyến mãi."
 		valid = false;
 	}
-	if ($scope.mucKM == "") {
-		$scope.mucKM_err = "Hãy nhập mức giảm giá."
-		valid = false;
-	}else if(!reg.test($scope.mucKM)){
-		$scope.mucKM_err = "Mức giảm giá phải là số."
-		valid = false;
-	}
 	
-	if ($scope.loaiKM == "") {
+	if ($scope.loaiKM == "" || $scope.loaiKM == "00") {
 		$scope.loaiKM_err = "Hãy chọn loại KM."
 		valid = false;
 	}
@@ -68,6 +65,25 @@ function create($scope) {
 		valid = false;
 	}
 	
+	if ($scope.mucKM == "" && $scope.donViKM != "00") {
+		$scope.mucKM_err = "Hãy nhập mức giảm giá."
+		valid = false;
+	}else if($scope.mucKM != "" && $scope.donViKM == "00") {
+		$scope.mucKM_err = "Hãy nhập đơn vị khuyến mãi."
+			valid = false;
+	}else{
+		if($scope.mucKM = "" && $scope.moTa = ""){
+			$scope.mucKM_err = "Hãy nhập mức giảm giá hoặc chi tiết giảm giá."
+			valid = false;
+		}
+	}
+	
+	if($scope.mucKM != "" && !reg.test($scope.mucKM)){
+		$scope.mucKM_err = "Mức giảm giá phải là số."
+		valid = false;
+	}
+	
+	
 	if (true == valid) {
 		if(confirm("Bạn có muốn đăng ký?")){
 			document.getElementById("DotKhuyenMaiForm").action = "/storeManagerSystem/dotKhuyenMai/insert";
@@ -84,18 +100,30 @@ function update($scope) {
 		$scope.tenDKM_err = "Hãy nhập tên đợt khuyến mãi."
 		valid = false;
 	}
-	if ($scope.mucKM == "") {
+
+	if ($scope.mucKM == "" && $scope.donViKM != "00") {
 		$scope.mucKM_err = "Hãy nhập mức giảm giá."
 		valid = false;
-	}else if(!reg.test($scope.mucKM)){
+	}else if($scope.mucKM != "" && $scope.donViKM == "00") {
+		$scope.mucKM_err = "Hãy nhập đơn vị khuyến mãi."
+			valid = false;
+	}else{
+		if($scope.mucKM = "" && $scope.moTa = ""){
+			$scope.mucKM_err = "Hãy nhập mức giảm giá hoặc chi tiết giảm giá."
+			valid = false;
+		}
+	}
+	
+	if($scope.mucKM != "" && !reg.test($scope.mucKM)){
 		$scope.mucKM_err = "Mức giảm giá phải là số."
 		valid = false;
 	}
 	
-	if ($scope.loaiKM == "") {
+	if ($scope.loaiKM == "" || $scope.loaiKM == "00") {
 		$scope.loaiKM_err = "Hãy chọn loại KM."
 		valid = false;
 	}
+	
 	
 	if ($scope.ngayKT == "") {
 		$scope.ngayKT_err = "Hãy nhập ngày kết thúc khuyến mãi."
@@ -124,10 +152,16 @@ function update($scope) {
 
 function getById($scope, $windown, id){
 		var url = "/storeManagerSystem/dotKhuyenMai/getById/"+id;
-		alert("ahihi");
 		document.getElementById("DotKhuyenMaiForm").action = url;
 		document.getElementById("DotKhuyenMaiForm").method = "POST";
 		document.getElementById("DotKhuyenMaiForm").submit();
+}
+
+function showDetail($scope, $windown, id){
+	var url = "/storeManagerSystem/chiTietDKM/getById/"+id;
+	document.getElementById("DotKhuyenMaiForm").action = url;
+	document.getElementById("DotKhuyenMaiForm").method = "POST";
+	document.getElementById("DotKhuyenMaiForm").submit();
 }
 
 function clear($scope){
@@ -141,7 +175,6 @@ function clear($scope){
 
 function remove($scope, id){
 	if(confirm("Bạn có muốn xóa?")){
-		window.alert("hú hú 2");
 		var url = "/storeManagerSystem/dotKhuyenMai/delete/" + id;
 		document.getElementById("DotKhuyenMaiForm").action = url;
 		document.getElementById("DotKhuyenMaiForm").method = "POST";

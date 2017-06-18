@@ -31,10 +31,12 @@ public class DotKhuyenMaiForm {
 
 	private String dk_tongSL = "";
 	
+	private String moTa = "";
+	
 	// Disable item when mode update
 	private String disabledFlag = "";
 
-	private String updateFlag = "";
+	private String flagUpdate = "";
 	
 	private String message = "";
 	
@@ -65,6 +67,13 @@ public class DotKhuyenMaiForm {
 	}
 	public void setLst(List<DotKhuyenMaiRowForm> lst) {
 		this.lst = lst;
+	}
+	
+	public String getMoTa() {
+		return moTa;
+	}
+	public void setMoTa(String moTa) {
+		this.moTa = moTa;
 	}
 	public String getMucKM() {
 		return mucKM;
@@ -126,11 +135,11 @@ public class DotKhuyenMaiForm {
 	public void setDisabledFlag(String disabledFlag) {
 		this.disabledFlag = disabledFlag;
 	}
-	public String getUpdateFlag() {
-		return updateFlag;
+	public String getFlagUpdate() {
+		return flagUpdate;
 	}
-	public void setUpdateFlag(String updateFlag) {
-		this.updateFlag = updateFlag;
+	public void setFlagUpdate(String updateFlag) {
+		this.flagUpdate = updateFlag;
 	}
 	public String getMessage() {
 		return message;

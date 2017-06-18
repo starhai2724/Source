@@ -1,6 +1,5 @@
 package com.sms.Controller;
 
-import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -41,6 +40,7 @@ public class dotKhuyenMaiController {
 		form.setLoaiKM("");
 		form.setDk_loaiThe("");
 		form.setDonViKM("");
+		form.setMoTa("");
 		//Flag update
 		form.setFlagUpdate("");
 		
@@ -60,12 +60,13 @@ public class dotKhuyenMaiController {
 	private void initData(DotKhuyenMaiForm form, String pathJSP){
 		//Loai KM
 		form.getLst_loaiKM().put("00", "--- Chọn loại khuyến mãi ---");
-		form.getLst_loaiKM().put("01", "Theo phần trăm sản phẩm");
-		form.getLst_loaiKM().put("02", "Theo phần trăm hóa đơn");
-		form.getLst_loaiKM().put("03", "Tặng kèm sản phầm");
-		form.getLst_loaiKM().put("04", "Tặng phiếu giảm giá");
-		form.getLst_loaiKM().put("05", "Tặng phiếu quà tặng");
-		form.getLst_loaiKM().put("06", "Miễn phí ship hàng");
+		form.getLst_loaiKM().put("01", "Theo giá khuyến mãi có sẵn");
+		form.getLst_loaiKM().put("02", "Theo phần trăm sản phẩm");
+		form.getLst_loaiKM().put("03", "Theo phần trăm hóa đơn");
+		form.getLst_loaiKM().put("04", "Tặng kèm sản phầm");
+		form.getLst_loaiKM().put("05", "Tặng phiếu giảm giá");
+		form.getLst_loaiKM().put("06", "Tặng phiếu quà tặng");
+		form.getLst_loaiKM().put("07", "Miễn phí ship hàng");
 		
 		
 		// Loai The
@@ -128,18 +129,25 @@ public class dotKhuyenMaiController {
 						formRow.setDk_loaiThe(it.getValue());
 				    }
 				}
- 
-				String ngayBD = outputRowBean.getNgayBD().substring(6,outputRowBean.getNgayBD().length() );
-				String thangBD = outputRowBean.getNgayBD().substring(4,6 );
-				String namBD = outputRowBean.getNgayBD().substring(0,4 );
 				
-				String ngayKT = outputRowBean.getNgayBD().substring(6,outputRowBean.getNgayKT().length() );
-				String thangKT = outputRowBean.getNgayBD().substring(4,6 );
-				String namKT = outputRowBean.getNgayBD().substring(0,4 );
+				String ngayBD,thangKT,namKT = "";
+				String ngayKT,thangBD,namBD = "";
+				
+				if(outputRowBean.getNgayKT() != null && outputRowBean.getNgayKT().trim().length() != 0){
+					ngayKT = outputRowBean.getNgayKT().substring(6,outputRowBean.getNgayKT().length() );
+					thangKT = outputRowBean.getNgayKT().substring(4,6 );
+					namKT = outputRowBean.getNgayKT().substring(0,4 );
+					formRow.setNgayKT(namKT + "/" + thangKT + "/" + ngayKT);
+				}
+				
+				if(outputRowBean.getNgayBD() != null && outputRowBean.getNgayBD().trim().length() != 0){
+					 ngayBD = outputRowBean.getNgayBD().substring(6,outputRowBean.getNgayBD().length() );
+					 thangBD = outputRowBean.getNgayBD().substring(4,6 );
+					 namBD = outputRowBean.getNgayBD().substring(0,4 );
+					 formRow.setNgayBD(namBD + "/" + thangBD + "/" + ngayBD);
+				}
+				
 						
-						
-				formRow.setNgayBD(namBD + "/" + thangBD + "/" + ngayBD);
-				formRow.setNgayKT(namKT + "/" + thangKT + "/" + ngayKT);
 				if(!outputRowBean.getDk_tongHD().equals("") && outputRowBean.getDk_tongHD().trim().length() != 0 && outputRowBean.getDk_tongHD() != null){
 					formRow.setDk_tongHD(String.format("%,.2f",Double.parseDouble(outputRowBean.getDk_tongHD())));
 				}else{
@@ -175,8 +183,10 @@ public class dotKhuyenMaiController {
 		inputBean.setNgayKT(form.getNgayKT());
 		inputBean.setMucKM(form.getMaDKM());
 		inputBean.setDonViKM(form.getDonViKM());
+		inputBean.setMoTa(form.getMoTa());
 		inputBean.setDk_loaiThe(form.getDk_loaiThe());
 		inputBean.setDk_tongHD(form.getDk_tongHD());
+		inputBean.setDk_tongSL(form.getDk_tongSL());
 		inputBean.setDk_tongSL(form.getDk_tongSL());
 
 		
@@ -219,6 +229,7 @@ public class dotKhuyenMaiController {
 		inputBean.setNgayKT(form.getNgayKT());
 		inputBean.setMucKM(form.getMaDKM());
 		inputBean.setDonViKM(form.getDonViKM());
+		inputBean.setMoTa(form.getMoTa());
 		inputBean.setDk_loaiThe(form.getDk_loaiThe());
 		inputBean.setDk_tongHD(form.getDk_tongHD());
 		inputBean.setDk_tongSL(form.getDk_tongSL());
@@ -267,6 +278,7 @@ public class dotKhuyenMaiController {
 		form.setNgayKT(DotKhuyenMaiOutputRowBean.getNgayKT());
 		form.setMucKM(DotKhuyenMaiOutputRowBean.getMaDKM());
 		form.setDonViKM(DotKhuyenMaiOutputRowBean.getDonViKM());
+		form.setMoTa(DotKhuyenMaiOutputRowBean.getMoTa());
 		form.setDk_loaiThe(DotKhuyenMaiOutputRowBean.getDk_loaiThe());
 		form.setDk_tongHD(DotKhuyenMaiOutputRowBean.getDk_tongHD());
 		form.setDk_tongSL(DotKhuyenMaiOutputRowBean.getDk_tongSL());
@@ -295,7 +307,6 @@ public class dotKhuyenMaiController {
 		DotKhuyenMaiInputBean input = new DotKhuyenMaiInputBean();
 		input.setPathJSP(pathJSP);
 		input.setMaDKM(id);
-		System.out.println("ahihi xóa nè " + id);
 		
 		//delete
 		int cnt = DotKhuyenMaiDAO.intances.deleteById(input);

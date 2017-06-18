@@ -17,6 +17,8 @@ public class DotKhuyenMaiOutputRowBean {
 	private String donViKM = "";
 
 	private String mucGiamGia = "";
+	
+	private String moTa = "";
 
 	private String dk_loaiThe = "";
 	
@@ -36,6 +38,15 @@ public class DotKhuyenMaiOutputRowBean {
 
 	public String getMaDKM() {
 		return maDKM;
+	}
+
+	
+	public String getMoTa() {
+		return moTa;
+	}
+
+	public void setMoTa(String moTa) {
+		this.moTa = moTa;
 	}
 
 	public void setMaDKM(String maDKM) {

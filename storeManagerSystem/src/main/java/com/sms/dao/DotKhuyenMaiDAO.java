@@ -84,9 +84,10 @@ public class DotKhuyenMaiDAO {
 			query.setParameter(4, inputBean.getDonViKM());
 			query.setParameter(5, inputBean.getNgayBD());
 			query.setParameter(6, inputBean.getNgayKT());
-			query.setParameter(7, inputBean.getDk_loaiThe());
-			query.setParameter(8, inputBean.getDk_tongHD());
-			query.setParameter(9, inputBean.getDk_tongSL());
+			query.setParameter(7, inputBean.getMoTa());
+			query.setParameter(8, inputBean.getDk_loaiThe());
+			query.setParameter(9, inputBean.getDk_tongHD());
+			query.setParameter(10, inputBean.getDk_tongSL());
 			cnt = query.executeUpdate();
 			tx.commit();
 		} catch (Exception e) {
@@ -116,9 +117,10 @@ public class DotKhuyenMaiDAO {
 			query.setParameter(4, inputBean.getNgayBD());
 			query.setParameter(5, inputBean.getNgayKT());
 			query.setParameter(6, inputBean.getDk_loaiThe());
-			query.setParameter(7, inputBean.getDk_tongHD());
-			query.setParameter(8, inputBean.getDk_tongSL());
-			query.setParameter(9, inputBean.getMaDKM());
+			query.setParameter(7, inputBean.getMoTa());
+			query.setParameter(8, inputBean.getDk_tongHD());
+			query.setParameter(9, inputBean.getDk_tongSL());
+			query.setParameter(10, inputBean.getMaDKM());
 			cnt = query.executeUpdate();
 			tx.commit();
 		} catch (Exception e) {
@@ -205,9 +207,10 @@ public class DotKhuyenMaiDAO {
 				outputRowBean.setDonViKM(SMSComons.convertString(object[4]));
 				outputRowBean.setNgayBD(SMSComons.convertString(object[5]));
 				outputRowBean.setNgayKT(SMSComons.convertString(object[6]));
-				outputRowBean.setDk_loaiThe(SMSComons.convertString(object[7]));
-				outputRowBean.setDk_tongHD(SMSComons.convertString(object[8]));
-				outputRowBean.setDk_tongSL(SMSComons.convertString(object[9]));
+				outputRowBean.setMoTa(SMSComons.convertString(object[7]));
+				outputRowBean.setDk_loaiThe(SMSComons.convertString(object[8]));
+				outputRowBean.setDk_tongHD(SMSComons.convertString(object[9]));
+				outputRowBean.setDk_tongSL(SMSComons.convertString(object[10]));
 				lst.add(outputRowBean);
 			}
 			session.getTransaction().commit();
@@ -246,9 +249,10 @@ public class DotKhuyenMaiDAO {
 				outputRowBean.setDonViKM(SMSComons.convertString(object[4]));
 				outputRowBean.setNgayBD(SMSComons.convertString(object[5]));
 				outputRowBean.setNgayKT(SMSComons.convertString(object[6]));
-				outputRowBean.setDk_loaiThe(SMSComons.convertString(object[7]));
-				outputRowBean.setDk_tongHD(SMSComons.convertString(object[8]));
-				outputRowBean.setDk_tongSL(SMSComons.convertString(object[9]));
+				outputRowBean.setMoTa(SMSComons.convertString(object[7]));
+				outputRowBean.setDk_loaiThe(SMSComons.convertString(object[8]));
+				outputRowBean.setDk_tongHD(SMSComons.convertString(object[9]));
+				outputRowBean.setDk_tongSL(SMSComons.convertString(object[10]));
 				lst.add(outputRowBean);
 			}
 			session.getTransaction().commit();
@@ -282,12 +286,14 @@ public class DotKhuyenMaiDAO {
 		sb.append("  		,DON_VI_KM 	       ");
 		sb.append("  		,NGAY_BD         ");
 		sb.append("  		,NGAY_KT         ");
+		sb.append("  		,MOTA         ");
 		sb.append("  		,DK_LOAI_THE         ");
 		sb.append("  		,DK_TONG_HD 	       ");
 		sb.append("  		,DK_TONG_SL     ");
 		sb.append("  		)                  ");
 		sb.append("  		VALUES (           ");
 		sb.append("  		  ?                ");
+		sb.append("  		 ,?                ");
 		sb.append("  		 ,?                ");
 		sb.append("  		 ,?                ");
 		sb.append("  		 ,?                ");
@@ -316,6 +322,7 @@ public class DotKhuyenMaiDAO {
 		sb.append("  		,DON_VI_KM 				= ?      	 			");
 		sb.append("  		,NGAY_BD       		= ?  			");
 		sb.append("  		,NGAY_KT      = ?   		");
+		sb.append("  		,MOTA    = ?        ");
 		sb.append("  		,DK_LOAI_THE  		= ?   				");
 		sb.append("  		,DK_TONG_HD  	= ?   	");
 		sb.append("  		,DK_TONG_SL  	= ?   	");
@@ -338,6 +345,7 @@ public class DotKhuyenMaiDAO {
 		sb.append("  		,DON_VI_KM 	       ");
 		sb.append("  		,NGAY_BD         ");
 		sb.append("  		,NGAY_KT         ");
+		sb.append("  		,MOTA         ");	
 		sb.append("  		,DK_LOAI_THE         ");
 		sb.append("  		,DK_TONG_HD 	       ");
 		sb.append("  		,DK_TONG_SL     ");
@@ -360,6 +368,7 @@ public class DotKhuyenMaiDAO {
 		sb.append("  		,DON_VI_KM 	       ");
 		sb.append("  		,NGAY_BD         ");
 		sb.append("  		,NGAY_KT         ");
+		sb.append("  		,MOTA         ");
 		sb.append("  		,DK_LOAI_THE         ");
 		sb.append("  		,DK_TONG_HD 	       ");
 		sb.append("  		,DK_TONG_SL     ");
@@ -413,6 +422,7 @@ public class DotKhuyenMaiDAO {
 		sb.append(" ,DON_VI_KM 		VARCHAR(255)                     ");
 		sb.append(" ,NGAY_BD 			VARCHAR(255)                     ");
 		sb.append(" ,NGAY_KT  		VARCHAR(255)                  ");
+		sb.append(" ,MOTA  		VARCHAR(255)                  ");
 		sb.append(" ,DK_LOAI_THE 	VARCHAR(255)             ");
 		sb.append(" ,DK_TONG_HD 		VARCHAR(255)                  ");
 		sb.append(" ,DK_TONG_SL 		VARCHAR(255)                  ");

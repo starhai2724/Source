@@ -17,6 +17,8 @@ public class DotKhuyenMaiInputBean {
 	private String ngayBD;
 	
 	private String ngayKT;
+	
+	private String moTa;
 
 	private String dk_loaiThe;
 
@@ -34,6 +36,15 @@ public class DotKhuyenMaiInputBean {
 
 	public String getMaDKM() {
 		return maDKM;
+	}
+
+	
+	public String getMoTa() {
+		return moTa;
+	}
+
+	public void setMoTa(String moTa) {
+		this.moTa = moTa;
 	}
 
 	public void setMaDKM(String maDKM) {
