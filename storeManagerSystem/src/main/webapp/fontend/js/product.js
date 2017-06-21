@@ -25,6 +25,10 @@ app.controller('ctrl', function($scope, $window) {
 		remove($scope,id);
 	}
 	
+	$scope.btnPhanAnh = function(){
+		phanAnh($scope);
+	}
+	
 });
 
 function create($scope) {
@@ -102,11 +106,18 @@ function update($scope) {
 	}
 }
 
-function getProductById($scope, $windown, id){
-		var url = "/storeManagerSystem/product/getProductById/"+id;
+function phanAnh($scope){
+		var url = "/storeManagerSystem/product/phanAnh";
 		document.getElementById("ProductForm").action = url;
 		document.getElementById("ProductForm").method = "POST";
 		document.getElementById("ProductForm").submit();
+}
+
+function getProductById($scope, $windown, id){
+	var url = "/storeManagerSystem/product/getProductById/"+id;
+	document.getElementById("ProductForm").action = url;
+	document.getElementById("ProductForm").method = "POST";
+	document.getElementById("ProductForm").submit();
 }
 
 function clear($scope){

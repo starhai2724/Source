@@ -25,6 +25,18 @@ public class ProductFormRow {
 	private String ngayTao;
 
 	private String ngayChinhSua;
+	
+	private String giaBanKM;
+
+	public String getGiaBanKM() {
+		return giaBanKM;
+	}
+
+
+	public void setGiaBanKM(String giaBanKM) {
+		this.giaBanKM = giaBanKM;
+	}
+
 
 	public String getIdSanPham() {
 		return idSanPham;

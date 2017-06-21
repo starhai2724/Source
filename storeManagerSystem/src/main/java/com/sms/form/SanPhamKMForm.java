@@ -1,17 +1,25 @@
-package com.sms.OutputRows;
+package com.sms.form;
 
-public class SanPhamOutputRowBean {
+import java.io.File;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
-	private String no;
-	
+import org.springframework.web.multipart.MultipartFile;
+
+import com.sms.formRows.ProductFormRow;
+
+public class SanPhamKMForm extends AbstractForm{
+
 	private String pathJSP;
 
 	private String idSanPham;
 
 	private String idLoaiSP;
-	
+
 	private String tenLoaiSP;
-	
+
 	private String tenSP;
 
 	private String idCuaHang;
@@ -20,7 +28,7 @@ public class SanPhamOutputRowBean {
 
 	private String giaBan;
 
-	private byte[] hinh;
+	private File  hinh;
 
 	private String moTa;
 
@@ -30,24 +38,54 @@ public class SanPhamOutputRowBean {
 
 	private String ngayChinhSua;
 	
-	private String id_DKM;
+	private String flagUpdate;
 	
-	private String giaBanKM;
 	
-	public String getId_DKM() {
-		return id_DKM;
+
+
+	public String getFlagUpdate() {
+		return flagUpdate;
 	}
 
-	public void setId_DKM(String id_DKM) {
-		this.id_DKM = id_DKM;
+	public void setFlagUpdate(String flagUpdate) {
+		this.flagUpdate = flagUpdate;
 	}
 
-	public String getGiaBanKM() {
-		return giaBanKM;
+	private Map<String, String> lstCategory = new LinkedHashMap<String, String>();
+	
+	
+	public Map<String, String> getLstCategory() {
+		return lstCategory;
 	}
 
-	public void setGiaBanKM(String giaBanKM) {
-		this.giaBanKM = giaBanKM;
+	public void setLstCategory(Map<String, String> lstCategory) {
+		this.lstCategory = lstCategory;
+	}
+
+	public String getTenLoaiSP() {
+		return tenLoaiSP;
+	}
+
+	public void setTenLoaiSP(String tenLoaiSP) {
+		this.tenLoaiSP = tenLoaiSP;
+	}
+
+	private List<ProductFormRow> lst = new ArrayList<>();
+
+	public List<ProductFormRow> getLst() {
+		return lst;
+	}
+
+	public void setLst(List<ProductFormRow> lst) {
+		this.lst = lst;
+	}
+
+	public String getPathJSP() {
+		return pathJSP;
+	}
+
+	public void setPathJSP(String pathJSP) {
+		this.pathJSP = pathJSP;
 	}
 
 	public String getIdSanPham() {
@@ -56,6 +94,14 @@ public class SanPhamOutputRowBean {
 
 	public void setIdSanPham(String idSanPham) {
 		this.idSanPham = idSanPham;
+	}
+
+	public String getIdLoaiSP() {
+		return idLoaiSP;
+	}
+
+	public void setIdLoaiSP(String idLoaiSP) {
+		this.idLoaiSP = idLoaiSP;
 	}
 
 	public String getTenSP() {
@@ -90,11 +136,13 @@ public class SanPhamOutputRowBean {
 		this.giaBan = giaBan;
 	}
 
-	public byte[] getHinh() {
+
+
+	public File getHinh() {
 		return hinh;
 	}
 
-	public void setHinh(byte[] hinh) {
+	public void setHinh(File hinh) {
 		this.hinh = hinh;
 	}
 
@@ -125,42 +173,9 @@ public class SanPhamOutputRowBean {
 	public String getNgayChinhSua() {
 		return ngayChinhSua;
 	}
-	
-
-	public String getNo() {
-		return no;
-	}
-
-	public void setNo(String no) {
-		this.no = no;
-	}
 
 	public void setNgayChinhSua(String ngayChinhSua) {
 		this.ngayChinhSua = ngayChinhSua;
-	}
-
-	public String getPathJSP() {
-		return pathJSP;
-	}
-
-	public void setPathJSP(String pathJSP) {
-		this.pathJSP = pathJSP;
-	}
-
-	public String getIdLoaiSP() {
-		return idLoaiSP;
-	}
-
-	public void setIdLoaiSP(String idLoaiSP) {
-		this.idLoaiSP = idLoaiSP;
-	}
-
-	public String getTenLoaiSP() {
-		return tenLoaiSP;
-	}
-
-	public void setTenLoaiSP(String tenLoaiSP) {
-		this.tenLoaiSP = tenLoaiSP;
 	}
 
 }

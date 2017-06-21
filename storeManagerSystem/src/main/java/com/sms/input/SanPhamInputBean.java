@@ -27,6 +27,27 @@ public class SanPhamInputBean {
 	private String ngayTao;
 
 	private String ngayChinhSua;
+	
+	private String id_DKM;
+	
+	private String giaBanKM;
+	
+
+	public String getGiaBanKM() {
+		return giaBanKM;
+	}
+
+	public void setGiaBanKM(String giaBanKM) {
+		this.giaBanKM = giaBanKM;
+	}
+
+	public String getId_DKM() {
+		return id_DKM;
+	}
+
+	public void setId_DKM(String id_DKM) {
+		this.id_DKM = id_DKM;
+	}
 
 	public String getIdSanPham() {
 		return idSanPham;

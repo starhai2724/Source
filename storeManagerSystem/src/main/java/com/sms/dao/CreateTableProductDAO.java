@@ -100,6 +100,39 @@ public class CreateTableProductDAO {
 		return cnt;
 	}
 	
+	public int insertSPKM(SanPhamInputBean inputBean){
+		//session
+		Session session = HibernateUtil.getSessionDAO();
+		int cnt = 0; 
+		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		//id
+		int id_Sp = SMSComons.convertInt(this.getMaxId(inputBean.getPathJSP()));
+		//sql 
+		String hql = getSQLInsertSPKM(inputBean.getPathJSP());
+		try {
+			SQLQuery query = session.createSQLQuery(hql);
+			query.setParameter(0, (id_Sp + 1));
+			query.setParameter(1, inputBean.getTenSP());
+			query.setParameter(2, inputBean.getIdCuaHang());
+			query.setParameter(3, inputBean.getIdLoaiSP());
+			query.setParameter(4, inputBean.getGiaMua());
+			query.setParameter(5, inputBean.getGiaBan());
+			query.setParameter(6, inputBean.getHinh());
+			query.setParameter(7, inputBean.getMoTa());
+			query.setParameter(8, inputBean.getTrangThai());
+			query.setParameter(9, inputBean.getNgayTao());
+			query.setParameter(10, inputBean.getNgayChinhSua());
+			query.setParameter(11, inputBean.getGiaBan());
+			query.setParameter(12, inputBean.getId_DKM());
+			cnt = query.executeUpdate();
+			tx.commit();
+		} catch (Exception e) {
+		} finally {
+			session.close();
+		}
+		return cnt;
+	}
+	
 	/**
 	 * function update 
 	 * 
@@ -225,6 +258,38 @@ public class CreateTableProductDAO {
 		return outputBean;
 	}
 	
+	
+	public SanPhamOutputBean getProductByIdDKM(SanPhamInputBean inputBean){
+		Session session = HibernateUtil.getSessionDAO();
+		String hql = getSQLProductByIdDKM(inputBean.getPathJSP());
+		SanPhamOutputBean outputBean = new SanPhamOutputBean();
+		SanPhamOutputRowBean outputRowBean = null;
+		try {
+			session.getTransaction().begin();
+			SQLQuery query = session.createSQLQuery(hql);
+			query.setParameter(0, inputBean.getId_DKM());
+			List<Object[]> data = query.list();
+			for (Object[] object : data) {
+				outputRowBean = new SanPhamOutputRowBean();
+				outputRowBean.setIdSanPham(SMSComons.convertString(object[0]));
+				outputRowBean.setTenSP(SMSComons.convertString(object[1]));
+				outputRowBean.setIdLoaiSP(SMSComons.convertString(object[2]));
+				outputRowBean.setGiaMua(SMSComons.convertString(object[3]));
+				outputRowBean.setGiaBan(SMSComons.convertString(object[4]));
+				outputRowBean.setGiaBanKM(SMSComons.convertString(object[5]));
+				outputBean.getLst().add(outputRowBean);
+			}
+			session.getTransaction().commit();
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		} finally {
+			session.flush();
+			session.clear();
+			session.close();
+		}
+		return outputBean;
+	}
 	/**
 	 * 
 	 * 
@@ -340,6 +405,42 @@ public class CreateTableProductDAO {
 		return sb.toString();
 	}	
 	
+	private String getSQLInsertSPKM(String pathJSP) {
+		StringBuffer sb = new StringBuffer();
+		String tableName = pathJSP+"_PRODUCT";
+		sb.append("  INSERT INTO "+tableName+" (    ");
+		sb.append("  		 ID_SP		       ");
+		sb.append("  		,TEN_SP 	           ");
+		sb.append("  		,ID_CUAHANG         ");
+		sb.append("  		,ID_LOAI_SP         ");
+		sb.append("  		,GIA_MUA 	       ");
+		sb.append("  		,GIA_BAN 	       ");
+		sb.append("  		,HINH         ");
+		sb.append("  		,MO_TA         ");
+		sb.append("  		,TRANG_THAI         ");
+		sb.append("  		,NGAY_TAO 	       ");
+		sb.append("  		,NGAY_CHINH_SUA     ");
+		sb.append("  		,GIA_BAN_KM 	       ");
+		sb.append("  		,ID_DKM     ");
+		sb.append("  		)                  ");
+		sb.append("  		VALUES (           ");
+		sb.append("  		  ?                ");
+		sb.append("  		 ,?                ");
+		sb.append("  		 ,?                ");
+		sb.append("  		 ,?                ");
+		sb.append("  		 ,?                ");
+		sb.append("  		 ,?                ");
+		sb.append("  		 ,?                ");
+		sb.append("  		 ,?                ");
+		sb.append("  		 ,?                ");
+		sb.append("  		 ,?                ");
+		sb.append("  		 ,?                ");
+		sb.append("  		 ,?                ");
+		sb.append("  		 ,?                ");
+		sb.append("  		)                  ");
+		return sb.toString();
+	}	
+	
 	/**
 	 * update  product
 	 * @return
@@ -408,6 +509,21 @@ public class CreateTableProductDAO {
 		sb.append("  ,NGAY_CHINH_SUA                        ");
 		sb.append("  FROM "+tableName+"          			");
 		sb.append("  WHERE ID_SP = ?          			");
+		return sb.toString();
+	}
+	
+	private String getSQLProductByIdDKM(String pathJSP) {
+		String tableName = pathJSP+"_PRODUCT";
+		StringBuffer sb = new StringBuffer();
+		sb.append("  SELECT                                 ");
+		sb.append("   ID_SP		                            ");
+		sb.append("  ,TEN_SP 	                            ");
+		sb.append("  ,ID_LOAI_SP                            ");
+		sb.append("  ,GIA_MUA 	                            ");
+		sb.append("  ,GIA_BAN 	                            ");
+		sb.append("  ,GIA_BAN_KM 	                        ");
+		sb.append("  FROM "+tableName+"          			");
+		sb.append("  WHERE ID_DKM = ?          			");
 		return sb.toString();
 	}
 	

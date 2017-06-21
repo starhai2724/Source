@@ -27,11 +27,13 @@ public class ProductForm extends AbstractForm{
 	private String giaMua;
 
 	private String giaBan;
+	
+	private String giaBanKM;
 
 	private File  hinh;
 
 	private String moTa;
-
+	
 	private String trangThai;
 
 	private String ngayTao;
@@ -40,8 +42,14 @@ public class ProductForm extends AbstractForm{
 	
 	private String flagUpdate;
 	
-	
 
+	public String getGiaBanKM() {
+		return giaBanKM;
+	}
+
+	public void setGiaBanKM(String giaBanKM) {
+		this.giaBanKM = giaBanKM;
+	}
 
 	public String getFlagUpdate() {
 		return flagUpdate;

@@ -10,7 +10,7 @@
 	<div id="page-wrapper" ng-app="ProductForm" ng-controller="ctrl">
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Sản phẩm</h1>
+				<h1 class="page-header">Sản phẩm khuyến mãi</h1>
 			</div>
 			<!-- /.col-lg-12 -->
 		</div>
@@ -96,11 +96,10 @@
                             <table width="1578px" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                    	<th style="text-align: center; width: 05px;"></th>
-                                        <th style="text-align: center; width: 10px;">STT</th>
-										<th style="text-align: center; width: 50px">Mã SP</th>
-										<th style="text-align: center; width: 200px">Tên sản phẩm</th>
-										<th style="text-align: center; width: 50px">Loại SP</th>
+                                        <th style="text-align: center; width: 40px;">STT</th>
+										<th style="text-align: center; width: 80px">Mã SP</th>
+										<th style="text-align: center; width: 250px">Tên sản phẩm</th>
+										<th style="text-align: center; width: 80px">Loại SP</th>
 										<th style="text-align: center; width: 80px">Giá mua</th>
 										<th style="text-align: center; width: 80px">Giá bán</th>
 										<th style="text-align: center; width: 80px">Ngày tạo</th>
@@ -113,7 +112,6 @@
                                 <tbody style="overflow: auto; height:50px">
                               		  <c:forEach var="items" items="${ProductForm.lst }">
 		                                <tr class="odd gradeX">
-		                                 		<td style="text-align: center"><input type="checkbox" ng-model="checkbox${items.no}"></td>
 		                                        <td style="text-align: center">${items.no}</td>
 		                                        <td>${items.idSanPham}</td>
 							                     <td>${items.tenSP}</td>
@@ -140,13 +138,9 @@
                         </div>
 		</c:if>
 		<form:input class="form-control" type="hidden"  path="flagUpdate"  name="flagUpdate" ng-model ="flagUpdate" ng-init="flagUpdate='${ProductForm.flagUpdate}'" />
-			<div >
-				<input type="button" name="" class="btn btn-info " ng-click ="btnPhanAnh()" value="Phản ánh">
-			</div>
 	</form:form>		
 		<!-- /#page-wrapper -->
 	</div>
-
 </div>
 <script src="/storeManagerSystem/view/js/product.js"></script>
 

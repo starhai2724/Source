@@ -17,6 +17,7 @@ app.controller('ctrl', function($scope, $window) {
 			create($scope);
 		}
 	}
+	
 	$scope.btnGetById = function(id){
 		getById($scope,$window, id);
 	}
@@ -71,11 +72,9 @@ function create($scope) {
 	}else if($scope.mucKM != "" && $scope.donViKM == "00") {
 		$scope.mucKM_err = "Hãy nhập đơn vị khuyến mãi."
 			valid = false;
-	}else{
-		if($scope.mucKM = "" && $scope.moTa = ""){
+	}else if($scope.mucKM == "" && $scope.moTa == ""){
 			$scope.mucKM_err = "Hãy nhập mức giảm giá hoặc chi tiết giảm giá."
 			valid = false;
-		}
 	}
 	
 	if($scope.mucKM != "" && !reg.test($scope.mucKM)){
@@ -108,7 +107,7 @@ function update($scope) {
 		$scope.mucKM_err = "Hãy nhập đơn vị khuyến mãi."
 			valid = false;
 	}else{
-		if($scope.mucKM = "" && $scope.moTa = ""){
+		if($scope.mucKM == "" && $scope.moTa == ""){
 			$scope.mucKM_err = "Hãy nhập mức giảm giá hoặc chi tiết giảm giá."
 			valid = false;
 		}
@@ -158,7 +157,7 @@ function getById($scope, $windown, id){
 }
 
 function showDetail($scope, $windown, id){
-	var url = "/storeManagerSystem/chiTietDKM/getById/"+id;
+	var url = "/storeManagerSystem/dotKhuyenMai/showDetail/"+id;
 	document.getElementById("DotKhuyenMaiForm").action = url;
 	document.getElementById("DotKhuyenMaiForm").method = "POST";
 	document.getElementById("DotKhuyenMaiForm").submit();
