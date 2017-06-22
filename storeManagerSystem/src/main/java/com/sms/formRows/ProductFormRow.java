@@ -48,6 +48,15 @@ public class ProductFormRow {
 	}
 
 
+	@Override
+	public String toString() {
+		return "ProductFormRow [no=" + no + ", idSanPham=" + idSanPham + ", idLoaiSP=" + idLoaiSP + ", tenLoaiSP="
+				+ tenLoaiSP + ", tenSP=" + tenSP + ", idCuaHang=" + idCuaHang + ", giaMua=" + giaMua + ", giaBan="
+				+ giaBan + ", moTa=" + moTa + ", trangThai=" + trangThai + ", ngayTao=" + ngayTao + ", ngayChinhSua="
+				+ ngayChinhSua + ", giaBanKM=" + giaBanKM + "]";
+	}
+
+
 	public void setNo(String no) {
 		this.no = no;
 	}

@@ -6,10 +6,12 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.client.RestTemplate;
 
 import com.sms.OutputRows.SanPhamOutputRowBean;
@@ -25,9 +27,15 @@ import com.sms.output.LoaiSanPhamOutputBean;
 import com.sms.output.SanPhamOutputBean;
 
 @Controller
+@SessionAttributes(value ="ProductForm", types = {ProductForm.class})
 public class ProductController {
 	RestTemplate restTemplate = new RestTemplate();
 	public static final String PRODUCT = "product.jsp";
+	
+	@ModelAttribute("ProductForm")
+	 public ProductForm getProductForm() {
+	   return new ProductForm(); //or however you create a default
+	 }
 	
 	@RequestMapping(value  = "/product/init")
 	public String init(@ModelAttribute("ProductForm") ProductForm form, HttpSession session){
@@ -68,10 +76,11 @@ public class ProductController {
 		ProductFormRow formRow; 
 		int cnt = 1;
 		if(outputBean != null && outputBean.getLst().size() > 0){
-			for(int i = 0; outputBean.getLst().size() > i; i++){
+			for(int i = 0; i <  outputBean.getLst().size() ; i++){
 				SanPhamOutputRowBean outputRowBean = outputBean.getLst().get(i);	
 				formRow = new ProductFormRow();
 				formRow.setNo(String.valueOf(cnt++));
+				//System.out.println("mã SP :" + outputRowBean.getIdSanPham());
 				formRow.setIdSanPham(outputRowBean.getIdSanPham());
 				formRow.setTenSP(outputRowBean.getTenSP());
 				formRow.setTenLoaiSP(outputRowBean.getTenLoaiSP());
@@ -83,13 +92,13 @@ public class ProductController {
 				form.getLst().add(formRow);
 			}
 		}
-		
+
 	}
 	
 	
 	@RequestMapping(value ="/product/insert", method = RequestMethod.POST)
 	public String insert(@ModelAttribute("ProductForm") ProductForm form, HttpSession session) {
-		System.out.println("Test");
+		//System.out.println("Test");
 		//get domain
 		//String pathJSP = (String)session.getAttribute("pathURL");
 		String pathJSP = "cuahangthoitrang";
@@ -245,7 +254,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="product/phanAnh", method = RequestMethod.POST)
-	public String phanAnh(@ModelAttribute("ProductForm") ProductForm form, HttpSession session){
+	public String phanAnh(@ModelAttribute("ProductForm") ProductForm form, HttpSession session, Model model){
 		//get domain
 		//String pathJSP = (String)session.getAttribute("pathURL");
 		String pathJSP = "cuahangthoitrang";
@@ -257,8 +266,6 @@ public class ProductController {
 		SanPhamInputBean input;
 		SanPhamOutputRowBean outputRowBean;
 		
-		
-		System.out.println("SIZE : " +  lst.size());
 		if(lst != null && lst.size() > 0){
 			for(int i = 0; i< 4; i++){
 				ProductFormRow row = lst.get(i);	
@@ -277,6 +284,7 @@ public class ProductController {
 					formRow.setGiaBan(outputRowBean.getGiaBan());
 					formRow.setMoTa(outputRowBean.getMoTa());
 					formRow.setIdLoaiSP(outputRowBean.getIdLoaiSP());
+					formRow.setTenLoaiSP(outputRowBean.getTenLoaiSP());
 					formRow.setGiaBanKM("");
 					
 					newlst.add(formRow);
@@ -285,7 +293,6 @@ public class ProductController {
 				
 			}
 		}
-		
 		session.setAttribute("lstPhanAnh", newlst);
 		return  "redirect:/chiTietDKM/initPhanAnh";
 	}

@@ -107,6 +107,7 @@ public class CreateTableProductDAO {
 		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
 		//id
 		int id_Sp = SMSComons.convertInt(this.getMaxId(inputBean.getPathJSP()));
+		System.out.println("maxid_Sp " + id_Sp);
 		//sql 
 		String hql = getSQLInsertSPKM(inputBean.getPathJSP());
 		try {
@@ -215,6 +216,31 @@ public class CreateTableProductDAO {
 		}
 		return result;
 	}
+	
+	private String getLoai_SP(String pathJSP,String idLoaiSP) {
+		Session session = HibernateUtil.getSessionDAO();
+		String hql = getSQLLoaiSP(pathJSP,idLoaiSP);
+		String result = "";
+		try {
+			session.getTransaction().begin();
+			SQLQuery query = session.createSQLQuery(hql);
+			List<Object> data = query.list();
+			for (Object object : data) {
+				result = SMSComons.convertString(object);
+			}
+			session.getTransaction().commit();
+
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		} finally {
+			session.flush();
+			session.clear();
+			session.close();
+		}
+		return result;
+	}
+	
 	/**
 	 * 
 	 * 
@@ -233,7 +259,7 @@ public class CreateTableProductDAO {
 			List<Object[]> data = query.list();
 			for (Object[] object : data) {
 				outputRowBean = new SanPhamOutputRowBean();
-				outputRowBean.setIdLoaiSP(SMSComons.convertString(object[0]));
+				outputRowBean.setIdSanPham(SMSComons.convertString(object[0]));
 				outputRowBean.setTenSP(SMSComons.convertString(object[1]));
 				outputRowBean.setIdCuaHang(SMSComons.convertString(object[2]));
 				outputRowBean.setIdLoaiSP(SMSComons.convertString(object[3]));
@@ -277,6 +303,7 @@ public class CreateTableProductDAO {
 				outputRowBean.setGiaMua(SMSComons.convertString(object[3]));
 				outputRowBean.setGiaBan(SMSComons.convertString(object[4]));
 				outputRowBean.setGiaBanKM(SMSComons.convertString(object[5]));
+				outputRowBean.setTenLoaiSP(SMSComons.convertString(object[6]));
 				outputBean.getLst().add(outputRowBean);
 			}
 			session.getTransaction().commit();
@@ -522,8 +549,11 @@ public class CreateTableProductDAO {
 		sb.append("  ,GIA_MUA 	                            ");
 		sb.append("  ,GIA_BAN 	                            ");
 		sb.append("  ,GIA_BAN_KM 	                        ");
+		sb.append("  ,TEN_LOAI_SP 	                        ");
 		sb.append("  FROM "+tableName+"          			");
 		sb.append("  WHERE ID_DKM = ?          			");
+		sb.append("  INNER JOIN "+pathJSP+"_loai_sp loaiSP  ");
+		sb.append("  ON product.ID_LOAI_SP = loaiSP.ID_LOAI_SP          			");
 		return sb.toString();
 	}
 	
@@ -537,6 +567,15 @@ public class CreateTableProductDAO {
 		StringBuffer sb = new StringBuffer();
 		sb.append("  SELECT MAX(ID_SP) ");
 		sb.append("  FROM "+tableName+"  ");
+		return sb.toString();
+	}
+	
+	private String getSQLLoaiSP(String pathJSP,String idLoaiSP) {
+		String tableName = pathJSP+"_loai_sp";
+		StringBuffer sb = new StringBuffer();
+		sb.append("  SELECT TEN_LOAI_SP ");
+		sb.append("  FROM "+tableName+"  ");
+		sb.append("  WHERE ID_LOAI_SP = '" + idLoaiSP + "'");
 		return sb.toString();
 	}
 	

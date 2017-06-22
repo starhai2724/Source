@@ -15,11 +15,10 @@
 			<!-- /.col-lg-12 -->
 		</div>
 		<!-- /.row -->
-	<form:form id="ProductForm" modelAttribute="ProductForm" role="form" method="POST" >
+	<form:form id="ProductForm" modelAttribute="ProductForm3" role="form" method="POST" >
 		<div class="row" align="right" style="width: 100%">
 			<div >
 				<input type="button" name="" class="btn btn-info " ng-click ="btnChonSPKM()" value="Chọn SP Khuyến Mãi">
-				<input type="button" name="" class="btn btn-info " ng-click="btnThemDong()" value="Thêm dòng">
 				<input type="button" name="" class="btn btn-info " ng-click ="btnXoaDong()" value="Xóa dòng">
 			</div>
 		</div>
@@ -27,14 +26,14 @@
 		<div class="row">
 			<div class="col-sm-4">
 				<div class="form-group">
-					<p style="color: blue; font-weight: bold;">${ProductForm.message }</p>
-					<p style="color: red; font-weight: bold;">${ProductForm.messageErr }</p>
+					<p style="color: blue; font-weight: bold;">${ProductForm3.message }</p>
+					<p style="color: red; font-weight: bold;">${ProductForm3.messageErr }</p>
 				</div>
 			</div>
 		</div>
 		<!--Message (E)-->
 		
-		<c:if test="${!empty ProductForm.lst }">
+		<c:if test="${!empty ProductForm3.lst }">
 		<div class="panel-body">
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
@@ -49,7 +48,7 @@
                                     </tr>
                                 </thead>
                                 <tbody style="overflow: auto; height:50px">
-                              		  <c:forEach var="items" items="${ProductForm.lst }">
+                              		  <c:forEach var="items" items="${ProductForm3.lst }">
 		                                <tr class="odd gradeX">
 		                                        <td style="text-align: center"><input type="checkbox" name="checkbox" value="${items.no}"></td>
 		                                        <td>${items.idSanPham}</td>
@@ -57,9 +56,10 @@
 		                                      	 <td style="text-align: right">${items.giaMua }</td>
 					                    		 <td style="text-align: right">${items.giaBan }</td>
 		                                         <td>
-		                                         	<form:input  maxlength="10" class="form-control" type="text" path="giaBanKM"  name="giaBanKM" ng-model = "giaBanKM"  ng-init ="giaBanKM = '${items.giaBanKM}'" />	
+		                                         	<form:input  maxlength="10" class="form-control" type="text" path="giaBanKM"  value = '${items.giaBanKM}' />	
 		                                         </td>
 		                                         <td>${items.tenLoaiSP }</td>
+		                                         <td hidden="">${items.idLoaiSP }</td>
 		                                 </tr>
 					                </c:forEach>
                                 </tbody>

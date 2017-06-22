@@ -1,5 +1,7 @@
 package com.sms.OutputRows;
 
+import java.util.Arrays;
+
 public class SanPhamOutputRowBean {
 
 	private String no;
@@ -56,6 +58,15 @@ public class SanPhamOutputRowBean {
 
 	public void setIdSanPham(String idSanPham) {
 		this.idSanPham = idSanPham;
+	}
+
+	@Override
+	public String toString() {
+		return "SanPhamOutputRowBean [no=" + no + ", pathJSP=" + pathJSP + ", idSanPham=" + idSanPham + ", idLoaiSP="
+				+ idLoaiSP + ", tenLoaiSP=" + tenLoaiSP + ", tenSP=" + tenSP + ", idCuaHang=" + idCuaHang + ", giaMua="
+				+ giaMua + ", giaBan=" + giaBan + ", hinh=" + Arrays.toString(hinh) + ", moTa=" + moTa + ", trangThai="
+				+ trangThai + ", ngayTao=" + ngayTao + ", ngayChinhSua=" + ngayChinhSua + ", id_DKM=" + id_DKM
+				+ ", giaBanKM=" + giaBanKM + "]";
 	}
 
 	public String getTenSP() {
