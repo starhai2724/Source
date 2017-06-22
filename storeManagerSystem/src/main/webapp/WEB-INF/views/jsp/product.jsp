@@ -15,7 +15,7 @@
 			<!-- /.col-lg-12 -->
 		</div>
 		<!-- /.row -->
-	<form:form id="ProductForm" modelAttribute="ProductForm" role="form" method="POST" >
+	<form:form id="ProductForm" modelAttribute="ProductForm" role="form" method="POST"  enctype="multipart/form-data">
 		<div class="row">
 			<div class="col-sm-4">
 				<div class="form-group">
@@ -55,7 +55,8 @@
 				<div class="form-group">
 			        <label>File input</label>
 			        <div class="form-group">
-                        <form:input type="file" path="hinh" />
+                        <%-- <form:input type="file" path="hinh" /> --%>
+                        <input type="file" name="file"/>  
                     </div>
     			</div>
 			</div>

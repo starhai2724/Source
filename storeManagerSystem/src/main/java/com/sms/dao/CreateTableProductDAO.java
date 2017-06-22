@@ -12,6 +12,7 @@ import com.sms.OutputRows.SanPhamOutputRowBean;
 import com.sms.common.SMSComons;
 import com.sms.dao.common.HibernateUtil;
 import com.sms.input.SanPhamInputBean;
+import com.sms.output.ImageOutputBean;
 import com.sms.output.SanPhamOutputBean;
 
 public class CreateTableProductDAO {
@@ -285,6 +286,47 @@ public class CreateTableProductDAO {
 	}
 	
 	
+/**
+	 * 
+	 * 
+	 * @return
+	 * @throws IOException 
+	 */
+	public SanPhamOutputBean getProductByList(String pathJSP, String listId){
+		Session session = HibernateUtil.getSessionDAO();
+		String hql = getSQLProductByListId(pathJSP, listId);
+		SanPhamOutputBean outputBean = new SanPhamOutputBean();
+		SanPhamOutputRowBean outputRowBean = null;
+		try {
+			session.getTransaction().begin();
+			SQLQuery query = session.createSQLQuery(hql);
+			List<Object[]> data = query.list();
+			for (Object[] object : data) {
+				outputRowBean = new SanPhamOutputRowBean();
+				outputRowBean.setIdSanPham(SMSComons.convertString(object[0]));
+				outputRowBean.setTenSP(SMSComons.convertString(object[1]));
+				outputRowBean.setIdCuaHang(SMSComons.convertString(object[2]));
+				outputRowBean.setIdLoaiSP(SMSComons.convertString(object[3]));
+				outputRowBean.setGiaMua(SMSComons.convertString(object[4]));
+				outputRowBean.setGiaBan(SMSComons.convertString(object[5]));
+				outputRowBean.setHinh((byte[]) object[6]);
+				outputRowBean.setMoTa(SMSComons.convertString(object[7]));
+				outputRowBean.setTrangThai(SMSComons.convertString(object[8]));
+				outputRowBean.setNgayTao(SMSComons.convertString(object[9]));
+				outputRowBean.setNgayChinhSua(SMSComons.convertString(object[10]));
+				outputBean.getLst().add(outputRowBean);
+			}
+			session.getTransaction().commit();
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		} finally {
+			session.flush();
+			session.clear();
+			session.close();
+		}
+		return outputBean;
+	}
 	public SanPhamOutputBean getProductByIdDKM(SanPhamInputBean inputBean){
 		Session session = HibernateUtil.getSessionDAO();
 		String hql = getSQLProductByIdDKM(inputBean.getPathJSP());
@@ -347,6 +389,38 @@ public class CreateTableProductDAO {
 				outputRowBean.setNgayChinhSua(SMSComons.convertString(object[10]));
 				outputRowBean.setTenLoaiSP(SMSComons.convertString(object[11]));
 				outputBean.getLst().add(outputRowBean);
+			}
+			session.getTransaction().commit();
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		} finally {
+			session.flush();
+			session.clear();
+			session.close();
+		}
+		return outputBean;
+	}
+	
+	
+	/**
+	 * 
+	 * 
+	 * @return
+	 * @throws IOException 
+	 */
+	public ImageOutputBean getImage(String pathJSP, String table, String id) {
+		Session session = HibernateUtil.getSessionDAO();
+		String hql = getSQLImage(pathJSP);
+		ImageOutputBean outputBean = new ImageOutputBean();
+		try {
+			session.getTransaction().begin();
+			SQLQuery query = session.createSQLQuery(hql);
+			query.setParameter(0, id);
+			List<Object[]> data = query.list();
+			for (Object[] object : data) {
+				outputBean.setId(SMSComons.convertString(object[0]));
+				outputBean.setHinh((byte[]) object[1]);
 			}
 			session.getTransaction().commit();
 		} catch (HibernateException e) {
@@ -516,6 +590,23 @@ public class CreateTableProductDAO {
 	}
 	
 	/**
+	 * get Image
+	 * @return
+	 */
+	private String getSQLImage(String pathJSP) {
+		String tableName = pathJSP+"_PRODUCT";
+		StringBuffer sb = new StringBuffer();
+		sb.append("  SELECT                                 ");
+		sb.append("   ID_SP		                            ");
+		sb.append("  ,HINH                                  ");
+		sb.append("  FROM "+tableName+" product         	");
+		sb.append("  WHERE  product.ID_SP = ?       	");
+		
+		return sb.toString();
+	}
+	
+	
+	/**
 	 * getSQlMaxIdStoreOwner
 	 * @return
 	 */
@@ -539,6 +630,29 @@ public class CreateTableProductDAO {
 		return sb.toString();
 	}
 	
+/**
+	 * getSQlMaxIdStoreOwner
+	 * @return
+	 */
+	private String getSQLProductByListId(String pathJSP, String listId) {
+		String tableName = pathJSP+"_PRODUCT";
+		StringBuffer sb = new StringBuffer();
+		sb.append("  SELECT                                 ");
+		sb.append("   ID_SP		                            ");
+		sb.append("  ,TEN_SP 	                            ");
+		sb.append("  ,ID_CUAHANG                            ");
+		sb.append("  ,ID_LOAI_SP                            ");
+		sb.append("  ,GIA_MUA 	                            ");
+		sb.append("  ,GIA_BAN 	                            ");
+		sb.append("  ,HINH                                  ");
+		sb.append("  ,MO_TA                                 ");
+		sb.append("  ,TRANG_THAI                            ");
+		sb.append("  ,NGAY_TAO 	                            ");
+		sb.append("  ,NGAY_CHINH_SUA                        ");
+		sb.append("  FROM "+tableName+"          			");
+		sb.append("  WHERE ID_SP IN (" + listId + ")        ");
+		return sb.toString();
+	}
 	private String getSQLProductByIdDKM(String pathJSP) {
 		String tableName = pathJSP+"_PRODUCT";
 		StringBuffer sb = new StringBuffer();
