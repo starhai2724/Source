@@ -541,7 +541,7 @@ public class CreateTableProductDAO {
 	
 	private String getSQLProductByIdDKM(String pathJSP) {
 		String tableName = pathJSP+"_PRODUCT";
-/*		StringBuffer sb = new StringBuffer();
+		StringBuffer sb = new StringBuffer();
 		sb.append("  SELECT                                 ");
 		sb.append("   ID_SP		                            ");
 		sb.append("  ,TEN_SP 	                            ");
@@ -552,19 +552,6 @@ public class CreateTableProductDAO {
 		sb.append("  ,TEN_LOAI_SP 	                        ");
 		sb.append("  FROM "+tableName+"          			");
 		sb.append("  WHERE ID_DKM = ?          			");
-		sb.append("  INNER JOIN "+pathJSP+"_loai_sp loaiSP  ");
-		sb.append("  ON product.ID_LOAI_SP = loaiSP.ID_LOAI_SP          			");*/
-		
-		StringBuffer sb = new StringBuffer();
-		sb.append("  SELECT                                 ");
-		sb.append("   ID_SP		                            ");
-		sb.append("  ,TEN_SP 	                            ");
-		sb.append("  ,product.ID_LOAI_SP                            ");
-		sb.append("  ,GIA_MUA 	                            ");
-		sb.append("  ,GIA_BAN 	                            ");
-		sb.append("  ,GIA_BAN_KM                            ");
-		sb.append("  ,TEN_LOAI_SP                        	");
-		sb.append("  FROM "+tableName+" product         	");
 		sb.append("  INNER JOIN "+pathJSP+"_loai_sp loaiSP  ");
 		sb.append("  ON product.ID_LOAI_SP = loaiSP.ID_LOAI_SP          			");
 		return sb.toString();
