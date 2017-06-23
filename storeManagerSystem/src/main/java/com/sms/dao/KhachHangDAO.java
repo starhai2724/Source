@@ -265,6 +265,34 @@ public class KhachHangDAO {
 		return lst;
 	}
 	
+	public boolean checkExistSDT(String pathJSP, String sdt){
+		Session session = HibernateUtil.getSessionDAO();
+		String hql = getSQLCheckExistSDT(pathJSP);
+		boolean result = false;
+		try {
+			session.getTransaction().begin();
+			SQLQuery query = session.createSQLQuery(hql);
+			query.setParameter(0, sdt);
+			List<Object[]> data = query.list();
+			for (Object object : data) {
+				if(!SMSComons.isNull(object)){
+					result = true;
+				}
+			}
+			session.getTransaction().commit();
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		} finally {
+			session.flush();
+			session.clear();
+			session.close();
+		}
+		return result;
+	}
+	
+	
+	
 	// ----------------------------------------------------------------------------------------------------------
 	
 	
@@ -400,7 +428,21 @@ public class KhachHangDAO {
 		return sb.toString();
 	}
 	
+	/**
+	 * getSQLCheckExistSDT
+	 * @return
+	 */
+	private String getSQLCheckExistSDT(String pathJSP) {
+		String tableName = pathJSP+"_KHACH_HANG";
+		StringBuffer sb = new StringBuffer();
+		sb.append("  SELECT  SDT ");
+		sb.append("  FROM "+tableName+"  ");
+		sb.append("  WHERE SDT = ?  ");
+		return sb.toString();
+	}
 
+	
+	
 	// ----------------------------------------------------------------------------------------------------------
 
 	

@@ -19,7 +19,6 @@ public class SMSComons {
 		if (null != obj) {
 			return false;
 		}
-
 		return true;
 	}
 

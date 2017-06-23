@@ -41,7 +41,7 @@
 									
 								</div>
 								<div>
-									<input type="button" class="btn btn-lg btn-success btn-block" ng-click="btnLogin();" value="Đăng nhập">
+									<input type="button" id = "btnLogin" class="btn btn-lg btn-success btn-block" ng-click="btnLogin();" value="Đăng nhập" onkeydown = "if (event.keyCode == 13)document.getElementById('btnLogin').click()">
 									<input type="button"  class="btn btn-lg btn-success btn-block" value="Hủy">
 								</div>
 							</fieldset>

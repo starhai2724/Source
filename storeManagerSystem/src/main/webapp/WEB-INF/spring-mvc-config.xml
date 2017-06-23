@@ -30,8 +30,9 @@
 			<value>D:\\THISIS\\image</value>	
 		</constructor-arg>
 	</bean>
-
-
+	
+	<bean id="multipartResolver"
+    class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 	<!-- <mvc:resources mapping="/js/**" location="/WEB-INF/views/js/" /> -->
 
 	<mvc:annotation-driven />

@@ -60,7 +60,6 @@ public class ClientRegisterStoreInfomationController {
 		for(PathJSPOutputRowBean rowBean: pathJSPOutputBean.getLst()){
 			form.getLstCategory().put(rowBean.getIdPathJSP(), rowBean.getName());
 		}
-		System.out.println("catergory: "+ form.getLstCategory().get("01"));
 		
 		RegisterUserForm registerUserForm = (RegisterUserForm) session.getAttribute("registerUserForm");
 		// check validation (true mean exist)

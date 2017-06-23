@@ -41,8 +41,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="container">
 				<div class="header-top-left">
 					<ul>
-						<li><a href="/storeManagerSystem/${LayoutForm.pathJSP }/dangkitaikhoan"><span class="glyphicon glyphicon-user"> </span>Đăng nhập</a></li>
-						<li><a href="/storeManagerSystem/${LayoutForm.pathJSP }/dangkitaikhoan"><span class="glyphicon glyphicon-lock"> </span>Tạo tài khoản</a></li>			
+						<li><a href="account.html"><span class="glyphicon glyphicon-user"> </span>Đăng nhập</a></li>
+						<li><a href="register.html"><span class="glyphicon glyphicon-lock"> </span>Tạo tài khoản</a></li>			
 					</ul>
 				</div>
 				<div class="header-right">
@@ -51,6 +51,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<h3> <span ng-model = "cartPrice" >{{cartPrice}}</span>(<span ng-model = "cartQuantity"  >{{cartQuantity}}</span>)<img src="/storeManagerSystem/view/fontend_index2/images/bag.png" alt=""></h3>
 							</a>	
 							<p><a ng-click="btnCart();" class="simpleCart_empty">Giỏ hàng</a></p>
+							<p><a ng-click="btnCart();" class="simpleCart_empty">Thanh Toán</a></p>
 							<div class="clearfix"> </div>
 						</div>
 				</div>
@@ -92,71 +93,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--/.navbar-->
 </div>
 </div>
-	<div class="banner">
-		<div class="container">
-<div class="banner-bottom">
-	<div class="banner-bottom-left">
-		<h2>B<br>U<br>Y</h2>
-	</div>
-	<div class="banner-bottom-right">
-		<div  class="callbacks_container">
-					<ul class="rslides" id="slider4">
-					<li>
-								<div class="banner-info">
-									<h3>Đơn giản</h3>
-									<p>Bắt đầu mua sắm...</p>
-								</div>
-							</li>
-							<li>
-								<div class="banner-info">
-								   <h3>Thời trang Online</h3>
-									<p>Bắt đầu mua sắm...</p>
-								</div>
-							</li>
-							<li>
-								<div class="banner-info">
-								  <h3>Giỏ của bạn</h3>
-									<p>Bắt đầu mua sắm...</p>
-								</div>								
-							</li>
-						</ul>
-					</div>
-					<!--banner-->
-	  			<script src="/storeManagerSystem/view/fontend_index2/js/responsiveslides.min.js"></script>
-			 <script>
-			    // You can also use "$(window).load(function() {"
-			    $(function () {
-			      // Slideshow 4
-			      $("#slider4").responsiveSlides({
-			        auto: true,
-			        pager:true,
-			        nav:false,
-			        speed: 500,
-			        namespace: "callbacks",
-			        before: function () {
-			          $('.events').append("<li>before event fired.</li>");
-			        },
-			        after: function () {
-			          $('.events').append("<li>after event fired.</li>");
-			        }
-			      });
-			
-			    });
-			  </script>
-	</div>
-	<div class="clearfix"> </div>
-</div>
-<!--Hai.NT (S)  -->
-	<!-- <div class="shop">
-		<a href="single.html">SHOP COLLECTION NOW</a>
-	</div> -->
-<!--Hai.NT (E)  -->
-	</div>
-		</div>
 		<!-- content-section-starts-here -->
 		<div class="container">
 			<div class="main-content">
-				<div class="online-strip">
+				<!-- <div class="online-strip">
 					<div class="col-md-4 follow-us">
 						<h3>Liên kết  : <a class="twitter" href="#"></a><a class="facebook" href="#"></a></h3>
 					</div>
@@ -175,20 +115,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<h3>Tel:999 4567 8902</h3>
 					</div>
 					<div class="clearfix"></div>
-				</div>
+				</div> -->
 				<div class="products-grid">
 				<header>
-					<h3 class="head text-center">Sản phẩm mới nhất</h3>
+					<div align="left">
+						<input type="button" name="" class="btn btn-info " ng-click ="btnBuyCart()" value="Thanh toán">
+					</div>
 				</header>
 				<!--San pham (S)  ----------------------------------------------------------------------------------------------------------------------------------------------->
 				<c:forEach var="items" items="${LayoutForm.products }">
-					<div class="col-md-4 product simpleCart_shelfItem text-center">
+					<div class="col-md-4 product simpleCart_shelfItem text-center" id="sanPham${items.idSanPham }">
 						<a href="single.html"><img src="/storeManagerSystem/myImage/imageDisplay/${items.idSanPham}" alt="" /></a>
 						<div class="mask">
 							<a href="single.html">Chi tiết</a>
 						</div>
 						<a class="product_name" href="single.html">${items.tenSP}</a>
-						<p><a class="item_add" ng-click="btnPurchase('${items.giaBan}','${items.idSanPham} ')"><i></i> <span class="item_price">${items.giaBan}</span></a></p>
+						<p><span class="glyphicon glyphicon-trash" ng-click="btnRemove('${items.idSanPham }', '${items.giaBan }')" data-toggle="tooltip" data-original-title="Xóa"></span><span class="item_price">${items.giaBan}</span></p>
 					</div>
 				</c:forEach>
 				<!--San pham (E) --------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -197,90 +139,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 
 		</div>
-		<!-- San pham khuyen mai (S)  -->	
-		<!-- <div class="other-products">
-		<div class="container">
-			<h3 class="like text-center">Sản phẩm khác</h3>        			
-				     <ul id="flexiselDemo3">
-						<li><a href="single.html"><img src="/storeManagerSystem/view/fontend_index2/images/l1.jpg" class="img-responsive" alt="" /></a>
-							<div class="product liked-product simpleCart_shelfItem">
-							<a class="like_name" href="single.html">perfectly simple</a>
-							<p><a class="item_add" href="#"><i></i> <span class=" item_price">$759</span></a></p>
-							</div>
-						</li>
-						<li><a href="single.html"><img src="/storeManagerSystem/view/fontend_index2/images/l2.jpg" class="img-responsive" alt="" /></a>						
-							<div class="product liked-product simpleCart_shelfItem">
-							<a class="like_name" href="single.html">praising pain</a>
-							<p><a class="item_add" href="#"><i></i> <span class=" item_price">$699</span></a></p>
-							</div>
-						</li>
-						<li><a href="single.html"><img src="/storeManagerSystem/view/fontend_index2/images/l3.jpg" class="img-responsive" alt="" /></a>
-							<div class="product liked-product simpleCart_shelfItem">
-							<a class="like_name" href="single.html">Neque porro</a>
-							<p><a class="item_add" href="#"><i></i> <span class=" item_price">$329</span></a></p>
-							</div>
-						</li>
-						<li><a href="single.html"><img src="/storeManagerSystem/view/fontend_index2/images/l4.jpg" class="img-responsive" alt="" /></a>
-							<div class="product liked-product simpleCart_shelfItem">
-							<a class="like_name" href="single.html">equal blame</a>
-							<p><a class="item_add" href="#"><i></i> <span class=" item_price">$499</span></a></p>
-							</div>
-						</li>
-						<li><a href="single.html"><img src="/storeManagerSystem/view/fontend_index2/images/l5.jpg" class="img-responsive" alt="" /></a>
-							<div class="product liked-product simpleCart_shelfItem">
-							<a class="like_name" href="single.html">perfectly simple</a>
-							<p><a class="item_add" href="#"><i></i> <span class=" item_price">$649</span></a></p>
-							</div>
-						</li>
-				     </ul>
-				    <script type="text/javascript">
-					 $(window).load(function() {
-						$("#flexiselDemo3").flexisel({
-							visibleItems: 4,
-							animationSpeed: 1000,
-							autoPlay: true,
-							autoPlaySpeed: 3000,    		
-							pauseOnHover: true,
-							enableResponsiveBreakpoints: true,
-					    	responsiveBreakpoints: { 
-					    		portrait: { 
-					    			changePoint:480,
-					    			visibleItems: 1
-					    		}, 
-					    		landscape: { 
-					    			changePoint:640,
-					    			visibleItems: 2
-					    		},
-					    		tablet: { 
-					    			changePoint:768,
-					    			visibleItems: 3
-					    		}
-					    	}
-					    });
-					    
-					});
-				   </script>
-				   <script type="text/javascript" src="/storeManagerSystem/view/fontend_index2/js/jquery.flexisel.js"></script>
-				   </div>
-				   </div> -->
-			<!-- San pham khuyen mai (E)  -->	   
-		<!-- content-section-ends-here -->
-		<!-- Hai.NT (S) -->
-		<%-- <div class="news-letter">
-			<div class="container">
-				<div class="join">
-					<h6>JOIN OUR MAILING LIST</h6>
-					<div class="sub-left-right">
-						<form>
-							<input type="text" value="Enter Your Email Here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Your Email Here';}" />
-							<input type="submit" value="SUBSCRIBE" />
-						</form>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-			</div>
-		</div> --%>
-		<!-- Hai.NT (E) -->
 		<div class="footer">
 		<div class="container">
 		 <div class="footer_top">

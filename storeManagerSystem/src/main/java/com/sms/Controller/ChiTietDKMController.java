@@ -118,6 +118,7 @@ public class ChiTietDKMController {
 				inputRowBean.setNgayTao(SMSComons.getDate());
 				//insert
 				int cnt = CreateTableProductDAO.intances.insertSPKM(inputRowBean);
+				System.out.println("cnt: "+ cnt);
 				
 				if(cnt == 1){
 					form.setMessage("Xử lý đăng kí thành công.");
@@ -148,7 +149,6 @@ public class ChiTietDKMController {
 		inputBean.setPathJSP(pathJSP);
 		inputBean.setId_DKM(idDKM);
 		SanPhamOutputBean outputBean = CreateTableProductDAO.intances.getProductByIdDKM(inputBean);
-		
 		
 		ProductFormRow formRow; 
 		int cnt = 1;

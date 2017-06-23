@@ -1,5 +1,7 @@
 package com.sms.Controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,8 +13,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.sms.OutputRows.SanPhamOutputRowBean;
 import com.sms.common.SMSComons;
@@ -39,8 +43,7 @@ public class ProductController {
 	
 	@RequestMapping(value  = "/product/init")
 	public String init(@ModelAttribute("ProductForm") ProductForm form, HttpSession session){
-		//String pathJSP = (String)session.getAttribute("pathURL"); 
-		String pathJSP = "cuahangthoitrang";
+		String pathJSP = (String)session.getAttribute("pathURL"); 
 		//reset
 		form.setIdSanPham("");
 		form.setTenSP("");
@@ -97,11 +100,9 @@ public class ProductController {
 	
 	
 	@RequestMapping(value ="/product/insert", method = RequestMethod.POST)
-	public String insert(@ModelAttribute("ProductForm") ProductForm form, HttpSession session) {
-		//System.out.println("Test");
+	public String insert(@ModelAttribute("ProductForm") ProductForm form, @RequestParam("file") MultipartFile file, HttpSession session) {
 		//get domain
-		//String pathJSP = (String)session.getAttribute("pathURL");
-		String pathJSP = "cuahangthoitrang";
+		String pathJSP = (String)session.getAttribute("pathURL");
 		
 		SanPhamInputBean input = new SanPhamInputBean();
 		input.setPathJSP(pathJSP);
@@ -113,7 +114,12 @@ public class ProductController {
 		input.setTrangThai("0");
 		input.setMoTa(form.getMoTa());
 		//Image
-		byte[] bFile = new byte[(int) form.getHinh().length()];
+		byte[] bFile = null;
+		try {
+			bFile = file.getBytes();
+		} catch (IOException e) {
+		
+		}
 		input.setHinh(bFile); 
 		input.setNgayTao(SMSComons.getDate());
 		//insert
@@ -135,10 +141,9 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value ="/product/update", method = RequestMethod.POST)
-	public String update(@ModelAttribute("ProductForm") ProductForm form, HttpSession session){
+	public String update(@ModelAttribute("ProductForm") ProductForm form, @RequestParam("file") MultipartFile file , HttpSession session){
 		//get domain
-		//String pathJSP = (String)session.getAttribute("pathURL");
-		String pathJSP = "cuahangthoitrang";
+		String pathJSP = (String)session.getAttribute("pathURL");
 		
 		SanPhamInputBean input = new SanPhamInputBean();
 		input.setPathJSP(pathJSP);
@@ -150,7 +155,12 @@ public class ProductController {
 		input.setTrangThai("0");
 		input.setMoTa(form.getMoTa());
 		//Image
-		byte[] bFile = new byte[(int) form.getHinh().length()];
+		byte[] bFile = null;
+		try {
+			bFile = file.getBytes();
+		} catch (IOException e) {
+		
+		}
 		input.setHinh(bFile); 
 		input.setNgayChinhSua(SMSComons.getDate());
 		
@@ -176,8 +186,7 @@ public class ProductController {
 	@RequestMapping(value="product/getProductById/{id}", method = RequestMethod.POST)
 	public String getProductById(@ModelAttribute("ProductForm") ProductForm form, @PathVariable("id") String id, HttpSession session){
 		//get domain
-		//String pathJSP = (String)session.getAttribute("pathURL");
-		String pathJSP = "cuahangthoitrang";
+		String pathJSP = (String)session.getAttribute("pathURL");
 		
 		SanPhamInputBean input = new SanPhamInputBean();
 		input.setPathJSP(pathJSP);
@@ -230,8 +239,7 @@ public class ProductController {
 	@RequestMapping(value="/product/delete/{id}")
 	public String delete(@ModelAttribute("ProductForm") ProductForm form, @PathVariable("id") String id, HttpSession session){
 		//get domain
-		//String pathJSP = (String)session.getAttribute("pathURL");
-		String pathJSP = "cuahangthoitrang";
+		String pathJSP = (String)session.getAttribute("pathURL");
 		SanPhamInputBean inputBean = new SanPhamInputBean();
 		inputBean.setPathJSP(pathJSP);
 		inputBean.setIdSanPham(id);

@@ -314,7 +314,7 @@ public class DotKhuyenMaiDAO {
 	 */
 	private String getSQLUpdate(String pathJSP) {
 		StringBuffer sb = new StringBuffer();
-		String tableName = pathJSP+"_DOTKHUYENMAI";
+		String tableName = pathJSP + "_DOTKHUYENMAI";
 		sb.append("  UPDATE  "+tableName+"     		");
 		sb.append("  		SET TEN_DKM 	= ?	        ");
 		sb.append("  		,LOAI_KM 			= ?         			");
@@ -335,7 +335,7 @@ public class DotKhuyenMaiDAO {
 	 * @return
 	 */
 	private String getSQLAll(String pathJSP) {
-		String tableName = "cuahangthoitrang_DOTKHUYENMAI";
+		String tableName = pathJSP + "_DOTKHUYENMAI";
 		StringBuffer sb = new StringBuffer();
 		sb.append("  SELECT                                 ");
 		sb.append("  		 MA_DKM		       ");
@@ -358,7 +358,7 @@ public class DotKhuyenMaiDAO {
 	 * @return
 	 */
 	private String getSQLById(String pathJSP) {
-		String tableName = pathJSP+"_DOTKHUYENMAI";
+		String tableName = pathJSP + "_DOTKHUYENMAI";
 		StringBuffer sb = new StringBuffer();
 		sb.append("  SELECT                                 ");
 		sb.append("  		 MA_DKM		       ");
@@ -439,7 +439,8 @@ public class DotKhuyenMaiDAO {
 		String tableName = pathJSP+"_DOTKHUYENMAI";
 		sb.append("   DROP TABLE "+tableName+"            ");
 		return sb.toString();
-	}	
+	}
+	
 	public static void main(String[] args) {
 		DotKhuyenMaiDAO cr = new DotKhuyenMaiDAO();
 		/*DotKhuyenMaiInputBean inputBean = new DotKhuyenMaiInputBean();
@@ -461,8 +462,9 @@ public class DotKhuyenMaiDAO {
 		inputBean.setDk_tongSL(outputRowBean.getDk_tongSL());
 		cr.insert("cuahangthoitrang");*/
 		
-		List<DotKhuyenMaiOutputRowBean> lst =  cr.getAll("cuahangthoitrang");
-		System.out.println("size : " +lst.size());
+//		List<DotKhuyenMaiOutputRowBean> lst =  cr.getAll("cuahangthoitrang");
+//		System.out.println("size : " +lst.size());
 		//cr.createTable("cuahangthoitrang");
+		cr.createTable("cuahangthoitrang");
 	}
 }

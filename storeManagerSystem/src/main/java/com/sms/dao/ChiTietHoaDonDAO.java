@@ -9,16 +9,16 @@ import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.sms.OutputRows.ChiTietHoaDonOutputRowBean;
 import com.sms.OutputRows.HoaDonOutputRowBean;
-import com.sms.OutputRows.KhachHangOutputRowBean;
 import com.sms.common.SMSComons;
 import com.sms.dao.common.HibernateUtil;
+import com.sms.input.ChiTietHoaDonInputBean;
 import com.sms.input.HoaDonInputBean;
-import com.sms.input.KhachHangInputBean;
 
-public class HoaDonDAO {
+public class ChiTietHoaDonDAO {
 	
-	public static HoaDonDAO intances = new HoaDonDAO();
+	public static ChiTietHoaDonDAO intances = new ChiTietHoaDonDAO();
 	
 	/**
 	 * function mean create table product by pathJSP of store
@@ -66,11 +66,12 @@ public class HoaDonDAO {
 		return cnt;
 	}
 	
+	
 	/**
 	 * function insert
 	 * 
 	 */
-	public int insert(HoaDonInputBean inputBean){
+	public int insert(ChiTietHoaDonInputBean inputBean){
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
@@ -82,13 +83,12 @@ public class HoaDonDAO {
 		try {
 			SQLQuery query = session.createSQLQuery(hql);
 			query.setParameter(0, (id + 1));
-			query.setParameter(1, inputBean.getIdKhachHang());
-			query.setParameter(2, inputBean.getNgayLap());
-			query.setParameter(3, inputBean.getSoLuongSP());
-			query.setParameter(4, inputBean.getDiemTichLuy());
-			query.setParameter(5, inputBean.getTongDiemTichLuy());
-			query.setParameter(6, inputBean.getTienKhuyenMai());
-			query.setParameter(7, inputBean.getTongTien());
+			query.setParameter(1, inputBean.getIdHoaDon());
+			query.setParameter(2, inputBean.getIdSanPham());
+			query.setParameter(3, inputBean.getLoaiSanPham());
+			query.setParameter(4, inputBean.getSoLuongSP());
+			query.setParameter(5, inputBean.getGiaMua());
+			query.setParameter(6, inputBean.getThanhTien());
 			cnt = query.executeUpdate();
 			tx.commit();
 		} catch (Exception e) {
@@ -102,7 +102,7 @@ public class HoaDonDAO {
 	 * function update 
 	 * 
 	 */
-	public int update(HoaDonInputBean inputBean){
+	public int update(ChiTietHoaDonInputBean inputBean){
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
@@ -111,14 +111,12 @@ public class HoaDonDAO {
 		String hql = getSQLUpdate(inputBean.getPathJSP());
 		try {
 			SQLQuery query = session.createSQLQuery(hql);
-			query.setParameter(0, inputBean.getIdKhachHang());
-			query.setParameter(1, inputBean.getNgayLap());
+			query.setParameter(0, inputBean.getIdSanPham());
+			query.setParameter(1, inputBean.getLoaiSanPham());
 			query.setParameter(2, inputBean.getSoLuongSP());
-			query.setParameter(3, inputBean.getDiemTichLuy());
-			query.setParameter(4, inputBean.getTongDiemTichLuy());
-			query.setParameter(5, inputBean.getTienKhuyenMai());
-			query.setParameter(6, inputBean.getTongTien());
-			query.setParameter(7, inputBean.getIdHoaDon());
+			query.setParameter(3, inputBean.getGiaMua());
+			query.setParameter(4, inputBean.getThanhTien());
+			query.setParameter(5, inputBean.getIdChiTietHoaDon());
 			cnt = query.executeUpdate();
 			tx.commit();
 		} catch (Exception e) {
@@ -128,11 +126,12 @@ public class HoaDonDAO {
 		return cnt;
 	}
 	
+	
 	/**
 	 * function delete 
 	 * 
 	 */
-	public int deleteById(HoaDonInputBean inputBean){
+	public int deleteById(ChiTietHoaDonInputBean inputBean){
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
@@ -141,7 +140,7 @@ public class HoaDonDAO {
 		String hql = getSQlDeleteById(inputBean.getPathJSP());
 		try {
 			SQLQuery query = session.createSQLQuery(hql);
-			query.setParameter(0, inputBean.getIdHoaDon());
+			query.setParameter(0, inputBean.getIdChiTietHoaDon());
 			cnt = query.executeUpdate();
 			tx.commit();
 		} catch (Exception e) {
@@ -186,26 +185,26 @@ public class HoaDonDAO {
 	 * @return
 	 * @throws IOException 
 	 */
-	public List<HoaDonOutputRowBean> getById(HoaDonInputBean inputBean){
+	public List<ChiTietHoaDonOutputRowBean> getById(ChiTietHoaDonInputBean inputBean){
 		Session session = HibernateUtil.getSessionDAO();
 		String hql = getSQLById(inputBean.getPathJSP());
-		List<HoaDonOutputRowBean> lst = new ArrayList<>();
-		HoaDonOutputRowBean outputRowBean;
+		List<ChiTietHoaDonOutputRowBean> lst = new ArrayList<>();
+		ChiTietHoaDonOutputRowBean outputRowBean;
 		try {
 			session.getTransaction().begin();
 			SQLQuery query = session.createSQLQuery(hql);
 			query.setParameter(0, inputBean.getIdHoaDon());
 			List<Object[]> data = query.list();
 			for (Object[] object : data) {
-				outputRowBean = new HoaDonOutputRowBean();
-				outputRowBean.setIdHoaDon(SMSComons.convertString(object[0]));
-				outputRowBean.setIdKhachHang(SMSComons.convertString(object[1]));
-				outputRowBean.setNgayLap(SMSComons.convertString(object[2]));
-				outputRowBean.setSoLuongSP(SMSComons.convertString(object[3]));
-				outputRowBean.setDiemTichLuy(SMSComons.convertString(object[4]));
-				outputRowBean.setTongDiemTichLuy(SMSComons.convertString(object[5]));
-				outputRowBean.setTienKhuyenMai(SMSComons.convertString(object[6]));
-				outputRowBean.setTongTien(SMSComons.convertString(object[7]));
+				outputRowBean = new ChiTietHoaDonOutputRowBean();
+				outputRowBean.setIdChiTietHoaDon(SMSComons.convertString(object[0]));
+				outputRowBean.setIdHoaDon(SMSComons.convertString(object[1]));
+				outputRowBean.setIdSanPham(SMSComons.convertString(object[2]));
+				outputRowBean.setLoaiSanPham(SMSComons.convertString(object[3]));
+				outputRowBean.setSoLuongSP(SMSComons.convertString(object[4]));
+				outputRowBean.setGiaMua(SMSComons.convertString(object[5]));
+				outputRowBean.setThanhTien(SMSComons.convertString(object[6]));
+				outputRowBean.setTenSanPham(SMSComons.convertString(object[7]));
 				lst.add(outputRowBean);
 			}
 			session.getTransaction().commit();
@@ -269,16 +268,15 @@ public class HoaDonDAO {
 	 */
 	private String getSQLInsert(String pathJSP) {
 		StringBuffer sb = new StringBuffer();
-		String tableName = pathJSP+"_HOADON";
+		String tableName = pathJSP+"_CHI_TIET_HOA_DON";
 		sb.append("  INSERT INTO "+tableName+" (    ");
-		sb.append("  		 ID_HOADON		       ");
-		sb.append("  		,ID_KHACHHANG 	           ");
-		sb.append("  		,NGAY_LAP         ");
-		sb.append("  		,SO_LUONG_SP 	       ");
-		sb.append("  		,DIEM_TICH_LUY 	       ");
-		sb.append("  		,TONG_DIEM_TICH_LUY         ");
-		sb.append("  		,TIEN_KHUYEN_MAI         ");
-		sb.append("  		,TONG_TIEN         ");
+		sb.append("  		 ID_CTHD		       ");
+		sb.append("  		,ID_HOADON 	           ");
+		sb.append("  		,ID_SP         ");
+		sb.append("  		,ID_LSP 	       ");
+		sb.append("  		,SO_LUONG 	       ");
+		sb.append("  		,GIA_MUA         ");
+		sb.append("  		,THANH_TIEN         ");
 		sb.append("  		)                  ");
 		sb.append("  		VALUES (           ");
 		sb.append("  		  ?                ");
@@ -288,9 +286,7 @@ public class HoaDonDAO {
 		sb.append("  		 ,?                ");
 		sb.append("  		 ,?                ");
 		sb.append("  		 ,?                ");
-		sb.append("  		 ,?                ");
 		sb.append("  		)                  ");
-		
 		return sb.toString();
 	}	
 	
@@ -300,15 +296,14 @@ public class HoaDonDAO {
 	 */
 	private String getSQLUpdate(String pathJSP) {
 		StringBuffer sb = new StringBuffer();
-		String tableName = pathJSP+"_HOADON";
+		String tableName = pathJSP+"_CHI_TIET_HOA_DON";
 		sb.append("  UPDATE  "+tableName+"     		");
-		sb.append("  		SET ID_KHACHHANG 	= ?	        ");
-		sb.append("  		,SO_LUONG_SP 			= ?         			");
-		sb.append("  		,DIEM_TICH_LUY 			= ?       			");
-		sb.append("  		,TONG_DIEM_TICH_LUY 				= ?      	 			");
-		sb.append("  		,TIEN_KHUYEN_MAI       		= ?  			");
-		sb.append("  		,TONG_TIEN      = ?   		");
-		sb.append("  		 WHERE ID_HOADON = ?        ");
+		sb.append("  		SET ID_SP 	= ?	        ");
+		sb.append("  		,ID_LSP 			= ?         			");
+		sb.append("  		,SO_LUONG 			= ?       			");
+		sb.append("  		,GIA_MUA 				= ?      	 			");
+		sb.append("  		,THANH_TIEN       		= ?  			");
+		sb.append("  		 WHERE ID_CTHD = ?        ");
 		return sb.toString();
 	}
 	
@@ -317,7 +312,7 @@ public class HoaDonDAO {
 	 * @return
 	 */
 	private String getSQLAll(String pathJSP) {
-		String tableName = pathJSP+"_HOADON";
+		String tableName = pathJSP+"_CHI_TIET_HOA_DON";
 		StringBuffer sb = new StringBuffer();
 		sb.append("  SELECT                                 ");
 		sb.append("   ID_HOADON		                            ");
@@ -337,19 +332,25 @@ public class HoaDonDAO {
 	 * @return
 	 */
 	private String getSQLById(String pathJSP) {
-		String tableName = pathJSP+"_HOADON";
+		String tableName = pathJSP+"_CHI_TIET_HOA_DON";
+		String tableLoaiSanPham = pathJSP +"_LOAI_SP";
+		String tableSanPham = pathJSP +"_PRODUCT";
 		StringBuffer sb = new StringBuffer();
-		sb.append("  SELECT                                 ");
-		sb.append("   ID_HOADON		                            ");
-		sb.append("  ,ID_KHACHHANG 	                            ");
-		sb.append("  ,NGAY_LAP                            ");
-		sb.append("  ,SO_LUONG_SP                            ");
-		sb.append("  ,DIEM_TICH_LUY 	                            ");
-		sb.append("  ,TONG_DIEM_TICH_LUY 	                            ");
-		sb.append("  ,TIEN_KHUYEN_MAI                                  ");
-		sb.append("  ,TONG_TIEN                                 ");
-		sb.append("  FROM "+tableName+"          			");
-		sb.append("  WHERE ID_HOADON = ?          			");
+		sb.append("  SELECT                                								 ");
+		sb.append("   ID_CTHD		                            							");
+		sb.append("  ,ID_HOADON 	                            					");
+		sb.append("  ,ID_SP                            							");
+		sb.append("  ,LOAI_SP.TEN_LOAI_SP                           	 		");
+		sb.append("  ,SO_LUONG 	                           					 ");
+		sb.append("  ,GIA_MUA 	                            				");
+		sb.append("  ,THANH_TIEN                                  			");
+		sb.append("  ,SANPHAM.TEN_SP                                  			");
+		sb.append("  FROM "+tableName+" CTHD         						");
+		sb.append("  LEFT JOIN  "+tableLoaiSanPham+" LOAI_SP 				");
+		sb.append("  ON LOAI_SP.ID_LOAI_SP = CTHD.ID_LSP          			");
+		sb.append("  LEFT JOIN  "+tableSanPham+" SANPHAM 				");
+		sb.append("  ON SANPHAM.ID_SP = CTHD.ID_SP          			");
+		sb.append("  WHERE ID_HOADON = ?          								");
 		return sb.toString();
 	}
 	
@@ -359,7 +360,7 @@ public class HoaDonDAO {
 	 * @return
 	 */
 	private String getSQlMaxId(String pathJSP) {
-		String tableName = pathJSP+"_HOADON";
+		String tableName = pathJSP+"_CHI_TIET_HOA_DON";
 		StringBuffer sb = new StringBuffer();
 		sb.append("  SELECT MAX(ID_HOADON) ");
 		sb.append("  FROM "+tableName+"  ");
@@ -371,14 +372,15 @@ public class HoaDonDAO {
 	 * @return
 	 */
 	private String getSQlDeleteById(String pathJSP) {
-		String tableName = pathJSP+"_HOADON";
+		String tableName = pathJSP+"_CHI_TIET_HOA_DON";
 		StringBuffer sb = new StringBuffer();
 		sb.append("  DELETE  ");
 		sb.append("  FROM "+tableName+"  ");
-		sb.append("  WHERE ID_HOADON = ?  ");
+		sb.append("  WHERE ID_CTHD = ?  ");
 		return sb.toString();
 	}
-	
+
+	// ----------------------------------------------------------------------------------------------------------
 
 	
 	/**
@@ -387,20 +389,18 @@ public class HoaDonDAO {
 	 */
 	private String getSQLCreateTable(String pathJSP) {
 		StringBuffer sb = new StringBuffer();
-		String tableName = pathJSP+"_HOADON";
+		String tableName = pathJSP+"_CHI_TIET_HOA_DON";
 		sb.append(" CREATE TABLE "+tableName+ " (        ");
-		sb.append("  ID_HOADON	VARCHAR (6)              ");
-		sb.append(" ,ID_KHACHHANG	VARCHAR (6)              ");
-		sb.append(" ,NGAY_LAP VARCHAR(8)                ");
-		sb.append(" ,SO_LUONG_SP  VARCHAR(12)               ");
-		sb.append(" ,DIEM_TICH_LUY VARCHAR(12)                 ");
-		sb.append(" ,TONG_DIEM_TICH_LUY VARCHAR(12)            ");
-		sb.append(" ,TIEN_KHUYEN_MAI VARCHAR(12)            ");
-		sb.append(" ,TONG_TIEN VARCHAR(12)          ");
+		sb.append("  ID_CTHD	VARCHAR (6)                   ");
+		sb.append(" ,ID_HOADON	VARCHAR (6)               ");
+		sb.append(" ,ID_SP	VARCHAR (6)                   ");
+		sb.append(" ,ID_LSP	VARCHAR (6)                   ");
+		sb.append(" ,SO_LUONG VARCHAR(12)                 ");
+		sb.append(" ,GIA_MUA  VARCHAR(12)                    ");
+		sb.append(" ,THANH_TIEN  VARCHAR(12)                    ");
 		sb.append(" 	)                                ");
 		return sb.toString();
 	}
-	
 	
 	/**
 	 * delete table product
@@ -408,12 +408,11 @@ public class HoaDonDAO {
 	 */
 	private String getSQLDeleteTable(String pathJSP) {
 		StringBuffer sb = new StringBuffer();
-		String tableName = pathJSP+"_HOADON";
+		String tableName = pathJSP+"_CHI_TIET_HOA_DON";
 		sb.append("   DROP TABLE "+tableName+"            ");
 		return sb.toString();
 	}	
 	public static void main(String[] args) {
-//		HoaDonDAO cr = new HoaDonDAO();
-//		cr.createTable("cuahangthoitrang");
+		ChiTietHoaDonDAO cr = new ChiTietHoaDonDAO();
 	}
 }

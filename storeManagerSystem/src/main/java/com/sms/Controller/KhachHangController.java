@@ -5,10 +5,13 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.sms.OutputRows.KhachHangOutputRowBean;
 import com.sms.common.SMSComons;
@@ -19,12 +22,19 @@ import com.sms.formRows.KhachHangRowForm;
 import com.sms.input.KhachHangInputBean;
 
 @Controller
+@SessionAttributes(value ="KhachHangForm", types = {KhachHangForm.class})
 public class KhachHangController {
 
 	public static final String CUSTOMER = "customer.jsp";
 	
+	@ModelAttribute("KhachHangForm")
+	public KhachHangForm getKhachHangForm() {
+	  return new KhachHangForm(); //or however you create a default
+	}
+	
+	
 	@RequestMapping(value  = "/customer/init")
-	public String init(@ModelAttribute("KhachHangForm") KhachHangForm form, HttpSession session){
+	public String init(@ModelAttribute("KhachHangForm") KhachHangForm form, HttpSession session, Model model){
 		String pathJSP = (String)session.getAttribute("pathURL"); 
 		//reset
 		form.setIdKhachHang("");
@@ -41,6 +51,7 @@ public class KhachHangController {
 		//init data
 		initData(form, pathJSP);
 		
+//		model.addAttribute("KhachHangForm", form);
 		session.setAttribute("PAGEIDSTORE", CUSTOMER);
 		return  SystemCommon.ADMIN_STORE;
 	}
@@ -183,6 +194,11 @@ public class KhachHangController {
 	 */
 	@RequestMapping(value="/customer/getById/{id}", method = RequestMethod.POST)
 	public String getProductById(@ModelAttribute("KhachHangForm") KhachHangForm form, @PathVariable("id") String id, HttpSession session){
+//		session.getAttribute("KhachHangForm");
+		System.out.println("formlist: "+form.getLst().size());
+		
+		System.out.println("formlist: "+form.getTenKhachHang());
+		
 		//get domain
 		String pathJSP = (String)session.getAttribute("pathURL");
 		

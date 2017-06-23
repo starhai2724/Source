@@ -66,4 +66,12 @@ public class TestController {
 		return "dangky4";
 	}
 	
+	@RequestMapping(value ="/testGioHang", method = RequestMethod.GET)	
+	public String testGioHang(){
+		return "gioHang";
+	}
+	@RequestMapping(value ="/dangky", method = RequestMethod.GET)	
+	public String dangki(){
+		return "dangKyTaiKhoan";
+	}
 }
