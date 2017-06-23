@@ -450,6 +450,8 @@ public class CreateTableProductDAO {
 		sb.append("  		,ID_LOAI_SP VARCHAR(6)         ");
 		sb.append("  		,GIA_MUA 	VARCHAR(12)           ");
 		sb.append("  		,GIA_BAN 	VARCHAR(12)           ");
+		sb.append("  		,ID_DKM 	VARCHAR(12)           ");
+		sb.append("  		,GIA_BAN_KM VARCHAR(255)           ");
 		sb.append("  		,HINH 		MEDIUMBLOB           		   ");
 		sb.append("  		,MO_TA 		TEXT           		   ");
 		sb.append("  		,TRANG_THAI VARCHAR(1)         ");
@@ -653,21 +655,22 @@ public class CreateTableProductDAO {
 		sb.append("  WHERE ID_SP IN (" + listId + ")        ");
 		return sb.toString();
 	}
+	
 	private String getSQLProductByIdDKM(String pathJSP) {
 		String tableName = pathJSP+"_PRODUCT";
 		StringBuffer sb = new StringBuffer();
 		sb.append("  SELECT                                 ");
 		sb.append("   ID_SP		                            ");
 		sb.append("  ,TEN_SP 	                            ");
-		sb.append("  ,ID_LOAI_SP                            ");
+		sb.append("  ,product.ID_LOAI_SP                            ");
 		sb.append("  ,GIA_MUA 	                            ");
 		sb.append("  ,GIA_BAN 	                            ");
 		sb.append("  ,GIA_BAN_KM 	                        ");
 		sb.append("  ,TEN_LOAI_SP 	                        ");
-		sb.append("  FROM "+tableName+"          			");
-		sb.append("  WHERE ID_DKM = ?          			");
+		sb.append("  FROM "+tableName+"     product     	");
 		sb.append("  INNER JOIN "+pathJSP+"_loai_sp loaiSP  ");
 		sb.append("  ON product.ID_LOAI_SP = loaiSP.ID_LOAI_SP          			");
+		sb.append("  WHERE ID_DKM = ?          			");
 		return sb.toString();
 	}
 	
@@ -715,8 +718,9 @@ public class CreateTableProductDAO {
 		SanPhamInputBean in = new SanPhamInputBean();
 		in.setIdSanPham("100009");
 		in.setPathJSP("cuahangthoitrang");
+		in.setId_DKM("1");
 //		cr.getProductById(in);
-		cr.deleteProductById(in);
-		
+//		cr.deleteProductById(in);
+		cr.getProductByIdDKM(in);
 	}
 }

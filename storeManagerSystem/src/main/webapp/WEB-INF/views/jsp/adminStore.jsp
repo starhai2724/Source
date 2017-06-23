@@ -69,6 +69,9 @@
           <li>
             <a href="/storeManagerSystem/bill/init"><i class="fa fa-bar-chart-o fa-fw"></i> Hóa đơn</a>
           </li>
+          <li>
+            <a href="/storeManagerSystem/dotKhuyenMai/init"><i class="fa fa-bar-chart-o fa-fw"></i> Đợt khuyến mãi</a>
+          </li>
         </ul>
       </div>
       <!-- /.sidebar-collapse -->

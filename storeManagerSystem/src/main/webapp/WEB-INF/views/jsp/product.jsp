@@ -83,6 +83,7 @@
 		<div class="row" align="right" style="width: 100%">
 			<div >
 				<input type="button" name="" class="btn btn-info " ng-click ="btnCreate()" value="Đăng kí">
+				<input type="button" name="" class="btn btn-info " ng-click ="btnPhanAnh()" value="Phản ánh">
 				<input type="button" name="" class="btn btn-info " ng-click="btnIn()" value="In">
 				<input type="button" name="" class="btn btn-info " ng-click ="btnClear()" value="Hủy">
 			</div>
@@ -141,9 +142,6 @@
                         </div>
 		</c:if>
 		<form:input class="form-control" type="hidden"  path="flagUpdate"  name="flagUpdate" ng-model ="flagUpdate" ng-init="flagUpdate='${ProductForm.flagUpdate}'" />
-			<div >
-				<input type="button" name="" class="btn btn-info " ng-click ="btnPhanAnh()" value="Phản ánh">
-			</div>
 	</form:form>		
 		<!-- /#page-wrapper -->
 	</div>
