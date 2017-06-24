@@ -108,7 +108,7 @@ public class KhachHangController {
 	public String insert(@ModelAttribute("KhachHangForm") KhachHangForm form, HttpSession session) {
 		//get domain
 		String pathJSP = (String)session.getAttribute("pathURL");
-		System.out.println("form: "+form.getLst().size());
+		
 		//input
 		KhachHangInputBean inputBean = new KhachHangInputBean();
 		inputBean.setPathJSP(pathJSP);

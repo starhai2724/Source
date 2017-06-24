@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
@@ -112,10 +113,11 @@
 										<th style="text-align: center;	width: 60px"></th>
                                     </tr>
                                 </thead>
-                                <tbody style="overflow: auto; height:50px">
+                                <tbody style="overflow: auto; height:50px" ng-model = "listSanPham" ng-init ="listSanPham = '${fn:length(ProductForm.lst)}'">
                               		  <c:forEach var="items" items="${ProductForm.lst }">
 		                                <tr class="odd gradeX">
-		                                 		<td style="text-align: center"><input type="checkbox" ng-model="checkbox${items.no}"></td>
+<%-- 		                                 		<td style="text-align: center"><input type="checkbox" ng-model="selected[${items.no}]"  ng-init ="checkbox${items.no}='false'" ng-true-value="'${items.idSanPham }'" ng-false-value="'NO'"></td> --%>
+		                                 		<td style="text-align: center"><input type="checkbox" ng-model="selected[${items.no}]"  ng-init ="selected[${items.no}]='false'" ng-true-value="'${items.idSanPham }'" ng-false-value="'NO'"></td>
 		                                        <td style="text-align: center">${items.no}</td>
 		                                        <td>${items.idSanPham}</td>
 							                     <td>${items.tenSP}</td>

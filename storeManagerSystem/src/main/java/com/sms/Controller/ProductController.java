@@ -1,6 +1,5 @@
 package com.sms.Controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -263,45 +262,23 @@ public class ProductController {
 	
 	@RequestMapping(value="product/phanAnh", method = RequestMethod.POST)
 	public String phanAnh(@ModelAttribute("ProductForm") ProductForm form, HttpSession session, Model model){
-		//get domain
-		//String pathJSP = (String)session.getAttribute("pathURL");
-		String pathJSP = "cuahangthoitrang";
 		
 		List<ProductFormRow> lst = form.getLst();
-		List<ProductFormRow> newlst = new ArrayList<ProductFormRow>();
-		ProductFormRow formRow; 
-		SanPhamOutputBean outputBean;
-		SanPhamInputBean input;
-		SanPhamOutputRowBean outputRowBean;
+		List<String> lst_idSP = new ArrayList<String>();
 		
 		if(lst != null && lst.size() > 0){
-			for(int i = 0; i< 4; i++){
+			for(int i = 0; i< 2; i++){
 				ProductFormRow row = lst.get(i);	
 				String no = row.getNo();
 				//if(row.get){ check checkbox checked
-					input = new SanPhamInputBean();
-					input.setPathJSP(pathJSP);
-					input.setIdSanPham(row.getIdSanPham());
-					
-					outputBean = CreateTableProductDAO.intances.getProductById(input);
-					outputRowBean = outputBean.getLst().get(0);
-					formRow = new ProductFormRow();
-					formRow.setIdSanPham(outputRowBean.getIdSanPham());
-					formRow.setTenSP(outputRowBean.getTenSP());
-					formRow.setGiaMua(outputRowBean.getGiaMua());
-					formRow.setGiaBan(outputRowBean.getGiaBan());
-					formRow.setMoTa(outputRowBean.getMoTa());
-					formRow.setIdLoaiSP(outputRowBean.getIdLoaiSP());
-					formRow.setTenLoaiSP(outputRowBean.getTenLoaiSP());
-					formRow.setGiaBanKM("");
-					
-					newlst.add(formRow);
+				
+					lst_idSP.add(row.getIdSanPham());
 					
 				//}
 				
 			}
 		}
-		session.setAttribute("lstPhanAnh", newlst);
+		session.setAttribute("lstPhanAnh", lst_idSP);
 		return  "redirect:/chiTietDKM/initPhanAnh";
 	}
 	

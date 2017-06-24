@@ -26,15 +26,11 @@ public class StoreDao implements InterfaceDAO {
 		try {
 			SQLQuery sqlQuery = session.createSQLQuery(hql);
 			sqlQuery.setParameter("idStoreOwner", "");
-			
-			
-			
 
 		} catch (HibernateException e) {
 		} finally {
 			session.close();
 		}
-
 		return null;
 	}
 

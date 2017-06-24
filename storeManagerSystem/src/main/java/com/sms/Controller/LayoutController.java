@@ -2,10 +2,13 @@ package com.sms.Controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.sms.OutputRows.SanPhamOutputRowBean;
 import com.sms.common.SystemCommon;
@@ -19,6 +22,7 @@ import com.sms.input.LoaiSanPhamInputBean;
 import com.sms.input.SanPhamInputBean;
 import com.sms.output.LoaiSanPhamOutputBean;
 import com.sms.output.SanPhamOutputBean;
+import com.sms.session.KhachHangSession;
 
 @Controller
 public class LayoutController {
@@ -27,11 +31,18 @@ public class LayoutController {
 	public static final String PAGE_CART = "gioHang";
 	
 	@RequestMapping(value="/{path}")
-	public String init(@ModelAttribute("LayoutForm") LayoutForm form, @PathVariable("path") String path){
+	public String init(@ModelAttribute("LayoutForm") LayoutForm form, @PathVariable("path") String path, HttpSession session){
+		ModelAndView modelAndView = new ModelAndView(PAGE_FASHION,"LayoutForm",form);
 		//check pathJSP
 		if(!LayoutDAO.intances.checkPathJSP(path)){
 			//quay ve trang login
-			return  "redirect:/";
+//			return new ModelAndView("redirect:/");
+			return "redirect:/";
+		}
+		//set thong tin khach hang
+		KhachHangSession khachHangSession = (KhachHangSession)session.getAttribute("KhachHangSession");
+		if(khachHangSession != null){
+			form.setTenKhachHang(khachHangSession.getTenKhachHang());
 		}
 		//get loai san pham
 		LoaiSanPhamInputBean loaiSanPhamInputBean = new LoaiSanPhamInputBean();  

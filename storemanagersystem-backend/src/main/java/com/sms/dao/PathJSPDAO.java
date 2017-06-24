@@ -32,7 +32,7 @@ public class PathJSPDAO implements InterfaceDAO{
 		
 		//result 
 		PathJSPOutputBean lstResult = new PathJSPOutputBean();
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//sql
 		String hql = this.SQLGetPathJSP();
 		PathJSPOutputRowBean rowBean;
@@ -64,10 +64,9 @@ public class PathJSPDAO implements InterfaceDAO{
 	public PathJSPOutputBean getPathJSPById(PathJSPInputBean inputBean){
 		//session
 		Session session = HibernateUtil.getSessionDAO();
-		
 		//result 
 		PathJSPOutputBean lstResult = new PathJSPOutputBean();
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//sql
 		String hql = this.SQLGetPathJSPById();
 		PathJSPOutputRowBean rowBean;

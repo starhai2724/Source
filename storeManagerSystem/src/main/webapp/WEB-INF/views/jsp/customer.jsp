@@ -147,6 +147,9 @@
                             </table>
                         </div>
 		</c:if>
+		<!-- test -->
+		<input ng-model="test" ng-init="test='${KhachHangForm.lst }'" >
+		<!-- test -->
 		<form:input class="form-control" type="hidden"  path="flagUpdate"  name="flagUpdate" ng-model ="flagUpdate" ng-init="flagUpdate='${KhachHangForm.flagUpdate}'" />
 	</form:form>		
 		<!-- /#page-wrapper -->

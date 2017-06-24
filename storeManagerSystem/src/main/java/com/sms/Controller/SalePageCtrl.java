@@ -15,24 +15,23 @@ import com.sms.output.PathJSPOutputBean;
 @Controller
 public class SalePageCtrl {
 	
-	@RequestMapping(value ="/{path}", method = RequestMethod.GET)
-	public String init(HttpSession session){
-		String page = "login";
-		//get userlocal
-		User userLocal = (User) session.getAttribute("userLocal");
-		
-		//get path jsp 
-		PathJSPInputBean pathJSPInputBean = new PathJSPInputBean();
-		pathJSPInputBean.setIdStore(userLocal.getStore_cd());
-		PathJSPOutputBean pathJSPOutputBean = ClientPathJSPImpl.intances.getPathJSPById(pathJSPInputBean);
-		PathJSPOutputRowBean  pathJSPOutputRowBean;
-		if(pathJSPOutputBean != null && pathJSPOutputBean.getLst().size() > 0){
-			pathJSPOutputRowBean = pathJSPOutputBean.getLst().get(0);
-			return pathJSPOutputRowBean.getPathJSP();
-		}
-		
-		return page;
-	}	
-	
+//	@RequestMapping(value ="/{path}", method = RequestMethod.GET)
+//	public String init(HttpSession session){
+//		String page = "login";
+//		//get userlocal
+//		User userLocal = (User) session.getAttribute("userLocal");
+//		
+//		//get path jsp 
+//		PathJSPInputBean pathJSPInputBean = new PathJSPInputBean();
+//		pathJSPInputBean.setIdStore(userLocal.getStore_cd());
+//		PathJSPOutputBean pathJSPOutputBean = ClientPathJSPImpl.intances.getPathJSPById(pathJSPInputBean);
+//		PathJSPOutputRowBean  pathJSPOutputRowBean;
+//		if(pathJSPOutputBean != null && pathJSPOutputBean.getLst().size() > 0){
+//			pathJSPOutputRowBean = pathJSPOutputBean.getLst().get(0);
+//			return pathJSPOutputRowBean.getPathJSP();
+//		}
+//		
+//		return page;
+//	}	
 	
 }

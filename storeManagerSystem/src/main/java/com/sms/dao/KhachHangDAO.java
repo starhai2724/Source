@@ -13,6 +13,7 @@ import com.sms.OutputRows.KhachHangOutputRowBean;
 import com.sms.common.SMSComons;
 import com.sms.dao.common.HibernateUtil;
 import com.sms.input.KhachHangInputBean;
+import com.sms.output.TaiKhoanKhachHangOutputBean;
 
 public class KhachHangDAO {
 	
@@ -26,7 +27,7 @@ public class KhachHangDAO {
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//sql
 		String hql = this.getSQLCreateTable(pathJSP);
 		try {
@@ -48,7 +49,7 @@ public class KhachHangDAO {
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//sql
 		String hql = this.getSQLDeleteTable(pathJSP);	
 		try {
@@ -70,7 +71,7 @@ public class KhachHangDAO {
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//id
 		int idKhachHang = SMSComons.convertInt(this.getMaxId(inputBean.getPathJSP()));
 		//sql 
@@ -88,6 +89,7 @@ public class KhachHangDAO {
 			query.setParameter(8, inputBean.getNgayTao());
 			query.setParameter(9, inputBean.getNgaySua());
 			query.setParameter(10, '0');
+			query.setParameter(11, "1234");
 			cnt = query.executeUpdate();
 			tx.commit();
 		} catch (Exception e) {
@@ -105,7 +107,7 @@ public class KhachHangDAO {
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//sql 
 		String hql = getSQLUpdate(inputBean.getPathJSP());
 		try {
@@ -136,7 +138,7 @@ public class KhachHangDAO {
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//sql 
 		String hql = getSQlDeleteById(inputBean.getPathJSP());
 		try {
@@ -162,13 +164,13 @@ public class KhachHangDAO {
 		String hql = getSQlMaxId(pathJSP);
 		String result = "";
 		try {
-			session.getTransaction().begin();
+			Transaction tx = session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
 			List<Object> data = query.list();
 			for (Object object : data) {
 				result = SMSComons.convertString(object);
 			}
-			session.getTransaction().commit();
+			tx.commit();
 
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
@@ -192,7 +194,7 @@ public class KhachHangDAO {
 		List<KhachHangOutputRowBean> lst = new ArrayList<>();
 		KhachHangOutputRowBean outputRowBean;
 		try {
-			session.getTransaction().begin();
+			Transaction tx = session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
 			query.setParameter(0, inputBean.getIdKhachHang());
 			List<Object[]> data = query.list();
@@ -211,7 +213,7 @@ public class KhachHangDAO {
 				outputRowBean.setTrangThai(SMSComons.convertString(object[10]));
 				lst.add(outputRowBean);
 			}
-			session.getTransaction().commit();
+			tx.commit();
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
 			e.printStackTrace();
@@ -235,7 +237,7 @@ public class KhachHangDAO {
 		List<KhachHangOutputRowBean> lst = new ArrayList<>();
 		KhachHangOutputRowBean outputRowBean;
 		try {
-			session.getTransaction().begin();
+			Transaction tx = session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
 			List<Object[]> data = query.list();
 			for (Object[] object : data) {
@@ -253,7 +255,7 @@ public class KhachHangDAO {
 				outputRowBean.setTrangThai(SMSComons.convertString(object[10]));
 				lst.add(outputRowBean);
 			}
-			session.getTransaction().commit();
+			tx.commit();
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
 			e.printStackTrace();
@@ -265,12 +267,18 @@ public class KhachHangDAO {
 		return lst;
 	}
 	
+	/**
+	 * 
+	 * @param pathJSP
+	 * @param sdt
+	 * @return
+	 */
 	public boolean checkExistSDT(String pathJSP, String sdt){
 		Session session = HibernateUtil.getSessionDAO();
 		String hql = getSQLCheckExistSDT(pathJSP);
 		boolean result = false;
 		try {
-			session.getTransaction().begin();
+			Transaction tx = session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
 			query.setParameter(0, sdt);
 			List<Object[]> data = query.list();
@@ -279,7 +287,7 @@ public class KhachHangDAO {
 					result = true;
 				}
 			}
-			session.getTransaction().commit();
+			tx.commit();
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
 			e.printStackTrace();
@@ -292,7 +300,38 @@ public class KhachHangDAO {
 	}
 	
 	
-	
+	/**
+	 * 
+	 * @param pathJSP
+	 * @param sdt
+	 * @return
+	 */
+	public TaiKhoanKhachHangOutputBean checkLogin(String pathJSP, String sdt, String matKhau){
+		Session session = HibernateUtil.getSessionDAO();
+		String hql = getSQLCheckLogin(pathJSP);
+		TaiKhoanKhachHangOutputBean outputBean = null;
+		Transaction tx = session.beginTransaction();
+		try {
+			SQLQuery query = session.createSQLQuery(hql);
+			query.setParameter(0, sdt);
+			query.setParameter(1, matKhau);
+			List<Object[]> data = query.list();
+			for (Object[] object : data) {
+				outputBean = new TaiKhoanKhachHangOutputBean();
+				outputBean.setIdKhachHang(SMSComons.convertString(object[0]));
+				outputBean.setTenKhachHang(SMSComons.convertString(object[1]));
+				outputBean.setSdt(SMSComons.convertString(object[2]));
+			}
+			tx.commit();
+		} catch (HibernateException e) {
+			tx.rollback();
+		} finally {
+			session.flush();
+			session.clear();
+			session.close();
+		}
+		return outputBean;
+	}
 	// ----------------------------------------------------------------------------------------------------------
 	
 	
@@ -316,9 +355,11 @@ public class KhachHangDAO {
 		sb.append("  		,NGAY_TAO 	       ");
 		sb.append("  		,NGAY_CHINHSUA     ");
 		sb.append("  		,TRANG_THAI     ");
+		sb.append("  		,MAT_KHAU     ");
 		sb.append("  		)                  ");
 		sb.append("  		VALUES (           ");
 		sb.append("  		  ?                ");
+		sb.append("  		 ,?                ");
 		sb.append("  		 ,?                ");
 		sb.append("  		 ,?                ");
 		sb.append("  		 ,?                ");
@@ -440,8 +481,22 @@ public class KhachHangDAO {
 		sb.append("  WHERE SDT = ?  ");
 		return sb.toString();
 	}
-
 	
+	/**
+	 * getSQLCheckExistSDT
+	 * @return
+	 */
+	private String getSQLCheckLogin(String pathJSP) {
+		String tableName = pathJSP+"_KHACH_HANG";
+		StringBuffer sb = new StringBuffer();
+		sb.append("  SELECT  ID_KHACHHANG ");
+		sb.append("    		,TEN_KHACHHANG");
+		sb.append("    		,SDT ");
+		sb.append("  FROM "+tableName+"  ");
+		sb.append("  WHERE SDT = ?  ");
+		sb.append("  AND MAT_KHAU = ?  ");
+		return sb.toString();
+	}
 	
 	// ----------------------------------------------------------------------------------------------------------
 
@@ -459,6 +514,7 @@ public class KhachHangDAO {
 		sb.append(" ,LOAI_THE 		VARCHAR(6)                  ");
 		sb.append(" ,GIOI_TINH 		VARCHAR(12)                     ");
 		sb.append(" ,SDT 			VARCHAR(12)                     ");
+		sb.append(" ,MAT_KHAU 		VARCHAR(12)                     ");
 		sb.append(" ,DIA_CHI  		VARCHAR(255)                  ");
 		sb.append(" ,DIEM_TICH_LUY 	VARCHAR(8)             ");
 		sb.append(" ,NAM_SINH 		VARCHAR(8)                  ");

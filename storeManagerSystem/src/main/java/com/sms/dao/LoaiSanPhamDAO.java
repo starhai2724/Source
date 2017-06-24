@@ -27,7 +27,7 @@ public class LoaiSanPhamDAO {
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//sql
 		String hql = this.getSQLCreateTable(pathJSP);
 		try {
@@ -50,7 +50,7 @@ public class LoaiSanPhamDAO {
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//sql
 		String hql = this.getSQLDeleteTable(pathJSP);	
 		try {
@@ -76,7 +76,7 @@ public class LoaiSanPhamDAO {
 		//id
 		int id = SMSComons.convertInt(getMaxIdProductCategory(inputBean.getPathJSP()));
 		
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//sql
 		String hql = this.getSQLInsert(inputBean.getPathJSP());	
 		try {
@@ -101,7 +101,7 @@ public class LoaiSanPhamDAO {
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//sql
 		String hql = this.getSQLUpdate(inputBean.getPathJSP());	
 		try {
@@ -125,7 +125,7 @@ public class LoaiSanPhamDAO {
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//sql
 		String hql = this.getSQlDeleteById(inputBean.getPathJSP());	
 		try {
@@ -152,13 +152,13 @@ public class LoaiSanPhamDAO {
 		String hql = getIdMax(pathJSP);
 		String result = "";
 		try {
-			session.getTransaction().begin();
+			Transaction tx = session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
 			List<Object> data = query.list();
 			for (Object object : data) {
 				result = SMSComons.convertString(object);
 			}
-			session.getTransaction().commit();
+			tx.commit();
 
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
@@ -183,7 +183,7 @@ public class LoaiSanPhamDAO {
 		List<LoaiSanPhamOutputBean> lst = new ArrayList<>();
 		LoaiSanPhamOutputBean sanPhamOutputBean;
 		try {
-			session.getTransaction().begin();
+			Transaction tx = session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
 			List<Object[]> data = query.list();
 			for (Object[] object : data) {
@@ -192,7 +192,7 @@ public class LoaiSanPhamDAO {
 				sanPhamOutputBean.setTenLoaiSP(SMSComons.convertString(object[1]));
 				lst.add(sanPhamOutputBean);
 			}
-			session.getTransaction().commit();
+			tx.commit();
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
 			e.printStackTrace();
@@ -216,7 +216,7 @@ public class LoaiSanPhamDAO {
 		List<LoaiSanPhamOutputBean> lst = new ArrayList<>();
 		LoaiSanPhamOutputBean sanPhamOutputBean;
 		try {
-			session.getTransaction().begin();
+			Transaction tx = session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
 			query.setParameter(0, inputBean.getIdLoaiSP());
 			List<Object[]> data = query.list();
@@ -226,7 +226,7 @@ public class LoaiSanPhamDAO {
 				sanPhamOutputBean.setTenLoaiSP(SMSComons.convertString(object[1]));
 				lst.add(sanPhamOutputBean);
 			}
-			session.getTransaction().commit();
+			tx.commit();
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
 			e.printStackTrace();

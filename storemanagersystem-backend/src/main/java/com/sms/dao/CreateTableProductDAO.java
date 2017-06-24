@@ -22,7 +22,7 @@ public class CreateTableProductDAO {
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//sql
 		String hql = this.getSQLCreateTableProduct(pathJSP);
 		try {
@@ -46,7 +46,7 @@ public class CreateTableProductDAO {
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//sql
 		String hql = this.getSQLDeleteTableProduct(pathJSP);
 		try {
@@ -69,7 +69,7 @@ public class CreateTableProductDAO {
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//id
 		int id_Sp = SMSComons.convertInt(this.getMaxId(pathJSP));
 		//sql 
@@ -98,14 +98,13 @@ public class CreateTableProductDAO {
 		String hql = getSQlMaxId(pathJSP);
 		String result = "";
 		try {
-			session.getTransaction().begin();
+			Transaction tx = session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
 			List<Object> data = query.list();
 			for (Object object : data) {
 				result = SMSComons.convertString(object);
 			}
-			session.getTransaction().commit();
-
+			tx.commit();
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
 			e.printStackTrace();

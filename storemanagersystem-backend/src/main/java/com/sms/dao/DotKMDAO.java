@@ -1,6 +1,5 @@
 package com.sms.dao;
 
-import org.hibernate.HibernateException;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -19,7 +18,7 @@ public class DotKMDAO {
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//sql
 		String hql = this.getSQLCreateTable(pathJSP);
 		try {
@@ -42,7 +41,7 @@ public class DotKMDAO {
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//sql
 		String hql = this.getSQLDeleteTable(pathJSP);	
 		try {

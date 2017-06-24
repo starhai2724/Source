@@ -27,7 +27,7 @@ public class CreateTableProductDAO {
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//sql
 		String hql = this.getSQLCreateTableProduct(pathJSP);
 		try {
@@ -37,6 +37,8 @@ public class CreateTableProductDAO {
 		} catch (Exception e) {
 			cnt = 1;
 		} finally {
+			session.flush();
+			session.clear();
 			session.close();
 		}
 		return cnt;
@@ -51,7 +53,7 @@ public class CreateTableProductDAO {
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//sql
 		String hql = this.getSQLDeleteTableProduct(pathJSP);
 		try {
@@ -61,6 +63,8 @@ public class CreateTableProductDAO {
 		} catch (Exception e) {
 			cnt = 0;
 		} finally {
+			session.flush();
+			session.clear();
 			session.close();
 		}
 		return cnt;
@@ -74,7 +78,7 @@ public class CreateTableProductDAO {
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//id
 		int id_Sp = SMSComons.convertInt(this.getMaxId(inputBean.getPathJSP()));
 		//sql 
@@ -96,6 +100,8 @@ public class CreateTableProductDAO {
 			tx.commit();
 		} catch (Exception e) {
 		} finally {
+			session.flush();
+			session.clear();
 			session.close();
 		}
 		return cnt;
@@ -105,7 +111,7 @@ public class CreateTableProductDAO {
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//id
 		int id_Sp = SMSComons.convertInt(this.getMaxId(inputBean.getPathJSP()));
 		System.out.println("maxid_Sp " + id_Sp);
@@ -113,7 +119,7 @@ public class CreateTableProductDAO {
 		String hql = getSQLInsertSPKM(inputBean.getPathJSP());
 		try {
 			SQLQuery query = session.createSQLQuery(hql);
-			query.setParameter(0, (id_Sp + 1));
+			query.setParameter(0, (id_Sp + inputBean.getIndex()));
 			query.setParameter(1, inputBean.getTenSP());
 			query.setParameter(2, inputBean.getIdCuaHang());
 			query.setParameter(3, inputBean.getIdLoaiSP());
@@ -124,12 +130,14 @@ public class CreateTableProductDAO {
 			query.setParameter(8, inputBean.getTrangThai());
 			query.setParameter(9, inputBean.getNgayTao());
 			query.setParameter(10, inputBean.getNgayChinhSua());
-			query.setParameter(11, inputBean.getGiaBan());
+			query.setParameter(11, inputBean.getGiaBanKM());
 			query.setParameter(12, inputBean.getId_DKM());
 			cnt = query.executeUpdate();
 			tx.commit();
 		} catch (Exception e) {
 		} finally {
+			session.flush();
+			session.clear();
 			session.close();
 		}
 		return cnt;
@@ -143,7 +151,7 @@ public class CreateTableProductDAO {
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//sql 
 		String hql = getSQLUpdate(inputBean.getPathJSP());
 		try {
@@ -160,10 +168,33 @@ public class CreateTableProductDAO {
 			tx.commit();
 		} catch (Exception e) {
 		} finally {
+			session.flush();
+			session.clear();
 			session.close();
 		}
 		return cnt;
 	}
+	
+	public int update_SPKM(SanPhamInputBean inputBean){
+		//session
+		Session session = HibernateUtil.getSessionDAO();
+		Transaction tx = session.beginTransaction();
+		int cnt = 0; 
+		//Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		//sql 
+		String hql = getSQLUpdate_SPKM(inputBean);
+		try {
+			SQLQuery query = session.createSQLQuery(hql);
+			cnt = query.executeUpdate();
+			tx.commit();
+			
+		} catch (Exception e) {
+		} finally {
+			session.close();
+		}
+		return cnt;
+	}
+	
 	
 	/**
 	 * function delete 
@@ -173,7 +204,7 @@ public class CreateTableProductDAO {
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//sql 
 		String hql = getSQlDeleteById(inputBean.getPathJSP());
 		try {
@@ -183,6 +214,8 @@ public class CreateTableProductDAO {
 			tx.commit();
 		} catch (Exception e) {
 		} finally {
+			session.flush();
+			session.clear();
 			session.close();
 		}
 		return cnt;
@@ -199,14 +232,13 @@ public class CreateTableProductDAO {
 		String hql = getSQlMaxId(pathJSP);
 		String result = "";
 		try {
-			session.getTransaction().begin();
+			Transaction tx =  session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
 			List<Object> data = query.list();
 			for (Object object : data) {
 				result = SMSComons.convertString(object);
 			}
-			session.getTransaction().commit();
-
+			tx.commit();
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
 			e.printStackTrace();
@@ -223,14 +255,13 @@ public class CreateTableProductDAO {
 		String hql = getSQLLoaiSP(pathJSP,idLoaiSP);
 		String result = "";
 		try {
-			session.getTransaction().begin();
+			Transaction tx = session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
 			List<Object> data = query.list();
 			for (Object object : data) {
 				result = SMSComons.convertString(object);
 			}
-			session.getTransaction().commit();
-
+			tx.commit();
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
 			e.printStackTrace();
@@ -254,7 +285,7 @@ public class CreateTableProductDAO {
 		SanPhamOutputBean outputBean = new SanPhamOutputBean();
 		SanPhamOutputRowBean outputRowBean = null;
 		try {
-			session.getTransaction().begin();
+			Transaction tx = session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
 			query.setParameter(0, inputBean.getIdSanPham());
 			List<Object[]> data = query.list();
@@ -271,9 +302,10 @@ public class CreateTableProductDAO {
 				outputRowBean.setTrangThai(SMSComons.convertString(object[8]));
 				outputRowBean.setNgayTao(SMSComons.convertString(object[9]));
 				outputRowBean.setNgayChinhSua(SMSComons.convertString(object[10]));
+				outputRowBean.setId_DKM(SMSComons.convertString(object[11]));
 				outputBean.getLst().add(outputRowBean);
 			}
-			session.getTransaction().commit();
+			tx.commit();
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
 			e.printStackTrace();
@@ -298,7 +330,7 @@ public class CreateTableProductDAO {
 		SanPhamOutputBean outputBean = new SanPhamOutputBean();
 		SanPhamOutputRowBean outputRowBean = null;
 		try {
-			session.getTransaction().begin();
+			Transaction tx = session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
 			List<Object[]> data = query.list();
 			for (Object[] object : data) {
@@ -316,7 +348,7 @@ public class CreateTableProductDAO {
 				outputRowBean.setNgayChinhSua(SMSComons.convertString(object[10]));
 				outputBean.getLst().add(outputRowBean);
 			}
-			session.getTransaction().commit();
+			tx.commit();
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
 			e.printStackTrace();
@@ -333,7 +365,7 @@ public class CreateTableProductDAO {
 		SanPhamOutputBean outputBean = new SanPhamOutputBean();
 		SanPhamOutputRowBean outputRowBean = null;
 		try {
-			session.getTransaction().begin();
+			Transaction tx = session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
 			query.setParameter(0, inputBean.getId_DKM());
 			List<Object[]> data = query.list();
@@ -348,7 +380,7 @@ public class CreateTableProductDAO {
 				outputRowBean.setTenLoaiSP(SMSComons.convertString(object[6]));
 				outputBean.getLst().add(outputRowBean);
 			}
-			session.getTransaction().commit();
+			tx.commit();
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
 			e.printStackTrace();
@@ -414,7 +446,7 @@ public class CreateTableProductDAO {
 		String hql = getSQLImage(pathJSP);
 		ImageOutputBean outputBean = new ImageOutputBean();
 		try {
-			session.getTransaction().begin();
+			Transaction tx = session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
 			query.setParameter(0, id);
 			List<Object[]> data = query.list();
@@ -422,7 +454,7 @@ public class CreateTableProductDAO {
 				outputBean.setId(SMSComons.convertString(object[0]));
 				outputBean.setHinh((byte[]) object[1]);
 			}
-			session.getTransaction().commit();
+			tx.commit();
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
 			e.printStackTrace();
@@ -587,6 +619,7 @@ public class CreateTableProductDAO {
 		sb.append("  FROM "+tableName+" product         	");
 		sb.append("  INNER JOIN "+pathJSP+"_loai_sp loaiSP  ");
 		sb.append("  ON product.ID_LOAI_SP = loaiSP.ID_LOAI_SP          			");
+		sb.append("  WHERE ID_DKM IS NULL OR ID_DKM  = ''                       	");
 		
 		return sb.toString();
 	}
@@ -627,6 +660,7 @@ public class CreateTableProductDAO {
 		sb.append("  ,TRANG_THAI                            ");
 		sb.append("  ,NGAY_TAO 	                            ");
 		sb.append("  ,NGAY_CHINH_SUA                        ");
+		sb.append("  ,ID_DKM                                ");
 		sb.append("  FROM "+tableName+"          			");
 		sb.append("  WHERE ID_SP = ?          			");
 		return sb.toString();
@@ -674,6 +708,16 @@ public class CreateTableProductDAO {
 		return sb.toString();
 	}
 	
+	private String getSQLUpdate_SPKM(SanPhamInputBean inputBean) {
+		StringBuffer sb = new StringBuffer();
+		String tableName = inputBean.getPathJSP() +"_PRODUCT";
+		sb.append("  UPDATE  "+tableName+"     ");
+		sb.append("  		SET GIA_BAN_KM = '" + inputBean.getGiaBanKM() + "' ");
+		sb.append("  		,NGAY_CHINH_SUA  = '" + inputBean.getNgayChinhSua() + "' ");
+		sb.append("  		 WHERE ID_DKM = '" + inputBean.getId_DKM() + "' ");
+		sb.append("  		 AND TRANG_THAI = '0'   ");
+		return sb.toString();
+	}
 	
 	/**
 	 * getSQlMaxIdStoreOwner
@@ -716,11 +760,19 @@ public class CreateTableProductDAO {
 	public static void main(String[] args) throws IOException {
 		CreateTableProductDAO cr = new CreateTableProductDAO();
 		SanPhamInputBean in = new SanPhamInputBean();
-		in.setIdSanPham("100009");
+		in.setIdSanPham("");
 		in.setPathJSP("cuahangthoitrang");
 		in.setId_DKM("1");
 //		cr.getProductById(in);
 //		cr.deleteProductById(in);
-		cr.getProductByIdDKM(in);
+//		cr.getProductByIdDKM(in);
+//		cr.getMaxId("cuahangthoitrang");
+		for(int i = 0; i < 3; i++ ){
+			cr.insertSPKM(in);
+		}
+		
+		
+		
+		
 	}
 }

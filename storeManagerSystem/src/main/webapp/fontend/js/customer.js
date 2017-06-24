@@ -17,7 +17,13 @@ app.controller('ctrl', function($scope, $window) {
 	}
 	
 	$scope.btnClear = function(){
-		clear($scope);
+//		clear($scope);
+//		angular.forEach($scope.test, function(item){
+//			alert("item: " + item);
+//			// item.value ? 0 : 1;
+//		});
+		alert($scope.test);
+		
 	}
 	
 	$scope.btnDelete = function(id){

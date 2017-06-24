@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import com.sms.common.SMSComons;
 import com.sms.dao.common.HibernateUtil;
@@ -99,13 +100,13 @@ public class RegisterUserDAO {
 		String hql = getSQlMaxIdStoreOwner();
 		String result = "";
 		try {
-			session.getTransaction().begin();
+			Transaction tx = session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
 			List<Object> data = query.list();
 			for (Object object : data) {
 				result = SMSComons.convertString(object);
 			}
-			session.getTransaction().commit();
+			tx.commit();
 
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
@@ -129,13 +130,13 @@ public class RegisterUserDAO {
 		String hql = getSQlMaxIdStore();
 		String result = "";
 		try {
-			session.getTransaction().begin();
+			Transaction tx = session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
 			List<Object> data = query.list();
 			for (Object object : data) {
 				result = SMSComons.convertString(object);
 			}
-			session.getTransaction().commit();
+			tx.commit();
 
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
@@ -157,7 +158,7 @@ public class RegisterUserDAO {
 		String hql = getDomain();
 		boolean result = true;
 		try {
-			session.getTransaction().begin();
+			Transaction tx = session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
 			query.setParameter(0, domain);
 			List<Object> data = query.list();
@@ -168,7 +169,7 @@ public class RegisterUserDAO {
 					result = true;
 				}
 			}
-			session.getTransaction().commit();
+			tx.commit();
 
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();

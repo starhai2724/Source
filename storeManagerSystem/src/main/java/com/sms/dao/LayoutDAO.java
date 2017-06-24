@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.HibernateException;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import com.sms.common.SMSComons;
 import com.sms.dao.common.HibernateUtil;
@@ -18,7 +19,7 @@ public class LayoutDAO {
 		String hql = getSQLCheckPathJSP();
 		boolean result = false;
 		try {
-			session.getTransaction().begin();
+			Transaction tx = session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
 			query.setParameter(0, pathJSP);
 			List<Object[]> data = query.list();
@@ -27,7 +28,7 @@ public class LayoutDAO {
 					result = true;
 				}
 			}
-			session.getTransaction().commit();
+			tx.commit();
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
 			e.printStackTrace();

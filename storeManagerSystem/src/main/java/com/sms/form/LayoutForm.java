@@ -29,7 +29,16 @@ public class LayoutForm {
 	
 	//Gio hang (E)
 	
+	private String tenKhachHang;
 	
+	public String getTenKhachHang() {
+		return tenKhachHang;
+	}
+
+	public void setTenKhachHang(String tenKhachHang) {
+		this.tenKhachHang = tenKhachHang;
+	}
+
 	public List<ProductFormRow> getProducts() {
 		return products;
 	}

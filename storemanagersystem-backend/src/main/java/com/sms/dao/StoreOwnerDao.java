@@ -47,9 +47,7 @@ public class StoreOwnerDao implements InterfaceDAO {
 				results.add(storeOwner);
 			}
 			tx.commit();
-
 		} catch (HibernateException e) {
-			e.printStackTrace();
 		} finally {
 			session.close();
 		}
@@ -68,7 +66,7 @@ public class StoreOwnerDao implements InterfaceDAO {
 		String hql = getSQLUser();
 		User u = null;
 		try {
-			session.getTransaction().begin();
+			Transaction tx =session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
 			query.setParameter(0, user.getUsername());
 			query.setParameter(1, user.getPassword());
@@ -81,11 +79,10 @@ public class StoreOwnerDao implements InterfaceDAO {
 				u.setRole(SMSComons.convertString(object[3]));
 				u.setURLStore(SMSComons.convertString(object[4]));
 			}
-			session.getTransaction().commit();
+			tx.commit();
 
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
-			e.printStackTrace();
 		} finally {
 			session.flush();
 			session.clear();
@@ -104,17 +101,15 @@ public class StoreOwnerDao implements InterfaceDAO {
 		String hql = getSQlMaxIdStoreOwner();
 		String result = "";
 		try {
-			session.getTransaction().begin();
+			Transaction tx = session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
 			List<Object> data = query.list();
 			for (Object object : data) {
 				result = SMSComons.convertString(object);
 			}
-			session.getTransaction().commit();
-
+			tx.commit();
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
-			e.printStackTrace();
 		} finally {
 			session.flush();
 			session.clear();
@@ -135,18 +130,17 @@ public class StoreOwnerDao implements InterfaceDAO {
 		String hql = getSQLStoreOwnerByUsername();
 		String cnt = "";
 		try {
-			session.getTransaction().begin();
+			Transaction tx = session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
 			query.setParameter(0, username);
 			List<Object> data = query.list();
 			for (Object object : data) {
 				cnt = SMSComons.convertString(object);
 			}
-			session.getTransaction().commit();
+			tx.commit();
 
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
-			e.printStackTrace();
 		} finally {
 			session.flush();
 			session.clear();
@@ -201,13 +195,12 @@ public class StoreOwnerDao implements InterfaceDAO {
 
 				results.add(storeOwnerModel);
 			}
-
+			tx.commit();
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
-
 		return results;
 	}
 
@@ -265,7 +258,6 @@ public class StoreOwnerDao implements InterfaceDAO {
 	 * @return
 	 */
 	public int deleleStoreOwner(StoreOwnerInputBean storeOwnerInputBean) {
-
 		Session session = HibernateUtil.getSessionDAO();
 		Transaction tx = session.beginTransaction();
 		String hql = getSQlDelete(storeOwnerInputBean);
@@ -275,7 +267,6 @@ public class StoreOwnerDao implements InterfaceDAO {
 			cnt = query.executeUpdate();
 			tx.commit();
 		} catch (HibernateException e) {
-			e.printStackTrace();
 		} finally {
 			session.flush();
 			session.clear();
@@ -302,7 +293,6 @@ public class StoreOwnerDao implements InterfaceDAO {
 			cnt = query.executeUpdate();
 			tx.commit();
 		} catch (HibernateException e) {
-			e.printStackTrace();
 		} finally {
 			session.flush();
 			session.clear();
@@ -317,7 +307,7 @@ public class StoreOwnerDao implements InterfaceDAO {
 		String hql = getSQLStoreOwnersById(id);
 		StoreOwnerOutputBean storeOwnerModel = null;
 		try {
-			session.getTransaction().begin();
+			Transaction tx = session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
 			List<Object[]> data = query.list();
 			storeOwnerModel = new StoreOwnerOutputBean();
@@ -329,8 +319,7 @@ public class StoreOwnerDao implements InterfaceDAO {
 				storeOwnerModel.setEmail(SMSComons.convertString(object[4]));
 				storeOwnerModel.setAddress(SMSComons.convertString(object[5]));
 			}
-			session.getTransaction().commit();
-
+			tx.commit();
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
 			e.printStackTrace();
@@ -342,8 +331,6 @@ public class StoreOwnerDao implements InterfaceDAO {
 		return storeOwnerModel;
 	}
 	
-	
-
 	@Override
 	public int addObject() {
 		return 0;

@@ -25,7 +25,6 @@ public class RegisterProductCategoryDAO {
 	 */
 	public RegisterProductCategoryOutputBean getProductCategory(RegisterProductCategoryInputBean inputBean){
 		RegisterProductCategoryOutputBean result = new RegisterProductCategoryOutputBean();
-		
 		Session session = HibernateUtil.getSessionDAO();
 		String hql = getSQLSelectRegisterProductCategory();
 		Transaction tx = session.beginTransaction();
@@ -85,14 +84,13 @@ public class RegisterProductCategoryDAO {
 		String hql = getIdMax();
 		String result = "";
 		try {
-			session.getTransaction().begin();
+			Transaction tx = session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
 			List<Object> data = query.list();
 			for (Object object : data) {
 				result = SMSComons.convertString(object);
 			}
-			session.getTransaction().commit();
-
+			tx.commit();
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
 			e.printStackTrace();

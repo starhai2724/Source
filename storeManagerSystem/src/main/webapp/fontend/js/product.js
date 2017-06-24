@@ -4,7 +4,12 @@ app.controller('ctrl', function($scope, $window) {
 	$scope.giaMua_err = "";
 	$scope.giaBan_err = "";
 	$scope.moTa_err = "";
-	
+	$scope.listCheckBox = "";
+	 $scope.checkboxModel = {
+		       value1 : true,
+		       value2 : false
+		     };
+	 
 	$scope.btnCreate = function() {
 		if($scope.flagUpdate == 1){
 			update($scope)
@@ -26,8 +31,18 @@ app.controller('ctrl', function($scope, $window) {
 	}
 	
 	$scope.btnPhanAnh = function(){
-		phanAnh($scope);
+		angular.forEach($scope.selected, function(item){
+			if(item == "false"){
+				//Do not thing
+			}else{
+				$scope.listCheckBox += item;
+				alert("listCheckBox: "+ $scope.listCheckBox);
+			}
+		    // item.value ? 0 : 1;
+		});
+//		phanAnh($scope);
 	}
+	
 	
 });
 
