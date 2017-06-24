@@ -42,7 +42,11 @@ public class ProductController {
 	
 	@RequestMapping(value  = "/product/init")
 	public String init(@ModelAttribute("ProductForm") ProductForm form, HttpSession session){
-		String pathJSP = (String)session.getAttribute("pathURL"); 
+		//String pathJSP = (String)session.getAttribute("pathURL"); 
+		String pathJSP = "cuahangthoitrang";
+		
+		
+		
 		//reset
 		form.setIdSanPham("");
 		form.setTenSP("");
@@ -101,7 +105,8 @@ public class ProductController {
 	@RequestMapping(value ="/product/insert", method = RequestMethod.POST)
 	public String insert(@ModelAttribute("ProductForm") ProductForm form, @RequestParam("file") MultipartFile file, HttpSession session) {
 		//get domain
-		String pathJSP = (String)session.getAttribute("pathURL");
+		//String pathJSP = (String)session.getAttribute("pathURL"); 
+		String pathJSP = "cuahangthoitrang";
 		
 		SanPhamInputBean input = new SanPhamInputBean();
 		input.setPathJSP(pathJSP);
@@ -142,7 +147,8 @@ public class ProductController {
 	@RequestMapping(value ="/product/update", method = RequestMethod.POST)
 	public String update(@ModelAttribute("ProductForm") ProductForm form, @RequestParam("file") MultipartFile file , HttpSession session){
 		//get domain
-		String pathJSP = (String)session.getAttribute("pathURL");
+		//String pathJSP = (String)session.getAttribute("pathURL"); 
+		String pathJSP = "cuahangthoitrang";
 		
 		SanPhamInputBean input = new SanPhamInputBean();
 		input.setPathJSP(pathJSP);
@@ -185,7 +191,8 @@ public class ProductController {
 	@RequestMapping(value="product/getProductById/{id}", method = RequestMethod.POST)
 	public String getProductById(@ModelAttribute("ProductForm") ProductForm form, @PathVariable("id") String id, HttpSession session){
 		//get domain
-		String pathJSP = (String)session.getAttribute("pathURL");
+		//String pathJSP = (String)session.getAttribute("pathURL"); 
+		String pathJSP = "cuahangthoitrang";
 		
 		SanPhamInputBean input = new SanPhamInputBean();
 		input.setPathJSP(pathJSP);
@@ -238,7 +245,8 @@ public class ProductController {
 	@RequestMapping(value="/product/delete/{id}")
 	public String delete(@ModelAttribute("ProductForm") ProductForm form, @PathVariable("id") String id, HttpSession session){
 		//get domain
-		String pathJSP = (String)session.getAttribute("pathURL");
+		//String pathJSP = (String)session.getAttribute("pathURL"); 
+		String pathJSP = "cuahangthoitrang";
 		SanPhamInputBean inputBean = new SanPhamInputBean();
 		inputBean.setPathJSP(pathJSP);
 		inputBean.setIdSanPham(id);
