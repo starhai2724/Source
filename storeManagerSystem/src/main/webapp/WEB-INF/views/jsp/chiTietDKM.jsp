@@ -4,6 +4,28 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
+<style>
+#table-wrapper {
+  position:relative;
+}
+#table-scroll {
+  height:450px;
+  overflow:auto;  
+  margin-top:20px;
+}
+#table-wrapper table {
+  width:100%;
+
+}
+#table-wrapper table thead th .text {
+  position:absolute;   
+  top:-20px;
+  z-index:2;
+  height:20px;
+  width:35%;
+  border:1px solid red;
+}
+</style>
 
 <div id="wrapper">
 	<!-- Navigation -->
@@ -34,7 +56,8 @@
 		<!--Message (E)-->
 		
 		<c:if test="${!empty ProductForm3.lst }">
-		<div class="panel-body">
+		<div id="table-wrapper">
+  				<div id="table-scroll">
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
@@ -47,16 +70,19 @@
 										<th style="padding-left: 5px;width: 150px;padding-right: 4px;">Loại SP</th>
                                     </tr>
                                 </thead>
-                                <tbody style="overflow: auto; height:50px">
+                                <tbody style="overflow: scroll; height:50px;">
                               		  <c:forEach var="items" items="${ProductForm3.lst }">
 		                                <tr class="odd gradeX">
-		                                        <td style="text-align: center"><input type="checkbox" name="checkbox" value="${items.no}"></td>
+		                                        <td style="text-align: center">
+		                                        <input type="checkbox" name="checkbox" value="${items.no}">
+		                                        	<%-- <form:checkbox path="lst[${items.index}].checked" id="${items.checked}" value="${items.checked}"/> --%>
+		                                        </td>
 		                                        <td>${items.idSanPham}</td>
 							                     <td>${items.tenSP}</td>
 		                                      	 <td style="text-align: right">${items.giaMua }</td>
 					                    		 <td style="text-align: right">${items.giaBan }</td>
 		                                         <td>
-		                                         	<form:input  maxlength="10" class="form-control" type="text" path="giaBanKM"  value = '${items.giaBanKM}' />	
+		                                         	<form:input  maxlength="10" class="form-control" path="giaBanKM"  name="giaBanKM" ng-model = "giaBanKM"  ng-init ="giaBanKM = '${items.giaBanKM}'" />	
 		                                         </td>
 		                                         <td>${items.tenLoaiSP }</td>
 		                                         <td hidden="">${items.idLoaiSP }</td>
@@ -64,7 +90,28 @@
 					                </c:forEach>
                                 </tbody>
                             </table>
-                        </div>
+                     </div>
+            </div>
+		</c:if>
+		<c:if test="${empty ProductForm3.lst }">
+			<div class="panel-body">
+                        <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead>
+                                    <tr>
+										<th style="width: 40px;padding-left: 2px;padding-right: 2px;font-size: 13px"></th>
+										<th style="padding-left: 5px;padding-right: 4px;width: 90px;">Mã SP</th>
+										<th style="width: 250px;padding-left: 4px;padding-right: 4px;">Tên sản phẩm</th>
+										<th style="padding-left: 5px;width: 180px;padding-right: 4px;">Giá mua</th>
+										<th style="padding-left: 5px;padding-right: 4px;width: 180px;">Giá bán</th>
+										<th style="padding-left: 5px;padding-right: 4px;width: 220px;">Giá bán KM</th>
+										<th style="padding-left: 5px;width: 150px;padding-right: 4px;">Loại SP</th>
+                                    </tr>
+                                </thead>
+                                <tbody style="overflow: auto; height:50px">
+                              		   <tr align="center"><td style="text-align: center" colspan="7"> Không tìm thấy dữ liệu. </td></tr>
+                                </tbody>
+                       </table>
+             </div>
 		</c:if>
 		<form:input class="form-control" type="hidden"  path="flagUpdate"  name="flagUpdate" ng-model ="flagUpdate" ng-init="flagUpdate='${ProductForm.flagUpdate}'" />
 		<div class="row" align="center" style="width: 100%">
@@ -72,6 +119,7 @@
 				<input type="button" name="" class="btn btn-info " ng-click ="btnDangKy()" value="Đăng ký">
 			</div>
 		</div>
+		
 	</form:form>		
 		<!-- /#page-wrapper -->
 	</div>

@@ -14,9 +14,9 @@ public class ProductFormRow {
 
 	private String idCuaHang;
 
-	private String giaMua;
+	private String giaMua= "";
 
-	private String giaBan;
+	private String giaBan= "";
 
 	private String moTa;
 
@@ -26,11 +26,48 @@ public class ProductFormRow {
 
 	private String ngayChinhSua;
 	
-	private String giaBanKM;
+	private String giaBanKM = "";
+	
+	private int checked;
+	
+	private int index;
 
 	public String getGiaBanKM() {
 		return giaBanKM;
 	}
+
+
+
+
+	public int getIndex() {
+		return index;
+	}
+
+
+
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
+
+
+
+
+	
+
+
+	public int getChecked() {
+		return checked;
+	}
+
+
+
+
+	public void setChecked(int checked) {
+		this.checked = checked;
+	}
+
+
 
 
 	public void setGiaBanKM(String giaBanKM) {

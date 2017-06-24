@@ -104,16 +104,16 @@ public class CreateTableProductDAO {
 	public int insertSPKM(SanPhamInputBean inputBean){
 		//session
 		Session session = HibernateUtil.getSessionDAO();
+		Transaction tx = session.beginTransaction();
 		int cnt = 0; 
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		//Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
 		//id
 		int id_Sp = SMSComons.convertInt(this.getMaxId(inputBean.getPathJSP()));
-		System.out.println("maxid_Sp " + id_Sp);
 		//sql 
 		String hql = getSQLInsertSPKM(inputBean.getPathJSP());
 		try {
 			SQLQuery query = session.createSQLQuery(hql);
-			query.setParameter(0, (id_Sp + 1));
+			query.setParameter(0, (id_Sp + inputBean.getIndex()));
 			query.setParameter(1, inputBean.getTenSP());
 			query.setParameter(2, inputBean.getIdCuaHang());
 			query.setParameter(3, inputBean.getIdLoaiSP());
@@ -124,7 +124,7 @@ public class CreateTableProductDAO {
 			query.setParameter(8, inputBean.getTrangThai());
 			query.setParameter(9, inputBean.getNgayTao());
 			query.setParameter(10, inputBean.getNgayChinhSua());
-			query.setParameter(11, inputBean.getGiaBan());
+			query.setParameter(11, inputBean.getGiaBanKM());
 			query.setParameter(12, inputBean.getId_DKM());
 			cnt = query.executeUpdate();
 			tx.commit();
@@ -158,6 +158,26 @@ public class CreateTableProductDAO {
 			query.setParameter(7, inputBean.getIdSanPham());
 			cnt = query.executeUpdate();
 			tx.commit();
+		} catch (Exception e) {
+		} finally {
+			session.close();
+		}
+		return cnt;
+	}
+	
+	public int update_SPKM(SanPhamInputBean inputBean){
+		//session
+		Session session = HibernateUtil.getSessionDAO();
+		Transaction tx = session.beginTransaction();
+		int cnt = 0; 
+		//Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		//sql 
+		String hql = getSQLUpdate_SPKM(inputBean);
+		try {
+			SQLQuery query = session.createSQLQuery(hql);
+			cnt = query.executeUpdate();
+			tx.commit();
+			
 		} catch (Exception e) {
 		} finally {
 			session.close();
@@ -271,6 +291,7 @@ public class CreateTableProductDAO {
 				outputRowBean.setTrangThai(SMSComons.convertString(object[8]));
 				outputRowBean.setNgayTao(SMSComons.convertString(object[9]));
 				outputRowBean.setNgayChinhSua(SMSComons.convertString(object[10]));
+				outputRowBean.setId_DKM(SMSComons.convertString(object[11]));
 				outputBean.getLst().add(outputRowBean);
 			}
 			session.getTransaction().commit();
@@ -564,6 +585,7 @@ public class CreateTableProductDAO {
 		return sb.toString();
 	}
 	
+	
 	/**
 	 * getSQlMaxIdStoreOwner
 	 * @return
@@ -587,6 +609,7 @@ public class CreateTableProductDAO {
 		sb.append("  FROM "+tableName+" product         	");
 		sb.append("  INNER JOIN "+pathJSP+"_loai_sp loaiSP  ");
 		sb.append("  ON product.ID_LOAI_SP = loaiSP.ID_LOAI_SP          			");
+		sb.append("  WHERE ID_DKM IS NULL OR ID_DKM  = ''                       	");
 		
 		return sb.toString();
 	}
@@ -627,6 +650,7 @@ public class CreateTableProductDAO {
 		sb.append("  ,TRANG_THAI                            ");
 		sb.append("  ,NGAY_TAO 	                            ");
 		sb.append("  ,NGAY_CHINH_SUA                        ");
+		sb.append("  ,ID_DKM                                ");
 		sb.append("  FROM "+tableName+"          			");
 		sb.append("  WHERE ID_SP = ?          			");
 		return sb.toString();
@@ -674,6 +698,16 @@ public class CreateTableProductDAO {
 		return sb.toString();
 	}
 	
+	private String getSQLUpdate_SPKM(SanPhamInputBean inputBean) {
+		StringBuffer sb = new StringBuffer();
+		String tableName = inputBean.getPathJSP() +"_PRODUCT";
+		sb.append("  UPDATE  "+tableName+"     ");
+		sb.append("  		SET GIA_BAN_KM = '" + inputBean.getGiaBanKM() + "' ");
+		sb.append("  		,NGAY_CHINH_SUA  = '" + inputBean.getNgayChinhSua() + "' ");
+		sb.append("  		 WHERE ID_DKM = '" + inputBean.getId_DKM() + "' ");
+		sb.append("  		 AND TRANG_THAI = '0'   ");
+		return sb.toString();
+	}
 	
 	/**
 	 * getSQlMaxIdStoreOwner

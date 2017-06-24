@@ -4,7 +4,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-
 <div id="wrapper">
 	<!-- Navigation -->
 	<div id="page-wrapper" ng-app="ProductForm" ng-controller="ctrl">
@@ -115,7 +114,10 @@
                                 <tbody style="overflow: auto; height:50px">
                               		  <c:forEach var="items" items="${ProductForm.lst }">
 		                                <tr class="odd gradeX">
-		                                 		<td style="text-align: center"><input type="checkbox" ng-model="checkbox${items.no}"></td>
+		                                 		<td style="text-align: center">
+		                                 			<input type="checkbox" ng-model="checkbox${items.no}">
+		                                 			<%-- <form:checkbox path="ProductForm[${items.no}].action"/> --%>
+		                                 		</td>
 		                                        <td style="text-align: center">${items.no}</td>
 		                                        <td>${items.idSanPham}</td>
 							                     <td>${items.tenSP}</td>

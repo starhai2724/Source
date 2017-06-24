@@ -1,19 +1,20 @@
 var app = angular.module('ProductForm', []);;
 app.controller('ctrl', function($scope, $window) {
+	$scope.giaBanKM_err = "";
 	
 	$scope.btnChonSPKM = function() {
 		chonSPKM();
 	}
-	$scope.btnThemDong = function(id){
+	$scope.btnThemDong = function(){
 		themDong();
 	}
 	
-	$scope.btnXoaDong = function(id){
+	$scope.btnXoaDong = function(){
 		xoaDong();
 	}
 	
-	$scope.btnDangKy = function(id){
-		dangKy();
+	$scope.btnDangKy = function(){
+			dangKy($scope);
 	}
 	
 });
@@ -36,8 +37,33 @@ function xoaDong() {
 	document.getElementById("ProductForm").submit();
 }
 
-function dangKy() {
-	document.getElementById("ProductForm").action = "/storeManagerSystem/chiTietDKM/dangKy";
-	document.getElementById("ProductForm").method = "POST";
-	document.getElementById("ProductForm").submit();
+function dangKy($scope) {
+	
+	var valid = true;
+	var reg = new RegExp('^[0-9]+$');
+	
+	 var len = $scope.lst.lenght;
+	 
+    for (var i=0; i< len; i++) {
+    	  if($scope.lst[i].giaBanKM == "") {
+    		  $scope.giaBanKM_err = "Hãy nhập giá bán khuyến mãi."
+    		  valid = false;
+    		  break;
+          }
+    	  if(!reg.test($scope.lst[i].giaBanKM)){
+    			$scope.ngayKT = "Giá bán khuyến mãi phải là số."
+    			valid = false;
+    			break;
+    	  }
+      }
+    
+	if (true == valid) {
+		if(confirm("Bạn có muốn đăng ký?")){
+			document.getElementById("ProductForm").action = "/storeManagerSystem/chiTietDKM/dangKy";
+			document.getElementById("ProductForm").method = "POST";
+			document.getElementById("ProductForm").submit();
+		}
+	}
+
 }
+

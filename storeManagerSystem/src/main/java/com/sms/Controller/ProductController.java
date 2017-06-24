@@ -1,6 +1,5 @@
 package com.sms.Controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +42,11 @@ public class ProductController {
 	
 	@RequestMapping(value  = "/product/init")
 	public String init(@ModelAttribute("ProductForm") ProductForm form, HttpSession session){
-		String pathJSP = (String)session.getAttribute("pathURL"); 
+		//String pathJSP = (String)session.getAttribute("pathURL"); 
+		String pathJSP = "cuahangthoitrang";
+		
+		
+		
 		//reset
 		form.setIdSanPham("");
 		form.setTenSP("");
@@ -102,7 +105,8 @@ public class ProductController {
 	@RequestMapping(value ="/product/insert", method = RequestMethod.POST)
 	public String insert(@ModelAttribute("ProductForm") ProductForm form, @RequestParam("file") MultipartFile file, HttpSession session) {
 		//get domain
-		String pathJSP = (String)session.getAttribute("pathURL");
+		//String pathJSP = (String)session.getAttribute("pathURL"); 
+		String pathJSP = "cuahangthoitrang";
 		
 		SanPhamInputBean input = new SanPhamInputBean();
 		input.setPathJSP(pathJSP);
@@ -143,7 +147,8 @@ public class ProductController {
 	@RequestMapping(value ="/product/update", method = RequestMethod.POST)
 	public String update(@ModelAttribute("ProductForm") ProductForm form, @RequestParam("file") MultipartFile file , HttpSession session){
 		//get domain
-		String pathJSP = (String)session.getAttribute("pathURL");
+		//String pathJSP = (String)session.getAttribute("pathURL"); 
+		String pathJSP = "cuahangthoitrang";
 		
 		SanPhamInputBean input = new SanPhamInputBean();
 		input.setPathJSP(pathJSP);
@@ -186,7 +191,8 @@ public class ProductController {
 	@RequestMapping(value="product/getProductById/{id}", method = RequestMethod.POST)
 	public String getProductById(@ModelAttribute("ProductForm") ProductForm form, @PathVariable("id") String id, HttpSession session){
 		//get domain
-		String pathJSP = (String)session.getAttribute("pathURL");
+		//String pathJSP = (String)session.getAttribute("pathURL"); 
+		String pathJSP = "cuahangthoitrang";
 		
 		SanPhamInputBean input = new SanPhamInputBean();
 		input.setPathJSP(pathJSP);
@@ -239,7 +245,8 @@ public class ProductController {
 	@RequestMapping(value="/product/delete/{id}")
 	public String delete(@ModelAttribute("ProductForm") ProductForm form, @PathVariable("id") String id, HttpSession session){
 		//get domain
-		String pathJSP = (String)session.getAttribute("pathURL");
+		//String pathJSP = (String)session.getAttribute("pathURL"); 
+		String pathJSP = "cuahangthoitrang";
 		SanPhamInputBean inputBean = new SanPhamInputBean();
 		inputBean.setPathJSP(pathJSP);
 		inputBean.setIdSanPham(id);
@@ -263,45 +270,23 @@ public class ProductController {
 	
 	@RequestMapping(value="product/phanAnh", method = RequestMethod.POST)
 	public String phanAnh(@ModelAttribute("ProductForm") ProductForm form, HttpSession session, Model model){
-		//get domain
-		//String pathJSP = (String)session.getAttribute("pathURL");
-		String pathJSP = "cuahangthoitrang";
 		
 		List<ProductFormRow> lst = form.getLst();
-		List<ProductFormRow> newlst = new ArrayList<ProductFormRow>();
-		ProductFormRow formRow; 
-		SanPhamOutputBean outputBean;
-		SanPhamInputBean input;
-		SanPhamOutputRowBean outputRowBean;
+		List<String> lst_idSP = new ArrayList<String>();
 		
 		if(lst != null && lst.size() > 0){
-			for(int i = 0; i< 4; i++){
+			for(int i = 0; i< 2; i++){
 				ProductFormRow row = lst.get(i);	
 				String no = row.getNo();
 				//if(row.get){ check checkbox checked
-					input = new SanPhamInputBean();
-					input.setPathJSP(pathJSP);
-					input.setIdSanPham(row.getIdSanPham());
-					
-					outputBean = CreateTableProductDAO.intances.getProductById(input);
-					outputRowBean = outputBean.getLst().get(0);
-					formRow = new ProductFormRow();
-					formRow.setIdSanPham(outputRowBean.getIdSanPham());
-					formRow.setTenSP(outputRowBean.getTenSP());
-					formRow.setGiaMua(outputRowBean.getGiaMua());
-					formRow.setGiaBan(outputRowBean.getGiaBan());
-					formRow.setMoTa(outputRowBean.getMoTa());
-					formRow.setIdLoaiSP(outputRowBean.getIdLoaiSP());
-					formRow.setTenLoaiSP(outputRowBean.getTenLoaiSP());
-					formRow.setGiaBanKM("");
-					
-					newlst.add(formRow);
+				
+					lst_idSP.add(row.getIdSanPham());
 					
 				//}
 				
 			}
 		}
-		session.setAttribute("lstPhanAnh", newlst);
+		session.setAttribute("lstPhanAnh", lst_idSP);
 		return  "redirect:/chiTietDKM/initPhanAnh";
 	}
 	
