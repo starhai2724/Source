@@ -13,7 +13,7 @@ app.controller('ctrl', function($scope, $window) {
 		getById($scope, id);
 	}
 	$scope.btnDelete = function(id){
-		remove($scope,id);
+		remove($scope, $window, id);
 	}
 });
 
@@ -59,7 +59,7 @@ function update($scope) {
 //	}
 //}
 
-function remove($scope, id){
+function remove($scope, $window, id){
 	if(confirm("Bạn có muốn xóa không?")){
 		var url = "/storeManagerSystem/registerProductCategory/delete/"+id;
 		document.getElementById("RegisterProductCategory").action = url;

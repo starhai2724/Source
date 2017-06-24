@@ -14,7 +14,7 @@ app.controller('ctrl', function($scope, $window) {
 		clear($scope);
 	}
 	$scope.btnDelete = function(id){
-		remove($scope,id);
+		remove($scope, $window, id);
 	}
 	
 });
@@ -46,7 +46,7 @@ function clear($scope){
 	}
 }
 
-function remove($scope, id){
+function remove($scope, $window, id){
 	if(confirm("Bạn có muốn xóa không?")){
 		var url = "/storeManagerSystem/getIdStoreOwnerForDelete/"+id;
 		document.getElementById("storeOwnerList").action = url;

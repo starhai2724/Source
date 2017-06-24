@@ -26,7 +26,7 @@ public class DotKhuyenMaiDAO {
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//sql
 		String hql = this.getSQLCreateTable(pathJSP);
 		try {
@@ -48,7 +48,7 @@ public class DotKhuyenMaiDAO {
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//sql
 		String hql = this.getSQLDeleteTable(pathJSP);	
 		try {
@@ -70,7 +70,7 @@ public class DotKhuyenMaiDAO {
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//id
 		int maDKM = SMSComons.convertInt(this.getMaxId(inputBean.getPathJSP()));
 		//sql 
@@ -105,7 +105,7 @@ public class DotKhuyenMaiDAO {
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//sql 
 		String hql = getSQLUpdate(inputBean.getPathJSP());
 		try {
@@ -138,7 +138,7 @@ public class DotKhuyenMaiDAO {
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//sql 
 		String hql = getSQlDeleteById(inputBean.getPathJSP());
 		try {
@@ -164,13 +164,13 @@ public class DotKhuyenMaiDAO {
 		String hql = getSQlMaxId(pathJSP);
 		String result = "";
 		try {
-			session.getTransaction().begin();
+			Transaction tx = session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
 			List<Object> data = query.list();
 			for (Object object : data) {
 				result = SMSComons.convertString(object);
 			}
-			session.getTransaction().commit();
+			tx.commit();
 
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
@@ -194,7 +194,7 @@ public class DotKhuyenMaiDAO {
 		List<DotKhuyenMaiOutputRowBean> lst = new ArrayList<>();
 		DotKhuyenMaiOutputRowBean outputRowBean;
 		try {
-			session.getTransaction().begin();
+			Transaction tx = session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
 			query.setParameter(0, inputBean.getMaDKM());
 			List<Object[]> data = query.list();
@@ -213,7 +213,7 @@ public class DotKhuyenMaiDAO {
 				outputRowBean.setDk_tongSL(SMSComons.convertString(object[10]));
 				lst.add(outputRowBean);
 			}
-			session.getTransaction().commit();
+			tx.commit();
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
 			e.printStackTrace();
@@ -237,7 +237,7 @@ public class DotKhuyenMaiDAO {
 		List<DotKhuyenMaiOutputRowBean> lst = new ArrayList<>();
 		DotKhuyenMaiOutputRowBean outputRowBean;
 		try {
-			session.getTransaction().begin();
+			Transaction tx = session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
 			List<Object[]> data = query.list();
 			for (Object[] object : data) {
@@ -255,7 +255,7 @@ public class DotKhuyenMaiDAO {
 				outputRowBean.setDk_tongSL(SMSComons.convertString(object[10]));
 				lst.add(outputRowBean);
 			}
-			session.getTransaction().commit();
+			tx.commit();
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
 			e.printStackTrace();

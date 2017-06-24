@@ -101,7 +101,7 @@
 		
 		<c:if test="${!empty KhachHangForm.lst }">
 		<div class="panel-body">
-                            <table width="1578px" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
                                         <th style="text-align: center; width: 40px;">STT</th>
@@ -115,13 +115,12 @@
 										<th style="text-align: center; width: 80px">Ngày tạo</th>
 										<th style="text-align: center; width: 80px">Ngày chỉnh sửa</th>
 										<th style="text-align: center;	width: 60px">Thao tác</th>
-										<th style="text-align: center;	width: 60px"></th>
                                     </tr>
                                 </thead>
                                 <tbody style="overflow: auto; height:50px">
                               		  <c:forEach var="items" items="${KhachHangForm.lst }">
 		                                <tr class="odd gradeX">
-		                                        <td style="text-align: center">${items.no}</td>
+		                                        <td class="center" style="text-align: center">${items.no}</td>
 		                                        <td>${items.tenKhachHang}</td>
 							                     <td>${items.soDienThoai}</td>
 							                     <td>${items.gioiTinh }</td>
@@ -139,17 +138,12 @@
 															<span class="glyphicon glyphicon-trash" data-toggle="tooltip" data-original-title="Xóa"></span>
 														</button>
 		                                        </td>
-		                                        <td class="center" style="text-align: center">
-		                                        </td>
 		                                 </tr>
 					                </c:forEach>
                                 </tbody>
                             </table>
                         </div>
 		</c:if>
-		<!-- test -->
-		<input ng-model="test" ng-init="test='${KhachHangForm.lst }'" >
-		<!-- test -->
 		<form:input class="form-control" type="hidden"  path="flagUpdate"  name="flagUpdate" ng-model ="flagUpdate" ng-init="flagUpdate='${KhachHangForm.flagUpdate}'" />
 	</form:form>		
 		<!-- /#page-wrapper -->

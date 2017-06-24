@@ -537,5 +537,9 @@ public class KhachHangDAO {
 	}	
 	public static void main(String[] args) {
 		KhachHangDAO cr = new KhachHangDAO();
+		KhachHangInputBean inputBean = new KhachHangInputBean();
+		inputBean.setIdKhachHang("100017");
+		inputBean.setPathJSP("cuahangthoitrang");
+		cr.deleteById(inputBean);
 	}
 }

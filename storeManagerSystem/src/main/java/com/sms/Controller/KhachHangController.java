@@ -48,6 +48,10 @@ public class KhachHangController {
 		//Flag update
 		form.setFlagUpdate("0");
 		
+		//reset message
+		form.setMessage("");
+		form.setMessageErr("");
+		
 		//init data
 		initData(form, pathJSP);
 		
@@ -71,6 +75,8 @@ public class KhachHangController {
 		form.getLstGioiTinh().put("Nam", "Nam");
 		form.getLstGioiTinh().put("Nữ", "Nữ");
 		
+		//reset detail
+		form.getLst().clear();
 		
 		List<KhachHangOutputRowBean> lst = KhachHangDAO.intances.getAll(pathJSP);
 		KhachHangRowForm formRow; 
@@ -90,7 +96,6 @@ public class KhachHangController {
 				formRow.setNgaySinh(outputRowBean.getNgaySinh());
 				formRow.setNgayTao(outputRowBean.getNgayTao());
 				formRow.setNgaySua(outputRowBean.getNgaySua());
-				
 				form.getLst().add(formRow);
 			}
 		}
@@ -207,7 +212,6 @@ public class KhachHangController {
 		inputBean.setIdKhachHang(id);
 		
 		List<KhachHangOutputRowBean> lst = KhachHangDAO.intances.getById(inputBean);
-		System.out.println("lst: "+lst.size());
 		KhachHangOutputRowBean khachHangOutputRowBean = lst.get(0);
 		form.setIdKhachHang(khachHangOutputRowBean.getIdKhachHang());
 		form.setTenKhachHang(khachHangOutputRowBean.getTenKhachHang());
@@ -242,7 +246,7 @@ public class KhachHangController {
 		KhachHangInputBean input = new KhachHangInputBean();
 		input.setPathJSP(pathJSP);
 		input.setIdKhachHang(id);
-		
+		System.out.println("id: "+input.getIdKhachHang());
 		
 		//delete
 		int cnt = KhachHangDAO.intances.deleteById(input);

@@ -25,7 +25,7 @@ app.controller('ctrl', function($scope, $window) {
 	}
 	
 	$scope.btnDelete = function(id){
-		remove($scope,id);
+		remove($scope, $window, id);
 	}
 	
 });

@@ -27,7 +27,7 @@ app.controller('ctrl', function($scope, $window) {
 	}
 	
 	$scope.btnDelete = function(id){
-		remove($scope,id);
+		remove($scope, $window, id);
 	}
 	
 	$scope.btnPhanAnh = function(){
@@ -144,7 +144,7 @@ function clear($scope){
 }
 
 
-function remove($scope, $windown, id){
+function remove($scope, $window, id){
 	if(confirm("Bạn có muốn xóa?")){
 		var url = "/storeManagerSystem/product/delete/"+id;
 		document.getElementById("ProductForm").action = url;

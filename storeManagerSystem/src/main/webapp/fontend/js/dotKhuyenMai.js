@@ -31,7 +31,7 @@ app.controller('ctrl', function($scope, $window) {
 	}
 	
 	$scope.btnDelete = function(id){
-		remove($scope,id);
+		remove($scope, $window, id);
 	}
 	
 });
@@ -172,7 +172,7 @@ function clear($scope){
 }
 
 
-function remove($scope, id){
+function remove($scope, $window, id){
 	if(confirm("Bạn có muốn xóa?")){
 		var url = "/storeManagerSystem/dotKhuyenMai/delete/" + id;
 		document.getElementById("DotKhuyenMaiForm").action = url;

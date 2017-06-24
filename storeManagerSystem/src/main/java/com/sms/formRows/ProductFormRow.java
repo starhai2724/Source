@@ -36,35 +36,6 @@ public class ProductFormRow {
 		return giaBanKM;
 	}
 
-	public int getIndex() {
-		return index;
-	}
-
-
-
-
-	public void setIndex(int index) {
-		this.index = index;
-	}
-
-
-
-
-	
-
-
-	public int getChecked() {
-		return checked;
-	}
-
-
-
-
-	public void setChecked(int checked) {
-		this.checked = checked;
-	}
-
-
 
 
 	public int getIndex() {
@@ -73,15 +44,10 @@ public class ProductFormRow {
 
 
 
-
 	public void setIndex(int index) {
 		this.index = index;
 	}
 
-
-
-
-	
 
 
 	public int getChecked() {

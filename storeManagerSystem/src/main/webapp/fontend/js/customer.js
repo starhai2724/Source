@@ -27,8 +27,7 @@ app.controller('ctrl', function($scope, $window) {
 	}
 	
 	$scope.btnDelete = function(id){
-		alert("id " + id);
-		remove($scope,id);
+		remove($scope, $window,  id);
 	}
 	
 });
@@ -114,7 +113,7 @@ function clear($scope){
 }
 
 
-function remove($scope, $windown, id){
+function remove($scope, $window, id){
 	if(confirm("Bạn có muốn xóa?")){
 		var url = "/storeManagerSystem/customer/delete/"+id;
 		document.getElementById("KhachHangForm").action = url;

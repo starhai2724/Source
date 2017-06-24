@@ -28,7 +28,7 @@ public class HoaDonDAO {
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//sql
 		String hql = this.getSQLCreateTable(pathJSP);
 		try {
@@ -51,7 +51,7 @@ public class HoaDonDAO {
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//sql
 		String hql = this.getSQLDeleteTable(pathJSP);	
 		try {
@@ -74,7 +74,7 @@ public class HoaDonDAO {
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//id
 		int id = SMSComons.convertInt(this.getMaxId(inputBean.getPathJSP()));
 		//sql 
@@ -106,7 +106,7 @@ public class HoaDonDAO {
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//sql 
 		String hql = getSQLUpdate(inputBean.getPathJSP());
 		try {
@@ -136,7 +136,7 @@ public class HoaDonDAO {
 		//session
 		Session session = HibernateUtil.getSessionDAO();
 		int cnt = 0; 
-		Transaction tx = HibernateUtil.getSessionDAO().beginTransaction();
+		Transaction tx = session.beginTransaction();
 		//sql 
 		String hql = getSQlDeleteById(inputBean.getPathJSP());
 		try {
@@ -162,13 +162,13 @@ public class HoaDonDAO {
 		String hql = getSQlMaxId(pathJSP);
 		String result = "";
 		try {
-			session.getTransaction().begin();
+			Transaction tx = session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
 			List<Object> data = query.list();
 			for (Object object : data) {
 				result = SMSComons.convertString(object);
 			}
-			session.getTransaction().commit();
+			tx.commit();
 
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
@@ -192,7 +192,7 @@ public class HoaDonDAO {
 		List<HoaDonOutputRowBean> lst = new ArrayList<>();
 		HoaDonOutputRowBean outputRowBean;
 		try {
-			session.getTransaction().begin();
+			Transaction tx = session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
 			query.setParameter(0, inputBean.getIdHoaDon());
 			List<Object[]> data = query.list();
@@ -208,7 +208,7 @@ public class HoaDonDAO {
 				outputRowBean.setTongTien(SMSComons.convertString(object[7]));
 				lst.add(outputRowBean);
 			}
-			session.getTransaction().commit();
+			tx.commit();
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
 			e.printStackTrace();
@@ -232,7 +232,7 @@ public class HoaDonDAO {
 		List<HoaDonOutputRowBean> lst = new ArrayList<>();
 		HoaDonOutputRowBean outputRowBean;
 		try {
-			session.getTransaction().begin();
+			Transaction tx = session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
 			List<Object[]> data = query.list();
 			for (Object[] object : data) {
@@ -247,7 +247,7 @@ public class HoaDonDAO {
 				outputRowBean.setTongTien(SMSComons.convertString(object[7]));
 				lst.add(outputRowBean);
 			}
-			session.getTransaction().commit();
+			tx.commit();
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
 			e.printStackTrace();

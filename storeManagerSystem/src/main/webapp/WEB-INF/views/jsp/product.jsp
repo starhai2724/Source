@@ -96,7 +96,7 @@
 		
 		<c:if test="${!empty ProductForm.lst }">
 		<div class="panel-body">
-                            <table width="1578px" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
                                     	<th style="text-align: center; width: 05px;"></th>
@@ -110,14 +110,12 @@
 										<th style="text-align: center; width: 80px">Ngày chỉnh sửa</th>
 										<th style="text-align: center; width: 250px">Mô tả</th>
 										<th style="text-align: center;	width: 60px">Thao tác</th>
-										<th style="text-align: center;	width: 60px"></th>
                                     </tr>
                                 </thead>
                                 <tbody style="overflow: auto; height:50px" ng-model = "listSanPham" ng-init ="listSanPham = '${fn:length(ProductForm.lst)}'">
                               		  <c:forEach var="items" items="${ProductForm.lst }">
 		                                <tr class="odd gradeX">
-<%-- 		                                 		<td style="text-align: center"><input type="checkbox" ng-model="selected[${items.no}]"  ng-init ="checkbox${items.no}='false'" ng-true-value="'${items.idSanPham }'" ng-false-value="'NO'"></td> --%>
-		                                 		<td style="text-align: center"><input type="checkbox" ng-model="selected[${items.no}]"  ng-init ="selected[${items.no}]='false'" ng-true-value="'${items.idSanPham }'" ng-false-value="'NO'"></td>
+		                                 		<td class="center" style="text-align: center"><input type="checkbox" ng-model="selected[${items.no}]"  ng-init ="selected[${items.no}]='false'" ng-true-value="'${items.idSanPham }'" ng-false-value="'NO'"></td>
 		                                        <td style="text-align: center">${items.no}</td>
 		                                        <td>${items.idSanPham}</td>
 							                     <td>${items.tenSP}</td>
@@ -134,8 +132,6 @@
 														<button class="btn" type="button" ng-click="btnDelete('${items.idSanPham}');" >
 															<span class="glyphicon glyphicon-trash" data-toggle="tooltip" data-original-title="Xóa"></span>
 														</button>
-		                                        </td>
-		                                        <td class="center" style="text-align: center">
 		                                        </td>
 		                                 </tr>
 					                </c:forEach>

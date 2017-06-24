@@ -42,10 +42,7 @@ public class ProductController {
 	
 	@RequestMapping(value  = "/product/init")
 	public String init(@ModelAttribute("ProductForm") ProductForm form, HttpSession session){
-		//String pathJSP = (String)session.getAttribute("pathURL"); 
-		String pathJSP = "cuahangthoitrang";
-		
-		
+		String pathJSP = (String)session.getAttribute("pathURL"); 
 		
 		//reset
 		form.setIdSanPham("");
@@ -56,7 +53,6 @@ public class ProductController {
 		form.setIdLoaiSP("");
 		//Flag update
 		form.setFlagUpdate("0");
-		
 		//init data
 		initData(form, pathJSP);
 		
@@ -71,6 +67,9 @@ public class ProductController {
 	 */
 	
 	private void initData(ProductForm form, String pathJSP){
+		//reset form
+		form.getLst().clear();
+		
 		LoaiSanPhamInputBean loaiSanPhamInputBean = new LoaiSanPhamInputBean();
 		loaiSanPhamInputBean.setPathJSP(pathJSP);
 		List<LoaiSanPhamOutputBean> listLoaiSP = LoaiSanPhamDAO.intances.getLoaiSP(loaiSanPhamInputBean);
@@ -86,7 +85,6 @@ public class ProductController {
 				SanPhamOutputRowBean outputRowBean = outputBean.getLst().get(i);	
 				formRow = new ProductFormRow();
 				formRow.setNo(String.valueOf(cnt++));
-				//System.out.println("mã SP :" + outputRowBean.getIdSanPham());
 				formRow.setIdSanPham(outputRowBean.getIdSanPham());
 				formRow.setTenSP(outputRowBean.getTenSP());
 				formRow.setTenLoaiSP(outputRowBean.getTenLoaiSP());
@@ -105,8 +103,7 @@ public class ProductController {
 	@RequestMapping(value ="/product/insert", method = RequestMethod.POST)
 	public String insert(@ModelAttribute("ProductForm") ProductForm form, @RequestParam("file") MultipartFile file, HttpSession session) {
 		//get domain
-		//String pathJSP = (String)session.getAttribute("pathURL"); 
-		String pathJSP = "cuahangthoitrang";
+		String pathJSP = (String)session.getAttribute("pathURL"); 
 		
 		SanPhamInputBean input = new SanPhamInputBean();
 		input.setPathJSP(pathJSP);
@@ -147,8 +144,7 @@ public class ProductController {
 	@RequestMapping(value ="/product/update", method = RequestMethod.POST)
 	public String update(@ModelAttribute("ProductForm") ProductForm form, @RequestParam("file") MultipartFile file , HttpSession session){
 		//get domain
-		//String pathJSP = (String)session.getAttribute("pathURL"); 
-		String pathJSP = "cuahangthoitrang";
+		String pathJSP = (String)session.getAttribute("pathURL"); 
 		
 		SanPhamInputBean input = new SanPhamInputBean();
 		input.setPathJSP(pathJSP);
@@ -191,8 +187,7 @@ public class ProductController {
 	@RequestMapping(value="product/getProductById/{id}", method = RequestMethod.POST)
 	public String getProductById(@ModelAttribute("ProductForm") ProductForm form, @PathVariable("id") String id, HttpSession session){
 		//get domain
-		//String pathJSP = (String)session.getAttribute("pathURL"); 
-		String pathJSP = "cuahangthoitrang";
+		String pathJSP = (String)session.getAttribute("pathURL"); 
 		
 		SanPhamInputBean input = new SanPhamInputBean();
 		input.setPathJSP(pathJSP);
@@ -217,6 +212,8 @@ public class ProductController {
 		for(LoaiSanPhamOutputBean loaiSanPhamOutputBean : listLoaiSP){
 			form.getLstCategory().put(loaiSanPhamOutputBean.getIdLoaiSP(), loaiSanPhamOutputBean.getTenLoaiSP());
 		}
+		// reset detail
+		form.getLst().clear();
 		
 		SanPhamOutputBean sanPhamOutputBean = CreateTableProductDAO.intances.getProducts(pathJSP);
 		ProductFormRow formRow; 
@@ -245,12 +242,10 @@ public class ProductController {
 	@RequestMapping(value="/product/delete/{id}")
 	public String delete(@ModelAttribute("ProductForm") ProductForm form, @PathVariable("id") String id, HttpSession session){
 		//get domain
-		//String pathJSP = (String)session.getAttribute("pathURL"); 
-		String pathJSP = "cuahangthoitrang";
+		String pathJSP = (String)session.getAttribute("pathURL"); 
 		SanPhamInputBean inputBean = new SanPhamInputBean();
 		inputBean.setPathJSP(pathJSP);
 		inputBean.setIdSanPham(id);
-		System.out.println("id: "+id);
 		//insert
 		int cnt = CreateTableProductDAO.intances.deleteProductById(inputBean);
 		
