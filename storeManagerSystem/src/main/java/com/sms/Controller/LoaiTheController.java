@@ -39,6 +39,10 @@ public class LoaiTheController {
 		//Flag update
 		form.setFlagUpdate("0");
 		
+		//reset message
+		form.setMessage("");
+		form.setMessageErr("");
+		
 		//init data
 		initData(form, pathJSP);
 		

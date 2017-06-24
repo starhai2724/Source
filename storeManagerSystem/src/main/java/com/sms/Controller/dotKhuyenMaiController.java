@@ -45,6 +45,10 @@ public class dotKhuyenMaiController {
 		//Flag update
 		form.setFlagUpdate("");
 		
+		//reset message
+		form.setMessage("");
+		form.setMessageErr("");
+		
 		//init data
 		initData(form, pathJSP);
 		

@@ -39,7 +39,6 @@ public class ClientStoreOwnerController {
 		storeOwnerForm.setAddress("");
 		storeOwnerForm.setEmail("");
 		User user = (User) session.getAttribute("userLocal");
-		System.out.println("Username: "+ user.getUsername());
 		modelMap.addAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEMLIST);
 		return SystemCommon.PAGE_HOME;
 	}

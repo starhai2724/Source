@@ -33,6 +33,10 @@ public class DangkiTaiKhoanController {
 		form.setPathJSP(path);
 		form.setDiaChi("");
 		form.setNgaySinh("");
+		//reset message
+		form.setMessage("");
+		form.setMessageErr("");
+		
 		return  PAGE_DANGKI;
 	}
 	

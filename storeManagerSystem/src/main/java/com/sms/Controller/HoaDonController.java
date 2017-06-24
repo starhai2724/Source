@@ -46,6 +46,11 @@ public class HoaDonController {
 		form.setTongTien("");
 		//Flag update
 		form.setFlagUpdate("0");
+		
+		//reset message
+		form.setMessage("");
+		form.setMessageErr("");
+		
 		//init data
 		initData(form, pathJSP);
 		session.setAttribute("PAGEIDSTORE", PAGE);

@@ -39,6 +39,9 @@ public class RegisterProductCategoryCtrl {
 		String pathJSP = (String)session.getAttribute("pathURL");
 		//reset form
 		form.setNameProductCategory("");
+		//reset message
+		form.setMessage("");
+		form.setMessageErr("");
 		
 		//init data
 		initData(form, pathJSP);

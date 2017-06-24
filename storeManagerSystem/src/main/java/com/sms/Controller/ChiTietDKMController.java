@@ -45,6 +45,10 @@ public class ChiTietDKMController {
 	public String init(@ModelAttribute("ProductForm3") ProductForm form, HttpSession session){
 		String pathJSP = "cuahangthoitrang";
 		String idDKM = (String)session.getAttribute("idDKM");
+		
+		//reset message
+		form.setMessage("");
+		form.setMessageErr("");
 		//init data
 		initData(form, pathJSP,idDKM);
 		
