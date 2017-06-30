@@ -1,10 +1,10 @@
 package com.sms.input;
 
-import java.io.File;
-
 public class SanPhamInputBean {
 
 	private String pathJSP;
+	
+	private String SEQ;
 
 	private String idSanPham;
 
@@ -35,6 +35,15 @@ public class SanPhamInputBean {
 	private int index = 1;
 	
 	
+
+	
+	public String getSEQ() {
+		return SEQ;
+	}
+
+	public void setSEQ(String sEQ) {
+		SEQ = sEQ;
+	}
 
 	public int getIndex() {
 		return index;

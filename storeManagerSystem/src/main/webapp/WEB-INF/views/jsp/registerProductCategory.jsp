@@ -14,6 +14,7 @@
     <title>Hệ thống bán hàng</title>
     <%@include file="/WEB-INF/views/jsp/headerInclude.jsp" %>
 </head>
+
 <body>
 <div id="wrapper">
 <div id="page-wrapper" ng-app="RegisterProductCategory" ng-controller="ctrl">
@@ -34,6 +35,17 @@
 					<p style="color: red;">{{nameProductCategory_err}}</p>
 				</div>
 			</div>
+			
+			<c:if test="${!empty RegisterProductCategory.checkShow }">
+				<div class="col-sm-4" style="margin-left: 550px;margin-top: -70px">
+					<div class="form-group" >
+						<label>Tên loại sản phẩm</label> 
+						<form:input class="form-control" type="text" path="tenLoaiSP"  ng-model = "tenLoaiSP"  ng-init ="tenLoaiSP = '${RegisterProductCategory.tenLoaiSP}'" />
+						<form:input class="form-control" type="hidden" path="idLoaiSP"  />
+						<p style="color: red;">{{nameProductCategory_err}}</p>
+					</div>
+				</div>
+			</c:if>
 		</div>
 		<!--Message (S)-->
 		<div class="row">
@@ -46,9 +58,15 @@
 		</div>
 		<!--Message (E)-->
 		<div class="row">
-			<div class="col-sm-3" >
-				<input type="button" name=""  class="btn btn-info " ng-click="btnCreate()" value="Đăng kí">
+			<div class="col-sm-5" style="margin-left: 10px">
+				<input type="button" name=""  class="btn btn-info " ng-click="btnCreate()" value="Đăng kí nhóm SP">
 			</div>
+		<c:if test="${!empty RegisterProductCategory.checkShow }">
+			<div class="col-sm-5" style="margin-left: -40px">
+				<input type="button" name=""  class="btn btn-info " ng-click="btnDangKyLSP()" value="Đăng kí loại SP">
+				<!-- <input type="button" name=""  class="btn btn-info " ng-click="btnThemDong()" value="Thêm loại SP"> -->
+			</div>
+		</c:if>
 		</div>
 		<div class="row">
 			<div class="col-sm-3">&nbsp</div>
@@ -58,12 +76,13 @@
 		</div>
 		<c:if test="${!empty RegisterProductCategory.lst }">
 		<div class="panel-body">
-                            <table style="width: 450px" class="table table-striped table-bordered table-hover" id="dataTables-example">
+			<div id="table-scroll" style="overflow-y : auto; height: 380px;width: 450px;">
+                            <table style="width: 429px" class="table table-striped table-bordered table-hover" >
 				                <thead>
 									<tr>
 										<th style="width: 50px">STT</th>
 										<th>Tên nhóm sản phẩm</th>
-										<th>Thao tác</th>
+										<th style="width: 150px">Thao tác</th>
 									</tr>
 								</thead>
                                 <tbody style="overflow: auto; height:50px">
@@ -78,14 +97,73 @@
 														<button class="btn" type="button" ng-click="btnDelete('${items.idProductCategory}');" >
 															<span class="glyphicon glyphicon-trash" data-toggle="tooltip" data-original-title="Xóa"></span>
 														</button>
+														<button class="btn" type="button" ng-click="btnDetail('${items.idProductCategory}');" >
+															<span class="glyphicon glyphicon-list" data-toggle="tooltip" data-original-title="Chi tiết"></span>
+														</button>
 								                   </td>
 								         </tr>
 								 	</c:forEach> 
                                 </tbody>
                             </table>
+                     </div>
          </div>
 		</c:if>
+		
+		<c:if test="${!empty RegisterProductCategory.lstLSP }">
+		<div class="panel-body">
+				<div id="table-scroll" style="overflow:auto; height: 380px;margin-top: -410px;width: 430px;margin-left: 550px;">
+                            <table class="table table-striped table-bordered table-hover" >
+				                <thead>
+									<tr>
+										<th style="width: 50px">STT</th>
+										<th>Tên loại sản phẩm</th>
+										<th style="width: 120px">Thao tác</th>
+									</tr>
+								</thead>
+                                <tbody style="overflow: auto; height:50px">
+                              		  <c:forEach var="items" items="${RegisterProductCategory.lstLSP }">
+										<tr class="gradeX">
+								                   <td class="center" style="text-align: center">${items.no_LSP}</td>
+								                   <td>${items.name_LSP}</td>
+								                   <td style="text-align: center">
+														<button class="btn" type="button" ng-click="btnDelete_LSP('${items.no_LSP}');" >
+															<span class="glyphicon glyphicon-trash" data-toggle="tooltip" data-original-title="Xóa"></span>
+														</button>
+														<button class="btn" type="button" ng-click="btnGetById_LSP('${items.idLSP}');" >
+															<span class="glyphicon glyphicon-pencil" data-toggle="tooltip" data-original-title="Sửa"></span>
+														</button>
+								                   </td>
+								         </tr>
+								 	</c:forEach> 
+                                </tbody>
+                            </table>
+                  </div>
+         </div>
+		</c:if>
+		<c:if test="${empty RegisterProductCategory.lstLSP }">
+			<c:if test="${!empty RegisterProductCategory.checkShow }">
+				<div class="panel-body">
+					<div id="table-scroll" style="overflow:auto; height: 380px;margin-top: -410px;width: 400px;margin-left: 550px;">
+                            <table class="table table-striped table-bordered table-hover" >
+				                <thead>
+									<tr>
+										<th style="width: 50px">STT</th>
+										<th>Tên loại sản phẩm</th>
+										<th style="width: 80px">Thao tác</th>
+									</tr>
+								</thead>
+                                <tbody style="overflow: auto; height:50px">
+										<tr class="gradeX">
+								                   <td class="center" style="text-align: center" colspan="3">Không tìm thấy dữ liệu</td>
+								         </tr>
+                                </tbody>
+                            </table>
+                  </div>
+         		</div>
+         	</c:if>
+		</c:if>
 		<form:input class="form-control" type="hidden"  path="flagUpdate"  name="flagUpdate" ng-model ="flagUpdate" ng-init="flagUpdate='${RegisterProductCategory.flagUpdate}'" />
+		<form:input class="form-control" type="hidden"  path="flagUpdate_LSP"  name="flagUpdate_LSP" ng-model ="flagUpdate_LSP" ng-init="flagUpdate_LSP='${RegisterProductCategory.flagUpdate_LSP}'" />
 	</form:form>		
 		<!-- /#page-wrapper -->
 	</div>

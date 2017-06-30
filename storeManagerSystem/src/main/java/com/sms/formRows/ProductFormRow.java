@@ -4,6 +4,8 @@ public class ProductFormRow {
 	
 	private String no;
 	
+	private String SEQ;
+	
 	private String idSanPham;
 
 	private String idLoaiSP;
@@ -31,6 +33,35 @@ public class ProductFormRow {
 	private int checked;
 	
 	private int index;
+
+	//dung cho gio hang (S)
+	private String soLuong;
+	//dung cho gio hang (E)
+	
+	
+	public String getSEQ() {
+		return SEQ;
+	}
+
+
+
+	public String getSoLuong() {
+		return soLuong;
+	}
+
+
+
+	public void setSoLuong(String soLuong) {
+		this.soLuong = soLuong;
+	}
+
+
+
+	public void setSEQ(String sEQ) {
+		SEQ = sEQ;
+	}
+
+
 
 	public String getGiaBanKM() {
 		return giaBanKM;

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -17,12 +18,9 @@ import com.sms.OutputRows.SanPhamOutputRowBean;
 import com.sms.common.SMSComons;
 import com.sms.common.SystemCommon;
 import com.sms.dao.CreateTableProductDAO;
-import com.sms.dao.LoaiSanPhamDAO;
 import com.sms.form.ProductForm;
 import com.sms.formRows.ProductFormRow;
-import com.sms.input.LoaiSanPhamInputBean;
 import com.sms.input.SanPhamInputBean;
-import com.sms.output.LoaiSanPhamOutputBean;
 import com.sms.output.SanPhamOutputBean;
 
 @Controller
@@ -43,7 +41,7 @@ public class ChiTietDKMController {
 	
 	@RequestMapping(value  = "/chiTietDKM/init")
 	public String init(@ModelAttribute("ProductForm3") ProductForm form, HttpSession session){
-		String pathJSP = "cuahangthoitrang";
+		String pathJSP = (String)session.getAttribute("pathURL"); 
 		String idDKM = (String)session.getAttribute("idDKM");
 		
 		//reset message
@@ -58,7 +56,7 @@ public class ChiTietDKMController {
 	
 	@RequestMapping(value ="/chiTietDKM/initPhanAnh", method = RequestMethod.GET)
 	public String initPhanAnh(@ModelAttribute("ProductForm3") ProductForm form, HttpSession session, Model model){
-		String pathJSP = "cuahangthoitrang";
+		String pathJSP = (String)session.getAttribute("pathURL"); 
 		List<String> lst_idSP = (List<String>)session.getAttribute("lstPhanAnh");
 		List<ProductFormRow> lst = form.getLst();
 		//init data
@@ -70,14 +68,13 @@ public class ChiTietDKMController {
 			 }
 		 }
 		 
-		 
 		boolean checkErr = false;
 		String idSP = "";
 		ProductFormRow formRow; 
 		SanPhamOutputBean outputBean;
 		SanPhamInputBean input;
 		SanPhamOutputRowBean outputRowBean;
-		
+		int cnt = 1;
 		if(lst_idSP != null && lst_idSP.size() > 0){
 			for(int i = 0; i< lst_idSP.size() ; i++){
 				idSP = lst_idSP.get(i);
@@ -94,10 +91,13 @@ public class ChiTietDKMController {
 				input.setPathJSP(pathJSP);
 				input.setIdSanPham(idSP);
 				
-				outputBean = CreateTableProductDAO.intances.getProductById(input);
+				//get data theo id va group theo id 
+				outputBean = CreateTableProductDAO.intances.getProductById_GroupById(input);
 				outputRowBean = outputBean.getLst().get(0);
 				// set data
 				formRow =  new ProductFormRow();
+				formRow.setNo(String.valueOf(cnt++));
+				formRow.setSEQ(outputRowBean.getSEQ());
 				formRow.setIdSanPham(outputRowBean.getIdSanPham());
 				formRow.setTenSP(outputRowBean.getTenSP());
 				formRow.setTenLoaiSP(outputRowBean.getTenLoaiSP());
@@ -122,6 +122,11 @@ public class ChiTietDKMController {
 		return  SystemCommon.ADMIN_STORE;
 	}
 	 
+	/**
+	 * 
+	 * @param money
+	 * @return
+	 */
 	private String removeFomart(String money){
 		//8,800.00    -> 8
 		String result = "";
@@ -134,6 +139,8 @@ public class ChiTietDKMController {
 		System.out.println("result: " + result);
 		return result;
 	}
+	
+	
 	@RequestMapping(value  = "/chiTietDKM/dangKy", method = RequestMethod.POST)
 	public String dangKy(@ModelAttribute("ProductForm3") ProductForm form, HttpSession session){
 		String pathJSP = "cuahangthoitrang";
@@ -141,7 +148,7 @@ public class ChiTietDKMController {
 		List<ProductFormRow> lst = form.getLst();
 		//init data
 		ProductFormRow formRow;
-		SanPhamInputBean inputRowBean; 
+		SanPhamInputBean inputRowBean;
 		SanPhamOutputBean outputBean;
 		SanPhamInputBean input;
 		SanPhamOutputRowBean outputRowBean;
@@ -156,28 +163,29 @@ public class ChiTietDKMController {
 				outputBean = CreateTableProductDAO.intances.getProductById(input);
 				outputRowBean = outputBean.getLst().get(0);
 				// check ton tai
-				System.out.println("id_DKM : " + outputRowBean.getId_DKM());
 				if(null != outputRowBean.getId_DKM() && 0 != outputRowBean.getId_DKM().trim().length() ){
 					// la san pham da KM -> update
 					input.setId_DKM(outputRowBean.getId_DKM());
 					input.setNgayChinhSua(SMSComons.getDate());
-					input.setGiaBanKM(removeFomart(formRow.getGiaBanKM()));
+					input.setGiaBanKM(formRow.getGiaBanKM());
+					input.setSEQ(formRow.getSEQ());
 					cnt = CreateTableProductDAO.intances.update_SPKM(input);
 					
 				}else{
 					// la san pham chua KM -> insert
-					input.setIdSanPham("");
+					input.setSEQ("");
+					input.setIdSanPham(formRow.getIdSanPham());
 					input.setTenSP(outputRowBean.getTenSP());
 					input.setIdCuaHang(outputRowBean.getIdCuaHang());
 					input.setIdLoaiSP(outputRowBean.getIdLoaiSP());
-					input.setGiaMua(removeFomart(outputRowBean.getGiaMua()));
-					input.setGiaBan(removeFomart(outputRowBean.getGiaBan()));
+					input.setGiaMua(outputRowBean.getGiaMua());
+					input.setGiaBan(outputRowBean.getGiaBan());
 					input.setHinh(outputRowBean.getHinh());
 					input.setMoTa(outputRowBean.getMoTa());
 					input.setTrangThai("0");
 					input.setNgayTao(SMSComons.getDate());
 					input.setNgayChinhSua(outputRowBean.getNgayChinhSua());
-					input.setGiaBanKM(removeFomart(formRow.getGiaBanKM()));
+					input.setGiaBanKM(form.getLst().get(i).getGiaBanKM());
 					input.setId_DKM(idDKM);
 					input.setIndex(1);
 					
@@ -279,6 +287,9 @@ public class ChiTietDKMController {
 	
 	private void initData(ProductForm form, String pathJSP, String idDKM){
 		
+		//reset datail
+		form.getLst().clear();
+		
 		SanPhamInputBean inputBean = new SanPhamInputBean();
 		inputBean.setPathJSP(pathJSP);
 		inputBean.setId_DKM(idDKM);
@@ -291,6 +302,7 @@ public class ChiTietDKMController {
 				SanPhamOutputRowBean outputRowBean = outputBean.getLst().get(i);	
 				formRow = new ProductFormRow();
 				formRow.setNo(String.valueOf(cnt++));
+				formRow.setSEQ(outputRowBean.getSEQ());
 				formRow.setIdSanPham(outputRowBean.getIdSanPham());
 				formRow.setTenSP(outputRowBean.getTenSP());
 				formRow.setTenLoaiSP(outputRowBean.getTenLoaiSP());
@@ -299,7 +311,7 @@ public class ChiTietDKMController {
 			    	formRow.setGiaMua(String.format("%,.2f",Double.parseDouble(outputRowBean.getGiaMua())));
 			    }
 				if(!"".equals(outputRowBean.getGiaBanKM()) && outputRowBean.getGiaBanKM().trim().length() != 0){
-			    	formRow.setGiaBanKM(String.format("%,.2f",Double.parseDouble(outputRowBean.getGiaBanKM())));
+			    	formRow.setGiaBanKM(outputRowBean.getGiaBanKM());
 			    }
 				if(!"".equals(outputRowBean.getGiaBan()) && outputRowBean.getGiaBan().trim().length() != 0){
 			    	formRow.setGiaBan(String.format("%,.2f",Double.parseDouble(outputRowBean.getGiaBan())));
@@ -326,19 +338,32 @@ public class ChiTietDKMController {
 	}
 	
 	
-	@RequestMapping(value  = "/chiTietDKM/xoaDong", method = RequestMethod.POST)
-	public String xoaDong(@ModelAttribute("ProductForm3") ProductForm form, HttpSession session){
+	@RequestMapping(value  = "/chiTietDKM/xoaDong/{listId}", method = RequestMethod.POST)
+	public String xoaDong(@ModelAttribute("ProductForm3") ProductForm form, HttpSession session, @PathVariable("listId") String listId){
 		List<ProductFormRow> lst = form.getLst();
 		ProductFormRow rowBean;
 		
-		if(lst != null && form.getLst().size() > 0){
-			for(int i = 0; lst.size() > i; i++){
-				rowBean = lst.get(i);	
-		
-				System.out.println("checked: " + "i: "+ rowBean.getChecked());
+//		if(lst != null && form.getLst().size() > 0){
+//			for(int i = 0; lst.size() > i; i++){
+//				rowBean = lst.get(i);	
+//		
+//				System.out.println("checked: " + "i: "+ rowBean.getChecked());
+//			}
+//		}
+		// remove ","
+		if (!"".equals(listId)) {
+			listId = listId.substring(1);
+			String[] parts = listId.split(",");
+			listId = "";
+			for (int i = 0; i < parts.length; i++) {
+				for(int k = 0; k < form.getLst().size();k++){
+					//Delete cac san pham dc chon
+					if(parts[i].equals(form.getLst().get(k).getIdSanPham())){
+						lst.remove(form.getLst().get(k));
+					}
+				}
 			}
 		}
-		
 		
 		session.setAttribute("PAGEIDSTORE", CHITIETDKM);
 		return  SystemCommon.ADMIN_STORE;

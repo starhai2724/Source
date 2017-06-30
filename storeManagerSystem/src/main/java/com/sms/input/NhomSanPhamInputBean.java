@@ -1,19 +1,10 @@
 package com.sms.input;
 
-public class LoaiSanPhamInputBean {
+public class NhomSanPhamInputBean {
 	
 	private String idNhomSP;
-	private String idLoaiSP;
 	
 	private String pathJSP;
-
-	public String getIdLoaiSP() {
-		return idLoaiSP;
-	}
-
-	public void setIdLoaiSP(String idLoaiSP) {
-		this.idLoaiSP = idLoaiSP;
-	}
 
 	public String getIdNhomSP() {
 		return idNhomSP;

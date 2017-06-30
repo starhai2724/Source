@@ -6,13 +6,13 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.web.multipart.MultipartFile;
-
 import com.sms.formRows.ProductFormRow;
 
 public class ProductForm extends AbstractForm{
 
 	private String pathJSP;
+	
+	private String SEQ;
 
 	private String idSanPham;
 
@@ -42,6 +42,14 @@ public class ProductForm extends AbstractForm{
 	
 	private String flagUpdate;
 	
+
+	public String getSEQ() {
+		return SEQ;
+	}
+
+	public void setSEQ(String sEQ) {
+		SEQ = sEQ;
+	}
 
 	public String getGiaBanKM() {
 		return giaBanKM;

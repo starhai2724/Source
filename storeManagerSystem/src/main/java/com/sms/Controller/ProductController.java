@@ -7,7 +7,6 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,12 +20,14 @@ import com.sms.OutputRows.SanPhamOutputRowBean;
 import com.sms.common.SMSComons;
 import com.sms.common.SystemCommon;
 import com.sms.dao.CreateTableProductDAO;
-import com.sms.dao.LoaiSanPhamDAO;
+import com.sms.dao.NhomSanPhamDAO;
 import com.sms.form.ProductForm;
 import com.sms.formRows.ProductFormRow;
 import com.sms.input.LoaiSanPhamInputBean;
+import com.sms.input.NhomSanPhamInputBean;
 import com.sms.input.SanPhamInputBean;
 import com.sms.output.LoaiSanPhamOutputBean;
+import com.sms.output.NhomSanPhamOutputBean;
 import com.sms.output.SanPhamOutputBean;
 
 @Controller
@@ -46,6 +47,7 @@ public class ProductController {
 		
 		//reset
 		form.setIdSanPham("");
+		form.setSEQ("");
 		form.setTenSP("");
 		form.setGiaMua("");
 		form.setGiaBan("");
@@ -75,7 +77,7 @@ public class ProductController {
 		
 		LoaiSanPhamInputBean loaiSanPhamInputBean = new LoaiSanPhamInputBean();
 		loaiSanPhamInputBean.setPathJSP(pathJSP);
-		List<LoaiSanPhamOutputBean> listLoaiSP = LoaiSanPhamDAO.intances.getLoaiSP(loaiSanPhamInputBean);
+		List<LoaiSanPhamOutputBean> listLoaiSP = NhomSanPhamDAO.intances.getNhomSPAndLoaiSP(loaiSanPhamInputBean);
 		for(LoaiSanPhamOutputBean outputBean : listLoaiSP){
 			form.getLstCategory().put(outputBean.getIdLoaiSP(), outputBean.getTenLoaiSP());
 		}
@@ -88,6 +90,7 @@ public class ProductController {
 				SanPhamOutputRowBean outputRowBean = outputBean.getLst().get(i);	
 				formRow = new ProductFormRow();
 				formRow.setNo(String.valueOf(cnt++));
+				formRow.setSEQ(outputRowBean.getSEQ());
 				formRow.setIdSanPham(outputRowBean.getIdSanPham());
 				formRow.setTenSP(outputRowBean.getTenSP());
 				formRow.setTenLoaiSP(outputRowBean.getTenLoaiSP());
@@ -109,8 +112,9 @@ public class ProductController {
 		String pathJSP = (String)session.getAttribute("pathURL"); 
 		
 		SanPhamInputBean input = new SanPhamInputBean();
+		input.setSEQ("");
 		input.setPathJSP(pathJSP);
-		input.setIdSanPham("");
+		input.setIdSanPham(form.getIdSanPham());
 		input.setTenSP(form.getTenSP());
 		input.setIdLoaiSP(form.getIdLoaiSP());
 		input.setGiaMua(form.getGiaMua());
@@ -151,6 +155,7 @@ public class ProductController {
 		
 		SanPhamInputBean input = new SanPhamInputBean();
 		input.setPathJSP(pathJSP);
+		input.setSEQ(form.getSEQ());
 		input.setIdSanPham(form.getIdSanPham());
 		input.setTenSP(form.getTenSP());
 		input.setIdLoaiSP(form.getIdLoaiSP());
@@ -187,17 +192,18 @@ public class ProductController {
 		return  SystemCommon.ADMIN_STORE;
 	}
 	
-	@RequestMapping(value="product/getProductById/{id}", method = RequestMethod.POST)
-	public String getProductById(@ModelAttribute("ProductForm") ProductForm form, @PathVariable("id") String id, HttpSession session){
+	@RequestMapping(value="product/getProductById/{SEQ}", method = RequestMethod.POST)
+	public String getProductById(@ModelAttribute("ProductForm") ProductForm form, @PathVariable("SEQ") String SEQ, HttpSession session){
 		//get domain
 		String pathJSP = (String)session.getAttribute("pathURL"); 
 		
 		SanPhamInputBean input = new SanPhamInputBean();
 		input.setPathJSP(pathJSP);
-		input.setIdSanPham(id);
+		input.setSEQ(SEQ);
 		
 		SanPhamOutputBean outputBean = CreateTableProductDAO.intances.getProductById(input);
 		SanPhamOutputRowBean outputRowBean = outputBean.getLst().get(0);
+		form.setSEQ(outputRowBean.getSEQ());
 		form.setIdSanPham(outputRowBean.getIdSanPham());
 		form.setTenSP(outputRowBean.getTenSP());
 		form.setGiaMua(outputRowBean.getGiaMua());
@@ -210,10 +216,9 @@ public class ProductController {
 		//init data
 		LoaiSanPhamInputBean loaiSanPhamInputBean = new LoaiSanPhamInputBean();
 		loaiSanPhamInputBean.setPathJSP(pathJSP);
-		List<LoaiSanPhamOutputBean> listLoaiSP = LoaiSanPhamDAO.intances.getLoaiSP(loaiSanPhamInputBean);
-		
-		for(LoaiSanPhamOutputBean loaiSanPhamOutputBean : listLoaiSP){
-			form.getLstCategory().put(loaiSanPhamOutputBean.getIdLoaiSP(), loaiSanPhamOutputBean.getTenLoaiSP());
+		List<LoaiSanPhamOutputBean> listLoaiSP = NhomSanPhamDAO.intances.getNhomSPAndLoaiSP(loaiSanPhamInputBean);
+		for(LoaiSanPhamOutputBean outputBean_2 : listLoaiSP){
+			form.getLstCategory().put(outputBean_2.getIdLoaiSP(), outputBean_2.getTenLoaiSP());
 		}
 		// reset detail
 		form.getLst().clear();
@@ -226,6 +231,7 @@ public class ProductController {
 				SanPhamOutputRowBean sanPhamoutputRowBean = sanPhamOutputBean.getLst().get(i);	
 				formRow = new ProductFormRow();
 				formRow.setNo(String.valueOf(cnt++));
+				formRow.setSEQ(sanPhamoutputRowBean.getSEQ());
 				formRow.setIdSanPham(sanPhamoutputRowBean.getIdSanPham());
 				formRow.setTenSP(sanPhamoutputRowBean.getTenSP());
 				formRow.setTenLoaiSP(sanPhamoutputRowBean.getTenLoaiSP());
@@ -266,31 +272,25 @@ public class ProductController {
 		return  SystemCommon.ADMIN_STORE;
 	}
 	
-	@RequestMapping(value="product/phanAnh", method = RequestMethod.POST)
-	public String phanAnh(@ModelAttribute("ProductForm") ProductForm form, HttpSession session, Model model){
+	@RequestMapping(value="product/phanAnh/{listId}", method = RequestMethod.POST)
+	public String phanAnh(@ModelAttribute("ProductForm") ProductForm form, HttpSession session,@PathVariable("listId") String listId){
 		
-		List<ProductFormRow> lst = form.getLst();
-		List<String> lst_idSP = new ArrayList<String>();
-		
-		if(lst != null && lst.size() > 0){
-			for(int i = 0; i< 2; i++){
-				ProductFormRow row = lst.get(i);	
-				String no = row.getNo();
-				//if(row.get){ check checkbox checked
-				
-					lst_idSP.add(row.getIdSanPham());
-					
-				//}
-				
+		List lstPhanAnh = new ArrayList<String>();
+		// remove ","
+		if (!"".equals(listId) || !"0".equals(listId)) {
+			listId = listId.substring(1);
+			String[] parts = listId.split(",");
+			listId = "";
+			for (int i = 0; i < parts.length; i++) {
+				lstPhanAnh.add(parts[i]);
 			}
 		}
-		session.setAttribute("lstPhanAnh", lst_idSP);
+		session.setAttribute("lstPhanAnh", lstPhanAnh);
 		return  "redirect:/chiTietDKM/initPhanAnh";
 	}
 	
 	public static void main(String[] args) {
 		ProductController controller = new ProductController();
-//		HttpSession session = new 
 		controller.init(new ProductForm(), null);
 	}
 }

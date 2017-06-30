@@ -6,6 +6,8 @@ public class SanPhamOutputRowBean {
 
 	private String no;
 	
+	private String SEQ;
+	
 	private String pathJSP;
 
 	private String idSanPham;
@@ -36,6 +38,15 @@ public class SanPhamOutputRowBean {
 	
 	private String giaBanKM;
 	
+	
+	public String getSEQ() {
+		return SEQ;
+	}
+
+	public void setSEQ(String sEQ) {
+		SEQ = sEQ;
+	}
+
 	public String getId_DKM() {
 		return id_DKM;
 	}

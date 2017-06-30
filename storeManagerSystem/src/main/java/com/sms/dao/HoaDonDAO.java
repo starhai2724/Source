@@ -157,7 +157,7 @@ public class HoaDonDAO {
 	 * 
 	 * @return
 	 */
-	private String getMaxId(String pathJSP) {
+	public String getMaxId(String pathJSP) {
 		Session session = HibernateUtil.getSessionDAO();
 		String hql = getSQlMaxId(pathJSP);
 		String result = "";
@@ -389,7 +389,7 @@ public class HoaDonDAO {
 		StringBuffer sb = new StringBuffer();
 		String tableName = pathJSP+"_HOADON";
 		sb.append(" CREATE TABLE "+tableName+ " (        ");
-		sb.append("  ID_HOADON	VARCHAR (6)              ");
+		sb.append("  ID_HOADON	INT (6)              ");
 		sb.append(" ,ID_KHACHHANG	VARCHAR (6)              ");
 		sb.append(" ,NGAY_LAP VARCHAR(8)                ");
 		sb.append(" ,SO_LUONG_SP  VARCHAR(12)               ");

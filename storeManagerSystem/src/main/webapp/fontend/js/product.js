@@ -1,11 +1,12 @@
 var app = angular.module('ProductForm', []);
 app.controller('ctrl', function($scope, $window) {
+	$scope.idSanPham_err = "";
 	$scope.tenSP_err = "";
 	$scope.giaMua_err = "";
 	$scope.giaBan_err = "";
 	$scope.moTa_err = "";
 	$scope.listCheckBox = "";
-	 $scope.checkboxModel = {
+	$scope.checkboxModel = {
 		       value1 : true,
 		       value2 : false
 		     };
@@ -35,14 +36,11 @@ app.controller('ctrl', function($scope, $window) {
 			if(item == "false"){
 				//Do not thing
 			}else{
-				$scope.listCheckBox += item;
-				alert("listCheckBox: "+ $scope.listCheckBox);
+				$scope.listCheckBox = $scope.listCheckBox + ","+ item;
 			}
-		    // item.value ? 0 : 1;
 		});
-//		phanAnh($scope);
+		phanAnh($scope);
 	}
-	
 	
 });
 
@@ -50,6 +48,20 @@ function create($scope) {
 	
 	var valid = true;
 	var reg = new RegExp('^[0-9]+$');
+	
+	var reg_IdSanPham = new RegExp('^[a-zA-Z0-9_]*$');
+	
+	if ($scope.idSanPham == "") {
+		$scope.idSanPham_err = "Nhập Mã sản phẩm."
+		valid = false;
+	}else if($scope.idSanPham.length < 6){
+		$scope.idSanPham_err = "Mã sản phẩm phải từ 6 kí tự trở lên."
+		valid = false;
+	}else if(!reg_IdSanPham.test($scope.idSanPham)){
+		$scope.idSanPham_err = "Mã sản phẩm phải là kí tự 1 byte"
+		valid = false;
+	}
+	
 	if ($scope.tenSP == "") {
 		$scope.tenSP_err = "Nhập tên sản phẩm."
 		valid = false;
@@ -77,6 +89,8 @@ function create($scope) {
 
 	if (true == valid) {
 		if(confirm("Bạn có muốn đăng ký?")){
+			alert("$scope.idSanPham: "+$scope.idSanPham);
+			alert("$scope.idSanPham: "+$scope.tenSP);
 			document.getElementById("ProductForm").action = "/storeManagerSystem/product/insert";
 			document.getElementById("ProductForm").method = "POST";
 			document.getElementById("ProductForm").submit();
@@ -122,10 +136,14 @@ function update($scope) {
 }
 
 function phanAnh($scope){
-		var url = "/storeManagerSystem/product/phanAnh";
-		document.getElementById("ProductForm").action = url;
-		document.getElementById("ProductForm").method = "POST";
-		document.getElementById("ProductForm").submit();
+	if($scope.listCheckBox != ""){
+		var url = "/storeManagerSystem/product/phanAnh/"+$scope.listCheckBox;
+	}else{
+		var url = "/storeManagerSystem/product/phanAnh/0";
+	}
+	document.getElementById("ProductForm").action = url;
+	document.getElementById("ProductForm").method = "POST";
+	document.getElementById("ProductForm").submit();
 }
 
 function getProductById($scope, $windown, id){

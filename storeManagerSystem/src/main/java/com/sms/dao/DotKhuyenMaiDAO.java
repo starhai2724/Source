@@ -267,6 +267,49 @@ public class DotKhuyenMaiDAO {
 		return lst;
 	}
 	
+	
+	/**
+	 * 
+	 * 
+	 * @return
+	 * @throws IOException 
+	 */
+	public List<DotKhuyenMaiOutputRowBean> getDotKMApDung(String pathJSP, String ngayHienTai) {
+		Session session = HibernateUtil.getSessionDAO();
+		String hql = getSQLDotKMApDung(pathJSP, ngayHienTai);
+		List<DotKhuyenMaiOutputRowBean> lst = new ArrayList<>();
+		DotKhuyenMaiOutputRowBean outputRowBean;
+		try {
+			Transaction tx = session.beginTransaction();
+			SQLQuery query = session.createSQLQuery(hql);
+			List<Object[]> data = query.list();
+			for (Object[] object : data) {
+				outputRowBean = new DotKhuyenMaiOutputRowBean();
+				outputRowBean.setMaDKM(SMSComons.convertString(object[0]));
+				outputRowBean.setTenDKM(SMSComons.convertString(object[1]));
+				outputRowBean.setLoaiKM(SMSComons.convertString(object[2]));
+				outputRowBean.setMucKM(SMSComons.convertString(object[3]));
+				outputRowBean.setDonViKM(SMSComons.convertString(object[4]));
+				outputRowBean.setNgayBD(SMSComons.convertString(object[5]));
+				outputRowBean.setNgayKT(SMSComons.convertString(object[6]));
+				outputRowBean.setMoTa(SMSComons.convertString(object[7]));
+				outputRowBean.setDk_loaiThe(SMSComons.convertString(object[8]));
+				outputRowBean.setDk_tongHD(SMSComons.convertString(object[9]));
+				outputRowBean.setDk_tongSL(SMSComons.convertString(object[10]));
+				lst.add(outputRowBean);
+			}
+			tx.commit();
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		} finally {
+			session.flush();
+			session.clear();
+			session.close();
+		}
+		return lst;
+	}
+	
 	// ----------------------------------------------------------------------------------------------------------
 	
 	
@@ -350,6 +393,31 @@ public class DotKhuyenMaiDAO {
 		sb.append("  		,DK_TONG_HD 	       ");
 		sb.append("  		,DK_TONG_SL     ");
 		sb.append("  FROM "+tableName+"          	");
+		return sb.toString();
+	}
+	
+	/**
+	 * getSQlMaxIdStoreOwner
+	 * @return
+	 */
+	private String getSQLDotKMApDung(String pathJSP, String ngayHienTai) {
+		String tableName = pathJSP + "_DOTKHUYENMAI";
+		StringBuffer sb = new StringBuffer();
+		sb.append("  SELECT                                 ");
+		sb.append("  		 MA_DKM		       ");
+		sb.append("  		,TEN_DKM 	           ");
+		sb.append("  		,LOAI_KM         ");
+		sb.append("  		,MUC_KM 	       ");
+		sb.append("  		,DON_VI_KM 	       ");
+		sb.append("  		,NGAY_BD         ");
+		sb.append("  		,NGAY_KT         ");
+		sb.append("  		,MOTA         ");	
+		sb.append("  		,DK_LOAI_THE         ");
+		sb.append("  		,DK_TONG_HD 	       ");
+		sb.append("  		,DK_TONG_SL     ");
+		sb.append("  FROM "+tableName+"          	");
+		sb.append("  WHERE   NGAY_BD < '"+ ngayHienTai+ "'       	");
+		sb.append("  AND     NGAY_KT > '"+ ngayHienTai+ "'       	");
 		return sb.toString();
 	}
 	

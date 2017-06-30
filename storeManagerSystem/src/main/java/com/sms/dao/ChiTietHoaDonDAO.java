@@ -391,7 +391,7 @@ public class ChiTietHoaDonDAO {
 		StringBuffer sb = new StringBuffer();
 		String tableName = pathJSP+"_CHI_TIET_HOA_DON";
 		sb.append(" CREATE TABLE "+tableName+ " (        ");
-		sb.append("  ID_CTHD	VARCHAR (6)                   ");
+		sb.append("  ID_CTHD	INT (6)                   ");
 		sb.append(" ,ID_HOADON	VARCHAR (6)               ");
 		sb.append(" ,ID_SP	VARCHAR (6)                   ");
 		sb.append(" ,ID_LSP	VARCHAR (6)                   ");

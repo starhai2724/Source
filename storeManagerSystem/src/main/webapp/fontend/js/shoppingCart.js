@@ -14,33 +14,42 @@ app.controller('ctrl', function($scope, $window) {
 		listProduct = "";
 	}
 	
-	$scope.btnPurchase = function(price, idSanPham){
-		purchase($scope,$window ,price, idSanPham);
+	$scope.btnPurchase = function(price, priceSaleOff, idSanPham){
+		purchase($scope, $window , price, priceSaleOff, idSanPham);
 	}
 	
 	$scope.btnCart = function(){
 		cart($scope,$window);
 	}
 	
-	$scope.btnRemove = function(id, price){
-		remove($scope, $window ,id, price);
+	$scope.btnRemove = function(id, price, priceSaleOff){
+		remove($scope, $window ,id, price, priceSaleOff);
 	}
 	
 	$scope.btnBuyCart = function(){
-		buyCart($scope);
+		buyCart($scope, $window);
 	}
 	
 });
 
 
-function purchase($scope,$window ,price, idSanPham){
+function purchase($scope,$window ,price, priceSaleOff, idSanPham){
 	var session_price = $window.sessionStorage.getItem('session_price');
 	var session_listProduct = $window.sessionStorage.getItem('session_listProduct');
 	var session_quantity = $window.sessionStorage.getItem('session_quantity');
+	
 	if(session_price != null && session_price != "0"){
-		$scope.cartPrice = parseInt(session_price) + parseInt(price);
+		if(priceSaleOff != ""){
+			$scope.cartPrice = parseInt(session_price) + parseInt(priceSaleOff);
+		}else{
+			$scope.cartPrice = parseInt(session_price) + parseInt(price);
+		}
 	}else{
-		$scope.cartPrice = parseInt($scope.cartPrice) + parseInt(price);
+		if(priceSaleOff != ""){
+			$scope.cartPrice = parseInt($scope.cartPrice) + parseInt(priceSaleOff);
+		}else{
+			$scope.cartPrice = parseInt($scope.cartPrice) + parseInt(price);
+		}
 	}
 	
 	if(session_listProduct != null && session_listProduct != ""){
@@ -68,14 +77,26 @@ function cart($scope, $window){
 	document.getElementById("LayoutForm").submit();
 }
 
-function remove($scope, $window, id, price){
-	var idProduct = "#sanPham"+id;
-	var myEl = angular.element( document.querySelector(idProduct));
-	myEl.remove();
+function remove($scope, $window, id, price, priceSaleOff){
+	
+	$scope.soLuong[id] = parseInt($scope.soLuong[id]) - 1;
+	
+	if($scope.soLuong[id] == 0 || $scope.soLuong[id] < 0){
+		var idProduct = "#sanPham"+id;
+		var myEl = angular.element( document.querySelector(idProduct));
+		myEl.remove();
+	}
 	var session_price = $window.sessionStorage.getItem('session_price');
 	var session_listProduct = $window.sessionStorage.getItem('session_listProduct');
 	var session_quantity = $window.sessionStorage.getItem('session_quantity');
-	$scope.cartPrice =  parseInt(session_price) - parseInt(price);
+	
+	
+	
+	if(priceSaleOff != ""){
+		$scope.cartPrice =  parseInt(session_price) - parseInt(priceSaleOff);
+	}else{
+		$scope.cartPrice =  parseInt(session_price) - parseInt(price);
+	}
 	$scope.cartQuantity= parseInt(session_quantity) - 1;
 	listProduct = listProduct.replace("," + id,"");
 	

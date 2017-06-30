@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.sms.OutputRows.DotKhuyenMaiOutputRowBean;
+import com.sms.common.SMSComons;
 import com.sms.common.SystemCommon;
 import com.sms.dao.DotKhuyenMaiDAO;
 import com.sms.form.DotKhuyenMaiForm;
@@ -177,35 +178,47 @@ public class dotKhuyenMaiController {
 	public String insert(@ModelAttribute("DotKhuyenMaiForm") DotKhuyenMaiForm form, HttpSession session) {
 		//get domain
 		String pathJSP = "cuahangthoitrang";
-		System.out.println("form: "+form.getLst().size());
-		//input
-		DotKhuyenMaiInputBean inputBean = new DotKhuyenMaiInputBean();
-		inputBean.setPathJSP(pathJSP);
-		inputBean.setMaDKM("");
-		inputBean.setTenDKM(form.getTenDKM());
-		inputBean.setLoaiKM(form.getLoaiKM());
-		inputBean.setNgayBD(form.getNgayBD());
-		inputBean.setNgayKT(form.getNgayKT());
-		inputBean.setMucKM(form.getMaDKM());
-		inputBean.setDonViKM(form.getDonViKM());
-		inputBean.setMoTa(form.getMoTa());
-		inputBean.setDk_loaiThe(form.getDk_loaiThe());
-		inputBean.setDk_tongHD(form.getDk_tongHD());
-		inputBean.setDk_tongSL(form.getDk_tongSL());
-		inputBean.setDk_tongSL(form.getDk_tongSL());
-
-		
-		//insert
-		int cnt = DotKhuyenMaiDAO.intances.insert(inputBean);
-		
-		if(cnt == 1){
-			form.setMessage("Xử lý đăng kí thành công.");
-			form.setMessageErr("");
-		}else {
-			form.setMessageErr("Xử lý đăng kí không thành công.");
-			form.setMessage("");
+		// trong 1 thoi gian chi co the ton tai mot dot khuyen mai
+		boolean checkExistOfMonth= false;
+		List<DotKhuyenMaiOutputRowBean> lst = DotKhuyenMaiDAO.intances.getAll(pathJSP);
+		for(DotKhuyenMaiOutputRowBean dotKhuyenMaiOutputRowBean : lst) {
+			if(SMSComons.getDate().compareTo(dotKhuyenMaiOutputRowBean.getNgayKT()) < 0 ){
+				checkExistOfMonth = true;
+			}
 		}
 		
+		if(checkExistOfMonth){
+			form.setMessageErr("Trong một khoảng thời gian chỉ có thể tồn tại một đợt khuyến mãi.");
+			form.setMessage("");
+		}else {
+		
+			//input
+			DotKhuyenMaiInputBean inputBean = new DotKhuyenMaiInputBean();
+			inputBean.setPathJSP(pathJSP);
+			inputBean.setMaDKM("");
+			inputBean.setTenDKM(form.getTenDKM());
+			inputBean.setLoaiKM(form.getLoaiKM());
+			inputBean.setNgayBD(form.getNgayBD());
+			inputBean.setNgayKT(form.getNgayKT());
+			inputBean.setMucKM(form.getMaDKM());
+			inputBean.setDonViKM(form.getDonViKM());
+			inputBean.setMoTa(form.getMoTa());
+			inputBean.setDk_loaiThe(form.getDk_loaiThe());
+			inputBean.setDk_tongHD(form.getDk_tongHD());
+			inputBean.setDk_tongSL(form.getDk_tongSL());
+			inputBean.setDk_tongSL(form.getDk_tongSL());
+			
+			//insert
+			int cnt = DotKhuyenMaiDAO.intances.insert(inputBean);
+			
+			if(cnt == 1){
+				form.setMessage("Xử lý đăng kí thành công.");
+				form.setMessageErr("");
+			}else {
+				form.setMessageErr("Xử lý đăng kí không thành công.");
+				form.setMessage("");
+			}
+		}
 		//init data
 		initData(form, pathJSP);
 		

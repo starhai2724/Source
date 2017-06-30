@@ -184,12 +184,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<!--San pham (S)  ----------------------------------------------------------------------------------------------------------------------------------------------->
 				<c:forEach var="items" items="${LayoutForm.products }">
 					<div class="col-md-4 product simpleCart_shelfItem text-center">
-						<a href="single.html"><img src="/storeManagerSystem/myImage/imageDisplay/${items.idSanPham}" alt="" /></a>
+						<a href="single.html"><img src="/storeManagerSystem/myImage/imageDisplay/${items.SEQ}" alt="" /></a>
 						<div class="mask">
 							<a href="single.html">Chi tiết</a>
 						</div>
 						<a class="product_name" href="single.html">${items.tenSP}</a>
-						<p><a class="item_add" ng-click="btnPurchase('${items.giaBan}','${items.idSanPham} ')"><i></i> <span class="item_price">${items.giaBan}</span></a></p>
+						<p>
+						<a class="item_add" ng-click="btnPurchase('${items.giaBan}','${items.giaBanKM }' ,'${items.SEQ} ')"><i></i>
+						<c:if test="${!empty items.giaBanKM }">
+							<strike class="item_price">${items.giaBan}</strike>
+						</c:if>
+						<c:if test="${empty items.giaBanKM }">
+							<span class="item_price">${items.giaBan}</span>
+						</c:if>
+						<c:if test="${!empty items.giaBanKM }">
+							<span class="item_price">${items.giaBanKM}</span>
+						</c:if>
+						</a>
+						</p>
 					</div>
 				</c:forEach>
 				<!--San pham (E) --------------------------------------------------------------------------------------------------------------------------------------------- -->

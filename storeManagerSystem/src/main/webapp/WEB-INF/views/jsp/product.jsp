@@ -20,18 +20,25 @@
 		<div class="row">
 			<div class="col-sm-4">
 				<div class="form-group">
-					<label>Tên sản phẩm</label> 
-					<form:input class="form-control" type="text" path="tenSP"  name="tenSP" ng-model = "tenSP"  ng-init ="tenSP = '${ProductForm.tenSP}'" />
-					<form:input class="form-control" type="hidden" path="idSanPham"  name="idSanPham" />
-					<p style="color: red;">{{tenSP_err}}</p>
+					<label>Mã sản phẩm</label>
+					<c:choose>
+						<c:when test="${ProductForm.flagUpdate eq ('1')}">
+							<form:input class="form-control" disabled="true" type="text" path="idSanPham"  name="idSanPham" ng-model = "idSanPham"  ng-init ="idSanPham = '${ProductForm.idSanPham}'" />
+	   					</c:when>
+	   					 <c:otherwise>
+							<form:input class="form-control"  type="text" path="idSanPham"  name="idSanPham" ng-model = "idSanPham"  ng-init ="idSanPham = '${ProductForm.idSanPham}'" />
+	   					 </c:otherwise> 
+   					 </c:choose>
+					<!--set so SEQ khi chinh sua  -->
+					<form:input class="form-control" type="hidden" path="SEQ"  name="SEQ" />
+					<p style="color: red;">{{idSanPham_err}}</p>
 				</div>
 			</div>
 			<div class="col-sm-4">
 				<div class="form-group">
-					<label>Loại sản phẩm</label> 
-					<form:select class="form-control" path="idLoaiSP">
-					    <form:options items="${ProductForm.lstCategory}" />
-					</form:select>
+					<label>Tên sản phẩm</label> 
+					<form:input class="form-control" type="text" path="tenSP"  name="tenSP" ng-model = "tenSP"  ng-init ="tenSP = '${ProductForm.tenSP}'" />
+					<p style="color: red;">{{tenSP_err}}</p>
 				</div>
 			</div>
 		</div>
@@ -60,6 +67,14 @@
                         <input type="file" name="file"/>  
                     </div>
     			</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="form-group">
+					<label>Loại sản phẩm</label> 
+					<form:select class="form-control" path="idLoaiSP">
+					    <form:options items="${ProductForm.lstCategory}" />
+					</form:select>
+				</div>
 			</div>
 		</div>
 		<div class="row">
@@ -115,7 +130,7 @@
                                 <tbody style="overflow: auto; height:50px" ng-model = "listSanPham" ng-init ="listSanPham = '${fn:length(ProductForm.lst)}'">
                               		  <c:forEach var="items" items="${ProductForm.lst }">
 		                                <tr class="odd gradeX">
-		                                 		<td class="center" style="text-align: center"><input type="checkbox" ng-model="selected[${items.no}]"  ng-init ="selected[${items.no}]='false'" ng-true-value="'${items.idSanPham }'" ng-false-value="'NO'"></td>
+		                                 		<td class="center" style="text-align: center"><input type="checkbox" ng-model="selected[${items.no}]"  ng-init ="selected[${items.no}]='false'" ng-true-value="'${items.SEQ }'" ng-false-value="'NO'"></td>
 		                                        <td style="text-align: center">${items.no}</td>
 		                                        <td>${items.idSanPham}</td>
 							                     <td>${items.tenSP}</td>
@@ -126,7 +141,7 @@
 		                                        <td  style="text-align: center">${items.ngayChinhSua }</td>
 		                                         <td>${items.moTa }</td>
 		                                        <td class="center" style="text-align: center">
-		                                        		<button class="btn" type="button" ng-click="btnGetProductById('${items.idSanPham}');">
+		                                        		<button class="btn" type="button" ng-click="btnGetProductById('${items.SEQ}');">
 															<span class="glyphicon glyphicon-pencil" data-toggle="tooltip" data-original-title="Sửa"></span>
 														</button>
 														<button class="btn" type="button" ng-click="btnDelete('${items.idSanPham}');" >

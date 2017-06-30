@@ -4,12 +4,32 @@ public class RegisterProductCategoryInputBean {
 	
 	private String idStore;
 	
-	private String idProductCategory;
+	private String idNhomSP;
 
-	private String nameProductCategory;
+	private String tenNhomSP;
+	
+	private String idLoaiSP;
+
+	private String tenLoaiSP;
 	
 	private String pathJSP;
 	
+
+	public String getIdLoaiSP() {
+		return idLoaiSP;
+	}
+
+	public void setIdLoaiSP(String idLoaiSP) {
+		this.idLoaiSP = idLoaiSP;
+	}
+
+	public String getTenLoaiSP() {
+		return tenLoaiSP;
+	}
+
+	public void setTenLoaiSP(String tenLoaiSP) {
+		this.tenLoaiSP = tenLoaiSP;
+	}
 
 	public String getPathJSP() {
 		return pathJSP;
@@ -19,20 +39,20 @@ public class RegisterProductCategoryInputBean {
 		this.pathJSP = pathJSP;
 	}
 
-	public String getIdProductCategory() {
-		return idProductCategory;
+	public String getIdNhomSP() {
+		return idNhomSP;
 	}
 
-	public void setIdProductCategory(String idProductCategory) {
-		this.idProductCategory = idProductCategory;
+	public void setIdNhomSP(String idProductCategory) {
+		this.idNhomSP = idProductCategory;
 	}
 
-	public String getNameProductCategory() {
-		return nameProductCategory;
+	public String getTenNhomSP() {
+		return tenNhomSP;
 	}
 
-	public void setNameProductCategory(String nameProductCategory) {
-		this.nameProductCategory = nameProductCategory;
+	public void setTenNhomSP(String nameProductCategory) {
+		this.tenNhomSP = nameProductCategory;
 	}
 
 	public String getIdStore() {

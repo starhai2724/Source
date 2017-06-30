@@ -199,10 +199,6 @@ public class KhachHangController {
 	 */
 	@RequestMapping(value="/customer/getById/{id}", method = RequestMethod.POST)
 	public String getProductById(@ModelAttribute("KhachHangForm") KhachHangForm form, @PathVariable("id") String id, HttpSession session){
-//		session.getAttribute("KhachHangForm");
-		System.out.println("formlist: "+form.getLst().size());
-		
-		System.out.println("formlist: "+form.getTenKhachHang());
 		
 		//get domain
 		String pathJSP = (String)session.getAttribute("pathURL");
@@ -246,7 +242,6 @@ public class KhachHangController {
 		KhachHangInputBean input = new KhachHangInputBean();
 		input.setPathJSP(pathJSP);
 		input.setIdKhachHang(id);
-		System.out.println("id: "+input.getIdKhachHang());
 		
 		//delete
 		int cnt = KhachHangDAO.intances.deleteById(input);

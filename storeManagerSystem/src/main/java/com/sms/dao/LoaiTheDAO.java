@@ -15,7 +15,7 @@ import com.sms.common.SMSComons;
 import com.sms.dao.common.HibernateUtil;
 import com.sms.input.KhachHangInputBean;
 import com.sms.input.LoaiTheInputBean;
-import com.sms.output.LoaiSanPhamOutputBean;
+import com.sms.output.NhomSanPhamOutputBean;
 
 public class LoaiTheDAO {
 	

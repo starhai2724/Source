@@ -124,13 +124,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</header>
 				<!--San pham (S)  ----------------------------------------------------------------------------------------------------------------------------------------------->
 				<c:forEach var="items" items="${LayoutForm.products }">
-					<div class="col-md-4 product simpleCart_shelfItem text-center" id="sanPham${items.idSanPham }">
-						<a href="single.html"><img src="/storeManagerSystem/myImage/imageDisplay/${items.idSanPham}" alt="" /></a>
+					<div class="col-md-4 product simpleCart_shelfItem text-center" id="sanPham${items.SEQ }">
+						<a href="single.html"><img src="/storeManagerSystem/myImage/imageDisplay/${items.SEQ}" alt="" /></a>
 						<div class="mask">
 							<a href="single.html">Chi tiết</a>
 						</div>
 						<a class="product_name" href="single.html">${items.tenSP}</a>
-						<p><span class="glyphicon glyphicon-trash" ng-click="btnRemove('${items.idSanPham }', '${items.giaBan }')" data-toggle="tooltip" data-original-title="Xóa"></span><span class="item_price">${items.giaBan}</span></p>
+						<p>
+						<span ng-model="soLuong[${items.SEQ }]" ng-init="soLuong[${items.SEQ }] ='${items.soLuong }'">{{soLuong[${items.SEQ }]}}</span></br>
+						<span class="glyphicon glyphicon-trash" ng-click="btnRemove('${items.SEQ }', '${items.giaBan }', '${items.giaBanKM }')" data-toggle="tooltip" data-original-title="Xóa"></span>
+						<c:if test="${!empty items.giaBanKM }">
+							<strike class="item_price">${items.giaBan}</strike>
+						</c:if>
+						<c:if test="${empty items.giaBanKM }">
+							<span class="item_price">${items.giaBan}</span>
+						</c:if>
+						<c:if test="${!empty items.giaBanKM }">
+							<span class="item_price">${items.giaBanKM}</span>
+						</c:if>
 					</div>
 				</c:forEach>
 				<!--San pham (E) --------------------------------------------------------------------------------------------------------------------------------------------- -->

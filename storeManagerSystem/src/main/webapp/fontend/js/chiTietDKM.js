@@ -2,6 +2,12 @@ var app = angular.module('ProductForm', []);;
 app.controller('ctrl', function($scope, $window) {
 	$scope.giaBanKM_err = "";
 	
+	$scope.listCheckBox = "";
+	$scope.checkboxModel = {
+		       value1 : true,
+		       value2 : false
+		     };
+	
 	$scope.btnChonSPKM = function() {
 		chonSPKM();
 	}
@@ -10,7 +16,7 @@ app.controller('ctrl', function($scope, $window) {
 	}
 	
 	$scope.btnXoaDong = function(){
-		xoaDong();
+		xoaDong($scope);
 	}
 	
 	$scope.btnDangKy = function(){
@@ -31,8 +37,16 @@ function themDong() {
 	document.getElementById("ProductForm").submit();
 }
 
-function xoaDong() {
-	document.getElementById("ProductForm").action = "/storeManagerSystem/chiTietDKM/xoaDong";
+function xoaDong($scope) {
+	angular.forEach($scope.selected, function(item){
+		if(item == "false"){
+			//Do not thing
+		}else{
+			$scope.listCheckBox = $scope.listCheckBox + ","+ item;
+			alert("listCheckBox: "+ $scope.listCheckBox);
+		}
+	});
+	document.getElementById("ProductForm").action = "/storeManagerSystem/chiTietDKM/xoaDong/"+$scope.listCheckBox;
 	document.getElementById("ProductForm").method = "POST";
 	document.getElementById("ProductForm").submit();
 }
@@ -42,7 +56,8 @@ function dangKy($scope) {
 	var valid = true;
 	var reg = new RegExp('^[0-9]+$');
 	
-	 var len = $scope.lst.lenght;
+	 var len = $scope.lstSize;
+	 
 	 
     for (var i=0; i< len; i++) {
     	  if($scope.lst[i].giaBanKM == "") {
@@ -51,7 +66,7 @@ function dangKy($scope) {
     		  break;
           }
     	  if(!reg.test($scope.lst[i].giaBanKM)){
-    			$scope.ngayKT = "Giá bán khuyến mãi phải là số."
+    			$scope.giaBanKM_err = "Giá bán khuyến mãi phải là số."
     			valid = false;
     			break;
     	  }
