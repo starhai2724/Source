@@ -222,7 +222,7 @@ public class HoaDonController {
 		chiTietHoaDonInputBean.setIdHoaDon(id);
 		List<ChiTietHoaDonOutputRowBean>  chiTietHoaDonOutputRowBeans = ChiTietHoaDonDAO.intances.getById(chiTietHoaDonInputBean);
 		ChiTietHoaDonRowForm chiTietHoaDonRowForm;
-		int cnt = 1;
+		int cnt = 0;
 		for(ChiTietHoaDonOutputRowBean chiTietHoaDonOutputRowBean : chiTietHoaDonOutputRowBeans){
 			chiTietHoaDonRowForm = new ChiTietHoaDonRowForm();
 			chiTietHoaDonRowForm.setNo(String.valueOf(cnt + 1));
@@ -265,11 +265,16 @@ public class HoaDonController {
 		}
 		HoaDonInputBean input = new HoaDonInputBean();	
 		input.setPathJSP(pathJSP);
-		input.setIdKhachHang(id);
+		input.setIdHoaDon(id);
 		
 		//delete
 		int cnt = HoaDonDAO.intances.deleteById(input);
 		
+		//delete chi tiet hoa don
+		ChiTietHoaDonInputBean chiTietHoaDonInputBean = new ChiTietHoaDonInputBean();
+		chiTietHoaDonInputBean.setPathJSP(pathJSP);
+		chiTietHoaDonInputBean.setIdHoaDon(id);
+		cnt = ChiTietHoaDonDAO.intances.deleteById(chiTietHoaDonInputBean);
 		if(cnt == 1){
 			form.setMessage("Xử lý xóa thành công.");
 			form.setMessageErr("");

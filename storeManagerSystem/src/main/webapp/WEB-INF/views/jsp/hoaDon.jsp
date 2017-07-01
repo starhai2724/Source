@@ -21,6 +21,8 @@
 					<label >Mã khách hàng</label> 
 					<form:input class="form-control" disabled="true" type="text" path="idKhachHang"  name="idKhachHang" ng-model = "idKhachHang"  ng-init ="idKhachHang = '${HoaDonForm.idKhachHang}'"/>
 				</div>
+			</div>
+			<div class="col-sm-3">
 				<div class="form-group">
 					<label >Mã hóa đơn</label> 
 					<form:input class="form-control" disabled="true"  type="text" path="idHoaDon"  name="idHoaDon" ng-model = "idHoaDon"  ng-init ="idHoaDon = '${HoaDonForm.idHoaDon}'"/>
@@ -45,12 +47,12 @@
                        <c:forEach var="items" items="${HoaDonForm.chiTietHoaDonRowForms }" varStatus="status">
                          <tr class="odd gradeX">
                                 <td class="center" style="text-align: center">${items.no }</td>
-                                <td class="form-inline">${items.idSanPham }</td>
+                                <td  class="form-inline" style="text-align: center">${items.idSanPham }</td>
 			                    <td>${items.tenSanPham }</td>
 			                    <td>${items.loaiSanPham }</td>
 		                        <td class="center" style="text-align: right">${items.soLuongSP }</td>
-		                		<td class="center">${items.giaMua }</td>
-		                		<td class="center">${items.thanhTien }</td>
+		                		<td class="center" style="text-align: right">${items.giaMua }</td>
+		                		<td class="center" style="text-align: right">${items.thanhTien }</td>
                         </tr>
                        </c:forEach>
                        </tbody>
@@ -122,9 +124,6 @@
 		                                         <td style="text-align: right">${items.tongDiemTichLuy}</td>
 		                                         <td class="center" style="text-align: center">${items.ngayLap}</td>
 		                                        <td class="center" style="text-align: center">
-		                                        		<button class="btn" type="button" >
-															<span class="glyphicon glyphicon-pencil" data-toggle="tooltip" data-original-title="Sửa" ng-click="btnGetById('${items.idHoaDon}');"></span>
-														</button>
 														<button class="btn" type="button" >
 															<span class="fa fa-list-alt" data-toggle="tooltip" data-original-title="Chi tiết" ng-click="btnGetById('${items.idHoaDon}');"></span>
 														</button>

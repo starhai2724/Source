@@ -140,7 +140,7 @@ public class ChiTietHoaDonDAO {
 		String hql = getSQlDeleteById(inputBean.getPathJSP());
 		try {
 			SQLQuery query = session.createSQLQuery(hql);
-			query.setParameter(0, inputBean.getIdChiTietHoaDon());
+			query.setParameter(0, inputBean.getIdHoaDon());
 			cnt = query.executeUpdate();
 			tx.commit();
 		} catch (Exception e) {
@@ -337,13 +337,13 @@ public class ChiTietHoaDonDAO {
 		String tableSanPham = pathJSP +"_PRODUCT";
 		StringBuffer sb = new StringBuffer();
 		sb.append("  SELECT                                								 ");
-		sb.append("   ID_CTHD		                            							");
-		sb.append("  ,ID_HOADON 	                            					");
-		sb.append("  ,ID_SP                            							");
+		sb.append("   CTHD.ID_CTHD		                            							");
+		sb.append("  ,CTHD.ID_HOADON 	                            					");
+		sb.append("  ,CTHD.ID_SP                            							");
 		sb.append("  ,LOAI_SP.TEN_LOAI_SP                           	 		");
-		sb.append("  ,SO_LUONG 	                           					 ");
-		sb.append("  ,GIA_MUA 	                            				");
-		sb.append("  ,THANH_TIEN                                  			");
+		sb.append("  ,CTHD.SO_LUONG 	                           					 ");
+		sb.append("  ,CTHD.GIA_MUA 	                            				");
+		sb.append("  ,CTHD.THANH_TIEN                                  			");
 		sb.append("  ,SANPHAM.TEN_SP                                  			");
 		sb.append("  FROM "+tableName+" CTHD         						");
 		sb.append("  LEFT JOIN  "+tableLoaiSanPham+" LOAI_SP 				");
