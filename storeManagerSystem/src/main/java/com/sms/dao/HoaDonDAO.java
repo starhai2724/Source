@@ -238,7 +238,12 @@ public class HoaDonDAO {
 			for (Object[] object : data) {
 				outputRowBean = new HoaDonOutputRowBean();
 				outputRowBean.setIdHoaDon(SMSComons.convertString(object[0]));
-				outputRowBean.setIdKhachHang(SMSComons.convertString(object[1]));
+				// Ten khach hang.
+				if(!"".equals(SMSComons.convertString(object[8]))){
+					outputRowBean.setIdKhachHang(SMSComons.convertString(object[1])+": "+SMSComons.convertString(object[8]));
+				}else{
+					outputRowBean.setIdKhachHang(SMSComons.convertString(object[1]));
+				}
 				outputRowBean.setNgayLap(SMSComons.convertString(object[2]));
 				outputRowBean.setSoLuongSP(SMSComons.convertString(object[3]));
 				outputRowBean.setDiemTichLuy(SMSComons.convertString(object[4]));
@@ -258,6 +263,8 @@ public class HoaDonDAO {
 		}
 		return lst;
 	}
+	
+	
 	
 	// ----------------------------------------------------------------------------------------------------------
 	
@@ -320,15 +327,18 @@ public class HoaDonDAO {
 		String tableName = pathJSP+"_HOADON";
 		StringBuffer sb = new StringBuffer();
 		sb.append("  SELECT                                 ");
-		sb.append("   ID_HOADON		                            ");
-		sb.append("  ,ID_KHACHHANG 	                            ");
-		sb.append("  ,NGAY_LAP                            ");
-		sb.append("  ,SO_LUONG_SP                            ");
-		sb.append("  ,DIEM_TICH_LUY 	                            ");
-		sb.append("  ,TONG_DIEM_TICH_LUY 	                            ");
-		sb.append("  ,TIEN_KHUYEN_MAI                                  ");
-		sb.append("  ,TONG_TIEN                                 ");
-		sb.append("  FROM "+tableName+"          	");
+		sb.append("   HOADON.ID_HOADON		                            ");
+		sb.append("  ,HOADON.ID_KHACHHANG 	                            ");
+		sb.append("  ,HOADON.NGAY_LAP                            ");
+		sb.append("  ,HOADON.SO_LUONG_SP                            ");
+		sb.append("  ,HOADON.DIEM_TICH_LUY 	                            ");
+		sb.append("  ,HOADON.TONG_DIEM_TICH_LUY 	                            ");
+		sb.append("  ,HOADON.TIEN_KHUYEN_MAI                                  ");
+		sb.append("  ,HOADON.TONG_TIEN                                 ");
+		sb.append("  ,KHACH_HANG.TEN_KHACHHANG                                 ");
+		sb.append("  FROM "+tableName+"  HOADON        						");
+		sb.append("  LEFT JOIN "+pathJSP+"_KHACH_HANG KHACH_HANG          	");
+		sb.append("  ON  KHACH_HANG.ID_KHACHHANG = HOADON.ID_KHACHHANG          	");
 		return sb.toString();
 	}
 	
@@ -390,7 +400,7 @@ public class HoaDonDAO {
 		String tableName = pathJSP+"_HOADON";
 		sb.append(" CREATE TABLE "+tableName+ " (        ");
 		sb.append("  ID_HOADON	INT (6)              ");
-		sb.append(" ,ID_KHACHHANG	VARCHAR (6)              ");
+		sb.append(" ,ID_KHACHHANG	VARCHAR (12)              ");
 		sb.append(" ,NGAY_LAP VARCHAR(8)                ");
 		sb.append(" ,SO_LUONG_SP  VARCHAR(12)               ");
 		sb.append(" ,DIEM_TICH_LUY VARCHAR(12)                 ");

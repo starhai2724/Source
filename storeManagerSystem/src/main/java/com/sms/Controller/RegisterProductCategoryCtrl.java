@@ -14,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.sms.common.SystemCommon;
 import com.sms.dao.CreateTableProductDAO;
+import com.sms.dao.LayoutDAO;
 import com.sms.dao.NhomSanPhamDAO;
 import com.sms.form.ProductForm;
 import com.sms.form.RegisterProductCategoryForm;
@@ -44,6 +45,11 @@ public class RegisterProductCategoryCtrl {
 	@RequestMapping(value="/registerProductCategory/init")
 	public String init(@ModelAttribute("RegisterProductCategory") RegisterProductCategoryForm form, HttpSession session){
 		String pathJSP = (String)session.getAttribute("pathURL");
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		//reset form
 		form.setNameProductCategory("");
 		//reset message
@@ -81,6 +87,11 @@ public class RegisterProductCategoryCtrl {
 	@RequestMapping(value="/registerProductCategory/insert", method= RequestMethod.POST)
 	public String insert(@ModelAttribute("RegisterProductCategory") RegisterProductCategoryForm form, HttpSession session ){
 		String pathJSP = (String)session.getAttribute("pathURL");
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		RegisterProductCategoryInputBean inputBean = new RegisterProductCategoryInputBean();
 		inputBean.setIdNhomSP("");
 		inputBean.setTenNhomSP(form.getNameProductCategory());
@@ -109,6 +120,11 @@ public class RegisterProductCategoryCtrl {
 	@RequestMapping(value="/registerProductCategory/getById/{id}", method= RequestMethod.POST)
 	public String getById(@ModelAttribute("RegisterProductCategory") RegisterProductCategoryForm form, @PathVariable("id") String id, HttpSession session ){
 		String pathJSP = (String)session.getAttribute("pathURL");
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		NhomSanPhamInputBean inputBean = new NhomSanPhamInputBean();
 		inputBean.setIdNhomSP(id);
 		System.out.println("id: "+id);
@@ -132,6 +148,11 @@ public class RegisterProductCategoryCtrl {
 	@RequestMapping(value="/registerProductCategory/getByIdLSP/{id}", method= RequestMethod.POST)
 	public String getByIdLSP(@ModelAttribute("RegisterProductCategory") RegisterProductCategoryForm form, @PathVariable("id") String id, HttpSession session ){
 		String pathJSP = (String)session.getAttribute("pathURL");
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		LoaiSanPhamInputBean inputBean = new LoaiSanPhamInputBean();
 		inputBean.setIdLoaiSP(id);
 		inputBean.setPathJSP(pathJSP);
@@ -174,6 +195,11 @@ public class RegisterProductCategoryCtrl {
 		form.getLstLSP().clear();
 		
 		String pathJSP = (String)session.getAttribute("pathURL");
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		LoaiSanPhamInputBean inputBean = new LoaiSanPhamInputBean();
 		inputBean.setIdNhomSP(id);
 		System.out.println("id nhom SP: "+id);
@@ -207,6 +233,11 @@ public class RegisterProductCategoryCtrl {
 	@RequestMapping(value="/registerProductCategory/themDong", method= RequestMethod.POST)
 	public String themDong(@ModelAttribute("RegisterProductCategory") RegisterProductCategoryForm form, HttpSession session ){
 		String pathJSP = (String)session.getAttribute("pathURL");
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 	
 		List<RegisterProductCategoryFormRow> lstLSP = form.getLstLSP();
 		
@@ -228,7 +259,11 @@ public class RegisterProductCategoryCtrl {
 	@RequestMapping(value="/registerProductCategory/deleteLSP/{no}", method= RequestMethod.POST)
 	public String deleteLSP(@ModelAttribute("RegisterProductCategory") RegisterProductCategoryForm form, @PathVariable("no") String no, HttpSession session ){
 		String pathJSP = (String)session.getAttribute("pathURL");
-		
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		List<RegisterProductCategoryFormRow> lstLSP = form.getLstLSP();
 		RegisterProductCategoryFormRow newRow;
 		RegisterProductCategoryInputBean inputBean;
@@ -272,7 +307,11 @@ public class RegisterProductCategoryCtrl {
 	public String dangKyLSP(@ModelAttribute("RegisterProductCategory") RegisterProductCategoryForm form, HttpSession session ){
 		String pathJSP = (String)session.getAttribute("pathURL");
 		String idNhomSP = (String)session.getAttribute("idNhomSP");
-		
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		int cnt = 0;
 		RegisterProductCategoryInputBean inputBean = new RegisterProductCategoryInputBean();
 			inputBean.setPathJSP(pathJSP);
@@ -317,6 +356,11 @@ public class RegisterProductCategoryCtrl {
 	@RequestMapping(value="/registerProductCategory/update", method= RequestMethod.POST)
 	public String update(@ModelAttribute("RegisterProductCategory") RegisterProductCategoryForm form, HttpSession session ){
 		String pathJSP = (String)session.getAttribute("pathURL");
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		RegisterProductCategoryInputBean inputBean = new RegisterProductCategoryInputBean();
 		inputBean.setIdNhomSP(form.getIdProductCategory());
 		inputBean.setTenNhomSP(form.getNameProductCategory());
@@ -344,6 +388,11 @@ public class RegisterProductCategoryCtrl {
 	public String delete(@ModelAttribute("RegisterProductCategory") RegisterProductCategoryForm form, @PathVariable("id") String id, HttpSession session){
 		//get domain
 		String pathJSP = (String)session.getAttribute("pathURL"); 
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		RegisterProductCategoryInputBean inputBean = new RegisterProductCategoryInputBean();
 		inputBean.setPathJSP(pathJSP);
 		inputBean.setIdNhomSP(id);

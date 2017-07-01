@@ -106,29 +106,40 @@ function remove($scope, $window, id, price, priceSaleOff){
 }
 
 function buyCart($scope, $window){
-	var session_price = $window.sessionStorage.getItem('session_price');
-	var session_listProduct = $window.sessionStorage.getItem('session_listProduct');
-	var session_quantity = $window.sessionStorage.getItem('session_quantity');
 	
-	$window.sessionStorage.setItem('session_price', $scope.cartPrice);
-	$window.sessionStorage.setItem('session_listProduct', listProduct);
-	$window.sessionStorage.setItem('session_quantity', $scope.cartQuantity);
-	
-	if(session_listProduct != null && session_listProduct != ""){
-		var url = "/storeManagerSystem/" + $scope.pathJSP +"/thanhToan/" + session_listProduct;
-		// Dong y thanh toan
-		if(confirm("Bạn đồng ý thanh toán?")){
-			//reset gio hang
-			$window.sessionStorage.setItem('session_price', "0");
-			$window.sessionStorage.setItem('session_listProduct', "");
-			$window.sessionStorage.setItem('session_quantity', "0");
-			
-			document.getElementById("LayoutForm").action = url;
-			document.getElementById("LayoutForm").method = "POST";
-			document.getElementById("LayoutForm").submit();
+	var valid = true;
+	var reg = new RegExp('^[0-9]+$');
+	if($scope.checkDangNhap == 1){
+		if ($scope.sdtKhachHang == "") {
+			$scope.sdtKhachHang_err = "Nhập số điện thoại."
+				valid = false;
+		}else if(!reg.test($scope.sdtKhachHang)){
+			$scope.sdtKhachHang_err = "Số điện thoại phải là số."
+				valid = false;
 		}
-	}else{
-		alert("Chưa có sản phẩm được chọn để thanh toán.");
+	}
+	
+	if(valid == true){
+		var session_price = $window.sessionStorage.getItem('session_price');
+		var session_listProduct = $window.sessionStorage.getItem('session_listProduct');
+		var session_quantity = $window.sessionStorage.getItem('session_quantity');
+		
+		if(session_listProduct != null && session_listProduct != ""){
+			var url = "/storeManagerSystem/" + $scope.pathJSP +"/thanhToan/" + session_listProduct;
+			// Dong y thanh toan
+			if(confirm("Bạn đồng ý thanh toán?")){
+				//reset gio hang
+				$window.sessionStorage.setItem('session_price', "0");
+				$window.sessionStorage.setItem('session_listProduct', "");
+				$window.sessionStorage.setItem('session_quantity', "0");
+				
+				document.getElementById("LayoutForm").action = url;
+				document.getElementById("LayoutForm").method = "POST";
+				document.getElementById("LayoutForm").submit();
+			}
+		}else{
+			alert("Chưa có sản phẩm được chọn để thanh toán.");
+		}
 	}
 }
 

@@ -17,6 +17,7 @@ import com.sms.OutputRows.DotKhuyenMaiOutputRowBean;
 import com.sms.common.SMSComons;
 import com.sms.common.SystemCommon;
 import com.sms.dao.DotKhuyenMaiDAO;
+import com.sms.dao.LayoutDAO;
 import com.sms.form.DotKhuyenMaiForm;
 import com.sms.formRows.DotKhuyenMaiRowForm;
 import com.sms.input.DotKhuyenMaiInputBean;
@@ -29,7 +30,12 @@ public class dotKhuyenMaiController {
 	
 	@RequestMapping(value  = "/dotKhuyenMai/init")
 	public String init(@ModelAttribute("DotKhuyenMaiForm") DotKhuyenMaiForm form, HttpSession session){
-		String pathJSP = "cuahangthoitrang";
+		String pathJSP = (String)session.getAttribute("pathURL");
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		//reset
 		form.setMaDKM("");
 		form.setTenDKM("");
@@ -136,29 +142,11 @@ public class dotKhuyenMaiController {
 				    }
 				}
 				
-				String ngayBD,thangKT,namKT = "";
-				String ngayKT,thangBD,namBD = "";
+				formRow.setNgayKT(SMSComons.formatDate(outputRowBean.getNgayKT()));
 				
-				if(outputRowBean.getNgayKT() != null && outputRowBean.getNgayKT().trim().length() != 0){
-					ngayKT = outputRowBean.getNgayKT().substring(6,outputRowBean.getNgayKT().length() );
-					thangKT = outputRowBean.getNgayKT().substring(4,6 );
-					namKT = outputRowBean.getNgayKT().substring(0,4 );
-					formRow.setNgayKT(namKT + "/" + thangKT + "/" + ngayKT);
-				}
-				
-				if(outputRowBean.getNgayBD() != null && outputRowBean.getNgayBD().trim().length() != 0){
-					 ngayBD = outputRowBean.getNgayBD().substring(6,outputRowBean.getNgayBD().length() );
-					 thangBD = outputRowBean.getNgayBD().substring(4,6 );
-					 namBD = outputRowBean.getNgayBD().substring(0,4 );
-					 formRow.setNgayBD(namBD + "/" + thangBD + "/" + ngayBD);
-				}
-				
+				formRow.setNgayBD(SMSComons.formatDate(outputRowBean.getNgayBD()));
 						
-				if(!outputRowBean.getDk_tongHD().equals("") && outputRowBean.getDk_tongHD().trim().length() != 0 && outputRowBean.getDk_tongHD() != null){
-					formRow.setDk_tongHD(String.format("%,.2f",Double.parseDouble(outputRowBean.getDk_tongHD())));
-				}else{
-					formRow.setDk_tongHD(outputRowBean.getDk_tongHD());
-				}
+				formRow.setDk_tongHD(SMSComons.formatMoney(outputRowBean.getDk_tongHD()));
 				
 				formRow.setDk_tongSL(outputRowBean.getDk_tongSL());
 				
@@ -177,7 +165,12 @@ public class dotKhuyenMaiController {
 	@RequestMapping(value ="/dotKhuyenMai/insert", method = RequestMethod.POST)
 	public String insert(@ModelAttribute("DotKhuyenMaiForm") DotKhuyenMaiForm form, HttpSession session) {
 		//get domain
-		String pathJSP = "cuahangthoitrang";
+		String pathJSP = (String)session.getAttribute("pathURL");
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		// trong 1 thoi gian chi co the ton tai mot dot khuyen mai
 		boolean checkExistOfMonth= false;
 		List<DotKhuyenMaiOutputRowBean> lst = DotKhuyenMaiDAO.intances.getAll(pathJSP);
@@ -235,8 +228,12 @@ public class dotKhuyenMaiController {
 	@RequestMapping(value ="/dotKhuyenMai/update", method = RequestMethod.POST)
 	public String update(@ModelAttribute("DotKhuyenMaiForm") DotKhuyenMaiForm form, HttpSession session){
 		//get domain
-		String pathJSP = "cuahangthoitrang";
-		
+		String pathJSP = (String)session.getAttribute("pathURL"); 
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		//input
 		DotKhuyenMaiInputBean inputBean = new DotKhuyenMaiInputBean();
 		inputBean.setPathJSP(pathJSP);
@@ -281,7 +278,12 @@ public class dotKhuyenMaiController {
 	@RequestMapping(value="/dotKhuyenMai/getById/{id}", method = RequestMethod.POST)
 	public String getProductById(@ModelAttribute("DotKhuyenMaiForm") DotKhuyenMaiForm form, @PathVariable("id") String id, HttpSession session){
 		//get domain
-		String pathJSP = "cuahangthoitrang";
+		String pathJSP = (String)session.getAttribute("pathURL");
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		
 		DotKhuyenMaiInputBean inputBean = new DotKhuyenMaiInputBean();
 		inputBean.setPathJSP(pathJSP);
@@ -321,7 +323,12 @@ public class dotKhuyenMaiController {
 	@RequestMapping(value="/dotKhuyenMai/delete/{id}")
 	public String delete(@ModelAttribute("DotKhuyenMaiForm") DotKhuyenMaiForm form, @PathVariable("id") String id, HttpSession session){
 		//get domain
-		String pathJSP = "cuahangthoitrang";
+		String pathJSP = (String)session.getAttribute("pathURL");
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		DotKhuyenMaiInputBean input = new DotKhuyenMaiInputBean();
 		input.setPathJSP(pathJSP);
 		input.setMaDKM(id);

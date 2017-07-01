@@ -17,6 +17,7 @@ import com.sms.OutputRows.KhachHangOutputRowBean;
 import com.sms.common.SMSComons;
 import com.sms.common.SystemCommon;
 import com.sms.dao.KhachHangDAO;
+import com.sms.dao.LayoutDAO;
 import com.sms.form.KhachHangForm;
 import com.sms.formRows.KhachHangRowForm;
 import com.sms.input.KhachHangInputBean;
@@ -35,7 +36,12 @@ public class KhachHangController {
 	
 	@RequestMapping(value  = "/customer/init")
 	public String init(@ModelAttribute("KhachHangForm") KhachHangForm form, HttpSession session, Model model){
-		String pathJSP = (String)session.getAttribute("pathURL"); 
+		String pathJSP = (String)session.getAttribute("pathURL");
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		//reset
 		form.setIdKhachHang("");
 		form.setTenKhachHang("");
@@ -113,7 +119,11 @@ public class KhachHangController {
 	public String insert(@ModelAttribute("KhachHangForm") KhachHangForm form, HttpSession session) {
 		//get domain
 		String pathJSP = (String)session.getAttribute("pathURL");
-		
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		//input
 		KhachHangInputBean inputBean = new KhachHangInputBean();
 		inputBean.setPathJSP(pathJSP);
@@ -156,7 +166,11 @@ public class KhachHangController {
 	public String update(@ModelAttribute("KhachHangForm") KhachHangForm form, HttpSession session){
 		//get domain
 		String pathJSP = (String)session.getAttribute("pathURL");
-		
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		//input
 		KhachHangInputBean inputBean = new KhachHangInputBean();
 		inputBean.setPathJSP(pathJSP);
@@ -202,7 +216,11 @@ public class KhachHangController {
 		
 		//get domain
 		String pathJSP = (String)session.getAttribute("pathURL");
-		
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		KhachHangInputBean inputBean = new KhachHangInputBean();
 		inputBean.setPathJSP(pathJSP);
 		inputBean.setIdKhachHang(id);
@@ -239,6 +257,11 @@ public class KhachHangController {
 	public String delete(@ModelAttribute("KhachHangForm") KhachHangForm form, @PathVariable("id") String id, HttpSession session){
 		//get domain
 		String pathJSP = (String)session.getAttribute("pathURL");
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		KhachHangInputBean input = new KhachHangInputBean();
 		input.setPathJSP(pathJSP);
 		input.setIdKhachHang(id);

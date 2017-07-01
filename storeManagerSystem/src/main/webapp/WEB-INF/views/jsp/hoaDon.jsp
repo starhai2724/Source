@@ -19,12 +19,15 @@
 			<div class="col-sm-3">
 				<div class="form-group">
 					<label >Mã khách hàng</label> 
-					<form:input class="form-control"  type="text" path="idKhachHang"  name="idKhachHang" ng-model = "idKhachHang"  ng-init ="idKhachHang = '${HoaDonForm.idKhachHang}'"/>
-					<form:input class="form-control" type="hidden" path="idHoaDon"  name="idHoaDon" ng-model = "idHoaDon"  ng-init ="idHoaDon = '${HoaDonForm.idHoaDon}'" />
-					<p style="color: red;">{{idKhachHang_err}}</p>
+					<form:input class="form-control" disabled="true" type="text" path="idKhachHang"  name="idKhachHang" ng-model = "idKhachHang"  ng-init ="idKhachHang = '${HoaDonForm.idKhachHang}'"/>
+				</div>
+				<div class="form-group">
+					<label >Mã hóa đơn</label> 
+					<form:input class="form-control" disabled="true"  type="text" path="idHoaDon"  name="idHoaDon" ng-model = "idHoaDon"  ng-init ="idHoaDon = '${HoaDonForm.idHoaDon}'"/>
 				</div>
 			</div>
 		</div>
+		<c:if test="${!empty HoaDonForm.chiTietHoaDonRowForms }">
 		<div class="panel-body">
                    <table width="100%" class="table table-striped table-bordered table-hover" >
                        <thead>
@@ -36,41 +39,41 @@
 								<th style="width: 100px; text-align: center">Số lượng</th>
 								<th style="width: 120px; text-align: center">Giá</th>
 								<th style="width: 120px; text-align: center">Thành tiền</th>
-								<th style="width: 110px; text-align: center">Thao tác</th>
                            </tr>
                        </thead>
                        <tbody style="overflow: auto; height:50px">
-                       <c:forEach var="items" items="${HoaDonForm.chiTietHoaDonRowForms }">
+                       <c:forEach var="items" items="${HoaDonForm.chiTietHoaDonRowForms }" varStatus="status">
                          <tr class="odd gradeX">
                                 <td class="center" style="text-align: center">${items.no }</td>
                                 <td class="form-inline">${items.idSanPham }</td>
-                                <%-- <td class="form-inline">
-                                	<input class="form-control" value="${items.idSanPham }" name ="row_SanPham" type="text" style="width:200px "  /> 
-                                	<button class="btn" type="button" >
-											<span class="glyphicon glyphicon-plus"  ng-click="btnOpenPopup();" data-toggle="tooltip" data-original-title="Chọn"></span>
-									</button>
-                                </td> --%>
 			                    <td>${items.tenSanPham }</td>
 			                    <td>${items.loaiSanPham }</td>
-		                        <td class="center" style="text-align: center">${items.soLuongSP }</td>
-		                        <%-- <td class="center" style="text-align: center">
-									<input class="form-control" value="${items.soLuongSP }" type="text" name ="row_soLuong" />
-					 			</td> --%>
+		                        <td class="center" style="text-align: right">${items.soLuongSP }</td>
 		                		<td class="center">${items.giaMua }</td>
 		                		<td class="center">${items.thanhTien }</td>
-		                        <td class="center" style="text-align: center">
-		                             <button class="btn" type="button" >
-											<span class="glyphicon glyphicon-plus" data-toggle="tooltip" data-original-title="Thêm"></span>
-									</button>
-		                             <button class="btn" type="button" >
-											<span class="glyphicon glyphicon-trash" data-toggle="tooltip" data-original-title="Xóa"></span>
-									</button>
-		                        </td>
                         </tr>
                        </c:forEach>
                        </tbody>
                    </table>
         </div>
+        </c:if>
+        <c:if test="${empty HoaDonForm.chiTietHoaDonRowForms }">
+		<div class="panel-body">
+                   <table width="100%" class="table table-striped table-bordered table-hover" >
+                       <thead>
+                           <tr>
+                               	<th style="width: 40px;  text-align: center">STT</th>
+								<th style="width: 120px; text-align: center">Mã sản phẩm</th>
+								<th style="width: 230px; text-align: center">Tên sản phẩm</th>
+								<th style="width: 120px; text-align: center">Loại sản phẩm</th>
+								<th style="width: 100px; text-align: center">Số lượng</th>
+								<th style="width: 120px; text-align: center">Giá</th>
+								<th style="width: 120px; text-align: center">Thành tiền</th>
+                           </tr>
+                       </thead>
+                   </table>
+        </div>
+        </c:if>
         <!--Message (S)-->
 		<div class="row">
 			<div class="col-sm-3">
@@ -83,7 +86,7 @@
 		<!--Message (E)-->
 		<div class="row" align="right" style="width: 100%">
 			<div>
-				<input type="button" name="" class="btn btn-info "  value="Đăng ký">
+				<!-- <input type="button" name="" class="btn btn-info "  value="Đăng ký"> -->
 				<input type="button" name="" class="btn btn-info "  value="In">
 				<input type="button" name="" class="btn btn-info "  value="Hủy">
 			</div>

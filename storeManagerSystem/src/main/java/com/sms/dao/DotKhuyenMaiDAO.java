@@ -483,7 +483,7 @@ public class DotKhuyenMaiDAO {
 		StringBuffer sb = new StringBuffer();
 		String tableName = pathJSP+"_DOTKHUYENMAI";
 		sb.append(" CREATE TABLE "+tableName+ " (        ");
-		sb.append("  MA_DKM	VARCHAR (255)           ");
+		sb.append("  MA_DKM	  INT (255)           ");
 		sb.append(" ,TEN_DKM	VARCHAR (255)           ");
 		sb.append(" ,LOAI_KM 		VARCHAR(255)                  ");
 		sb.append(" ,MUC_KM 		VARCHAR(255)                  ");

@@ -21,7 +21,10 @@ import com.sms.output.SanPhamOutputBean;
 import com.sms.session.KhachHangSession;
 @Controller
 public class ThanhToanController {
-
+	
+	public static final String PAGE_CART = "gioHang";
+	
+	
 	@RequestMapping(value = "/{path}/thanhToan/{list}")
 	public String thanhToan(@ModelAttribute("LayoutForm") LayoutForm form, @PathVariable("path") String path,
 			@PathVariable("list") String listId, HttpSession session) {
@@ -31,10 +34,13 @@ public class ThanhToanController {
 			return "redirect:/";
 		}
 
+		// 
+		int cnt = 0;
+		String[] parts = null;
 		// remove ","
 		if (!"".equals(listId)) {
 			listId = listId.substring(1);
-			String[] parts = listId.split(",");
+			parts = listId.split(",");
 			listId = "";
 			for (int i = 0; i < parts.length; i++) {
 				if (i < parts.length - 1) {
@@ -45,7 +51,6 @@ public class ThanhToanController {
 			}
 		}
 		double totalMoney = 0;
-
 		SanPhamOutputBean sanPhamOutputBean = CreateTableProductDAO.intances.getProductByList(path, listId);
 		ProductFormRow productFormRow;
 		for (SanPhamOutputRowBean sanPhamOutputRowBean : sanPhamOutputBean.getLst()) {
@@ -61,55 +66,88 @@ public class ThanhToanController {
 			productFormRow.setNgayChinhSua(sanPhamOutputRowBean.getNgayChinhSua());
 			productFormRow.setMoTa(sanPhamOutputRowBean.getMoTa());
 			form.getProducts().add(productFormRow);
-			if (sanPhamOutputRowBean.getGiaBanKM() != null && "".equals(sanPhamOutputRowBean.getGiaBanKM())) {
-				totalMoney += Double.parseDouble(sanPhamOutputRowBean.getGiaBanKM());
+			if (sanPhamOutputRowBean.getGiaBanKM() != null && !"".equals(sanPhamOutputRowBean.getGiaBanKM())) {
+				totalMoney += Double.parseDouble(sanPhamOutputRowBean.getGiaBanKM())* getSoLuongSanPham(parts, sanPhamOutputRowBean.getSEQ());
 			} else {
-				totalMoney += Double.parseDouble(sanPhamOutputRowBean.getGiaBan());
+				totalMoney += Double.parseDouble(sanPhamOutputRowBean.getGiaBan())* getSoLuongSanPham(parts, sanPhamOutputRowBean.getSEQ());
 			}
 
 		}
 
 		KhachHangSession khachHangSession = (KhachHangSession) session.getAttribute("KhachHangSession");
 
+		HoaDonInputBean hoaDonInputBean = new HoaDonInputBean();
+		hoaDonInputBean.setIdHoaDon("");
 		if (khachHangSession != null) {
-			HoaDonInputBean hoaDonInputBean = new HoaDonInputBean();
-			hoaDonInputBean.setIdHoaDon("");
 			hoaDonInputBean.setIdKhachHang(khachHangSession.getIdKhachHang());
-			hoaDonInputBean.setPathJSP(path);
-			hoaDonInputBean.setSoLuongSP(String.valueOf(sanPhamOutputBean.getLst().size()));
-			hoaDonInputBean.setTienKhuyenMai("");
-			// 10000 d set duoc tinh la 1 diem
-			hoaDonInputBean.setTongDiemTichLuy(String.valueOf(totalMoney / 10000));
-			hoaDonInputBean.setTongTien(String.valueOf(totalMoney));
-			hoaDonInputBean.setNgayLap(SMSComons.getDate());
-			int cnt = HoaDonDAO.intances.insert(hoaDonInputBean);
-			if (cnt == 1) {
-				String idHoaDon = HoaDonDAO.intances.getMaxId(path);
-				SanPhamOutputRowBean sanPhamOutputRowBean;
-				for (int i = 0; i < sanPhamOutputBean.getLst().size(); i++) {
-					sanPhamOutputRowBean = sanPhamOutputBean.getLst().get(i);
-					ChiTietHoaDonInputBean chiTietHoaDonInputBean = new ChiTietHoaDonInputBean();
-					chiTietHoaDonInputBean.setPathJSP(path);
-					chiTietHoaDonInputBean.setIdChiTietHoaDon("");
-					chiTietHoaDonInputBean.setIdHoaDon(idHoaDon);
-					chiTietHoaDonInputBean.setIdSanPham(sanPhamOutputRowBean.getIdSanPham());
-					if (sanPhamOutputRowBean.getGiaBanKM() != null && "".equals(sanPhamOutputRowBean.getGiaBanKM())) {
-						chiTietHoaDonInputBean.setGiaMua(sanPhamOutputRowBean.getGiaBanKM());
-					} else {
-						chiTietHoaDonInputBean.setGiaMua(sanPhamOutputRowBean.getGiaBan());
-					}
-					chiTietHoaDonInputBean.setLoaiSanPham(sanPhamOutputRowBean.getTenLoaiSP());
-					chiTietHoaDonInputBean.setSoLuongSP("1");
-					chiTietHoaDonInputBean.setThanhTien(chiTietHoaDonInputBean.getGiaMua());
-					cnt = ChiTietHoaDonDAO.intances.insert(chiTietHoaDonInputBean);
-					if(cnt != 1){
-						return "redirect:/"+path;
-					}
+		}else{
+			hoaDonInputBean.setIdKhachHang(form.getSdtKhachHang());
+		}
+		
+		hoaDonInputBean.setPathJSP(path);
+		hoaDonInputBean.setSoLuongSP(String.valueOf(parts.length));
+		hoaDonInputBean.setTienKhuyenMai("");
+		// 10000 d set duoc tinh la 1 diem
+		hoaDonInputBean.setTongDiemTichLuy(String.valueOf(totalMoney / 10000));
+		hoaDonInputBean.setTongTien(String.valueOf(totalMoney));
+		hoaDonInputBean.setNgayLap(SMSComons.getDate());
+		cnt = HoaDonDAO.intances.insert(hoaDonInputBean);
+		if (cnt == 1) {
+			String idHoaDon = HoaDonDAO.intances.getMaxId(path);
+			SanPhamOutputRowBean sanPhamOutputRowBean;
+			for (int i = 0; i < sanPhamOutputBean.getLst().size(); i++) {
+				sanPhamOutputRowBean = sanPhamOutputBean.getLst().get(i);
+				ChiTietHoaDonInputBean chiTietHoaDonInputBean = new ChiTietHoaDonInputBean();
+				chiTietHoaDonInputBean.setPathJSP(path);
+				chiTietHoaDonInputBean.setIdChiTietHoaDon("");
+				chiTietHoaDonInputBean.setIdHoaDon(idHoaDon);
+				chiTietHoaDonInputBean.setIdSanPham(sanPhamOutputRowBean.getIdSanPham());
+				if (sanPhamOutputRowBean.getGiaBanKM() != null && !"".equals(sanPhamOutputRowBean.getGiaBanKM())) {
+					chiTietHoaDonInputBean.setGiaMua(sanPhamOutputRowBean.getGiaBanKM());
+				} else {
+					chiTietHoaDonInputBean.setGiaMua(sanPhamOutputRowBean.getGiaBan());
 				}
-			}else{
-				return "redirect:/"+path;
+				chiTietHoaDonInputBean.setLoaiSanPham(sanPhamOutputRowBean.getTenLoaiSP());
+				chiTietHoaDonInputBean.setSoLuongSP(String.valueOf(getSoLuongSanPham(parts, sanPhamOutputRowBean.getSEQ())));
+				if (sanPhamOutputRowBean.getGiaBanKM() != null && !"".equals(sanPhamOutputRowBean.getGiaBanKM())) {
+					chiTietHoaDonInputBean.setThanhTien(Double.parseDouble(sanPhamOutputRowBean.getGiaBanKM()) * getSoLuongSanPham(parts, sanPhamOutputRowBean.getSEQ())+"");
+				} else {
+					chiTietHoaDonInputBean.setThanhTien(Double.parseDouble(sanPhamOutputRowBean.getGiaBan()) * getSoLuongSanPham(parts, sanPhamOutputRowBean.getSEQ())+"");
+				}
+				cnt = ChiTietHoaDonDAO.intances.insert(chiTietHoaDonInputBean);
+				if(cnt != 1){
+					form.setMessage("");
+					form.setMessageErr("Thanh toán không thành công.");
+					return PAGE_CART;
+				}
+			}
+		}else{
+			form.setMessage("");
+			form.setMessageErr("Thanh toán không thành công.");
+			return PAGE_CART;
+		}
+		// Thanh toan thanh cong
+		if(cnt == 1){
+			form.setMessage("Cảm ơn bạn đã mua hàng.");
+			form.setMessageErr("");
+		}
+		return PAGE_CART;
+	}
+	
+	/**
+	 * 
+	 * @param part
+	 * @param SEQ
+	 * @return
+	 */
+	private int getSoLuongSanPham(String part[], String SEQ){
+		int cnt = 0;
+		for(int i = 0; i < part.length;i++){
+			if(part[i].trim().equals(SEQ)){
+				cnt++;
 			}
 		}
-		return "";
+		return cnt;
+		
 	}
 }

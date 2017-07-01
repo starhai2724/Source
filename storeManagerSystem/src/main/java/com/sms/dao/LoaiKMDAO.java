@@ -69,7 +69,7 @@ public class LoaiKMDAO {
 		StringBuffer sb = new StringBuffer();
 		String tableName = pathJSP+"_LOAI_KM";
 		sb.append(" CREATE TABLE "+tableName+ " (        ");
-		sb.append("  ID_LOAI_KM	VARCHAR (6)              ");
+		sb.append("  ID_LOAI_KM	INT (6)              ");
 		sb.append("	,TEN_LOAI_KM VARCHAR(255)                 ");
 		sb.append("	,MO_TA VARCHAR(255)                ");
 		sb.append(" 	)                                ");

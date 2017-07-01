@@ -15,6 +15,7 @@ import com.sms.OutputRows.LoaiTheOutputRowBean;
 import com.sms.common.SMSComons;
 import com.sms.common.SystemCommon;
 import com.sms.dao.KhachHangDAO;
+import com.sms.dao.LayoutDAO;
 import com.sms.dao.LoaiTheDAO;
 import com.sms.form.KhachHangForm;
 import com.sms.form.LoaiTheForm;
@@ -31,6 +32,11 @@ public class LoaiTheController {
 	@RequestMapping(value  = "/cardType/init")
 	public String init(@ModelAttribute("LoaiTheForm") LoaiTheForm form, HttpSession session){
 		String pathJSP = (String)session.getAttribute("pathURL"); 
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		//reset
 		form.setIdLoaiThe("");
 		form.setTenLoaiThe("");
@@ -86,6 +92,11 @@ public class LoaiTheController {
 	public String insert(@ModelAttribute("LoaiTheForm") LoaiTheForm form, HttpSession session) {
 		//get domain
 		String pathJSP = (String)session.getAttribute("pathURL");
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		//input
 		LoaiTheInputBean inputBean = new LoaiTheInputBean();
 		inputBean.setPathJSP(pathJSP);
@@ -121,6 +132,11 @@ public class LoaiTheController {
 	public String update(@ModelAttribute("LoaiTheForm") LoaiTheForm form, HttpSession session){
 		//get domain
 		String pathJSP = (String)session.getAttribute("pathURL");
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		
 		//input
 		LoaiTheInputBean inputBean = new LoaiTheInputBean();
@@ -159,7 +175,11 @@ public class LoaiTheController {
 	public String getProductById(@ModelAttribute("LoaiTheForm") LoaiTheForm form, @PathVariable("id") String id, HttpSession session){
 		//get domain
 		String pathJSP = (String)session.getAttribute("pathURL");
-		
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		LoaiTheInputBean inputBean = new LoaiTheInputBean();
 		inputBean.setPathJSP(pathJSP);
 		inputBean.setIdLoaiThe(id);
@@ -191,6 +211,11 @@ public class LoaiTheController {
 	public String delete(@ModelAttribute("LoaiTheForm") LoaiTheForm form, @PathVariable("id") String id, HttpSession session){
 		//get domain
 		String pathJSP = (String)session.getAttribute("pathURL");
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		//input
 		LoaiTheInputBean inputBean = new LoaiTheInputBean();
 		inputBean.setPathJSP(pathJSP);

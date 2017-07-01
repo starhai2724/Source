@@ -509,7 +509,7 @@ public class KhachHangDAO {
 		StringBuffer sb = new StringBuffer();
 		String tableName = pathJSP+"_KHACH_HANG";
 		sb.append(" CREATE TABLE "+tableName+ " (        ");
-		sb.append("  ID_KHACHHANG	VARCHAR (6)           ");
+		sb.append("  ID_KHACHHANG	INT (6)           ");
 		sb.append(" ,TEN_KHACHHANG	VARCHAR (255)         ");
 		sb.append(" ,LOAI_THE 		VARCHAR(6)                  ");
 		sb.append(" ,GIOI_TINH 		VARCHAR(12)                     ");

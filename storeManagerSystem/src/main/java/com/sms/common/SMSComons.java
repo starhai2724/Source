@@ -78,6 +78,36 @@ public class SMSComons {
 	        return priceWithoutDecimal(price);
 	    }
 	}
+	/**
+	 * 
+	 * @param date
+	 * @return
+	 */
+	public static String formatDate(String date){
+		String ngay = "";
+		String thang = "";
+		String nam = "";
+		String result ="";
+		if(date != null && date.trim().length() != 0){
+			ngay = date.substring(6,date.length() );
+			thang = date.substring(4,6 );
+			nam = date.substring(0,4 );
+			result = ngay + "/" + thang + "/" + nam;
+		}
+		return result;
+	}
 	
+	/**
+	 * 
+	 * @param money
+	 * @return
+	 */
+	public static String formatMoney(String money){
+		if(money != null && !"".equals(money)){
+			return String.format("%,.2f",Double.parseDouble(money));
+		}else{
+			return "0";
+		}
+	}
 	
 }

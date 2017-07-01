@@ -41,8 +41,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="container">
 				<div class="header-top-left">
 					<ul>
-						<li><a href="account.html"><span class="glyphicon glyphicon-user"> </span>Đăng nhập</a></li>
-						<li><a href="register.html"><span class="glyphicon glyphicon-lock"> </span>Tạo tài khoản</a></li>			
+						<li><a href="/storeManagerSystem/${LayoutForm.pathJSP }/dangNhap"><span class="glyphicon glyphicon-user"> </span>Đăng nhập</a></li>
+						<li><a href="/storeManagerSystem/${LayoutForm.pathJSP }/dangkitaikhoan"><span class="glyphicon glyphicon-lock"> </span>Tạo tài khoản</a></li>		
 					</ul>
 				</div>
 				<div class="header-right">
@@ -71,14 +71,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		        <span class="icon-bar"></span>
 	        </button>
 				<div class="logo">
-					<h1><a href="index.html"><span>E</span> -Thời trang</a></h1>
+					<h1><a href="/storeManagerSystem/${LayoutForm.pathJSP }"><span>E</span> -Thời trang</a></h1>
 				</div>
 	    </div>
 	    <!--/.navbar-header-->
 	
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	        <ul class="nav navbar-nav">
-			<li><a href="index.html">Trang chủ</a></li>
+			<li><a href="/storeManagerSystem/${LayoutForm.pathJSP }">Trang chủ</a></li>
 				<c:forEach var="items" items="${LayoutForm.loaiSanPham }">
 			        <li class="dropdown">
 			            <a href="#" class="dropdown-toggle" data-toggle="dropdown">${items.nameProductCategory } <b class="caret"></b></a>
@@ -96,33 +96,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!-- content-section-starts-here -->
 		<div class="container">
 			<div class="main-content">
-				<!-- <div class="online-strip">
-					<div class="col-md-4 follow-us">
-						<h3>Liên kết  : <a class="twitter" href="#"></a><a class="facebook" href="#"></a></h3>
-					</div>
-					<div class="col-md-4 shipping-grid">
-						<div class="shipping">
-							<img src="/storeManagerSystem/view/fontend_index2/images/shipping.png" alt="" />
-						</div>
-						<div class="shipping-text">
-							<h3>Miễn phí vận chuyển</h3>
-							<p>trên hóa đơn 500.000đ</p>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-					<div class="col-md-4 online-order">
-						<p>Đặt hàng online</p>
-						<h3>Tel:999 4567 8902</h3>
-					</div>
-					<div class="clearfix"></div>
-				</div> -->
 				<div class="products-grid">
 				<header>
 					<div align="left">
-						<input type="button" name="" class="btn btn-info " ng-click ="btnBuyCart()" value="Thanh toán">
+						<input style="margin-left: 15px" type="button" name="" class="btn btn-info " ng-click ="btnBuyCart()" value="Thanh toán">
+					</div>
+					<!-- CHECK Dang nhap  -->
+					<input type="hidden" ng-model="checkDangNhap" ng-init="checkDangNhap ='${LayoutForm.checkDangNhap}'">
+					<c:choose>
+					<c:when test="${LayoutForm.checkDangNhap eq ('1')}">
+						<div class="col-sm-4">
+							<form:input style="margin-top: 5px" class="form-control" placeholder="Số điện thoại"  type="text" path="sdtKhachHang"  name="sdtKhachHang" ng-model = "sdtKhachHang"  ng-init ="sdtKhachHang = '${LayoutForm.sdtKhachHang}'" />
+							<p style="color: red;">{{sdtKhachHang_err}}</p>
+						</div>
+					</c:when>
+					 </c:choose>
+					<div align="left">
+						<p style="color: blue; font-weight: bold;">${LayoutForm.message }</p>
+						<p style="color: red; font-weight: bold;">${LayoutForm.messageErr }</p>
 					</div>
 				</header>
 				<!--San pham (S)  ----------------------------------------------------------------------------------------------------------------------------------------------->
+				<br><br>
+				
 				<c:forEach var="items" items="${LayoutForm.products }">
 					<div class="col-md-4 product simpleCart_shelfItem text-center" id="sanPham${items.SEQ }">
 						<a href="single.html"><img src="/storeManagerSystem/myImage/imageDisplay/${items.SEQ}" alt="" /></a>

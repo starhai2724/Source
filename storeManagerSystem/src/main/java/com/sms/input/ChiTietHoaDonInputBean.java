@@ -9,6 +9,8 @@ public class ChiTietHoaDonInputBean {
 	private String idChiTietHoaDon;
 	
 	private String idSanPham;
+	
+	private String SEQ_SP;
 
 	private String tenSanPham;
 
@@ -21,6 +23,14 @@ public class ChiTietHoaDonInputBean {
 	private String thanhTien;
 	
 	
+	public String getSEQ_SP() {
+		return SEQ_SP;
+	}
+
+	public void setSEQ_SP(String sEQ_SP) {
+		SEQ_SP = sEQ_SP;
+	}
+
 	public String getThanhTien() {
 		return thanhTien;
 	}

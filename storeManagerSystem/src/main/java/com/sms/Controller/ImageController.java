@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.sms.dao.CreateTableProductDAO;
+import com.sms.dao.LayoutDAO;
 import com.sms.domain.Image;
 import com.sms.output.ImageOutputBean;
 
@@ -47,6 +48,7 @@ public class ImageController {
 	public void getImage(HttpServletResponse response, HttpServletRequest request, @PathVariable("id") String id)
 			throws ServletException, IOException {
 		String pathJSP = "cuahangthoitrang";
+		// check pathJSP
 		ImageOutputBean imageOutputBean = CreateTableProductDAO.intances.getImage(pathJSP, "", id);
 		
 		// save image into database

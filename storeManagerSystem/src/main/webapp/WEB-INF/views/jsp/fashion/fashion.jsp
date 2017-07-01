@@ -71,14 +71,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		        <span class="icon-bar"></span>
 	        </button>
 				<div class="logo">
-					<h1><a href="index.html"><span>E</span> -Thời trang</a></h1>
+					<h1><a href="/storeManagerSystem/${LayoutForm.pathJSP }"><span>E</span> -Thời trang</a></h1>
 				</div>
 	    </div>
 	    <!--/.navbar-header-->
 	
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	        <ul class="nav navbar-nav">
-			<li><a href="index.html">Trang chủ</a></li>
+			<li><a href="/storeManagerSystem/${LayoutForm.pathJSP }">Trang chủ</a></li>
 				<c:forEach var="items" items="${LayoutForm.loaiSanPham }">
 			        <li class="dropdown">
 			            <a href="#" class="dropdown-toggle" data-toggle="dropdown">${items.nameProductCategory } <b class="caret"></b></a>

@@ -392,6 +392,7 @@ public class CreateTableProductDAO {
 				outputRowBean.setNgayTao(SMSComons.convertString(object[9]));
 				outputRowBean.setNgayChinhSua(SMSComons.convertString(object[10]));
 				outputRowBean.setSEQ(SMSComons.convertString(object[11]));
+				outputRowBean.setGiaBanKM(SMSComons.convertString(object[12]));
 				outputBean.getLst().add(outputRowBean);
 			}
 			tx.commit();
@@ -864,6 +865,7 @@ public class CreateTableProductDAO {
 		sb.append("  ,NGAY_TAO 	                            ");
 		sb.append("  ,NGAY_CHINH_SUA                        ");
 		sb.append("  ,SEQ                                   ");
+		sb.append("  ,GIA_BAN_KM                                   ");
 		sb.append("  FROM "+tableName+"          			");
 		sb.append("  WHERE SEQ IN (" + listSEQ + ")        ");
 		return sb.toString();

@@ -20,6 +20,7 @@ import com.sms.OutputRows.SanPhamOutputRowBean;
 import com.sms.common.SMSComons;
 import com.sms.common.SystemCommon;
 import com.sms.dao.CreateTableProductDAO;
+import com.sms.dao.LayoutDAO;
 import com.sms.dao.NhomSanPhamDAO;
 import com.sms.form.ProductForm;
 import com.sms.formRows.ProductFormRow;
@@ -44,7 +45,11 @@ public class ProductController {
 	@RequestMapping(value  = "/product/init")
 	public String init(@ModelAttribute("ProductForm") ProductForm form, HttpSession session){
 		String pathJSP = (String)session.getAttribute("pathURL"); 
-		
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		//reset
 		form.setIdSanPham("");
 		form.setSEQ("");
@@ -94,10 +99,10 @@ public class ProductController {
 				formRow.setIdSanPham(outputRowBean.getIdSanPham());
 				formRow.setTenSP(outputRowBean.getTenSP());
 				formRow.setTenLoaiSP(outputRowBean.getTenLoaiSP());
-				formRow.setGiaMua(outputRowBean.getGiaMua());
-				formRow.setGiaBan(outputRowBean.getGiaBan());
-				formRow.setNgayTao(outputRowBean.getNgayTao());
-				formRow.setNgayChinhSua(outputRowBean.getNgayChinhSua());
+				formRow.setGiaMua(SMSComons.formatMoney(outputRowBean.getGiaMua()));
+				formRow.setGiaBan(SMSComons.formatMoney(outputRowBean.getGiaBan()));
+				formRow.setNgayTao(SMSComons.formatDate(outputRowBean.getNgayTao()));
+				formRow.setNgayChinhSua(SMSComons.formatDate(outputRowBean.getNgayChinhSua()));
 				formRow.setMoTa(outputRowBean.getMoTa());
 				form.getLst().add(formRow);
 			}
@@ -110,7 +115,11 @@ public class ProductController {
 	public String insert(@ModelAttribute("ProductForm") ProductForm form, @RequestParam("file") MultipartFile file, HttpSession session) {
 		//get domain
 		String pathJSP = (String)session.getAttribute("pathURL"); 
-		
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		SanPhamInputBean input = new SanPhamInputBean();
 		input.setSEQ("");
 		input.setPathJSP(pathJSP);
@@ -152,7 +161,11 @@ public class ProductController {
 	public String update(@ModelAttribute("ProductForm") ProductForm form, @RequestParam("file") MultipartFile file , HttpSession session){
 		//get domain
 		String pathJSP = (String)session.getAttribute("pathURL"); 
-		
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		SanPhamInputBean input = new SanPhamInputBean();
 		input.setPathJSP(pathJSP);
 		input.setSEQ(form.getSEQ());
@@ -196,7 +209,11 @@ public class ProductController {
 	public String getProductById(@ModelAttribute("ProductForm") ProductForm form, @PathVariable("SEQ") String SEQ, HttpSession session){
 		//get domain
 		String pathJSP = (String)session.getAttribute("pathURL"); 
-		
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		SanPhamInputBean input = new SanPhamInputBean();
 		input.setPathJSP(pathJSP);
 		input.setSEQ(SEQ);
@@ -235,10 +252,10 @@ public class ProductController {
 				formRow.setIdSanPham(sanPhamoutputRowBean.getIdSanPham());
 				formRow.setTenSP(sanPhamoutputRowBean.getTenSP());
 				formRow.setTenLoaiSP(sanPhamoutputRowBean.getTenLoaiSP());
-				formRow.setGiaMua(sanPhamoutputRowBean.getGiaMua());
-				formRow.setGiaBan(sanPhamoutputRowBean.getGiaBan());
-				formRow.setNgayTao(sanPhamoutputRowBean.getNgayTao());
-				formRow.setNgayChinhSua(sanPhamoutputRowBean.getNgayChinhSua());
+				formRow.setGiaMua(SMSComons.formatMoney(outputRowBean.getGiaMua()));
+				formRow.setGiaBan(SMSComons.formatMoney(outputRowBean.getGiaBan()));
+				formRow.setNgayTao(SMSComons.formatDate(outputRowBean.getNgayTao()));
+				formRow.setNgayChinhSua(SMSComons.formatDate(outputRowBean.getNgayChinhSua()));
 				formRow.setMoTa(sanPhamoutputRowBean.getMoTa());
 				form.getLst().add(formRow);
 			}
@@ -251,7 +268,12 @@ public class ProductController {
 	@RequestMapping(value="/product/delete/{id}")
 	public String delete(@ModelAttribute("ProductForm") ProductForm form, @PathVariable("id") String id, HttpSession session){
 		//get domain
-		String pathJSP = (String)session.getAttribute("pathURL"); 
+		String pathJSP = (String)session.getAttribute("pathURL");
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		SanPhamInputBean inputBean = new SanPhamInputBean();
 		inputBean.setPathJSP(pathJSP);
 		inputBean.setIdSanPham(id);

@@ -76,7 +76,6 @@
 		                                <tr class="odd gradeX" >
 		                                        <td style="text-align: center">
 		                                        <input type="checkbox" ng-model="selected[${items.no}]"  ng-init ="selected[${items.no}]='false'" ng-true-value="'${items.idSanPham }'" ng-false-value="'NO'">
-		                                        	<%-- <form:checkbox path="lst[${items.index}].checked" id="${items.checked}" value="${items.checked}"/> --%>
 		                                        </td>
 		                                        <td align="center">${items.idSanPham}</td>
 							                     <td>${items.tenSP}</td>

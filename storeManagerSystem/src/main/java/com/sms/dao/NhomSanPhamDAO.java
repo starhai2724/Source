@@ -467,7 +467,7 @@ public class NhomSanPhamDAO {
 		StringBuffer sb = new StringBuffer();
 		String tableName = pathJSP+"_NHOM_SP";
 		sb.append(" CREATE TABLE "+tableName+ " (        ");
-		sb.append(" 		ID_NHOM_SP VARCHAR (6),      ");
+		sb.append(" 		ID_NHOM_SP INT (6),      ");
 		sb.append(" 		TEN_NHOM_SP VARCHAR (255)    ");
 		sb.append(" 	)                                ");
 		return sb.toString();
@@ -477,7 +477,7 @@ public class NhomSanPhamDAO {
 		StringBuffer sb = new StringBuffer();
 		String tableName = pathJSP+"_LOAI_SP";
 		sb.append(" CREATE TABLE "+tableName+ " (        ");
-		sb.append(" 		ID_LOAI_SP VARCHAR (6)      ");
+		sb.append(" 		 ID_LOAI_SP INT (6)      ");
 		sb.append(" 		,TEN_LOAI_SP VARCHAR (255)    ");
 		sb.append(" 		,ID_NHOM_SP VARCHAR (6)      ");
 		sb.append(" 	)                                ");

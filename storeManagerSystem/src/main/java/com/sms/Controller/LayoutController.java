@@ -89,7 +89,7 @@ public class LayoutController {
 	}
 	
 	@RequestMapping(value="/{path}/gioHang/{list}")
-	public String giohang(@ModelAttribute("LayoutForm") LayoutForm form, @PathVariable("path") String path, @PathVariable("list") String listId){
+	public String giohang(@ModelAttribute("LayoutForm") LayoutForm form, @PathVariable("path") String path, @PathVariable("list") String listId, HttpSession session){
 		
 		//get loai san pham
 		NhomSanPhamInputBean loaiSanPhamInputBean = new NhomSanPhamInputBean();  
@@ -102,7 +102,20 @@ public class LayoutController {
 			productCategoryFormRow.setNameProductCategory(loaiSanPhamOutputBean.getTenNhomSP());
 			form.getLoaiSanPham().add(productCategoryFormRow);
 		}
+		// T/h chua chon san pham de thanh toan
+		if("0".equals(listId)){
+			form.setMessage("");
+			form.setMessageErr("Chưa có sản phẩm để thực hiện thanh toán.");
+			return PAGE_CART;
+		}
 		
+		KhachHangSession khachHangSession = (KhachHangSession) session.getAttribute("KhachHangSession");
+
+		// T/h khach hang chua dang nhap tai khoan thi yeu cau cung cap sdt
+		if (khachHangSession == null) {
+			form.setCheckDangNhap("1"); // t/h chua dang nhap thi set bang 1
+			form.setSdtKhachHang("");
+		}
 		//get san pham 
 		SanPhamInputBean sanPhamInputBean = new SanPhamInputBean();
 		sanPhamInputBean.setPathJSP(path);
@@ -132,6 +145,9 @@ public class LayoutController {
 			productFormRow.setGiaMua(sanPhamOutputRowBean.getGiaMua());
 			productFormRow.setGiaBan(sanPhamOutputRowBean.getGiaBan());
 			productFormRow.setGiaBanKM(sanPhamOutputRowBean.getGiaBanKM());
+			System.out.println(sanPhamOutputRowBean.getGiaBan());
+			System.out.println(sanPhamOutputRowBean.getGiaBanKM());
+			
 			productFormRow.setNgayTao(sanPhamOutputRowBean.getNgayTao());
 			productFormRow.setNgayChinhSua(sanPhamOutputRowBean.getNgayChinhSua());
 			productFormRow.setMoTa(sanPhamOutputRowBean.getMoTa());
@@ -142,6 +158,13 @@ public class LayoutController {
 			form.setListId(listId);
 		return PAGE_CART;
 	}
+	
+	/**
+	 * 
+	 * @param part
+	 * @param SEQ
+	 * @return
+	 */
 	private String getSoLuongSanPham(String part[], String SEQ){
 		int cnt = 0;
 		for(int i = 0; i < part.length;i++){

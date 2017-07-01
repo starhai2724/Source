@@ -18,6 +18,7 @@ import com.sms.OutputRows.SanPhamOutputRowBean;
 import com.sms.common.SMSComons;
 import com.sms.common.SystemCommon;
 import com.sms.dao.CreateTableProductDAO;
+import com.sms.dao.LayoutDAO;
 import com.sms.form.ProductForm;
 import com.sms.formRows.ProductFormRow;
 import com.sms.input.SanPhamInputBean;
@@ -41,7 +42,12 @@ public class ChiTietDKMController {
 	
 	@RequestMapping(value  = "/chiTietDKM/init")
 	public String init(@ModelAttribute("ProductForm3") ProductForm form, HttpSession session){
-		String pathJSP = (String)session.getAttribute("pathURL"); 
+		String pathJSP = (String)session.getAttribute("pathURL");
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		String idDKM = (String)session.getAttribute("idDKM");
 		
 		//reset message
@@ -103,13 +109,13 @@ public class ChiTietDKMController {
 				formRow.setTenLoaiSP(outputRowBean.getTenLoaiSP());
 				formRow.setIdLoaiSP(outputRowBean.getIdLoaiSP());
 				if(!"".equals(outputRowBean.getGiaMua()) && 0 != outputRowBean.getGiaMua().trim().length()){
-			    	formRow.setGiaMua(String.format("%,.2f",Double.parseDouble(outputRowBean.getGiaMua())));
+			    	formRow.setGiaMua(SMSComons.formatMoney(outputRowBean.getGiaMua()));
 			    }
 				if(null != outputRowBean.getGiaBanKM() && !"".equals(outputRowBean.getGiaBanKM()) && 0 != outputRowBean.getGiaBanKM().length()){
-			    	formRow.setGiaMua(String.format("%,.2f",Double.parseDouble(outputRowBean.getGiaBanKM())));
+			    	formRow.setGiaMua(SMSComons.formatMoney(outputRowBean.getGiaBanKM()));
 			    }
 				if(!"".equals(outputRowBean.getGiaBan()) && 0 != outputRowBean.getGiaBan().trim().length() ){
-			    	formRow.setGiaMua(String.format("%,.2f",Double.parseDouble(outputRowBean.getGiaBan())));
+			    	formRow.setGiaMua(SMSComons.formatMoney(outputRowBean.getGiaBan()));
 			    }
 				formRow.setIndex(i);
 				formRow.setChecked(1);
@@ -143,7 +149,12 @@ public class ChiTietDKMController {
 	
 	@RequestMapping(value  = "/chiTietDKM/dangKy", method = RequestMethod.POST)
 	public String dangKy(@ModelAttribute("ProductForm3") ProductForm form, HttpSession session){
-		String pathJSP = "cuahangthoitrang";
+		String pathJSP = (String)session.getAttribute("pathURL");
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		String idDKM = (String)session.getAttribute("idDKM");
 		List<ProductFormRow> lst = form.getLst();
 		//init data
@@ -307,15 +318,9 @@ public class ChiTietDKMController {
 				formRow.setTenSP(outputRowBean.getTenSP());
 				formRow.setTenLoaiSP(outputRowBean.getTenLoaiSP());
 				formRow.setIdLoaiSP(outputRowBean.getIdLoaiSP());
-				if(!"".equals(outputRowBean.getGiaMua()) && outputRowBean.getGiaMua().trim().length() != 0){
-			    	formRow.setGiaMua(String.format("%,.2f",Double.parseDouble(outputRowBean.getGiaMua())));
-			    }
-				if(!"".equals(outputRowBean.getGiaBanKM()) && outputRowBean.getGiaBanKM().trim().length() != 0){
-			    	formRow.setGiaBanKM(outputRowBean.getGiaBanKM());
-			    }
-				if(!"".equals(outputRowBean.getGiaBan()) && outputRowBean.getGiaBan().trim().length() != 0){
-			    	formRow.setGiaBan(String.format("%,.2f",Double.parseDouble(outputRowBean.getGiaBan())));
-			    }
+				formRow.setGiaMua(SMSComons.formatMoney(outputRowBean.getGiaMua()));
+		    	formRow.setGiaBanKM(SMSComons.formatMoney(outputRowBean.getGiaBanKM()));
+			    formRow.setGiaBan(SMSComons.formatMoney(outputRowBean.getGiaBan()));	
 				form.getLst().add(formRow);
 			}
 		}

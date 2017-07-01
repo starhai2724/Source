@@ -351,6 +351,8 @@ public class ChiTietHoaDonDAO {
 		sb.append("  LEFT JOIN  "+tableSanPham+" SANPHAM 				");
 		sb.append("  ON SANPHAM.ID_SP = CTHD.ID_SP          			");
 		sb.append("  WHERE ID_HOADON = ?          								");
+		sb.append("  GROUP BY  CTHD.ID_SP         								");
+		
 		return sb.toString();
 	}
 	
@@ -362,7 +364,7 @@ public class ChiTietHoaDonDAO {
 	private String getSQlMaxId(String pathJSP) {
 		String tableName = pathJSP+"_CHI_TIET_HOA_DON";
 		StringBuffer sb = new StringBuffer();
-		sb.append("  SELECT MAX(ID_HOADON) ");
+		sb.append("  SELECT MAX(ID_CTHD) ");
 		sb.append("  FROM "+tableName+"  ");
 		return sb.toString();
 	}
@@ -414,5 +416,6 @@ public class ChiTietHoaDonDAO {
 	}	
 	public static void main(String[] args) {
 		ChiTietHoaDonDAO cr = new ChiTietHoaDonDAO();
+		cr.createTable("cuahangthoitrang");
 	}
 }
