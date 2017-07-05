@@ -9,16 +9,21 @@ import com.sms.Controller.ClientStoreOwnerController;
 public class Run_Client {
 
 	public static void main(String[] args) {
+		String listId = ",AAA001,AAA002,AAA003,AAA004";
 		
-	
-	ClientStoreOwnerController storeOwnerController = new ClientStoreOwnerController();
-//		storeOwnerController.insert("Phạm Ngọc Hiếu", "", "123456789", "testUser", "hai@gmail.com", "123456", new ModelMap(), null);
-//		storeOwnerController.getBy("", "root", "", "", new ModelMap(), null, new ModelAndView());
-//		storeOwnerController.edit("001001", new ModelMap(), null);
-	ClientLoginController clientLoginController = new ClientLoginController();
-	clientLoginController.checkLogin("12", "12", new ModelMap(), null);
-//	System.out.println("Nguyễn Trung Hải");
-	
-	
+		if(!"".equals(listId)){
+			listId = listId.substring(1);
+			
+			String[] parts = listId.split(",");
+			listId = "";
+			for(int i = 0;i<parts.length;i++){
+				if(i < parts.length - 1 ){
+					listId = listId + "'"+parts[i]+ "',";
+				}else{
+					listId = listId + "'"+parts[i]+ "'";
+				}
+			}
+		}
+		System.out.println(listId);
 	}
 }

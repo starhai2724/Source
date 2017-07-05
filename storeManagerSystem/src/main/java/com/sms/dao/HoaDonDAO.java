@@ -264,7 +264,45 @@ public class HoaDonDAO {
 		return lst;
 	}
 	
-	
+	/**
+	 * 
+	 * 
+	 * @return
+	 * @throws IOException 
+	 */
+	public List<HoaDonOutputRowBean> getByNgayLapHD(HoaDonInputBean inputBean){
+		Session session = HibernateUtil.getSessionDAO();
+		String hql = getSQLByNgayLapHD(inputBean.getPathJSP());
+		List<HoaDonOutputRowBean> lst = new ArrayList<>();
+		HoaDonOutputRowBean outputRowBean;
+		try {
+			Transaction tx = session.beginTransaction();
+			SQLQuery query = session.createSQLQuery(hql);
+			query.setParameter(0, inputBean.getNgayLap());
+			List<Object[]> data = query.list();
+			for (Object[] object : data) {
+				outputRowBean = new HoaDonOutputRowBean();
+				outputRowBean.setIdHoaDon(SMSComons.convertString(object[0]));
+				outputRowBean.setIdKhachHang(SMSComons.convertString(object[1]));
+				outputRowBean.setNgayLap(SMSComons.convertString(object[2]));
+				outputRowBean.setSoLuongSP(SMSComons.convertString(object[3]));
+				outputRowBean.setDiemTichLuy(SMSComons.convertString(object[4]));
+				outputRowBean.setTongDiemTichLuy(SMSComons.convertString(object[5]));
+				outputRowBean.setTienKhuyenMai(SMSComons.convertString(object[6]));
+				outputRowBean.setTongTien(SMSComons.convertString(object[7]));
+				lst.add(outputRowBean);
+			}
+			tx.commit();
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		} finally {
+			session.flush();
+			session.clear();
+			session.close();
+		}
+		return lst;
+	}	
 	
 	// ----------------------------------------------------------------------------------------------------------
 	
@@ -363,6 +401,22 @@ public class HoaDonDAO {
 		return sb.toString();
 	}
 	
+	private String getSQLByNgayLapHD(String pathJSP) {
+		String tableName = pathJSP+"_HOADON";
+		StringBuffer sb = new StringBuffer();
+		sb.append("  SELECT                                 ");
+		sb.append("   ID_HOADON		                            ");
+		sb.append("  ,ID_KHACHHANG 	                            ");
+		sb.append("  ,NGAY_LAP                            ");
+		sb.append("  ,SO_LUONG_SP                            ");
+		sb.append("  ,DIEM_TICH_LUY 	                            ");
+		sb.append("  ,TONG_DIEM_TICH_LUY 	                            ");
+		sb.append("  ,TIEN_KHUYEN_MAI                                  ");
+		sb.append("  ,TONG_TIEN                                 ");
+		sb.append("  FROM "+tableName+"          			");
+		sb.append("  WHERE NGAY_LAP = ?          			");
+		return sb.toString();
+	}
 	
 	/**
 	 * 

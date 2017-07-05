@@ -34,6 +34,7 @@ public class DotKhuyenMaiDAO {
 			cnt = query.executeUpdate();
 			tx.commit();
 		} catch (Exception e) {
+			cnt = 1; 
 		} finally {
 			session.close();
 		}

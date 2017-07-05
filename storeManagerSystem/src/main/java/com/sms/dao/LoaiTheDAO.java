@@ -23,6 +23,29 @@ public class LoaiTheDAO {
 	
 	
 	/**
+	 * function mean create table product by pathJSP of store
+	 * 
+	 */
+	public int createTable(String pathJSP){
+		//session
+		Session session = HibernateUtil.getSessionDAO();
+		int cnt = 0; 
+		Transaction tx = session.beginTransaction();
+		//sql
+		String hql = this.getSQLCreateTable(pathJSP);
+		try {
+			SQLQuery query = session.createSQLQuery(hql);
+			cnt = query.executeUpdate();
+			tx.commit();
+		} catch (Exception e) {
+			cnt = 1; 
+		} finally {
+			session.close();
+		}
+		return cnt;
+	}
+	
+	/**
 	 * function insert
 	 * 
 	 */
@@ -292,6 +315,21 @@ public class LoaiTheDAO {
 		return sb.toString();
 	}
 	
+	
+	/**
+	 * create table product 
+	 * @return
+	 */
+	private String getSQLCreateTable(String pathJSP) {
+		StringBuffer sb = new StringBuffer();
+		String tableName = pathJSP+"_LOAITHE";
+		sb.append(" CREATE TABLE "+tableName+ " (        ");
+		sb.append("  ID_LOAITHE	INT (6)           ");
+		sb.append(" ,TEN_LOAITHE	VARCHAR (255)         ");
+		sb.append(" ,DIEM 		   VARCHAR(12)                     ");
+		sb.append(" 	)                                ");
+		return sb.toString();
+	}
 
 	// ----------------------------------------------------------------------------------------------------------
 

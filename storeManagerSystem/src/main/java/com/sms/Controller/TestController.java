@@ -1,5 +1,8 @@
 package com.sms.Controller;
 
+import javax.servlet.http.HttpSession;
+
+import org.json.HTTP;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -74,4 +77,14 @@ public class TestController {
 	public String dangki(){
 		return "dangKyTaiKhoan";
 	}
+	@RequestMapping(value ="/test_5", method = RequestMethod.GET)	
+	public String test_2(HttpSession session){
+		session.setAttribute("PAGECENTER", "dangky1.jsp");
+		return "index";
+	}
+	@RequestMapping(value ="/thongKe", method = RequestMethod.GET)	
+	public String thongKe(){
+		return "thongKe";
+	}
+	
 }

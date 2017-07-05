@@ -134,7 +134,6 @@ public class HibernateUtil {
 			session.clear();
 			session.close();
 		}
-
 		return result;
 	}
 

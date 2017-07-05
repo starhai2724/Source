@@ -330,6 +330,33 @@ public class NhomSanPhamDAO {
 		}
 		return lst;
 	}
+public List<LoaiSanPhamOutputBean> getLoaiSP(LoaiSanPhamInputBean inputBean) {
+		Session session = HibernateUtil.getSessionDAO();
+		String hql = getSQLLoaiSanPham(inputBean.getPathJSP());
+		List<LoaiSanPhamOutputBean> lst = new ArrayList<>();
+		LoaiSanPhamOutputBean loaiSP;
+		try {
+			Transaction tx = session.beginTransaction();
+			SQLQuery query = session.createSQLQuery(hql);
+			List<Object[]> data = query.list();
+			for (Object[] object : data) {
+				loaiSP = new LoaiSanPhamOutputBean();
+				loaiSP.setIdLoaiSP(SMSComons.convertString(object[0]));
+				loaiSP.setTenLoaiSP(SMSComons.convertString(object[1]));
+				loaiSP.setIdNhomSP(SMSComons.convertString(object[2]));
+				lst.add(loaiSP);
+			}
+			tx.commit();
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		} finally {
+			session.flush();
+			session.clear();
+			session.close();
+		}
+		return lst;
+	}
 
 	/**
 	 * 
@@ -555,6 +582,15 @@ public class NhomSanPhamDAO {
 		String tableName = pathJSP+"_NHOM_SP";
 		sb.append(" SELECT ID_NHOM_SP        ");
 		sb.append(" 	   ,TEN_NHOM_SP        ");
+		sb.append(" 		FROM "+tableName+"      ");
+		return sb.toString();
+	}
+	private String getSQLLoaiSanPham(String pathJSP) {
+		StringBuffer sb = new StringBuffer();
+		String tableName = pathJSP+"_LOAI_SP";
+		sb.append(" SELECT ID_LOAI_SP        ");
+		sb.append(" 	   ,TEN_LOAI_SP        ");
+		sb.append(" 	   ,ID_NHOM_SP        ");
 		sb.append(" 		FROM "+tableName+"      ");
 		return sb.toString();
 	}

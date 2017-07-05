@@ -20,13 +20,14 @@ function checkLogin($scope) {
 	}
 	if (true == valid) {
 		document.getElementById("loginform").action = "/storeManagerSystem/login";
+		document.getElementById("loginform").method = "POST";
 		document.getElementById("loginform").submit();
 	}
 }
 
 
 function register(){
-	document.getElementById("loginform").action = "/storeManagerSystem/registerUser/init";
-	document.getElementById("loginform").method = "POST";
+	document.getElementById("loginform").action = "/storeManagerSystem/buoc1";
+	document.getElementById("loginform").method = "GET";
 	document.getElementById("loginform").submit();
 }

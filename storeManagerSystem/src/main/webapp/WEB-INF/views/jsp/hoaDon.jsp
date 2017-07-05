@@ -105,7 +105,7 @@
 										<th style="width: 70px;  text-align: center">SLSP</th>
 										<th style="width: 80px;  text-align: center">Tiền KM</th>
 										<th style="width: 120px; text-align: center">Tổng tiền</th>
-										<th style="width: 50px;  text-align: center">Điểm</th>
+										<!-- <th style="width: 50px;  text-align: center">Điểm</th> -->
 										<th style="width: 70px;  text-align: center">Tổng điểm</th>
 										<th style="width: 80px;  text-align: center">Ngày lập</th>
 										<th style="width: 110px; text-align: center">Thao tác</th>
@@ -120,7 +120,7 @@
 							                     <td style="text-align: right">${items.soLuongSP}</td>
 							                     <td style="text-align: right">${items.tienKhuyenMai}</td>
 					                    		 <td style="text-align: right">${items.tongTien}</td>
-		                                         <td style="text-align: right">${items.diemTichLuy}</td>
+		                                         <%-- <td style="text-align: right">${items.diemTichLuy}</td> --%>
 		                                         <td style="text-align: right">${items.tongDiemTichLuy}</td>
 		                                         <td class="center" style="text-align: center">${items.ngayLap}</td>
 		                                        <td class="center" style="text-align: center">

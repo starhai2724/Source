@@ -58,6 +58,8 @@ public class ClientLoginController {
 		return SystemCommon.PAGE_LOGIN;
 	}
 	
+	
+	
 	@RequestMapping(value="/register", method = RequestMethod.POST)
 	public String registerUser(@ModelAttribute("storeOwnerForm") StoreOwnerForm storeOwnerForm){
 		return PAGE_REGISTER;

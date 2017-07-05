@@ -222,10 +222,10 @@ public class HoaDonController {
 		chiTietHoaDonInputBean.setIdHoaDon(id);
 		List<ChiTietHoaDonOutputRowBean>  chiTietHoaDonOutputRowBeans = ChiTietHoaDonDAO.intances.getById(chiTietHoaDonInputBean);
 		ChiTietHoaDonRowForm chiTietHoaDonRowForm;
-		int cnt = 0;
+		int cnt = 1;
 		for(ChiTietHoaDonOutputRowBean chiTietHoaDonOutputRowBean : chiTietHoaDonOutputRowBeans){
 			chiTietHoaDonRowForm = new ChiTietHoaDonRowForm();
-			chiTietHoaDonRowForm.setNo(String.valueOf(cnt + 1));
+			chiTietHoaDonRowForm.setNo(String.valueOf(cnt++));
 			chiTietHoaDonRowForm.setIdChiTietHoaDon(chiTietHoaDonOutputRowBean.getIdChiTietHoaDon());
 			chiTietHoaDonRowForm.setIdSanPham(chiTietHoaDonOutputRowBean.getIdSanPham());
 			chiTietHoaDonRowForm.setLoaiSanPham(chiTietHoaDonOutputRowBean.getLoaiSanPham());

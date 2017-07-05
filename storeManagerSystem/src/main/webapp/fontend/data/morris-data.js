@@ -49,7 +49,12 @@ $(function() {
             itouch: 2028
         }, {
             period: '2012 Q2',
-            iphone: 8432,
+            iphone: 1111,
+            ipad: 2222,
+            itouch: 3333
+        }, {
+            period: '2012 Q3',
+            iphone: 1111111,
             ipad: 5713,
             itouch: 1791
         }],
@@ -64,13 +69,13 @@ $(function() {
     Morris.Donut({
         element: 'morris-donut-chart',
         data: [{
-            label: "Download Sales",
+            label: "Thời trang Nam",
             value: 12
         }, {
-            label: "In-Store Sales",
+            label: "Thời trang Nữ",
             value: 30
         }, {
-            label: "Mail-Order Sales",
+            label: "Thời trang Trẻ Em",
             value: 20
         }],
         resize: true

@@ -1,6 +1,7 @@
 package com.sms.dao;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -318,6 +319,45 @@ public class CreateTableProductDAO {
 	}
 	
 	
+	public List<SanPhamOutputRowBean> getProductByNgayTao(SanPhamInputBean inputBean){
+		Session session = HibernateUtil.getSessionDAO();
+		List<SanPhamOutputRowBean> lst = new ArrayList<>();
+		String hql = getSQLProductByNgayTao(inputBean.getPathJSP());
+		SanPhamOutputRowBean outputRowBean = null;
+		try {
+			Transaction tx = session.beginTransaction();
+			SQLQuery query = session.createSQLQuery(hql);
+			query.setParameter(0, inputBean.getNgayTao());
+			List<Object[]> data = query.list();
+			for (Object[] object : data) {
+				outputRowBean = new SanPhamOutputRowBean();
+				outputRowBean.setIdSanPham(SMSComons.convertString(object[0]));
+				outputRowBean.setTenSP(SMSComons.convertString(object[1]));
+				outputRowBean.setIdCuaHang(SMSComons.convertString(object[2]));
+				outputRowBean.setIdLoaiSP(SMSComons.convertString(object[3]));
+				outputRowBean.setGiaMua(SMSComons.convertString(object[4]));
+				outputRowBean.setGiaBan(SMSComons.convertString(object[5]));
+				outputRowBean.setHinh((byte[]) object[6]);
+				outputRowBean.setMoTa(SMSComons.convertString(object[7]));
+				outputRowBean.setTrangThai(SMSComons.convertString(object[8]));
+				outputRowBean.setNgayTao(SMSComons.convertString(object[9]));
+				outputRowBean.setNgayChinhSua(SMSComons.convertString(object[10]));
+				outputRowBean.setId_DKM(SMSComons.convertString(object[11]));
+				outputRowBean.setSEQ(SMSComons.convertString(object[12]));
+				lst.add(outputRowBean);
+			}
+			tx.commit();
+			
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		} finally {
+			session.flush();
+			session.clear();
+			session.close();
+		}
+		return lst;
+	}
 	/**
 	 * 
 	 * 
@@ -818,6 +858,27 @@ public class CreateTableProductDAO {
 		return sb.toString();
 	}
 	
+private String getSQLProductByNgayTao(String pathJSP) {
+		String tableName = pathJSP+"_PRODUCT";
+		StringBuffer sb = new StringBuffer();
+		sb.append("  SELECT                                 ");
+		sb.append("   ID_SP		                            ");
+		sb.append("  ,TEN_SP 	                            ");
+		sb.append("  ,ID_CUAHANG                            ");
+		sb.append("  ,ID_LOAI_SP                            ");
+		sb.append("  ,GIA_MUA 	                            ");
+		sb.append("  ,GIA_BAN 	                            ");
+		sb.append("  ,HINH                                  ");
+		sb.append("  ,MO_TA                                 ");
+		sb.append("  ,TRANG_THAI                            ");
+		sb.append("  ,NGAY_TAO 	                            ");
+		sb.append("  ,NGAY_CHINH_SUA                        ");
+		sb.append("  ,ID_DKM                                ");
+		sb.append("  ,SEQ                                ");
+		sb.append("  FROM "+tableName+"          			");
+		sb.append("  WHERE NGAY_TAO = ?          			");
+		return sb.toString();
+	}
 	/**
 	 * getSQlMaxIdStoreOwner
 	 * @return
@@ -950,9 +1011,11 @@ public class CreateTableProductDAO {
 //		cr.deleteProductById(in);
 //		cr.getProductByIdDKM(in);
 //		cr.getMaxId("cuahangthoitrang");
-		for(int i = 0; i < 3; i++ ){
-			cr.insertSPKM(in);
-		}
+//		for(int i = 0; i < 3; i++ ){
+//			cr.insertSPKM(in);
+//		}
+		
+		cr.createTableProduct("abc");
 		
 		
 		

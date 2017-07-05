@@ -35,6 +35,7 @@ public class KhachHangDAO {
 			cnt = query.executeUpdate();
 			tx.commit();
 		} catch (Exception e) {
+			cnt = 1; 
 		} finally {
 			session.close();
 		}
@@ -225,6 +226,42 @@ public class KhachHangDAO {
 		return lst;
 	}
 	
+	public List<KhachHangOutputRowBean> getByNgayTao(KhachHangInputBean inputBean){
+		Session session = HibernateUtil.getSessionDAO();
+		String hql = getSQLByNgayTao(inputBean.getPathJSP());
+		List<KhachHangOutputRowBean> lst = new ArrayList<>();
+		KhachHangOutputRowBean outputRowBean;
+		try {
+			Transaction tx = session.beginTransaction();
+			SQLQuery query = session.createSQLQuery(hql);
+			query.setParameter(0, inputBean.getNgayTao());
+			List<Object[]> data = query.list();
+			for (Object[] object : data) {
+				outputRowBean = new KhachHangOutputRowBean();
+				outputRowBean.setIdKhachHang(SMSComons.convertString(object[0]));
+				outputRowBean.setTenKhachHang(SMSComons.convertString(object[1]));
+				outputRowBean.setLoaiThe(SMSComons.convertString(object[2]));
+				outputRowBean.setGioiTinh(SMSComons.convertString(object[3]));
+				outputRowBean.setSoDienThoai(SMSComons.convertString(object[4]));
+				outputRowBean.setDiaChi(SMSComons.convertString(object[5]));
+				outputRowBean.setSoDiem(SMSComons.convertString(object[6]));
+				outputRowBean.setNgaySinh(SMSComons.convertString(object[7]));
+				outputRowBean.setNgayTao(SMSComons.convertString(object[8]));
+				outputRowBean.setNgaySua(SMSComons.convertString(object[9]));
+				outputRowBean.setTrangThai(SMSComons.convertString(object[10]));
+				lst.add(outputRowBean);
+			}
+			tx.commit();
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		} finally {
+			session.flush();
+			session.clear();
+			session.close();
+		}
+		return lst;
+	}
 	/**
 	 * 
 	 * 
@@ -443,6 +480,25 @@ public class KhachHangDAO {
 		return sb.toString();
 	}
 	
+   private String getSQLByNgayTao(String pathJSP) {
+		String tableName = pathJSP+"_KHACH_HANG";
+		StringBuffer sb = new StringBuffer();
+		sb.append("  SELECT                                 ");
+		sb.append("   ID_KHACHHANG		                            ");
+		sb.append("  ,TEN_KHACHHANG 	                            ");
+		sb.append("  ,LOAI_THE                            ");
+		sb.append("  ,GIOI_TINH                            ");
+		sb.append("  ,SDT 	                            ");
+		sb.append("  ,DIA_CHI 	                            ");
+		sb.append("  ,DIEM_TICH_LUY                                  ");
+		sb.append("  ,NGAY_SINH                                 ");
+		sb.append("  ,NGAY_TAO                            ");
+		sb.append("  ,NGAY_CHINHSUA 	                            ");
+		sb.append("  ,TRANG_THAI                        ");
+		sb.append("  FROM "+tableName+"          			");
+		sb.append("  WHERE NGAY_TAO = ?          			");
+		return sb.toString();
+	}
 	
 	/**
 	 * 

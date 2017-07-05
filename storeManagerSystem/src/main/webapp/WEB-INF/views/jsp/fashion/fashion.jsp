@@ -50,7 +50,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<a href="checkout2.html">
 								<h3> <span ng-model = "cartPrice" >{{cartPrice}}</span>(<span ng-model = "cartQuantity"  >{{cartQuantity}}</span>)<img src="/storeManagerSystem/view/fontend_index2/images/bag.png" alt=""></h3>
 							</a>	
-							<p><a ng-click="btnCart();" class="simpleCart_empty">Giỏ hàng</a></p>
+							<p><a href="javascript:void(0)" ng-click="btnCart();" class="simpleCart_empty">Giỏ hàng</a></p>
 							<p style="color: red" class="simpleCart_empty">${LayoutForm.tenKhachHang}</p>
 							<div class="clearfix"> </div>
 						</div>
