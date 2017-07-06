@@ -80,11 +80,15 @@ function openStep3($scope, $window, idTemplate){
 function taoWeb($scope){
 	
 	var valid = true;
-	
-	if ($scope.pathJSP == "") {
+	var reg_IdSanPham = new RegExp('^[a-zA-Z0-9_]*$');
+	if ($scope.pathJSP == ""){
 		$scope.pathJSP_err = "Nhập địa chỉ website."
 		valid = false;
+	}else if(!reg_IdSanPham.test($scope.pathJSP)){
+		$scope.pathJSP_err = "Địa chỉ website chỉ chứa kí tự 1 byte."
+		valid = false;
 	}
+	
 	if ($scope.diaChi == "") {
 		$scope.diaChi_err = "Nhập địa chỉ."
 		valid = false;
@@ -95,6 +99,9 @@ function taoWeb($scope){
 	}
 	if ($scope.maXacNhan == "") {
 		$scope.maXacNhan_err = "Nhập mã xác nhận."
+		valid = false;
+	}else if($scope.maXacNhan != '4R3A'){
+		$scope.maXacNhan_err = "Nhập lại mã xác nhận."
 		valid = false;
 	}
 	

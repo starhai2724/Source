@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.sms.common.SMSComons;
+import com.sms.common.SystemCommon;
+import com.sms.common.SystemURL;
 import com.sms.dao.ChiTietHoaDonDAO;
 import com.sms.dao.CreateTableProductDAO;
 import com.sms.dao.DangKiWebDAO;
@@ -159,7 +161,6 @@ public class DangKiWebController {
 		inputBean.setPathJSP(form.getPathJSP());
 		inputBean.setTenWebSite(form.getTenWebSite());
 		
-		System.out.println("email: "+form.getEmail());
 		//insert
 		int cnt = DangKiWebDAO.intances.insert(inputBean);
 	
@@ -182,14 +183,13 @@ public class DangKiWebController {
 		cnt = LoaiTheDAO.intances.createTable(inputBean.getPathJSP()); 
 		
 		if(cnt == 0){
-			form.setMessage("Xử lý đăng kí thành công.");
-			form.setMessageErr("");
+			return SystemCommon.PAGE_LOGIN;
 		}else {
+			session.setAttribute(PAGECENTER, PAGE_STEP3);
 			form.setMessageErr("Xử lý đăng kí không thành công.");
 			form.setMessage("");
 		}
 		
-		session.setAttribute(PAGECENTER, PAGE_STEP3);
 		return PAGE;
 	}
 	

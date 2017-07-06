@@ -1,7 +1,5 @@
 <!-- /#wrapper -->
 
-    <!-- jQuery -->
-    <script src="/storeManagerSystem/view/vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="/storeManagerSystem/view/vendor/bootstrap/js/bootstrap.min.js"></script>
