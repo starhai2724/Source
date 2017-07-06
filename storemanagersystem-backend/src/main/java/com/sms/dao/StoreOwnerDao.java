@@ -445,7 +445,7 @@ public class StoreOwnerDao implements InterfaceDAO {
 		sb.append("    STORE ON STORE.ID_STORE_OWNER = SO.ID_STORE_OWNER       ");
 		sb.append("        AND STORE.DELETE_FLAG = '"+Contants.DELETE_FLAG+"'  ");
 		sb.append("   LEFT JOIN  STORE_INFO SI ");
-		sb.append("   ON SI.ID_STORE = STORE.ID_STORE ");
+		sb.append("   ON SI.ID_STORE = SO.ID_STORE_OWNER ");
 		sb.append(" WHERE                                                       ");
 		sb.append("    SO.DELETE_FLAG = '"+Contants.DELETE_FLAG+"'             ");
 		sb.append("        AND SO.USERNAME = ?                            ");

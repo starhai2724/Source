@@ -29,13 +29,13 @@
                     <span class="form-control-feedback color7" aria-hidden="true">*</span>
                     <p style="color: red;">{{nhapMatKhau_err}}</p>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" checked="checked" ng-model="IsAcceptRule">Tôi đồng ý với <a href="dieu-khoan-su-dung.html">quy định sử dụng</a> & <a href="chinh-sach-bao-mat.html">chính sách bảo mật</a> của Runtime
                         </label>
                     </div>
-                </div>
+                </div> -->
                 <div class="form-group button-group">
                     <div class="button">
                         <input class="btn btn-default" type="button" ng-click="btnOpenStep2();" value="Tiếp tục" />

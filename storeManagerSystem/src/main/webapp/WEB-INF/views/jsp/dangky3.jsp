@@ -49,7 +49,7 @@
                             <p style="color: red;">{{maXacNhan_err}}</p>
                         </div>
                         <div class="col-sm-6 image-capcha">
-                            <img class="img-captcha" id="imgCaptcha" alt="captcha" src="Captchab73c.html?t=1" style="width:100px;" />
+                            <img class="img-captcha" id="imgCaptcha" alt="captcha" src="/storeManagerSystem/view/image/Capture.PNG" style="width:100px;" />
                             <a class="refresh-captcha" id="btnRefreshCapcha" href="javascript:void(0);">
                                 <i class="fa fa-refresh"></i>
                             </a>

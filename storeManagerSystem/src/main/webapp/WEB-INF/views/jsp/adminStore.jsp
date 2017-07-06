@@ -71,6 +71,7 @@
           </li>
           <li>
             <a href="/storeManagerSystem/dotKhuyenMai/init"><i class="fa fa-bar-chart-o fa-fw"></i> Đợt khuyến mãi</a>
+            <a href="/storeManagerSystem/thongKe/init"><i class="fa fa-bar-chart-o fa-fw"></i> Thống kê</a>
           </li>
         </ul>
       </div>

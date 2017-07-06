@@ -48,6 +48,7 @@ public class ClientLoginController {
 			//role User
 			if(SystemCommon.USER.equals(userlocal.getRole())){
 				session.setAttribute("pathURL", userlocal.getURLStore());
+				System.out.println("userlocal: "+userlocal.getURLStore());
 				return SystemCommon.ADMIN_STORE;
 				
 			//role Root

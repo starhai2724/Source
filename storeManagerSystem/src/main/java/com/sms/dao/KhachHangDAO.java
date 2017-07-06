@@ -573,7 +573,7 @@ public class KhachHangDAO {
 		sb.append(" ,MAT_KHAU 		VARCHAR(12)                     ");
 		sb.append(" ,DIA_CHI  		VARCHAR(255)                  ");
 		sb.append(" ,DIEM_TICH_LUY 	VARCHAR(8)             ");
-		sb.append(" ,NAM_SINH 		VARCHAR(8)                  ");
+		sb.append(" ,NGAY_SINH 		VARCHAR(8)                  ");
 		sb.append(" ,NGAY_TAO 		VARCHAR(8)                  ");
 		sb.append(" ,NGAY_CHINHSUA 	VARCHAR(8)             ");
 		sb.append(" ,TRANG_THAI 	VARCHAR(1)                ");
