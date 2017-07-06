@@ -17,7 +17,7 @@ app.controller('ctrl', function($scope, $window) {
 
 
 function ngay($scope, $windown, id){
-	var url = "/storeManagerSystem/thongKe/ngay";
+	var url = "/storeManagerSystem/thongKe/init";
 	document.getElementById("ThongKeForm").action = url;
 	document.getElementById("ThongKeForm").method = "POST";
 	document.getElementById("ThongKeForm").submit();

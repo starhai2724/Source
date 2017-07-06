@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.sms.OutputRows.HoaDonOutputRowBean;
 import com.sms.OutputRows.KhachHangOutputRowBean;
 import com.sms.OutputRows.SanPhamOutputRowBean;
+import com.sms.common.SMSComons;
 import com.sms.common.SystemCommon;
 import com.sms.dao.CreateTableProductDAO;
 import com.sms.dao.HoaDonDAO;
@@ -29,6 +30,7 @@ import com.sms.output.NhomSanPhamOutputBean;
 @Controller
 public class ThongKeController {
 	public static final String CHITIETDKM = "thongKe.jsp";
+	public static final String NgayHienHanh = SMSComons.getDate();
 	
 	/*@RequestMapping(value  = "/chiTietDKM/init")
 	public String init(@ModelAttribute("ProductForm3") ProductForm form, HttpSession session){
@@ -53,11 +55,13 @@ public class ThongKeController {
 		 int tongSPBanRa = 0;
 		
 		
-		String ngayHienHanh = "20170703";
+		//String ngayHienHanh = "20170703";
+		 
+		 System.out.println("ngayHienHanh : " + NgayHienHanh);
 		String pathJSP = (String)session.getAttribute("pathURL");
 		HoaDonInputBean inputBean = new HoaDonInputBean();
 		inputBean.setPathJSP(pathJSP);
-		inputBean.setNgayLap(ngayHienHanh);
+		inputBean.setNgayLap(NgayHienHanh);
 		
 		List<HoaDonOutputRowBean> lstHD = HoaDonDAO.intances.getByNgayLapHD(inputBean);
 		for (HoaDonOutputRowBean hoaDon : lstHD) {
@@ -71,14 +75,14 @@ public class ThongKeController {
 		
 		KhachHangInputBean inputBeanKH = new KhachHangInputBean();
 		inputBeanKH.setPathJSP(pathJSP);
-		inputBeanKH.setNgayTao(ngayHienHanh);
+		inputBeanKH.setNgayTao(NgayHienHanh);
 		List<KhachHangOutputRowBean> lstKH = KhachHangDAO.intances.getByNgayTao(inputBeanKH);
 		tongSoThanhVienMoi_trongNgay = lstKH.size();
 		tongGiaoDich_trongNgay = lstHD.size();
 		
 		SanPhamInputBean inputBeanSP = new SanPhamInputBean();
 		inputBeanSP.setPathJSP(pathJSP);
-		inputBeanSP.setNgayTao(ngayHienHanh);
+		inputBeanSP.setNgayTao(NgayHienHanh);
 		List<SanPhamOutputRowBean> lstSP = CreateTableProductDAO.intances.getProductByNgayTao(inputBeanSP);
 		
 		NhomSanPhamInputBean nhomSanPhamInputBean = new NhomSanPhamInputBean();
@@ -109,7 +113,7 @@ public class ThongKeController {
 		return  SystemCommon.ADMIN_STORE;
 	}
 	
-	@RequestMapping(value ="/thongKe/thang", method = RequestMethod.GET)	
+	@RequestMapping(value ="/thongKe/thang", method = RequestMethod.POST)	
 	public String thongKe_thang(@ModelAttribute("ThongKeForm") ThongKeForm form, HttpSession session){
 		 double tongDoanhThu_trongNgay = 0;
 		 int tongGiaoDich_trongNgay = 0;
@@ -123,11 +127,11 @@ public class ThongKeController {
 		 int tongSPMoi_thang = 0;
 		
 		
-		String ngayHienHanh = "20170703";
+		//String ngayHienHanh = "20170703";
 		String pathJSP = (String)session.getAttribute("pathURL");
 		HoaDonInputBean inputBean = new HoaDonInputBean();
 		inputBean.setPathJSP(pathJSP);
-		inputBean.setNgayLap(ngayHienHanh);
+		inputBean.setNgayLap(NgayHienHanh);
 		
 		List<HoaDonOutputRowBean> lstHD = HoaDonDAO.intances.getByNgayLapHD(inputBean);
 		for (HoaDonOutputRowBean hoaDon : lstHD) {
@@ -141,8 +145,8 @@ public class ThongKeController {
 		
 		List<HoaDonOutputRowBean> lstHD_thang = HoaDonDAO.intances.getAll(pathJSP);
 		for (HoaDonOutputRowBean hoaDon : lstHD_thang) {
-			if(null != hoaDon.getNgayLap() && !"".equals(hoaDon.getNgayLap()) && hoaDon.getNgayLap().trim().length() == 6){
-				if(hoaDon.getNgayLap().substring(0, 7).equals(ngayHienHanh.substring(0, 7))){
+			if(null != hoaDon.getNgayLap() && !"".equals(hoaDon.getNgayLap()) && hoaDon.getNgayLap().trim().length() == 8){
+				if(hoaDon.getNgayLap().substring(0, 6).equals(NgayHienHanh.substring(0, 6))){
 					if(null!= hoaDon.getTongTien() && !"".equals(hoaDon.getTongTien())){
 						tongDoanhThu_thang += Double.parseDouble(hoaDon.getTongTien());
 					}
@@ -154,10 +158,10 @@ public class ThongKeController {
 		
 		KhachHangInputBean inputBeanKH = new KhachHangInputBean();
 		inputBeanKH.setPathJSP(pathJSP);
-		inputBeanKH.setNgayTao(ngayHienHanh);
-		List<KhachHangOutputRowBean> lstKH = KhachHangDAO.intances.getByNgayTao(inputBeanKH);
+		inputBeanKH.setNgayTao(NgayHienHanh);
+		List<KhachHangOutputRowBean> lstKH = KhachHangDAO.intances.getAll(pathJSP);
 		for (KhachHangOutputRowBean kh : lstKH) {
-			if(kh.getNgayTao().substring(0, 7).equals(ngayHienHanh.substring(0, 7))){
+			if(kh.getNgayTao().substring(0, 6).equals(NgayHienHanh.substring(0, 6))){
 				tongSoThanhVienMoi_thang ++;
 			}
 		}
@@ -166,10 +170,10 @@ public class ThongKeController {
 		
 		SanPhamInputBean inputBeanSP = new SanPhamInputBean();
 		inputBeanSP.setPathJSP(pathJSP);
-		inputBeanSP.setNgayTao(ngayHienHanh);
+		inputBeanSP.setNgayTao(NgayHienHanh.substring(0, 4));
 		List<SanPhamOutputRowBean> lstSP = CreateTableProductDAO.intances.getProductByNgayTao(inputBeanSP);
 		for (SanPhamOutputRowBean sp : lstSP) {
-			if(sp.getNgayTao().substring(0, 7).equals(ngayHienHanh.substring(0, 7))){
+			if(sp.getNgayTao().substring(0, 6).equals(NgayHienHanh.substring(0, 6))){
 				tongSPMoi_thang ++;
 			}
 		}
@@ -204,7 +208,7 @@ public class ThongKeController {
 		return  SystemCommon.ADMIN_STORE;
 	}
 	
-	@RequestMapping(value ="/thongKe/nam", method = RequestMethod.GET)	
+	@RequestMapping(value ="/thongKe/nam", method = RequestMethod.POST)	
 	public String thongKe_nam(@ModelAttribute("ThongKeForm") ThongKeForm form, HttpSession session){		 double tongDoanhThu_trongNgay = 0;
 	 int tongGiaoDich_trongNgay = 0;
 	 int tongSoThanhVienMoi_trongNgay = 0;
@@ -217,11 +221,11 @@ public class ThongKeController {
 	 int tongSPMoi_nam = 0;
 	
 	
-	String ngayHienHanh = "20170703";
+	//String ngayHienHanh = "20170703";
 	String pathJSP = (String)session.getAttribute("pathURL");
 	HoaDonInputBean inputBean = new HoaDonInputBean();
 	inputBean.setPathJSP(pathJSP);
-	inputBean.setNgayLap(ngayHienHanh);
+	inputBean.setNgayLap(NgayHienHanh);
 	
 	List<HoaDonOutputRowBean> lstHD = HoaDonDAO.intances.getByNgayLapHD(inputBean);
 	for (HoaDonOutputRowBean hoaDon : lstHD) {
@@ -235,8 +239,8 @@ public class ThongKeController {
 	
 	List<HoaDonOutputRowBean> lstHD_thang = HoaDonDAO.intances.getAll(pathJSP);
 	for (HoaDonOutputRowBean hoaDon : lstHD_thang) {
-		if(null != hoaDon.getNgayLap() && !"".equals(hoaDon.getNgayLap()) && hoaDon.getNgayLap().trim().length() == 6){
-			if(hoaDon.getNgayLap().substring(0, 5).equals(ngayHienHanh.substring(0, 5))){
+		if(null != hoaDon.getNgayLap() && !"".equals(hoaDon.getNgayLap()) && hoaDon.getNgayLap().trim().length() == 8){
+			if(hoaDon.getNgayLap().substring(0, 4).equals(NgayHienHanh.substring(0, 4))){
 				if(null!= hoaDon.getTongTien() && !"".equals(hoaDon.getTongTien())){
 					tongDoanhThu_thang += Double.parseDouble(hoaDon.getTongTien());
 				}
@@ -248,10 +252,10 @@ public class ThongKeController {
 	
 	KhachHangInputBean inputBeanKH = new KhachHangInputBean();
 	inputBeanKH.setPathJSP(pathJSP);
-	inputBeanKH.setNgayTao(ngayHienHanh);
-	List<KhachHangOutputRowBean> lstKH = KhachHangDAO.intances.getByNgayTao(inputBeanKH);
+	inputBeanKH.setNgayTao(NgayHienHanh);
+	List<KhachHangOutputRowBean> lstKH = KhachHangDAO.intances.getAll(pathJSP);
 	for (KhachHangOutputRowBean kh : lstKH) {
-		if(kh.getNgayTao().substring(0,5).equals(ngayHienHanh.substring(0, 5))){
+		if(kh.getNgayTao().substring(0,5).equals(NgayHienHanh.substring(0, 5))){
 			tongSoThanhVienMoi_nam ++;
 		}
 	}
@@ -260,10 +264,10 @@ public class ThongKeController {
 	
 	SanPhamInputBean inputBeanSP = new SanPhamInputBean();
 	inputBeanSP.setPathJSP(pathJSP);
-	inputBeanSP.setNgayTao(ngayHienHanh);
+	inputBeanSP.setNgayTao(NgayHienHanh.substring(0, 4));
 	List<SanPhamOutputRowBean> lstSP = CreateTableProductDAO.intances.getProductByNgayTao(inputBeanSP);
 	for (SanPhamOutputRowBean sp : lstSP) {
-		if(sp.getNgayTao().substring(0, 5).equals(ngayHienHanh.substring(0, 5))){
+		if(sp.getNgayTao().substring(0, 4).equals(NgayHienHanh.substring(0, 4))){
 			tongSPMoi_nam ++;
 		}
 	}
