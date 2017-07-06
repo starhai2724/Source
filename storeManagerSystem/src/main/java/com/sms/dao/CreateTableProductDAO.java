@@ -322,12 +322,11 @@ public class CreateTableProductDAO {
 	public List<SanPhamOutputRowBean> getProductByNgayTao(SanPhamInputBean inputBean){
 		Session session = HibernateUtil.getSessionDAO();
 		List<SanPhamOutputRowBean> lst = new ArrayList<>();
-		String hql = getSQLProductByNgayTao(inputBean.getPathJSP());
+		String hql = getSQLProductByNgayTao(inputBean.getPathJSP(),inputBean.getNgayTao());
 		SanPhamOutputRowBean outputRowBean = null;
 		try {
 			Transaction tx = session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
-			query.setParameter(0, inputBean.getNgayTao());
 			List<Object[]> data = query.list();
 			for (Object[] object : data) {
 				outputRowBean = new SanPhamOutputRowBean();
@@ -524,6 +523,7 @@ public class CreateTableProductDAO {
 	}
 	
 	
+
 	/**
 	 * 
 	 * 
@@ -858,7 +858,7 @@ public class CreateTableProductDAO {
 		return sb.toString();
 	}
 	
-private String getSQLProductByNgayTao(String pathJSP) {
+private String getSQLProductByNgayTao(String pathJSP,String ngayTao) {
 		String tableName = pathJSP+"_PRODUCT";
 		StringBuffer sb = new StringBuffer();
 		sb.append("  SELECT                                 ");
@@ -876,9 +876,10 @@ private String getSQLProductByNgayTao(String pathJSP) {
 		sb.append("  ,ID_DKM                                ");
 		sb.append("  ,SEQ                                ");
 		sb.append("  FROM "+tableName+"          			");
-		sb.append("  WHERE NGAY_TAO = ?          			");
+		sb.append("  WHERE NGAY_TAO like '%" + ngayTao + "%'");
 		return sb.toString();
 	}
+
 	/**
 	 * getSQlMaxIdStoreOwner
 	 * @return
