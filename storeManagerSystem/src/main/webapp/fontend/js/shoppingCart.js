@@ -18,6 +18,10 @@ app.controller('ctrl', function($scope, $window) {
 		purchase($scope, $window , price, priceSaleOff, idSanPham);
 	}
 	
+	$scope.chiTiet = function(idSanPham){
+		chiTiet($scope, $window ,idSanPham);
+	}
+	
 	$scope.btnCart = function(){
 		cart($scope,$window);
 	}
@@ -65,7 +69,14 @@ function purchase($scope,$window ,price, priceSaleOff, idSanPham){
 	$window.sessionStorage.setItem('session_quantity', $scope.cartQuantity);
 }
 
-function cart($scope, $window){
+function chiTiet($scope, $window, idSanPham){
+	var url = "/storeManagerSystem/" + $scope.pathJSP +"/chiTietSP/" + idSanPham;
+	document.getElementById("LayoutForm").action = url;
+	document.getElementById("LayoutForm").method = "POST";
+	document.getElementById("LayoutForm").submit();
+}
+
+function cart($scope, $window, ){
 	var session_listProduct = $window.sessionStorage.getItem('session_listProduct');
 	if(session_listProduct != null && session_listProduct != ""){
 		var url = "/storeManagerSystem/" + $scope.pathJSP +"/gioHang/" + session_listProduct;

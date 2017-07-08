@@ -75,7 +75,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 	    </div>
 	    <!--/.navbar-header-->
-	
+     
+            
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	        <ul class="nav navbar-nav">
 			<li><a href="/storeManagerSystem/${LayoutForm.pathJSP }">Trang chủ</a></li>
@@ -96,53 +97,124 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!-- content-section-starts-here -->
 		<div class="container">
 			<div class="main-content">
-				<div class="products-grid">
-				<header>
-					<div align="left">
-						<input style="margin-left: 15px" type="button" name="" class="btn btn-info " ng-click ="btnBuyCart()" value="Thanh toán">
-					</div>
-					<!-- CHECK Dang nhap  -->
-					<input type="hidden" ng-model="checkDangNhap" ng-init="checkDangNhap ='${LayoutForm.checkDangNhap}'">
-					<c:choose>
-					<c:when test="${LayoutForm.checkDangNhap eq ('1')}">
-						<div class="col-sm-4">
-							<form:input style="margin-top: 5px" class="form-control" placeholder="Số điện thoại"  type="text" path="sdtKhachHang"  name="sdtKhachHang" ng-model = "sdtKhachHang"  ng-init ="sdtKhachHang = '${LayoutForm.sdtKhachHang}'" />
-							<p style="color: red;">{{sdtKhachHang_err}}</p>
-						</div>
-					</c:when>
-					 </c:choose>
-					<div align="left">
+
+<div id="wrapper">	
+	<div class="row">
+					<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Thanh toán đơn hàng</h1>
+			</div>
+			<i style="font-size:24px;margin-left: 1400px;margin-top: -10px" data-toggle="collapse" data-target="#demo" class="fa">&#xf106;</i>
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i>Thông tin khách hàng
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                       		 <div class="row">
+			                        <div class="col-lg-5">
+			                            <div class="form-group">
+											  <input type="text" class="form-control" id="usr" placeholder="Họ và Tên">
+										</div>
+			                        </div>
+			                        <div class="col-lg-5">
+			                            <div class="form-group">
+											  <input type="text" class="form-control" id="usr" placeholder="Thành phố">
+										</div>
+			                        </div>
+			                 </div>
+			                  <div class="row">
+			                        <div class="col-lg-5">
+			                            <div class="form-group">
+											  <input type="text" class="form-control" id="usr" placeholder="Điện thoại">
+										</div>
+			                        </div>
+			                        <div class="col-lg-5">
+			                            <div class="form-group">
+											  <input type="text" class="form-control" id="usr" placeholder="Quận huyện">
+										</div>
+			                        </div>
+			                 </div>
+			                 <div class="row">
+			                        <div class="col-lg-5">
+			                            <div class="form-group">
+											  <input type="text" class="form-control" id="usr" placeholder="Email">
+										</div>
+			                        </div>
+			                        <div class="col-lg-5">
+			                            <div class="form-group">
+											  <input type="text" class="form-control" id="usr" placeholder="Địa chỉ">
+										</div>
+			                        </div>
+			                 </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <div align="left">
 						<p style="color: blue; font-weight: bold;">${LayoutForm.message }</p>
 						<p style="color: red; font-weight: bold;">${LayoutForm.messageErr }</p>
 					</div>
-				</header>
-				<!--San pham (S)  ----------------------------------------------------------------------------------------------------------------------------------------------->
-				<br><br>
-				
-				<c:forEach var="items" items="${LayoutForm.products }">
-					<div class="col-md-4 product simpleCart_shelfItem text-center" id="sanPham${items.SEQ }">
-						<a href="single.html"><img src="/storeManagerSystem/myImage/imageDisplay/${items.SEQ}" alt="" /></a>
-						<div class="mask">
-							<a href="single.html">Chi tiết</a>
-						</div>
-						<a class="product_name" href="single.html">${items.tenSP}</a>
-						<p>
-						<span ng-model="soLuong[${items.SEQ }]" ng-init="soLuong[${items.SEQ }] ='${items.soLuong }'">{{soLuong[${items.SEQ }]}}</span></br>
-						<span class="glyphicon glyphicon-trash" ng-click="btnRemove('${items.SEQ }', '${items.giaBan }', '${items.giaBanKM }')" data-toggle="tooltip" data-original-title="Xóa"></span>
-						<c:if test="${!empty items.giaBanKM }">
-							<strike class="item_price">${items.giaBan}</strike>
-						</c:if>
-						<c:if test="${empty items.giaBanKM }">
-							<span class="item_price">${items.giaBan}</span>
-						</c:if>
-						<c:if test="${!empty items.giaBanKM }">
-							<span class="item_price">${items.giaBanKM}</span>
-						</c:if>
-					</div>
-				</c:forEach>
-				<!--San pham (E) --------------------------------------------------------------------------------------------------------------------------------------------- -->
-					<div class="clearfix"></div>
-				</div>
+                    <!-- /.panel -->
+                    <div class="panel panel-default" style="padding-left: 3px">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Thông tin đơn hàng
+                        </div>
+                    </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" style="margin-top: -15px">
+			               <div class="row">
+			               	    <div class="table-responsive">
+                                	<table class="table table-bordered ">
+		                                	<thead>
+		                                        <tr>
+		                                            <th align="center" style="widows: 80px;text-align: center">Ảnh</th>
+		                                            <th align="center" style="text-align: center">Tên sản phẩm</th>
+		                                            <th align="center" style="widows: 50px;text-align: center">Số lượng</th>
+		                                            <th align="center" style="widows: 80px;text-align: center">Đơn giá</th>
+		                                            <th align="center" style="widows: 30px;text-align: center">Xóa</th>
+		                                            <th align="center" style="text-align: center">Thành tiền</th>
+		                                        </tr>
+		                                    </thead>
+		                                    <tbody>
+										      <c:forEach var="items" items="${LayoutForm.products }">
+										      <tr>
+										      		<td align="center" style="widows: 80px"><img style="height: 80px;width: 70px;" src="/storeManagerSystem/myImage/imageDisplay/${items.SEQ}" alt="" /></td>
+													<td>${items.tenSP}</td>
+													<td style="text-align: center;"><span ng-model="soLuong[${items.SEQ }]" ng-init="soLuong[${items.SEQ }] ='${items.soLuong }'">{{soLuong[${items.SEQ }]}}</span></td>
+													<td>
+														<c:if test="${!empty items.giaBanKM }">
+														<strike class="item_price">${items.giaBan}</strike>
+														</c:if>	</td>
+													<td style="text-align: center;padding-top: 20px"  ><span style="font-size: 30px" class="glyphicon glyphicon-trash" ng-click="btnRemove('${items.SEQ }', '${items.giaBan }', '${items.giaBanKM }')" data-toggle="tooltip" data-original-title="Xóa"></span></td>
+													<td style="text-align: right;">12,000,000</td>		
+												</tr>
+											</c:forEach>
+												<tr>
+										      		<td colspan="5" style="text-align: right;font-weight: bold">Tổng đơn hàng</td>
+													<td style="text-align: right;">3000,000,000</td>
+												</tr>
+												<tr>
+										      		<td colspan="5" style="text-align: right;font-weight: bold">Giảm giá</td>
+													<td style="text-align: right;">80,000</td>
+												</tr>
+												<tr>
+										      		<td colspan="5" style="text-align: right;font-weight: bold">Tổng tiền</td>
+													<td style="text-align: right;">50,000,000,000</td>
+												</tr>
+												<tr>
+										      		<td colspan="5" style="text-align: right;font-weight: bold"></td>
+													<td style="text-align: right;"><input name="" class="btn btn-primary active" ng-click ="btnBuyCart()" value="Thanh toán"></td>
+												</tr>
+										</tbody>
+									</table>
+								</div>
+			               </div>
+                        </div>
+                </div>
+            </div>
+</div> 
+</div>
 			</div>
 
 		</div>
@@ -155,11 +227,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<ul class="f_nav">
 						<li><a href="#">new arrivals</a></li>
 						<li><a href="#">men</a></li>
-						<li><a href="#">women</a></li>
-						<li><a href="#">accessories</a></li>
-						<li><a href="#">kids</a></li>
-						<li><a href="#">brands</a></li>
-						<li><a href="#">trends</a></li>
 						<li><a href="#">sale</a></li>
 						<li><a href="#">style videos</a></li>
 					</ul>	
@@ -168,9 +235,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<h4>help</h4>
 					<ul class="f_nav">
 						<li><a href="#">frequently asked  questions</a></li>
-						<li><a href="#">men</a></li>
-						<li><a href="#">women</a></li>
-						<li><a href="#">accessories</a></li>
 						<li><a href="#">kids</a></li>
 						<li><a href="#">brands</a></li>
 					</ul>	
@@ -179,9 +243,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<h4>account</h4>
 					<ul class="f_nav">
 						<li><a href="account.html">login</a></li>
-						<li><a href="register.html">create an account</a></li>
-						<li><a href="#">create wishlist</a></li>
-						<li><a href="checkout.html">my shopping bag</a></li>
 						<li><a href="#">brands</a></li>
 						<li><a href="#">create wishlist</a></li>
 					</ul>				
@@ -191,12 +252,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<ul class="f_nav">
 						<li><a href="#">new arrivals</a></li>
 						<li><a href="#">men</a></li>
-						<li><a href="#">women</a></li>
-						<li><a href="#">accessories</a></li>
-						<li><a href="#">kids</a></li>
-						<li><a href="#">brands</a></li>
-						<li><a href="#">trends</a></li>
-						<li><a href="#">sale</a></li>
 						<li><a href="#">style videos</a></li>
 						<li><a href="#">login</a></li>
 						<li><a href="#">brands</a></li>

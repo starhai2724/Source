@@ -176,4 +176,36 @@ public class LayoutController {
 		
 	}
 	
+	@RequestMapping(value="/{path}/chiTietSP/{idSanPham}")
+	public String chiTietSP(@ModelAttribute("LayoutForm") LayoutForm form, @PathVariable("path") String path, @PathVariable("idSanPham") String idSanPham, HttpSession session){
+		
+		//get loai san pham
+		NhomSanPhamInputBean loaiSanPhamInputBean = new NhomSanPhamInputBean();  
+		loaiSanPhamInputBean.setPathJSP(path);
+		List<NhomSanPhamOutputBean> loaiSanPhamOutputBeans = NhomSanPhamDAO.intances.getNhomSP(loaiSanPhamInputBean);
+		RegisterProductCategoryFormRow productCategoryFormRow;
+		for(NhomSanPhamOutputBean loaiSanPhamOutputBean : loaiSanPhamOutputBeans){
+			productCategoryFormRow = new RegisterProductCategoryFormRow();
+			productCategoryFormRow.setIdProductCategory(loaiSanPhamOutputBean.getIdNhomSP());
+			productCategoryFormRow.setNameProductCategory(loaiSanPhamOutputBean.getTenNhomSP());
+			form.getLoaiSanPham().add(productCategoryFormRow);
+		}
+
+		SanPhamInputBean input = new SanPhamInputBean();
+		input.setPathJSP(path);
+		input.setSEQ(idSanPham);
+		SanPhamOutputBean sanPhamOutputBean = CreateTableProductDAO.intances.getProductById(input);
+		SanPhamOutputRowBean outputRowBean = sanPhamOutputBean.getLst().get(0);
+		
+		ProductFormRow rowBean = new ProductFormRow();
+		rowBean.setSEQ(idSanPham);
+		rowBean.setMoTa(outputRowBean.getMoTa());
+		rowBean.setGiaBan(outputRowBean.getGiaBan());
+		form.getProducts().add(rowBean);
+		
+		form.setPathJSP(path);
+		
+		return "fashion/chiTietSP";
+	}
+	
 }
