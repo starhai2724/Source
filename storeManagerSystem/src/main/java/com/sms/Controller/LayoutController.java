@@ -198,9 +198,11 @@ public class LayoutController {
 		SanPhamOutputRowBean outputRowBean = sanPhamOutputBean.getLst().get(0);
 		
 		ProductFormRow rowBean = new ProductFormRow();
+		rowBean.setTenSP(outputRowBean.getTenSP());
 		rowBean.setSEQ(idSanPham);
 		rowBean.setMoTa(outputRowBean.getMoTa());
-		rowBean.setGiaBan(outputRowBean.getGiaBan());
+		String giaBan = String.format("%,.2f",Double.parseDouble(outputRowBean.getGiaBan()));
+		rowBean.setGiaBan(giaBan);
 		form.getProducts().add(rowBean);
 		
 		form.setPathJSP(path);
