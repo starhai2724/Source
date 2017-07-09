@@ -76,7 +76,7 @@ function chiTiet($scope, $window, idSanPham){
 	document.getElementById("LayoutForm").submit();
 }
 
-function cart($scope, $window, ){
+function cart($scope, $window){
 	var session_listProduct = $window.sessionStorage.getItem('session_listProduct');
 	if(session_listProduct != null && session_listProduct != ""){
 		var url = "/storeManagerSystem/" + $scope.pathJSP +"/gioHang/" + session_listProduct;
@@ -102,14 +102,21 @@ function remove($scope, $window, id, price, priceSaleOff){
 	var session_quantity = $window.sessionStorage.getItem('session_quantity');
 	
 	
-	
 	if(priceSaleOff != ""){
 		$scope.cartPrice =  parseInt(session_price) - parseInt(priceSaleOff);
+		$scope.thanhTien[id] = parseInt($scope.thanhTien[id]) - parseInt(priceSaleOff);
+		$scope.tongThanhTien = parseInt($scope.tongThanhTien) - parseInt(priceSaleOff);
 	}else{
 		$scope.cartPrice =  parseInt(session_price) - parseInt(price);
+		$scope.tongThanhTien = parseInt($scope.tongThanhTien) - parseInt(price);
 	}
+	//tong tien don hang
+	$scope.tongDonHang = parseInt($scope.tongDonHang) - parseInt(price);
+	//tong tien giam gia
+	$scope.tongTienGiamGia = parseInt($scope.tongDonHang) - parseInt($scope.tongThanhTien);
+	
 	$scope.cartQuantity= parseInt(session_quantity) - 1;
-	listProduct = listProduct.replace("," + id,"");
+	listProduct = session_listProduct.replace("," + id,"");
 	
 	$window.sessionStorage.setItem('session_price', $scope.cartPrice);
 	$window.sessionStorage.setItem('session_listProduct', listProduct);
@@ -117,18 +124,33 @@ function remove($scope, $window, id, price, priceSaleOff){
 }
 
 function buyCart($scope, $window){
+	$scope.sdtKhachHang_err = "";
+	$scope.hoTenKhachHang_err = "";
+	$scope.diaChiKhachHang_err = "";
 	
 	var valid = true;
 	var reg = new RegExp('^[0-9]+$');
-	if($scope.checkDangNhap == 1){
-		if ($scope.sdtKhachHang == "") {
-			$scope.sdtKhachHang_err = "Nhập số điện thoại."
-				valid = false;
-		}else if(!reg.test($scope.sdtKhachHang)){
-			$scope.sdtKhachHang_err = "Số điện thoại phải là số."
-				valid = false;
-		}
+	if ($scope.sdtKhachHang == "") {
+		$scope.sdtKhachHang_err = "Nhập số điện thoại."
+			valid = false;
+	}else if(!reg.test($scope.sdtKhachHang)){
+		$scope.sdtKhachHang_err = "Số điện thoại phải là số."
+		valid = false;
+	}else if( parseInt($scope.sdtKhachHang) < 10 || parseInt($scope.sdtKhachHang > 12) ){
+		$scope.sdtKhachHang_err = "Số điện thoại không đúng."
+		valid = false;
 	}
+	
+	if ($scope.hoTenKhachHang == "") {
+		$scope.hoTenKhachHang_err = "Nhập họ tên."
+		valid = false;
+	}
+	
+	if ($scope.diaChiKhachHang == "") {
+		$scope.diaChiKhachHang_err = "Nhập địa chỉ."
+		valid = false;
+	}
+	
 	
 	if(valid == true){
 		var session_price = $window.sessionStorage.getItem('session_price');

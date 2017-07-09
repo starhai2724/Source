@@ -115,7 +115,11 @@ public class LayoutController {
 		if (khachHangSession == null) {
 			form.setCheckDangNhap("1"); // t/h chua dang nhap thi set bang 1
 			form.setSdtKhachHang("");
+		}else{
+			form.setHoTenKhachHang(khachHangSession.getTenKhachHang());
+			form.setSdtKhachHang(khachHangSession.getSdt());
 		}
+		
 		//get san pham 
 		SanPhamInputBean sanPhamInputBean = new SanPhamInputBean();
 		sanPhamInputBean.setPathJSP(path);
@@ -136,6 +140,8 @@ public class LayoutController {
 		
 		SanPhamOutputBean sanPhamOutputBean = CreateTableProductDAO.intances.getProductByList(path, listId);
 		ProductFormRow productFormRow;
+		double totalMoney = 0;
+		double tongDonHang = 0;
 		for(SanPhamOutputRowBean sanPhamOutputRowBean : sanPhamOutputBean.getLst() ){
 			productFormRow = new ProductFormRow();
 			productFormRow.setSEQ(sanPhamOutputRowBean.getSEQ());
@@ -145,15 +151,26 @@ public class LayoutController {
 			productFormRow.setGiaMua(sanPhamOutputRowBean.getGiaMua());
 			productFormRow.setGiaBan(sanPhamOutputRowBean.getGiaBan());
 			productFormRow.setGiaBanKM(sanPhamOutputRowBean.getGiaBanKM());
-			System.out.println(sanPhamOutputRowBean.getGiaBan());
-			System.out.println(sanPhamOutputRowBean.getGiaBanKM());
 			
 			productFormRow.setNgayTao(sanPhamOutputRowBean.getNgayTao());
 			productFormRow.setNgayChinhSua(sanPhamOutputRowBean.getNgayChinhSua());
 			productFormRow.setMoTa(sanPhamOutputRowBean.getMoTa());
 			productFormRow.setSoLuong(getSoLuongSanPham(parts, sanPhamOutputRowBean.getSEQ()));
+			if (sanPhamOutputRowBean.getGiaBanKM() != null && !"".equals(sanPhamOutputRowBean.getGiaBanKM())) {
+				productFormRow.setThanhTien( Double.parseDouble(sanPhamOutputRowBean.getGiaBanKM()) * Double.parseDouble(getSoLuongSanPham(parts, sanPhamOutputRowBean.getSEQ())) +"");
+				totalMoney += Double.parseDouble(sanPhamOutputRowBean.getGiaBanKM())* Double.parseDouble(getSoLuongSanPham(parts, sanPhamOutputRowBean.getSEQ()) );
+			} else {
+				productFormRow.setThanhTien( Double.parseDouble(sanPhamOutputRowBean.getGiaBan()) * Double.parseDouble(getSoLuongSanPham(parts, sanPhamOutputRowBean.getSEQ())) +"");
+				totalMoney += Double.parseDouble(sanPhamOutputRowBean.getGiaBan())* Double.parseDouble(getSoLuongSanPham(parts, sanPhamOutputRowBean.getSEQ())  );
+			}
+			tongDonHang += Double.parseDouble(sanPhamOutputRowBean.getGiaBan())* Double.parseDouble(getSoLuongSanPham(parts, sanPhamOutputRowBean.getSEQ())  );
 			form.getProducts().add(productFormRow);
 		}
+			form.setTongDonHang(tongDonHang +"");
+			form.setTongThanhTien(totalMoney +"");
+			
+			form.setTongTienGiamGia( tongDonHang - totalMoney +"");
+			
 			form.setPathJSP(path);
 			form.setListId(listId);
 		return PAGE_CART;

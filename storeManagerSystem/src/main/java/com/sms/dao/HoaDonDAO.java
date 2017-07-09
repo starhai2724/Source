@@ -184,6 +184,35 @@ public class HoaDonDAO {
 	 * 
 	 * 
 	 * @return
+	 */
+	public String getThongKeTheoQuy(String pathJSP, String ngayBD, String ngayKT) {
+		Session session = HibernateUtil.getSessionDAO();
+		String hql = getSQlThongKeTheoQuy(pathJSP);
+		String result = "";
+		try {
+			Transaction tx = session.beginTransaction();
+			SQLQuery query = session.createSQLQuery(hql);
+			query.setParameter(0, ngayBD);
+			query.setParameter(1, ngayKT);
+			List<Object> data = query.list();
+			for (Object object : data) {
+				result = SMSComons.convertString(object);
+			}
+			tx.commit();
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		} finally {
+			session.flush();
+			session.clear();
+			session.close();
+		}
+		return result;
+	}
+	/**
+	 * 
+	 * 
+	 * @return
 	 * @throws IOException 
 	 */
 	public List<HoaDonOutputRowBean> getById(HoaDonInputBean inputBean){
@@ -440,6 +469,24 @@ public class HoaDonDAO {
 		sb.append("  DELETE  ");
 		sb.append("  FROM "+tableName+"  ");
 		sb.append("  WHERE ID_HOADON = ?  ");
+		return sb.toString();
+	}
+	
+	
+	/**
+	 * getSQlDeleteById
+	 * @return
+	 */
+	private String getSQlThongKeTheoQuy(String pathJSP) {
+		String tableName = pathJSP+"_HOADON";
+		StringBuffer sb = new StringBuffer();
+		sb.append("     	SELECT                                 ");
+		sb.append("     	SUM(HD.TONG_TIEN) AS TONG              ");
+		sb.append("  FROM "+tableName+" HD ");
+		sb.append("     WHERE                                      ");
+		sb.append("     	HD.NGAY_LAP >= ?               ");
+		sb.append("     AND HD.NGAY_LAP <= ?               ");
+		
 		return sb.toString();
 	}
 	

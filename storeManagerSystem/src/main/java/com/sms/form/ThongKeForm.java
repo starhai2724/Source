@@ -26,12 +26,66 @@ public class ThongKeForm extends AbstractForm{
 	private String tongNhomSP_chiTiet = "";
 	
 	private String tongLoaiSP_chiTiet = "";
+	
+	
+	//20170706 Hai.NT thong ke theo quy (S)
+	private String quyBD = "";
+	
+	private String namBD = "";
+	
+	private String quyKT = "";
+	
+	private String namKT = "";
+	
+	//20170706 Hai.NT thong ke theo quy (E)
+	
 
+	
 	public String getTongLuotTheoDoi_trongNgay() {
 		return tongLuotTheoDoi_trongNgay;
 	}
 
 	
+	public String getQuyBD() {
+		return quyBD;
+	}
+
+
+	public void setQuyBD(String quyBD) {
+		this.quyBD = quyBD;
+	}
+
+
+	public String getNamBD() {
+		return namBD;
+	}
+
+
+	public void setNamBD(String namBD) {
+		this.namBD = namBD;
+	}
+
+
+	public String getQuyKT() {
+		return quyKT;
+	}
+
+
+	public void setQuyKT(String quyKT) {
+		this.quyKT = quyKT;
+	}
+
+
+	public String getNamKT() {
+		return namKT;
+	}
+
+
+	public void setNamKT(String namKT) {
+		this.namKT = namKT;
+	}
+
+
 	public String getTongSPMoi_chiTiet() {
 		return tongSPMoi_chiTiet;
 	}

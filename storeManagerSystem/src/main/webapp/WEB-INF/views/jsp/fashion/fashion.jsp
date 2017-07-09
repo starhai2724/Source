@@ -186,11 +186,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="col-md-4 product simpleCart_shelfItem text-center">
 						<a href="single.html"><img src="/storeManagerSystem/myImage/imageDisplay/${items.SEQ}" alt="" /></a>
 						<div class="mask">
-							<a ng-click="btnPurchase('${items.giaBan}','${items.giaBanKM }' ,'${items.SEQ} ')">Chi tiết</a>
+							<a ng-click="chiTiet('${items.SEQ}');">Chi tiết</a>
 						</div>
 						<a class="product_name" href="single.html">${items.tenSP}</a>
 						<p>
-						<a class="item_add" ng-click="chiTiet('${items.SEQ}')"><i></i>
+						<a class="item_add" ng-click="btnPurchase('${items.giaBan}','${items.giaBanKM }' ,'${items.SEQ} ')"><i></i>
 						<c:if test="${!empty items.giaBanKM }">
 							<strike class="item_price">${items.giaBan}</strike>
 						</c:if>

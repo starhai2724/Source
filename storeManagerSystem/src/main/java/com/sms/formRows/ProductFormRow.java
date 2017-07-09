@@ -36,11 +36,26 @@ public class ProductFormRow {
 
 	//dung cho gio hang (S)
 	private String soLuong;
+	
+	private String thanhTien;
 	//dung cho gio hang (E)
+	
 	
 	
 	public String getSEQ() {
 		return SEQ;
+	}
+
+
+
+	public String getThanhTien() {
+		return thanhTien;
+	}
+
+
+
+	public void setThanhTien(String thanhTien) {
+		this.thanhTien = thanhTien;
 	}
 
 

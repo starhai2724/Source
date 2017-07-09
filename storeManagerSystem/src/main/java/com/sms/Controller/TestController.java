@@ -82,9 +82,9 @@ public class TestController {
 		session.setAttribute("PAGECENTER", "dangky1.jsp");
 		return "index";
 	}
-	@RequestMapping(value ="/thongKe", method = RequestMethod.GET)	
+	@RequestMapping(value ="/test_6", method = RequestMethod.GET)	
 	public String thongKe(){
-		return "thongKe";
+		return "template_2/runecom22.runtime.vn/trang-chu";
 	}
 	
 }

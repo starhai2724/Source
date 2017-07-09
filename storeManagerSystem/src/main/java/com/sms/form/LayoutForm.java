@@ -26,7 +26,13 @@ public class LayoutForm extends AbstractForm {
 	private String cartQuantity;
 
 	private String listId;
-
+	
+	private String tongDonHang;
+	
+	private String tongTienGiamGia;
+	
+	private String tongThanhTien;
+	
 	// Gio hang (E)
 
 	private String tenKhachHang;
@@ -35,12 +41,67 @@ public class LayoutForm extends AbstractForm {
 	private String sdtKhachHang;
 	
 	private String checkDangNhap ;
+	
+	private String hoTenKhachHang;
+	
+	private String emailKhachHang;
+	
+	private String diaChiKhachHang;
+	
+	
 	// T/h khach hang chua dang nhap thi dung sdt de tao hoa don sp (E)
 
 	
-	
 	public String getSdtKhachHang() {
 		return sdtKhachHang;
+	}
+
+	public String getHoTenKhachHang() {
+		return hoTenKhachHang;
+	}
+
+	public void setHoTenKhachHang(String hoTenKhachHang) {
+		this.hoTenKhachHang = hoTenKhachHang;
+	}
+
+	public String getEmailKhachHang() {
+		return emailKhachHang;
+	}
+
+	public void setEmailKhachHang(String emailKhachHang) {
+		this.emailKhachHang = emailKhachHang;
+	}
+
+	public String getDiaChiKhachHang() {
+		return diaChiKhachHang;
+	}
+
+	public void setDiaChiKhachHang(String diaChiKhachHang) {
+		this.diaChiKhachHang = diaChiKhachHang;
+	}
+
+	public String getTongDonHang() {
+		return tongDonHang;
+	}
+
+	public void setTongDonHang(String tongDonHang) {
+		this.tongDonHang = tongDonHang;
+	}
+
+	public String getTongTienGiamGia() {
+		return tongTienGiamGia;
+	}
+
+	public void setTongTienGiamGia(String tongTienGiamGia) {
+		this.tongTienGiamGia = tongTienGiamGia;
+	}
+
+	public String getTongThanhTien() {
+		return tongThanhTien;
+	}
+
+	public void setTongThanhTien(String tongThanhTien) {
+		this.tongThanhTien = tongThanhTien;
 	}
 
 	public String getCheckDangNhap() {

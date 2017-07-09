@@ -104,7 +104,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-lg-12">
 				<h1 class="page-header">Thanh toán đơn hàng</h1>
 			</div>
-			<i style="font-size:24px;margin-left: 1400px;margin-top: -10px" data-toggle="collapse" data-target="#demo" class="fa">&#xf106;</i>
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -115,7 +114,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                        		 <div class="row">
 			                        <div class="col-lg-5">
 			                            <div class="form-group">
-											  <input type="text" class="form-control" id="usr" placeholder="Họ và Tên">
+											  <form:input style="margin-top: 5px" class="form-control" placeholder="Họ và Tên"  type="text" path="hoTenKhachHang"  ng-model = "hoTenKhachHang"  ng-init ="hoTenKhachHang = '${LayoutForm.hoTenKhachHang}'" />
+												<p style="color: red;">{{hoTenKhachHang_err}}</p>
 										</div>
 			                        </div>
 			                        <div class="col-lg-5">
@@ -127,7 +127,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			                  <div class="row">
 			                        <div class="col-lg-5">
 			                            <div class="form-group">
-											  <input type="text" class="form-control" id="usr" placeholder="Điện thoại">
+											  <form:input style="margin-top: 5px" class="form-control" maxlength="12" placeholder="Số điện thoại"  type="text" path="sdtKhachHang"  ng-model = "sdtKhachHang"  ng-init ="sdtKhachHang = '${LayoutForm.sdtKhachHang}'" />
+												<p style="color: red;">{{sdtKhachHang_err}}</p>
 										</div>
 			                        </div>
 			                        <div class="col-lg-5">
@@ -139,12 +140,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			                 <div class="row">
 			                        <div class="col-lg-5">
 			                            <div class="form-group">
-											  <input type="text" class="form-control" id="usr" placeholder="Email">
+											  <form:input style="margin-top: 5px" class="form-control" placeholder="Email"  type="text" path="emailKhachHang"  ng-model = "emailKhachHang"  ng-init ="emailKhachHang = '${LayoutForm.emailKhachHang}'" />
+												<p style="color: red;">{{emailKhachHang_err}}</p>
 										</div>
 			                        </div>
 			                        <div class="col-lg-5">
 			                            <div class="form-group">
-											  <input type="text" class="form-control" id="usr" placeholder="Địa chỉ">
+											  <form:input style="margin-top: 5px" class="form-control" placeholder="Địa chỉ"  type="text" path="diaChiKhachHang"  ng-model = "diaChiKhachHang"  ng-init ="diaChiKhachHang = '${LayoutForm.diaChiKhachHang}'" />
+												<p style="color: red;">{{diaChiKhachHang_err}}</p>
 										</div>
 			                        </div>
 			                 </div>
@@ -178,33 +181,37 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		                                    </thead>
 		                                    <tbody>
 										      <c:forEach var="items" items="${LayoutForm.products }">
-										      <tr>
+										      <tr id="sanPham${items.SEQ }">
 										      		<td align="center" style="widows: 80px"><img style="height: 80px;width: 70px;" src="/storeManagerSystem/myImage/imageDisplay/${items.SEQ}" alt="" /></td>
 													<td>${items.tenSP}</td>
 													<td style="text-align: center;"><span ng-model="soLuong[${items.SEQ }]" ng-init="soLuong[${items.SEQ }] ='${items.soLuong }'">{{soLuong[${items.SEQ }]}}</span></td>
 													<td>
 														<c:if test="${!empty items.giaBanKM }">
-														<strike class="item_price">${items.giaBan}</strike>
-														</c:if>	</td>
+														<span class="item_price">${items.giaBanKM}</span>
+														</c:if>
+														<c:if test="${empty items.giaBanKM }">
+														<span class="item_price">${items.giaBan}</span>
+														</c:if>	
+													</td>
 													<td style="text-align: center;padding-top: 20px"  ><span style="font-size: 30px" class="glyphicon glyphicon-trash" ng-click="btnRemove('${items.SEQ }', '${items.giaBan }', '${items.giaBanKM }')" data-toggle="tooltip" data-original-title="Xóa"></span></td>
-													<td style="text-align: right;">12,000,000</td>		
+													<td style="text-align: right;" ng-model="thanhTien[${items.SEQ }]" ng-init="thanhTien[${items.SEQ }] ='${items.thanhTien }'">{{thanhTien[${items.SEQ }]}}</td>		
 												</tr>
 											</c:forEach>
 												<tr>
 										      		<td colspan="5" style="text-align: right;font-weight: bold">Tổng đơn hàng</td>
-													<td style="text-align: right;">3000,000,000</td>
+													<td style="text-align: right;" ng-model="tongDonHang" ng-init="tongDonHang = '${LayoutForm.tongDonHang}'">{{tongDonHang}}</td>
 												</tr>
 												<tr>
-										      		<td colspan="5" style="text-align: right;font-weight: bold">Giảm giá</td>
-													<td style="text-align: right;">80,000</td>
+										      		<td colspan="5" style="text-align: right;font-weight: bold">Tồng tiền giảm giá</td>
+													<td style="text-align: right;" ng-model="tongTienGiamGia" ng-init="tongTienGiamGia = '${LayoutForm.tongTienGiamGia}'">{{tongTienGiamGia}}</td>
 												</tr>
 												<tr>
-										      		<td colspan="5" style="text-align: right;font-weight: bold">Tổng tiền</td>
-													<td style="text-align: right;">50,000,000,000</td>
+										      		<td colspan="5" style="text-align: right;font-weight: bold">Tổng thành tiền</td>
+													<td style="text-align: right;" ng-model="tongThanhTien" ng-init="tongThanhTien = '${LayoutForm.tongThanhTien}'">{{tongThanhTien}}</td>
 												</tr>
 												<tr>
 										      		<td colspan="5" style="text-align: right;font-weight: bold"></td>
-													<td style="text-align: right;"><input name="" class="btn btn-primary active" ng-click ="btnBuyCart()" value="Thanh toán"></td>
+													<td style="text-align: right;"><input type="button" class="btn btn-primary active" ng-click ="btnBuyCart()" value="Thanh toán"></td>
 												</tr>
 										</tbody>
 									</table>

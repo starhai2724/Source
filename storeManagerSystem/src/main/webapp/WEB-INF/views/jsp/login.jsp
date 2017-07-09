@@ -84,7 +84,7 @@
         <form class="step-block-box clearfix" id="loginform"  > 
             <div class="col-sm-6 col-xs-12 col-sm-offset-3 step-block1 ">
                 <div class="form-group has-feedback">
-                    <input type="text" class="form-control" placeholder="Tên đăng nhập"  ng-model="username" name="username" ng-init="username'${username}'" autofocus >
+                    <input type="text" class="form-control" placeholder="Tên đăng nhập"  ng-model="username" name="username" ng-init="username='${username}'" >
                     <span class="form-control-feedback color7" aria-hidden="true">*</span>
                     <p style="color: red;">{{username_err}}</p>
                 </div>

@@ -60,11 +60,14 @@
     <!-- Morris Charts JavaScript -->
     <script src="/storeManagerSystem/view/thongKe/vendor/raphael/raphael.min.js"></script>
     <script src="/storeManagerSystem/view/thongKe/vendor/morrisjs/morris.min.js"></script>
-    <script src="/storeManagerSystem/view/thongKe/data/morris-data.js"></script>
+<!--     <script src="/storeManagerSystem/view/thongKe/data/morris-data.js"></script> -->
 
     <!-- Custom Theme JavaScript -->
     <script src="/storeManagerSystem/view/thongKe/dist/js/sb-admin-2.js"></script>
     
-    <script src="/storeManagerSystem/view/thongKe/custom.min.js"></script>
+<!--     <script src="/storeManagerSystem/view/thongKe/custom.min.js"></script> -->
     
     <script src="/storeManagerSystem/view/templateDK/jquery-2.1.0.min.js" type="text/javascript"></script>
+    
+    
+    
