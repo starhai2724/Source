@@ -75,7 +75,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 	    </div>
 	    <!--/.navbar-header-->
-	
+				<div class="container">
+				<div class="join">
+					<div class="sub-left-right">
+						<form>
+							<input type="text" value="Enter Your Email Here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Your Email Here';}" />
+							<input type="submit" value="SUBSCRIBE" />
+						</form>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	        <ul class="nav navbar-nav">
 			<li><a href="/storeManagerSystem/${LayoutForm.pathJSP }">Trang chủ</a></li>
@@ -184,9 +194,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<!--San pham (S)  ----------------------------------------------------------------------------------------------------------------------------------------------->
 				<c:forEach var="items" items="${LayoutForm.products }">
 					<div class="col-md-4 product simpleCart_shelfItem text-center">
-						<a href="single.html"><img src="/storeManagerSystem/myImage/imageDisplay/${items.SEQ}" alt="" /></a>
+						<a  href="<c:url value="/${LayoutForm.pathJSP }/chiTietSP/${items.SEQ}" />"><img src="/storeManagerSystem/myImage/imageDisplay/${items.SEQ}" alt="" /></a>
 						<div class="mask">
-							<a ng-click="chiTiet('${items.SEQ}');">Chi tiết</a>
+							<a href="<c:url value="/${LayoutForm.pathJSP }/chiTietSP/${items.SEQ}" />">Chi tiết</a>
 						</div>
 						<a class="product_name" href="single.html">${items.tenSP}</a>
 						<p>
@@ -194,7 +204,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<c:if test="${!empty items.giaBanKM }">
 							<strike class="item_price">${items.giaBan}</strike>
 						</c:if>
-						<c:if test="${empty items.giaBanKM }">
+						<c:if test="${empty items.giaBanKM }">chiTiet
 							<span class="item_price">${items.giaBan}</span>
 						</c:if>
 						<c:if test="${!empty items.giaBanKM }">
