@@ -445,6 +445,46 @@ public class CreateTableProductDAO {
 		}
 		return outputBean;
 	}
+	
+	public SanPhamOutputBean getProductBysByNameProduct(String pathJSP, String name){
+		Session session = HibernateUtil.getSessionDAO();
+		String hql = getSQLProductByName(pathJSP, name);
+		SanPhamOutputBean outputBean = new SanPhamOutputBean();
+		SanPhamOutputRowBean outputRowBean = null;
+		try {
+			Transaction tx = session.beginTransaction();
+			SQLQuery query = session.createSQLQuery(hql);
+			List<Object[]> data = query.list();
+			for (Object[] object : data) {
+				outputRowBean = new SanPhamOutputRowBean();
+				outputRowBean.setIdSanPham(SMSComons.convertString(object[0]));
+				outputRowBean.setTenSP(SMSComons.convertString(object[1]));
+				outputRowBean.setIdCuaHang(SMSComons.convertString(object[2]));
+				outputRowBean.setIdLoaiSP(SMSComons.convertString(object[3]));
+				outputRowBean.setGiaMua(SMSComons.convertString(object[4]));
+				outputRowBean.setGiaBan(SMSComons.convertString(object[5]));
+				outputRowBean.setHinh((byte[]) object[6]);
+				outputRowBean.setMoTa(SMSComons.convertString(object[7]));
+				outputRowBean.setTrangThai(SMSComons.convertString(object[8]));
+				outputRowBean.setNgayTao(SMSComons.convertString(object[9]));
+				outputRowBean.setNgayChinhSua(SMSComons.convertString(object[10]));
+				outputRowBean.setSEQ(SMSComons.convertString(object[11]));
+				outputRowBean.setGiaBanKM(SMSComons.convertString(object[12]));
+				outputBean.getLst().add(outputRowBean);
+			}
+			tx.commit();
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		} finally {
+			session.flush();
+			session.clear();
+			session.close();
+		}
+		return outputBean;
+	}
+	
+	
 	public SanPhamOutputBean getProductByIdDKM(SanPhamInputBean inputBean){
 		Session session = HibernateUtil.getSessionDAO();
 		String hql = getSQLProductByIdDKM(inputBean.getPathJSP());
@@ -930,6 +970,28 @@ private String getSQLProductByNgayTao(String pathJSP,String ngayTao) {
 		sb.append("  ,GIA_BAN_KM                                   ");
 		sb.append("  FROM "+tableName+"          			");
 		sb.append("  WHERE SEQ IN (" + listSEQ + ")        ");
+		return sb.toString();
+	}
+	
+	private String getSQLProductByName(String pathJSP, String name) {
+		String tableName = pathJSP+"_PRODUCT";
+		StringBuffer sb = new StringBuffer();
+		sb.append("  SELECT                                 ");
+		sb.append("   ID_SP		                            ");
+		sb.append("  ,TEN_SP 	                            ");
+		sb.append("  ,ID_CUAHANG                            ");
+		sb.append("  ,ID_LOAI_SP                            ");
+		sb.append("  ,GIA_MUA 	                            ");
+		sb.append("  ,GIA_BAN 	                            ");
+		sb.append("  ,HINH                                  ");
+		sb.append("  ,MO_TA                                 ");
+		sb.append("  ,TRANG_THAI                            ");
+		sb.append("  ,NGAY_TAO 	                            ");
+		sb.append("  ,NGAY_CHINH_SUA                        ");
+		sb.append("  ,SEQ                                   ");
+		sb.append("  ,GIA_BAN_KM                                   ");
+		sb.append("  FROM "+tableName+"          			");
+		sb.append("  WHERE TEN_SP like '%" + name + "%'        ");
 		return sb.toString();
 	}
 	

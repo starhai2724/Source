@@ -227,4 +227,49 @@ public class LayoutController {
 		return "fashion/chiTietSP";
 	}
 	
+	@RequestMapping(value="/{path}/timKiem")
+	public String timKiem(@ModelAttribute("LayoutForm") LayoutForm form, @PathVariable("path") String path, HttpSession session){
+		
+		//get loai san pham
+		NhomSanPhamInputBean loaiSanPhamInputBean = new NhomSanPhamInputBean();  
+		loaiSanPhamInputBean.setPathJSP(path);
+		List<NhomSanPhamOutputBean> loaiSanPhamOutputBeans = NhomSanPhamDAO.intances.getNhomSP(loaiSanPhamInputBean);
+		RegisterProductCategoryFormRow productCategoryFormRow;
+		for(NhomSanPhamOutputBean loaiSanPhamOutputBean : loaiSanPhamOutputBeans){
+			productCategoryFormRow = new RegisterProductCategoryFormRow();
+			productCategoryFormRow.setIdProductCategory(loaiSanPhamOutputBean.getIdNhomSP());
+			productCategoryFormRow.setNameProductCategory(loaiSanPhamOutputBean.getTenNhomSP());
+			form.getLoaiSanPham().add(productCategoryFormRow);
+		}
+
+		SanPhamInputBean input = new SanPhamInputBean();
+		System.out.println("data tim kiem: " + form.getTimKiem_TenSP());
+		SanPhamOutputBean sanPhamOutputBean = CreateTableProductDAO.intances.getProductBysByNameProduct(path,form.getTimKiem_TenSP());
+		System.out.println("data tim kiem size : " + sanPhamOutputBean.getLst().size());
+		ProductFormRow productFormRow;
+		for(SanPhamOutputRowBean sanPhamOutputRowBean : sanPhamOutputBean.getLst()){
+			productFormRow = new ProductFormRow();
+			productFormRow.setSEQ(sanPhamOutputRowBean.getSEQ());
+			productFormRow.setIdSanPham(sanPhamOutputRowBean.getIdSanPham());
+			productFormRow.setTenSP(sanPhamOutputRowBean.getTenSP());
+			productFormRow.setTenLoaiSP(sanPhamOutputRowBean.getTenLoaiSP());
+			productFormRow.setGiaMua(sanPhamOutputRowBean.getGiaMua());
+			productFormRow.setGiaBanKM(sanPhamOutputRowBean.getGiaBanKM());
+			productFormRow.setGiaBan(sanPhamOutputRowBean.getGiaBan());
+			productFormRow.setNgayTao(sanPhamOutputRowBean.getNgayTao());
+			productFormRow.setNgayChinhSua(sanPhamOutputRowBean.getNgayChinhSua());
+			productFormRow.setMoTa(sanPhamOutputRowBean.getMoTa());
+			form.getProducts().add(productFormRow);
+		}
+		
+			form.setTimKiem_TenSP("");
+			form.setPathJSP(path);
+			form.setCartPrice("0");
+			form.setCartQuantity("0");
+		
+		form.setPathJSP(path);
+		
+		return PAGE_FASHION;
+	}
+	
 }

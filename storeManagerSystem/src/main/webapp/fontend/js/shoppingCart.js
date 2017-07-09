@@ -14,6 +14,10 @@ app.controller('ctrl', function($scope, $window) {
 		listProduct = "";
 	}
 	
+	$scope.btnTimKiem = function(){
+		timKiem($scope);
+	}
+	
 	$scope.btnPurchase = function(price, priceSaleOff, idSanPham){
 		purchase($scope, $window , price, priceSaleOff, idSanPham);
 	}
@@ -71,6 +75,13 @@ function purchase($scope,$window ,price, priceSaleOff, idSanPham){
 
 function chiTiet($scope, $window, idSanPham){
 	var url = "/storeManagerSystem/" + $scope.pathJSP +"/chiTietSP/" + idSanPham;
+	document.getElementById("LayoutForm").action = url;
+	document.getElementById("LayoutForm").method = "POST";
+	document.getElementById("LayoutForm").submit();
+}
+
+function timKiem($scope, $window, idSanPham){
+	var url = "/storeManagerSystem/" + $scope.pathJSP +"/timKiem";
 	document.getElementById("LayoutForm").action = url;
 	document.getElementById("LayoutForm").method = "POST";
 	document.getElementById("LayoutForm").submit();
