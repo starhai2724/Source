@@ -3,6 +3,7 @@
 	pageEncoding="UTF-8"%> 
  <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%> 
  <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> 
+ <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,7 +49,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="header-right">
 						<div class="cart box_1">
 							<a href="checkout2.html">
-								<h3> <span ng-model = "cartPrice" >{{cartPrice}}</span>(<span ng-model = "cartQuantity"  >{{cartQuantity}}</span>)<img src="/storeManagerSystem/view/fontend_index2/images/bag.png" alt=""></h3>
+								<h3> <span ng-model = "cartPrice" >{{cartPrice | number}} VNĐ</span>(<span ng-model = "cartQuantity"  >{{cartQuantity}}</span>)<img src="/storeManagerSystem/view/fontend_index2/images/bag.png" alt=""></h3>
 							</a>	
 							<p><a href="javascript:void(0)" ng-click="btnCart();" class="simpleCart_empty">Giỏ hàng</a></p>
 							<p style="color: red" class="simpleCart_empty">${LayoutForm.tenKhachHang}</p>
@@ -194,21 +195,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<!--San pham (S)  ----------------------------------------------------------------------------------------------------------------------------------------------->
 				<c:forEach var="items" items="${LayoutForm.products }">
 					<div class="col-md-4 product simpleCart_shelfItem text-center">
-						<a  href="<c:url value="/${LayoutForm.pathJSP }/chiTietSP/${items.SEQ}" />"><img src="/storeManagerSystem/myImage/imageDisplay/${items.SEQ}" alt="" /></a>
+						<a  href="<c:url value="/${LayoutForm.pathJSP }/chiTietSP/${items.SEQ}" />"><img style="height: 500px;width: 350px;" src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplay/${items.SEQ}" alt="" /></a>
 						<div class="mask">
 							<a href="<c:url value="/${LayoutForm.pathJSP }/chiTietSP/${items.SEQ}" />">Chi tiết</a>
 						</div>
-						<a class="product_name" href="single.html">${items.tenSP}</a>
+						<a class="product_name" href="javascript:void(0);">${items.tenSP}</a>
 						<p>
-						<a class="item_add" ng-click="btnPurchase('${items.giaBan}','${items.giaBanKM }' ,'${items.SEQ} ')"><i></i>
+						<a class="item_add" href="javascript:void(0);" ng-click="btnPurchase('${items.giaBan}','${items.giaBanKM }' ,'${items.SEQ} ')"><i></i>
 						<c:if test="${!empty items.giaBanKM }">
-							<strike class="item_price">${items.giaBan}</strike>
+							<strike class="item_price"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBan}" /> VNĐ</strike>
 						</c:if>
-						<c:if test="${empty items.giaBanKM }">chiTiet
-							<span class="item_price">${items.giaBan}</span>
+						<c:if test="${empty items.giaBanKM }">
+							<span class="item_price"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBan}" /> VNĐ</span>
 						</c:if>
 						<c:if test="${!empty items.giaBanKM }">
-							<span class="item_price">${items.giaBanKM}</span>
+							<span class="item_price"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBanKM}" /> VNĐ</span>
 						</c:if>
 						</a>
 						</p>

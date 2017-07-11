@@ -30,12 +30,10 @@ import com.sms.session.KhachHangSession;
 @Controller
 public class LayoutController {
 
-	public static final String PAGE_FASHION = "fashion/fashion";
 	public static final String PAGE_CART = "gioHang";
 	
 	@RequestMapping(value="/{path}")
 	public String init(@ModelAttribute("LayoutForm") LayoutForm form, @PathVariable("path") String path, HttpSession session){
-		ModelAndView modelAndView = new ModelAndView(PAGE_FASHION,"LayoutForm",form);
 		//check pathJSP
 		if(!LayoutDAO.intances.checkPathJSP(path)){
 			//quay ve trang login
@@ -85,7 +83,7 @@ public class LayoutController {
 			form.setPathJSP(path);
 			form.setCartPrice("0");
 			form.setCartQuantity("0");
-		return PAGE_FASHION;
+		return LayoutDAO.intances.getPageJSP(path);
 	}
 	
 	@RequestMapping(value="/{path}/gioHang/{list}")

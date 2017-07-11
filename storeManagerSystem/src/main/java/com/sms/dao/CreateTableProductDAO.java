@@ -98,6 +98,9 @@ public class CreateTableProductDAO {
 			query.setParameter(9, inputBean.getNgayTao());
 			query.setParameter(10, inputBean.getNgayChinhSua());
 			query.setParameter(11, (seq+1));
+			query.setParameter(12, inputBean.getHinhChiTiet1());
+			query.setParameter(13, inputBean.getHinhChiTiet2());
+			query.setParameter(14, inputBean.getHinhChiTiet3());
 			cnt = query.executeUpdate();
 			tx.commit();
 		} catch (Exception e) {
@@ -134,6 +137,10 @@ public class CreateTableProductDAO {
 			query.setParameter(11, inputBean.getGiaBanKM());
 			query.setParameter(12, inputBean.getId_DKM());
 			query.setParameter(13, (seq+1));
+			query.setParameter(14, inputBean.getHinhChiTiet1());
+			query.setParameter(15, inputBean.getHinhChiTiet2());
+			query.setParameter(16, inputBean.getHinhChiTiet3());
+
 			cnt = query.executeUpdate();
 			tx.commit();
 		} catch (Exception e) {
@@ -155,17 +162,29 @@ public class CreateTableProductDAO {
 		int cnt = 0; 
 		Transaction tx = session.beginTransaction();
 		//sql 
-		String hql = getSQLUpdate(inputBean.getPathJSP());
+		String hql = getSQLUpdate(inputBean);
+		int i = 0;
 		try {
 			SQLQuery query = session.createSQLQuery(hql);
-			query.setParameter(0, inputBean.getTenSP());
-			query.setParameter(1, inputBean.getIdLoaiSP());
-			query.setParameter(2, inputBean.getGiaMua());
-			query.setParameter(3, inputBean.getGiaBan());
-			query.setParameter(4, inputBean.getHinh());
-			query.setParameter(5, inputBean.getMoTa());
-			query.setParameter(6, inputBean.getNgayChinhSua());
-			query.setParameter(7, inputBean.getSEQ());
+			query.setParameter(i++, inputBean.getTenSP());
+			query.setParameter(i++, inputBean.getIdLoaiSP());
+			query.setParameter(i++, inputBean.getGiaMua());
+			query.setParameter(i++, inputBean.getGiaBan());
+			if(inputBean.getHinh() != null){
+				query.setParameter(i++, inputBean.getHinh());
+			}
+			query.setParameter(i++, inputBean.getMoTa());
+			query.setParameter(i++, inputBean.getNgayChinhSua());
+			if(inputBean.getHinhChiTiet1() != null && inputBean.getHinhChiTiet1().length > 0){
+				query.setParameter(i++, inputBean.getHinhChiTiet1());
+			}
+			if(inputBean.getHinhChiTiet2() != null && inputBean.getHinhChiTiet2().length > 0){
+				query.setParameter(i++, inputBean.getHinhChiTiet2());
+			}
+			if(inputBean.getHinhChiTiet3() != null && inputBean.getHinhChiTiet3().length > 0){
+				query.setParameter(i++, inputBean.getHinhChiTiet3());
+			}
+			query.setParameter(i++, inputBean.getSEQ());
 			cnt = query.executeUpdate();
 			tx.commit();
 		} catch (Exception e) {
@@ -304,6 +323,9 @@ public class CreateTableProductDAO {
 				outputRowBean.setNgayChinhSua(SMSComons.convertString(object[10]));
 				outputRowBean.setId_DKM(SMSComons.convertString(object[11]));
 				outputRowBean.setSEQ(SMSComons.convertString(object[12]));
+				outputRowBean.setHinhChiTiet1((byte[]) object[13]);
+				outputRowBean.setHinhChiTiet2((byte[]) object[14]);
+				outputRowBean.setHinhChiTiet3((byte[]) object[15]);
 				outputBean.getLst().add(outputRowBean);
 			}
 			tx.commit();
@@ -343,6 +365,9 @@ public class CreateTableProductDAO {
 				outputRowBean.setNgayChinhSua(SMSComons.convertString(object[10]));
 				outputRowBean.setId_DKM(SMSComons.convertString(object[11]));
 				outputRowBean.setSEQ(SMSComons.convertString(object[12]));
+				outputRowBean.setHinhChiTiet1((byte[]) object[13]);
+				outputRowBean.setHinhChiTiet2((byte[]) object[14]);
+				outputRowBean.setHinhChiTiet3((byte[]) object[15]);
 				lst.add(outputRowBean);
 			}
 			tx.commit();
@@ -388,6 +413,9 @@ public class CreateTableProductDAO {
 				outputRowBean.setNgayChinhSua(SMSComons.convertString(object[10]));
 				outputRowBean.setId_DKM(SMSComons.convertString(object[11]));
 				outputRowBean.setSEQ(SMSComons.convertString(object[12]));
+				outputRowBean.setHinhChiTiet1((byte[]) object[13]);
+				outputRowBean.setHinhChiTiet2((byte[]) object[14]);
+				outputRowBean.setHinhChiTiet3((byte[]) object[15]);
 				outputBean.getLst().add(outputRowBean);
 			}
 			tx.commit();
@@ -432,8 +460,12 @@ public class CreateTableProductDAO {
 				outputRowBean.setNgayChinhSua(SMSComons.convertString(object[10]));
 				outputRowBean.setSEQ(SMSComons.convertString(object[11]));
 				outputRowBean.setGiaBanKM(SMSComons.convertString(object[12]));
+				outputRowBean.setHinhChiTiet1((byte[]) object[13]);
+				outputRowBean.setHinhChiTiet2((byte[]) object[14]);
+				outputRowBean.setHinhChiTiet3((byte[]) object[15]);
 				outputBean.getLst().add(outputRowBean);
 			}
+
 			tx.commit();
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
@@ -508,8 +540,12 @@ public class CreateTableProductDAO {
 				outputRowBean.setNgayChinhSua(SMSComons.convertString(object[10]));
 				outputRowBean.setTenLoaiSP(SMSComons.convertString(object[11])+": "+SMSComons.convertString(object[12]));
 				outputRowBean.setSEQ(SMSComons.convertString(object[13]));
+				outputRowBean.setHinhChiTiet1((byte[]) object[14]);
+				outputRowBean.setHinhChiTiet2((byte[]) object[15]);
+				outputRowBean.setHinhChiTiet3((byte[]) object[16]);
 				outputBean.getLst().add(outputRowBean);
 			}
+
 			session.getTransaction().commit();
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
@@ -555,8 +591,12 @@ public class CreateTableProductDAO {
 				outputRowBean.setNgayChinhSua(SMSComons.convertString(object[11]));
 				outputRowBean.setTenLoaiSP(SMSComons.convertString(object[12]));
 				outputRowBean.setSEQ(SMSComons.convertString(object[13]));
+				outputRowBean.setHinhChiTiet1((byte[]) object[14]);
+				outputRowBean.setHinhChiTiet2((byte[]) object[15]);
+				outputRowBean.setHinhChiTiet3((byte[]) object[16]);
 				outputBean.getLst().add(outputRowBean);
 			}
+
 			session.getTransaction().commit();
 		} catch (HibernateException e) {
 			session.getTransaction().rollback();
@@ -588,6 +628,9 @@ public class CreateTableProductDAO {
 			for (Object[] object : data) {
 				outputBean.setId(SMSComons.convertString(object[0]));
 				outputBean.setHinh((byte[]) object[1]);
+				outputBean.setHinhChiTiet1((byte[]) object[2]);
+				outputBean.setHinhChiTiet2((byte[]) object[3]);
+				outputBean.setHinhChiTiet3((byte[]) object[4]);
 			}
 			tx.commit();
 		} catch (HibernateException e) {
@@ -625,6 +668,9 @@ public class CreateTableProductDAO {
 		sb.append("  		,TRANG_THAI VARCHAR(1)         ");
 		sb.append("  		,NGAY_TAO 	VARCHAR(8)           ");
 		sb.append("  		,NGAY_CHINH_SUA VARCHAR(8)     ");
+		sb.append("  		,CHITIET_1 		MEDIUMBLOB           		   ");
+		sb.append("  		,CHITIET_2 		MEDIUMBLOB           		   ");
+		sb.append("  		,CHITIET_3 		MEDIUMBLOB           		   ");
 		sb.append(")");
 		return sb.toString();
 	}
@@ -660,6 +706,9 @@ public class CreateTableProductDAO {
 		sb.append("  		,NGAY_TAO 	       ");
 		sb.append("  		,NGAY_CHINH_SUA     ");
 		sb.append("  		,SEQ     			");
+		sb.append("  		,CHITIET_1     			");
+		sb.append("  		,CHITIET_2     			");
+		sb.append("  		,CHITIET_3     			");
 		sb.append("  		)                  ");
 		sb.append("  		VALUES (           ");
 		sb.append("  		  ?                ");
@@ -674,10 +723,13 @@ public class CreateTableProductDAO {
 		sb.append("  		 ,?                ");
 		sb.append("  		 ,?                ");
 		sb.append("  		 ,?                ");
+		sb.append("  		 ,?                ");
+		sb.append("  		 ,?                ");
+		sb.append("  		 ,?                ");
 		sb.append("  		)                  ");
 		return sb.toString();
 	}	
-	
+
 	private String getSQLInsertSPKM(String pathJSP) {
 		StringBuffer sb = new StringBuffer();
 		String tableName = pathJSP+"_PRODUCT";
@@ -696,9 +748,15 @@ public class CreateTableProductDAO {
 		sb.append("  		,GIA_BAN_KM 	       ");
 		sb.append("  		,ID_DKM     ");
 		sb.append("  		,SEQ     ");
+		sb.append("  		,CHITIET_1     ");
+		sb.append("  		,CHITIET_2     ");
+		sb.append("  		,CHITIET_3     ");
 		sb.append("  		)                  ");
 		sb.append("  		VALUES (           ");
 		sb.append("  		  ?                ");
+		sb.append("  		 ,?                ");
+		sb.append("  		 ,?                ");
+		sb.append("  		 ,?                ");
 		sb.append("  		 ,?                ");
 		sb.append("  		 ,?                ");
 		sb.append("  		 ,?                ");
@@ -720,17 +778,28 @@ public class CreateTableProductDAO {
 	 * update  product
 	 * @return
 	 */
-	private String getSQLUpdate(String pathJSP) {
+	private String getSQLUpdate(SanPhamInputBean inputBean) {
 		StringBuffer sb = new StringBuffer();
-		String tableName = pathJSP+"_PRODUCT";
+		String tableName = inputBean.getPathJSP()+"_PRODUCT";
 		sb.append("  UPDATE  "+tableName+"     ");
 		sb.append("  		SET TEN_SP = ?	        ");
 		sb.append("  		,ID_LOAI_SP = ?         ");
 		sb.append("  		,GIA_MUA 	= ?       	");
 		sb.append("  		,GIA_BAN 	= ?      	 ");
-		sb.append("  		,HINH       = ?  		");
+		if(inputBean.getHinh() != null  && inputBean.getHinh().length > 0){
+			sb.append("  		,HINH       = ?  		");
+		}
 		sb.append("  		,MO_TA      = ?   		");
 		sb.append("  		,NGAY_CHINH_SUA  = ?   	");
+		if(inputBean.getHinhChiTiet1() != null && inputBean.getHinhChiTiet1().length > 0){
+			sb.append("  		,CHITIET_1  = ?   	");
+		}
+		if(inputBean.getHinhChiTiet2() != null && inputBean.getHinhChiTiet2().length > 0){
+			sb.append("  		,CHITIET_2  = ?   	");
+		}
+		if(inputBean.getHinhChiTiet3() != null && inputBean.getHinhChiTiet3().length > 0){
+			sb.append("  		,CHITIET_3  = ?   	");
+		}
 		sb.append("  		 WHERE SEQ = ?        ");
 		sb.append("  		 AND TRANG_THAI = '0'   ");
 		return sb.toString();
@@ -758,6 +827,9 @@ public class CreateTableProductDAO {
 		sb.append("  ,loaiSP.TEN_LOAI_SP                        	");
 		sb.append("  ,NSP.TEN_NHOM_SP                        	");
 		sb.append("  ,SEQ                        	");
+		sb.append("  ,CHITIET_1                                ");
+		sb.append("  ,CHITIET_2                                ");
+		sb.append("  ,CHITIET_3                                ");
 		sb.append("  FROM "+tableName+" product         	");
 		sb.append("  INNER JOIN "+pathJSP+"_loai_sp loaiSP  ");
 		sb.append("  ON product.ID_LOAI_SP = loaiSP.ID_LOAI_SP          			");
@@ -767,7 +839,7 @@ public class CreateTableProductDAO {
 		
 		return sb.toString();
 	}
-	
+
 	/**
 	 * getSQlMaxIdStoreOwner
 	 * @return
@@ -805,6 +877,9 @@ public class CreateTableProductDAO {
 		sb.append("     					product.NGAY_CHINH_SUA,                                                        ");
 		sb.append("     					loaiSP.TEN_LOAI_SP,                                                             ");
 		sb.append("     					product.SEQ                                                             ");
+		sb.append("  						,product.CHITIET_1                                ");
+		sb.append("  						,product.CHITIET_2                                ");
+		sb.append("  						,product.CHITIET_3                                ");
 		sb.append("     		FROM                                                                                       ");
 		sb.append("     			"+tableName+" product                                                       ");
 		sb.append("     		LEFT JOIN "+pathJSP+"_loai_sp loaiSP ON product.ID_LOAI_SP = loaiSP.ID_LOAI_SP        ");
@@ -815,6 +890,7 @@ public class CreateTableProductDAO {
 		
 		return sb.toString();
 	}
+
 	
 	/**
 	 * get Image
@@ -826,11 +902,14 @@ public class CreateTableProductDAO {
 		sb.append("  SELECT                                 ");
 		sb.append("   ID_SP		                            ");
 		sb.append("  ,HINH                                  ");
+		sb.append("  ,CHITIET_1                                ");
+		sb.append("  ,CHITIET_2                                ");
+		sb.append("  ,CHITIET_3                                ");
 		sb.append("  FROM "+tableName+" product         	");
 		sb.append("  WHERE  product.SEQ = ?       			");
 		return sb.toString();
 	}
-	
+
 	
 	/**
 	 * getSQlMaxIdStoreOwner
@@ -853,11 +932,13 @@ public class CreateTableProductDAO {
 		sb.append("  ,NGAY_CHINH_SUA                        ");
 		sb.append("  ,ID_DKM                                ");
 		sb.append("  ,SEQ                                ");
+		sb.append("  ,CHITIET_1                                ");
+		sb.append("  ,CHITIET_2                                ");
+		sb.append("  ,CHITIET_3                                ");
 		sb.append("  FROM "+tableName+"          			");
 		sb.append("  WHERE SEQ = ?          			");
 		return sb.toString();
 	}
-	
 private String getSQLProductByNgayTao(String pathJSP,String ngayTao) {
 		String tableName = pathJSP+"_PRODUCT";
 		StringBuffer sb = new StringBuffer();
@@ -875,6 +956,9 @@ private String getSQLProductByNgayTao(String pathJSP,String ngayTao) {
 		sb.append("  ,NGAY_CHINH_SUA                        ");
 		sb.append("  ,ID_DKM                                ");
 		sb.append("  ,SEQ                                ");
+		sb.append("  ,CHITIET_1                                ");
+		sb.append("  ,CHITIET_2                                ");
+		sb.append("  ,CHITIET_3                                ");
 		sb.append("  FROM "+tableName+"          			");
 		sb.append("  WHERE NGAY_TAO like '%" + ngayTao + "%'");
 		return sb.toString();
@@ -901,12 +985,15 @@ private String getSQLProductByNgayTao(String pathJSP,String ngayTao) {
 		sb.append("  ,NGAY_CHINH_SUA                        ");
 		sb.append("  ,ID_DKM                                ");
 		sb.append("  ,SEQ                                ");
+		sb.append("  ,CHITIET_1                                ");
+		sb.append("  ,CHITIET_2                                ");
+		sb.append("  ,CHITIET_3                                ");
 		sb.append("  FROM "+tableName+"          			");
 		sb.append("  WHERE ID_SP = ?          			");
 		sb.append("  GROUP BY  ID_SP          			");
 		return sb.toString();
 	}
-	
+
 	/**
 	 * getSQlMaxIdStoreOwner
 	 * @return
@@ -928,11 +1015,14 @@ private String getSQLProductByNgayTao(String pathJSP,String ngayTao) {
 		sb.append("  ,NGAY_CHINH_SUA                        ");
 		sb.append("  ,SEQ                                   ");
 		sb.append("  ,GIA_BAN_KM                                   ");
+		sb.append("  ,CHITIET_1                                ");
+		sb.append("  ,CHITIET_2                                ");
+		sb.append("  ,CHITIET_3                                ");
 		sb.append("  FROM "+tableName+"          			");
 		sb.append("  WHERE SEQ IN (" + listSEQ + ")        ");
 		return sb.toString();
 	}
-	
+
 	private String getSQLProductByIdDKM(String pathJSP) {
 		String tableName = pathJSP+"_PRODUCT";
 		StringBuffer sb = new StringBuffer();

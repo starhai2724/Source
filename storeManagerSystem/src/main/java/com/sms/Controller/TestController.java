@@ -84,7 +84,7 @@ public class TestController {
 	}
 	@RequestMapping(value ="/test_6", method = RequestMethod.GET)	
 	public String thongKe(){
-		return "template_2/runecom22.runtime.vn/trang-chu";
+		return "template_2/trang-chu";
 	}
 	
 }

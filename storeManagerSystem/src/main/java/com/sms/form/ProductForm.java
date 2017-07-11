@@ -31,6 +31,12 @@ public class ProductForm extends AbstractForm{
 	private String giaBanKM;
 
 	private File  hinh;
+	
+	private File  hinhChiTiet1;
+	
+	private File  hinhChiTiet2;
+	
+	private File  hinhChiTiet3;
 
 	private String moTa;
 	
@@ -42,6 +48,31 @@ public class ProductForm extends AbstractForm{
 	
 	private String flagUpdate;
 	
+
+	
+	public File getHinhChiTiet1() {
+		return hinhChiTiet1;
+	}
+
+	public void setHinhChiTiet1(File hinhChiTiet1) {
+		this.hinhChiTiet1 = hinhChiTiet1;
+	}
+
+	public File getHinhChiTiet2() {
+		return hinhChiTiet2;
+	}
+
+	public void setHinhChiTiet2(File hinhChiTiet2) {
+		this.hinhChiTiet2 = hinhChiTiet2;
+	}
+
+	public File getHinhChiTiet3() {
+		return hinhChiTiet3;
+	}
+
+	public void setHinhChiTiet3(File hinhChiTiet3) {
+		this.hinhChiTiet3 = hinhChiTiet3;
+	}
 
 	public String getSEQ() {
 		return SEQ;

@@ -1,5 +1,7 @@
 package com.sms.input;
 
+import java.io.File;
+
 public class SanPhamInputBean {
 
 	private String pathJSP;
@@ -19,6 +21,12 @@ public class SanPhamInputBean {
 	private String giaBan;
 
 	private byte[] hinh;
+	
+	private byte[]  hinhChiTiet1;
+	
+	private byte[]  hinhChiTiet2;
+	
+	private byte[]  hinhChiTiet3;
 
 	private String moTa;
 
@@ -37,6 +45,30 @@ public class SanPhamInputBean {
 	
 
 	
+	public byte[] getHinhChiTiet1() {
+		return hinhChiTiet1;
+	}
+
+	public void setHinhChiTiet1(byte[] hinhChiTiet1) {
+		this.hinhChiTiet1 = hinhChiTiet1;
+	}
+
+	public byte[] getHinhChiTiet2() {
+		return hinhChiTiet2;
+	}
+
+	public void setHinhChiTiet2(byte[] hinhChiTiet2) {
+		this.hinhChiTiet2 = hinhChiTiet2;
+	}
+
+	public byte[] getHinhChiTiet3() {
+		return hinhChiTiet3;
+	}
+
+	public void setHinhChiTiet3(byte[] hinhChiTiet3) {
+		this.hinhChiTiet3 = hinhChiTiet3;
+	}
+
 	public String getSEQ() {
 		return SEQ;
 	}

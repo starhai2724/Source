@@ -2,7 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%> 
  <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%> 
- <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> 
+ <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+ <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,7 +49,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="header-right">
 						<div class="cart box_1">
 							<a href="checkout2.html">
-								<h3> <span ng-model = "cartPrice" >{{cartPrice}}</span>(<span ng-model = "cartQuantity"  >{{cartQuantity}}</span>)<img src="/storeManagerSystem/view/fontend_index2/images/bag.png" alt=""></h3>
+								<h3> <span ng-model = "cartPrice" >{{cartPrice | number}}</span>(<span ng-model = "cartQuantity"  >{{cartQuantity}}</span>)<img src="/storeManagerSystem/view/fontend_index2/images/bag.png" alt=""></h3>
 							</a>	
 							<p><a ng-click="btnCart();" class="simpleCart_empty">Giỏ hàng</a></p>
 							<p><a ng-click="btnCart();" class="simpleCart_empty">Thanh Toán</a></p>
@@ -182,32 +183,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		                                    <tbody>
 										      <c:forEach var="items" items="${LayoutForm.products }">
 										      <tr id="sanPham${items.SEQ }">
-										      		<td align="center" style="widows: 80px"><img style="height: 80px;width: 70px;" src="/storeManagerSystem/myImage/imageDisplay/${items.SEQ}" alt="" /></td>
+										      		<td align="center" style="widows: 80px"><img style="height: 80px;width: 70px;" src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplay/${items.SEQ}" alt="" /></td>
 													<td>${items.tenSP}</td>
 													<td style="text-align: center;"><span ng-model="soLuong[${items.SEQ }]" ng-init="soLuong[${items.SEQ }] ='${items.soLuong }'">{{soLuong[${items.SEQ }]}}</span></td>
 													<td>
 														<c:if test="${!empty items.giaBanKM }">
-														<span class="item_price">${items.giaBanKM}</span>
+														<span class="item_price"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBanKM}" /> VNĐ</span>
 														</c:if>
 														<c:if test="${empty items.giaBanKM }">
-														<span class="item_price">${items.giaBan}</span>
+														<span class="item_price"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBan}" /> VNĐ</span>
 														</c:if>	
 													</td>
 													<td style="text-align: center;padding-top: 20px"  ><span style="font-size: 30px" class="glyphicon glyphicon-trash" ng-click="btnRemove('${items.SEQ }', '${items.giaBan }', '${items.giaBanKM }')" data-toggle="tooltip" data-original-title="Xóa"></span></td>
-													<td style="text-align: right;" ng-model="thanhTien[${items.SEQ }]" ng-init="thanhTien[${items.SEQ }] ='${items.thanhTien }'">{{thanhTien[${items.SEQ }]}}</td>		
+													<td style="text-align: right;" ng-model="thanhTien[${items.SEQ }]" ng-init="thanhTien[${items.SEQ }] ='${items.thanhTien }'">{{thanhTien[${items.SEQ }] | number}} VNĐ</td>		
 												</tr>
 											</c:forEach>
 												<tr>
 										      		<td colspan="5" style="text-align: right;font-weight: bold">Tổng đơn hàng</td>
-													<td style="text-align: right;" ng-model="tongDonHang" ng-init="tongDonHang = '${LayoutForm.tongDonHang}'">{{tongDonHang}}</td>
+													<td style="text-align: right;" ng-model="tongDonHang" ng-init="tongDonHang = '${LayoutForm.tongDonHang}'">{{tongDonHang | number}} VNĐ</td>
 												</tr>
 												<tr>
 										      		<td colspan="5" style="text-align: right;font-weight: bold">Tồng tiền giảm giá</td>
-													<td style="text-align: right;" ng-model="tongTienGiamGia" ng-init="tongTienGiamGia = '${LayoutForm.tongTienGiamGia}'">{{tongTienGiamGia}}</td>
+													<td style="text-align: right;" ng-model="tongTienGiamGia" ng-init="tongTienGiamGia = '${LayoutForm.tongTienGiamGia}'">{{tongTienGiamGia | number}} VNĐ</td>
 												</tr>
 												<tr>
 										      		<td colspan="5" style="text-align: right;font-weight: bold">Tổng thành tiền</td>
-													<td style="text-align: right;" ng-model="tongThanhTien" ng-init="tongThanhTien = '${LayoutForm.tongThanhTien}'">{{tongThanhTien}}</td>
+													<td style="text-align: right;" ng-model="tongThanhTien" ng-init="tongThanhTien = '${LayoutForm.tongThanhTien}'">{{tongThanhTien | number}} VNĐ</td>
 												</tr>
 												<tr>
 										      		<td colspan="5" style="text-align: right;font-weight: bold"></td>

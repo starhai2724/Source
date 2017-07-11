@@ -61,20 +61,33 @@
 		<div class="row">
 			<div class="col-sm-4">
 				<div class="form-group">
-			        <label>File input</label>
-			        <div class="form-group">
-                        <%-- <form:input type="file" path="hinh" /> --%>
-                        <input type="file" name="file"/>  
-                    </div>
-    			</div>
-			</div>
-			<div class="col-sm-4">
-				<div class="form-group">
 					<label>Loại sản phẩm</label> 
 					<form:select class="form-control" path="idLoaiSP">
 					    <form:options items="${ProductForm.lstCategory}" />
 					</form:select>
 				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="form-group">
+			        <label>Hinh Anh</label>
+			        <div class="form-group">
+                        <input type="file" name="file"/>  
+                    </div>
+			        <label>Chi tiết 1</label>
+			        <div class="form-group">
+                        <input type="file" name="file_1"/>  
+                    </div>
+			        <label>Chi tiết 2</label>
+			        <div class="form-group">
+                        <input type="file" name="file_2"/>  
+                    </div>
+			        <label>Chi tiết 3</label>
+			        <div class="form-group">
+                        <input type="file" name="file_3"/>  
+                    </div>
+    			</div>
 			</div>
 		</div>
 		<div class="row">
