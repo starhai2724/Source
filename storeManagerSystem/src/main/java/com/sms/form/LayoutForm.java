@@ -15,6 +15,8 @@ public class LayoutForm extends AbstractForm {
 	private String soDienThoai;
 
 	private String diaChi;
+	
+	private String timKiem_TenSP;
 
 	private List<RegisterProductCategoryFormRow> loaiSanPham = new ArrayList<>();
 
@@ -54,6 +56,14 @@ public class LayoutForm extends AbstractForm {
 	
 	public String getSdtKhachHang() {
 		return sdtKhachHang;
+	}
+
+	public String getTimKiem_TenSP() {
+		return timKiem_TenSP;
+	}
+
+	public void setTimKiem_TenSP(String timKiem_TenSP) {
+		this.timKiem_TenSP = timKiem_TenSP;
 	}
 
 	public String getHoTenKhachHang() {

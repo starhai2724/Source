@@ -80,8 +80,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="join">
 					<div class="sub-left-right">
 						<form>
-							<input type="text" value="Enter Your Email Here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Your Email Here';}" />
-							<input type="submit" value="SUBSCRIBE" />
+							<input style="width: 400px" type="text" value="Nhập sản phẩm muốn tìm kiếm" path="timKiem_TenSP"  name="timKiem_TenSP" ng-model = "timKiem_TenSP"  ng-init ="timKiem_TenSP = '${LayoutForm.timKiem_TenSP}'" />
+							<input style="width: 150px" type="submit" value="Tìm Kiếm" ng-click ="btnTimKiem()"/>
 						</form>
 					</div>
 					<div class="clearfix"> </div>
