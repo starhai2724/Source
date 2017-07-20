@@ -15,6 +15,7 @@ import com.sms.OutputRows.SanPhamOutputRowBean;
 import com.sms.common.SMSComons;
 import com.sms.common.SystemCommon;
 import com.sms.dao.CreateTableProductDAO;
+import com.sms.dao.DangKiWebDAO;
 import com.sms.dao.DotKhuyenMaiDAO;
 import com.sms.dao.LayoutDAO;
 import com.sms.dao.NhomSanPhamDAO;
@@ -23,6 +24,7 @@ import com.sms.formRows.ProductFormRow;
 import com.sms.formRows.RegisterProductCategoryFormRow;
 import com.sms.input.NhomSanPhamInputBean;
 import com.sms.input.SanPhamInputBean;
+import com.sms.output.DangKiWebOutputBean;
 import com.sms.output.NhomSanPhamOutputBean;
 import com.sms.output.SanPhamOutputBean;
 import com.sms.session.KhachHangSession;
@@ -83,6 +85,12 @@ public class LayoutController {
 			form.setPathJSP(path);
 			form.setCartPrice("0");
 			form.setCartQuantity("0");
+			
+			DangKiWebOutputBean output = DangKiWebDAO.intances.getDataByPathJSP(path);
+			form.setSoDienThoai(output.getSdt());
+			form.setDiaChi(output.getDiaChi());
+			form.setTenCuaHang(output.getTenWebSite());
+			
 		return LayoutDAO.intances.getPageJSP(path);
 	}
 	
@@ -267,7 +275,7 @@ public class LayoutController {
 		
 		form.setPathJSP(path);
 		
-		return PAGE_FASHION;
+		return PAGE_CART;
 	}
 	
 }

@@ -6,8 +6,8 @@ app.controller('ctrl', function($scope, $window) {
 	$scope.dkGiaoHangFree_err = "";
 	
 	
-	$scope.btnUpdate = function(id){
-		update($scope,$window, id);
+	$scope.btnUpdate = function(){
+		update($scope);
 	}
 	
 	
@@ -33,7 +33,7 @@ function update($scope) {
 	
 	if (true == valid) {
 		if(confirm("Bạn có muốn cập nhật?")){
-			document.getElementById("DangKiWebForm").action = "/storeManagerSystem/thongTinChuaHang/update";
+			document.getElementById("DangKiWebForm").action = "/storeManagerSystem/thongTinCuaHang/update";
 			document.getElementById("DangKiWebForm").method = "POST";
 			document.getElementById("DangKiWebForm").submit();
 		}

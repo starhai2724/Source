@@ -39,10 +39,10 @@
             <div class="row">
                 <div class="col-md-12">
                     <ul class="nav navbar-nav topmenu-contact">
-                        <li><i class="fa fa-phone"></i>Hotline:0908 77 00 95</li>
+                        <li><i class="fa fa-phone"></i>Hotline: ${LayoutForm.soDienThoai}</li>
                     </ul>
                         <ul class="nav navbar-nav navbar-right topmenu  hidden-xs hidden-sm">
-                            <li class="hotline"><a href="#"><i class="fa fa-phone"></i>Hotline:0908 77 00 95</a></li>
+                            <li class="hotline"><a href="#"><i class="fa fa-phone"></i>Hotline: ${LayoutForm.soDienThoai}</a></li>
                             <li class="order-cart"><a href="gio-hang.html"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a></li>
                             <li class="account-login"><a href="/storeManagerSystem/${LayoutForm.pathJSP }/dangNhap"></i>Đăng nhập </a></li>
                             <li class="account-register"><a href="/storeManagerSystem/${LayoutForm.pathJSP }/dangkitaikhoan"><i class="fa fa-key"></i>Đăng ký </a></li>
@@ -348,23 +348,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="gioi-thieu.html">
-                                Lĩnh vực hoạt động
-                            </a>
-                        </li>
-                        <li>
                             <a href="content/hoi-dap.html">
                                 Hỏi đ&#225;p
-                            </a>
-                        </li>
-                        <li>
-                            <a href="content/quy-che-hoat-dong.html">
-                                Quy chế hoạt động
-                            </a>
-                        </li>
-                        <li>
-                            <a href="content/tuyen-dung.html">
-                                Tuyển dũng
                             </a>
                         </li>
                 </ul>
@@ -382,23 +367,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="content/quy-dinh-doi-tra.html">
-                                Quy định đổi trả
-                            </a>
-                        </li>
-                        <li>
                             <a href="content/chinh-sach-ban-hang.html">
-                                Ch&#237;nh s&#225;ch b&#225;n h&#224;ng
-                            </a>
-                        </li>
-                        <li>
-                            <a href="content/chinh-sach-bao-mat.html">
-                                Ch&#237;nh s&#225;ch bảo mật
-                            </a>
-                        </li>
-                        <li>
-                            <a href="content/quy-dinh-thao-luan.html">
-                                Quy định thảo luận
+                                Hướng dẫn đặt hàng
                             </a>
                         </li>
                 </ul>
@@ -406,18 +376,14 @@
                 <div class="footer-box box-address col-md-3 col-sm-12 col-xs-12">
                     <div class="item">
                         <h3>
-                            Thông tin công ty
+                            Thông tin cửa hàng
                         </h3>
                         <div class="box-address-content">
-                            <b>C&#212;NG TY TNHH PH&#193;T TRIỂN C&#212;NG NGHỆ RUNTIME</b>
-                            <p><i class="fa fa-map-marker"></i> 5/12A Quang Trung, P.14, Q.G&#242; Vấp, Tp.HCM</p>
-                            <p>
-                                <i class="fa fa-envelope"></i>
-                                <a href="mailto:info@runtime.vn">info@runtime.vn</a>
-                            </p>
+                            <b>${LayoutForm.tenCuaHang}</b>
+                            <p><i class="fa fa-map-marker"></i> ${LayoutForm.diaChi}</p>
                             <p>
                                 <i class="fa fa-phone"></i>
-                                Phone: (08) 66 85 85 38
+                                Số điện thoại: ${LayoutForm.soDienThoai}
                             </p>
                         </div>
                     </div>

@@ -163,12 +163,12 @@ public class DangKiWebDAO {
 			for (Object[] object : data) {
 				outPut = new DangKiWebOutputBean();
 				outPut.setIdCuaHang(SMSComons.convertString(object[0]));
-				outPut.setHinhHeader((byte[]) object[1]);
-				outPut.setHinhHeader1((byte[]) object[2]);
-				outPut.setHinhHeader2((byte[]) object[3]);
-				outPut.setHinhHeader3((byte[]) object[4]);
-				outPut.setHinhHeader4((byte[]) object[5]);
-				outPut.setHinhHeader5((byte[]) object[6]);
+				outPut.setHinh((byte[]) object[1]);
+				outPut.setHinh1((byte[]) object[2]);
+				outPut.setHinh2((byte[]) object[3]);
+				outPut.setHinh3((byte[]) object[4]);
+				outPut.setHinh4((byte[]) object[5]);
+				outPut.setHinh5((byte[]) object[6]);
 				outPut.setDiaChi(SMSComons.convertString(object[7]));
 				outPut.setLoaiKinhDoanh(SMSComons.convertString(object[8]));
 				outPut.setEmail(SMSComons.convertString(object[9]));
@@ -255,20 +255,20 @@ public class DangKiWebDAO {
 		Transaction tx = session.beginTransaction();
 		//sql 
 		String hql = getSQLUpdate();
-		System.out.println("getPathJSP: " +inputBean.getPathJSP());
+		
 		try {
 			SQLQuery query = session.createSQLQuery(hql);
 			query.setParameter(0, inputBean.getTenWebSite());
 			query.setParameter(1, inputBean.getDkGiaoHangFree());
 			query.setParameter(2, inputBean.getSdt());
 			query.setParameter(3, inputBean.getEmail());
-			query.setParameter(4, inputBean.getHinhHeader());
-			query.setParameter(6, inputBean.getHinhHeader1());
-			query.setParameter(7, inputBean.getHinhHeader2());
-			query.setParameter(8, inputBean.getHinhHeader3());
-			query.setParameter(9, inputBean.getHinhHeader4());
-			query.setParameter(10, inputBean.getHinhHeader5());
-			query.setParameter(11, inputBean.getPathJSP());
+			query.setParameter(4, inputBean.getDiaChi());
+			query.setParameter(5, inputBean.getHinh1());
+			query.setParameter(6, inputBean.getHinh2());
+			query.setParameter(7, inputBean.getHinh3());
+			query.setParameter(8, inputBean.getHinh4());
+			query.setParameter(9, inputBean.getHinh5());
+			query.setParameter(10, inputBean.getPathJSP());
 			cnt = query.executeUpdate();
 			tx.commit();
 		} catch (Exception e) {
@@ -405,7 +405,6 @@ public class DangKiWebDAO {
 		sb.append("  		,TELEPHONE 			= ?       	");
 		sb.append("  		,EMAIL 				= ?      	");
 		sb.append("  		,ADDRESS       		= ?  		");
-		sb.append("  		,IMAGEHEADER    = ?   	");
 		sb.append("  		,IMAGEHEADER1   = ?     ");
 		sb.append("  		,IMAGEHEADER2  	= ?   	");
 		sb.append("  		,IMAGEHEADER3  	= ?   	");
@@ -413,6 +412,7 @@ public class DangKiWebDAO {
 		sb.append("  		,IMAGEHEADER5  	= ?   	");
 		sb.append("  		 WHERE PATHJSP  = ?        ");
 		return sb.toString();
+
 	}
 	
 	
