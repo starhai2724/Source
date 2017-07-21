@@ -215,39 +215,41 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		 <div class="footer_top">
 			<div class="span_of_4">
 				<div class="col-md-3 span1_of_4">
-					<h4>Shop</h4>
+					<h4>GiỚI THIỆU</h4>
 					<ul class="f_nav">
-						<li><a href="#">new arrivals</a></li>
-						<li><a href="#">men</a></li>
-						<li><a href="#">sale</a></li>
-						<li><a href="#">style videos</a></li>
+						<li><a href="#">Về chúng tôi</a></li>
+						<li><a href="#">Hỏi đáp</a></li>
 					</ul>	
 				</div>
 				<div class="col-md-3 span1_of_4">
-					<h4>help</h4>
+					<h4>TRỢ GIÚP</h4>
 					<ul class="f_nav">
-						<li><a href="#">frequently asked  questions</a></li>
-						<li><a href="#">kids</a></li>
-						<li><a href="#">brands</a></li>
+						<li><a href="#">Hướng dẫn thanh toán</a></li>
+						<li><a href="#">Hướng dẫn đặt hàng</a></li>
 					</ul>	
 				</div>
 				<div class="col-md-3 span1_of_4">
-					<h4>account</h4>
+					<h4>THÔNG TIN CỬA HÀNG</h4>
 					<ul class="f_nav">
-						<li><a href="account.html">login</a></li>
-						<li><a href="#">brands</a></li>
-						<li><a href="#">create wishlist</a></li>
+						<li><a href="account.html">${LayoutForm.tenCuaHang}</a></li>
+						<li><a href="#">${LayoutForm.diaChi}</a></li>
+						<li><a href="#">Số điện thoại: ${LayoutForm.soDienThoai}</a></li>
 					</ul>				
 				</div>
 				<div class="col-md-3 span1_of_4">
-					<h4>popular</h4>
-					<ul class="f_nav">
-						<li><a href="#">new arrivals</a></li>
-						<li><a href="#">men</a></li>
-						<li><a href="#">style videos</a></li>
-						<li><a href="#">login</a></li>
-						<li><a href="#">brands</a></li>
-					</ul>			
+					<h4>FACEBOOK</h4>
+                       <div class="fb-like-box" data-href="https://www.facebook.com/runtime.vn" data-width="289"
+                             data-height="190" data-colorscheme="dark" data-show-faces="true" data-header="false"
+                             data-stream="false" data-show-border="false">
+                        </div>
+                        <div class="social-icon">
+                            <ul>
+                                <li><a target="_blank"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="https://www.facebook.com/runtime.vn" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                <li><a target="_blank"><i class="fa fa-youtube"></i></a></li>
+                                <li><a target="_blank"><i class="fa fa-twitter "></i></a></li>
+                            </ul>
+                        </div>		
 				</div>
 				<div class="clearfix"></div>
 				</div>

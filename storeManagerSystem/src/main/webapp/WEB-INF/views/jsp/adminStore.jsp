@@ -77,7 +77,12 @@
           </li>
           <li>
             <a href="/storeManagerSystem/dotKhuyenMai/init"><i class="fa fa-bar-chart-o fa-fw"></i> Đợt khuyến mãi</a>
+          </li>
+          <li>
             <a href="/storeManagerSystem/thongKe/init"><i class="fa fa-bar-chart-o fa-fw"></i> Thống kê</a>
+          </li>
+          <li>
+            <a href="/storeManagerSystem/thongTinCuaHang/init"><i class="fa fa-bar-chart-o fa-fw"></i> Thông tin Cửa Hàng</a>
           </li>
         </ul>
       </div>

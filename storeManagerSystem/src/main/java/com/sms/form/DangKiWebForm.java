@@ -27,12 +27,12 @@ public class DangKiWebForm extends AbstractForm {
 	
 	private String dkGiaoHangFree;
 	
-	private byte[]  hinhHeader;
-	private byte[]  hinhHeader1;
-	private byte[]  hinhHeader2;
-	private byte[]  hinhHeader3;
-	private byte[]  hinhHeader4;
-	private byte[]  hinhHeader5;
+	private byte[]  hinh;
+	private byte[]  file_1;
+	private byte[]  file_2;
+	private byte[]  file_3;
+	private byte[]  file_4;
+	private byte[]  file_5;
 	
 	private List<LoaiKinhDoanhForm> lstLoaiKinhDoanh = new ArrayList<>();
 
@@ -124,52 +124,54 @@ public class DangKiWebForm extends AbstractForm {
 		this.dkGiaoHangFree = dkGiaoHangFree;
 	}
 
-	public byte[] getHinhHeader() {
-		return hinhHeader;
+	public byte[] getHinh() {
+		return hinh;
 	}
 
-	public void setHinhHeader(byte[] hinhHeader) {
-		this.hinhHeader = hinhHeader;
+	public void setHinh(byte[] hinh) {
+		this.hinh = hinh;
 	}
 
-	public byte[] getHinhHeader1() {
-		return hinhHeader1;
+	
+
+	public byte[] getFile_1() {
+		return file_1;
 	}
 
-	public void setHinhHeader1(byte[] hinhHeader1) {
-		this.hinhHeader1 = hinhHeader1;
+	public void setFile_1(byte[] file_1) {
+		this.file_1 = file_1;
 	}
 
-	public byte[] getHinhHeader2() {
-		return hinhHeader2;
+	public byte[] getFile_2() {
+		return file_2;
 	}
 
-	public void setHinhHeader2(byte[] hinhHeader2) {
-		this.hinhHeader2 = hinhHeader2;
+	public void setFile_2(byte[] file_2) {
+		this.file_2 = file_2;
 	}
 
-	public byte[] getHinhHeader3() {
-		return hinhHeader3;
+	public byte[] getFile_3() {
+		return file_3;
 	}
 
-	public void setHinhHeader3(byte[] hinhHeader3) {
-		this.hinhHeader3 = hinhHeader3;
+	public void setFile_3(byte[] file_3) {
+		this.file_3 = file_3;
 	}
 
-	public byte[] getHinhHeader4() {
-		return hinhHeader4;
+	public byte[] getFile_4() {
+		return file_4;
 	}
 
-	public void setHinhHeader4(byte[] hinhHeader4) {
-		this.hinhHeader4 = hinhHeader4;
+	public void setFile_4(byte[] file_4) {
+		this.file_4 = file_4;
 	}
 
-	public byte[] getHinhHeader5() {
-		return hinhHeader5;
+	public byte[] getFile_5() {
+		return file_5;
 	}
 
-	public void setHinhHeader5(byte[] hinhHeader5) {
-		this.hinhHeader5 = hinhHeader5;
+	public void setFile_5(byte[] file_5) {
+		this.file_5 = file_5;
 	}
 
 	public List<LoaiKinhDoanhForm> getLstLoaiKinhDoanh() {
