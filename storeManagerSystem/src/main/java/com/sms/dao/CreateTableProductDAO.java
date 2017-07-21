@@ -1029,7 +1029,7 @@ private String getSQLProductByNgayTao(String pathJSP,String ngayTao) {
 		sb.append("  ,CHITIET_2                                ");
 		sb.append("  ,CHITIET_3                                ");
 		sb.append("  FROM "+tableName+"          			");
-		sb.append("  WHERE ID_SP = ?          			");
+		sb.append("  WHERE SEQ = ?          			");
 		sb.append("  GROUP BY  ID_SP          			");
 		return sb.toString();
 	}

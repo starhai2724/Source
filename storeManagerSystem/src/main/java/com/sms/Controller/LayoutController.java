@@ -19,10 +19,13 @@ import com.sms.dao.DotKhuyenMaiDAO;
 import com.sms.dao.LayoutDAO;
 import com.sms.dao.NhomSanPhamDAO;
 import com.sms.form.LayoutForm;
+import com.sms.formRows.MenuRowForm;
 import com.sms.formRows.ProductFormRow;
 import com.sms.formRows.RegisterProductCategoryFormRow;
+import com.sms.input.LoaiSanPhamInputBean;
 import com.sms.input.NhomSanPhamInputBean;
 import com.sms.input.SanPhamInputBean;
+import com.sms.output.LoaiSanPhamOutputBean;
 import com.sms.output.NhomSanPhamOutputBean;
 import com.sms.output.SanPhamOutputBean;
 import com.sms.session.KhachHangSession;
@@ -46,17 +49,30 @@ public class LayoutController {
 			form.setTenKhachHang(khachHangSession.getTenKhachHang());
 		}
 		//get loai san pham
-		NhomSanPhamInputBean loaiSanPhamInputBean = new NhomSanPhamInputBean();  
-		loaiSanPhamInputBean.setPathJSP(path);
-		List<NhomSanPhamOutputBean> loaiSanPhamOutputBeans = NhomSanPhamDAO.intances.getNhomSP(loaiSanPhamInputBean);
+		NhomSanPhamInputBean nhomSanPhamInputBean = new NhomSanPhamInputBean();  
+		nhomSanPhamInputBean.setPathJSP(path);
+		List<NhomSanPhamOutputBean> loaiSanPhamOutputBeans = NhomSanPhamDAO.intances.getNhomSP(nhomSanPhamInputBean);
 		RegisterProductCategoryFormRow productCategoryFormRow;
 		for(NhomSanPhamOutputBean loaiSanPhamOutputBean : loaiSanPhamOutputBeans){
 			productCategoryFormRow = new RegisterProductCategoryFormRow();
 			productCategoryFormRow.setIdProductCategory(loaiSanPhamOutputBean.getIdNhomSP());
 			productCategoryFormRow.setNameProductCategory(loaiSanPhamOutputBean.getTenNhomSP());
-			form.getLoaiSanPham().add(productCategoryFormRow);
+			//get loai san pham
+			LoaiSanPhamInputBean loaiSanPhamInputBean = new LoaiSanPhamInputBean();
+			loaiSanPhamInputBean.setPathJSP(path);
+			loaiSanPhamInputBean.setIdNhomSP(loaiSanPhamOutputBean.getIdNhomSP());
+			List<LoaiSanPhamOutputBean> loaiSanPhamOutputBeans2 =  NhomSanPhamDAO.intances.getLoaiSPByIdNhomSP(loaiSanPhamInputBean);
+			MenuRowForm menuRowForm;
+			for(LoaiSanPhamOutputBean outputBean : loaiSanPhamOutputBeans2){
+				menuRowForm = new MenuRowForm();
+				menuRowForm.setIdLoaiSp(outputBean.getIdLoaiSP());
+				menuRowForm.setTenLoaiSp(outputBean.getTenLoaiSP());
+				menuRowForm.setIdNhomSP(outputBean.getIdNhomSP());
+				productCategoryFormRow.getMenuRowForms().add(menuRowForm);
+				System.out.println(productCategoryFormRow.getMenuRowForms().size());
+			}
+			 form.getLoaiSanPham().add(productCategoryFormRow);
 		}
-		
 		//get Dot KM
 		List<DotKhuyenMaiOutputRowBean> listDKM = DotKhuyenMaiDAO.intances.getDotKMApDung(path, SMSComons.getDate());
 //		DotKhuyenMaiOutputRowBean dotKhuyenMaiOutputRowBean= listDKM.get(0);
@@ -90,15 +106,29 @@ public class LayoutController {
 	public String giohang(@ModelAttribute("LayoutForm") LayoutForm form, @PathVariable("path") String path, @PathVariable("list") String listId, HttpSession session){
 		
 		//get loai san pham
-		NhomSanPhamInputBean loaiSanPhamInputBean = new NhomSanPhamInputBean();  
-		loaiSanPhamInputBean.setPathJSP(path);
-		List<NhomSanPhamOutputBean> loaiSanPhamOutputBeans = NhomSanPhamDAO.intances.getNhomSP(loaiSanPhamInputBean);
+		NhomSanPhamInputBean nhomSanPhamInputBean = new NhomSanPhamInputBean();  
+		nhomSanPhamInputBean.setPathJSP(path);
+		List<NhomSanPhamOutputBean> loaiSanPhamOutputBeans = NhomSanPhamDAO.intances.getNhomSP(nhomSanPhamInputBean);
 		RegisterProductCategoryFormRow productCategoryFormRow;
 		for(NhomSanPhamOutputBean loaiSanPhamOutputBean : loaiSanPhamOutputBeans){
 			productCategoryFormRow = new RegisterProductCategoryFormRow();
 			productCategoryFormRow.setIdProductCategory(loaiSanPhamOutputBean.getIdNhomSP());
 			productCategoryFormRow.setNameProductCategory(loaiSanPhamOutputBean.getTenNhomSP());
-			form.getLoaiSanPham().add(productCategoryFormRow);
+			//get loai san pham
+			LoaiSanPhamInputBean loaiSanPhamInputBean = new LoaiSanPhamInputBean();
+			loaiSanPhamInputBean.setPathJSP(path);
+			loaiSanPhamInputBean.setIdNhomSP(loaiSanPhamOutputBean.getIdNhomSP());
+			List<LoaiSanPhamOutputBean> loaiSanPhamOutputBeans2 =  NhomSanPhamDAO.intances.getLoaiSPByIdNhomSP(loaiSanPhamInputBean);
+			MenuRowForm menuRowForm;
+			for(LoaiSanPhamOutputBean outputBean : loaiSanPhamOutputBeans2){
+				menuRowForm = new MenuRowForm();
+				menuRowForm.setIdLoaiSp(outputBean.getIdLoaiSP());
+				menuRowForm.setTenLoaiSp(outputBean.getTenLoaiSP());
+				menuRowForm.setIdNhomSP(outputBean.getIdNhomSP());
+				productCategoryFormRow.getMenuRowForms().add(menuRowForm);
+				System.out.println(productCategoryFormRow.getMenuRowForms().size());
+			}
+			 form.getLoaiSanPham().add(productCategoryFormRow);
 		}
 		// T/h chua chon san pham de thanh toan
 		if("0".equals(listId)){
@@ -195,15 +225,29 @@ public class LayoutController {
 	public String chiTietSP(@ModelAttribute("LayoutForm") LayoutForm form, @PathVariable("path") String path, @PathVariable("idSanPham") String idSanPham, HttpSession session){
 		
 		//get loai san pham
-		NhomSanPhamInputBean loaiSanPhamInputBean = new NhomSanPhamInputBean();  
-		loaiSanPhamInputBean.setPathJSP(path);
-		List<NhomSanPhamOutputBean> loaiSanPhamOutputBeans = NhomSanPhamDAO.intances.getNhomSP(loaiSanPhamInputBean);
+		NhomSanPhamInputBean nhomSanPhamInputBean = new NhomSanPhamInputBean();  
+		nhomSanPhamInputBean.setPathJSP(path);
+		List<NhomSanPhamOutputBean> loaiSanPhamOutputBeans = NhomSanPhamDAO.intances.getNhomSP(nhomSanPhamInputBean);
 		RegisterProductCategoryFormRow productCategoryFormRow;
 		for(NhomSanPhamOutputBean loaiSanPhamOutputBean : loaiSanPhamOutputBeans){
 			productCategoryFormRow = new RegisterProductCategoryFormRow();
 			productCategoryFormRow.setIdProductCategory(loaiSanPhamOutputBean.getIdNhomSP());
 			productCategoryFormRow.setNameProductCategory(loaiSanPhamOutputBean.getTenNhomSP());
-			form.getLoaiSanPham().add(productCategoryFormRow);
+			//get loai san pham
+			LoaiSanPhamInputBean loaiSanPhamInputBean = new LoaiSanPhamInputBean();
+			loaiSanPhamInputBean.setPathJSP(path);
+			loaiSanPhamInputBean.setIdNhomSP(loaiSanPhamOutputBean.getIdNhomSP());
+			List<LoaiSanPhamOutputBean> loaiSanPhamOutputBeans2 =  NhomSanPhamDAO.intances.getLoaiSPByIdNhomSP(loaiSanPhamInputBean);
+			MenuRowForm menuRowForm;
+			for(LoaiSanPhamOutputBean outputBean : loaiSanPhamOutputBeans2){
+				menuRowForm = new MenuRowForm();
+				menuRowForm.setIdLoaiSp(outputBean.getIdLoaiSP());
+				menuRowForm.setTenLoaiSp(outputBean.getTenLoaiSP());
+				menuRowForm.setIdNhomSP(outputBean.getIdNhomSP());
+				productCategoryFormRow.getMenuRowForms().add(menuRowForm);
+				System.out.println(productCategoryFormRow.getMenuRowForms().size());
+			}
+			 form.getLoaiSanPham().add(productCategoryFormRow);
 		}
 
 		SanPhamInputBean input = new SanPhamInputBean();
@@ -229,15 +273,29 @@ public class LayoutController {
 	public String timKiem(@ModelAttribute("LayoutForm") LayoutForm form, @PathVariable("path") String path, HttpSession session){
 		
 		//get loai san pham
-		NhomSanPhamInputBean loaiSanPhamInputBean = new NhomSanPhamInputBean();  
-		loaiSanPhamInputBean.setPathJSP(path);
-		List<NhomSanPhamOutputBean> loaiSanPhamOutputBeans = NhomSanPhamDAO.intances.getNhomSP(loaiSanPhamInputBean);
+		NhomSanPhamInputBean nhomSanPhamInputBean = new NhomSanPhamInputBean();  
+		nhomSanPhamInputBean.setPathJSP(path);
+		List<NhomSanPhamOutputBean> loaiSanPhamOutputBeans = NhomSanPhamDAO.intances.getNhomSP(nhomSanPhamInputBean);
 		RegisterProductCategoryFormRow productCategoryFormRow;
 		for(NhomSanPhamOutputBean loaiSanPhamOutputBean : loaiSanPhamOutputBeans){
 			productCategoryFormRow = new RegisterProductCategoryFormRow();
 			productCategoryFormRow.setIdProductCategory(loaiSanPhamOutputBean.getIdNhomSP());
 			productCategoryFormRow.setNameProductCategory(loaiSanPhamOutputBean.getTenNhomSP());
-			form.getLoaiSanPham().add(productCategoryFormRow);
+			//get loai san pham
+			LoaiSanPhamInputBean loaiSanPhamInputBean = new LoaiSanPhamInputBean();
+			loaiSanPhamInputBean.setPathJSP(path);
+			loaiSanPhamInputBean.setIdNhomSP(loaiSanPhamOutputBean.getIdNhomSP());
+			List<LoaiSanPhamOutputBean> loaiSanPhamOutputBeans2 =  NhomSanPhamDAO.intances.getLoaiSPByIdNhomSP(loaiSanPhamInputBean);
+			MenuRowForm menuRowForm;
+			for(LoaiSanPhamOutputBean outputBean : loaiSanPhamOutputBeans2){
+				menuRowForm = new MenuRowForm();
+				menuRowForm.setIdLoaiSp(outputBean.getIdLoaiSP());
+				menuRowForm.setTenLoaiSp(outputBean.getTenLoaiSP());
+				menuRowForm.setIdNhomSP(outputBean.getIdNhomSP());
+				productCategoryFormRow.getMenuRowForms().add(menuRowForm);
+				System.out.println(productCategoryFormRow.getMenuRowForms().size());
+			}
+			 form.getLoaiSanPham().add(productCategoryFormRow);
 		}
 
 		SanPhamInputBean input = new SanPhamInputBean();
@@ -267,7 +325,7 @@ public class LayoutController {
 		
 		form.setPathJSP(path);
 		
-		return PAGE_FASHION;
+		return LayoutDAO.intances.getPageJSP(path);
 	}
 	
 }

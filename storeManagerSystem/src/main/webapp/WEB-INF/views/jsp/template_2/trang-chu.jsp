@@ -58,7 +58,7 @@
                                         <a href="/storeManagerSystem/${LayoutForm.pathJSP }/dangkitaikhoan"><i class="fa fa-sign-in"></i> Đăng ký</a>
                                     </li>
                                     <li>
-                                        <a href="/storeManagerSystem/${LayoutForm.pathJSP }/dangNhap"><i class="fa fa-key"></i>Đăng nhập</a>
+                                        <a href="/storeManagerSystem/${LayoutForm.pathJSP }/dangNhap"><i class="fa fa-key"></i> Đăng nhập</a>
                                     </li>
                                 </ul>
                             </div>
@@ -85,7 +85,7 @@
                 <div class="row">
                     <div class="col-md-3 col-xs-12 col-sm-12 header-left text-center">
                         <div class="logo">
-                            <a href="index.html" title="">
+                            <a href="/storeManagerSystem/${LayoutForm.pathJSP }" title="">
                                 <img alt="" src="/storeManagerSystem/view/template_2/runecom22.runtime.vn/Uploads/shop139/images/Product/logo.png" class="img-responsive" />
                             </a>
                         </div>
@@ -113,9 +113,9 @@
                         <div class="search hidden-sm hidden-xs">
                             <div class="input-cat form-search clearfix">
                                 <div class="form-search-controls">
-                                    <input type="text" name="search" id="txtsearch" onblur="if(this.value=='')this.value='Tìm kiếm...'"
+                                    <input type="text" path="timKiem_TenSP"  name="timKiem_TenSP" ng-model = "timKiem_TenSP"  ng-init ="timKiem_TenSP = '${LayoutForm.timKiem_TenSP}'" onblur="if(this.value=='')this.value='Tìm kiếm...'"
                                            onfocus="if(this.value=='Tìm kiếm...')this.value=''" value="T&#236;m kiếm..." />
-                                    <div class="select-categories">
+                                    <!-- <div class="select-categories">
                                         <select name="lbgroup" id="lbgroup">
                                             <option value="0" selected="selected">Tất cả</option>
                                             <option class="option-1" value="3114">Thời trang nữ</option>
@@ -123,9 +123,9 @@
                                             <option class="option-1" value="3125">Phụ kiện</option>
                                             <option class="option-1" value="3126">Thời trang trẻ em</option>
                                         </select>
-                                    </div>
+                                    </div> -->
                                 </div>
-                                <button class="btn btn-search" title="Search" type="button" id="btnsearch" value="Search">
+                                <button class="btn btn-search" title="Search" type="button" ng-click ="btnTimKiem()" value="Tìm kiếm">
                                     <i class="fa fa-search"></i>
                                 </button>
                             </div>
@@ -169,9 +169,26 @@
                             </button>
                         </div>
                         <nav id="mobile-menu" class="mobile-menu collapse navbar-collapse">
-                            <ul class='menu nav navbar-nav'><li class="level0"><a class='' href='trang-chu.html'><span>Trang chủ</span></a></li>
+                            <ul class='menu nav navbar-nav'><li class="level0"><a class='' href="/storeManagerSystem/${LayoutForm.pathJSP }"><span>Trang chủ</span></a></li>
 								<li class="level0"><a class='' href='gioi-thieu.html'><span>Giới thiệu</span></a></li>
-								<li class="level0"><a class='' href='san-pham.html'><span>Sản phẩm</span></a></li>
+								<c:forEach var="items" items="${LayoutForm.loaiSanPham }">
+							        <li class="dropdown">
+							            <a href="#" class="dropdown-toggle" data-toggle="dropdown">${items.nameProductCategory } <b class="caret"></b></a>
+							            <c:if test="${!empty items.menuRowForms }">
+								            <ul class="dropdown-menu multi-column columns-4">
+									            <div class="row">
+													<div class="col-sm-4">
+														<ul class="multi-column-dropdown">
+											            <c:forEach var="menus" items="${items.menuRowForms }">
+											            			<li><a href="#">${menus.tenLoaiSp }</a></li>
+											            </c:forEach>
+											            </ul>
+									            	</div>
+									            </div>	
+								            </ul>
+							            </c:if>
+							        </li>
+						        </c:forEach>
 								<li class="level0"><a class='' href='tin-tuc.html'><span>Tin tức</span></a></li>
 								<li class="level0"><a class='' href='lien-he.html'><span>Liên hệ</span></a></li>
 							</ul>
@@ -282,7 +299,7 @@
 										<strike class="price-old"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBan}" /> VNĐ</strike>
 									</c:if>
 									<c:if test="${empty items.giaBanKM }">
-										<span class="price-old"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBan}" /> VNĐ</span>
+										<span class="price-new"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBan}" /> VNĐ</span>
 									</c:if>
 									<c:if test="${!empty items.giaBanKM }">
 										<span class="price-new"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBanKM}" /> VNĐ</span>
@@ -299,7 +316,7 @@
         </c:forEach> 
                 <!-- San pham (E)  -->        
         </div>
-            <div class="navigation">
+           <!--  <div class="navigation">
                 <ul class="pagination">
                     <li>
                         <a href="trang-chu2679.html?page=1" aria-label="Previous">
@@ -315,7 +332,7 @@
                         </a>
                     </li>
                 </ul>
-            </div>
+            </div> -->
     </section>
                     </div>
             </div>
@@ -327,7 +344,8 @@
                         <div class="col-md-12">
 <!-- <script type="text/javascript">
     window.Partners = [{"Id":171,"ShopId":139,"Name":"efef","Link":null,"Logo":"/Uploads/shop139/images/Product/burbery_2jrem8aiipohl_simg_603cef_226x114_maxb.png","Index":1,"Inactive":false},{"Id":172,"ShopId":139,"Name":"dsfdsf","Link":"#","Logo":"/Uploads/shop139/images/Product/logo__2k1l1rsnb045m_simg_603cef_226x114_maxb.jpg","Index":2,"Inactive":false},{"Id":173,"ShopId":139,"Name":"fsdf","Link":"#","Logo":"/Uploads/shop139/images/Product/logo__2k1l5tedglnk9_simg_603cef_226x114_maxb.jpg","Index":3,"Inactive":false},{"Id":174,"ShopId":139,"Name":"ddsf","Link":"#","Logo":"/Uploads/shop139/images/Product/logo__2k1m8k9aglr85_simg_603cef_226x114_maxb.jpg","Index":4,"Inactive":false},{"Id":175,"ShopId":139,"Name":"sfddf","Link":"#","Logo":"/Uploads/shop139/images/Product/logo__2k2dp8si78411_simg_603cef_226x114_maxb.jpg","Index":5,"Inactive":false}];
-</script> -->                        </div>
+</script> -->                        
+						</div>
                     </div>
                 </div>
             </div>

@@ -48,7 +48,7 @@ public class ProductForm extends AbstractForm{
 	
 	private String flagUpdate;
 	
-
+	private Map<String, String> lstCategory = new LinkedHashMap<String, String>();
 	
 	public File getHinhChiTiet1() {
 		return hinhChiTiet1;
@@ -98,7 +98,6 @@ public class ProductForm extends AbstractForm{
 		this.flagUpdate = flagUpdate;
 	}
 
-	private Map<String, String> lstCategory = new LinkedHashMap<String, String>();
 	
 	
 	public Map<String, String> getLstCategory() {

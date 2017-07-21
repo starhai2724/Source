@@ -48,8 +48,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="header-right">
 						<div class="cart box_1">
-							<a href="checkout2.html">
-								<h3> <span ng-model = "cartPrice" >{{cartPrice | number}}</span>(<span ng-model = "cartQuantity"  >{{cartQuantity}}</span>)<img src="/storeManagerSystem/view/fontend_index2/images/bag.png" alt=""></h3>
+							<a href="javascript:void(0)">
+								<h3> <span ng-model = "cartPrice" >{{cartPrice | number}}VNĐ</span>(<span ng-model = "cartQuantity"  >{{cartQuantity}}</span>)<img src="/storeManagerSystem/view/fontend_index2/images/bag.png" alt=""></h3>
 							</a>	
 							<p><a ng-click="btnCart();" class="simpleCart_empty">Giỏ hàng</a></p>
 							<p><a ng-click="btnCart();" class="simpleCart_empty">Thanh Toán</a></p>
@@ -72,25 +72,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		        <span class="icon-bar"></span>
 	        </button>
 				<div class="logo">
-					<h1><a href="/storeManagerSystem/${LayoutForm.pathJSP }"><span>E</span> -Thời trang</a></h1>
+					<h1><a href="/storeManagerSystem/${LayoutForm.pathJSP }"><span>E</span> -Trang chủ</a></h1>
 				</div>
 	    </div>
-	    <!--/.navbar-header-->
-     
-            
-	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	        <ul class="nav navbar-nav">
-			<li><a href="/storeManagerSystem/${LayoutForm.pathJSP }">Trang chủ</a></li>
-				<c:forEach var="items" items="${LayoutForm.loaiSanPham }">
-			        <li class="dropdown">
-			            <a href="#" class="dropdown-toggle" data-toggle="dropdown">${items.nameProductCategory } <b class="caret"></b></a>
-			        </li>
-		        </c:forEach>
-					<!-- <li><a href="typography.html">TYPO</a></li> -->
-					<li><a href="contact.html">Liên hệ</a></li>
-	        </ul>
-	    </div>
-	    <!--/.navbar-collapse-->
 	</nav>
 	<!--/.navbar-->
 </div>
@@ -186,12 +170,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										      		<td align="center" style="widows: 80px"><img style="height: 80px;width: 70px;" src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplay/${items.SEQ}" alt="" /></td>
 													<td>${items.tenSP}</td>
 													<td style="text-align: center;"><span ng-model="soLuong[${items.SEQ }]" ng-init="soLuong[${items.SEQ }] ='${items.soLuong }'">{{soLuong[${items.SEQ }]}}</span></td>
-													<td>
+													<td align="right">
 														<c:if test="${!empty items.giaBanKM }">
-														<span class="item_price"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBanKM}" /> VNĐ</span>
+														<span class="item_price" ><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBanKM}" /> VNĐ</span>
 														</c:if>
 														<c:if test="${empty items.giaBanKM }">
-														<span class="item_price"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBan}" /> VNĐ</span>
+														<span class="item_price" ><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBan}" /> VNĐ</span>
 														</c:if>	
 													</td>
 													<td style="text-align: center;padding-top: 20px"  ><span style="font-size: 30px" class="glyphicon glyphicon-trash" ng-click="btnRemove('${items.SEQ }', '${items.giaBan }', '${items.giaBanKM }')" data-toggle="tooltip" data-original-title="Xóa"></span></td>

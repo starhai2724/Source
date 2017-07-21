@@ -40,7 +40,7 @@ public class ClientLoginController {
 		ClientLoginImpl loginImpl = new ClientLoginImpl();
 		User response = loginImpl.checkLogin(req);
 		if(null != response && !StringUtils.isEmpty(response.getUsername())){
-			model.addAttribute(PAGE_ID, PAGE_INFO);
+			session.setAttribute(PAGE_ID, PAGE_INFO);
 			User userlocal = response;
 			// set session userlocal
 			session.setAttribute("userLocal", userlocal);
@@ -48,7 +48,6 @@ public class ClientLoginController {
 			//role User
 			if(SystemCommon.USER.equals(userlocal.getRole())){
 				session.setAttribute("pathURL", userlocal.getURLStore());
-				System.out.println("userlocal: "+userlocal.getURLStore());
 				return SystemCommon.ADMIN_STORE;
 				
 			//role Root
@@ -58,12 +57,17 @@ public class ClientLoginController {
 		}
 		return SystemCommon.PAGE_LOGIN;
 	}
-	
-	
-	
 	@RequestMapping(value="/register", method = RequestMethod.POST)
 	public String registerUser(@ModelAttribute("storeOwnerForm") StoreOwnerForm storeOwnerForm){
 		return PAGE_REGISTER;
+	}
+	
+	@RequestMapping(value ="/dangXuat", method = RequestMethod.GET)	
+	public String dangXuat( HttpSession session){
+		// set session userlocal
+		System.out.println("tet");
+		session.removeAttribute("userLocal");
+		return SystemCommon.PAGE_LOGIN;
 	}
 	
 }

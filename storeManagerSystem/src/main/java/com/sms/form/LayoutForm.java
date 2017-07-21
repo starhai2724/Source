@@ -19,6 +19,7 @@ public class LayoutForm extends AbstractForm {
 	private String timKiem_TenSP;
 
 	private List<RegisterProductCategoryFormRow> loaiSanPham = new ArrayList<>();
+	
 
 	private List<ProductFormRow> products = new ArrayList<>();
 

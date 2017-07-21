@@ -127,7 +127,7 @@
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                    	<th style="text-align: center; width: 05px;"></th>
+                                    	<th style="text-align: center; width: 5px;"></th>
                                         <th style="text-align: center; width: 10px;">STT</th>
 										<th style="text-align: center; width: 50px">Mã SP</th>
 										<th style="text-align: center; width: 200px">Tên sản phẩm</th>

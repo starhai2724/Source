@@ -61,4 +61,13 @@ public class KhachHangDangNhapController {
 		}
 	}
 	
+	@RequestMapping(value="/{path}/dangNhap/dangXuat",  method = RequestMethod.POST)
+	public String dangXuat(@ModelAttribute("KhachHangDangNhapForm") KhachHangDangNhapForm form, @PathVariable("path") String path, HttpSession session){
+		//check pathJSP
+		if(!LayoutDAO.intances.checkPathJSP(path)){
+			//quay ve trang login
+			return "redirect:/";
+		}
+		return LayoutDAO.intances.getPageJSP(path);
+	}
 }
