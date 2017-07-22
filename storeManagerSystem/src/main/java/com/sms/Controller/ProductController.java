@@ -354,16 +354,18 @@ public class ProductController {
 		
 		List lstPhanAnh = new ArrayList<String>();
 		// remove ","
-		if (!"".equals(listId) || !"0".equals(listId)) {
+		if (!"".equals(listId) && !"0".equals(listId)) {
 			listId = listId.substring(1);
 			String[] parts = listId.split(",");
 			listId = "";
 			for (int i = 0; i < parts.length; i++) {
 				lstPhanAnh.add(parts[i]);
+				System.out.println("i: "+parts[i]);
 			}
 		}
 		session.setAttribute("lstPhanAnh", lstPhanAnh);
-		return  "redirect:/chiTietDKM/initPhanAnh";
+		String forward = (String) session.getAttribute("LINK");
+		return  "redirect:"+forward;
 	}
 	
 	public static void main(String[] args) {

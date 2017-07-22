@@ -1,5 +1,8 @@
 package com.sms.formRows;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RegisterProductCategoryFormRow {
 	private String no;
 	private String idProductCategory;
@@ -9,10 +12,24 @@ public class RegisterProductCategoryFormRow {
 	private String idLSP;
 	private String name_LSP;
 	
+	//su dung cho menu man hinh (S)
+	
+	private List<MenuRowForm> menuRowForms = new ArrayList<>(); 
+	
+	//su dung cho menu man hinh (E)
+	
 	
 
 	public String getNo_LSP() {
 		return no_LSP;
+	}
+
+	public List<MenuRowForm> getMenuRowForms() {
+		return menuRowForms;
+	}
+
+	public void setMenuRowForms(List<MenuRowForm> menuRowForms) {
+		this.menuRowForms = menuRowForms;
 	}
 
 	public void setNo_LSP(String no_LSP) {

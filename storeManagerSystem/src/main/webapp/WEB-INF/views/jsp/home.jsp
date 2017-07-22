@@ -36,7 +36,7 @@
           <li><a href="#"><i class="fa fa-gear fa-fw"></i> Cài đặt</a>
           </li>
           <li class="divider"></li>
-          <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
+          <li><a href="/storeManagerSystem/dangXuat"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
           </li>
         </ul>
         <!-- /.dropdown-user -->
@@ -53,6 +53,9 @@
           </li>
           <li>
             <a href="index.html"><i class="fa fa-wrench fa-fw"></i> Cấu hình trang web</a>
+          </li>
+          <li>
+            <a href="/storeManagerSystem/quanLyDatHang/init"><i class="fa fa-wrench fa-fw"></i> Đặt hàng</a>
           </li>
           <li>
             <a href="index.html"><i class="fa fa-bar-chart-o fa-fw"></i> Thống kế</a>

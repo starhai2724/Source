@@ -70,7 +70,7 @@ public class ChiTietDKMController {
 		 ArrayList<String> lstMaSPKM_old = new ArrayList<>();
 		 if(lst != null && lst.size() > 0){
 			 for(int i = 0; i< lst.size() ; i++){
-				 lstMaSPKM_old.add(lst.get(i).getIdSanPham());
+				 lstMaSPKM_old.add(lst.get(i).getSEQ());
 			 }
 		 }
 		 
@@ -81,46 +81,45 @@ public class ChiTietDKMController {
 		SanPhamInputBean input;
 		SanPhamOutputRowBean outputRowBean;
 		int cnt = 1;
-		if(lst_idSP != null && lst_idSP.size() > 0){
-			for(int i = 0; i< lst_idSP.size() ; i++){
-				idSP = lst_idSP.get(i);
-				for (String str : lstMaSPKM_old) {
-					if(str.equals(idSP)){
-						checkErr = true;
-					}
+		for(int i = 0; i< lst_idSP.size() ; i++){
+			idSP = lst_idSP.get(i);
+			for (String str : lstMaSPKM_old) {
+				if(str.equals(idSP)){
+					checkErr = true;
 				}
-				if(checkErr) {
-					continue;
-				}
-				
-				input = new SanPhamInputBean();
-				input.setPathJSP(pathJSP);
-				input.setIdSanPham(idSP);
-				
-				//get data theo id va group theo id 
-				outputBean = CreateTableProductDAO.intances.getProductById_GroupById(input);
-				outputRowBean = outputBean.getLst().get(0);
-				// set data
-				formRow =  new ProductFormRow();
-				formRow.setNo(String.valueOf(cnt++));
-				formRow.setSEQ(outputRowBean.getSEQ());
-				formRow.setIdSanPham(outputRowBean.getIdSanPham());
-				formRow.setTenSP(outputRowBean.getTenSP());
-				formRow.setTenLoaiSP(outputRowBean.getTenLoaiSP());
-				formRow.setIdLoaiSP(outputRowBean.getIdLoaiSP());
-				if(!"".equals(outputRowBean.getGiaMua()) && 0 != outputRowBean.getGiaMua().trim().length()){
-			    	formRow.setGiaMua(SMSComons.formatMoney(outputRowBean.getGiaMua()));
-			    }
-				if(null != outputRowBean.getGiaBanKM() && !"".equals(outputRowBean.getGiaBanKM()) && 0 != outputRowBean.getGiaBanKM().length()){
-			    	formRow.setGiaMua(SMSComons.formatMoney(outputRowBean.getGiaBanKM()));
-			    }
-				if(!"".equals(outputRowBean.getGiaBan()) && 0 != outputRowBean.getGiaBan().trim().length() ){
-			    	formRow.setGiaMua(SMSComons.formatMoney(outputRowBean.getGiaBan()));
-			    }
-				formRow.setIndex(i);
-				formRow.setChecked(1);
-				form.getLst().add(formRow);
 			}
+			if(checkErr) {
+				continue;
+			}
+			
+			input = new SanPhamInputBean();
+			input.setPathJSP(pathJSP);
+			input.setIdSanPham(idSP);
+			input.setSEQ(idSP);
+			
+			//get data theo id va group theo id 
+			outputBean = CreateTableProductDAO.intances.getProductById_GroupById(input);
+			outputRowBean = outputBean.getLst().get(0);
+			// set data
+			formRow =  new ProductFormRow();
+			formRow.setNo(String.valueOf(cnt++));
+			formRow.setSEQ(outputRowBean.getSEQ());
+			formRow.setIdSanPham(outputRowBean.getIdSanPham());
+			formRow.setTenSP(outputRowBean.getTenSP());
+			formRow.setTenLoaiSP(outputRowBean.getTenLoaiSP());
+			formRow.setIdLoaiSP(outputRowBean.getIdLoaiSP());
+			if(!"".equals(outputRowBean.getGiaMua()) && 0 != outputRowBean.getGiaMua().trim().length()){
+		    	formRow.setGiaMua(SMSComons.formatMoney(outputRowBean.getGiaMua()));
+		    }
+			if(null != outputRowBean.getGiaBanKM() && !"".equals(outputRowBean.getGiaBanKM()) && 0 != outputRowBean.getGiaBanKM().length()){
+		    	formRow.setGiaMua(SMSComons.formatMoney(outputRowBean.getGiaBanKM()));
+		    }
+			if(!"".equals(outputRowBean.getGiaBan()) && 0 != outputRowBean.getGiaBan().trim().length() ){
+		    	formRow.setGiaMua(SMSComons.formatMoney(outputRowBean.getGiaBan()));
+		    }
+			formRow.setIndex(i);
+			formRow.setChecked(1);
+			form.getLst().add(formRow);
 		}
 		
 		model.addAttribute("lst_dangKy", form);
@@ -331,7 +330,7 @@ public class ChiTietDKMController {
 		List<ProductFormRow> lst = form.getLst();
 		session.setAttribute("lstOld", lst);
 		
-		
+		session.setAttribute("LINK", "/chiTietDKM/initPhanAnh");
 		return  "redirect:/product/init";
 	}
 	
@@ -363,7 +362,7 @@ public class ChiTietDKMController {
 			for (int i = 0; i < parts.length; i++) {
 				for(int k = 0; k < form.getLst().size();k++){
 					//Delete cac san pham dc chon
-					if(parts[i].equals(form.getLst().get(k).getIdSanPham())){
+					if(parts[i].equals(form.getLst().get(k).getSEQ())){
 						lst.remove(form.getLst().get(k));
 					}
 				}

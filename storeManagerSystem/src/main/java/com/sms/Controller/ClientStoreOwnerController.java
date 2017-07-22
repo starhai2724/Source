@@ -39,7 +39,8 @@ public class ClientStoreOwnerController {
 		storeOwnerForm.setAddress("");
 		storeOwnerForm.setEmail("");
 		User user = (User) session.getAttribute("userLocal");
-		modelMap.addAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEMLIST);
+//		modelMap.addAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEMLIST);
+		session.setAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEMLIST);
 		return SystemCommon.PAGE_HOME;
 	}
 	
@@ -51,7 +52,8 @@ public class ClientStoreOwnerController {
 		storeOwnerForm.setTelephone("");
 		storeOwnerForm.setFullName("");
 		storeOwnerForm.setEmail("");
-		modelMap.addAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEM_ENTITY);
+//		modelMap.addAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEM_ENTITY);
+		session.setAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEM_ENTITY);
 		return SystemCommon.PAGE_HOME;
 	}
 	
@@ -88,7 +90,8 @@ public class ClientStoreOwnerController {
 					storeOwnerForm.setMessage("Xử lý đăng kí thành công.");
 				}
 			}
-			model.addAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEM_ENTITY);
+//			model.addAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEM_ENTITY);
+			session.setAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEM_ENTITY);
 		return SystemCommon.PAGE_HOME;
 		
 	}
@@ -117,9 +120,11 @@ public class ClientStoreOwnerController {
 		
 		if(resultObject.getStatus() == Status.SUCCESS){
 			modelMap.addAttribute("storeOwners", outputBean);
-			modelMap.addAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEMLIST);
+//			modelMap.addAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEMLIST);
+			session.setAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEMLIST);
 		}else{
-			modelMap.addAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEMLIST);
+//			modelMap.addAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEMLIST);
+			session.setAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEMLIST);
 			storeOwnerListForm.setMessageErr("Không có dữ liệu. Vui lòng thay đổi điều kiện tìm kiếm.");
 		}
 		return SystemCommon.PAGE_HOME;
@@ -137,7 +142,8 @@ public class ClientStoreOwnerController {
 	public String getStoreOwnerById(@PathVariable("id") String id, ModelMap model, HttpSession session, @ModelAttribute("storeOwnerListForm") StoreOwnerForm storeOwnerForm){
 		session.setAttribute("id",id);
 		session.setAttribute("storeOwnerForm", storeOwnerForm);
-		model.addAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEM_ENTITY);
+//		model.addAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEM_ENTITY);
+		session.setAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEM_ENTITY);
 		return "redirect:/storeOwnerEntity";
 	}
 	/**
@@ -165,7 +171,7 @@ public class ClientStoreOwnerController {
 			storeOwnerForm.setDisabledFlag("true");
 			/**storeOwnerForm.setUpdateFlag("1") mean when update*/
 			storeOwnerForm.setUpdateFlag("1");
-			model.addAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEM_ENTITY);
+			ses.setAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEM_ENTITY);
 
 		}
 		return SystemCommon.PAGE_HOME;
@@ -173,18 +179,18 @@ public class ClientStoreOwnerController {
 	
 	//Excuse update
 	@RequestMapping(value  = "/updateStoreOwner", method=RequestMethod.POST)
-	public String updateStoreOwner(@ModelAttribute("storeOwnerForm") StoreOwnerForm storeOwnerForm, ModelMap model){
+	public String updateStoreOwner(@ModelAttribute("storeOwnerForm") StoreOwnerForm storeOwnerForm, ModelMap model, HttpSession session){
 		
 		ResultObject  response = ClientStoreOwnerImpl.intances.updateStoreOwnerById(storeOwnerForm);
 		
 		if(response.getStatus() != Status.SUCCESS){
 			
 			storeOwnerForm.setMessageErr("Xư lý đăng kí không thành công dữ liệu đã được cập nhật bởi người khác!");
-			model.addAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEM_ENTITY);
+			session.setAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEM_ENTITY);
 			return SystemCommon.PAGE_HOME;
 		}else{
 			storeOwnerForm.setMessage("Xư lý đăng kí thành công!");
-			model.addAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEM_ENTITY);
+			session.setAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEM_ENTITY);
 			
 		}
 		
@@ -211,7 +217,7 @@ public class ClientStoreOwnerController {
 		if(response.getStatus() != Status.SUCCESS){
 			
 			storeOwnerListForm.setMessageErr("Xử lý xóa không thành công!");
-			modelMap.addAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEMLIST);
+			session.setAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEMLIST);
 		}else{
 			storeOwnerListForm.setMessage("Xử lý xóa thành công!");
 			getBy(storeOwnerListForm, modelMap, session);

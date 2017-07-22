@@ -48,7 +48,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="header-right">
 						<div class="cart box_1">
-							<a href="checkout2.html">
+							<a href="javascript:void(0)">
 								<h3> <span ng-model = "cartPrice" >{{cartPrice | number}} VNĐ</span>(<span ng-model = "cartQuantity"  >{{cartQuantity}}</span>)<img src="/storeManagerSystem/view/fontend_index2/images/bag.png" alt=""></h3>
 							</a>	
 							<p><a href="javascript:void(0)" ng-click="btnCart();" class="simpleCart_empty">Giỏ hàng</a></p>
@@ -93,6 +93,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<c:forEach var="items" items="${LayoutForm.loaiSanPham }">
 			        <li class="dropdown">
 			            <a href="#" class="dropdown-toggle" data-toggle="dropdown">${items.nameProductCategory } <b class="caret"></b></a>
+			            <c:if test="${!empty items.menuRowForms }">
+				            <ul class="dropdown-menu multi-column columns-3">
+					            <div class="row">
+									<div class="col-sm-3">
+										<ul class="multi-column-dropdown">
+							            <c:forEach var="menus" items="${items.menuRowForms }">
+							            			<li><a href="#">${menus.tenLoaiSp }</a></li>
+							            </c:forEach>
+							            </ul>
+					            	</div>
+					            </div>	
+				            </ul>
+			            </c:if>
 			        </li>
 		        </c:forEach>
 					<!-- <li><a href="typography.html">TYPO</a></li> -->

@@ -18,7 +18,7 @@
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
+        <span class="icon-bar">Đăng xuất</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
@@ -29,14 +29,14 @@
       <!-- /.dropdown -->
       <!-- /.dropdown -->
       <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-          <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+        <a class="dropdown-toggle" href="/storeManagerSystem/dangXuat">
+          <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"> Đăng xuất</i>
         </a>
         <ul class="dropdown-menu dropdown-user">
           <li><a href="#"><i class="fa fa-gear fa-fw"></i> Cài đặt</a>
           </li>
           <li class="divider"></li>
-          <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
+          <li><a href="/storeManagerSystem/dangXuat"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
           </li>
         </ul>
         <!-- /.dropdown-user -->
@@ -64,10 +64,16 @@
             <a href="/storeManagerSystem/cardType/init"><i class="fa fa-wrench fa-fw"></i>Loại thẻ</a>
           </li>
           <li>
-            <a href="/storeManagerSystem/product/init"><i class="fa fa-wrench fa-fw"></i>Sản phẩm</a>
+            <a href="/storeManagerSystem/product/init"><i class="fa fa-wrench fa-fw"></i> Sản phẩm</a>
           </li>
           <li>
             <a href="/storeManagerSystem/bill/init"><i class="fa fa-bar-chart-o fa-fw"></i> Hóa đơn</a>
+          </li>
+          <li>
+            <a href="/storeManagerSystem/datHang/init"><i class="fa fa-bar-chart-o fa-fw"></i> Đặt hàng</a>
+          </li>
+          <li>
+            <a href="/storeManagerSystem/khoHang/init"><i class="fa fa-bar-chart-o fa-fw"></i> Kho hàng</a>
           </li>
           <li>
             <a href="/storeManagerSystem/dotKhuyenMai/init"><i class="fa fa-bar-chart-o fa-fw"></i> Đợt khuyến mãi</a>

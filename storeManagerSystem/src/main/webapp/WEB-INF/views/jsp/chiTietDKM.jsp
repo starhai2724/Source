@@ -75,7 +75,7 @@
                               		  <c:forEach var="items" items="${ProductForm3.lst }" varStatus="status">
 		                                <tr class="odd gradeX" >
 		                                        <td style="text-align: center">
-		                                        <input type="checkbox" ng-model="selected[${items.no}]"  ng-init ="selected[${items.no}]='false'" ng-true-value="'${items.idSanPham }'" ng-false-value="'NO'">
+		                                        <input type="checkbox" ng-model="selected[${items.no}]"  ng-init ="selected[${items.no}]='false'" ng-true-value="'${items.SEQ }'" ng-false-value="'NO'">
 		                                        </td>
 		                                        <td align="center">${items.idSanPham}</td>
 							                     <td>${items.tenSP}</td>
