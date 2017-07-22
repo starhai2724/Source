@@ -4922,7 +4922,7 @@ fieldset[disabled] .btn-default.btn-bordered.active {
   font-style: normal;
 }
 .home-section .container .form-action {
-  background-image: url("Images/form-bg1.png");
+  background-image: url("/storeManagerSystem/view/templateDK/logo.pngImages/form-bg1.png");
   padding: 10px;
 }
 .home-section .container .form-action form {
@@ -5620,6 +5620,7 @@ footer .reserved ul li a {
   background-size: cover;
 }
 .inner-heading .overlay-bg {
+  background-image: url("/storeManagerSystem/view/templateDK/theme-page-bg.jpg");
   height: 100%;
   position: absolute;
   top: 0;
