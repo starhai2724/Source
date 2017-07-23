@@ -27,6 +27,56 @@
 <!--     <script src="/storeManagerSystem/view/template_2/runecom22.runtime.vn/app/directives/paging.js"></script> -->
     <link href="/storeManagerSystem/view/template_2/runecom22.runtime.vn/../static.runtime.vn/App_Themes/RUN022/style.css" rel="stylesheet" type="text/css" />
     <link href="/storeManagerSystem/view/template_2/runecom22.runtime.vn/../static.runtime.vn/App_Themes/RUN022/responsive.css" rel="stylesheet" type="text/css" />
+    
+    <style type="text/css">
+    #wrap{margin:0 auto;
+    position:relative;}
+    #menu{
+        display:block;
+    }
+    #menu li,#menu li a, #sub li a{
+        display:block;
+        text-align:center;
+        background-color:#42a8bf;
+        color:#FFF;
+         height:52px;
+    }
+    #menu li{
+        float:left;
+        list-style:none;
+        height:40px;
+        width:170px;
+        padding:0px;
+        
+        }
+    #menu li a, #sub li a{
+        text-decoration:none;
+        padding:5px;
+    }
+    #sub li{
+        clear:both;
+        border:thin #FFF solid;
+        margin-top:0px;
+    }
+    #menu #sub{
+        visibility:hidden;
+        padding:0px;
+        display:block;
+    }
+    #menu li:hover #sub{
+        visibility:visible;
+        }
+    #menu li:hover a {
+        background-color:rgba(51,0,0,0.5);
+    }
+    #menu li:hover #sub li a{
+        background-color:#42a8bf;
+    }
+    #menu li #sub li:hover a{
+        background-color:#1a525e;
+                height:40px;
+    }
+</style>
 </head>
 <body  style="" ng-app="LayoutForm" ng-controller="ctrl">
 <form:form id="LayoutForm" modelAttribute="LayoutForm" role="form" method="GET" >
@@ -35,7 +85,7 @@
 <div class="wrapper page-home">
         <div class="header">
     <section class="top-link clearfix">
-        <div class="container">
+        <div class="container" style="width: 1370px">
             <div class="row">
                 <div class="col-md-12">
                     <ul class="nav navbar-nav topmenu-contact">
@@ -81,7 +131,7 @@
         </div>
     </section>
         <section class="header-content clearfix">
-            <div class="container">
+            <div class="container" style="width: 1370px">
                 <div class="row">
                     <div class="col-md-3 col-xs-12 col-sm-12 header-left text-center">
                         <div class="logo">
@@ -156,7 +206,7 @@
             }
         </script>
 <section class="navigation-menu clearfix">
-    <div class="container">
+    <div class="container" style="width: 1370px">
         <div class="menu-top">
             <div class="row">
                 <div class="col-md-12">
@@ -169,29 +219,26 @@
                             </button>
                         </div>
                         <nav id="mobile-menu" class="mobile-menu collapse navbar-collapse">
-                            <ul class='menu nav navbar-nav'><li class="level0"><a class='' href="/storeManagerSystem/${LayoutForm.pathJSP }"><span>Trang chủ</span></a></li>
-								<li class="level0"><a class='' href='gioi-thieu.html'><span>Giới thiệu</span></a></li>
+                        <div id="wrap">
+                            <ul id="menu">
+                            	<li><a style="padding-top: 18px" href="/storeManagerSystem/${LayoutForm.pathJSP }"><span style="font-size: 14px">Trang chủ</span></a></li>
+								<li><a style="padding-top: 18px" href='gioi-thieu.html'><span style="font-size: 14px">Giới thiệu</span></a></li>
 								<c:forEach var="items" items="${LayoutForm.loaiSanPham }">
-							        <li class="dropdown">
-							            <a href="#" class="dropdown-toggle" data-toggle="dropdown">${items.nameProductCategory } <b class="caret"></b></a>
+							        <li>
+							            <a style="padding-top: 18px" href="#" data-toggle="dropdown"><span style="font-size: 14px">${items.nameProductCategory }</span> <b class="caret"></b></a>
 							            <c:if test="${!empty items.menuRowForms }">
-								            <ul class="dropdown-menu multi-column columns-4">
-									            <div class="row">
-													<div class="col-sm-4">
-														<ul class="multi-column-dropdown">
+								            <ul id="sub">
 											            <c:forEach var="menus" items="${items.menuRowForms }">
-											            			<li><a href="#">${menus.tenLoaiSp }</a></li>
+											            			<li><a style="font-size: 14px" href="#"><span style="font-size: 14px">${menus.tenLoaiSp }</span></a></li>
 											            </c:forEach>
-											            </ul>
-									            	</div>
-									            </div>	
 								            </ul>
 							            </c:if>
 							        </li>
 						        </c:forEach>
-								<li class="level0"><a class='' href='tin-tuc.html'><span>Tin tức</span></a></li>
-								<li class="level0"><a class='' href='lien-he.html'><span>Liên hệ</span></a></li>
+								<li> <a style="padding-top: 18px" href='tin-tuc.html'><span style="font-size: 14px">Tin tức</span></a></li>
+								<li><a style="padding-top: 18px" href='lien-he.html'><span style="font-size: 14px">Liên hệ</span></a></li>
 							</ul>
+						</div>
                         </nav>
                         <div class="cart pull-right">
                             <a href="javascript:void(0);">
@@ -224,7 +271,7 @@
 </script>  -->      </div>
         </div>
             <div class="adv">
-                <div class="container">
+                <div class="container" style="width: 1370px">
                     <div class="row">
                         <div class="col-md-12">
     <!--Begin-->
@@ -238,7 +285,7 @@
                 </div>
             </div>
     <div class="main">
-        <div class="container">
+        <div class="container" style="width: 1370px">
             <div class="row">
                     <div class="col-md-12">
     <section class="product-content clearfix">
@@ -274,11 +321,11 @@
         <!-- San pham (S)  -->
         <div class="product-block product-grid clearfix row">
         <c:forEach var="items" items="${LayoutForm.products }">
-                <div class="col-md-3 col-sm-3 col-xs-12 product-item-box">
-                    <div class="product-item product-resize">
-                        <div class="image image-resize">
+                <div class="col-md-3 col-sm-3 col-xs-14 product-item-box">
+                    <div class="product-item product-resize fixheight" style="height: 400px;">
+                        <div class="image image-resize" style="height: 300px;">
                             <a href="javascript:void(0);" title="${items.tenSP}">
-                                <img style="height: 400px;width: 310px;" src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplay/${items.SEQ}" class="img-responsive" />
+                                <img style="width: 300px" class="img-responsive" src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplay/${items.SEQ}" class="img-responsive" />
                             </a>
                                 <!-- <span class="promotion">-20%</span> -->
                         </div>
@@ -351,7 +398,7 @@
             </div>
         <div class="footer">
     <div class="footer-content clearfix">
-        <div class="container">
+        <div class="container" >
             <div class="row">
             <div class="footer-box col-md-3 col-sm-12 col-xs-12">
                 <div class="item">

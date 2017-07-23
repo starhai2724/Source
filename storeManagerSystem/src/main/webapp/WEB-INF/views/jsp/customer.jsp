@@ -104,16 +104,15 @@
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
-                                        <th style="text-align: center; width: 40px;">STT</th>
-										<th style="text-align: center; width: 250px">Tên khách hàng</th>
-										<th style="text-align: center; width: 80px">Số điện thoại</th>
-										<th style="text-align: center; width: 80px">Giới tính</th>
-										<th style="text-align: center; width: 80px">Ngày sinh</th>
-										<th style="text-align: center; width: 80px">Địa chỉ</th>
-										<th style="text-align: center; width: 80px">Loại thẻ</th>
-										<th style="text-align: center; width: 80px">Điểm tích lũy</th>
+                                        <th style="padding-left: 5px;padding-right: 4px; width: 20px;">STT</th>
+										<th style="text-align: center; width: 100px;">Tên khách hàng</th>
+										<th style="text-align: center; width: 50px">SĐT</th>
+										<th style="padding-left: 5px;padding-right: 4px; width: 50px">Giới tính</th>
+										<th style="padding-left: 5px;padding-right: 4px;text-align: center; width: 60px">Ngày sinh</th>
+										<th style="padding-left: -5px; width: 80px">Địa chỉ</th>
+										<th style="text-align: center; width: 50px">Loại thẻ</th>
+										<th style="padding-left: 5px;padding-right: 1px;width: 20px;text-align: center;">Điểm</th>
 										<th style="text-align: center; width: 80px">Ngày tạo</th>
-										<th style="text-align: center; width: 80px">Ngày chỉnh sửa</th>
 										<th style="text-align: center;	width: 60px">Thao tác</th>
                                     </tr>
                                 </thead>
@@ -129,7 +128,6 @@
 		                                       	<td>${items.loaiThe}</td>
 		                                        <td  style="text-align: right">${items.soDiem }</td>
 		                                         <td style="text-align: center">${items.ngayTao }</td>
-		                                         <td style="text-align: center">${items.ngaySua }</td>
 		                                        <td class="center" style="text-align: center">
 		                                        		<button class="btn" type="button" ng-click="btnGetById('${items.idKhachHang}');">
 															<span class="glyphicon glyphicon-pencil" data-toggle="tooltip" data-original-title="Sửa"></span>

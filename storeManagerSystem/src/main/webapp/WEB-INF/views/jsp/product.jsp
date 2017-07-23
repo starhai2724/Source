@@ -128,14 +128,13 @@
                                 <thead>
                                     <tr>
                                     	<th style="text-align: center; width: 5px;"></th>
-                                        <th style="text-align: center; width: 10px;">STT</th>
-										<th style="text-align: center; width: 50px">Mã SP</th>
+                                        <th style="text-align: center; width: 10px;padding-left: 5px;padding-right: 4px; ">STT</th>
+										<th style="text-align: center; width: 50px;padding-left: 5px;padding-right: 4px; ">Mã SP</th>
 										<th style="text-align: center; width: 200px">Tên sản phẩm</th>
 										<th style="text-align: center; width: 50px">Loại SP</th>
-										<th style="text-align: center; width: 80px">Giá mua</th>
-										<th style="text-align: center; width: 80px">Giá bán</th>
-										<th style="text-align: center; width: 80px">Ngày tạo</th>
-										<th style="text-align: center; width: 80px">Ngày chỉnh sửa</th>
+										<th style="text-align: center; width: 80px;padding-left: 5px;padding-right: 4px; ">Giá mua</th>
+										<th style="text-align: center; width: 80px;padding-left: 5px;padding-right: 4px; ">Giá bán</th>
+										<th style="text-align: center; width: 80px;padding-left: 5px;padding-right: 4px; ">Ngày tạo</th>
 										<th style="text-align: center; width: 250px">Mô tả</th>
 										<th style="text-align: center;	width: 60px">Thao tác</th>
                                     </tr>
@@ -151,7 +150,7 @@
 		                                      	 <td style="text-align: right">${items.giaMua }</td>
 					                    		 <td style="text-align: right">${items.giaBan }</td>
 		                                       	<td  style="text-align: center">${items.ngayTao}</td>
-		                                        <td  style="text-align: center">${items.ngayChinhSua }</td>
+		                                        <td  style="display: none">${items.ngayChinhSua }</td>
 		                                         <td>${items.moTa }</td>
 		                                        <td class="center" style="text-align: center">
 		                                        		<button class="btn" type="button" ng-click="btnGetProductById('${items.SEQ}');">
