@@ -28,6 +28,7 @@
     <link href="/storeManagerSystem/view/template_2/runecom22.runtime.vn/../static.runtime.vn/App_Themes/RUN022/style.css" rel="stylesheet" type="text/css" />
     <link href="/storeManagerSystem/view/template_2/runecom22.runtime.vn/../static.runtime.vn/App_Themes/RUN022/responsive.css" rel="stylesheet" type="text/css" />
     
+    
     <style type="text/css">
     #wrap{margin:0 auto;
     position:relative;}
@@ -44,14 +45,14 @@
     #menu li{
         float:left;
         list-style:none;
-        height:40px;
+        height:52px;
         width:150px;
         padding:0px;
         
         }
     #menu li a, #sub li a{
         text-decoration:none;
-        padding:5px;
+        padding:5px; 
     }
     #sub li{
         clear:both;
@@ -61,20 +62,20 @@
     #menu #sub{
         visibility:hidden;
         padding:0px;
-        display:block;
+        display:block; z-index:1000;position:relative;
     }
     #menu li:hover #sub{
-        visibility:visible;
+        visibility:visible; z-index:1000;position:relative;
         }
     #menu li:hover a {
-        background-color:rgba(51,0,0,0.5);
+        background-color:rgba(51,0,0,0.5); 
     }
     #menu li:hover #sub li a{
-        background-color:#42a8bf;
+        background-color:#42a8bf; 
     }
     #menu li #sub li:hover a{
         background-color:#1a525e;
-                height:40px;
+        height:52px;
     }
 </style>
 </head>
@@ -86,7 +87,7 @@
         <div class="header">
     <section class="top-link clearfix">
         <div class="container" style="width: 1370px">
-            <div class="row">
+            <div class="row" >
                 <div class="col-md-12">
                     <ul class="nav navbar-nav topmenu-contact">
                         <li><i class="fa fa-phone"></i>Hotline: ${LayoutForm.soDienThoai}</li>
@@ -160,10 +161,14 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="search hidden-sm hidden-xs">
+                        <div class="social-group">
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-xs-12 col-sm-12 header-right" style="margin-left: -120px">
+                	 	<div class="search hidden-sm hidden-xs" s>
                             <div class="input-cat form-search clearfix">
                                 <div class="form-search-controls">
-                                    <input type="text" path="timKiem_TenSP"  name="timKiem_TenSP" ng-model = "timKiem_TenSP"  ng-init ="timKiem_TenSP = '${LayoutForm.timKiem_TenSP}'" onblur="if(this.value=='')this.value='Tìm kiếm...'"
+                                    <input  type="text" path="timKiem_TenSP"  name="timKiem_TenSP" ng-model = "timKiem_TenSP"  ng-init ="timKiem_TenSP = '${LayoutForm.timKiem_TenSP}'" onblur="if(this.value=='')this.value='Tìm kiếm...'"
                                            onfocus="if(this.value=='Tìm kiếm...')this.value=''" value="T&#236;m kiếm..." />
                                     <!-- <div class="select-categories">
                                         <select name="lbgroup" id="lbgroup">
@@ -180,9 +185,7 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="social-group">
-                        </div>
-                    </div>
+                	 </div>
                 </div>
             </div>
         </section>
@@ -206,7 +209,7 @@
             }
         </script>
 <section class="navigation-menu clearfix">
-    <div class="container" style="width: 1370px">
+    <div class="container" style="width: 1370px;font-size: 18px">
         <div class="menu-top">
             <div class="row">
                 <div class="col-md-12">
@@ -222,21 +225,21 @@
                         <div id="wrap">
                             <ul id="menu">
                             	<li><a style="padding-top: 18px" href="/storeManagerSystem/${LayoutForm.pathJSP }"><span style="font-size: 14px">Trang chủ</span></a></li>
-								<li><a style="padding-top: 18px" href='gioi-thieu.html'><span style="font-size: 14px">Giới thiệu</span></a></li>
+								<li><a style="padding-top: 18px" href='gioi-thieu.html'><span style="font-size: 16px">Giới thiệu</span></a></li>
 								<c:forEach var="items" items="${LayoutForm.loaiSanPham }">
 							        <li>
-							            <a style="padding-top: 18px" href="#" data-toggle="dropdown"><span style="font-size: 14px">${items.nameProductCategory }</span> <b class="caret"></b></a>
+							            <a style="padding-top: 18px" href="#" data-toggle="dropdown"><span style="font-size: 16px">${items.nameProductCategory }</span> <b class="caret"></b></a>
 							            <c:if test="${!empty items.menuRowForms }">
 								            <ul id="sub">
 											            <c:forEach var="menus" items="${items.menuRowForms }">
-											            			<li><a style="font-size: 14px" href="#"><span style="font-size: 14px">${menus.tenLoaiSp }</span></a></li>
+											            			<li><a style="font-size: 14px" href="#"><span style="font-size: 16px">${menus.tenLoaiSp }</span></a></li>
 											            </c:forEach>
 								            </ul>
 							            </c:if>
 							        </li>
 						        </c:forEach>
-								<li> <a style="padding-top: 18px" href='tin-tuc.html'><span style="font-size: 14px">Tin tức</span></a></li>
-								<li><a style="padding-top: 18px" href='lien-he.html'><span style="font-size: 14px">Liên hệ</span></a></li>
+								<li> <a style="padding-top: 18px" href='tin-tuc.html'><span style="font-size: 16px">Tin tức</span></a></li>
+								<li><a style="padding-top: 18px" href='lien-he.html'><span style="font-size: 16px">Liên hệ</span></a></li>
 							</ul>
 						</div>
                         </nav>
@@ -262,14 +265,52 @@
         });
     });
 </script>
-        </div>
-        <div class="slideshow">
-                <div class="col-md-12">
-    <link href="/storeManagerSystem/view/template_2/runecom22.runtime.vn/Scripts/flexSlider/flexslider.css" rel="stylesheet" type="text/css" />
-<!-- <script type="text/javascript">
-    window.Slideshows = [{"Id":628,"ShopId":139,"Name":"ffdgf","Image":"/Uploads/shop139/images/slide/slide1.jpg","Link":"#","Index":1,"Inactive":false,"Timestamp":"AAAAAAASFgg="},{"Id":629,"ShopId":139,"Name":"dfg","Image":"/Uploads/shop139/images/slide/slide2.jpg","Link":"#","Index":2,"Inactive":false,"Timestamp":"AAAAAAASFuI="},{"Id":630,"ShopId":139,"Name":"fgh","Image":"/Uploads/shop139/images/slide/slide3.jpg","Link":"#","Index":3,"Inactive":false,"Timestamp":"AAAAAAASFuM="},{"Id":631,"ShopId":139,"Name":"Zaa","Image":"/Uploads/shop139/images/slide/slide5.jpg","Link":"#","Index":4,"Inactive":false,"Timestamp":"AAAAAAASFuQ="}];
-</script>  -->      </div>
-        </div>
+</div>
+<div class="slideshow" >
+<div class="col-md-12">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplayHeader/hinh1" alt="Los Angeles" style="width:100%;">
+      </div>
+
+      <div class="item">
+        <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplayHeader/hinh2" alt="Los Angeles" style="width:100%;">
+      </div>
+    
+      <div class="item">
+        <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplayHeader/hinh3" alt="Los Angeles" style="width:100%;">
+      </div>
+      
+      <div class="item">
+        <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplayHeader/hinh4" alt="Los Angeles" style="width:100%;">
+      </div>
+      
+      <div class="item">
+        <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplayHeader/hinh5" alt="Los Angeles" style="width:100%;">
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+   </div>    
+  </div>
+</div>
             <div class="adv">
                 <div class="container" style="width: 1370px">
                     <div class="row">
@@ -307,38 +348,36 @@
                             <option value="?limit=500">500</option>
                 </select> -->
             </div>
-            <div class="sort">
+            <div class="sort" style="font-size: 15px">
                 <span>Sắp xếp</span>
-                <!-- <select class="selectProductSort" id="lbsort" onchange="window.location.href = this.options[this.selectedIndex].value">
+                 <select class="selectProductSort" id="lbsort" onchange="window.location.href = this.options[this.selectedIndex].value">
                             <option selected="selected" value="?sort=index&amp;order=asc">Mặc định</option>
                             <option value="?sort=price&amp;order=asc">Gi&#225; tăng dần</option>
                             <option value="?sort=price&amp;order=desc">Gi&#225; giảm dần</option>
-                            <option value="?sort=name&amp;order=asc">T&#234;n sản phẩm: A to Z</option>
-                            <option value="?sort=name&amp;order=desc">T&#234;n sản phẩm: Z to A</option>
-                </select> -->
+                </select>
             </div>
         </nav>
         <!-- San pham (S)  -->
         <div class="product-block product-grid clearfix row">
         <c:forEach var="items" items="${LayoutForm.products }">
                 <div class="col-md-3 col-sm-3 col-xs-14 product-item-box">
-                    <div class="product-item product-resize fixheight" style="height: 400px;">
-                        <div class="image image-resize" style="height: 300px;">
-                            <a href="javascript:void(0);" title="${items.tenSP}">
-                                <img style="width: 300px" class="img-responsive" src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplay/${items.SEQ}" class="img-responsive" />
+                    <div class="product-item " style="height: 500px" >
+                        <div style="width: 300px">
+                            <a title="${items.tenSP}">
+                                <img style="width: 300px" src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplay/${items.SEQ}"  />
                             </a>
                                 <!-- <span class="promotion">-20%</span> -->
                         </div>
                         <div class="right-block">
                             <h2 class="name">
-                                <a href="javascript:void(0);" title="${items.tenSP}">${items.tenSP}</a>
+                                <a style="font-size: 17px"  title="${items.tenSP}">${items.tenSP}</a>
                             </h2>
-                            <div class="ratings clearfix">
+<!--                             <div class="ratings clearfix">
                                 <div class="rating-box">
                                     <div class="rating">
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="price">
                                     <!-- <span class="price-new">168.000&nbsp;₫</span>
                                     <span class="price-old">210.000&nbsp;₫</span> -->
@@ -353,7 +392,7 @@
 									</c:if>
                             </div>
                             <div class="addtocart-button clearfix">
-                                <a class="add-to-cart" href="javascript:void(0);" ng-click="btnPurchase('${items.giaBan}','${items.giaBanKM }' ,'${items.SEQ} ')"><span></span></a>
+                                <a class="add-to-cart" ng-click="btnPurchase('${items.giaBan}','${items.giaBanKM }' ,'${items.SEQ} ')"><span></span></a>
                                 <!-- <a class="add-wishlist" href="#"><span></span></a>
                                 <a class="add-compare" href="#"><span></span></a> -->
                             </div>

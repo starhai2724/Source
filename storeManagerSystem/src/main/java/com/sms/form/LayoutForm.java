@@ -53,8 +53,53 @@ public class LayoutForm extends AbstractForm {
 	
 	
 	// T/h khach hang chua dang nhap thi dung sdt de tao hoa don sp (E)
-
 	
+	private byte[]  file_1;
+	private byte[]  file_2;
+	private byte[]  file_3;
+	private byte[]  file_4;
+	private byte[]  file_5;
+	
+	public byte[] getFile_1() {
+		return file_1;
+	}
+
+	public void setFile_1(byte[] file_1) {
+		this.file_1 = file_1;
+	}
+
+	public byte[] getFile_2() {
+		return file_2;
+	}
+
+	public void setFile_2(byte[] file_2) {
+		this.file_2 = file_2;
+	}
+
+	public byte[] getFile_3() {
+		return file_3;
+	}
+
+	public void setFile_3(byte[] file_3) {
+		this.file_3 = file_3;
+	}
+
+	public byte[] getFile_4() {
+		return file_4;
+	}
+
+	public void setFile_4(byte[] file_4) {
+		this.file_4 = file_4;
+	}
+
+	public byte[] getFile_5() {
+		return file_5;
+	}
+
+	public void setFile_5(byte[] file_5) {
+		this.file_5 = file_5;
+	}
+
 	public String getSdtKhachHang() {
 		return sdtKhachHang;
 	}
