@@ -45,7 +45,7 @@
         float:left;
         list-style:none;
         height:40px;
-        width:170px;
+        width:150px;
         padding:0px;
         
         }
