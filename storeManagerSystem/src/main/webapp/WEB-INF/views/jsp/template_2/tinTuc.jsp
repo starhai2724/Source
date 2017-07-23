@@ -414,13 +414,13 @@
                 </div>
                 <ul>
                         <li>
-                            <a href="content/huong-dan-thanh-toan.html">
-                                Hướng dẫn thanh to&#225;n
+                            <a ng-click="btnGioiThieu()">
+                                Về ch&#250;ng t&#244;i
                             </a>
                         </li>
                         <li>
-                            <a href="content/chinh-sach-ban-hang.html">
-                                Hướng dẫn đặt hàng
+                            <a ng-click="btnLienHe()">
+                                Hỏi đ&#225;p
                             </a>
                         </li>
                 </ul>

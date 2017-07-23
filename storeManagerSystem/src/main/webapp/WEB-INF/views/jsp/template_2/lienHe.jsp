@@ -347,12 +347,12 @@
                 </div>
                 <ul>
                         <li>
-                            <a href="gioi-thieu.html">
+                            <a ng-click="btnGioiThieu()">
                                 Về ch&#250;ng t&#244;i
                             </a>
                         </li>
                         <li>
-                            <a href="content/hoi-dap.html">
+                            <a ng-click="btnLienHe()">
                                 Hỏi đ&#225;p
                             </a>
                         </li>

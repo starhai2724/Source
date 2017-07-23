@@ -225,7 +225,7 @@
                         <div id="wrap">
                             <ul id="menu">
                             	<li><a style="padding-top: 18px" href="/storeManagerSystem/${LayoutForm.pathJSP }"><span style="font-size: 16px">Trang chủ</span></a></li>
-								<li><a style="padding-top: 18px" href='gioi-thieu.html'><span style="font-size: 16px">Giới thiệu</span></a></li>
+								<li><a style="padding-top: 18px" ng-click="btnGioiThieu()"><span style="font-size: 16px">Giới thiệu</span></a></li>
 								<c:forEach var="items" items="${LayoutForm.loaiSanPham }">
 							        <li>
 							            <a style="padding-top: 18px" href="#" data-toggle="dropdown"><span style="font-size: 16px">${items.nameProductCategory }</span> <b class="caret"></b></a>
@@ -325,12 +325,12 @@
                 </div>
                 <ul>
                         <li>
-                            <a href="gioi-thieu.html">
+                            <a ng-click="btnGioiThieu()">
                                 Về ch&#250;ng t&#244;i
                             </a>
                         </li>
                         <li>
-                            <a href="content/hoi-dap.html">
+                            <a ng-click="btnLienHe()">
                                 Hỏi đ&#225;p
                             </a>
                         </li>
