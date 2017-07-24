@@ -4,7 +4,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-
 <div id="wrapper">
 	<!-- Navigation -->
 	<div id="page-wrapper" ng-app="KhachHangForm" ng-controller="ctrl">
@@ -15,7 +14,7 @@
 			<!-- /.col-lg-12 -->
 		</div>
 		<!-- /.row -->
-	<form:form id="KhachHangForm" modelAttribute="KhachHangForm" role="form" method="POST" >
+	<form:form id="KhachHangForm" modelAttribute="KhachHangForm" role="form" method="GET" >
 		<div class="row">
 			<div class="col-sm-4">
 				<div class="form-group">
@@ -72,7 +71,7 @@
 			<div class="col-sm-4">
 				<div class="form-group">
 					<label>Ngày sinh</label> 
-					<form:input class="form-control" type="text" path="ngaySinh"  name="ngaySinh" ng-model = "ngaySinh"  ng-init ="ngaySinh = '${KhachHangForm.ngaySinh}'" />
+					<form:input class="form-control" type="date" path="ngaySinh"  name="ngaySinh" />
 					<p style="color: red;">{{ngaySinh_err}}</p>
 				</div>
 			</div>
@@ -90,17 +89,17 @@
 		<div class="row" align="right" style="width: 100%">
 			<div >
 				<input type="button" name="" class="btn btn-info " ng-click ="btnCreate()" value="Đăng kí">
-				<input type="button" name="" class="btn btn-info " ng-click="btnIn()" value="In">
+				<input type="button" name="" class="btn btn-info " ng-click="exportToExcel('#dataTables-example')" value="In">
 				<input type="button" name="" class="btn btn-info " ng-click ="btnClear()" value="Hủy">
 			</div>
 		</div>
 		
 		<!-- <div class="row">
 			<div class="col-sm-3" style="text-align: center">&nbsp</div>
-		</div -->
+		</div -->	
 		
 		<c:if test="${!empty KhachHangForm.lst }">
-		<div class="panel-body">
+		<div class="panel-body" id ="tableToExport">
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>

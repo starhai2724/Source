@@ -21,6 +21,14 @@
 		<servlet-name>hello-dispatcher</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/view/jsp/404.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/view/jsp/500.jsp</location>
+	</error-page>
 	<!-- For root context -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

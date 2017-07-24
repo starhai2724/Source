@@ -1,5 +1,7 @@
 package com.sms.Controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -7,26 +9,32 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.sms.OutputRows.LoaiTheOutputRowBean;
 import com.sms.OutputRows.SanPhamOutputRowBean;
 import com.sms.common.SMSComons;
 import com.sms.dao.ChiTietHoaDonDAO;
 import com.sms.dao.CreateTableProductDAO;
 import com.sms.dao.DangKiWebDAO;
 import com.sms.dao.HoaDonDAO;
+import com.sms.dao.KhachHangDAO;
+import com.sms.dao.KhoHangDAO;
 import com.sms.dao.LayoutDAO;
+import com.sms.dao.LoaiTheDAO;
 import com.sms.form.LayoutForm;
 import com.sms.formRows.ProductFormRow;
 import com.sms.input.ChiTietHoaDonInputBean;
 import com.sms.input.HoaDonInputBean;
+import com.sms.input.KhachHangInputBean;
+import com.sms.input.LoaiTheInputBean;
 import com.sms.input.SanPhamInputBean;
 import com.sms.output.DangKiWebOutputBean;
+import com.sms.output.KhoHangOutBean;
 import com.sms.output.SanPhamOutputBean;
 import com.sms.session.KhachHangSession;
 @Controller
 public class ThanhToanController {
 	
 	public static final String PAGE_CART = "gioHang";
-	
 	
 	@RequestMapping(value = "/{path}/thanhToan/{list}")
 	public String thanhToan(@ModelAttribute("LayoutForm") LayoutForm form, @PathVariable("path") String path,
@@ -78,6 +86,30 @@ public class ThanhToanController {
 		hoaDonInputBean.setTongTien(String.valueOf(totalMoney));
 		hoaDonInputBean.setNgayLap(SMSComons.getDate());
 		cnt = HoaDonDAO.intances.insert(hoaDonInputBean);
+		
+		//update diem tich luy va loai the cho khach hang
+		LoaiTheInputBean loaiTheInputBean = new LoaiTheInputBean();
+		loaiTheInputBean.setPathJSP(path);
+		loaiTheInputBean.setIdLoaiThe("2");
+		List<LoaiTheOutputRowBean> loaiTheOutputRowBeans = LoaiTheDAO.intances.getById(loaiTheInputBean);
+		double mucDiem = 0;
+		if(loaiTheOutputRowBeans != null && loaiTheOutputRowBeans.size()> 0){
+			mucDiem = Double.parseDouble(loaiTheOutputRowBeans.get(0).getDiem());
+		}
+		
+		if (khachHangSession != null) {
+			KhachHangInputBean khachHangInputBean = new KhachHangInputBean();
+			khachHangInputBean.setPathJSP(path);
+			khachHangInputBean.setSoDiem(SMSComons.cong(khachHangSession.getDiemTichLuy(), hoaDonInputBean.getDiemTichLuy()) +"");
+			if(loaiTheOutputRowBeans != null && loaiTheOutputRowBeans.size()> 0){
+				if(khachHangInputBean.getSoDiem().compareTo(mucDiem +"") > 0){
+					khachHangInputBean.setLoaiThe("2");
+				}
+			}
+			khachHangInputBean.setLoaiThe(khachHangSession.getLoaiThe());
+			cnt = KhachHangDAO.intances.updateDiemAndLoaiThe(khachHangInputBean);
+		}
+		
 		if (cnt == 1) {
 			String idHoaDon = HoaDonDAO.intances.getMaxId(path);
 			SanPhamOutputRowBean sanPhamOutputRowBean;
@@ -101,6 +133,13 @@ public class ThanhToanController {
 					chiTietHoaDonInputBean.setThanhTien(Double.parseDouble(sanPhamOutputRowBean.getGiaBan()) * getSoLuongSanPham(parts, sanPhamOutputRowBean.getSEQ())+"");
 				}
 				cnt = ChiTietHoaDonDAO.intances.insert(chiTietHoaDonInputBean);
+				// Cap nhat lai so luong san pham trong kho (S)
+				KhoHangOutBean khoHangOutBean = KhoHangDAO.intances.getAllKhoHangByIdSanPham(path,chiTietHoaDonInputBean.getIdSanPham());
+				if(khoHangOutBean != null){
+					cnt = KhoHangDAO.intances.updateKhoHang(path, khoHangOutBean.getIdSanPham(), (Integer.parseInt(khoHangOutBean.getSoLuong()) -  Integer.parseInt(chiTietHoaDonInputBean.getSoLuongSP() ) )+"");
+				}
+				// Cap nhat lai so luong san pham trong kho (E)
+				
 				if(cnt != 1){
 					form.setMessage("");
 					form.setMessageErr("Thanh toán không thành công.");
@@ -122,7 +161,6 @@ public class ThanhToanController {
 		form.setSoDienThoai(output.getSdt());
 		form.setDiaChi(output.getDiaChi());
 		form.setTenCuaHang(output.getTenWebSite());
-		
 		return PAGE_CART;
 	}
 	

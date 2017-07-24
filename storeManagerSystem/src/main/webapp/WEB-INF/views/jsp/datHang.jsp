@@ -22,6 +22,7 @@
 				<div class="form-group">
 					<input type="button" name="" class="btn btn-info " ng-click ="btnChonSP()" value="Chọn sản phẩm">
 					<input type="button" name="" class="btn btn-info " ng-click = "btnXoaDong()"  value="Xóa dòng">
+					<input type="button" name="" class="btn btn-info " ng-click="exportToExcel('#tableExport')" value="In">
 				</div>
 			</div>
 		</div>
@@ -38,7 +39,7 @@
 		<!--Message (E)-->
 		<c:if test="${!empty DatHangForm.chiTietDatHangRowForms }">
 		<div class="panel-body">
-                   <table width="100%" class="table table-striped table-bordered table-hover" >
+                   <table width="100%" class="table table-striped table-bordered table-hover" id="tableExport">
                        <thead>
                            <tr>
                            		<th style="width: 20px;  text-align: center">Chọn</th>
@@ -112,7 +113,7 @@
 		<div class="row" align="right" style="width: 100%">
 			<div>
 				<input type="button" name="" class="btn btn-info " ng-click="btnDangKy();"  value="Đăng ký">
-				<input type="button" name="" class="btn btn-info "  value="In">
+				<input type="button" name="" class="btn btn-info " ng-click="exportToExcel('#dataTables-example')" value="In">
 				<input type="button" name="" class="btn btn-info " ng-click="btnClear();" value="Hủy">
 			</div>
 		</div>

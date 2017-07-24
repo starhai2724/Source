@@ -7,6 +7,16 @@ public class KhoHangRowForm {
 	private String soLuong;
 	
 	private String tenSp;
+	
+	private String trangThai;
+
+	public String getTrangThai() {
+		return trangThai;
+	}
+
+	public void setTrangThai(String trangThai) {
+		this.trangThai = trangThai;
+	}
 
 	public String getIdSanPham() {
 		return idSanPham;

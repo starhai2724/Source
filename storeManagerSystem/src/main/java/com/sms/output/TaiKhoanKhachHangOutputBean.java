@@ -7,6 +7,27 @@ public class TaiKhoanKhachHangOutputBean {
 
 	private String sdt;
 
+	private String diemTichLuy;
+	
+	private String loaiThe;
+	
+	
+	public String getLoaiThe() {
+		return loaiThe;
+	}
+
+	public void setLoaiThe(String loaiThe) {
+		this.loaiThe = loaiThe;
+	}
+
+	public String getDiemTichLuy() {
+		return diemTichLuy;
+	}
+
+	public void setDiemTichLuy(String diemTichLuy) {
+		this.diemTichLuy = diemTichLuy;
+	}
+
 	public String getIdKhachHang() {
 		return idKhachHang;
 	}

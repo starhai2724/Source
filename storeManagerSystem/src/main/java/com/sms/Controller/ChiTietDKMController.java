@@ -170,6 +170,7 @@ public class ChiTietDKMController {
 				input = new SanPhamInputBean();
 				input.setPathJSP(pathJSP);
 				input.setIdSanPham(formRow.getIdSanPham());
+				input.setSEQ(formRow.getSEQ());
 				outputBean = CreateTableProductDAO.intances.getProductById(input);
 				outputRowBean = outputBean.getLst().get(0);
 				// check ton tai
@@ -318,7 +319,7 @@ public class ChiTietDKMController {
 				formRow.setTenLoaiSP(outputRowBean.getTenLoaiSP());
 				formRow.setIdLoaiSP(outputRowBean.getIdLoaiSP());
 				formRow.setGiaMua(SMSComons.formatMoney(outputRowBean.getGiaMua()));
-		    	formRow.setGiaBanKM(SMSComons.formatMoney(outputRowBean.getGiaBanKM()));
+		    	formRow.setGiaBanKM(outputRowBean.getGiaBanKM());
 			    formRow.setGiaBan(SMSComons.formatMoney(outputRowBean.getGiaBan()));	
 				form.getLst().add(formRow);
 			}

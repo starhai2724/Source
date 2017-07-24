@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.sms.common.MD5HashingExample;
 import com.sms.common.SMSComons;
 import com.sms.common.SystemCommon;
 import com.sms.common.SystemURL;
@@ -150,7 +151,7 @@ public class DangKiWebController {
 		//dang ki
 		DangKiWebInputBean inputBean = new DangKiWebInputBean();
 		inputBean.setEmail(form.getEmail());
-		inputBean.setMatKhau(form.getMatKhau());
+		inputBean.setMatKhau(MD5HashingExample.MD5(form.getMatKhau()));
 		inputBean.setQuyen("02");
 		inputBean.setNgayTao(SMSComons.getDate());
 		inputBean.setNgayChinhSua("");

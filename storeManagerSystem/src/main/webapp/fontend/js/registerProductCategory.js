@@ -40,6 +40,7 @@ app.controller('ctrl', function($scope, $window) {
 	
 });
 
+
 function create($scope) {
 	var valid = true;
 	if ($scope.nameProductCategory == "") {

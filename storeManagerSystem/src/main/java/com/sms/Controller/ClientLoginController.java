@@ -4,14 +4,20 @@ package com.sms.Controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.sms.common.MD5HashingExample;
 import com.sms.common.SystemCommon;
+import com.sms.form.KhachHangForm;
+import com.sms.form.LoginForm;
 import com.sms.form.StoreOwnerForm;
 import com.sms.impl.ClientLoginImpl;
 import com.sms.models.User;
@@ -25,18 +31,26 @@ public class ClientLoginController {
 	
 	
 	@RequestMapping(value ="/", method = RequestMethod.GET)	
-	public String home(){
+	public String home(@ModelAttribute("LoginForm") LoginForm loginForm, HttpSession session, Model model, BindingResult result){
+//		model.addAttribute("LoginForm", loginForm);
+		if (result.hasErrors()) {
+			return SystemCommon.PAGE_ERROR;
+	    }
 		return SystemCommon.PAGE_LOGIN;
 	}
 	
 	@RequestMapping(value="/login", method = RequestMethod.POST)
-	public String checkLogin(@RequestParam("username") String username, @RequestParam("password") String password, ModelMap model, HttpSession session){
-		model.addAttribute("username", username);
-		model.addAttribute("password", password);
-		model.addAttribute("message", "Sai Tên đăng nhập hoặc mật khẩu");
+	public String checkLogin(@ModelAttribute("LoginForm") LoginForm loginForm, ModelMap model, HttpSession session, BindingResult result){
+//		model.addAttribute("username", username);
+//		model.addAttribute("password", password);
+//		model.addAttribute("message", "Sai Tên đăng nhập hoặc mật khẩu");
+		
+		
+		model.addAttribute("LoginForm", loginForm);
+		loginForm.setMessageErr("Sai Tên đăng nhập hoặc mật khẩu");
 		User req = new User();
-		req.setUsername(username);
-		req.setPassword(password);
+		req.setUsername(loginForm.getUsername());
+		req.setPassword(MD5HashingExample.MD5(loginForm.getPassword()));
 		ClientLoginImpl loginImpl = new ClientLoginImpl();
 		User response = loginImpl.checkLogin(req);
 		if(null != response && !StringUtils.isEmpty(response.getUsername())){
@@ -63,9 +77,8 @@ public class ClientLoginController {
 	}
 	
 	@RequestMapping(value ="/dangXuat", method = RequestMethod.GET)	
-	public String dangXuat( HttpSession session){
+	public String dangXuat(@ModelAttribute("LoginForm") LoginForm loginForm, HttpSession session, Model model){
 		// set session userlocal
-		System.out.println("tet");
 		session.removeAttribute("userLocal");
 		return SystemCommon.PAGE_LOGIN;
 	}

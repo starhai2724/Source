@@ -58,6 +58,7 @@
 			<div >
 				<input type="button" name="" class="btn btn-info " ng-click ="btnAppend()" value="Mới">
 				<input type="button" name="" class="btn btn-info " ng-click="btnSearch()" value="Tìm kiếm">
+				<input type="button" name="" class="btn btn-info " ng-click="exportToExcel('#dataTables-example')" value="In">
 				<input type="button" name="" class="btn btn-info " ng-click ="btnClear()" value="Hủy">
 			</div>
 		</div>

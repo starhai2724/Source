@@ -39,13 +39,14 @@
 			<div class="col-sm-12">
 				<div class="form-group">
 					<input type="button" name="" class="btn btn-info " ng-click ="btnTimKiem();" value="Tìm kiếm">
+					<input type="button" name="" class="btn btn-info " ng-click="exportToExcel('#tableExport')" value="In">
 					<input type="button" name="" class="btn btn-info " ng-click = "btnHuyQLDT()"  value="Hủy">
 				</div>
 			</div>
 		</div>
 		 <c:if test="${!empty DatHangForm.chiTietDatHangRowForms }">
 		<div class="panel-body">
-                   <table width="100%" class="table table-striped table-bordered table-hover" >
+                   <table width="100%" class="table table-striped table-bordered table-hover" id="tableExport">
                        <thead>
                            <tr>
                            		<th style="width: 20px;  text-align: center">Chọn</th>

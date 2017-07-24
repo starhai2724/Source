@@ -1,18 +1,29 @@
-var app = angular.module('storeOwnerList', []);
+var app = angular.module('HoaDonForm', []);
 app.controller('ctrl', function($scope, $window) {
-	$scope.btnSearch = function() {
-		search($scope);
-	}
-	$scope.btnAppend = function() {
-		append($scope);
+	$scope.idKhachHang_err = "";
+	$scope.ngayLap_err = "";
+	$scope.soLuongSP_err = "";
+	$scope.diemTichLuy_err = "";
+	$scope.tienKhuyenMai_err = "";
+	$scope.tongDiemTichLuy_err = "";
+	$scope.tongTien_err = "";
+	
+//	$scope.btnCreate = function() {
+//		if($scope.flagUpdate == 1){
+//			update($scope)
+//		}else{
+//			create($scope);
+//		}
+//	}
+	
+	$scope.btnGetById = function(id){
+		getById($scope,$window, id);
 	}
 	
-	$scope.btnUpdate = function(id){
-		update($scope,$window, id);
-	}
 	$scope.btnClear = function(){
 		clear($scope);
 	}
+	
 	$scope.btnDelete = function(id){
 		remove($scope, $window, id);
 	}
@@ -41,40 +52,33 @@ app.factory('Excel',function($window){
        $timeout(function(){location.href=exportHref;},100); // trigger download
    }
 });
-//export Excel (S)	
+//export Excel (S)
 
-function search($scope) {
-		document.getElementById("storeOwnerList").action = "/storeManagerSystem/storeOwnerSearch";
-		document.getElementById("storeOwnerList").submit();
+
+
+function getById($scope, $windown, id){
+		var url = "/storeManagerSystem/bill/getById/"+id;
+		document.getElementById("HoaDonForm").action = url;
+		document.getElementById("HoaDonForm").method = "POST";
+		document.getElementById("HoaDonForm").submit();
 }
-
-function append($scope){
-	document.getElementById("storeOwnerList").action = "/storeManagerSystem/storeOwnerEnty";
-	document.getElementById("storeOwnerList").submit();
-}
-
-
-function update($scope,$window, id){
-	var url = "/storeManagerSystem/getStoreOwnerListById/"+id;
-	document.getElementById("storeOwnerList").action = url;
-	document.getElementById("storeOwnerList").method = "POST";
-	document.getElementById("storeOwnerList").submit();
-	
-}
-
 
 function clear($scope){
 	if(confirm("Bạn có muốn hủy?")){
-		document.getElementById("storeOwnerList").action = "/storeManagerSystem/storeOwnerList";
-		document.getElementById("storeOwnerList").submit();
+		document.getElementById("HoaDonForm").action = "/storeManagerSystem/bill/init";
+		document.getElementById("HoaDonForm").method = "POST";
+		document.getElementById("HoaDonForm").submit();
 	}
 }
 
-function remove($scope, $window, id){
-	if(confirm("Bạn có muốn xóa không?")){
-		var url = "/storeManagerSystem/getIdStoreOwnerForDelete/"+id;
-		document.getElementById("storeOwnerList").action = url;
-		document.getElementById("storeOwnerList").method = "POST";
-		document.getElementById("storeOwnerList").submit();
+
+function remove($scope, $windown, id){
+	if(confirm("Bạn có muốn xóa?")){
+		var url = "/storeManagerSystem/bill/delete/"+id;
+		document.getElementById("HoaDonForm").action = url;
+		document.getElementById("HoaDonForm").method = "POST";
+		document.getElementById("HoaDonForm").submit();
 	}
 }
+
+

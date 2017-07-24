@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.sms.common.MD5HashingExample;
 import com.sms.common.SMSComons;
 import com.sms.dao.KhachHangDAO;
 import com.sms.dao.LayoutDAO;
@@ -75,6 +76,8 @@ public class DangkiTaiKhoanController {
 		inputBean.setNgaySinh(form.getNgaySinh());
 		inputBean.setNgayTao(SMSComons.getDate());
 		inputBean.setNgaySua("");
+		inputBean.setMatKhau(MD5HashingExample.MD5(form.getPassword()));
+		
 		
 		//insert
 		int cnt = KhachHangDAO.intances.insert(inputBean);

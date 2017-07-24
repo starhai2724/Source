@@ -1,7 +1,9 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
@@ -15,7 +17,6 @@
     <meta content="website" property="og:type" />
     <meta property="og:image" />
     <meta property="og:url" />
-
     
     <link href="/storeManagerSystem/view/templateDK/bootstrap.min.css" rel="stylesheet" />
 <!--     <link href="/storeManagerSystem/view/templateDK/font-awesome.min.css" rel="stylesheet" /> -->
@@ -81,15 +82,15 @@
     <div class="container">
         <h1 class="text-uppercase clearfix title">Hệ thống bán hàng</h1>
 		<p style="color: red; font-weight: bold;">${message}</p>
-        <form class="step-block-box clearfix" id="loginform"  > 
+        <form:form class="step-block-box clearfix" id="loginform" modelAttribute="LoginForm" role="form" method="GET" > 
             <div class="col-sm-6 col-xs-12 col-sm-offset-3 step-block1 ">
                 <div class="form-group has-feedback">
-                    <input type="text" class="form-control" placeholder="Tên đăng nhập"  ng-model="username" name="username" ng-init="username='${username}'" >
+                    <form:input type="text" class="form-control" placeholder="Tên đăng nhập"  ng-model="username" path="username" ng-init="username='${username}'" />
                     <span class="form-control-feedback color7" aria-hidden="true">*</span>
                     <p style="color: red;">{{username_err}}</p>
                 </div>
                 <div class="form-group has-feedback">
-                    <input type="password" class="form-control" placeholder="Mật khẩu"   ng-model="password"  name="password" ng-init="password='${password}'"  />
+                    <form:input type="password" class="form-control" placeholder="Mật khẩu"   ng-model="password"  path="password" ng-init="password='${password}'"  />
                     <span class="form-control-feedback color7" aria-hidden="true">*</span>
                     <p style="color: red;">{{password_err}}</p>
                 </div>
@@ -106,7 +107,7 @@
                     </div>
                 </div>
             </div>
-       </form> 
+       </form:form> 
     </div>
 </section>   
   <!--Content (E) --> 

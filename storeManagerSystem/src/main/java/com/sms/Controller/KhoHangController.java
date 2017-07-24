@@ -36,9 +36,13 @@ public class KhoHangController {
 			rowForm.setIdSanPham(outBean.getIdSanPham());
 			rowForm.setSoLuong(outBean.getSoLuong());
 			rowForm.setTenSp(outBean.getIdSanPham()+": "+outBean.getTenSp());
+			if(!"".equals(outBean.getSoLuong()) && !"0".equals(outBean.getSoLuong())) {
+				rowForm.setTrangThai("Còn hàng");
+			}else {
+				rowForm.setTrangThai("Hết hàng");
+			}
 			form.getLst().add(rowForm);
 		}
-		
 		session.setAttribute("PAGEIDSTORE", KHO_HANG);
 		return  SystemCommon.ADMIN_STORE;
 	}

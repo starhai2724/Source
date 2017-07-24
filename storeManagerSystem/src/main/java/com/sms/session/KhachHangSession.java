@@ -9,8 +9,29 @@ public class KhachHangSession {
 	private String tenKhachHang;
 
 	private String sdt;
-
 	
+	private String diemTichLuy;
+	
+	private String loaiThe;
+	
+	
+	
+	public String getDiemTichLuy() {
+		return diemTichLuy;
+	}
+
+	public String getLoaiThe() {
+		return loaiThe;
+	}
+
+	public void setLoaiThe(String loaiThe) {
+		this.loaiThe = loaiThe;
+	}
+
+	public void setDiemTichLuy(String diemTichLuy) {
+		this.diemTichLuy = diemTichLuy;
+	}
+
 	public String getPathJSP() {
 		return pathJSP;
 	}

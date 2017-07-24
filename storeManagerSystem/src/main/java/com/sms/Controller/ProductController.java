@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,7 @@ import com.sms.OutputRows.SanPhamOutputRowBean;
 import com.sms.common.SMSComons;
 import com.sms.common.SystemCommon;
 import com.sms.dao.CreateTableProductDAO;
+import com.sms.dao.KhoHangDAO;
 import com.sms.dao.LayoutDAO;
 import com.sms.dao.NhomSanPhamDAO;
 import com.sms.form.ProductForm;
@@ -43,13 +45,14 @@ public class ProductController {
 	 }
 	
 	@RequestMapping(value  = "/product/init")
-	public String init(@ModelAttribute("ProductForm") ProductForm form, HttpSession session){
+	public String init(@ModelAttribute("ProductForm") ProductForm form, HttpSession session, Model model){
 		String pathJSP = (String)session.getAttribute("pathURL"); 
 		// check pathJSP
 		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
 			// quay ve trang login
-			return "redirect:/";
 		}
+//		model.addAttribute("ProductForm", new ProductForm());
+		
 		//reset
 		form.setIdSanPham("");
 		form.setSEQ("");
@@ -177,6 +180,17 @@ public class ProductController {
 			form.setMessageErr("Xử lý đăng kí không thành công.");
 			form.setMessage("");
 		}
+		//insert kho hang
+		cnt = KhoHangDAO.intances.insertKhoHang(pathJSP, "0", input.getIdSanPham());
+		if(cnt == 1){
+			form.setMessage("Xử lý đăng kí thành công.");
+			form.setMessageErr("");
+			//Flag update
+			form.setFlagUpdate("1");
+		}else {
+			form.setMessageErr("Xử lý đăng kí không thành công.");
+			form.setMessage("");
+		}
 		
 		//init data
 		initData(form, pathJSP);
@@ -252,6 +266,7 @@ public class ProductController {
 			form.setMessageErr("Xử lý đăng kí không thành công.");
 			form.setMessage("");
 		}
+		
 		//init data
 		initData(form, pathJSP);
 		
@@ -360,16 +375,10 @@ public class ProductController {
 			listId = "";
 			for (int i = 0; i < parts.length; i++) {
 				lstPhanAnh.add(parts[i]);
-				System.out.println("i: "+parts[i]);
 			}
 		}
 		session.setAttribute("lstPhanAnh", lstPhanAnh);
 		String forward = (String) session.getAttribute("LINK");
 		return  "redirect:"+forward;
-	}
-	
-	public static void main(String[] args) {
-		ProductController controller = new ProductController();
-		controller.init(new ProductForm(), null);
 	}
 }

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,13 +36,17 @@ public class KhachHangController {
 	
 	
 	@RequestMapping(value  = "/customer/init")
-	public String init(@ModelAttribute("KhachHangForm") KhachHangForm form, HttpSession session, Model model){
+	public String init(@ModelAttribute("KhachHangForm") KhachHangForm form, HttpSession session, Model model, BindingResult result){
 		String pathJSP = (String)session.getAttribute("pathURL");
 		// check pathJSP
 		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
 			// quay ve trang login
 			return "redirect:/";
 		}
+		if (result.hasErrors()) {
+			return SystemCommon.PAGE_LOGIN;
+	    }
+		
 		//reset
 		form.setIdKhachHang("");
 		form.setTenKhachHang("");
@@ -61,7 +66,6 @@ public class KhachHangController {
 		//init data
 		initData(form, pathJSP);
 		
-//		model.addAttribute("KhachHangForm", form);
 		session.setAttribute("PAGEIDSTORE", CUSTOMER);
 		return  SystemCommon.ADMIN_STORE;
 	}
@@ -94,14 +98,18 @@ public class KhachHangController {
 				formRow.setNo(String.valueOf(cnt++));
 				formRow.setIdKhachHang(outputRowBean.getIdKhachHang());
 				formRow.setTenKhachHang(outputRowBean.getTenKhachHang());
-				formRow.setLoaiThe(outputRowBean.getLoaiThe());
+				if("01".equals(outputRowBean.getLoaiThe())){
+					formRow.setLoaiThe("Thành viên");
+				}else {
+					formRow.setLoaiThe("Vip");
+				}
 				formRow.setGioiTinh(outputRowBean.getGioiTinh());
 				formRow.setSoDienThoai(outputRowBean.getSoDienThoai());
 				formRow.setDiaChi(outputRowBean.getDiaChi());
 				formRow.setSoDiem(outputRowBean.getSoDiem());
-				formRow.setNgaySinh(outputRowBean.getNgaySinh());
-				formRow.setNgayTao(outputRowBean.getNgayTao());
-				formRow.setNgaySua(outputRowBean.getNgaySua());
+				formRow.setNgaySinh(SMSComons.formatDate(outputRowBean.getNgaySinh()));
+				formRow.setNgayTao(SMSComons.formatDate(outputRowBean.getNgayTao()));
+				formRow.setNgaySua(SMSComons.formatDate(outputRowBean.getNgaySua()));
 				form.getLst().add(formRow);
 			}
 		}
@@ -171,6 +179,7 @@ public class KhachHangController {
 			// quay ve trang login
 			return "redirect:/";
 		}
+		
 		//input
 		KhachHangInputBean inputBean = new KhachHangInputBean();
 		inputBean.setPathJSP(pathJSP);
@@ -181,7 +190,7 @@ public class KhachHangController {
 		inputBean.setSoDienThoai(form.getSoDienThoai());
 		inputBean.setDiaChi(form.getDiaChi());
 		inputBean.setSoDiem(form.getSoDiem());
-		inputBean.setNgaySinh(form.getNgaySinh());
+		inputBean.setNgaySinh(SMSComons.formatDateInput(form.getNgaySinh()));
 		inputBean.setNgayTao(SMSComons.getDate());
 		inputBean.setNgaySua("");
 		
@@ -232,7 +241,7 @@ public class KhachHangController {
 		form.setLoaiThe(khachHangOutputRowBean.getLoaiThe());
 		form.setGioiTinh(khachHangOutputRowBean.getGioiTinh());
 		form.setDiaChi(khachHangOutputRowBean.getDiaChi());
-		form.setNgaySinh(khachHangOutputRowBean.getNgaySinh());
+		form.setNgaySinh(SMSComons.formatDateForm(khachHangOutputRowBean.getNgaySinh()) );
 		form.setSoDienThoai(khachHangOutputRowBean.getSoDienThoai());
 		form.setSoDiem(khachHangOutputRowBean.getSoDiem());
 		

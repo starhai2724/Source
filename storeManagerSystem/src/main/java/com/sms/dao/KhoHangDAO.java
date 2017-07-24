@@ -241,6 +241,7 @@ public class KhoHangDAO {
 		try {
 			Transaction tx = session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
+			query.setParameter(0, id);
 			List<Object[]> data = query.list();
 			for (Object[] object : data) {
 				outputRowBean = new KhoHangOutBean();
@@ -295,7 +296,7 @@ public class KhoHangDAO {
 		int cnt = 0; 
 		Transaction tx = session.beginTransaction();
 		//sql 
-		String hql = getSQLUpdateKhoHang(pathJSP);
+		String hql = getSQLInsertKhoHang(pathJSP);
 		
 		try {
 			SQLQuery query = session.createSQLQuery(hql);
@@ -500,7 +501,8 @@ public class KhoHangDAO {
 		try {
 			SQLQuery query = session.createSQLQuery(hql);
 			query.setParameter(0, inputBean.getTrangThai());
-			query.setParameter(1, inputBean.getIdDonHang());
+			query.setParameter(1, inputBean.getNgayNhanHang());
+			query.setParameter(2, inputBean.getIdDonHang());
 			
 			cnt = query.executeUpdate();
 			tx.commit();
@@ -831,6 +833,7 @@ public class KhoHangDAO {
 		String tableName = pathJSP+"_DONHANG";
 		sb.append("  UPDATE  "+tableName+"     		");
 		sb.append("  		SET TRANG_THAI 	= ?	        ");
+		sb.append("  		SET NGAY_NHAN 	= ?	        ");
 		sb.append("  		 WHERE ID_DONHANG = ?        ");
 		return sb.toString();
 	}
@@ -922,7 +925,7 @@ public class KhoHangDAO {
 		String tableName = pathJSP+"_KHOHANG";                                                         
 		sb.append("  	SELECT                                                                             ");
 		sb.append("  	KHOHANG.ID_SP,                                                                   ");
-		sb.append("  	KHOHANG.SO_LUONG,                                                                   ");
+		sb.append("  	KHOHANG.SO_LUONG                                                                   ");
 		sb.append("  FROM                                                                                  ");
 		sb.append("  	" + tableName+ "      KHOHANG                                          ");
 		sb.append("  WHERE KHOHANG.ID_SP = ?            ");
@@ -968,12 +971,12 @@ public class KhoHangDAO {
 	 * @return
 	 */
 	private String getSQlDeleteByIdDonHang(String pathJSP) {
-		String tableName = pathJSP+"_CHITIETDONHANG";
+		String tableName = pathJSP+"_DONHANG";
 		StringBuffer sb = new StringBuffer();
 		sb.append("  DELETE  ");
 		sb.append("  FROM "+tableName+"  ");
 		sb.append("  WHERE                                                                                 ");
-		sb.append("  	CTDH.ID_DONHANG = ?   ");
+		sb.append("  	ID_DONHANG = ?   ");
 		return sb.toString();
 	}
 	
@@ -982,10 +985,10 @@ public class KhoHangDAO {
 	 * @return
 	 */
 	private String getSQlDeleteChiTietDonHang(String pathJSP) {
-		String tableName = pathJSP+"_DONHANG";
+		String tableName = pathJSP+"_CHITIETDONHANG";
 		StringBuffer sb = new StringBuffer();
 		sb.append("  DELETE  ");
-		sb.append("  FROM "+tableName+"  ");
+		sb.append("  FROM "+tableName+"  CTDH ");
 		sb.append("  WHERE                                                                                 ");
 		sb.append("  	CTDH.ID_DONHANG = ?   ");
 		return sb.toString();

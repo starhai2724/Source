@@ -153,6 +153,7 @@ public class QuanLyDatHangController {
 		inputBean.setIdDonHang(id);
 		inputBean.setPathJSP(form.getCuaHang());
 		inputBean.setTrangThai("1");
+		inputBean.setNgayNhanHang(SMSComons.getDate());
 		
 		int cnt = 0;
 		cnt = KhoHangDAO.intances.updateDonHang_XacNhan(inputBean);

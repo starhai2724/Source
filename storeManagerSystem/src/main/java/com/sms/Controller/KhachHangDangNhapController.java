@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sms.common.MD5HashingExample;
 import com.sms.dao.KhachHangDAO;
 import com.sms.dao.LayoutDAO;
 import com.sms.form.KhachHangDangNhapForm;
@@ -42,13 +43,15 @@ public class KhachHangDangNhapController {
 			//quay ve trang login
 			return  new ModelAndView("redirect:/");
 		}
-		TaiKhoanKhachHangOutputBean outputBean = KhachHangDAO.intances.checkLogin(path, form.getSdt(), form.getMatKhau());
+		TaiKhoanKhachHangOutputBean outputBean = KhachHangDAO.intances.checkLogin(path, form.getSdt(), MD5HashingExample.MD5(form.getMatKhau()));
 		if(outputBean != null){
 			KhachHangSession khachHangSession = new KhachHangSession();
 			khachHangSession.setPathJSP(path);
 			khachHangSession.setIdKhachHang(outputBean.getIdKhachHang());
 			khachHangSession.setSdt(outputBean.getSdt());
 			khachHangSession.setTenKhachHang(outputBean.getTenKhachHang());
+			khachHangSession.setDiemTichLuy(outputBean.getDiemTichLuy());
+			khachHangSession.setLoaiThe(outputBean.getLoaiThe());
 			session.setAttribute("KhachHangSession", khachHangSession);
 			//quay ve trang login
 			return  new ModelAndView(String.valueOf("redirect:/"+path));

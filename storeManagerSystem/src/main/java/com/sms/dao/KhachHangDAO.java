@@ -90,7 +90,7 @@ public class KhachHangDAO {
 			query.setParameter(8, inputBean.getNgayTao());
 			query.setParameter(9, inputBean.getNgaySua());
 			query.setParameter(10, '0');
-			query.setParameter(11, "1234");
+			query.setParameter(11, inputBean.getMatKhau());
 			cnt = query.executeUpdate();
 			tx.commit();
 		} catch (Exception e) {
@@ -122,6 +122,31 @@ public class KhachHangDAO {
 			query.setParameter(6, inputBean.getNgaySinh());
 			query.setParameter(7, inputBean.getNgaySua());
 			query.setParameter(8, inputBean.getIdKhachHang());
+			cnt = query.executeUpdate();
+			tx.commit();
+		} catch (Exception e) {
+		} finally {
+			session.close();
+		}
+		return cnt;
+	}
+	
+	/**
+	 * function update 
+	 * 
+	 */
+	public int updateDiemAndLoaiThe(KhachHangInputBean inputBean){
+		//session
+		Session session = HibernateUtil.getSessionDAO();
+		int cnt = 0; 
+		Transaction tx = session.beginTransaction();
+		//sql 
+		String hql = getSQLUpdateDiemAndLoaiThe(inputBean.getPathJSP());
+		try {
+			SQLQuery query = session.createSQLQuery(hql);
+			query.setParameter(0, inputBean.getLoaiThe());
+			query.setParameter(1, inputBean.getSoDiem());
+			query.setParameter(2, inputBean.getIdKhachHang());
 			cnt = query.executeUpdate();
 			tx.commit();
 		} catch (Exception e) {
@@ -358,6 +383,8 @@ public class KhachHangDAO {
 				outputBean.setIdKhachHang(SMSComons.convertString(object[0]));
 				outputBean.setTenKhachHang(SMSComons.convertString(object[1]));
 				outputBean.setSdt(SMSComons.convertString(object[2]));
+				outputBean.setDiemTichLuy(SMSComons.convertString(object[3]));
+				outputBean.setLoaiThe(SMSComons.convertString(object[4]));
 			}
 			tx.commit();
 		} catch (HibernateException e) {
@@ -428,6 +455,21 @@ public class KhachHangDAO {
 		sb.append("  		,DIEM_TICH_LUY      = ?   		");
 		sb.append("  		,NGAY_SINH  		= ?   				");
 		sb.append("  		,NGAY_CHINHSUA  	= ?   	");
+		sb.append("  		 WHERE ID_KHACHHANG = ?        ");
+		sb.append("  		 AND TRANG_THAI 	= '0'   ");
+		return sb.toString();
+	}
+	
+	/**
+	 * update  product
+	 * @return
+	 */
+	private String getSQLUpdateDiemAndLoaiThe(String pathJSP) {
+		StringBuffer sb = new StringBuffer();
+		String tableName = pathJSP+"_KHACH_HANG";
+		sb.append("  UPDATE  "+tableName+"     		");
+		sb.append("  		SET LOAI_THE 	= ?	        ");
+		sb.append("  		,DIEM_TICH_LUY      = ?   		");
 		sb.append("  		 WHERE ID_KHACHHANG = ?        ");
 		sb.append("  		 AND TRANG_THAI 	= '0'   ");
 		return sb.toString();
@@ -548,6 +590,8 @@ public class KhachHangDAO {
 		sb.append("  SELECT  ID_KHACHHANG ");
 		sb.append("    		,TEN_KHACHHANG");
 		sb.append("    		,SDT ");
+		sb.append("    		,DIEM_TICH_LUY ");
+		sb.append("    		,LOAI_THE ");
 		sb.append("  FROM "+tableName+"  ");
 		sb.append("  WHERE SDT = ?  ");
 		sb.append("  AND MAT_KHAU = ?  ");
@@ -570,7 +614,7 @@ public class KhachHangDAO {
 		sb.append(" ,LOAI_THE 		VARCHAR(6)                  ");
 		sb.append(" ,GIOI_TINH 		VARCHAR(12)                     ");
 		sb.append(" ,SDT 			VARCHAR(12)                     ");
-		sb.append(" ,MAT_KHAU 		VARCHAR(12)                     ");
+		sb.append(" ,MAT_KHAU 		VARCHAR(255)                     ");
 		sb.append(" ,DIA_CHI  		VARCHAR(255)                  ");
 		sb.append(" ,DIEM_TICH_LUY 	VARCHAR(8)             ");
 		sb.append(" ,NGAY_SINH 		VARCHAR(8)                  ");

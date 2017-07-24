@@ -23,6 +23,16 @@ public class KhachHangInputBean {
 	private String ngayTao;
 
 	private String ngaySua;
+	
+	private String matKhau;
+
+	public String getMatKhau() {
+		return matKhau;
+	}
+
+	public void setMatKhau(String matKhau) {
+		this.matKhau = matKhau;
+	}
 
 	public String getPathJSP() {
 		return pathJSP;

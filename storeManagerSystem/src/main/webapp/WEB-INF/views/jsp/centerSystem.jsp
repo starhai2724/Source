@@ -5,6 +5,7 @@
 	pageEncoding="UTF-8"%>
 <%
 	String PAGE_ID = (String) session.getAttribute("PAGE_ID");
+	session.removeAttribute("PAGE_ID");
 %>
 <%
 	if (null != PAGE_ID) {

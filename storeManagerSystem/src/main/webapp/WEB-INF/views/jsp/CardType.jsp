@@ -45,10 +45,10 @@
 			</div>
 		</div>
 		<!--Message (E)-->
-		<div class="row" align="right" style="width: 100%">
+		<div class="row" align="right" style="width: 650px">
 			<div >
 				<input type="button" name="" class="btn btn-info " ng-click ="btnCreate()" value="Đăng kí">
-				<input type="button" name="" class="btn btn-info " ng-click="btnIn()" value="In">
+				<input type="button" name="" class="btn btn-info " ng-click="exportToExcel('#dataTables-example')" value="In">
 				<input type="button" name="" class="btn btn-info " ng-click ="btnClear()" value="Hủy">
 			</div>
 		</div>
@@ -58,8 +58,8 @@
 		</div -->
 		
 		<c:if test="${!empty LoaiTheForm.lst }">
-		<div class="panel-body">
-                            <table width="1578px" class="table table-striped table-bordered table-hover" id="dataTables-example">
+		<div class="panel-body" style="width: 650px">
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
                                         <th style="text-align: center; width: 40px;">STT</th>
@@ -70,10 +70,10 @@
                                 </thead>
                                 <tbody style="overflow: auto; height:50px">
                               		  <c:forEach var="items" items="${LoaiTheForm.lst }">
-		                                <tr class="odd gradeX">
-		                                        <td style="text-align: center">${items.no}</td>
+		                                <tr class="gradeX">
+		                                        <td class="center" style="text-align: center">${items.no}</td>
 		                                        <td>${items.tenLoaiThe}</td>
-							                     <td>${items.diem}</td>
+							                    <td>${items.diem}</td>
 		                                        <td class="center" style="text-align: center">
 		                                        		<button class="btn" type="button" ng-click="btnGetById('${items.idLoaiThe}');">
 															<span class="glyphicon glyphicon-pencil" data-toggle="tooltip" data-original-title="Sửa"></span>

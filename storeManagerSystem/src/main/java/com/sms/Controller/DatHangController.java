@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,7 +43,7 @@ public class DatHangController {
 	}
 	
 	@RequestMapping(value  = "/datHang/init")
-	public String init(@ModelAttribute("DatHangForm") DatHangForm form, HttpSession session, Model model){
+	public String init(@ModelAttribute("DatHangForm") DatHangForm form, HttpSession session, Model model, BindingResult result){
 		String pathJSP = (String)session.getAttribute("pathURL");
 		// check pathJSP
 		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
@@ -79,7 +80,7 @@ public class DatHangController {
 		DatHangOutputBean outputBean = KhoHangDAO.intances.getAll(pathJSP);
 		
 		for(DatHangOutputRowBean outputRowBean : outputBean.getDatHangOutputRowBeans()){
-			if(outputRowBean.getIdDonHang().equals(id) && outputRowBean.getTrangThai().equals("2") ){
+			if(outputRowBean.getIdDonHang().equals(id) && "1".equals(outputRowBean.getTrangThai()) ){
 				form.setMessageErr("Không thể xóa đơn hàng đã hoàn thành.");
 				session.setAttribute("PAGEIDSTORE", DAT_HANG);
 				return  SystemCommon.ADMIN_STORE;

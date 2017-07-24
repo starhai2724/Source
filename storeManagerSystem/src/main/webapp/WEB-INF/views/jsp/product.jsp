@@ -113,7 +113,7 @@
 			<div >
 				<input type="button" name="" class="btn btn-info " ng-click ="btnCreate()" value="Đăng kí">
 				<input type="button" name="" class="btn btn-info " ng-click ="btnPhanAnh()" value="Phản ánh">
-				<input type="button" name="" class="btn btn-info " ng-click="btnIn()" value="In">
+				<input type="button" name="" class="btn btn-info " ng-click="exportToExcel('#dataTables-example')" value="In">
 				<input type="button" name="" class="btn btn-info " ng-click ="btnClear()" value="Hủy">
 			</div>
 		</div>

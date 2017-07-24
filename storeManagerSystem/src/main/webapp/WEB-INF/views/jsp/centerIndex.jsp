@@ -4,6 +4,7 @@
 	pageEncoding="UTF-8"%>
 <%
 	String PAGECENTER = (String) session.getAttribute("PAGECENTER");
+	session.removeAttribute("PAGECENTER");
 %>
 <%
 	if (null != PAGECENTER) {

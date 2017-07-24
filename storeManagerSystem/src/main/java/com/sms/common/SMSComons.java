@@ -10,6 +10,44 @@ public class SMSComons {
 	public static SMSComons functionCommons = new SMSComons();
 
 	/**
+	 * 
+	 * @param num1
+	 * @param num2
+	 * @return
+	 */
+	public static double cong(String num1, String num2){
+		double result = 0;
+		try{
+			if(num1 != null && !"".equals(num1) && num2 != null && !"".equals(num2)){
+				result = Double.parseDouble(num1) + Double.parseDouble(num2);
+			}
+		}catch(Exception e){
+			return result;
+		}
+		return result;
+	}
+	
+	
+	/**
+	 * 
+	 * @param num1
+	 * @param num2
+	 * @return
+	 */
+	public static double nhan(String num1, String num2){
+		double result = 0;
+		try{
+			if(num1 != null && !"".equals(num1) && num2 != null && !"".equals(num2)){
+				result = Double.parseDouble(num1) * Double.parseDouble(num2);
+			}
+		}catch(Exception e){
+			return result;
+		}
+		return result;
+	}
+	
+	
+	/**
 	 * Check null
 	 * @param obj
 	 * @return
@@ -38,6 +76,46 @@ public class SMSComons {
 		return String.valueOf(year+""+month+""+day);
 	}
 	
+	/**
+	 * get date
+	 * 
+	 * @return
+	 */
+	//su dung khi dang ky ngay
+	public static String formatDateInput(String date){
+		String ngay = "";
+		String thang = "";
+		String nam = "";
+		String result ="";
+		if(date != null && date.trim().length() != 0){
+			date = date.replaceAll("-", "");
+			ngay = date.substring(6,date.length() );
+			thang = date.substring(4,6 );
+			nam = date.substring(0,4 );
+			result = nam + "" + thang + "" + ngay;
+		}
+		return result;
+	}
+	
+	/**
+	 * get date
+	 * 
+	 * @return
+	 */
+	//su dung khi dang ky ngay
+	public static String formatDateForm(String date){
+		String ngay = "";
+		String thang = "";
+		String nam = "";
+		String result ="";
+		if(date != null && date.trim().length() != 0){
+			ngay = date.substring(6,date.length() );
+			thang = date.substring(4,6 );
+			nam = date.substring(0,4 );
+			result = nam + "-" + thang + "-" + ngay;
+		}
+		return result;
+	}
 	
 	public static String convertString(Object obj){
 		if(obj != null){

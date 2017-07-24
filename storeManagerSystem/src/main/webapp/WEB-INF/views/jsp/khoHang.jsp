@@ -43,9 +43,9 @@
 			<div class="col-sm-3">&nbsp</div>
 		</div>
 		<c:if test="${!empty KhoHangForm.lst }">
-		<div class="panel-body">
-                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-				                <thead>
+		<div class="panel-body" style="width: 650px">
+                            <table width = "100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+				                <thead >
 									<tr>
 										<th style="width: 250px">Mã/Tên sản phẩm</th>
 										<th style="width: 100px">Số lượng</th>
@@ -55,8 +55,8 @@
                                 <tbody style="overflow: auto; height:50px">
                               		  <c:forEach var="items" items="${KhoHangForm.lst }">
 										<tr class="gradeX">
-								                   <td class="center" style="text-align: left">${items.tenSp}</td>
-								                   <td>${items.soLuong}</td>
+												   <th class="center" style="text-align: left">${items.tenSp}</th>
+								                   <td style="text-align: right">${items.soLuong}</td>
 								                   <td>Còn hàng</td>
 								         </tr>
 								 	</c:forEach> 
@@ -71,5 +71,4 @@
 </div>
     <%@include file="/WEB-INF/views/jsp/footerInclude.jsp" %>
 </body>
-<script src="/storeManagerSystem/view/js/registerProductCategory.js"></script>
 </html>
