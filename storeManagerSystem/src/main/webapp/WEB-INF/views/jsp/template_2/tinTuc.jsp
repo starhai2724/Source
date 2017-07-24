@@ -254,188 +254,136 @@
         </div>
     </div>
 </section>
-<script type="text/javascript">
-    $(document).ready(function () {
-        var str = location.href.toLowerCase();
-        $("ul.menu li a").each(function () {
-            if (str.indexOf(this.href.toLowerCase()) >= 0) {
-                $("ul.menu li").removeClass("active");
-                $(this).parent().addClass("active");
-            }
-        });
-    });
-</script>
-</div>
-<div class="slideshow" >
-<div class="col-md-12">
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-      <div class="item active">
-        <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplayHeader/hinh1" alt="Los Angeles" style="width:100%;">
-      </div>
-
-      <div class="item">
-        <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplayHeader/hinh2" alt="Los Angeles" style="width:100%;">
-      </div>
-    
-      <div class="item">
-        <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplayHeader/hinh3" alt="Los Angeles" style="width:100%;">
-      </div>
-      
-      <div class="item">
-        <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplayHeader/hinh4" alt="Los Angeles" style="width:100%;">
-      </div>
-      
-      <div class="item">
-        <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplayHeader/hinh5" alt="Los Angeles" style="width:100%;">
-      </div>
-    </div>
-
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right"></span>
-      <span class="sr-only">Next</span>
-    </a>
-   </div>    
-  </div>
-</div>
-            <div class="adv">
-                <div class="container" style="width: 1370px">
-                    <div class="row">
-                        <div class="col-md-12">
-    <!--Begin-->
-    <script type="text/javascript">
-    </script>
-    <!--End-->
-<!-- <script type="text/javascript">
-    window.AdvSlides = [{"Id":295,"ShopId":139,"AdvType":2,"AdvTypeName":"Chạy ngang","Name":"fdfdsf","Image":"/Uploads/shop139/images/Product/banner1.png","ImageThumbnai":"/Uploads/shop139/_thumbs/images/Product/banner1.png","Link":"#","IsVideo":false,"Index":1,"Inactive":false,"Timestamp":"AAAAAAASFgk="},{"Id":296,"ShopId":139,"AdvType":2,"AdvTypeName":"Chạy ngang","Name":"fgfg","Image":"/Uploads/shop139/images/Product/banner2.png","ImageThumbnai":"/Uploads/shop139/_thumbs/images/Product/banner2.png","Link":"#","IsVideo":false,"Index":2,"Inactive":false,"Timestamp":"AAAAAAASFgo="},{"Id":297,"ShopId":139,"AdvType":2,"AdvTypeName":"Chạy ngang","Name":"fbhfgh","Image":"/Uploads/shop139/images/Product/EOS-5D-MarkIII.jpg","ImageThumbnai":"/Uploads/shop139/_thumbs/images/Product/EOS-5D-MarkIII.jpg","Link":"#","IsVideo":false,"Index":3,"Inactive":false,"Timestamp":"AAAAAAASFgs="}];
-</script> -->               </div>
-                    </div>
-                </div>
-            </div>
-    <div class="main">
-        <div class="container" style="width: 1370px">
-            <div class="row">
-                    <div class="col-md-12">
-    <section class="product-content clearfix">
-        <h1 class="title clearfix"><span>Sản phẩm</span></h1>
-        <nav class="navbar navbar-default product-filter">
-            <ul class="display">
-                <li id="grid" class="active grid"><a href="#" title="Grid"><i class="fa fa-th-large"></i></a></li>
-                <li id="list" class="list"><a href="#" title="List"><i class="fa fa-th-list"></i></a></li>
-            </ul>
-            <div class="limit">
-                <span>Sản phẩm/trang</span>
-               <!--  <select id="lblimit" name="lblimit" class="nb_item" onchange="window.location.href = this.options[this.selectedIndex].value">
-                            <option value="?limit=10">10</option>
-                            <option selected="selected" value="?limit=12">12</option>
-                            <option value="?limit=20">20</option>
-                            <option value="?limit=50">50</option>
-                            <option value="?limit=100">100</option>
-                            <option value="?limit=250">250</option>
-                            <option value="?limit=500">500</option>
-                </select> -->
-            </div>
-            <div class="sort" style="font-size: 15px">
-                <span>Sắp xếp</span>
-                 <select class="selectProductSort" id="lbsort" onchange="window.location.href = this.options[this.selectedIndex].value">
-                            <option selected="selected" value="?sort=index&amp;order=asc">Mặc định</option>
-                            <option value="?sort=price&amp;order=asc">Gi&#225; tăng dần</option>
-                            <option value="?sort=price&amp;order=desc">Gi&#225; giảm dần</option>
-                </select>
-            </div>
-        </nav>
-        <!-- San pham (S)  -->
-        <div class="product-block product-grid clearfix row">
-        <c:forEach var="items" items="${LayoutForm.products }">
-                <div class="col-md-3 col-sm-3 col-xs-14 product-item-box">
-                    <div class="product-item " style="height: 500px" >
-                        <div style="width: 300px">
-                            <a title="${items.tenSP}">
-                                <img style="width: 300px" src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplay/${items.SEQ}"  />
-                            </a>
-                                <!-- <span class="promotion">-20%</span> -->
-                        </div>
-                        <div class="right-block">
-                            <h2 class="name">
-                                <a style="font-size: 17px"  title="${items.tenSP}">${items.tenSP}</a>
-                            </h2>
-<!--                             <div class="ratings clearfix">
-                                <div class="rating-box">
-                                    <div class="rating">
-                                    </div>
-                                </div>
-                            </div> -->
-                            <div class="price">
-                                    <!-- <span class="price-new">168.000&nbsp;₫</span>
-                                    <span class="price-old">210.000&nbsp;₫</span> -->
-                                    <c:if test="${!empty items.giaBanKM }">
-										<strike class="price-old"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBan}" /> VNĐ</strike>
-									</c:if>
-									<c:if test="${empty items.giaBanKM }">
-										<span class="price-new"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBan}" /> VNĐ</span>
-									</c:if>
-									<c:if test="${!empty items.giaBanKM }">
-										<span class="price-new"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBanKM}" /> VNĐ</span>
-									</c:if>
-                            </div>
-                            <div class="addtocart-button clearfix">
-                                <a class="add-to-cart" ng-click="btnPurchase('${items.giaBan}','${items.giaBanKM }' ,'${items.SEQ} ')"><span></span></a>
-                                <!-- <a class="add-wishlist" href="#"><span></span></a>
-                                <a class="add-compare" href="#"><span></span></a> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </c:forEach> 
-                <!-- San pham (E)  -->        
+<div class="main">
+  <div class="container" style="width: 1370px">
+     <div class="row">
+         <div class="col-md-3">
+				<div class="menu-news">
+				    <h3>
+				        <span>
+				            Tin tức
+				        </span>
+				    </h3>
+				    <ul class="level0"><li><a href="http://runecom22.runtime.vn/tin-tuc/tin-trong-nuoc"><i class="fa fa-arrow-circle-o-right"></i>Tin trong nước</a></li>
+					<li><a href="http://runecom22.runtime.vn/tin-tuc/tin-quoc-te"><i class="fa fa-arrow-circle-o-right"></i>Tin quốc tế</a></li>
+					</ul>
+				</div>
+				<div class="box-news">
+				    <h3>
+				        <span>
+				            Tin tức nổi bật
+				        </span>
+				    </h3>
+				    <div class="news-content">
+				        <div class=" news-block clearfix">
+				                <div class="news-item clearfix">
+				                    <div class="col-md-4 col-sm-4 col-xs-4 image"><a href="http://runecom22.runtime.vn/tin-tuc/nhung-phong-cach-dong-khung-cua-sao-viet.html"><img class="img-responsive" src="/storeManagerSystem/view/template_2/image/nhung-phong-cach-dinh-chat-vao-sao-viet-1427861847_180x108.jpg" alt="Những phong cách &#39;đóng khung&#39; của sao Việt" title="Những phong cách &#39;đóng khung&#39; của sao Việt"></a></div>
+				                    <div class="col-md-8 col-sm-8 col-xs-8 news-info ">
+				                        <h2 class="name"><a href="http://runecom22.runtime.vn/tin-tuc/nhung-phong-cach-dong-khung-cua-sao-viet.html">Những phong cách 'đóng khung' của sao Việt</a></h2>
+				                        
+				                    </div>
+				                </div>
+				                <div class="news-item clearfix">
+				                    <div class="col-md-4 col-sm-4 col-xs-4 image"><a href="http://runecom22.runtime.vn/tin-tuc/3-cach-mac-vay-duoc-lang-xe-manh-he-2015.html"><img class="img-responsive" src="/storeManagerSystem/view/template_2/image/3-cach-mac-vay-duoc-lang-xe-manh-he-2015-1427882991_180x108.jpg" alt="3 cách mặc váy được lăng xê mạnh hè 2015" title="3 cách mặc váy được lăng xê mạnh hè 2015"></a></div>
+				                    <div class="col-md-8 col-sm-8 col-xs-8 news-info ">
+				                        <h2 class="name"><a href="http://runecom22.runtime.vn/tin-tuc/3-cach-mac-vay-duoc-lang-xe-manh-he-2015.html">3 cách mặc váy được lăng xê mạnh hè 2015</a></h2>
+				                        
+				                    </div>
+				                </div>
+				                <div class="news-item clearfix">
+				                    <div class="col-md-4 col-sm-4 col-xs-4 image"><a href="http://runecom22.runtime.vn/tin-tuc/minh-hang-goi-cam-trong-vay-khoet-nguc.html"><img class="img-responsive" src="/storeManagerSystem/view/template_2/image/minh-hang-khoe-vong-mot-goiwjc-am-1427944534_180x108.jpg" alt="Minh Hằng gợi cảm trong váy khoét ngực" title="Minh Hằng gợi cảm trong váy khoét ngực"></a></div>
+				                    <div class="col-md-8 col-sm-8 col-xs-8 news-info ">
+				                        <h2 class="name"><a href="http://runecom22.runtime.vn/tin-tuc/minh-hang-goi-cam-trong-vay-khoet-nguc.html">Minh Hằng gợi cảm trong váy khoét ngực</a></h2>
+				                        
+				                    </div>
+				                </div>
+				                <div class="news-item clearfix">
+				                    <div class="col-md-4 col-sm-4 col-xs-4 image"><a href="http://runecom22.runtime.vn/tin-tuc/die%CC%83m-my-9x-go%CC%A3i-y%CC%81-vay-ao-cho-mu%CC%80a-he%CC%80.html"><img class="img-responsive" src="/storeManagerSystem/view/template_2/image/MG-2204-1427902264_180x108.jpg" alt="Diễm My 9X gợi ý váy áo cho mùa hè" title="Diễm My 9X gợi ý váy áo cho mùa hè"></a></div>
+				                    <div class="col-md-8 col-sm-8 col-xs-8 news-info ">
+				                        <h2 class="name"><a href="http://runecom22.runtime.vn/tin-tuc/die%CC%83m-my-9x-go%CC%A3i-y%CC%81-vay-ao-cho-mu%CC%80a-he%CC%80.html">Diễm My 9X gợi ý váy áo cho mùa hè</a></h2>
+				                        
+				                    </div>
+				                </div>
+				                <div class="news-item clearfix">
+				                    <div class="col-md-4 col-sm-4 col-xs-4 image"><a href="http://runecom22.runtime.vn/tin-tuc/nhung-goc-khuat-cua-nghe-stylist-cho-sao-hollywood.html"><img class="img-responsive" src="/storeManagerSystem/view/template_2/image/t-1428032524_490x294.jpg" alt="Những góc khuất của nghề stylist cho sao Hollywood " title="Những góc khuất của nghề stylist cho sao Hollywood "></a></div>
+				                    <div class="col-md-8 col-sm-8 col-xs-8 news-info ">
+				                        <h2 class="name"><a href="http://runecom22.runtime.vn/tin-tuc/nhung-goc-khuat-cua-nghe-stylist-cho-sao-hollywood.html">Những góc khuất của nghề stylist cho sao Hollywood </a></h2>
+				                        
+				                    </div>
+				                </div>
+				        </div>
+				    </div>
+				</div>
         </div>
-           <!--  <div class="navigation">
-                <ul class="pagination">
-                    <li>
-                        <a href="trang-chu2679.html?page=1" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                            <li class="active"><a href="trang-chu2679.html?page=1">1</a></li>
-                            <li><a href="trang-chu4658.html?page=2">2</a></li>
-                            <li><a href="trang-chu9ba9.html?page=3">3</a></li>
-                    <li>
-                        <a href="trang-chu9ba9.html?page=3" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
-            </div> -->
-    </section>
-                    </div>
+      <div class="col-md-9">
+				<script type="text/javascript">
+				    $(".link-site-more").hover(function () { $(this).find(".s-c-n").show(); }, function () { $(this).find(".s-c-n").hide(); });
+				</script>
+				<div class="news-content">
+					    <div class="news-block clearfix">
+					            <div class="news-item clearfix">
+					                <div class="col-md-3 col-sm-4 col-xs-12 image"><a href="http://runecom22.runtime.vn/tin-tuc/nhung-phong-cach-dong-khung-cua-sao-viet.html">
+					                	<img src="/storeManagerSystem/view/template_2/image/nhung-phong-cach-dinh-chat-vao-sao-viet-1427861847_180x108.jpg" class="img-responsive" alt="Những phong cách &#39;đóng khung&#39; của sao Việt"></a></div>
+					                <div class="col-md-9 col-sm-8 col-xs-12 news-info ">
+					                    <h2 class="name"><a href="http://runecom22.runtime.vn/tin-tuc/nhung-phong-cach-dong-khung-cua-sao-viet.html">Những phong cách 'đóng khung' của sao Việt</a></h2>
+					                    <p class="date">03/04/2015</p>
+					                    <div class="desc"><p>
+											<span style="color: rgb(51, 51, 51); font-family: arial; font-size: 13px; line-height: 16px;">Lý Nhã Kỳ, Ngọc Trinh, Sơn Tùng M-TP, Mai Phương Thúy... thường xuyên xuất hiện với một kiểu phong cách quen thuộc.</span></p>
+										</div>
+					                </div>
+					            </div>
+					            <div class="news-item clearfix">
+					                <div class="col-md-3 col-sm-4 col-xs-12 image"><a href="http://runecom22.runtime.vn/tin-tuc/3-cach-mac-vay-duoc-lang-xe-manh-he-2015.html">
+					                	<img src="/storeManagerSystem/view/template_2/image/3-cach-mac-vay-duoc-lang-xe-manh-he-2015-1427882991_180x108.jpg" class="img-responsive" alt="3 cách mặc váy được lăng xê mạnh hè 2015"></a></div>
+					                <div class="col-md-9 col-sm-8 col-xs-12 news-info ">
+					                    <h2 class="name"><a href="http://runecom22.runtime.vn/tin-tuc/3-cach-mac-vay-duoc-lang-xe-manh-he-2015.html">3 cách mặc váy được lăng xê mạnh hè 2015</a></h2>
+					                    <p class="date">03/04/2015</p>
+					                    <div class="desc"><p>
+										<span style="color: rgb(51, 51, 51); font-family: arial; font-size: 13px; line-height: 16px;">Cách diện váy trơn, giản dị sẽ ít xuất hiện trong mùa hè năm nay, thay vào đó là cách phối nhiều lớp độc lạ và cá tính.</span></p>
+									</div>
+					                </div>
+					            </div>
+					            <div class="news-item clearfix">
+					                <div class="col-md-3 col-sm-4 col-xs-12 image"><a href="http://runecom22.runtime.vn/tin-tuc/minh-hang-goi-cam-trong-vay-khoet-nguc.html">
+					                	<img src="/storeManagerSystem/view/template_2/image/minh-hang-khoe-vong-mot-goiwjc-am-1427944534_180x108.jpg" class="img-responsive" alt="Minh Hằng gợi cảm trong váy khoét ngực"></a></div>
+					                <div class="col-md-9 col-sm-8 col-xs-12 news-info ">
+					                    <h2 class="name"><a href="http://runecom22.runtime.vn/tin-tuc/minh-hang-goi-cam-trong-vay-khoet-nguc.html">Minh Hằng gợi cảm trong váy khoét ngực</a></h2>
+					                    <p class="date">03/04/2015</p>
+					                    <div class="desc"><p>
+											<span style="color: rgb(51, 51, 51); font-family: arial; font-size: 13px; line-height: 16px;">Nữ diễn viên diện ba bộ váy đen trong bộ hình mới nhất do nhiếp ảnh gia Lê Thiện Viễn thực hiện.</span></p>
+										</div>
+					                </div>
+					            </div>
+					            <div class="news-item clearfix">
+					                <div class="col-md-3 col-sm-4 col-xs-12 image"><a href="http://runecom22.runtime.vn/tin-tuc/die%CC%83m-my-9x-go%CC%A3i-y%CC%81-vay-ao-cho-mu%CC%80a-he%CC%80.html">
+					                	<img src="/storeManagerSystem/view/template_2/image/MG-2204-1427902264_180x108.jpg" class="img-responsive" alt="Diễm My 9X gợi ý váy áo cho mùa hè"></a></div>
+					                <div class="col-md-9 col-sm-8 col-xs-12 news-info ">
+					                    <h2 class="name"><a href="http://runecom22.runtime.vn/tin-tuc/die%CC%83m-my-9x-go%CC%A3i-y%CC%81-vay-ao-cho-mu%CC%80a-he%CC%80.html">Diễm My 9X gợi ý váy áo cho mùa hè</a></h2>
+					                    <p class="date">03/04/2015</p>
+					                    <div class="desc"><p>
+											<span style="color: rgb(51, 51, 51); font-family: arial; font-size: 13px; line-height: 16px;">Người đẹp chọn những bộ váy có gam màu trắng, với chất liệu mềm, thoáng mát.</span></p>
+										</div>
+					                </div>
+					            </div>
+					            <div class="news-item clearfix">
+					                <div class="col-md-3 col-sm-4 col-xs-12 image"><a href="http://runecom22.runtime.vn/tin-tuc/nhung-goc-khuat-cua-nghe-stylist-cho-sao-hollywood.html">
+					                	<img src="/storeManagerSystem/view/template_2/image/t-1428032524_490x294.jpg" class="img-responsive" alt="Những góc khuất của nghề stylist cho sao Hollywood "></a></div>
+					                <div class="col-md-9 col-sm-8 col-xs-12 news-info ">
+					                    <h2 class="name"><a href="http://runecom22.runtime.vn/tin-tuc/nhung-goc-khuat-cua-nghe-stylist-cho-sao-hollywood.html">Những góc khuất của nghề stylist cho sao Hollywood </a></h2>
+					                    <p class="date">03/04/2015</p>
+					                    <div class="desc"><p>
+											<span style="color: rgb(51, 51, 51); font-family: arial; font-size: 13px; line-height: 16px;">Stylist của Cate Blanchett, Julia Roberts, Sandra Bullock... cho biết, nghề này không dễ làm và chẳng hề có cuộc sống xa hoa như mọi người vẫn tưởng.</span></p>
+										</div>
+					                </div>
+					            </div>
+					    </div>
+					</div>
+                  </div>
             </div>
         </div>
-    </div>
-            <div class="partner">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-<!-- <script type="text/javascript">
-    window.Partners = [{"Id":171,"ShopId":139,"Name":"efef","Link":null,"Logo":"/Uploads/shop139/images/Product/burbery_2jrem8aiipohl_simg_603cef_226x114_maxb.png","Index":1,"Inactive":false},{"Id":172,"ShopId":139,"Name":"dsfdsf","Link":"#","Logo":"/Uploads/shop139/images/Product/logo__2k1l1rsnb045m_simg_603cef_226x114_maxb.jpg","Index":2,"Inactive":false},{"Id":173,"ShopId":139,"Name":"fsdf","Link":"#","Logo":"/Uploads/shop139/images/Product/logo__2k1l5tedglnk9_simg_603cef_226x114_maxb.jpg","Index":3,"Inactive":false},{"Id":174,"ShopId":139,"Name":"ddsf","Link":"#","Logo":"/Uploads/shop139/images/Product/logo__2k1m8k9aglr85_simg_603cef_226x114_maxb.jpg","Index":4,"Inactive":false},{"Id":175,"ShopId":139,"Name":"sfddf","Link":"#","Logo":"/Uploads/shop139/images/Product/logo__2k2dp8si78411_simg_603cef_226x114_maxb.jpg","Index":5,"Inactive":false}];
-</script> -->                        
-						</div>
-                    </div>
-                </div>
-            </div>
-        <div class="footer">
+</div>
+
+<div class="footer">
     <div class="footer-content clearfix">
         <div class="container" >
             <div class="row">
@@ -447,12 +395,12 @@
                 </div>
                 <ul>
                         <li>
-                            <a ng-click="btnGioiThieu()">
+                            <a href="gioi-thieu.html">
                                 Về ch&#250;ng t&#244;i
                             </a>
                         </li>
                         <li>
-                            <a ng-click="btnLienHe()">
+                            <a href="content/hoi-dap.html">
                                 Hỏi đ&#225;p
                             </a>
                         </li>
@@ -466,13 +414,13 @@
                 </div>
                 <ul>
                         <li>
-                            <a href="content/huong-dan-thanh-toan.html">
-                                Hướng dẫn thanh to&#225;n
+                            <a ng-click="btnGioiThieu()">
+                                Về ch&#250;ng t&#244;i
                             </a>
                         </li>
                         <li>
-                            <a href="content/chinh-sach-ban-hang.html">
-                                Hướng dẫn đặt hàng
+                            <a ng-click="btnLienHe()">
+                                Hỏi đ&#225;p
                             </a>
                         </li>
                 </ul>

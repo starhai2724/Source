@@ -5,9 +5,24 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <section class="theme-list create-web" ng-app="DangKiWebForm" ng-controller="ctrl" >
     <div class="container">
-        <h1 class="text-uppercase clearfix title">đăng ký tạo mẫu Website</h1>
+        <h1 class="text-uppercase clearfix title" style="margin-left: -70px">Đăng ký tạo mẫu Website</h1>
+        <div class="steps clearfix">
+		            <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 ">
+		                <ul class="clearfix">
+		                    <li ng-class="{ 'active' : Step==1 }" class="active">
+		                        <a > <span class="step" style="background-color: #2990ea;border-color: #2990ea;">1</span> <span class="title" style=" color: #2990ea;">Thông tin website</span> </a>
+		                    </li>
+		                    <li ng-class="{ 'active' : Step==2 }">
+		                        <a> <span class="step" >2</span> <span class="title">Chọn giao diện</span> </a>
+		                    </li>
+		                    <li ng-class="{ 'active' : Step==3 }">
+		                        <a> <span class="step">3</span> <span class="title">Xác nhận</span> </a>
+		                    </li>
+		                </ul>
+		            </div>
+		        </div>
         <form:form  class="step-block-box clearfix" id="DangKiWebForm"  modelAttribute="DangKiWebForm"  method="get"> 
-            <div class="col-sm-6 col-xs-12 col-sm-offset-3 step-block1 ">
+            <div class="col-sm-8 col-xs-13 col-sm-offset-2 step-block1 ">
                 <h2>Bước 1: Điền thông tin website</h2>
                 <div class="form-group has-feedback">
                     <form:input type="text" class="form-control" placeholder="Tên Website" path="tenWebSite"  ng-model="tenWebSite" name="tenWebSite" ng-init="tenWebSite='${DangKiWebForm.tenWebSite}'" pattern="^[a-zA-Z0-9_-]{3,60}$" ng-minlength="3" ng-maxlength="50"/>

@@ -254,188 +254,88 @@
         </div>
     </div>
 </section>
-<script type="text/javascript">
-    $(document).ready(function () {
-        var str = location.href.toLowerCase();
-        $("ul.menu li a").each(function () {
-            if (str.indexOf(this.href.toLowerCase()) >= 0) {
-                $("ul.menu li").removeClass("active");
-                $(this).parent().addClass("active");
-            }
-        });
-    });
-</script>
-</div>
-<div class="slideshow" >
-<div class="col-md-12">
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
+<div class="main">
+  <div class="container" style="width: 1370px">
+    <div class="row">
+      <div class="col-md-12">
+  		  <section class="product-content clearfix">
+					<div class="contact-content clearfix ng-scope" ng-controller="contactController" ng-init="initController(&#39;Shop&#39;,&#39;Maps&#39;)">
+				        <div class="contact-block clearfix">
+				            <div class="row">
+				                <div class="col-md-3">
+				                    <a href="#">
+				                        <img class="img-responsive" src="/storeManagerSystem/view/template_2/image/logo.png">
+				                    </a>
+				                </div>
+				                <div class="col-md-9">
+				                    <div class="contact-info" style="font-size: 15px">
+				                        <div class="docs"><b class="name ng-binding">${LayoutForm.tenCuaHang}</b></div>
+				                        <div class="docs ng-binding">
+				                            <i class="fa fa-map-marker"></i>
+				                            <b>Địa chỉ:</b> ${LayoutForm.diaChi}
+				                        </div>
+				                        <div class="docs ng-binding">
+				                            <i class="fa fa-phone"></i>
+				                            <b>Điện thoại:</b> ${LayoutForm.soDienThoai}
+				                        </div>
+				                        <div class="docs ng-binding">
+				                            <i class="fa fa-mobile"></i>
+				                            <b>Hotline</b> ${LayoutForm.soDienThoai}
+				                        </div>
+				                        <div class="docs">
+				                            <i class="fa fa-envelope"></i>
+				                            <a href="#" class="ng-binding">info@runtime.vn</a>
+				                        </div>
+				                    </div>
+				                </div>
+				            </div>
+				            <hr class="">
+				            <h3 class="title">Gửi thông tin liên hệ</h3>
+				            <div class="description" style="font-size: 15px">
+				                Xin vui lòng điền các yêu cầu vào mẫu dưới đây và gửi cho chúng tôi. Chúng tôi
+				                sẽ trả lời bạn ngay sau khi nhận được. Xin chân thành cảm ơn!
+				            </div>
+				            <div class="row">
+				                <div class="col-md-6 col-sm-12 col-xs-12">
+				                    <div class="contact-feedback">
+				                        <form ng-submit="sendContact()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-email">
+				                            <div class="form-group input-group">
+				                                <span class="input-group-addon"><i class="glyphicon glyphicon glyphicon-user"></i></span>
+				                                <input type="text" placeholder="Họ tên" ng-model="Name" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" required="">
+				                            </div>
+				                            <div class="form-group input-group">
+				                                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+				                                <input type="text" placeholder="Địa chỉ" ng-model="Address" class="form-control ng-pristine ng-untouched ng-valid">
+				                            </div>
+				                            <div class="form-group input-group">
+				                                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+				                                <input type="email" placeholder="Email" ng-model="Email" class="form-control ng-pristine ng-untouched ng-valid-email ng-invalid ng-invalid-required" required="">
+				                            </div>
+				                            <div class="form-group input-group">
+				                                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+				                                <input type="text" placeholder="Điện thoại" ng-model="Phone" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" required="">
+				                            </div>
+				                            <div class="form-group input-group">
+				                                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
+				                                <input type="text" placeholder="Tiêu đề" ng-model="Title" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" required="">
+				                            </div>
+				                            <div class="form-group">
+				                                <textarea placeholder="Nội dung" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" rows="3" ng-model="Content" required=""></textarea>
+				                            </div>
+				                            <button class="btn btn-default" type="submit">Gửi</button>
+				                        </form>
+				                    </div>
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+				  </section>
+				 </div>
+				</div>
+			</div>
+		</div>
 
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-      <div class="item active">
-        <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplayHeader/hinh1" alt="Los Angeles" style="width:100%;">
-      </div>
-
-      <div class="item">
-        <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplayHeader/hinh2" alt="Los Angeles" style="width:100%;">
-      </div>
-    
-      <div class="item">
-        <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplayHeader/hinh3" alt="Los Angeles" style="width:100%;">
-      </div>
-      
-      <div class="item">
-        <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplayHeader/hinh4" alt="Los Angeles" style="width:100%;">
-      </div>
-      
-      <div class="item">
-        <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplayHeader/hinh5" alt="Los Angeles" style="width:100%;">
-      </div>
-    </div>
-
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right"></span>
-      <span class="sr-only">Next</span>
-    </a>
-   </div>    
-  </div>
-</div>
-            <div class="adv">
-                <div class="container" style="width: 1370px">
-                    <div class="row">
-                        <div class="col-md-12">
-    <!--Begin-->
-    <script type="text/javascript">
-    </script>
-    <!--End-->
-<!-- <script type="text/javascript">
-    window.AdvSlides = [{"Id":295,"ShopId":139,"AdvType":2,"AdvTypeName":"Chạy ngang","Name":"fdfdsf","Image":"/Uploads/shop139/images/Product/banner1.png","ImageThumbnai":"/Uploads/shop139/_thumbs/images/Product/banner1.png","Link":"#","IsVideo":false,"Index":1,"Inactive":false,"Timestamp":"AAAAAAASFgk="},{"Id":296,"ShopId":139,"AdvType":2,"AdvTypeName":"Chạy ngang","Name":"fgfg","Image":"/Uploads/shop139/images/Product/banner2.png","ImageThumbnai":"/Uploads/shop139/_thumbs/images/Product/banner2.png","Link":"#","IsVideo":false,"Index":2,"Inactive":false,"Timestamp":"AAAAAAASFgo="},{"Id":297,"ShopId":139,"AdvType":2,"AdvTypeName":"Chạy ngang","Name":"fbhfgh","Image":"/Uploads/shop139/images/Product/EOS-5D-MarkIII.jpg","ImageThumbnai":"/Uploads/shop139/_thumbs/images/Product/EOS-5D-MarkIII.jpg","Link":"#","IsVideo":false,"Index":3,"Inactive":false,"Timestamp":"AAAAAAASFgs="}];
-</script> -->               </div>
-                    </div>
-                </div>
-            </div>
-    <div class="main">
-        <div class="container" style="width: 1370px">
-            <div class="row">
-                    <div class="col-md-12">
-    <section class="product-content clearfix">
-        <h1 class="title clearfix"><span>Sản phẩm</span></h1>
-        <nav class="navbar navbar-default product-filter">
-            <ul class="display">
-                <li id="grid" class="active grid"><a href="#" title="Grid"><i class="fa fa-th-large"></i></a></li>
-                <li id="list" class="list"><a href="#" title="List"><i class="fa fa-th-list"></i></a></li>
-            </ul>
-            <div class="limit">
-                <span>Sản phẩm/trang</span>
-               <!--  <select id="lblimit" name="lblimit" class="nb_item" onchange="window.location.href = this.options[this.selectedIndex].value">
-                            <option value="?limit=10">10</option>
-                            <option selected="selected" value="?limit=12">12</option>
-                            <option value="?limit=20">20</option>
-                            <option value="?limit=50">50</option>
-                            <option value="?limit=100">100</option>
-                            <option value="?limit=250">250</option>
-                            <option value="?limit=500">500</option>
-                </select> -->
-            </div>
-            <div class="sort" style="font-size: 15px">
-                <span>Sắp xếp</span>
-                 <select class="selectProductSort" id="lbsort" onchange="window.location.href = this.options[this.selectedIndex].value">
-                            <option selected="selected" value="?sort=index&amp;order=asc">Mặc định</option>
-                            <option value="?sort=price&amp;order=asc">Gi&#225; tăng dần</option>
-                            <option value="?sort=price&amp;order=desc">Gi&#225; giảm dần</option>
-                </select>
-            </div>
-        </nav>
-        <!-- San pham (S)  -->
-        <div class="product-block product-grid clearfix row">
-        <c:forEach var="items" items="${LayoutForm.products }">
-                <div class="col-md-3 col-sm-3 col-xs-14 product-item-box">
-                    <div class="product-item " style="height: 500px" >
-                        <div style="width: 300px">
-                            <a title="${items.tenSP}">
-                                <img style="width: 300px" src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplay/${items.SEQ}"  />
-                            </a>
-                                <!-- <span class="promotion">-20%</span> -->
-                        </div>
-                        <div class="right-block">
-                            <h2 class="name">
-                                <a style="font-size: 17px"  title="${items.tenSP}">${items.tenSP}</a>
-                            </h2>
-<!--                             <div class="ratings clearfix">
-                                <div class="rating-box">
-                                    <div class="rating">
-                                    </div>
-                                </div>
-                            </div> -->
-                            <div class="price">
-                                    <!-- <span class="price-new">168.000&nbsp;₫</span>
-                                    <span class="price-old">210.000&nbsp;₫</span> -->
-                                    <c:if test="${!empty items.giaBanKM }">
-										<strike class="price-old"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBan}" /> VNĐ</strike>
-									</c:if>
-									<c:if test="${empty items.giaBanKM }">
-										<span class="price-new"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBan}" /> VNĐ</span>
-									</c:if>
-									<c:if test="${!empty items.giaBanKM }">
-										<span class="price-new"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBanKM}" /> VNĐ</span>
-									</c:if>
-                            </div>
-                            <div class="addtocart-button clearfix">
-                                <a class="add-to-cart" ng-click="btnPurchase('${items.giaBan}','${items.giaBanKM }' ,'${items.SEQ} ')"><span></span></a>
-                                <!-- <a class="add-wishlist" href="#"><span></span></a>
-                                <a class="add-compare" href="#"><span></span></a> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </c:forEach> 
-                <!-- San pham (E)  -->        
-        </div>
-           <!--  <div class="navigation">
-                <ul class="pagination">
-                    <li>
-                        <a href="trang-chu2679.html?page=1" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                            <li class="active"><a href="trang-chu2679.html?page=1">1</a></li>
-                            <li><a href="trang-chu4658.html?page=2">2</a></li>
-                            <li><a href="trang-chu9ba9.html?page=3">3</a></li>
-                    <li>
-                        <a href="trang-chu9ba9.html?page=3" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
-            </div> -->
-    </section>
-                    </div>
-            </div>
-        </div>
-    </div>
-            <div class="partner">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-<!-- <script type="text/javascript">
-    window.Partners = [{"Id":171,"ShopId":139,"Name":"efef","Link":null,"Logo":"/Uploads/shop139/images/Product/burbery_2jrem8aiipohl_simg_603cef_226x114_maxb.png","Index":1,"Inactive":false},{"Id":172,"ShopId":139,"Name":"dsfdsf","Link":"#","Logo":"/Uploads/shop139/images/Product/logo__2k1l1rsnb045m_simg_603cef_226x114_maxb.jpg","Index":2,"Inactive":false},{"Id":173,"ShopId":139,"Name":"fsdf","Link":"#","Logo":"/Uploads/shop139/images/Product/logo__2k1l5tedglnk9_simg_603cef_226x114_maxb.jpg","Index":3,"Inactive":false},{"Id":174,"ShopId":139,"Name":"ddsf","Link":"#","Logo":"/Uploads/shop139/images/Product/logo__2k1m8k9aglr85_simg_603cef_226x114_maxb.jpg","Index":4,"Inactive":false},{"Id":175,"ShopId":139,"Name":"sfddf","Link":"#","Logo":"/Uploads/shop139/images/Product/logo__2k2dp8si78411_simg_603cef_226x114_maxb.jpg","Index":5,"Inactive":false}];
-</script> -->                        
-						</div>
-                    </div>
-                </div>
-            </div>
-        <div class="footer">
+<div class="footer">
     <div class="footer-content clearfix">
         <div class="container" >
             <div class="row">

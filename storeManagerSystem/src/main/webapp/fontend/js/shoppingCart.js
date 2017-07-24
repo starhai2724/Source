@@ -38,6 +38,18 @@ app.controller('ctrl', function($scope, $window) {
 		buyCart($scope, $window);
 	}
 	
+	$scope.btnLienHe = function(){
+		lienHe($scope);
+	}
+	
+	$scope.btnTinTuc = function(){
+		tinTuc($scope);
+	}
+	
+	$scope.btnGioiThieu = function(){
+		gioiThieu($scope);
+	}
+	
 });
 
 
@@ -82,6 +94,27 @@ function chiTiet($scope, $window, idSanPham){
 
 function timKiem($scope, $window, idSanPham){
 	var url = "/storeManagerSystem/" + $scope.pathJSP +"/timKiem";
+	document.getElementById("LayoutForm").action = url;
+	document.getElementById("LayoutForm").method = "POST";
+	document.getElementById("LayoutForm").submit();
+}
+
+function gioiThieu($scope, $window, idSanPham){
+	var url = "/storeManagerSystem/" + $scope.pathJSP +"/gioiThieu";
+	document.getElementById("LayoutForm").action = url;
+	document.getElementById("LayoutForm").method = "POST";
+	document.getElementById("LayoutForm").submit();
+}
+
+function lienHe($scope){
+	var url = "/storeManagerSystem/" + $scope.pathJSP +"/lienHe";
+	document.getElementById("LayoutForm").action = url;
+	document.getElementById("LayoutForm").method = "POST";
+	document.getElementById("LayoutForm").submit();
+}
+
+function tinTuc($scope){
+	var url = "/storeManagerSystem/" + $scope.pathJSP +"/tinTuc";
 	document.getElementById("LayoutForm").action = url;
 	document.getElementById("LayoutForm").method = "POST";
 	document.getElementById("LayoutForm").submit();

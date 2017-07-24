@@ -5,24 +5,25 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <section class="theme-list create-web" ng-app="DangKiWebForm" ng-controller="ctrl"  >
     <div class="container">
-        <h1 class="text-uppercase clearfix title">đăng ký tạo mẫu Website</h1>
+        <h1 class="text-uppercase clearfix title" style="margin-left: -70px">đăng ký tạo mẫu Website</h1>
         <div class="steps clearfix">
-            <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 ">
-                <ul class="clearfix">
-                    <li ng-class="{ 'active' : Step==1 }">
-                        <a> <span class="step"  >1</span> <span class="title" style=" color: #2990ea;">Thông tin website</span> </a>
-                    </li>
-                    <li ng-class="{ 'active' : Step==2 }">
-                        <a> <span class="step">2</span> <span class="title">Chọn giao diện</span> </a>
-                    </li>
-                    <li ng-class="{ 'active' : Step==3 }">
-                        <a> <span class="step" style="background-color: #2990ea;border-color: #2990ea;">3</span> <span class="title">Xác nhận</span> </a>
-                    </li>
-                </ul>
-            </div>
+		            <div class="col-md-9 col-md-offset-1 col-sm-5 col-sm-offset-1 ">
+		                <ul class="clearfix">
+		                    <li ng-class="{ 'active' : Step==1 }" >
+		                        <a > <span class="step" >1</span> <span class="title" style=" color: #2990ea;">Thông tin website</span> </a>
+		                    </li>
+		                    <li ng-class="{ 'active' : Step==2 }" >
+		                        <a> <span class="step" >2</span> <span class="title">Chọn giao diện</span> </a>
+		                    </li>
+		                    <li ng-class="{ 'active' : Step==3 }" class="active">
+		                        <a> <span class="step" style="background-color: #2990ea;border-color: #2990ea;">3</span> <span class="title">Xác nhận</span> </a>
+		                    </li>
+		                </ul>
+		            </div>
+		        </div>
         </div>
           <form:form class="step-block-box clearfix"  id="DangKiWebForm"  modelAttribute="DangKiWebForm"  method="get">
-            <div class="col-sm-6 col-xs-12 col-sm-offset-3 step-block3 ">
+            <div class="col-sm-5 col-xs-12 col-sm-offset-3  step-block3 ">
                 <h2>Bước 3: Điền thông tin cá nhân</h2>
                 <p style="color: blue; font-weight: bold;">${DangKiWebForm.message }</p>
 				<p style="color: red; font-weight: bold;">${DangKiWebForm.messageErr }</p>
