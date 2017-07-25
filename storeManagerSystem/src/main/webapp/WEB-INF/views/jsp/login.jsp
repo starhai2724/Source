@@ -81,8 +81,8 @@
   <section class="theme-list create-web" ng-app="login" ng-controller="ctrllogin" >
     <div class="container">
         <h1 class="text-uppercase clearfix title">Hệ thống bán hàng</h1>
-		<p style="color: red; font-weight: bold;">${message}</p>
         <form:form class="step-block-box clearfix" id="loginform" modelAttribute="LoginForm" role="form" method="GET" > 
+			<p style="color: red; font-weight: bold;">${LoginForm.messageErr }</p>
             <div class="col-sm-6 col-xs-12 col-sm-offset-3 step-block1 ">
                 <div class="form-group has-feedback">
                     <form:input type="text" class="form-control" placeholder="Tên đăng nhập"  ng-model="username" path="username" ng-init="username='${username}'" />
