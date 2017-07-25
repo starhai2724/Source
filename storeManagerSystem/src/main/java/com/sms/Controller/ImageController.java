@@ -1,8 +1,5 @@
 package com.sms.Controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -18,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.sms.dao.CreateTableProductDAO;
 import com.sms.dao.DangKiWebDAO;
 import com.sms.dao.LayoutDAO;
-import com.sms.domain.Image;
 import com.sms.output.DangKiWebOutputBean;
 import com.sms.output.ImageOutputBean;
 

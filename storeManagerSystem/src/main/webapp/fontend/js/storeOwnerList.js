@@ -1,23 +1,23 @@
 var app = angular.module('storeOwnerList', []);
-app.controller('ctrl', function($scope, $window) {
-	$scope.btnSearch = function() {
-		search($scope);
-	}
-	$scope.btnAppend = function() {
-		append($scope);
-	}
-	
-	$scope.btnUpdate = function(id){
-		update($scope,$window, id);
-	}
-	$scope.btnClear = function(){
-		clear($scope);
-	}
-	$scope.btnDelete = function(id){
-		remove($scope, $window, id);
-	}
-	
-});
+//app.controller('ctrl', function($scope, $window) {
+//	$scope.btnSearch = function() {
+//		search($scope);
+//	}
+//	$scope.btnAppend = function() {
+//		append($scope);
+//	}
+//	
+//	$scope.btnUpdate = function(id){
+//		update($scope,$window, id);
+//	}
+//	$scope.btnClear = function(){
+//		clear($scope);
+//	}
+//	$scope.btnDelete = function(id){
+//		remove($scope, $window, id);
+//	}
+//	
+//});
 
 //export Excel (S)
 //Code goes here
@@ -36,10 +36,29 @@ app.factory('Excel',function($window){
    };
 })
 .controller('ctrl',function(Excel,$timeout,$scope){
- $scope.exportToExcel=function(tableId){ // ex: '#my-table'
+ 
+	$scope.exportToExcel=function(tableId){ // ex: '#my-table'
        var exportHref=Excel.tableToExcel(tableId,'WireWorkbenchDataExport');
        $timeout(function(){location.href=exportHref;},100); // trigger download
    }
+	
+	$scope.btnSearch = function() {
+		search($scope);
+	}
+	$scope.btnAppend = function() {
+		append($scope);
+	}
+	
+	$scope.btnUpdate = function(id){
+		update($scope,$window, id);
+	}
+	$scope.btnClear = function(){
+		clear($scope);
+	}
+	$scope.btnDelete = function(id){
+		remove($scope, $window, id);
+	}
+	
 });
 //export Excel (S)	
 

@@ -145,13 +145,12 @@
 		                                 		<td class="center" style="text-align: center"><input type="checkbox" ng-model="selected[${items.no}]"  ng-init ="selected[${items.no}]='false'" ng-true-value="'${items.SEQ }'" ng-false-value="'NO'"></td>
 		                                        <td style="text-align: center">${items.no}</td>
 		                                        <td>${items.idSanPham}</td>
-							                     <td>${items.tenSP}</td>
-							                     <td>${items.tenLoaiSP }</td>
-		                                      	 <td style="text-align: right">${items.giaMua }</td>
-					                    		 <td style="text-align: right">${items.giaBan }</td>
+							                    <td>${items.tenSP}</td>
+							                    <td>${items.tenLoaiSP }</td>
+		                                      	<td style="text-align: right">${items.giaMua }</td>
+					                    		<td style="text-align: right">${items.giaBan }</td>
 		                                       	<td  style="text-align: center">${items.ngayTao}</td>
-		                                        <td  style="display: none">${items.ngayChinhSua }</td>
-		                                         <td>${items.moTa }</td>
+		                                        <td>${items.moTa }</td>
 		                                        <td class="center" style="text-align: center">
 		                                        		<button class="btn" type="button" ng-click="btnGetProductById('${items.SEQ}');">
 															<span class="glyphicon glyphicon-pencil" data-toggle="tooltip" data-original-title="Sửa"></span>

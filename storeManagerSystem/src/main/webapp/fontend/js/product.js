@@ -1,15 +1,85 @@
 var app = angular.module('ProductForm', []);
-app.controller('ctrl', function($scope, $window) {
-	$scope.idSanPham_err = "";
-	$scope.tenSP_err = "";
-	$scope.giaMua_err = "";
-	$scope.giaBan_err = "";
-	$scope.moTa_err = "";
-	$scope.listCheckBox = "";
-	$scope.checkboxModel = {
-		       value1 : true,
-		       value2 : false
-		     };
+//app.controller('ctrl', function($scope, $window) {
+//	$scope.idSanPham_err = "";
+//	$scope.tenSP_err = "";
+//	$scope.giaMua_err = "";
+//	$scope.giaBan_err = "";
+//	$scope.moTa_err = "";
+//	$scope.listCheckBox = "";
+//	$scope.checkboxModel = {
+//		       value1 : true,
+//		       value2 : false
+//		     };
+//	 
+//	$scope.btnCreate = function() {
+//		if($scope.flagUpdate == 1){
+//			update($scope)
+//		}else{
+//			create($scope);
+//		}
+//	}
+//	
+//	$scope.btnGetProductById = function(id){
+//		getProductById($scope,$window, id);
+//	}
+//	
+//	$scope.btnClear = function(){
+//		clear($scope);
+//	}
+//	
+//	$scope.btnDelete = function(id){
+//		remove($scope, $window, id);
+//	}
+//	
+//	$scope.btnPhanAnh = function(){
+//		angular.forEach($scope.selected, function(item){
+//			if(item == "false"){
+//				//Do not thing
+//			}else{
+//				$scope.listCheckBox = $scope.listCheckBox + ","+ item;
+//			}
+//		});
+//		phanAnh($scope);
+//	}
+//	
+//});
+
+
+//export Excel (S)
+//Code goes here
+app.factory('Excel',function($window){
+     var uri='data:application/vnd.ms-excel;base64,',
+         template='<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>',
+         base64=function(s){return $window.btoa(unescape(encodeURIComponent(s)));},
+         format=function(s,c){return s.replace(/{(\w+)}/g,function(m,p){return c[p];})};
+     return {
+         tableToExcel:function(tableId,worksheetName){
+             var table=$(tableId),
+                 ctx={worksheet:worksheetName,table:table.html()},
+                 href=uri+base64(format(template,ctx));
+             return href;
+         }
+     };
+ })
+ .controller('ctrl',function(Excel,$timeout,$scope,$window ){
+	 
+	
+	 	$scope.idSanPham_err = "";
+		$scope.tenSP_err = "";
+		$scope.giaMua_err = "";
+		$scope.giaBan_err = "";
+		$scope.moTa_err = "";
+		$scope.listCheckBox = "";
+		$scope.checkboxModel = {
+			       value1 : true,
+			       value2 : false
+			     };
+		
+   $scope.exportToExcel=function(tableId){ // ex: '#my-table'
+         var exportHref=Excel.tableToExcel(tableId,'WireWorkbenchDataExport');
+         $timeout(function(){location.href=exportHref;},100); // trigger download
+     }
+   
 	 
 	$scope.btnCreate = function() {
 		if($scope.flagUpdate == 1){
@@ -41,33 +111,10 @@ app.controller('ctrl', function($scope, $window) {
 		});
 		phanAnh($scope);
 	}
-	
-});
-
-
-//export Excel (S)
-//Code goes here
-app.factory('Excel',function($window){
-     var uri='data:application/vnd.ms-excel;base64,',
-         template='<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>',
-         base64=function(s){return $window.btoa(unescape(encodeURIComponent(s)));},
-         format=function(s,c){return s.replace(/{(\w+)}/g,function(m,p){return c[p];})};
-     return {
-         tableToExcel:function(tableId,worksheetName){
-             var table=$(tableId),
-                 ctx={worksheet:worksheetName,table:table.html()},
-                 href=uri+base64(format(template,ctx));
-             return href;
-         }
-     };
- })
- .controller('ctrl',function(Excel,$timeout,$scope){
-   $scope.exportToExcel=function(tableId){ // ex: '#my-table'
-         var exportHref=Excel.tableToExcel(tableId,'WireWorkbenchDataExport');
-         $timeout(function(){location.href=exportHref;},100); // trigger download
-     }
+   
+   
  });
-//export Excel (S)	
+//export Excel (E)	
 
 function create($scope) {
 	

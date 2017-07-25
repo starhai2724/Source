@@ -1,34 +1,34 @@
 var app = angular.module('HoaDonForm', []);
-app.controller('ctrl', function($scope, $window) {
-	$scope.idKhachHang_err = "";
-	$scope.ngayLap_err = "";
-	$scope.soLuongSP_err = "";
-	$scope.diemTichLuy_err = "";
-	$scope.tienKhuyenMai_err = "";
-	$scope.tongDiemTichLuy_err = "";
-	$scope.tongTien_err = "";
-	
-//	$scope.btnCreate = function() {
-//		if($scope.flagUpdate == 1){
-//			update($scope)
-//		}else{
-//			create($scope);
-//		}
+//app.controller('ctrl', function($scope, $window) {
+//	$scope.idKhachHang_err = "";
+//	$scope.ngayLap_err = "";
+//	$scope.soLuongSP_err = "";
+//	$scope.diemTichLuy_err = "";
+//	$scope.tienKhuyenMai_err = "";
+//	$scope.tongDiemTichLuy_err = "";
+//	$scope.tongTien_err = "";
+//	
+////	$scope.btnCreate = function() {
+////		if($scope.flagUpdate == 1){
+////			update($scope)
+////		}else{
+////			create($scope);
+////		}
+////	}
+//	
+//	$scope.btnGetById = function(id){
+//		getById($scope,$window, id);
 //	}
-	
-	$scope.btnGetById = function(id){
-		getById($scope,$window, id);
-	}
-	
-	$scope.btnClear = function(){
-		clear($scope);
-	}
-	
-	$scope.btnDelete = function(id){
-		remove($scope, $window, id);
-	}
-	
-});
+//	
+//	$scope.btnClear = function(){
+//		clear($scope);
+//	}
+//	
+//	$scope.btnDelete = function(id){
+//		remove($scope, $window, id);
+//	}
+//	
+//});
 
 //export Excel (S)
 //Code goes here
@@ -46,11 +46,33 @@ app.factory('Excel',function($window){
        }
    };
 })
-.controller('ctrl',function(Excel,$timeout,$scope){
- $scope.exportToExcel=function(tableId){ // ex: '#my-table'
+.controller('ctrl',function(Excel,$timeout,$scope,$window){
+ 
+	$scope.exportToExcel=function(tableId){ // ex: '#my-table'
        var exportHref=Excel.tableToExcel(tableId,'WireWorkbenchDataExport');
        $timeout(function(){location.href=exportHref;},100); // trigger download
    }
+
+	$scope.idKhachHang_err = "";
+	$scope.ngayLap_err = "";
+	$scope.soLuongSP_err = "";
+	$scope.diemTichLuy_err = "";
+	$scope.tienKhuyenMai_err = "";
+	$scope.tongDiemTichLuy_err = "";
+	$scope.tongTien_err = "";
+	
+	$scope.btnGetById = function(id){
+		getById($scope,$window, id);
+	}
+	
+	$scope.btnClear = function(){
+		clear($scope);
+	}
+	
+	$scope.btnDelete = function(id){
+		remove($scope, $window, id);
+	}
+	
 });
 //export Excel (S)
 
