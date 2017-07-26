@@ -45,8 +45,8 @@
             <div class="container">
                 <div class="navbar-header">
                     <a class="navbar-brand hidden-xs hidden-sm" href="index.html">
-                        <img alt="runtime" class="scroller-logo" src="/storeManagerSystem/view/templateDK/logo01.png">
-                        <img src="/storeManagerSystem/view/templateDK/logo.png" class="default-logo img-responsive" alt="runtime">
+                        <img alt="runtime" class="scroller-logo" src="/storeManagerSystem/view/templateDK/logoHeader.jpg">
+                        <img src="/storeManagerSystem/view/templateDK/logoHeader.jpg" class="default-logo img-responsive" alt="runtime">
                     </a>
                     <button type="button" class="navbar-toggle collapsed pull-right " data-toggle="collapse" data-target="#menu" aria-expanded="false">
                         <span class="icon-bar"></span>
@@ -115,15 +115,11 @@
     <div class="footer-left-bg"></div>
     <div class="footer-right-bg"></div>
     <div class="container">
-        <div class="row">
+       <div class="row">
             <div class="col-md-3 col-sm-12 col-xs-12">
                 <h2>Runtime.vn<span class="line"></span></h2>
                 <ul>
-                    <li><a href="kho-giao-dien.html">Kho giao diện</a></li>
-                    <li><a href="dang-ky-ten-mien.html">Tên miền</a></li>
-                    <li><a href="tinh-nang.html">Tính năng</a></li>
                     <li><a href="bang-gia.html">Bảng giá</a></li>
-                    
                     <li><a href="lien-he.html">Liên hệ</a></li>
                 </ul>
             </div>
@@ -132,8 +128,6 @@
                 <ul>
                     <li><a href="gioi-thieu.html">Về chúng tôi</a></li>
                     <li><a href="thanh-toan.html">Hình thức thanh toán</a></li>
-                    <li><a href="dieu-khoan-su-dung.html">Điều khoản sử dụng</a></li>
-                    <li><a href="chinh-sach-bao-mat.html">Chính sách bảo mật</a></li>
                     <li><a href="http://partner.runtime.vn/">Đối tác</a></li>
                 </ul>
             </div>
@@ -141,8 +135,6 @@
                 <h2>Hỗ trợ<span class="line"></span></h2>
                 <ul>
                     <li><a href="tro-giup.html">Tài liệu hướng dẫn sử dụng</a></li>
-                    <li><a href="video.html">Video hướng dẫn sử dụng</a></li>
-                    <li><a href="hoi-dap.html">Câu hỏi thường gặp</a></li>
                     <li><a href="tro-giup/huong-dan-tao-web.html">Hướng dẫn tạo website</a></li>
                 </ul>
             </div>

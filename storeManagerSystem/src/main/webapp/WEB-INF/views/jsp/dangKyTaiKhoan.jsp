@@ -102,11 +102,7 @@
             <div class="col-md-3 col-sm-12 col-xs-12">
                 <h2>Runtime.vn<span class="line"></span></h2>
                 <ul>
-                    <li><a href="kho-giao-dien.html">Kho giao diện</a></li>
-                    <li><a href="dang-ky-ten-mien.html">Tên miền</a></li>
-                    <li><a href="tinh-nang.html">Tính năng</a></li>
                     <li><a href="bang-gia.html">Bảng giá</a></li>
-                    
                     <li><a href="lien-he.html">Liên hệ</a></li>
                 </ul>
             </div>
@@ -115,17 +111,12 @@
                 <ul>
                     <li><a href="gioi-thieu.html">Về chúng tôi</a></li>
                     <li><a href="thanh-toan.html">Hình thức thanh toán</a></li>
-                    <li><a href="dieu-khoan-su-dung.html">Điều khoản sử dụng</a></li>
-                    <li><a href="chinh-sach-bao-mat.html">Chính sách bảo mật</a></li>
-                    <li><a href="http://partner.runtime.vn/">Đối tác</a></li>
                 </ul>
             </div>
             <div class="col-md-3 col-sm-12 col-xs-12">
                 <h2>Hỗ trợ<span class="line"></span></h2>
                 <ul>
                     <li><a href="tro-giup.html">Tài liệu hướng dẫn sử dụng</a></li>
-                    <li><a href="video.html">Video hướng dẫn sử dụng</a></li>
-                    <li><a href="hoi-dap.html">Câu hỏi thường gặp</a></li>
                     <li><a href="tro-giup/huong-dan-tao-web.html">Hướng dẫn tạo website</a></li>
                 </ul>
             </div>
@@ -135,6 +126,12 @@
                 <p><i class="fa fa-envelope-o"></i> runtimevn@gmail.com</p>
                 <p><i class="fa fa-phone"></i> 0908 77 00 95</p>
                 <p><i class="fa fa-home"></i> 36Bis Ho&#224;ng Sa, Phường T&#226;n Định, Quận 1, Tp.Hồ Ch&#237; Minh</p>
+                <ul class="">
+                    <li><a target="_blank"><i class="fa fa-facebook fa-2"></i></a></li>
+                    <li><a target="_blank"><i class="fa fa-google-plus fa-2"></i></a></li>
+                    <li><a target="_blank"><i class="fa fa-twitter fa-2"></i></a></li>
+                    <li><a target="_blank"><i class="fa fa-youtube fa-2"></i></a></li>
+                </ul>
             </div>
 
         </div>

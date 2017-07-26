@@ -42,8 +42,8 @@
             <div class="container">
                 <div class="navbar-header">
                     <a class="navbar-brand hidden-xs hidden-sm" href="index.html">
-                        <img style="width:100px;height: 50px " alt="runtime" class="scroller-logo" src="/storeManagerSystem/view/templateDK/logoHeader02.JPG">
-                        <img src="/storeManagerSystem/view/templateDK/logo.png" class="default-logo img-responsive" alt="runtime">
+                        <img style="width:100px;height: 50px " alt="runtime" class="scroller-logo" src="/storeManagerSystem/view/templateDK/logoHeader.jpg">
+                        <img src="/storeManagerSystem/view/templateDK/logoHeader.jpg" class="default-logo img-responsive" alt="runtime">
                     </a>
                     <button type="button" class="navbar-toggle collapsed pull-right " data-toggle="collapse" data-target="#menu" aria-expanded="false">
                         <span class="icon-bar"></span>
@@ -84,7 +84,6 @@
             <div class="col-md-3 col-sm-12 col-xs-12">
                 <h2>Runtime.vn<span class="line"></span></h2>
                 <ul>
-                    <li><a href="kho-giao-dien.html">Kho giao diện</a></li>
                     <li><a href="bang-gia.html">Bảng giá</a></li>
                     <li><a href="lien-he.html">Liên hệ</a></li>
                 </ul>
@@ -94,8 +93,6 @@
                 <ul>
                     <li><a href="gioi-thieu.html">Về chúng tôi</a></li>
                     <li><a href="thanh-toan.html">Hình thức thanh toán</a></li>
-                    <li><a href="dieu-khoan-su-dung.html">Điều khoản sử dụng</a></li>
-                    <li><a href="chinh-sach-bao-mat.html">Chính sách bảo mật</a></li>
                 </ul>
             </div>
             <div class="col-md-3 col-sm-12 col-xs-12">
@@ -106,11 +103,10 @@
                 </ul>
             </div>
             <div class="col-md-3 col-sm-12 col-xs-12 social-icon">
-                <h2><span class="line"></span>Kết nối với chúng tôi</h2>
-                <p class="text-uppercase color1">C&#212;NG TY TNHH PH&#193;T TRIỂN C&#212;NG NGHỆ SCALADO</p>
+                <p class="text-uppercase color1">C&#212;NG TY TNHH PH&#193;T TRIỂN C&#212;NG NGHỆ RUNTIME</p>
                 <p><i class="fa fa-envelope-o"></i> runtimevn@gmail.com</p>
                 <p><i class="fa fa-phone"></i> 0908 77 00 95</p>
-                <p><i class="fa fa-home"></i> 10 Phổ Quang , Phường 2, Quận Tân Bình, TP HCM</p>
+                <p><i class="fa fa-home"></i> 36Bis Ho&#224;ng Sa, Phường T&#226;n Định, Quận 1, Tp.Hồ Ch&#237; Minh</p>
                 <ul class="">
                     <li><a target="_blank"><i class="fa fa-facebook fa-2"></i></a></li>
                     <li><a target="_blank"><i class="fa fa-google-plus fa-2"></i></a></li>

@@ -59,8 +59,8 @@
             <div class="container">
                 <div class="navbar-header">
                     <a class="navbar-brand hidden-xs hidden-sm" href="index.html">
-                        <img alt="runtime" class="scroller-logo" src="/storeManagerSystem/view/templateDK/logo01.png">
-                        <img src="/storeManagerSystem/view/templateDK/logo.png" class="default-logo img-responsive" alt="runtime">
+                        <img alt="runtime" class="scroller-logo" src="/storeManagerSystem/view/templateDK/logoHeader.jpg">
+                        <img src="/storeManagerSystem/view/templateDK/logoHeader.jpg" class="default-logo img-responsive" alt="runtime">
                     </a>
                     <a class="navbar-brand logo-mobile hidden-md hidden-lg" href="index.html">
                         <img alt="runtime" class="scroller-logo" src="/storeManagerSystem/view/templateDK/logo-runtime.png">
@@ -174,11 +174,7 @@
             <div class="col-md-3 col-sm-12 col-xs-12">
                 <h2>Runtime.vn<span class="line"></span></h2>
                 <ul>
-                    <li><a href="kho-giao-dien.html">Kho giao diện</a></li>
-                    <li><a href="dang-ky-ten-mien.html">Tên miền</a></li>
-                    <li><a href="tinh-nang.html">Tính năng</a></li>
                     <li><a href="bang-gia.html">Bảng giá</a></li>
-                    
                     <li><a href="lien-he.html">Liên hệ</a></li>
                 </ul>
             </div>
@@ -189,20 +185,16 @@
                     <li><a href="thanh-toan.html">Hình thức thanh toán</a></li>
                     <li><a href="dieu-khoan-su-dung.html">Điều khoản sử dụng</a></li>
                     <li><a href="chinh-sach-bao-mat.html">Chính sách bảo mật</a></li>
-                    <li><a href="http://partner.runtime.vn/">Đối tác</a></li>
                 </ul>
             </div>
             <div class="col-md-3 col-sm-12 col-xs-12">
                 <h2>Hỗ trợ<span class="line"></span></h2>
                 <ul>
                     <li><a href="tro-giup.html">Tài liệu hướng dẫn sử dụng</a></li>
-                    <li><a href="video.html">Video hướng dẫn sử dụng</a></li>
-                    <li><a href="hoi-dap.html">Câu hỏi thường gặp</a></li>
                     <li><a href="tro-giup/huong-dan-tao-web.html">Hướng dẫn tạo website</a></li>
                 </ul>
             </div>
             <div class="col-md-3 col-sm-12 col-xs-12 social-icon">
-                <h2><span class="line"></span>Kết nối với chúng tôi</h2>
                 <p class="text-uppercase color1">C&#212;NG TY TNHH PH&#193;T TRIỂN C&#212;NG NGHỆ RUNTIME</p>
                 <p><i class="fa fa-envelope-o"></i> runtimevn@gmail.com</p>
                 <p><i class="fa fa-phone"></i> 0908 77 00 95</p>
