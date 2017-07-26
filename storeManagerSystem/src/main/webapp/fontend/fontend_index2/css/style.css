@@ -178,7 +178,7 @@ ul.multi-column-dropdown h6 {
 }
 .multi-column-dropdown li {
 	list-style-type:none;
-	    margin: 5px 0;
+	    margin-left: 5px;
 }
 .multi-column-dropdown li a {
         display: block;
@@ -187,6 +187,7 @@ ul.multi-column-dropdown h6 {
     color: #000;
     white-space: normal;
     font-weight: 300;
+     margin-left: 5px;
 }
 .multi-column-dropdown li a.list {
     font-weight: 600;

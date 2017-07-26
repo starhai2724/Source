@@ -36,6 +36,8 @@ public class LayoutForm extends AbstractForm {
 	
 	private String tongThanhTien;
 	
+	private String dkGiaoHangFree;
+	
 	// Gio hang (E)
 
 	private String tenKhachHang;
@@ -98,6 +100,14 @@ public class LayoutForm extends AbstractForm {
 
 	public void setFile_5(byte[] file_5) {
 		this.file_5 = file_5;
+	}
+
+	public String getDkGiaoHangFree() {
+		return dkGiaoHangFree;
+	}
+
+	public void setDkGiaoHangFree(String dkGiaoHangFree) {
+		this.dkGiaoHangFree = dkGiaoHangFree;
 	}
 
 	public String getSdtKhachHang() {

@@ -94,22 +94,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			        <li class="dropdown">
 			            <a href="#" class="dropdown-toggle" data-toggle="dropdown">${items.nameProductCategory } <b class="caret"></b></a>
 			            <c:if test="${!empty items.menuRowForms }">
-				            <ul class="dropdown-menu multi-column columns-3">
-					            <div class="row">
-									<div class="col-sm-3">
-										<ul class="multi-column-dropdown">
-							            <c:forEach var="menus" items="${items.menuRowForms }">
-							            			<li><a href="#">${menus.tenLoaiSp }</a></li>
-							            </c:forEach>
-							            </ul>
-					            	</div>
-					            </div>	
+				            <ul class="dropdown-menu multi-column " style="margin-left: 10px;">
+								<ul class="multi-column-dropdown">
+							      <c:forEach var="menus" items="${items.menuRowForms }">
+							            			<li style="padding-left: 20px"><a href="#">${menus.tenLoaiSp }</a></li>
+							       </c:forEach>
+							    </ul>
 				            </ul>
 			            </c:if>
 			        </li>
 		        </c:forEach>
 					<!-- <li><a href="typography.html">TYPO</a></li> -->
-					<li><a href="contact.html">Liên hệ</a></li>
+					<li><a ng-click="btnLienHe()">Liên hệ</a></li>
 	        </ul>
 	    </div>
 	    <!--/.navbar-collapse-->
@@ -117,87 +113,70 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--/.navbar-->
 </div>
 </div>
-	<div class="banner">
-		<div class="container">
-<div class="banner-bottom">
-	<div class="banner-bottom-left">
-		<h2>B<br>U<br>Y</h2>
-	</div>
-	<div class="banner-bottom-right">
-		<div  class="callbacks_container">
-					<ul class="rslides" id="slider4">
-					<li>
-								<div class="banner-info">
-									<h3>Đơn giản</h3>
-									<p>Bắt đầu mua sắm...</p>
-								</div>
-							</li>
-							<li>
-								<div class="banner-info">
-								   <h3>Thời trang Online</h3>
-									<p>Bắt đầu mua sắm...</p>
-								</div>
-							</li>
-							<li>
-								<div class="banner-info">
-								  <h3>Giỏ của bạn</h3>
-									<p>Bắt đầu mua sắm...</p>
-								</div>								
-							</li>
-						</ul>
-					</div>
-					<!--banner-->
-	  			<script src="/storeManagerSystem/view/fontend_index2/js/responsiveslides.min.js"></script>
-			 <script>
-			    // You can also use "$(window).load(function() {"
-			    $(function () {
-			      // Slideshow 4
-			      $("#slider4").responsiveSlides({
-			        auto: true,
-			        pager:true,
-			        nav:false,
-			        speed: 500,
-			        namespace: "callbacks",
-			        before: function () {
-			          $('.events').append("<li>before event fired.</li>");
-			        },
-			        after: function () {
-			          $('.events').append("<li>after event fired.</li>");
-			        }
-			      });
-			
-			    });
-			  </script>
-	</div>
-	<div class="clearfix"> </div>
+<div class="slideshow" >
+<div class="col-md-12">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplayHeader/hinh1" alt="Los Angeles" style="width:100%;">
+      </div>
+
+      <div class="item">
+        <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplayHeader/hinh2" alt="Los Angeles" style="width:100%;">
+      </div>
+    
+      <div class="item">
+        <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplayHeader/hinh3" alt="Los Angeles" style="width:100%;">
+      </div>
+      
+      <div class="item">
+        <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplayHeader/hinh4" alt="Los Angeles" style="width:100%;">
+      </div>
+      
+      <div class="item">
+        <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplayHeader/hinh5" alt="Los Angeles" style="width:100%;">
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+   </div>    
+  </div>
 </div>
-<!--Hai.NT (S)  -->
-	<!-- <div class="shop">
-		<a href="single.html">SHOP COLLECTION NOW</a>
-	</div> -->
-<!--Hai.NT (E)  -->
-	</div>
-		</div>
-		<!-- content-section-starts-here -->
-		<div class="container">
+		<div class="container" style="width: 1370px">
 			<div class="main-content">
-				<div class="online-strip">
-					<div class="col-md-4 follow-us">
+				<div class="online-strip" >
+					<div class="col-md-4 follow-us" style="margin-top: 20px">
 						<h3>Liên kết  : <a class="twitter" href="#"></a><a class="facebook" href="#"></a></h3>
 					</div>
-					<div class="col-md-4 shipping-grid">
+					<div class="col-md-4 shipping-grid" style="margin-top: 20px">
 						<div class="shipping">
 							<img src="/storeManagerSystem/view/fontend_index2/images/shipping.png" alt="" />
 						</div>
 						<div class="shipping-text">
 							<h3>Miễn phí vận chuyển</h3>
-							<p>trên hóa đơn 500.000đ</p>
+							<p>${LayoutForm.dkGiaoHangFree}</p>
 						</div>
 						<div class="clearfix"></div>
 					</div>
-					<div class="col-md-4 online-order">
+					<div class="col-md-4 online-order" style="margin-top: 20px">
 						<p>Đặt hàng online</p>
-						<h3>Tel:999 4567 8902</h3>
+						<h3>Tel: ${LayoutForm.soDienThoai}</h3>
 					</div>
 					<div class="clearfix"></div>
 				</div>
@@ -207,8 +186,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</header>
 				<!--San pham (S)  ----------------------------------------------------------------------------------------------------------------------------------------------->
 				<c:forEach var="items" items="${LayoutForm.products }">
-					<div class="col-md-4 product simpleCart_shelfItem text-center">
-						<a  href="<c:url value="/${LayoutForm.pathJSP }/chiTietSP/${items.SEQ}" />"><img style="height: 500px;width: 350px;" src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplay/${items.SEQ}" alt="" /></a>
+					<div class="col-md-3 product simpleCart_shelfItem text-center">
+						<a  href="<c:url value="/${LayoutForm.pathJSP }/chiTietSP/${items.SEQ}" />"><img style="height: 400px;width: 300px;" src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplay/${items.SEQ}" alt="" /></a>
 						<div class="mask">
 							<a href="<c:url value="/${LayoutForm.pathJSP }/chiTietSP/${items.SEQ}" />">Chi tiết</a>
 						</div>
@@ -235,40 +214,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 		</div>
 		<!-- San pham khuyen mai (S)  -->	
-		<!-- <div class="other-products">
+		 <div class="other-products">
 		<div class="container">
 			<h3 class="like text-center">Sản phẩm khác</h3>        			
 				     <ul id="flexiselDemo3">
-						<li><a href="single.html"><img src="/storeManagerSystem/view/fontend_index2/images/l1.jpg" class="img-responsive" alt="" /></a>
-							<div class="product liked-product simpleCart_shelfItem">
-							<a class="like_name" href="single.html">perfectly simple</a>
-							<p><a class="item_add" href="#"><i></i> <span class=" item_price">$759</span></a></p>
-							</div>
-						</li>
-						<li><a href="single.html"><img src="/storeManagerSystem/view/fontend_index2/images/l2.jpg" class="img-responsive" alt="" /></a>						
-							<div class="product liked-product simpleCart_shelfItem">
-							<a class="like_name" href="single.html">praising pain</a>
-							<p><a class="item_add" href="#"><i></i> <span class=" item_price">$699</span></a></p>
-							</div>
-						</li>
-						<li><a href="single.html"><img src="/storeManagerSystem/view/fontend_index2/images/l3.jpg" class="img-responsive" alt="" /></a>
-							<div class="product liked-product simpleCart_shelfItem">
-							<a class="like_name" href="single.html">Neque porro</a>
-							<p><a class="item_add" href="#"><i></i> <span class=" item_price">$329</span></a></p>
-							</div>
-						</li>
-						<li><a href="single.html"><img src="/storeManagerSystem/view/fontend_index2/images/l4.jpg" class="img-responsive" alt="" /></a>
-							<div class="product liked-product simpleCart_shelfItem">
-							<a class="like_name" href="single.html">equal blame</a>
-							<p><a class="item_add" href="#"><i></i> <span class=" item_price">$499</span></a></p>
-							</div>
-						</li>
-						<li><a href="single.html"><img src="/storeManagerSystem/view/fontend_index2/images/l5.jpg" class="img-responsive" alt="" /></a>
-							<div class="product liked-product simpleCart_shelfItem">
-							<a class="like_name" href="single.html">perfectly simple</a>
-							<p><a class="item_add" href="#"><i></i> <span class=" item_price">$649</span></a></p>
-							</div>
-						</li>
+							<c:forEach var="items" items="${LayoutForm.products }">
+								<li>
+									<a  href="<c:url value="/${LayoutForm.pathJSP }/chiTietSP/${items.SEQ}" />"><img style="height: 320px" src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplay/${items.SEQ}" class="img-responsive" alt="" /></a>
+									<div class="product liked-product simpleCart_shelfItem">
+									<a class="like_name" href="single.html">${items.tenSP}</a>
+									<p><a class="item_add" href="#"><i></i> 
+										<span class=" item_price">
+											<c:if test="${!empty items.giaBanKM }">
+												<strike class="item_price"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBan}" /> VNĐ</strike>
+											</c:if>
+											<c:if test="${empty items.giaBanKM }">
+												<span class="item_price"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBan}" /> VNĐ</span>
+											</c:if>
+											<c:if test="${!empty items.giaBanKM }">
+												<span class="item_price"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBanKM}" /> VNĐ</span>
+											</c:if>
+										</span></a></p>
+									</div>
+								</li>
+							</c:forEach>
 				     </ul>
 				    <script type="text/javascript">
 					 $(window).load(function() {
@@ -302,77 +271,46 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				   </div> -->
 			<!-- San pham khuyen mai (E)  -->	   
 		<!-- content-section-ends-here -->
-		<!-- Hai.NT (S) -->
-		<%-- <div class="news-letter">
-			<div class="container">
-				<div class="join">
-					<h6>JOIN OUR MAILING LIST</h6>
-					<div class="sub-left-right">
-						<form>
-							<input type="text" value="Enter Your Email Here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Your Email Here';}" />
-							<input type="submit" value="SUBSCRIBE" />
-						</form>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-			</div>
-		</div> --%>
-		<!-- Hai.NT (E) -->
 		<div class="footer">
 		<div class="container">
 		 <div class="footer_top">
 			<div class="span_of_4">
 				<div class="col-md-3 span1_of_4">
-					<h4>Shop</h4>
+					<h4>Giới thiệu</h4>
 					<ul class="f_nav">
-						<li><a href="#">new arrivals</a></li>
-						<li><a href="#">men</a></li>
-						<li><a href="#">women</a></li>
-						<li><a href="#">accessories</a></li>
-						<li><a href="#">kids</a></li>
-						<li><a href="#">brands</a></li>
-						<li><a href="#">trends</a></li>
-						<li><a href="#">sale</a></li>
-						<li><a href="#">style videos</a></li>
+						<li> <a ng-click="btnGioiThieu()">Về chúng tôi</a></li>
+                        <li>
+                            <a ng-click="btnLienHe()">Hỏi đáp</a>
+                        </li>
 					</ul>	
 				</div>
 				<div class="col-md-3 span1_of_4">
-					<h4>help</h4>
+					<h4>Trợ giúp</h4>
 					<ul class="f_nav">
-						<li><a href="#">frequently asked  questions</a></li>
-						<li><a href="#">men</a></li>
-						<li><a href="#">women</a></li>
-						<li><a href="#">accessories</a></li>
-						<li><a href="#">kids</a></li>
-						<li><a href="#">brands</a></li>
+                        <li>
+                            <a href="content/huong-dan-thanh-toan.html">
+                                Hướng dẫn thanh to&#225;n
+                            </a>
+                        </li>
+                        <li>
+                            <a href="content/chinh-sach-ban-hang.html">
+                                Hướng dẫn đặt hàng
+                            </a>
+                        </li>
 					</ul>	
 				</div>
-				<div class="col-md-3 span1_of_4">
-					<h4>account</h4>
-					<ul class="f_nav">
-						<li><a href="account.html">login</a></li>
-						<li><a href="register.html">create an account</a></li>
-						<li><a href="#">create wishlist</a></li>
-						<li><a href="checkout.html">my shopping bag</a></li>
-						<li><a href="#">brands</a></li>
-						<li><a href="#">create wishlist</a></li>
+				<div class="col-md-5 span1_of_4">
+					<h4>Thông tin cửa hàng</h4>
+					<ul class="f_nav" style="width: 400px">
+                        <div class="box-address-content" style="width: 400px">
+                            <b>${LayoutForm.tenCuaHang}</b>
+                            <p><i class="fa fa-map-marker"></i> ${LayoutForm.diaChi}</p>
+                            <p>
+                                <i class="fa fa-phone"></i>
+                                Số điện thoại: ${LayoutForm.soDienThoai}
+                            </p>
+                        </div>
 					</ul>				
-				</div>
-				<div class="col-md-3 span1_of_4">
-					<h4>popular</h4>
-					<ul class="f_nav">
-						<li><a href="#">new arrivals</a></li>
-						<li><a href="#">men</a></li>
-						<li><a href="#">women</a></li>
-						<li><a href="#">accessories</a></li>
-						<li><a href="#">kids</a></li>
-						<li><a href="#">brands</a></li>
-						<li><a href="#">trends</a></li>
-						<li><a href="#">sale</a></li>
-						<li><a href="#">style videos</a></li>
-						<li><a href="#">login</a></li>
-						<li><a href="#">brands</a></li>
-					</ul>			
 				</div>
 				<div class="clearfix"></div>
 				</div>
@@ -381,7 +319,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<img src="/storeManagerSystem/view/fontend_index2/images/cards.jpg" alt="" />
 		  </div>
 		  <div class="copyright text-center">
-				<p>Cửa hàng thời trang</p>
+				<p>${LayoutForm.tenCuaHang}</p>
 		  </div>
 		</div>
 		</div>

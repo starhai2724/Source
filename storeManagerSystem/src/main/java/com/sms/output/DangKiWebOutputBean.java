@@ -28,6 +28,7 @@ public class DangKiWebOutputBean {
 	public String getTenWebSite() {
 		return tenWebSite;
 	}
+	
 	public void setTenWebSite(String tenWebSite) {
 		this.tenWebSite = tenWebSite;
 	}

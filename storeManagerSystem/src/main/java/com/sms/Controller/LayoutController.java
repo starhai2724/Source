@@ -34,7 +34,8 @@ import com.sms.session.KhachHangSession;
 public class LayoutController {
 
 	public static final String PAGE_CART = "gioHang";
-	public static final String LIENHE = "template_2/lienhe";
+	public static final String LIENHE_2 = "template_2/lienhe";
+	public static final String LIENHE_1 = "fashion/lienhe";
 	public static final String TINTUC = "template_2/tinTuc";
 	public static final String GIOITHIEU = "template_2/gioiThieu";
 	
@@ -107,6 +108,7 @@ public class LayoutController {
 			form.setSoDienThoai(output.getSdt());
 			form.setDiaChi(output.getDiaChi());
 			form.setTenCuaHang(output.getTenWebSite());
+			form.setDkGiaoHangFree(output.getDkGiaoHangFree());
 			
 		return LayoutDAO.intances.getPageJSP(path);
 	}
@@ -339,9 +341,11 @@ public class LayoutController {
 	@RequestMapping(value="/{path}/lienHe")
 	public String lienHe(@ModelAttribute("LayoutForm") LayoutForm form, @PathVariable("path") String path, HttpSession session){
 		//check pathJSP
+		System.out.println("111111111");
 		if(!LayoutDAO.intances.checkPathJSP(path)){
 			//quay ve trang login
 //			return new ModelAndView("redirect:/");
+			System.out.println("22222222222222");
 			return "redirect:/";
 		}
 		//set thong tin khach hang
@@ -370,7 +374,6 @@ public class LayoutController {
 				menuRowForm.setTenLoaiSp(outputBean.getTenLoaiSP());
 				menuRowForm.setIdNhomSP(outputBean.getIdNhomSP());
 				productCategoryFormRow.getMenuRowForms().add(menuRowForm);
-				System.out.println(productCategoryFormRow.getMenuRowForms().size());
 			}
 			 form.getLoaiSanPham().add(productCategoryFormRow);
 		}
@@ -406,8 +409,13 @@ public class LayoutController {
 			form.setDiaChi(output.getDiaChi());
 			form.setTenCuaHang(output.getTenWebSite());
 			
-		form.setPathJSP(path);
-		return LIENHE;
+			form.setPathJSP(path);
+			
+			System.out.println("output.getLoaiKinhDoanh() : " + output.getLoaiKinhDoanh() + "hihi");
+			if("01".equals(output.getLoaiKinhDoanh().trim()))return LIENHE_1;
+			if("02".equals(output.getLoaiKinhDoanh().trim()))return LIENHE_2;
+			
+			return LIENHE_1;
 	}
 	
 	@RequestMapping(value="/{path}/gioiThieu")
