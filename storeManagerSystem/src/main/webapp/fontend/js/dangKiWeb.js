@@ -10,10 +10,6 @@ app.controller('ctrl', function($scope, $window) {
 	$scope.sdt_err = "";
 	$scope.maXacNhan_err = "";
 	
-//	$scope.btnCreate = function(pathJSP) {
-//			create($scope, pathJSP);
-//	}
-	
 	$scope.btnOpenStep2 = function(){
 		openStep2($scope);
 	}
@@ -25,8 +21,13 @@ app.controller('ctrl', function($scope, $window) {
 	$scope.btnTaoWeb = function(){
 		taoWeb($scope);
 	}
+	$scope.btnBackStep1 = function(){
+		backStep1($scope);
+	}
 	
-	
+	$scope.btnBackStep2 = function(){
+		backStep2($scope);
+	}
 	
 });
 
@@ -76,6 +77,23 @@ function openStep3($scope, $window, idTemplate){
 	document.getElementById("DangKiWebForm").method = "POST";
 	document.getElementById("DangKiWebForm").submit();
 }
+
+function backStep1($scope){
+	var url = "/storeManagerSystem/buoc1";
+	document.getElementById("DangKiWebForm").action = url;
+	document.getElementById("DangKiWebForm").method = "GET";
+	document.getElementById("DangKiWebForm").submit();
+}
+
+function backStep2($scope){
+	var url = "/storeManagerSystem/buoc2";
+	document.getElementById("DangKiWebForm").action = url;
+	document.getElementById("DangKiWebForm").method = "POST";
+	document.getElementById("DangKiWebForm").submit();
+}
+
+
+
 
 function taoWeb($scope){
 	

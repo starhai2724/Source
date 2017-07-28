@@ -22,15 +22,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Quản lý</a>
+      <a class="navbar-brand" href="javascript:void(0)">Quản lý</a>
     </div>
     <!-- /.navbar-header -->
     <ul class="nav navbar-top-links navbar-right">
       <!-- /.dropdown -->
       <!-- /.dropdown -->
       <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-          <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+        <a class="dropdown-toggle" href="/storeManagerSystem/dangXuat">
+          <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"> Đăng xuất</i>
         </a>
         <ul class="dropdown-menu dropdown-user">
           <li><a href="#"><i class="fa fa-gear fa-fw"></i> Cài đặt</a>
@@ -52,13 +52,7 @@
             <a href="/storeManagerSystem/storeOwnerList"><i class="fa fa-dashboard fa-fw"></i> Người dùng</a>
           </li>
           <li>
-            <a href="index.html"><i class="fa fa-wrench fa-fw"></i> Cấu hình trang web</a>
-          </li>
-          <li>
-            <a href="/storeManagerSystem/quanLyDatHang/init"><i class="fa fa-wrench fa-fw"></i> Đặt hàng</a>
-          </li>
-          <li>
-            <a href="index.html"><i class="fa fa-bar-chart-o fa-fw"></i> Thống kế</a>
+            <a href="/storeManagerSystem/quanLyDatHang/init"><i class="fa fa-wrench fa-fw"></i> Quản lý đặt hàng</a>
           </li>
         </ul>
       </div>

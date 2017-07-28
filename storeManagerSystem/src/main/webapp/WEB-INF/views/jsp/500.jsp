@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-loi
+loi 500
 </body>
 </html>

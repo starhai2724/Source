@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.sms.OutputRows.DotKhuyenMaiOutputRowBean;
 import com.sms.OutputRows.SanPhamOutputRowBean;
@@ -115,7 +116,12 @@ public class LayoutController {
 	
 	@RequestMapping(value="/{path}/gioHang/{list}")
 	public String giohang(@ModelAttribute("LayoutForm") LayoutForm form, @PathVariable("path") String path, @PathVariable("list") String listId, HttpSession session){
-		
+		//check pathJSP
+		if(!LayoutDAO.intances.checkPathJSP(path)){
+			//quay ve trang login
+//					return new ModelAndView("redirect:/");
+			return "redirect:/";
+		}
 		//get loai san pham
 		NhomSanPhamInputBean nhomSanPhamInputBean = new NhomSanPhamInputBean();  
 		nhomSanPhamInputBean.setPathJSP(path);
@@ -137,7 +143,6 @@ public class LayoutController {
 				menuRowForm.setTenLoaiSp(outputBean.getTenLoaiSP());
 				menuRowForm.setIdNhomSP(outputBean.getIdNhomSP());
 				productCategoryFormRow.getMenuRowForms().add(menuRowForm);
-				System.out.println(productCategoryFormRow.getMenuRowForms().size());
 			}
 			 form.getLoaiSanPham().add(productCategoryFormRow);
 		}
@@ -234,7 +239,12 @@ public class LayoutController {
 	
 	@RequestMapping(value="/{path}/chiTietSP/{idSanPham}")
 	public String chiTietSP(@ModelAttribute("LayoutForm") LayoutForm form, @PathVariable("path") String path, @PathVariable("idSanPham") String idSanPham, HttpSession session){
-		
+		//check pathJSP
+		if(!LayoutDAO.intances.checkPathJSP(path)){
+			//quay ve trang login
+//					return new ModelAndView("redirect:/");
+			return "redirect:/";
+		}
 		//get loai san pham
 		NhomSanPhamInputBean nhomSanPhamInputBean = new NhomSanPhamInputBean();  
 		nhomSanPhamInputBean.setPathJSP(path);
@@ -256,7 +266,6 @@ public class LayoutController {
 				menuRowForm.setTenLoaiSp(outputBean.getTenLoaiSP());
 				menuRowForm.setIdNhomSP(outputBean.getIdNhomSP());
 				productCategoryFormRow.getMenuRowForms().add(menuRowForm);
-				System.out.println(productCategoryFormRow.getMenuRowForms().size());
 			}
 			 form.getLoaiSanPham().add(productCategoryFormRow);
 		}
@@ -282,7 +291,12 @@ public class LayoutController {
 	
 	@RequestMapping(value="/{path}/timKiem")
 	public String timKiem(@ModelAttribute("LayoutForm") LayoutForm form, @PathVariable("path") String path, HttpSession session){
-		
+		//check pathJSP
+		if(!LayoutDAO.intances.checkPathJSP(path)){
+			//quay ve trang login
+//					return new ModelAndView("redirect:/");
+			return "redirect:/";
+		}
 		//get loai san pham
 		NhomSanPhamInputBean nhomSanPhamInputBean = new NhomSanPhamInputBean();  
 		nhomSanPhamInputBean.setPathJSP(path);
@@ -304,15 +318,11 @@ public class LayoutController {
 				menuRowForm.setTenLoaiSp(outputBean.getTenLoaiSP());
 				menuRowForm.setIdNhomSP(outputBean.getIdNhomSP());
 				productCategoryFormRow.getMenuRowForms().add(menuRowForm);
-				System.out.println(productCategoryFormRow.getMenuRowForms().size());
 			}
 			 form.getLoaiSanPham().add(productCategoryFormRow);
 		}
 
-		SanPhamInputBean input = new SanPhamInputBean();
-		System.out.println("data tim kiem: " + form.getTimKiem_TenSP());
 		SanPhamOutputBean sanPhamOutputBean = CreateTableProductDAO.intances.getProductBysByNameProduct(path,form.getTimKiem_TenSP());
-		System.out.println("data tim kiem size : " + sanPhamOutputBean.getLst().size());
 		ProductFormRow productFormRow;
 		for(SanPhamOutputRowBean sanPhamOutputRowBean : sanPhamOutputBean.getLst()){
 			productFormRow = new ProductFormRow();
@@ -330,12 +340,71 @@ public class LayoutController {
 		}
 		
 			form.setTimKiem_TenSP("");
-			form.setPathJSP(path);
 			form.setCartPrice("0");
 			form.setCartQuantity("0");
 		
 		form.setPathJSP(path);
-		return PAGE_CART;
+		return LayoutDAO.intances.getPageJSP(path);
+	}
+	
+	@RequestMapping(value="/{path}/timKiemSanPham/{id}", method = RequestMethod.GET)
+	public String timKiemSanPhamTheoMenu(@ModelAttribute("LayoutForm") LayoutForm form, @PathVariable("path") String path,
+			@PathVariable("id") String id, HttpSession session){
+		//check pathJSP
+		if(!LayoutDAO.intances.checkPathJSP(path)){
+			//quay ve trang login
+//					return new ModelAndView("redirect:/");
+			return "redirect:/";
+		}
+		//get loai san pham
+		NhomSanPhamInputBean nhomSanPhamInputBean = new NhomSanPhamInputBean();  
+		nhomSanPhamInputBean.setPathJSP(path);
+		List<NhomSanPhamOutputBean> loaiSanPhamOutputBeans = NhomSanPhamDAO.intances.getNhomSP(nhomSanPhamInputBean);
+		RegisterProductCategoryFormRow productCategoryFormRow;
+		for(NhomSanPhamOutputBean loaiSanPhamOutputBean : loaiSanPhamOutputBeans){
+			productCategoryFormRow = new RegisterProductCategoryFormRow();
+			productCategoryFormRow.setIdProductCategory(loaiSanPhamOutputBean.getIdNhomSP());
+			productCategoryFormRow.setNameProductCategory(loaiSanPhamOutputBean.getTenNhomSP());
+			//get loai san pham
+			LoaiSanPhamInputBean loaiSanPhamInputBean = new LoaiSanPhamInputBean();
+			loaiSanPhamInputBean.setPathJSP(path);
+			loaiSanPhamInputBean.setIdNhomSP(loaiSanPhamOutputBean.getIdNhomSP());
+			List<LoaiSanPhamOutputBean> loaiSanPhamOutputBeans2 =  NhomSanPhamDAO.intances.getLoaiSPByIdNhomSP(loaiSanPhamInputBean);
+			MenuRowForm menuRowForm;
+			for(LoaiSanPhamOutputBean outputBean : loaiSanPhamOutputBeans2){
+				menuRowForm = new MenuRowForm();
+				menuRowForm.setIdLoaiSp(outputBean.getIdLoaiSP());
+				menuRowForm.setTenLoaiSp(outputBean.getTenLoaiSP());
+				menuRowForm.setIdNhomSP(outputBean.getIdNhomSP());
+				productCategoryFormRow.getMenuRowForms().add(menuRowForm);
+			}
+			 form.getLoaiSanPham().add(productCategoryFormRow);
+		}
+
+		SanPhamInputBean input = new SanPhamInputBean();
+		SanPhamOutputBean sanPhamOutputBean = CreateTableProductDAO.intances.getSanPhamTimKiemTheoMenu(path, id);
+		ProductFormRow productFormRow;
+		for(SanPhamOutputRowBean sanPhamOutputRowBean : sanPhamOutputBean.getLst()){
+			productFormRow = new ProductFormRow();
+			productFormRow.setSEQ(sanPhamOutputRowBean.getSEQ());
+			productFormRow.setIdSanPham(sanPhamOutputRowBean.getIdSanPham());
+			productFormRow.setTenSP(sanPhamOutputRowBean.getTenSP());
+			productFormRow.setTenLoaiSP(sanPhamOutputRowBean.getTenLoaiSP());
+			productFormRow.setGiaMua(sanPhamOutputRowBean.getGiaMua());
+			productFormRow.setGiaBanKM(sanPhamOutputRowBean.getGiaBanKM());
+			productFormRow.setGiaBan(sanPhamOutputRowBean.getGiaBan());
+			productFormRow.setNgayTao(sanPhamOutputRowBean.getNgayTao());
+			productFormRow.setNgayChinhSua(sanPhamOutputRowBean.getNgayChinhSua());
+			productFormRow.setMoTa(sanPhamOutputRowBean.getMoTa());
+			form.getProducts().add(productFormRow);
+		}
+		System.out.println("lst Tim kiem: "+form.getProducts().size());
+//			form.setTimKiem_TenSP("");
+//			form.setPathJSP(path);
+//			form.setCartPrice("0");
+//			form.setCartQuantity("0");
+			form.setPathJSP(path);
+		return LayoutDAO.intances.getPageJSP(path);
 	}
 	
 	@RequestMapping(value="/{path}/lienHe")

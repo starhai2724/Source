@@ -191,8 +191,8 @@ public class dotKhuyenMaiController {
 			inputBean.setMaDKM("");
 			inputBean.setTenDKM(form.getTenDKM());
 			inputBean.setLoaiKM(form.getLoaiKM());
-			inputBean.setNgayBD(form.getNgayBD());
-			inputBean.setNgayKT(form.getNgayKT());
+			inputBean.setNgayBD(SMSComons.formatDateInput(form.getNgayBD()));
+			inputBean.setNgayKT(SMSComons.formatDateInput(form.getNgayKT()));
 			inputBean.setMucKM(form.getMaDKM());
 			inputBean.setDonViKM(form.getDonViKM());
 			inputBean.setMoTa(form.getMoTa());
@@ -240,8 +240,8 @@ public class dotKhuyenMaiController {
 		inputBean.setMaDKM(form.getMaDKM());
 		inputBean.setTenDKM(form.getTenDKM());
 		inputBean.setLoaiKM(form.getLoaiKM());
-		inputBean.setNgayBD(form.getNgayBD());
-		inputBean.setNgayKT(form.getNgayKT());
+		inputBean.setNgayBD(SMSComons.formatDateInput(form.getNgayBD()));
+		inputBean.setNgayKT(SMSComons.formatDateInput(form.getNgayKT()));
 		inputBean.setMucKM(form.getMaDKM());
 		inputBean.setDonViKM(form.getDonViKM());
 		inputBean.setMoTa(form.getMoTa());
@@ -294,8 +294,8 @@ public class dotKhuyenMaiController {
 		form.setMaDKM(DotKhuyenMaiOutputRowBean.getMaDKM());
 		form.setTenDKM(DotKhuyenMaiOutputRowBean.getTenDKM());
 		form.setLoaiKM(DotKhuyenMaiOutputRowBean.getLoaiKM());
-		form.setNgayBD(DotKhuyenMaiOutputRowBean.getNgayBD());
-		form.setNgayKT(DotKhuyenMaiOutputRowBean.getNgayKT());
+		form.setNgayBD(SMSComons.formatDateForm(DotKhuyenMaiOutputRowBean.getNgayBD()) );
+		form.setNgayKT(SMSComons.formatDateForm(DotKhuyenMaiOutputRowBean.getNgayKT()) );
 		form.setMucKM(DotKhuyenMaiOutputRowBean.getMaDKM());
 		form.setDonViKM(DotKhuyenMaiOutputRowBean.getDonViKM());
 		form.setMoTa(DotKhuyenMaiOutputRowBean.getMoTa());

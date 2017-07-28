@@ -50,6 +50,10 @@ app.controller('ctrl', function($scope, $window) {
 		gioiThieu($scope);
 	}
 	
+	$scope.btnTimKiemMenu = function(id){
+		timKiemMenu($scope, $window ,id);
+	}
+	
 });
 
 
@@ -89,6 +93,13 @@ function chiTiet($scope, $window, idSanPham){
 	var url = "/storeManagerSystem/" + $scope.pathJSP +"/chiTietSP/" + idSanPham;
 	document.getElementById("LayoutForm").action = url;
 	document.getElementById("LayoutForm").method = "POST";
+	document.getElementById("LayoutForm").submit();
+}
+
+function timKiemMenu($scope, $window, idLSP){
+	var url = "/storeManagerSystem/" + $scope.pathJSP +"/timKiemSanPham/" + idLSP;
+	document.getElementById("LayoutForm").action = url;
+	document.getElementById("LayoutForm").method = "GET";
 	document.getElementById("LayoutForm").submit();
 }
 

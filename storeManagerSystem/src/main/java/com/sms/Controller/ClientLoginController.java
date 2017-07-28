@@ -80,6 +80,7 @@ public class ClientLoginController {
 	public String dangXuat(@ModelAttribute("LoginForm") LoginForm loginForm, HttpSession session, Model model){
 		// set session userlocal
 		session.removeAttribute("userLocal");
+		session.removeAttribute("pathURL");
 		return SystemCommon.PAGE_LOGIN;
 	}
 	

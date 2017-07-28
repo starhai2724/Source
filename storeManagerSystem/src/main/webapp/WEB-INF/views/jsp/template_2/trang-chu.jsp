@@ -232,7 +232,7 @@
 							            <c:if test="${!empty items.menuRowForms }">
 								            <ul id="sub">
 											            <c:forEach var="menus" items="${items.menuRowForms }">
-											            			<li><a style="font-size: 14px" href="#"><span style="font-size: 16px">${menus.tenLoaiSp }</span></a></li>
+											            			<li><a style="font-size: 14px" ng-click="btnTimKiemMenu('${menus.idLoaiSp }')" href="javascript:void(0)"><span style="font-size: 16px" >${menus.tenLoaiSp }</span></a></li>
 											            </c:forEach>
 								            </ul>
 							            </c:if>
