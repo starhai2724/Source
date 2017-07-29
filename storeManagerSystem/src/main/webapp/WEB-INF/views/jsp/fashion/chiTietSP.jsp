@@ -4,9 +4,8 @@
 	pageEncoding="UTF-8"%> 
  <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%> 
  <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> 
-<html>
+<html lang="en">
 <head>
-
 <title>Cửa hàng thời trang</title>
 <link href="/storeManagerSystem/view/fontend_index2/css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -83,10 +82,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<c:forEach var="items" items="${LayoutForm.loaiSanPham }">
 			        <li class="dropdown">
 			            <a href="#" class="dropdown-toggle" data-toggle="dropdown">${items.nameProductCategory } <b class="caret"></b></a>
+			            <c:if test="${!empty items.menuRowForms }">
+				            <ul class="dropdown-menu multi-column " style="margin-left: 10px;">
+								<ul class="multi-column-dropdown">
+							      <c:forEach var="menus" items="${items.menuRowForms }">
+							            			<li style="padding-left: 20px"><a href="/storeManagerSystem/${LayoutForm.pathJSP }/searchByMenu/${menus.idLoaiSp}/${items.nameProductCategory}">${menus.tenLoaiSp }</a></li>
+							            			<%-- <li style="padding-left: 20px"><a ng-click="btnTimKiemMenu('${menus.idLoaiSp }')" href="javascript:void(0)">${menus.tenLoaiSp }</a></li> --%>
+							       </c:forEach>
+							    </ul>
+				            </ul>
+			            </c:if>
 			        </li>
 		        </c:forEach>
 					<!-- <li><a href="typography.html">TYPO</a></li> -->
-					<li><a href="contact.html">Liên hệ</a></li>
+					<li><a ng-click="btnLienHe()">Liên hệ</a></li>
 	        </ul>
 	    </div>
 	    <!--/.navbar-collapse-->
@@ -162,113 +171,46 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="reviews-tabs">
       <!-- Main component for a primary marketing message or call to action -->
 
-	</div>
-
-			<div class="clearfix"></div>
-			</div>
-   </div>
-   <div class="other-products products-grid">
-		<div class="container">
-			<header>
-				<h3 class="like text-center">Sản phẩm mới</h3>   
-			</header>			
-					<div class="col-md-4 product simpleCart_shelfItem text-center">
-						<a href="single.html"><img src="/storeManagerSystem/view/fontend_index2/images/p1.jpg" alt="" /></a>
-						<div class="mask">
-							<a href="single.html">Quick View</a>
-						</div>
-						<a class="product_name" href="single.html">Sed ut perspiciatis</a>
-						<p><a class="item_add" href="#"><i></i> <span class="item_price">$329</span></a></p>
-					</div>
-					<div class="col-md-4 product simpleCart_shelfItem text-center">
-						<a href="single.html"><img src="/storeManagerSystem/view/fontend_index2/images/p2.jpg" alt="" /></a>
-						<div class="mask">
-							<a href="single.html">Quick View</a>
-						</div>
-						<a class="product_name" href="single.html">great explorer</a>
-						<p><a class="item_add" href="#"><i></i> <span class="item_price">$599.8</span></a></p>
-					</div>
-					<div class="col-md-4 product simpleCart_shelfItem text-center">
-						<a href="single.html"><img src="/storeManagerSystem/view/fontend_index2/images/p3.jpg" alt="" /></a>
-						<div class="mask">
-							<a href="single.html">Quick View</a>
-						</div>
-						<a class="product_name" href="single.html">similique sunt</a>
-						<p><a class="item_add" href="#"><i></i> <span class="item_price">$359.6</span></a></p>
-					</div>
-					<div class="clearfix"></div>
-				   </div>
-				   </div>
-   <!-- content-section-ends -->
-		<div class="news-letter">
-			<div class="container">
-				<div class="join">
-					<h6>JOIN OUR MAILING LIST</h6>
-					<div class="sub-left-right">
-						<form>
-							<input type="text" value="Enter Your Email Here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Your Email Here';}" />
-							<input type="submit" value="SUBSCRIBE" />
-						</form>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-			</div>
-		</div>
 		<div class="footer">
 		<div class="container">
 		 <div class="footer_top">
 			<div class="span_of_4">
 				<div class="col-md-3 span1_of_4">
-					<h4>Shop</h4>
+					<h4>Giới thiệu</h4>
 					<ul class="f_nav">
-						<li><a href="#">new arrivals</a></li>
-						<li><a href="#">men</a></li>
-						<li><a href="#">women</a></li>
-						<li><a href="#">accessories</a></li>
-						<li><a href="#">kids</a></li>
-						<li><a href="#">brands</a></li>
-						<li><a href="#">trends</a></li>
-						<li><a href="#">sale</a></li>
-						<li><a href="#">style videos</a></li>
+						<li> <a ng-click="btnGioiThieu()">Về chúng tôi</a></li>
+                        <li>
+                            <a ng-click="btnLienHe()">Hỏi đáp</a>
+                        </li>
 					</ul>	
 				</div>
 				<div class="col-md-3 span1_of_4">
-					<h4>help</h4>
+					<h4>Trợ giúp</h4>
 					<ul class="f_nav">
-						<li><a href="#">frequently asked  questions</a></li>
-						<li><a href="#">men</a></li>
-						<li><a href="#">women</a></li>
-						<li><a href="#">accessories</a></li>
-						<li><a href="#">kids</a></li>
-						<li><a href="#">brands</a></li>
+                        <li>
+                            <a href="content/huong-dan-thanh-toan.html">
+                                Hướng dẫn thanh to&#225;n
+                            </a>
+                        </li>
+                        <li>
+                            <a href="content/chinh-sach-ban-hang.html">
+                                Hướng dẫn đặt hàng
+                            </a>
+                        </li>
 					</ul>	
 				</div>
-				<div class="col-md-3 span1_of_4">
-					<h4>account</h4>
-					<ul class="f_nav">
-						<li><a href="account.html">login</a></li>
-						<li><a href="register.html">create an account</a></li>
-						<li><a href="#">create wishlist</a></li>
-						<li><a href="checkout.html">my shopping bag</a></li>
-						<li><a href="#">brands</a></li>
-						<li><a href="#">create wishlist</a></li>
-					</ul>					
-				</div>
-				<div class="col-md-3 span1_of_4">
-					<h4>popular</h4>
-					<ul class="f_nav">
-						<li><a href="#">new arrivals</a></li>
-						<li><a href="#">men</a></li>
-						<li><a href="#">women</a></li>
-						<li><a href="#">accessories</a></li>
-						<li><a href="#">kids</a></li>
-						<li><a href="#">brands</a></li>
-						<li><a href="#">trends</a></li>
-						<li><a href="#">sale</a></li>
-						<li><a href="#">style videos</a></li>
-						<li><a href="#">login</a></li>
-						<li><a href="#">brands</a></li>
-					</ul>			
+				<div class="col-md-5 span1_of_4">
+					<h4>Thông tin cửa hàng</h4>
+					<ul class="f_nav" style="width: 400px">
+                        <div class="box-address-content" style="width: 400px">
+                            <b>${LayoutForm.tenCuaHang}</b>
+                            <p><i class="fa fa-map-marker"></i> ${LayoutForm.diaChi}</p>
+                            <p>
+                                <i class="fa fa-phone"></i>
+                                Số điện thoại: ${LayoutForm.soDienThoai}
+                            </p>
+                        </div>
+					</ul>				
 				</div>
 				<div class="clearfix"></div>
 				</div>
@@ -277,10 +219,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<img src="/storeManagerSystem/view/fontend_index2/images/cards.jpg" alt="" />
 		  </div>
 		  <div class="copyright text-center">
-				<p>© 2015 Eshop. All Rights Reserved | Design by   <a href="http://w3layouts.com">  W3layouts</a></p>
+				<p>${LayoutForm.tenCuaHang}</p>
 		  </div>
 		</div>
-		</div>		
+		</div>	
  <script src="/storeManagerSystem/view/fontend_index2/js/responsive-tabs.js"></script>
     <script type="text/javascript">
       $( '#myTab a' ).click( function ( e ) {
@@ -303,27 +245,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     </script>
 </div>
-		  <script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5";
-  fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));</script>
-  <style>#cfacebook{position:fixed;bottom:0px;right:100px;z-index:999999999999999;width:250px;height:auto;box-shadow:6px 6px 6px 10px rgba(0,0,0,0.2);border-top-left-radius:5px;border-top-right-radius:5px;overflow:hidden;}#cfacebook .fchat{float:left;width:100%;height:270px;overflow:hidden;display:none;background-color:#fff;}#cfacebook .fchat .fb-page{margin-top:-130px;float:left;}#cfacebook a.chat_fb{float:left;padding:0 25px;width:250px;color:#fff;text-decoration:none;height:40px;line-height:40px;text-shadow:0 1px 0 rgba(0,0,0,0.1);background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAqCAMAAABFoMFOAAAAWlBMV…8/UxBxQDQuFwlpqgBZBq6+P+unVY1GnDgwqbD2zGz5e1lBdwvGGPE6OgAAAABJRU5ErkJggg==);background-repeat:repeat-x;background-size:auto;background-position:0 0;background-color:#3a5795;border:0;border-bottom:1px solid #133783;z-index:9999999;margin-right:12px;font-size:18px;}#cfacebook a.chat_fb:hover{color:yellow;text-decoration:none;}</style>
-  <script>
-  jQuery(document).ready(function () {
-  jQuery(".chat_fb").click(function() {
-jQuery('.fchat').toggle('slow');
-  });
-  });
-  </script>
-  <div id="cfacebook">
-  <a href="javascript:;" class="chat_fb" onclick="return:false;"><i class="fa fa-facebook-square"></i> Phản hồi của bạn</a>
-  <div class="fchat">
-  <div class="fb-page" data-tabs="messages" data-href="${LayoutForm.linkFanpage}" data-width="250" data-height="400" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"></div>
-  </div>
-  </div>
 <div id="fb-root"></div>
 </form:form>
 </body>

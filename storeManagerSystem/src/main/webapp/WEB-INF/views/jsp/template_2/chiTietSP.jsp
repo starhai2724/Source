@@ -287,14 +287,14 @@
 				                    <h2>${items.tenSP }</h2>
 				                    <div class="price">
 				                        <div ng-if="IsPromotion==true">
-								            <c:if test="${!empty items.giaBanKM }">
-												<span class="price-new"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBanKM}" /> VNĐ</span>
-											</c:if>
 											<c:if test="${!empty items.giaBanKM }">
-												<span class="price-old"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBan}" /> VNĐ</strike>
+												<strike class="price-new"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBan}" /> VNĐ</strike>
 											</c:if>
 											<c:if test="${empty items.giaBanKM }">
-												<span class="price-old"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBan}" /> VNĐ</span>
+												<span class="price-new"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBan}" /> VNĐ</span>
+											</c:if>
+											<c:if test="${!empty items.giaBanKM }">
+												<span class="price-new"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBanKM}" /> VNĐ</span>
 											</c:if>
 				                        </div>
 				                    </div>
@@ -310,35 +310,12 @@
 				                           		 </iframe>
 				                           	</span>
 				                           	</div>
-				                            
-				                            
-				                            
 				                            </a>
 				                            <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
 				                            <a class="addthis_counter addthis_pill_style addthis_nonzero"></a>
 				                        </div>
 				                        <script type="text/javascript" src="/storeManagerSystem/view/template_2/scripts/addthis/addthis_widget.js#pubid=ra-5334d6387b03b532"></script>
 				                        <!-- AddThis Button END -->
-				                    </div>
-				                    <div class="option" ng-repeat="item in ProductOptions">
-				                        <div class="dropdown-option ">
-				                            <ul ng-if="$index==0" class="option1">
-				                                <li ng-repeat="it in item.ProductOptionValues">
-				                                    <a href="javascript:void(0)" ng-init="item.OptionValueSelect = item.ProductOptionValues[0].Name" ng-class="{'active':it.Name==item.OptionValueSelect}" ng-click="getProductVariant($parent.$index,it.Name)"><strong>{{it.Name}}</strong></a>
-				                                </li>
-				                            </ul>
-				                            <ul ng-if="$index==1" class="option2">
-				                                <li ng-repeat="it in item.ProductOptionValues">
-				                                    <a href="javascript:void(0)" ng-init="item.OptionValueSelect = item.ProductOptionValues[0].Name" ng-class="{'active':it.Name==item.OptionValueSelect}" ng-click="getProductVariant($parent.$index,it.Name)"><strong>{{it.Name}}</strong></a>
-				                                </li>
-				                            </ul>
-				                            <ul ng-if="$index==2" class="option3">
-				                                <li ng-repeat="it in item.ProductOptionValues">
-				                                    <a href="javascript:void(0)" ng-init="item.OptionValueSelect = item.ProductOptionValues[0].Name" ng-class="{'active':it.Name==item.OptionValueSelect}" ng-click="getProductVariant($parent.$index,it.Name)"><strong>{{it.Name}}</strong></a>
-				                                </li>
-				                            </ul>
-				                        </div>
-				                        <div class="clearfix"></div>
 				                    </div>
 				                    <div class="quantity clearfix">
 				                        <label>Số lượng</label>
@@ -348,17 +325,6 @@
 				                    </div>
 				                    <div class="button" >
 				                        <a  class="btn btn-primary"><i class="glyphicon glyphicon-shopping-cart"></i>Thêm giỏ hàng</a>
-				                    </div>
-				                    <div class="call">
-				                        <p class="title">Để lại số điện thoại, chúng tôi sẽ tư vấn ngay sau từ 5 › 10 phút</p>
-				                        <div class="input">
-				                            <div class="input-group">
-				                                <input class="form-control"  onfocus="if(this.value=='Nhập số điện thoại...')this.value=''" value="Nhập số điện thoại..." type="text">
-				                                <span class="input-group-btn">
-				                                    <button class="btn btn-primary" type="button" ><i class="fa fa-phone"></i> Gọi lại cho tôi</button>
-				                                </span>
-				                            </div>
-				                        </div>
 				                    </div>
 				                </div>
 				            </div>
@@ -452,44 +418,7 @@
 
           </div>
           <div class="col-md-3">
-			<div class="box-sale-policy">
-			        <h3><span>Chính sách bán hàng</span></h3>
-			        <div class="sale-policy-block">
-			            <ul>
-			                <li>Giao hàng TOÀN QUỐC</li>
-			                <li>Thanh toán khi nhận hàng</li>
-			                <li>Đổi trả trong <span>15 ngày</span></li>
-			                <li>Hoàn ngay tiền mặt</li>
-			                <li>Chất lượng đảm bảo</li>
-			                <li>Miễn phí vận chuyển:<span>Đơn hàng từ 3 món trở lên</span></li>
-			            </ul>
-			        </div>
-			        <div class="buy-guide">
-			            <h3>Hướng Dẫn Mua Hàng</h3>
-			            <ul>
-			                <li>
-			                    Mua hàng trực tiếp tại website
-			                    <b> {{shop.Website}}</b>
-			                </li>
-			                <li>
-			                    Gọi điện thoại <strong>
-			                        {{shop.Hotline}}
-			                    </strong> để mua hàng
-			                </li>
-			                <li>
-			                    Mua tại Trung tâm CSKH:<br />
-			                    <strong>{{shop.Address}}</strong>
-			                    <a href="../ban-do.html" rel="nofollow" target="_blank">Xem Bản Đồ</a>
-			                </li>
-			                <li>
-			                    Mua sỉ/buôn xin gọi <strong>
-			                        {{shop.Hotline}}
-			                    </strong> để được
-			                    hỗ trợ.
-			                </li>
-			            </ul>
-			        </div>
-			</div>
+			
 		</div>
      </div>
   </div>
