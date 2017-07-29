@@ -98,6 +98,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<ul class="multi-column-dropdown">
 							      <c:forEach var="menus" items="${items.menuRowForms }">
 							            			<li style="padding-left: 20px"><a href="/storeManagerSystem/${LayoutForm.pathJSP }/searchByMenu/${menus.idLoaiSp}/${items.nameProductCategory}">${menus.tenLoaiSp }</a></li>
+							            			<%-- <li style="padding-left: 20px"><a ng-click="btnTimKiemMenu('${menus.idLoaiSp }')" href="javascript:void(0)">${menus.tenLoaiSp }</a></li> --%>
 							       </c:forEach>
 							    </ul>
 				            </ul>

@@ -59,7 +59,7 @@
                 </div>
                 <div class="form-group button-group">
                     <div class="button">
-                        <a  href="javascript:void(0);" class="btn btn-warning" ng-click="btnbackStep2()"><i class="fa fa-mail-reply"></i> Quay lại</a>
+                        <a  href="javascript:void(0);" class="btn btn-warning" ng-click="btnBackStep2()"><i class="fa fa-mail-reply"></i> Quay lại</a>
                         <input class="btn btn-default" type="button" ng-click="btnTaoWeb();" value="Tạo Web" />
                     </div>
                 </div>

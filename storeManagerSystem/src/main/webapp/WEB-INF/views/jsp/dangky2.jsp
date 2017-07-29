@@ -50,7 +50,7 @@
                             <div class="product-img"><a><img ng-src="/storeManagerSystem/view/templateDK/layout1.PNG" class="img-responsive" alt="Bán hàng 01"></a></div>
                             <span class="circle-new">Mới</span>
                             <div class="product-info">
-                                <h2 class="name"><a href="#">Bán hàng 01</a></h2>
+                                <h2 class="name"><a href="javascript:void(0)">Bán hàng 01</a></h2>
                                 <div class="price">Miễn phí</div>
                             </div>
                             <div class="overlay">
@@ -66,7 +66,7 @@
                             <div class="product-img"><a><img ng-src="/storeManagerSystem/view/templateDK/layout2.PNG" class="img-responsive" alt="Bán hàng 01"></a></div>
                             <span class="circle-new">Mới</span>
                             <div class="product-info">
-                                <h2 class="name"><a href="#">Bán hàng 01</a></h2>
+                                <h2 class="name"><a href="javascript:void(0)">Bán hàng 01</a></h2>
                                 <div class="price">Miễn phí</div>
                             </div>
                             <div class="overlay">
@@ -77,12 +77,12 @@
                             </div>
                         </div>
                     </div>
-                 <div class="col-md-3 col-sm-3 col-sm-15" ng-click="btnOpenStep3('01');">
+                 <div class="col-md-3 col-sm-3 col-sm-15" ng-click="btnOpenStep3('02');">
                         <div class=" product-item wow">
                             <div class="product-img"><a><img ng-src="/storeManagerSystem/view/templateDK/layout3.PNG" class="img-responsive" alt="Bán hàng 01"></a></div>
                             <span class="circle-new">Mới</span>
                             <div class="product-info">
-                                <h2 class="name"><a href="#">Bán hàng 01</a></h2>
+                                <h2 class="name"><a href="javascript:void(0)">Bán hàng 01</a></h2>
                                 <div class="price">Miễn phí</div>
                             </div>
                             <div class="overlay">
@@ -93,12 +93,12 @@
                             </div>
                         </div>
                     </div>
-                   <div class="col-md-3 col-sm-3 col-sm-15" ng-click="btnOpenStep3('01');">
+                   <div class="col-md-3 col-sm-3 col-sm-15" ng-click="btnOpenStep3('02');">
                         <div class=" product-item wow">
                             <div class="product-img"><a><img ng-src="/storeManagerSystem/view/templateDK/layout1.PNG" class="img-responsive" alt="Bán hàng 01"></a></div>
                             <span class="circle-new">Mới</span>
                             <div class="product-info">
-                                <h2 class="name"><a href="#">Bán hàng 01</a></h2>
+                                <h2 class="name"><a href="javascript:void(0)">Bán hàng 01</a></h2>
                                 <div class="price">Miễn phí</div>
                             </div>
                             <div class="overlay">
@@ -113,7 +113,7 @@
                 
                 <div class="form-group button-group">
                     <div class="button pull-right">
-                        <a class="btn btn-warning" href="javascript:void(0)" ng-click="backStep1()"><i class="fa fa-mail-reply"></i> Quay lại</a>
+                        <a class="btn btn-warning" href="javascript:void(0)" ng-click="btnBackStep1()"><i class="fa fa-mail-reply"></i> Quay lại</a>
                     </div>
                 </div>
             </div>

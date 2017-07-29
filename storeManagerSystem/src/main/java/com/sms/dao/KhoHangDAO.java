@@ -16,6 +16,7 @@ import com.sms.dao.common.HibernateUtil;
 import com.sms.input.ChiTietDatHangInputBean;
 import com.sms.input.DatHangInputBean;
 import com.sms.input.KhachHangInputBean;
+import com.sms.input.SanPhamInputBean;
 import com.sms.output.ChiTietDatHangOutputBean;
 import com.sms.output.DanhSachCuaHangOuputBean;
 import com.sms.output.DatHangOutputBean;
@@ -307,6 +308,31 @@ public class KhoHangDAO {
 			tx.commit();
 		} catch (Exception e) {
 		} finally {
+			session.close();
+		}
+		return cnt;
+	}
+	
+	/**
+	 * function delete 
+	 * 
+	 */
+	public int deleteKhoHangByIdSP(String pathJSP, String idSP){
+		//session
+		Session session = HibernateUtil.getSessionDAO();
+		int cnt = 0; 
+		Transaction tx = session.beginTransaction();
+		//sql 
+		String hql = getSQlDeleteKhoHangByIdSP(pathJSP);
+		try {
+			SQLQuery query = session.createSQLQuery(hql);
+			query.setParameter(0, idSP);
+			cnt = query.executeUpdate();
+			tx.commit();
+		} catch (Exception e) {
+		} finally {
+			session.flush();
+			session.clear();
 			session.close();
 		}
 		return cnt;
@@ -947,6 +973,19 @@ public class KhoHangDAO {
 		sb.append("  		  ?                ");
 		sb.append("  		 ,?                ");
 		sb.append("  		)                  ");
+		return sb.toString();
+	}
+	
+	/**
+	 * getSQlDeleteById
+	 * @return
+	 */
+	private String getSQlDeleteKhoHangByIdSP(String pathJSP) {
+		String tableName = pathJSP+"_KHOHANG";
+		StringBuffer sb = new StringBuffer();
+		sb.append("  DELETE  ");
+		sb.append("  FROM "+tableName+"  ");
+		sb.append("  WHERE ID_SP = ?  ");
 		return sb.toString();
 	}
 	

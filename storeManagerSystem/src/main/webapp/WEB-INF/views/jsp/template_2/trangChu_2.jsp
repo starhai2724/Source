@@ -236,6 +236,7 @@
 								            <ul id="sub">
 											            <c:forEach var="menus" items="${items.menuRowForms }">
 											            			<li><a style="font-size: 14px" href="/storeManagerSystem/${LayoutForm.pathJSP }/searchByMenu/${menus.idLoaiSp}/${items.nameProductCategory}" ><span style="font-size: 16px">${menus.tenLoaiSp }</span></a></li>
+											            			<%-- <li><a style="font-size: 14px" ng-click="btnTimKiemMenu('${menus.idLoaiSp }')" href="javascript:void(0)"><span style="font-size: 16px" >${menus.tenLoaiSp }</span></a></li> --%>
 											            </c:forEach>
 								            </ul>
 							            </c:if>

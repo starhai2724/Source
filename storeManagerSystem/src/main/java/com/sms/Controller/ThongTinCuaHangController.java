@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.sms.common.SystemCommon;
 import com.sms.dao.DangKiWebDAO;
+import com.sms.dao.LayoutDAO;
 import com.sms.form.DangKiWebForm;
 import com.sms.input.DangKiWebInputBean;
 import com.sms.output.DangKiWebOutputBean;
@@ -24,6 +25,11 @@ public class ThongTinCuaHangController {
 	@RequestMapping(value  = "/thongTinCuaHang/init")
 	public String init(@ModelAttribute("DangKiWebForm") DangKiWebForm form, HttpSession session){
 		String pathJSP = (String)session.getAttribute("pathURL");
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 
 		//reset message
 		form.setMessage("");
@@ -71,7 +77,12 @@ public class ThongTinCuaHangController {
 			@RequestParam("hinh2") MultipartFile hinhHeader2, @RequestParam("hinh3") MultipartFile hinhHeader3
 			, @RequestParam("hinh4") MultipartFile hinhHeader4, @RequestParam("hinh5") MultipartFile hinhHeader5, 
 			HttpSession session){
-		String pathJSP = (String)session.getAttribute("pathURL");
+		String pathJSP = (String)session.getAttribute("pathURL"); 
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		//reset message
 		form.setMessage("");
 		form.setMessageErr("");

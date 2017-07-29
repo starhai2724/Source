@@ -25,6 +25,7 @@ import com.sms.dao.DangKiWebDAO;
 import com.sms.dao.DotKhuyenMaiDAO;
 import com.sms.dao.HoaDonDAO;
 import com.sms.dao.KhachHangDAO;
+import com.sms.dao.KhoHangDAO;
 import com.sms.dao.LoaiKinhDoanhDAO;
 import com.sms.dao.LoaiTheDAO;
 import com.sms.dao.NhomSanPhamDAO;
@@ -182,6 +183,8 @@ public class DangKiWebController {
 		cnt = NhomSanPhamDAO.intances.createTable_NhomSP(inputBean.getPathJSP());
 		
 		cnt = LoaiTheDAO.intances.createTable(inputBean.getPathJSP()); 
+		
+		cnt = KhoHangDAO.intances.createTable(inputBean.getPathJSP());
 		
 		if(cnt == 0){
 			return SystemCommon.PAGE_LOGIN;

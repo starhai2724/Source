@@ -21,6 +21,7 @@
 
     <!-- Custom Fonts -->
     <link href="/storeManagerSystem/view/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    	
     
 	 <script src="/storeManagerSystem/view/js/angular.min.js"></script>
 	  <!-- jQuery -->

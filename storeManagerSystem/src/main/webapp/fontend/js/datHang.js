@@ -1,60 +1,60 @@
 var app = angular.module('DatHangForm', []);
-app.controller('ctrl', function($scope, $window) {
-	$scope.giaNhap_err ="";
-	$scope.diaChi_err =""; 
-	$scope.listCheckBox = "";
-	$scope.checkboxModel = {
-		       value1 : true,
-		       value2 : false
-		     };
-	
-	$scope.btnGetById = function(id){
-		getById($scope,$window, id);
-	}
-	// sd cho he thong quan ly dat hang (S)
-	$scope.btnGetByIdQLDT = function(id){
-		getByIdQLDT($scope,$window, id);
-	}
-	
-	$scope.btnXacNhan = function(id){
-		xacNhan($scope,$window, id);
-	}
-	
-	$scope.btnTimKiem = function(){
-		timKiem($scope);
-	}
-	$scope.btnHuyQLDT = function(){
-		clearQLDT($scope);
-	}
-	// sd cho he thong quan ly dat hang (E)	
-	$scope.btnClear = function(){
-		clear($scope);
-	}
-	
-	$scope.btnDelete = function(id){
-		remove($scope, $window, id);
-	}
-	
-	$scope.btnChonSP = function(){
-		chonSanPham($scope);
-	}
-	
-	
-	$scope.btnXoaDong = function(){
-		xoaDong($scope);
-	}
-	
-	$scope.btnDangKy = function() {
-		if($scope.flagUpdate == 1){
-			update($scope);
-		}else{
-			dangKy($scope);
-		}
-	}
-	
-	
-	
-});
+//app.controller('ctrl', function($scope, $window) {
+//	$scope.giaNhap_err ="";
+//	$scope.diaChi_err =""; 
+//	$scope.listCheckBox = "";
+//	$scope.checkboxModel = {
+//		       value1 : true,
+//		       value2 : false
+//		     };
+//	
+//	$scope.btnGetById = function(id){
+//		getById($scope,$window, id);
+//	}
+//	// sd cho he thong quan ly dat hang (S)
+//	$scope.btnGetByIdQLDT = function(id){
+//		getByIdQLDT($scope,$window, id);
+//	}
+//	
+//	$scope.btnXacNhan = function(id){
+//		xacNhan($scope,$window, id);
+//	}
+//	
+//	$scope.btnTimKiem = function(){
+//		timKiem($scope);
+//	}
+//	$scope.btnHuyQLDT = function(){
+//		clearQLDT($scope);
+//	}
+//	// sd cho he thong quan ly dat hang (E)	
+//	$scope.btnClear = function(){
+//		clear($scope);
+//	}
+//	
+//	$scope.btnDelete = function(id){
+//		remove($scope, $window, id);
+//	}
+//	
+//	$scope.btnChonSP = function(){
+//		chonSanPham($scope);
+//	}
+//	
+//	
+//	$scope.btnXoaDong = function(){
+//		xoaDong($scope);
+//	}
+//	
+//	$scope.btnDangKy = function() {
+//		if($scope.flagUpdate == 1){
+//			update($scope);
+//		}else{
+//			dangKy($scope);
+//		}
+//	}
+//	
+//	
+//	
+//});
 
 //export Excel (S)
 //Code goes here
@@ -72,11 +72,62 @@ app.factory('Excel',function($window){
        }
    };
 })
-.controller('ctrl',function(Excel,$timeout,$scope){
- $scope.exportToExcel=function(tableId){ // ex: '#my-table'
-       var exportHref=Excel.tableToExcel(tableId,'WireWorkbenchDataExport');
-       $timeout(function(){location.href=exportHref;},100); // trigger download
-   }
+.controller('ctrl',function(Excel,$timeout,$scope, $window){
+	 $scope.exportToExcel=function(tableId){ // ex: '#my-table'
+	       var exportHref=Excel.tableToExcel(tableId,'WireWorkbenchDataExport');
+	       $timeout(function(){location.href=exportHref;},100); // trigger download
+	   }
+	 $scope.giaNhap_err ="";
+		$scope.diaChi_err =""; 
+		$scope.listCheckBox = "";
+		$scope.checkboxModel = {
+			       value1 : true,
+			       value2 : false
+			     };
+		
+		$scope.btnGetById = function(id){
+			getById($scope,$window, id);
+		}
+		// sd cho he thong quan ly dat hang (S)
+		$scope.btnGetByIdQLDT = function(id){
+			getByIdQLDT($scope,$window, id);
+		}
+		
+		$scope.btnXacNhan = function(id){
+			xacNhan($scope,$window, id);
+		}
+		
+		$scope.btnTimKiem = function(){
+			timKiem($scope);
+		}
+		$scope.btnHuyQLDT = function(){
+			clearQLDT($scope);
+		}
+		// sd cho he thong quan ly dat hang (E)	
+		$scope.btnClear = function(){
+			clear($scope);
+		}
+		
+		$scope.btnDelete = function(id){
+			remove($scope, $window, id);
+		}
+		
+		$scope.btnChonSP = function(){
+			chonSanPham($scope);
+		}
+		
+		
+		$scope.btnXoaDong = function(){
+			xoaDong($scope);
+		}
+		
+		$scope.btnDangKy = function() {
+			if($scope.flagUpdate == 1){
+				update($scope);
+			}else{
+				dangKy($scope);
+			}
+		}
 });
 //export Excel (S)	
 

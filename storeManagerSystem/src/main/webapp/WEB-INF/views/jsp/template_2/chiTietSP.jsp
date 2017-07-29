@@ -303,7 +303,17 @@
 				                    <div class="social">
 				                        <!-- AddThis Button BEGIN -->
 				                        <div class="addthis_toolbox addthis_default_style">
-				                            <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+				                            <a class="addthis_button_facebook_like" fb:like:layout="button_count">
+				                            <div class="fb-like fb_iframe_widget" data-layout="button_count" data-show_faces="false" data-share="true" data-action="like" data-width="90" data-height="25" data-font="arial" data-href="http://runecom22.runtime.vn/san-pham/ao-so-mi-nu-cong-so.html" data-send="false" style="height: 25px;" fb-xfbml-state="rendered" fb-iframe-plugin-query="action=like&amp;app_id=227481454296289&amp;container_width=0&amp;font=arial&amp;height=25&amp;href=http%3A%2F%2Frunecom22.runtime.vn%2Fsan-pham%2Fao-so-mi-nu-cong-so.html&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;send=false&amp;share=true&amp;show_faces=false&amp;width=90">
+				                            <span style="vertical-align: bottom; width: 106px; height: 20px;">
+				                            	<iframe name="f1c17dd0b7140cc" width="90px" height="25px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:like Facebook Social Plugin" src="https://www.facebook.com/v2.6/plugins/like.php?action=like&amp;app_id=227481454296289&amp;channel=http%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2FXBwzv5Yrm_1.js%3Fversion%3D42%23cb%3Df3c16148f5b539%26domain%3Drunecom22.runtime.vn%26origin%3Dhttp%253A%252F%252Frunecom22.runtime.vn%252Ff2619a94f8a14%26relation%3Dparent.parent&amp;container_width=0&amp;font=arial&amp;height=25&amp;href=http%3A%2F%2Frunecom22.runtime.vn%2Fsan-pham%2Fao-so-mi-nu-cong-so.html&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;send=false&amp;share=true&amp;show_faces=false&amp;width=90" style="border: none; visibility: visible; width: 106px; height: 20px;" class="">
+				                           		 </iframe>
+				                           	</span>
+				                           	</div>
+				                            
+				                            
+				                            
+				                            </a>
 				                            <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
 				                            <a class="addthis_counter addthis_pill_style addthis_nonzero"></a>
 				                        </div>

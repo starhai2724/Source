@@ -50,8 +50,8 @@ public class ProductController {
 		// check pathJSP
 		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
 			// quay ve trang login
+			return "redirect:/";
 		}
-//		model.addAttribute("ProductForm", new ProductForm());
 		
 		//reset
 		form.setIdSanPham("");
@@ -349,6 +349,8 @@ public class ProductController {
 		inputBean.setIdSanPham(id);
 		//insert
 		int cnt = CreateTableProductDAO.intances.deleteProductById(inputBean);
+		
+		cnt = KhoHangDAO.intances.deleteKhoHangByIdSP(pathJSP, id);
 		
 		if(cnt == 1){
 			form.setMessage("Xử lý xóa thành công.");

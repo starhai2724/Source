@@ -19,6 +19,7 @@ import com.sms.common.SystemCommon;
 import com.sms.dao.CreateTableProductDAO;
 import com.sms.dao.HoaDonDAO;
 import com.sms.dao.KhachHangDAO;
+import com.sms.dao.LayoutDAO;
 import com.sms.dao.NhomSanPhamDAO;
 import com.sms.form.KhachHangForm;
 import com.sms.form.ThongKeForm;
@@ -58,6 +59,12 @@ public class ThongKeController {
 	
 	@RequestMapping(value ="/thongKe/init", method = RequestMethod.GET)	
 	public String thongKe(@ModelAttribute("ThongKeForm") ThongKeForm form, HttpSession session){
+		String pathJSP = (String)session.getAttribute("pathURL"); 
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		 double tongDoanhThu_trongNgay = 0;
 		 int tongGiaoDich_trongNgay = 0;
 		 int tongSoThanhVienMoi_trongNgay = 0;
@@ -67,7 +74,6 @@ public class ThongKeController {
 		
 		//String ngayHienHanh = "20170703";
 		 
-		String pathJSP = (String)session.getAttribute("pathURL");
 		HoaDonInputBean inputBean = new HoaDonInputBean();
 		inputBean.setPathJSP(pathJSP);
 		inputBean.setNgayLap(NgayHienHanh);
@@ -75,7 +81,7 @@ public class ThongKeController {
 		List<HoaDonOutputRowBean> lstHD = HoaDonDAO.intances.getByNgayLapHD(inputBean);
 		for (HoaDonOutputRowBean hoaDon : lstHD) {
 			if(null!= hoaDon.getTongTien() && !"".equals(hoaDon.getTongTien())){
-				tongDoanhThu_trongNgay += Integer.parseInt(hoaDon.getTongTien());
+				tongDoanhThu_trongNgay += Double.parseDouble(hoaDon.getTongTien());
 			}
 			if(null!= hoaDon.getSoLuongSP() && !"".equals(hoaDon.getSoLuongSP())){
 				tongSPBanRa += Integer.parseInt(hoaDon.getSoLuongSP());
@@ -145,6 +151,12 @@ public class ThongKeController {
 	
 	@RequestMapping(value ="/thongKe/thang", method = RequestMethod.POST)	
 	public String thongKe_thang(@ModelAttribute("ThongKeForm") ThongKeForm form, HttpSession session){
+		String pathJSP = (String)session.getAttribute("pathURL"); 
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		 double tongDoanhThu_trongNgay = 0;
 		 int tongGiaoDich_trongNgay = 0;
 		 int tongSoThanhVienMoi_trongNgay = 0;
@@ -158,7 +170,6 @@ public class ThongKeController {
 		
 		
 		//String ngayHienHanh = "20170703";
-		String pathJSP = (String)session.getAttribute("pathURL");
 		HoaDonInputBean inputBean = new HoaDonInputBean();
 		inputBean.setPathJSP(pathJSP);
 		inputBean.setNgayLap(NgayHienHanh);
@@ -166,7 +177,7 @@ public class ThongKeController {
 		List<HoaDonOutputRowBean> lstHD = HoaDonDAO.intances.getByNgayLapHD(inputBean);
 		for (HoaDonOutputRowBean hoaDon : lstHD) {
 			if(null!= hoaDon.getTongTien() && !"".equals(hoaDon.getTongTien())){
-				tongDoanhThu_trongNgay += Integer.parseInt(hoaDon.getTongTien());
+				tongDoanhThu_trongNgay += Double.parseDouble(hoaDon.getTongTien());
 			}
 			if(null!= hoaDon.getSoLuongSP() && !"".equals(hoaDon.getSoLuongSP())){
 				tongSPBanRa += Integer.parseInt(hoaDon.getSoLuongSP());
@@ -239,7 +250,13 @@ public class ThongKeController {
 	}
 	
 	@RequestMapping(value ="/thongKe/nam", method = RequestMethod.POST)	
-	public String thongKe_nam(@ModelAttribute("ThongKeForm") ThongKeForm form, HttpSession session){		 
+	public String thongKe_nam(@ModelAttribute("ThongKeForm") ThongKeForm form, HttpSession session){	
+	String pathJSP = (String)session.getAttribute("pathURL"); 
+	// check pathJSP
+	if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+		// quay ve trang login
+		return "redirect:/";
+	}
 	 double tongDoanhThu_trongNgay = 0;
 	 int tongGiaoDich_trongNgay = 0;
 	 int tongSoThanhVienMoi_trongNgay = 0;
@@ -253,7 +270,6 @@ public class ThongKeController {
 	
 	
 	//String ngayHienHanh = "20170703";
-	String pathJSP = (String)session.getAttribute("pathURL");
 	HoaDonInputBean inputBean = new HoaDonInputBean();
 	inputBean.setPathJSP(pathJSP);
 	inputBean.setNgayLap(NgayHienHanh);
@@ -261,7 +277,7 @@ public class ThongKeController {
 	List<HoaDonOutputRowBean> lstHD = HoaDonDAO.intances.getByNgayLapHD(inputBean);
 	for (HoaDonOutputRowBean hoaDon : lstHD) {
 		if(null!= hoaDon.getTongTien() && !"".equals(hoaDon.getTongTien())){
-			tongDoanhThu_trongNgay += Integer.parseInt(hoaDon.getTongTien());
+			tongDoanhThu_trongNgay += Double.parseDouble(hoaDon.getTongTien());
 		}
 		if(null!= hoaDon.getSoLuongSP() && !"".equals(hoaDon.getSoLuongSP())){
 			tongSPBanRa += Integer.parseInt(hoaDon.getSoLuongSP());
@@ -335,7 +351,12 @@ public class ThongKeController {
 	
 	@RequestMapping(value ="/thongKe/thongKeBieuDo", method = RequestMethod.POST)	
 	public String thongKeBieuDo(@ModelAttribute("ThongKeForm") ThongKeForm form, HttpSession session){
-		String pathJSP = (String)session.getAttribute("pathURL");
+		String pathJSP = (String)session.getAttribute("pathURL"); 
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
 		int namBD = Integer.parseInt(form.getNamBD());
 		int namKT =Integer.parseInt(form.getNamKT());
 		String tong = "0";

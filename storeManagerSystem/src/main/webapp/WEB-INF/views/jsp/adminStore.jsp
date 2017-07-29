@@ -48,41 +48,42 @@
     <div class="navbar-default sidebar" role="navigation">
       <div class="sidebar-nav navbar-collapse">
         <ul class="nav" id="side-menu">
-          <li>
+          <!-- <li>
             <a href="/storeManagerSystem/storeOwnerList"><i class="fa fa-dashboard fa-fw"></i> Người dùng</a>
-          </li>
+          </li> -->
           <li>
             <a href="/storeManagerSystem/<%=session.getAttribute("pathURL")%>"><i class="fa fa-dashboard fa-fw"></i> Bán hàng</a>
           </li>
           <li>
-            <a href="/storeManagerSystem/customer/init"><i class="fa fa-wrench fa-fw"></i>Khách hàng</a>
+            <a href="/storeManagerSystem/customer/init"><i class="fa fa-user fa-fw" aria-hidden="true"></i> Khách hàng</a>
           </li>
           <li>
-            <a href="/storeManagerSystem/registerProductCategory/init"><i class="fa fa-wrench fa-fw"></i> Nhóm sản phẩm</a>
+            <a href="/storeManagerSystem/registerProductCategory/init"><i class="fa fa-list-alt fa-fw"></i> Nhóm sản phẩm</a>
           </li>
           <li>
-            <a href="/storeManagerSystem/cardType/init"><i class="fa fa-wrench fa-fw"></i>Loại thẻ</a>
+            <a href="/storeManagerSystem/product/init"><i class="fa fa-list-alt fa-fw"></i> Sản phẩm</a>
           </li>
           <li>
-            <a href="/storeManagerSystem/product/init"><i class="fa fa-wrench fa-fw"></i> Sản phẩm</a>
+            <a href="/storeManagerSystem/cardType/init"><i class="fa fa-list-alt fa-fw"></i> Loại thẻ</a>
+          </li>
+          
+          <li>
+            <a href="/storeManagerSystem/bill/init"><i class="fa fa-list-alt fa-fw"></i> Hóa đơn</a>
           </li>
           <li>
-            <a href="/storeManagerSystem/bill/init"><i class="fa fa-bar-chart-o fa-fw"></i> Hóa đơn</a>
+            <a href="/storeManagerSystem/datHang/init"><i class="fa fa-list-alt fa-fw"></i> Đặt hàng</a>
           </li>
           <li>
-            <a href="/storeManagerSystem/datHang/init"><i class="fa fa-bar-chart-o fa-fw"></i> Đặt hàng</a>
+            <a href="/storeManagerSystem/khoHang/init"><i class="fa fa-list-alt fa-fw"></i> Kho hàng</a>
           </li>
           <li>
-            <a href="/storeManagerSystem/khoHang/init"><i class="fa fa-bar-chart-o fa-fw"></i> Kho hàng</a>
+            <a href="/storeManagerSystem/dotKhuyenMai/init"><i class="fa fa-list-alt fa-fw"></i> Đợt khuyến mãi</a>
           </li>
           <li>
-            <a href="/storeManagerSystem/dotKhuyenMai/init"><i class="fa fa-bar-chart-o fa-fw"></i> Đợt khuyến mãi</a>
+            <a href="/storeManagerSystem/thongKe/init"><i class="fa fa-list-alt fa-fw"></i> Thống kê</a>
           </li>
           <li>
-            <a href="/storeManagerSystem/thongKe/init"><i class="fa fa-bar-chart-o fa-fw"></i> Thống kê</a>
-          </li>
-          <li>
-            <a href="/storeManagerSystem/thongTinCuaHang/init"><i class="fa fa-bar-chart-o fa-fw"></i> Thông tin Cửa Hàng</a>
+            <a href="/storeManagerSystem/thongTinCuaHang/init"><i class="fa fa-list-alt fa-fw"></i> Thông tin Cửa Hàng</a>
           </li>
         </ul>
       </div>

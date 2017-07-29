@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-loi
+loi 404
 </body>
 </html>

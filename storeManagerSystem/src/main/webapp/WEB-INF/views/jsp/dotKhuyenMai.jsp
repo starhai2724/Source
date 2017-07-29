@@ -65,8 +65,8 @@
 			<div class="col-sm-3">
 				<div class="form-group">
 					<label>Ngày bắt đầu KM</label> 
-	                <form:input placeholder="Ngày bắt đầu KM"  class="form-control" type="text" path="ngayBD"  name="ngayBD" ng-model = "ngayBD"  ng-init ="ngayBD = '${DotKhuyenMaiForm.ngayBD}'" />
-					<p style="color: red;">{{ngayBD_err}}</p>
+	                <form:input placeholder="Ngày bắt đầu KM"  class="form-control" type="date" path="ngayBD"  name="ngayBD"/>
+<!-- 					<p style="color: red;">{{ngayBD_err}}</p> -->
 				</div>
 			</div>
 			<div class="col-sm-3">
@@ -91,8 +91,8 @@
 			<div class="col-sm-3">
 				<div class="form-group">
 					<label>Ngày kết thúc KM</label> 
-	               		<form:input placeholder="Ngày két thúc KM"  class="form-control" type="text" path="ngayKT"  name="ngayKT" ng-model = "ngayKT"  ng-init ="ngayKT = '${DotKhuyenMaiForm.ngayKT}'" />
-						<p style="color: red;">{{ngayKT_err}}</p>
+	               		<form:input placeholder="Ngày két thúc KM"  class="form-control" type="date" path="ngayKT" />
+<!-- 						<p style="color: red;">{{ngayKT_err}}</p> -->
 				</div>
 			</div>
 			<div class="col-sm-3">

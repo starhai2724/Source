@@ -142,7 +142,8 @@ public class KhachHangController {
 		inputBean.setSoDienThoai(form.getSoDienThoai());
 		inputBean.setDiaChi(form.getDiaChi());
 		inputBean.setSoDiem(form.getSoDiem());
-		inputBean.setNgaySinh(form.getNgaySinh());
+		inputBean.setNgaySinh(SMSComons.formatDateInput(form.getNgaySinh()));
+		System.out.println("");
 		inputBean.setNgayTao(SMSComons.getDate());
 		inputBean.setNgaySua("");
 		
@@ -191,6 +192,7 @@ public class KhachHangController {
 		inputBean.setDiaChi(form.getDiaChi());
 		inputBean.setSoDiem(form.getSoDiem());
 		inputBean.setNgaySinh(SMSComons.formatDateInput(form.getNgaySinh()));
+		System.out.println(inputBean.getNgaySinh());
 		inputBean.setNgayTao(SMSComons.getDate());
 		inputBean.setNgaySua("");
 		

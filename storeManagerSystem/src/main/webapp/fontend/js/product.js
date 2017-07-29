@@ -161,8 +161,6 @@ function create($scope) {
 
 	if (true == valid) {
 		if(confirm("Bạn có muốn đăng ký?")){
-			alert("$scope.idSanPham: "+$scope.idSanPham);
-			alert("$scope.idSanPham: "+$scope.tenSP);
 			document.getElementById("ProductForm").action = "/storeManagerSystem/product/insert";
 			document.getElementById("ProductForm").method = "POST";
 			document.getElementById("ProductForm").submit();
