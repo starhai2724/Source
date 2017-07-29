@@ -37,6 +37,16 @@ public class DangKiWebInputBean {
 	private byte[]  hinh3;
 	private byte[]  hinh4;
 	private byte[]  hinh5;
+	private String linkFanpage;
+	
+	public String getLinkFanpage() {
+		return linkFanpage;
+	}
+
+	public void setLinkFanpage(String linkFanpage) {
+		this.linkFanpage = linkFanpage;
+	}
+
 	
 	public String getDkGiaoHangFree() {
 		return dkGiaoHangFree;

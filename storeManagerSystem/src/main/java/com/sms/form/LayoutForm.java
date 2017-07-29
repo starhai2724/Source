@@ -22,6 +22,14 @@ public class LayoutForm extends AbstractForm {
 	
 
 	private List<ProductFormRow> products = new ArrayList<>();
+	
+	private List<ProductFormRow> products_SearchByMenu = new ArrayList<>();
+	
+	private List<ProductFormRow> products_SearchByBtn = new ArrayList<>();
+	
+	private String idTenNhomSP_Search;
+	
+	private String checkSearchBtn;
 
 	// Gio hang (S)
 	private String cartPrice;
@@ -62,12 +70,30 @@ public class LayoutForm extends AbstractForm {
 	private byte[]  file_4;
 	private byte[]  file_5;
 	
+	private String linkFanpage;
+	
+	public String getLinkFanpage() {
+		return linkFanpage;
+	}
+
+	public void setLinkFanpage(String linkFanpage) {
+		this.linkFanpage = linkFanpage;
+	}
+
 	public byte[] getFile_1() {
 		return file_1;
 	}
 
 	public void setFile_1(byte[] file_1) {
 		this.file_1 = file_1;
+	}
+
+	public String getCheckSearchBtn() {
+		return checkSearchBtn;
+	}
+
+	public void setCheckSearchBtn(String checkSearchBtn) {
+		this.checkSearchBtn = checkSearchBtn;
 	}
 
 	public byte[] getFile_2() {
@@ -88,6 +114,30 @@ public class LayoutForm extends AbstractForm {
 
 	public byte[] getFile_4() {
 		return file_4;
+	}
+
+	public List<ProductFormRow> getProducts_SearchByMenu() {
+		return products_SearchByMenu;
+	}
+
+	public void setProducts_SearchByMenu(List<ProductFormRow> products_SearchByMenu) {
+		this.products_SearchByMenu = products_SearchByMenu;
+	}
+
+	public List<ProductFormRow> getProducts_SearchByBtn() {
+		return products_SearchByBtn;
+	}
+
+	public void setProducts_SearchByBtn(List<ProductFormRow> products_SearchByBtn) {
+		this.products_SearchByBtn = products_SearchByBtn;
+	}
+
+	public String getIdTenNhomSP_Search() {
+		return idTenNhomSP_Search;
+	}
+
+	public void setIdTenNhomSP_Search(String idTenNhomSP_Search) {
+		this.idTenNhomSP_Search = idTenNhomSP_Search;
 	}
 
 	public void setFile_4(byte[] file_4) {

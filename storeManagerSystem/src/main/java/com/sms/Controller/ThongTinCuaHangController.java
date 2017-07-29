@@ -57,11 +57,7 @@ public class ThongTinCuaHangController {
 		form.setEmail(output.getEmail());
 		form.setDkGiaoHangFree(output.getDkGiaoHangFree());
 		form.setHinh(output.getHinh());
-		form.setFile_1(output.getHinh1());
-		form.setFile_2(output.getHinh2());
-		form.setFile_3(output.getHinh3());
-		form.setFile_4(output.getHinh4());
-		form.setFile_5(output.getHinh5());
+		form.setLinkFanpage(output.getLinkFanpage());
 		
 		
 		session.setAttribute("PAGEIDSTORE", THONGTINCH);
@@ -108,6 +104,7 @@ public class ThongTinCuaHangController {
 		input.setTenWebSite(form.getTenWebSite());	
 		input.setEmail(form.getEmail());
 		input.setDkGiaoHangFree(form.getDkGiaoHangFree());
+		input.setLinkFanpage(form.getLinkFanpage());
 		//Image (S)
 		byte[] bFile1 = null;
 		byte[] bFile2 = null;

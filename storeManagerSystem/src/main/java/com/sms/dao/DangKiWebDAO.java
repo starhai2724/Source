@@ -175,6 +175,7 @@ public class DangKiWebDAO {
 				outPut.setTenWebSite(SMSComons.convertString(object[10]));
 				outPut.setDkGiaoHangFree(SMSComons.convertString(object[11]));
 				outPut.setSdt(SMSComons.convertString(object[12]));
+				outPut.setLinkFanpage(SMSComons.convertString(object[13]));
 			}
 			tx.commit();
 		} catch (HibernateException e) {
@@ -268,7 +269,8 @@ public class DangKiWebDAO {
 			query.setParameter(7, inputBean.getHinh3());
 			query.setParameter(8, inputBean.getHinh4());
 			query.setParameter(9, inputBean.getHinh5());
-			query.setParameter(10, inputBean.getPathJSP());
+			query.setParameter(10, inputBean.getLinkFanpage());
+			query.setParameter(11, inputBean.getPathJSP());
 			cnt = query.executeUpdate();
 			tx.commit();
 		} catch (Exception e) {
@@ -390,6 +392,7 @@ public class DangKiWebDAO {
 		sb.append("   ,STORENAME 	            ");
 		sb.append("   ,DieuKienShipFree 	            ");
 		sb.append("   ,TELEPHONE                 ");
+		sb.append("   ,LINK_FANPAGE                 ");
 		sb.append(" FROM                        ");
 		sb.append(" 	STORE_INFO            ");
 		sb.append(" WHERE                       ");
@@ -410,6 +413,7 @@ public class DangKiWebDAO {
 		sb.append("  		,IMAGEHEADER3  	= ?   	");
 		sb.append("  		,IMAGEHEADER4  	= ?   	");
 		sb.append("  		,IMAGEHEADER5  	= ?   	");
+		sb.append("  		,LINK_FANPAGE  	= ?   	");
 		sb.append("  		 WHERE PATHJSP  = ?        ");
 		return sb.toString();
 

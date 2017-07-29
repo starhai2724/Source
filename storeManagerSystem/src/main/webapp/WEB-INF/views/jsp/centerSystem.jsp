@@ -12,6 +12,11 @@
 %>
 <jsp:include page="<%=PAGE_ID%>"></jsp:include>
 <%
+	}else{
+		
+%>
+<jsp:include page="<%="thongTinCuaHang.jsp"%>"></jsp:include>
+<%
 	}
 %>
  

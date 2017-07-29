@@ -25,7 +25,7 @@ import com.sms.models.User;
 @Controller
 public class ClientLoginController {
 
-	public static final String PAGE_INFO = "systemInfo.jsp";
+	public static final String PAGE_INFO = "thongTinCuaHang.jsp";
 	public static final String PAGE_ID = "PAGE_ID";
 	public static final String PAGE_REGISTER = "registerUser";
 	

@@ -3,6 +3,7 @@ package com.sms.form;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class DangKiWebForm extends AbstractForm {
 
 	private String tenWebSite;
@@ -34,11 +35,23 @@ public class DangKiWebForm extends AbstractForm {
 	private byte[]  file_4;
 	private byte[]  file_5;
 	
+	private String linkFanpage;
+	
 	private List<LoaiKinhDoanhForm> lstLoaiKinhDoanh = new ArrayList<>();
 
 	public String getTenWebSite() {
 		return tenWebSite;
 	}
+
+	public String getLinkFanpage() {
+		return linkFanpage;
+	}
+
+
+	public void setLinkFanpage(String linkFanpage) {
+		this.linkFanpage = linkFanpage;
+	}
+
 
 	public void setTenWebSite(String tenWebSite) {
 		this.tenWebSite = tenWebSite;
@@ -182,6 +195,85 @@ public class DangKiWebForm extends AbstractForm {
 		this.lstLoaiKinhDoanh = lstLoaiKinhDoanh;
 	}
 	
+public static void main(String[] args) {
+	  
+	 /*     // Email ID cua nguoi nhan can duoc de cap den.
+	      String to = "thu225656294@gmail.com";
 
-	
+	      // Email ID cua nguoi gui can duoc de cap den
+	      String from = "thuptn1994@gmail.com";
+
+	      // Gia su ban dang gui email tu localhost
+	      String host = "localhost";
+
+	      // Lay cac system properties
+	      Properties properties = System.getProperties();
+
+	      // Thiet lap mail server
+	      properties.setProperty("mail.smtp.host", host);
+
+	      // Lay doi tuong Session mac dinh.
+	      Session session = Session.getDefaultInstance(properties);
+
+	      try{
+	         // Tao mot doi tuong MimeMessage mac dinh.
+	         MimeMessage message = new MimeMessage(session);
+
+	         // Set From: header field.
+	         message.setFrom(new InternetAddress(from));
+
+	         // Set To: header field.
+	         message.addRecipient(Message.RecipientType.TO,
+	                                  new InternetAddress(to));
+
+	         // Set Subject: header field
+	         message.setSubject("Day la dong Subject!");
+
+	         // Bay gio thiet lap message thuc su
+	         message.setText("Day la message thuc su");
+
+	         // Send message
+	         Transport.send(message);
+	         System.out.println("Gui message thanh cong....");
+	      }catch (MessagingException mex) {
+	         mex.printStackTrace();
+	      }
+*/
+	/*
+	  final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
+	  // Get a Properties object
+	     Properties props = System.getProperties();
+	     props.setProperty("mail.smtp.host", "thuptn1994.gmail.com");
+	     props.setProperty("mail.smtp.socketFactory.class", SSL_FACTORY);
+	     props.setProperty("mail.smtp.socketFactory.fallback", "false");
+	     props.setProperty("mail.smtp.port", "465");
+	     props.setProperty("mail.smtp.socketFactory.port", "465");
+	     props.put("mail.smtp.auth", "true");
+	     props.put("mail.debug", "true");
+	     props.put("mail.store.protocol", "pop3");
+	     props.put("mail.transport.protocol", "smtp");
+	     final String username = "thu225656294@gmail.com";//
+	     final String password = "truc315414";
+	     try{
+	     Session session = Session.getDefaultInstance(props, 
+	                          new Authenticator(){
+	                             protected PasswordAuthentication getPasswordAuthentication() {
+	                                return new PasswordAuthentication(username, password);
+	                             }});
+
+	   // -- Create a new message --
+	     Message msg = new MimeMessage(session);
+
+	  // -- Set the FROM and TO fields --
+	     msg.setFrom(new InternetAddress("thuptn1994@gmail.com"));
+	     msg.setRecipients(Message.RecipientType.TO, 
+	                      InternetAddress.parse("user120@example.com",false));
+	     msg.setSubject("Hello");
+	     msg.setText("How are you");
+	     msg.setSentDate(new Date());
+	     Transport.send(msg);
+	     System.out.println("Message sent.");
+	  }catch (MessagingException e){ System.out.println("Erreur d'envoi, cause: " + e);}
+	  }*/
+}
 }

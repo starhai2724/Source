@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.sms.OutputRows.DotKhuyenMaiOutputRowBean;
 import com.sms.OutputRows.SanPhamOutputRowBean;
@@ -34,10 +35,14 @@ import com.sms.session.KhachHangSession;
 public class LayoutController {
 
 	public static final String PAGE_CART = "gioHang";
-	public static final String LIENHE_2 = "template_2/lienhe";
+	public static final String TINTUC_1 = "fashion/tinTuc";
 	public static final String LIENHE_1 = "fashion/lienhe";
-	public static final String TINTUC = "template_2/tinTuc";
-	public static final String GIOITHIEU = "template_2/gioiThieu";
+	public static final String CHITIET_1 = "fashion/chiTietSP";
+	public static final String GIOITHIEU_1 = "fashion/gioiThieu";
+	public static final String TINTUC_2 = "template_2/tinTuc";
+	public static final String LIENHE_2 = "template_2/lienhe";
+	public static final String GIOITHIEU_2 = "template_2/gioiThieu";
+	public static final String CHITIET_2 = "template_2/chiTietSP";
 	
 	@RequestMapping(value="/{path}")
 	public String init(@ModelAttribute("LayoutForm") LayoutForm form, @PathVariable("path") String path, HttpSession session){
@@ -73,7 +78,6 @@ public class LayoutController {
 				menuRowForm.setTenLoaiSp(outputBean.getTenLoaiSP());
 				menuRowForm.setIdNhomSP(outputBean.getIdNhomSP());
 				productCategoryFormRow.getMenuRowForms().add(menuRowForm);
-				System.out.println(productCategoryFormRow.getMenuRowForms().size());
 			}
 			 form.getLoaiSanPham().add(productCategoryFormRow);
 		}
@@ -99,6 +103,7 @@ public class LayoutController {
 			productFormRow.setNgayChinhSua(sanPhamOutputRowBean.getNgayChinhSua());
 			productFormRow.setMoTa(sanPhamOutputRowBean.getMoTa());
 			form.getProducts().add(productFormRow);
+			form.getProducts_SearchByMenu().add(productFormRow);
 		}
 			form.setPathJSP(path);
 			form.setCartPrice("0");
@@ -109,6 +114,83 @@ public class LayoutController {
 			form.setDiaChi(output.getDiaChi());
 			form.setTenCuaHang(output.getTenWebSite());
 			form.setDkGiaoHangFree(output.getDkGiaoHangFree());
+			form.setLinkFanpage(output.getLinkFanpage());
+			
+		return LayoutDAO.intances.getPageJSP(path);
+	}
+	
+	@RequestMapping(value="/{path}/searchByMenu/{idLoaiSp}/{nameProductCategory}",method = RequestMethod.GET)
+	public String searchByMenu(@ModelAttribute("LayoutForm") LayoutForm form, @PathVariable("path") String path, @PathVariable("idLoaiSp") String idLoaiSp,@PathVariable("nameProductCategory") String nameProductCategory, HttpSession session){
+		//check pathJSP
+		if(!LayoutDAO.intances.checkPathJSP(path)){
+			return "redirect:/";
+		}
+		//set thong tin khach hang
+		KhachHangSession khachHangSession = (KhachHangSession)session.getAttribute("KhachHangSession");
+		if(khachHangSession != null){
+			form.setTenKhachHang(khachHangSession.getTenKhachHang());
+		}
+		//get loai san pham
+		NhomSanPhamInputBean nhomSanPhamInputBean = new NhomSanPhamInputBean();  
+		nhomSanPhamInputBean.setPathJSP(path);
+		List<NhomSanPhamOutputBean> loaiSanPhamOutputBeans = NhomSanPhamDAO.intances.getNhomSP(nhomSanPhamInputBean);
+		RegisterProductCategoryFormRow productCategoryFormRow;
+		for(NhomSanPhamOutputBean loaiSanPhamOutputBean : loaiSanPhamOutputBeans){
+			productCategoryFormRow = new RegisterProductCategoryFormRow();
+			productCategoryFormRow.setIdProductCategory(loaiSanPhamOutputBean.getIdNhomSP());
+			productCategoryFormRow.setNameProductCategory(loaiSanPhamOutputBean.getTenNhomSP());
+			//get loai san pham
+			LoaiSanPhamInputBean loaiSanPhamInputBean = new LoaiSanPhamInputBean();
+			loaiSanPhamInputBean.setPathJSP(path);
+			loaiSanPhamInputBean.setIdNhomSP(loaiSanPhamOutputBean.getIdNhomSP());
+			List<LoaiSanPhamOutputBean> loaiSanPhamOutputBeans2 =  NhomSanPhamDAO.intances.getLoaiSPByIdNhomSP(loaiSanPhamInputBean);
+			MenuRowForm menuRowForm;
+			for(LoaiSanPhamOutputBean outputBean : loaiSanPhamOutputBeans2){
+				menuRowForm = new MenuRowForm();
+				menuRowForm.setIdLoaiSp(outputBean.getIdLoaiSP());
+				menuRowForm.setTenLoaiSp(outputBean.getTenLoaiSP());
+				menuRowForm.setIdNhomSP(outputBean.getIdNhomSP());
+				productCategoryFormRow.getMenuRowForms().add(menuRowForm);
+			}
+			 form.getLoaiSanPham().add(productCategoryFormRow);
+		}
+		//get Dot KM
+		List<DotKhuyenMaiOutputRowBean> listDKM = DotKhuyenMaiDAO.intances.getDotKMApDung(path, SMSComons.getDate());
+		
+		//get san pham 
+		SanPhamInputBean sanPhamInputBean = new SanPhamInputBean();
+		sanPhamInputBean.setPathJSP(path);
+		SanPhamOutputBean sanPhamOutputBean = CreateTableProductDAO.intances.getSanPhamApDung(path);
+		ProductFormRow productFormRow;
+		for(SanPhamOutputRowBean sanPhamOutputRowBean : sanPhamOutputBean.getLst()){
+			productFormRow = new ProductFormRow();
+			productFormRow.setSEQ(sanPhamOutputRowBean.getSEQ());
+			productFormRow.setIdSanPham(sanPhamOutputRowBean.getIdSanPham());
+			productFormRow.setTenSP(sanPhamOutputRowBean.getTenSP());
+			productFormRow.setTenLoaiSP(sanPhamOutputRowBean.getTenLoaiSP());
+			productFormRow.setGiaMua(sanPhamOutputRowBean.getGiaMua());
+			productFormRow.setGiaBanKM(sanPhamOutputRowBean.getGiaBanKM());
+			productFormRow.setGiaBan(sanPhamOutputRowBean.getGiaBan());
+			productFormRow.setNgayTao(sanPhamOutputRowBean.getNgayTao());
+			productFormRow.setNgayChinhSua(sanPhamOutputRowBean.getNgayChinhSua());
+			productFormRow.setMoTa(sanPhamOutputRowBean.getMoTa());
+			if(idLoaiSp.equals(sanPhamOutputRowBean.getIdLoaiSP())){
+				form.getProducts_SearchByMenu().add(productFormRow);
+			}
+			form.getProducts().add(productFormRow);
+		}
+		
+			form.setPathJSP(path);
+			form.setCartPrice("0");
+			form.setCartQuantity("0");
+			form.setIdTenNhomSP_Search(nameProductCategory);
+			
+			DangKiWebOutputBean output = DangKiWebDAO.intances.getDataByPathJSP(path);
+			form.setSoDienThoai(output.getSdt());
+			form.setDiaChi(output.getDiaChi());
+			form.setTenCuaHang(output.getTenWebSite());
+			form.setDkGiaoHangFree(output.getDkGiaoHangFree());
+			form.setLinkFanpage(output.getLinkFanpage());
 			
 		return LayoutDAO.intances.getPageJSP(path);
 	}
@@ -271,13 +353,21 @@ public class LayoutController {
 		rowBean.setTenSP(outputRowBean.getTenSP());
 		rowBean.setSEQ(idSanPham);
 		rowBean.setMoTa(outputRowBean.getMoTa());
-		String giaBan = String.format("%,.2f",Double.parseDouble(outputRowBean.getGiaBan()));
-		rowBean.setGiaBan(giaBan);
+		//String giaBan = String.format("%,.2f",Double.parseDouble(outputRowBean.getGiaBan()));
+		rowBean.setGiaBan(outputRowBean.getGiaBan());
 		form.getProducts().add(rowBean);
 		
 		form.setPathJSP(path);
+		DangKiWebOutputBean output = DangKiWebDAO.intances.getDataByPathJSP(path);
+		form.setSoDienThoai(output.getSdt());
+		form.setDiaChi(output.getDiaChi());
+		form.setTenCuaHang(output.getTenWebSite());
+		form.setLinkFanpage(output.getLinkFanpage());
 		
-		return "fashion/chiTietSP";
+		if("01".equals(output.getLoaiKinhDoanh().trim()))return CHITIET_1;
+		if("02".equals(output.getLoaiKinhDoanh().trim()))return CHITIET_2;
+		
+		return CHITIET_1;
 	}
 	
 	@RequestMapping(value="/{path}/timKiem")
@@ -304,15 +394,12 @@ public class LayoutController {
 				menuRowForm.setTenLoaiSp(outputBean.getTenLoaiSP());
 				menuRowForm.setIdNhomSP(outputBean.getIdNhomSP());
 				productCategoryFormRow.getMenuRowForms().add(menuRowForm);
-				System.out.println(productCategoryFormRow.getMenuRowForms().size());
 			}
 			 form.getLoaiSanPham().add(productCategoryFormRow);
 		}
 
 		SanPhamInputBean input = new SanPhamInputBean();
-		System.out.println("data tim kiem: " + form.getTimKiem_TenSP());
-		SanPhamOutputBean sanPhamOutputBean = CreateTableProductDAO.intances.getProductBysByNameProduct(path,form.getTimKiem_TenSP());
-		System.out.println("data tim kiem size : " + sanPhamOutputBean.getLst().size());
+		SanPhamOutputBean sanPhamOutputBean = CreateTableProductDAO.intances.getSanPhamApDung(path);
 		ProductFormRow productFormRow;
 		for(SanPhamOutputRowBean sanPhamOutputRowBean : sanPhamOutputBean.getLst()){
 			productFormRow = new ProductFormRow();
@@ -328,17 +415,33 @@ public class LayoutController {
 			productFormRow.setMoTa(sanPhamOutputRowBean.getMoTa());
 			form.getProducts().add(productFormRow);
 		}
+		 sanPhamOutputBean = CreateTableProductDAO.intances.getProductBysByNameProduct(path,form.getTimKiem_TenSP());
+		for(SanPhamOutputRowBean sanPhamOutputRowBean : sanPhamOutputBean.getLst()){
+			productFormRow = new ProductFormRow();
+			productFormRow.setSEQ(sanPhamOutputRowBean.getSEQ());
+			productFormRow.setIdSanPham(sanPhamOutputRowBean.getIdSanPham());
+			productFormRow.setTenSP(sanPhamOutputRowBean.getTenSP());
+			productFormRow.setTenLoaiSP(sanPhamOutputRowBean.getTenLoaiSP());
+			productFormRow.setGiaMua(sanPhamOutputRowBean.getGiaMua());
+			productFormRow.setGiaBanKM(sanPhamOutputRowBean.getGiaBanKM());
+			productFormRow.setGiaBan(sanPhamOutputRowBean.getGiaBan());
+			productFormRow.setNgayTao(sanPhamOutputRowBean.getNgayTao());
+			productFormRow.setNgayChinhSua(sanPhamOutputRowBean.getNgayChinhSua());
+			productFormRow.setMoTa(sanPhamOutputRowBean.getMoTa());
+			form.getProducts_SearchByMenu().add(productFormRow);
+		}
 		
 			form.setTimKiem_TenSP("");
 			form.setPathJSP(path);
 			form.setCartPrice("0");
 			form.setCartQuantity("0");
+			form.setCheckSearchBtn("1");
 		
 		form.setPathJSP(path);
-		return PAGE_CART;
+		return LayoutDAO.intances.getPageJSP(path);
 	}
 	
-	@RequestMapping(value="/{path}/lienHe")
+	@RequestMapping(value="/{path}/lienHe", method = RequestMethod.POST)
 	public String lienHe(@ModelAttribute("LayoutForm") LayoutForm form, @PathVariable("path") String path, HttpSession session){
 		//check pathJSP
 		System.out.println("111111111");
@@ -408,6 +511,7 @@ public class LayoutController {
 			form.setSoDienThoai(output.getSdt());
 			form.setDiaChi(output.getDiaChi());
 			form.setTenCuaHang(output.getTenWebSite());
+			form.setLinkFanpage(output.getLinkFanpage());
 			
 			form.setPathJSP(path);
 			
@@ -419,6 +523,83 @@ public class LayoutController {
 	}
 	
 	@RequestMapping(value="/{path}/gioiThieu")
+	public String gioiThieu(@ModelAttribute("LayoutForm") LayoutForm form, @PathVariable("path") String path, HttpSession session){
+		//check pathJSP
+		if(!LayoutDAO.intances.checkPathJSP(path)){
+			//quay ve trang login
+//			return new ModelAndView("redirect:/");
+			return "redirect:/";
+		}
+		//set thong tin khach hang
+		KhachHangSession khachHangSession = (KhachHangSession)session.getAttribute("KhachHangSession");
+		if(khachHangSession != null){
+			form.setTenKhachHang(khachHangSession.getTenKhachHang());
+		}
+		//get loai san pham
+		NhomSanPhamInputBean nhomSanPhamInputBean = new NhomSanPhamInputBean();  
+		nhomSanPhamInputBean.setPathJSP(path);
+		List<NhomSanPhamOutputBean> loaiSanPhamOutputBeans = NhomSanPhamDAO.intances.getNhomSP(nhomSanPhamInputBean);
+		RegisterProductCategoryFormRow productCategoryFormRow;
+		for(NhomSanPhamOutputBean loaiSanPhamOutputBean : loaiSanPhamOutputBeans){
+			productCategoryFormRow = new RegisterProductCategoryFormRow();
+			productCategoryFormRow.setIdProductCategory(loaiSanPhamOutputBean.getIdNhomSP());
+			productCategoryFormRow.setNameProductCategory(loaiSanPhamOutputBean.getTenNhomSP());
+			//get loai san pham
+			LoaiSanPhamInputBean loaiSanPhamInputBean = new LoaiSanPhamInputBean();
+			loaiSanPhamInputBean.setPathJSP(path);
+			loaiSanPhamInputBean.setIdNhomSP(loaiSanPhamOutputBean.getIdNhomSP());
+			List<LoaiSanPhamOutputBean> loaiSanPhamOutputBeans2 =  NhomSanPhamDAO.intances.getLoaiSPByIdNhomSP(loaiSanPhamInputBean);
+			MenuRowForm menuRowForm;
+			for(LoaiSanPhamOutputBean outputBean : loaiSanPhamOutputBeans2){
+				menuRowForm = new MenuRowForm();
+				menuRowForm.setIdLoaiSp(outputBean.getIdLoaiSP());
+				menuRowForm.setTenLoaiSp(outputBean.getTenLoaiSP());
+				menuRowForm.setIdNhomSP(outputBean.getIdNhomSP());
+				productCategoryFormRow.getMenuRowForms().add(menuRowForm);
+			}
+			 form.getLoaiSanPham().add(productCategoryFormRow);
+		}
+		//get Dot KM
+		List<DotKhuyenMaiOutputRowBean> listDKM = DotKhuyenMaiDAO.intances.getDotKMApDung(path, SMSComons.getDate());
+//		DotKhuyenMaiOutputRowBean dotKhuyenMaiOutputRowBean= listDKM.get(0);
+		
+		//get san pham 
+		SanPhamInputBean sanPhamInputBean = new SanPhamInputBean();
+		sanPhamInputBean.setPathJSP(path);
+		SanPhamOutputBean sanPhamOutputBean = CreateTableProductDAO.intances.getSanPhamApDung(path);
+		ProductFormRow productFormRow;
+		for(SanPhamOutputRowBean sanPhamOutputRowBean : sanPhamOutputBean.getLst()){
+			productFormRow = new ProductFormRow();
+			productFormRow.setSEQ(sanPhamOutputRowBean.getSEQ());
+			productFormRow.setIdSanPham(sanPhamOutputRowBean.getIdSanPham());
+			productFormRow.setTenSP(sanPhamOutputRowBean.getTenSP());
+			productFormRow.setTenLoaiSP(sanPhamOutputRowBean.getTenLoaiSP());
+			productFormRow.setGiaMua(sanPhamOutputRowBean.getGiaMua());
+			productFormRow.setGiaBanKM(sanPhamOutputRowBean.getGiaBanKM());
+			productFormRow.setGiaBan(sanPhamOutputRowBean.getGiaBan());
+			productFormRow.setNgayTao(sanPhamOutputRowBean.getNgayTao());
+			productFormRow.setNgayChinhSua(sanPhamOutputRowBean.getNgayChinhSua());
+			productFormRow.setMoTa(sanPhamOutputRowBean.getMoTa());
+			form.getProducts().add(productFormRow);
+		}
+			form.setPathJSP(path);
+			form.setCartPrice("0");
+			form.setCartQuantity("0");
+			
+			DangKiWebOutputBean output = DangKiWebDAO.intances.getDataByPathJSP(path);
+			form.setSoDienThoai(output.getSdt());
+			form.setDiaChi(output.getDiaChi());
+			form.setTenCuaHang(output.getTenWebSite());
+			form.setLinkFanpage(output.getLinkFanpage());
+			
+		form.setPathJSP(path);
+		if("01".equals(output.getLoaiKinhDoanh().trim()))return GIOITHIEU_1;
+		if("02".equals(output.getLoaiKinhDoanh().trim()))return GIOITHIEU_2;
+		
+		return GIOITHIEU_1;
+	}
+	
+	@RequestMapping(value="/{path}/tinTuc")
 	public String tinTuc(@ModelAttribute("LayoutForm") LayoutForm form, @PathVariable("path") String path, HttpSession session){
 		//check pathJSP
 		if(!LayoutDAO.intances.checkPathJSP(path)){
@@ -487,83 +668,12 @@ public class LayoutController {
 			form.setSoDienThoai(output.getSdt());
 			form.setDiaChi(output.getDiaChi());
 			form.setTenCuaHang(output.getTenWebSite());
+			form.setLinkFanpage(output.getLinkFanpage());
 			
 		form.setPathJSP(path);
-		return TINTUC;
-	}
-	
-	@RequestMapping(value="/{path}/tinTuc")
-	public String gioiThieu(@ModelAttribute("LayoutForm") LayoutForm form, @PathVariable("path") String path, HttpSession session){
-		//check pathJSP
-		if(!LayoutDAO.intances.checkPathJSP(path)){
-			//quay ve trang login
-//			return new ModelAndView("redirect:/");
-			return "redirect:/";
-		}
-		//set thong tin khach hang
-		KhachHangSession khachHangSession = (KhachHangSession)session.getAttribute("KhachHangSession");
-		if(khachHangSession != null){
-			form.setTenKhachHang(khachHangSession.getTenKhachHang());
-		}
-		//get loai san pham
-		NhomSanPhamInputBean nhomSanPhamInputBean = new NhomSanPhamInputBean();  
-		nhomSanPhamInputBean.setPathJSP(path);
-		List<NhomSanPhamOutputBean> loaiSanPhamOutputBeans = NhomSanPhamDAO.intances.getNhomSP(nhomSanPhamInputBean);
-		RegisterProductCategoryFormRow productCategoryFormRow;
-		for(NhomSanPhamOutputBean loaiSanPhamOutputBean : loaiSanPhamOutputBeans){
-			productCategoryFormRow = new RegisterProductCategoryFormRow();
-			productCategoryFormRow.setIdProductCategory(loaiSanPhamOutputBean.getIdNhomSP());
-			productCategoryFormRow.setNameProductCategory(loaiSanPhamOutputBean.getTenNhomSP());
-			//get loai san pham
-			LoaiSanPhamInputBean loaiSanPhamInputBean = new LoaiSanPhamInputBean();
-			loaiSanPhamInputBean.setPathJSP(path);
-			loaiSanPhamInputBean.setIdNhomSP(loaiSanPhamOutputBean.getIdNhomSP());
-			List<LoaiSanPhamOutputBean> loaiSanPhamOutputBeans2 =  NhomSanPhamDAO.intances.getLoaiSPByIdNhomSP(loaiSanPhamInputBean);
-			MenuRowForm menuRowForm;
-			for(LoaiSanPhamOutputBean outputBean : loaiSanPhamOutputBeans2){
-				menuRowForm = new MenuRowForm();
-				menuRowForm.setIdLoaiSp(outputBean.getIdLoaiSP());
-				menuRowForm.setTenLoaiSp(outputBean.getTenLoaiSP());
-				menuRowForm.setIdNhomSP(outputBean.getIdNhomSP());
-				productCategoryFormRow.getMenuRowForms().add(menuRowForm);
-				System.out.println(productCategoryFormRow.getMenuRowForms().size());
-			}
-			 form.getLoaiSanPham().add(productCategoryFormRow);
-		}
-		//get Dot KM
-		List<DotKhuyenMaiOutputRowBean> listDKM = DotKhuyenMaiDAO.intances.getDotKMApDung(path, SMSComons.getDate());
-//		DotKhuyenMaiOutputRowBean dotKhuyenMaiOutputRowBean= listDKM.get(0);
-		
-		//get san pham 
-		SanPhamInputBean sanPhamInputBean = new SanPhamInputBean();
-		sanPhamInputBean.setPathJSP(path);
-		SanPhamOutputBean sanPhamOutputBean = CreateTableProductDAO.intances.getSanPhamApDung(path);
-		ProductFormRow productFormRow;
-		for(SanPhamOutputRowBean sanPhamOutputRowBean : sanPhamOutputBean.getLst()){
-			productFormRow = new ProductFormRow();
-			productFormRow.setSEQ(sanPhamOutputRowBean.getSEQ());
-			productFormRow.setIdSanPham(sanPhamOutputRowBean.getIdSanPham());
-			productFormRow.setTenSP(sanPhamOutputRowBean.getTenSP());
-			productFormRow.setTenLoaiSP(sanPhamOutputRowBean.getTenLoaiSP());
-			productFormRow.setGiaMua(sanPhamOutputRowBean.getGiaMua());
-			productFormRow.setGiaBanKM(sanPhamOutputRowBean.getGiaBanKM());
-			productFormRow.setGiaBan(sanPhamOutputRowBean.getGiaBan());
-			productFormRow.setNgayTao(sanPhamOutputRowBean.getNgayTao());
-			productFormRow.setNgayChinhSua(sanPhamOutputRowBean.getNgayChinhSua());
-			productFormRow.setMoTa(sanPhamOutputRowBean.getMoTa());
-			form.getProducts().add(productFormRow);
-		}
-			form.setPathJSP(path);
-			form.setCartPrice("0");
-			form.setCartQuantity("0");
-			
-			DangKiWebOutputBean output = DangKiWebDAO.intances.getDataByPathJSP(path);
-			form.setSoDienThoai(output.getSdt());
-			form.setDiaChi(output.getDiaChi());
-			form.setTenCuaHang(output.getTenWebSite());
-			
-		form.setPathJSP(path);
-		return GIOITHIEU;
+		if("01".equals(output.getLoaiKinhDoanh().trim()))return TINTUC_1;
+		if("02".equals(output.getLoaiKinhDoanh().trim()))return TINTUC_2;
+		return TINTUC_1;
 	}
 	
 }

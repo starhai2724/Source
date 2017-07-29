@@ -50,18 +50,25 @@
 			</div>
 			 <div class="col-sm-3">
 				<div class="form-group">
+					<label>Đường dẫn Fanpage Facebook</label> 
+	                <form:input placeholder="Đường dẫn Fanpage Facebook"  class="form-control" type="text" path="linkFanpage"  name="linkFanpage" ng-model = "linkFanpage"  ng-init ="linkFanpage = '${DangKiWebForm.linkFanpage}'" />
+					<p style="color: red;">{{linkFanpage_err}}</p>
+				</div>
+			</div> 
+			<div class="col-sm-3">
+				<div class="form-group">
 					<label>Hình ảnh header 1</label> 
 					<input type="file" name="hinh1"/>
 				</div>
 			</div> 
+		</div>
+		<div class="row">
 			<div class="col-sm-3">
 				<div class="form-group">
 					<label>Hình ảnh header 2</label> 
 					<input type="file" name="hinh2"/>
 				</div>
 			</div>
-		</div>
-		<div class="row">
 			<div class="col-sm-3">
 				<div class="form-group">
 					<label>Hình ảnh header 3</label> 
@@ -74,6 +81,8 @@
 					<input type="file" name="hinh4"/>
 				</div>
 			</div>
+		</div>
+		<div class="row">
 			<div class="col-sm-3">
 				<div class="form-group">
 					<label>Hình ảnh header 5</label> 

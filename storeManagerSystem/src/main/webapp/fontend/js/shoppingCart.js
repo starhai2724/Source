@@ -50,6 +50,14 @@ app.controller('ctrl', function($scope, $window) {
 		gioiThieu($scope);
 	}
 	
+	$scope.btnSearchByMenu = function(idLoaiSp){
+		searchByMenu($scope,idLoaiSp);
+	}
+	
+	$scope.btnBack = function(){
+		back($scope);
+	}
+	
 });
 
 
@@ -83,6 +91,20 @@ function purchase($scope,$window ,price, priceSaleOff, idSanPham){
 	$window.sessionStorage.setItem('session_price', $scope.cartPrice);
 	$window.sessionStorage.setItem('session_listProduct', listProduct);
 	$window.sessionStorage.setItem('session_quantity', $scope.cartQuantity);
+}
+
+function searchByMenu($scope, idLoaiSp){
+	var url = "/storeManagerSystem/" + $scope.pathJSP +"/searchByMenu/" + idLoaiSp;
+	document.getElementById("LayoutForm").action = url;
+	document.getElementById("LayoutForm").method = "POST";
+	document.getElementById("LayoutForm").submit();
+}
+
+function back($scope){
+	var url = "/storeManagerSystem/" + $scope.pathJSP ;
+	document.getElementById("LayoutForm").action = url;
+	document.getElementById("LayoutForm").method = "POST";
+	document.getElementById("LayoutForm").submit();
 }
 
 function chiTiet($scope, $window, idSanPham){

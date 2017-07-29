@@ -4,6 +4,7 @@ app.controller('ctrl', function($scope, $window) {
 	$scope.sdt_err = "";
 	$scope.diaChi_err = "";
 	$scope.dkGiaoHangFree_err = "";
+	$scope.linkFanpage_err = "";
 	
 	
 	$scope.btnUpdate = function(){
@@ -28,6 +29,11 @@ function update($scope) {
 	
 	if ($scope.diaChi == "") {
 		$scope.diaChi_err = "Hãy nhập địa chỉ."
+		valid = false;
+	}
+	
+	if ($scope.linkFanpage == "") {
+		$scope.linkFanpage_err = "Hãy nhập đường dẫn Fanpage Facebook."
 		valid = false;
 	}
 	

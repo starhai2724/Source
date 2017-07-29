@@ -209,7 +209,7 @@
             }
         </script>
 <section class="navigation-menu clearfix">
-    <div class="container" style="width: 1370px;font-size: 18px">
+    <div class="container" style="width: 1570px;font-size: 18px">
         <div class="menu-top">
             <div class="row">
                 <div class="col-md-12">
@@ -255,7 +255,7 @@
     </div>
 </section>
 <div class="main">
-  <div class="container" style="width: 1370px">
+  <div class="container" style="width: 1270px">
     <div class="row">
       <div class="col-md-12">
 			<div class="about-detail">
@@ -324,15 +324,9 @@
                     </h3>
                 </div>
                 <ul>
+						<li> <a ng-click="btnGioiThieu()">Về chúng tôi</a></li>
                         <li>
-                            <a ng-click="btnGioiThieu()">
-                                Về ch&#250;ng t&#244;i
-                            </a>
-                        </li>
-                        <li>
-                            <a ng-click="btnLienHe()">
-                                Hỏi đ&#225;p
-                            </a>
+                            <a ng-click="btnLienHe()">Hỏi đáp</a>
                         </li>
                 </ul>
             </div>
