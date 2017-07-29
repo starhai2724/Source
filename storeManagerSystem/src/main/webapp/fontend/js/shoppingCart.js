@@ -56,6 +56,8 @@ app.controller('ctrl', function($scope, $window) {
 	
 	$scope.btnBack = function(){
 		back($scope);
+		
+	}	
 		$scope.btnTimKiemMenu = function(id){
 			timKiemMenu($scope, $window ,id);
 	

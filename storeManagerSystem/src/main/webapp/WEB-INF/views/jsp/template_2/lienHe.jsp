@@ -24,6 +24,7 @@
     <script src="/storeManagerSystem/view/template_2/runecom22.runtime.vn/Scripts/common/common.js" type="text/javascript"></script>
     <script src="/storeManagerSystem/view/template_2/runecom22.runtime.vn/Scripts/common/jquery.cookie.js" type="text/javascript"></script>
 <!--     <script src="/storeManagerSystem/view/template_2/runecom22.runtime.vn/app/directives/paging.js"></script> -->
+	<script src="/storeManagerSystem/view/js/angular.min.js"></script>
     <link href="/storeManagerSystem/view/template_2/runecom22.runtime.vn/../static.runtime.vn/App_Themes/RUN022/style.css" rel="stylesheet" type="text/css" />
     <link href="/storeManagerSystem/view/template_2/runecom22.runtime.vn/../static.runtime.vn/App_Themes/RUN022/responsive.css" rel="stylesheet" type="text/css" />
     
@@ -258,7 +259,7 @@
     <div class="row">
       <div class="col-md-12">
   		  <section class="product-content clearfix">
-					<div class="contact-content clearfix ng-scope" ng-controller="contactController" ng-init="initController(&#39;Shop&#39;,&#39;Maps&#39;)">
+					<div class="contact-content clearfix ng-scope" >
 				        <div class="contact-block clearfix">
 				            <div class="row">
 				                <div class="col-md-3">

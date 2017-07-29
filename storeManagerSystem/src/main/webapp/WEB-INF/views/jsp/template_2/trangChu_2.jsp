@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -325,7 +325,7 @@
     <!--End-->
  <script type="text/javascript">
     window.AdvSlides = [{"Id":295,"ShopId":139,"AdvType":2,"AdvTypeName":"Chạy ngang","Name":"fdfdsf","Image":"/Uploads/shop139/images/Product/banner1.png","ImageThumbnai":"/Uploads/shop139/_thumbs/images/Product/banner1.png","Link":"#","IsVideo":false,"Index":1,"Inactive":false,"Timestamp":"AAAAAAASFgk="},{"Id":296,"ShopId":139,"AdvType":2,"AdvTypeName":"Chạy ngang","Name":"fgfg","Image":"/Uploads/shop139/images/Product/banner2.png","ImageThumbnai":"/Uploads/shop139/_thumbs/images/Product/banner2.png","Link":"#","IsVideo":false,"Index":2,"Inactive":false,"Timestamp":"AAAAAAASFgo="},{"Id":297,"ShopId":139,"AdvType":2,"AdvTypeName":"Chạy ngang","Name":"fbhfgh","Image":"/Uploads/shop139/images/Product/EOS-5D-MarkIII.jpg","ImageThumbnai":"/Uploads/shop139/_thumbs/images/Product/EOS-5D-MarkIII.jpg","Link":"#","IsVideo":false,"Index":3,"Inactive":false,"Timestamp":"AAAAAAASFgs="}];
-</script> -->               </div>
+</script>               </div>
                     </div>
                 </div>
             </div>
