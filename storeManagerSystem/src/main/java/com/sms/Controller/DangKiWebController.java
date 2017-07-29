@@ -45,12 +45,10 @@ public class DangKiWebController {
 	public static final String PAGE = "index";
 	//session
 	public static final String PAGECENTER = "PAGECENTER";
-	
 	@ModelAttribute("DangKiWebForm")
 	public DangKiWebForm getDangKiWebForm(){
 		return new DangKiWebForm();
 	}
-	
 	/**
 	 * 
 	 * @param form
