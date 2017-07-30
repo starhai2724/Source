@@ -7,7 +7,7 @@
  <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%> 
  <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> 
  <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-    <title>Thời trang cao cấp</title>
+    <title>${LayoutForm.tenCuaHang}</title>
     <meta content="" name="keywords" />
     <link rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -299,31 +299,37 @@
 				            <div class="row">
 				                <div class="col-md-6 col-sm-12 col-xs-12">
 				                    <div class="contact-feedback">
-				                        <form ng-submit="sendContact()" class="ng-pristine ng-invalid ng-invalid-required ng-valid-email">
+        								<form class="ng-pristine ng-invalid ng-invalid-required ng-valid-email">
 				                            <div class="form-group input-group">
 				                                <span class="input-group-addon"><i class="glyphicon glyphicon glyphicon-user"></i></span>
-				                                <input type="text" placeholder="Họ tên" ng-model="Name" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" required="">
+				                                <form:input type="text" path="lienHeForm.tenKH" placeholder="Họ tên" ng-model="LH_Name" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" required="" ng-init ="LH_Name = '${LayoutForm.lienHeForm.tenKH}'" />
+												<p style="color: red;">{{LH_Name_err}}</p>
 				                            </div>
 				                            <div class="form-group input-group">
 				                                <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
-				                                <input type="text" placeholder="Địa chỉ" ng-model="Address" class="form-control ng-pristine ng-untouched ng-valid">
+				                                <form:input type="text" path="lienHeForm.diaChi" placeholder="Địa chỉ" ng-model="LH_Address" class="form-control ng-pristine ng-untouched ng-valid" ng-init ="LH_Address = '${LayoutForm.lienHeForm.diaChi}'" />
+												<p style="color: red;">{{LH_Address_err}}</p>
 				                            </div>
 				                            <div class="form-group input-group">
 				                                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-				                                <input type="email" placeholder="Email" ng-model="Email" class="form-control ng-pristine ng-untouched ng-valid-email ng-invalid ng-invalid-required" required="">
+				                                <form:input type="email" path="lienHeForm.email" placeholder="Email" ng-model="LH_Email" class="form-control ng-pristine ng-untouched ng-valid-email ng-invalid ng-invalid-required" required="" ng-init ="LH_Email = '${LayoutForm.lienHeForm.email}'" />
+												<p style="color: red;">{{LH_Email_err}}</p>
 				                            </div>
 				                            <div class="form-group input-group">
 				                                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-				                                <input type="text" placeholder="Điện thoại" ng-model="Phone" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" required="">
+				                                <form:input type="text" path="lienHeForm.sdt" placeholder="Điện thoại" ng-model="LH_Phone" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" required="" ng-init ="LH_Phone = '${LayoutForm.lienHeForm.sdt}'" />
+												<p style="color: red;">{{LH_Phone_err}}</p>
 				                            </div>
 				                            <div class="form-group input-group">
 				                                <span class="input-group-addon"><i class="glyphicon glyphicon-list-alt"></i></span>
-				                                <input type="text" placeholder="Tiêu đề" ng-model="Title" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" required="">
+				                                <form:input type="text" path="lienHeForm.tieuDe" placeholder="Tiêu đề" ng-model="LH_Title" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" required="" ng-init ="LH_Title = '${LayoutForm.lienHeForm.tieuDe}'" />
+												<p style="color: red;">{{LH_Title_err}}</p>
 				                            </div>
 				                            <div class="form-group">
-				                                <textarea placeholder="Nội dung" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" rows="3" ng-model="Content" required=""></textarea>
+				                                <form:textarea placeholder="Nội dung" path="lienHeForm.noiDungNhan" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" rows="3" ng-model="LH_noiDungNhan" required="" ng-init ="LH_noiDungNhan = '${LayoutForm.lienHeForm.noiDungNhan}'" />
+												<p style="color: red;">{{LH_noiDungNhan_err}}</p>
 				                            </div>
-				                            <button class="btn btn-default" type="submit">Gửi</button>
+				                            <input type="button" name="" class="btn btn-info " ng-click ="btnDangKiLienHe()" value="Gửi">
 				                        </form>
 				                    </div>
 				                </div>

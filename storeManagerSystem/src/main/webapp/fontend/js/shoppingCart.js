@@ -6,6 +6,15 @@ app.controller('ctrl', function($scope, $window) {
 	$scope.pathJSP = "";
 	$scope.InputQuantity = "";
 	
+	// lien he (S)
+	$scope.LH_Name_err           = "";
+	$scope.LH_Address_err        = "";
+	$scope.LH_Email_err          = "";
+	$scope.LH_Phone_err          = "";
+	$scope.LH_Title_err          = "";
+	$scope.LH_noiDungNhan_err    = "";
+	// lien he (E)
+	
 	var session_price = $window.sessionStorage.getItem('session_price');
 	var session_listProduct = $window.sessionStorage.getItem('session_listProduct');
 	var session_quantity = $window.sessionStorage.getItem('session_quantity');
@@ -59,11 +68,16 @@ app.controller('ctrl', function($scope, $window) {
 		back($scope);
 		
 	}	
-		$scope.btnTimKiemMenu = function(id){
-			timKiemMenu($scope, $window ,id);
-	
+	$scope.btnTimKiemMenu = function(id){
+		timKiemMenu($scope, $window ,id);
 	}
 	
+	//Lien he (S)
+	$scope.btnDangKiLienHe = function(){
+		dangKiLienHe($scope);
+	}
+	
+	//Lien he (E)
 });
 
 
@@ -185,6 +199,55 @@ function lienHe($scope){
 	document.getElementById("LayoutForm").action = url;
 	document.getElementById("LayoutForm").method = "POST";
 	document.getElementById("LayoutForm").submit();
+}
+
+function dangKiLienHe($scope){
+	var valid = true;
+	$scope.LH_Name_err           = "";
+	$scope.LH_Address_err        = "";
+	$scope.LH_Email_err          = "";
+	$scope.LH_Phone_err          = "";
+	$scope.LH_Title_err          = "";
+	$scope.LH_noiDungNhan_err    = "";
+	
+	if ($scope.LH_Name == "") {
+		$scope.LH_Name_err = "Nhập Tên."
+		valid = false;
+	}
+	
+	if ($scope.LH_Address == "") {
+		$scope.LH_Address_err = "Nhập địa chỉ."
+		valid = false;
+	}
+	
+	if ($scope.LH_Email == "") {
+		$scope.LH_Email_err = "Nhập email."
+		valid = false;
+	}
+	
+	if ($scope.LH_Phone == "") {
+		$scope.LH_Phone_err = "Nhập số điện thoại."
+		valid = false;
+	}
+	
+	if ($scope.LH_Title == "") {
+		$scope.LH_Title_err = "Nhập tiêu đề."
+		valid = false;
+	}
+	
+	if ($scope.LH_noiDungNhan == "") {
+		$scope.LH_noiDungNhan_err = "Nhập nội dung."
+		valid = false;
+	}
+	
+	if (true == valid) {
+		if(confirm("Bạn có muốn đăng ký?")){
+		var url = "/storeManagerSystem/" + $scope.pathJSP +"/lienHe/insert";
+		document.getElementById("LayoutForm").action = url;
+		document.getElementById("LayoutForm").method = "POST";
+		document.getElementById("LayoutForm").submit();
+	}
+  }
 }
 
 function tinTuc($scope){

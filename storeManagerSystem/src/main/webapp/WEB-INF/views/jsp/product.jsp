@@ -169,8 +169,6 @@
 	</form:form>		
 		<!-- /#page-wrapper -->
 	</div>
-
 </div>
 <script src="/storeManagerSystem/view/js/product.js"></script>
-
 <!-- /#wrapper -->

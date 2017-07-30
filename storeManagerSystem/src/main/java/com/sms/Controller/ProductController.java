@@ -219,6 +219,7 @@ public class ProductController {
 		input.setGiaBan(form.getGiaBan());
 		input.setTrangThai("0");
 		input.setMoTa(form.getMoTa());
+		System.out.println("form.getTenSP(): "+form.getTenSP());
 		//Image (S)
 		byte[] bFile = null;
 		try {

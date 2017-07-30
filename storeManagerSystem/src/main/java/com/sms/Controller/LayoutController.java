@@ -518,11 +518,9 @@ public class LayoutController {
 	@RequestMapping(value="/{path}/lienHe", method = RequestMethod.POST)
 	public String lienHe(@ModelAttribute("LayoutForm") LayoutForm form, @PathVariable("path") String path, HttpSession session){
 		//check pathJSP
-		System.out.println("111111111");
 		if(!LayoutDAO.intances.checkPathJSP(path)){
 			//quay ve trang login
 //			return new ModelAndView("redirect:/");
-			System.out.println("22222222222222");
 			return "redirect:/";
 		}
 		//set thong tin khach hang
@@ -589,7 +587,6 @@ public class LayoutController {
 			
 			form.setPathJSP(path);
 			
-			System.out.println("output.getLoaiKinhDoanh() : " + output.getLoaiKinhDoanh() + "hihi");
 			if("01".equals(output.getLoaiKinhDoanh().trim()))return LIENHE_1;
 			if("02".equals(output.getLoaiKinhDoanh().trim()))return LIENHE_2;
 			

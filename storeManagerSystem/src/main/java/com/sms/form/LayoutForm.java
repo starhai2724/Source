@@ -65,13 +65,30 @@ public class LayoutForm extends AbstractForm {
 	// T/h khach hang chua dang nhap thi dung sdt de tao hoa don sp (E)
 	
 	private byte[]  file_1;
+	
 	private byte[]  file_2;
+	
 	private byte[]  file_3;
+	
 	private byte[]  file_4;
+	
 	private byte[]  file_5;
 	
 	private String linkFanpage;
 	
+	//Lien He (S)
+	private LienHeForm lienHeForm = new LienHeForm();
+	
+	//Lien He (E)
+	
+	public LienHeForm getLienHeForm() {
+		return lienHeForm;
+	}
+
+	public void setLienHeForm(LienHeForm lienHeForm) {
+		this.lienHeForm = lienHeForm;
+	}
+
 	public String getLinkFanpage() {
 		return linkFanpage;
 	}

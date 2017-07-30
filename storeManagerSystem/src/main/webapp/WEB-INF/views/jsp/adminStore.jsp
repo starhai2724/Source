@@ -66,7 +66,6 @@
           <li>
             <a href="/storeManagerSystem/cardType/init"><i class="fa fa-list-alt fa-fw"></i> Loại thẻ</a>
           </li>
-          
           <li>
             <a href="/storeManagerSystem/bill/init"><i class="fa fa-list-alt fa-fw"></i> Hóa đơn</a>
           </li>
@@ -81,6 +80,9 @@
           </li>
           <li>
             <a href="/storeManagerSystem/thongKe/init"><i class="fa fa-list-alt fa-fw"></i> Thống kê</a>
+          </li>
+          <li>
+            <a href="/storeManagerSystem/lienHe/init"><i class="fa fa-list-alt fa-fw"></i> Liên hệ</a>
           </li>
           <li>
             <a href="/storeManagerSystem/thongTinCuaHang/init"><i class="fa fa-list-alt fa-fw"></i> Thông tin Cửa Hàng</a>
