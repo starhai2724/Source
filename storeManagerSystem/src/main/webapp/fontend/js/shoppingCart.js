@@ -4,6 +4,7 @@ app.controller('ctrl', function($scope, $window) {
 	$scope.cartPrice = 0;
 	$scope.cartQuantity = 0;
 	$scope.pathJSP = "";
+	$scope.InputQuantity = "";
 	
 	var session_price = $window.sessionStorage.getItem('session_price');
 	var session_listProduct = $window.sessionStorage.getItem('session_listProduct');
@@ -71,26 +72,65 @@ function purchase($scope,$window ,price, priceSaleOff, idSanPham){
 	var session_listProduct = $window.sessionStorage.getItem('session_listProduct');
 	var session_quantity = $window.sessionStorage.getItem('session_quantity');
 	
+	var listProductTMP = "";
+	
 	if(session_price != null && session_price != "0"){
-		if(priceSaleOff != ""){
-			$scope.cartPrice = parseInt(session_price) + parseInt(priceSaleOff);
+		if($scope.InputQuantity != null && $scope.InputQuantity != ""){
+			if(priceSaleOff != ""){
+				$scope.cartPrice = parseInt(session_price) + parseInt(priceSaleOff)*parseInt($scope.InputQuantity);
+			}else{
+				$scope.cartPrice = parseInt(session_price) + parseInt(price)*parseInt($scope.InputQuantity);
+			}
 		}else{
-			$scope.cartPrice = parseInt(session_price) + parseInt(price);
-		}
+			if(priceSaleOff != ""){
+				$scope.cartPrice = parseInt(session_price) + parseInt(priceSaleOff);
+			}else{
+				$scope.cartPrice = parseInt(session_price) + parseInt(price);
+			}
+		}	
 	}else{
-		if(priceSaleOff != ""){
-			$scope.cartPrice = parseInt($scope.cartPrice) + parseInt(priceSaleOff);
+		if($scope.InputQuantity != null && $scope.InputQuantity != ""){
+			if(priceSaleOff != ""){
+				$scope.cartPrice = parseInt(priceSaleOff)*parseInt($scope.InputQuantity);
+			}else{
+				$scope.cartPrice = parseInt(price)*parseInt($scope.InputQuantity);
+			}
 		}else{
-			$scope.cartPrice = parseInt($scope.cartPrice) + parseInt(price);
+			if(priceSaleOff != ""){
+				$scope.cartPrice = parseInt(priceSaleOff);
+			}else{
+				$scope.cartPrice = parseInt(price);
+			}
 		}
 	}
 	
+	// T/h khi da co gio hang
 	if(session_listProduct != null && session_listProduct != ""){
-		listProduct = session_listProduct +"," +  idSanPham.replace(/^\s+|\s+$/g, '');
-		$scope.cartQuantity = parseInt(session_quantity) + 1;
+		if($scope.InputQuantity != null && $scope.InputQuantity != ""){
+			for(var i = 1; i <= $scope.InputQuantity; i++){
+				session_listProduct += "," +  idSanPham.replace(/^\s+|\s+$/g, '');
+			}
+			listProduct = session_listProduct;
+			alert("list: "+session_listProduct)
+			$scope.cartQuantity = parseInt(session_quantity) + parseInt($scope.InputQuantity);
+		}else {
+			listProduct = session_listProduct +"," +  idSanPham.replace(/^\s+|\s+$/g, '');
+			$scope.cartQuantity = parseInt(session_quantity) + 1;
+		}
+	// T/h khi chua co gio hang
 	}else{
-		listProduct = "," + idSanPham;
-		$scope.cartQuantity = 1;
+		if($scope.InputQuantity != null && $scope.InputQuantity != ""){
+			for(var i = 1; i <= $scope.InputQuantity; i++){
+				listProductTMP += "," +  idSanPham.replace(/^\s+|\s+$/g, '');
+			}
+			listProduct = listProductTMP;
+			alert("list2: "+listProductTMP);
+			$scope.cartQuantity = parseInt($scope.InputQuantity);
+		}else {
+			listProduct = ","+ idSanPham;
+			$scope.cartQuantity =  1;
+		}
+		
 	}
 	
 	$window.sessionStorage.setItem('session_price', $scope.cartPrice);

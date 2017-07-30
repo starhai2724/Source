@@ -251,7 +251,9 @@ public class LayoutController {
 		String[] parts = null;
 		//remove ","
 		if(!"".equals(listId)){
+			System.out.println("listId1: "+listId);
 			listId = listId.substring(1);
+			System.out.println("listId2: "+listId);
 			parts = listId.split(",");
 			listId = "";
 			for(int i = 0;i<parts.length;i++){

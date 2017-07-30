@@ -7,7 +7,7 @@
  <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%> 
  <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> 
  <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-    <title>Thời trang cao cấp</title>
+    <title>${LayoutForm.tenCuaHang}</title>
     <meta content="" name="keywords" />
     <link rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -81,7 +81,7 @@
 </head>
 <div ng-app="LayoutForm" ng-controller="ctrl">
 <form:form id="LayoutForm" modelAttribute="LayoutForm" role="form" method="GET" >
-	<input type="hidden" ng-model="pathJSP" ng-init="pathJSP='${LayoutForm.pathJSP}'" >
+		<form:input type="hidden" path="pathJSP" ng-model="pathJSP" ng-init="pathJSP='${LayoutForm.pathJSP}'" />
         <div id="fb-root"></div>
         <script>
             (function (d, s, id) {
@@ -96,7 +96,6 @@
 
 <div class="wrapper">
  <div class="header">
-<script src="/storeManagerSystem/view/template_2/Scripts/common/login.js" type="text/javascript"></script>
     <section class="top-link clearfix">
         <div class="container" style="width: 1370px">
             <div class="row" >
@@ -270,7 +269,7 @@
   <div class="container">
        <div class="row">
           <div class="col-md-9">
-				<link href="/storeManagerSystem/view/template_2/Scripts/smoothproducts/smoothproducts.css" rel="stylesheet" type="text/css" />
+				<!-- <link href="/storeManagerSystem/view/template_2/Scripts/smoothproducts/smoothproducts.css" rel="stylesheet" type="text/css" /> -->
 				<c:forEach var="items" items="${LayoutForm.products }">
 				<div class="product-detail clearfix relative " >
 				    <span></span>
@@ -280,7 +279,7 @@
 				                <div class="col-md-6 col-sm-6 col-xs-12 product-image clearfix">
 				                    <div class="sp-loading"><img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplay/${items.SEQ}" alt=""><br></div>
 				                    <div class="sp-wrap">
-				                        <a href="%7b%7bitem.html" ng-repeat="item in ProductImages"><img src="%7b%7bitem.html"></a>
+				                        <!-- <a href="%7b%7bitem.html" ng-repeat="item in ProductImages"><img src="%7b%7bitem.html"></a> -->
 				                    </div>
 				                </div>
 				                <div class="col-md-6 col-sm-6 col-xs-12 clearfix">
@@ -298,7 +297,7 @@
 											</c:if>
 				                        </div>
 				                    </div>
-				                    <div class="des" ng-bind-html="Summary|unsafe">${items.moTa }
+				                    <div class="des">${items.moTa }
 				                    </div>
 				                    <div class="social">
 				                        <!-- AddThis Button BEGIN -->
@@ -314,7 +313,7 @@
 				                            <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
 				                            <a class="addthis_counter addthis_pill_style addthis_nonzero"></a>
 				                        </div>
-				                        <script type="text/javascript" src="/storeManagerSystem/view/template_2/scripts/addthis/addthis_widget.js#pubid=ra-5334d6387b03b532"></script>
+				                        <!-- <script type="text/javascript" src="/storeManagerSystem/view/template_2/scripts/addthis/addthis_widget.js#pubid=ra-5334d6387b03b532"></script> -->
 				                        <!-- AddThis Button END -->
 				                    </div>
 				                    <div class="quantity clearfix">
@@ -324,7 +323,7 @@
 				                        </div>
 				                    </div>
 				                    <div class="button" >
-				                        <a  class="btn btn-primary"><i class="glyphicon glyphicon-shopping-cart"></i>Thêm giỏ hàng</a>
+				                        <a  class="btn btn-primary" href="javascript:void(0)" ng-click="btnPurchase('${items.giaBan}','${items.giaBanKM }' ,'${items.SEQ} ')"><i class="glyphicon glyphicon-shopping-cart"></i>Thêm giỏ hàng</a>
 				                    </div>
 				                </div>
 				            </div>
@@ -538,5 +537,6 @@
 </form:form> 
 </div>   
 </body>
+<script src="/storeManagerSystem/view/js/shoppingCart.js"></script>
 </html>
 

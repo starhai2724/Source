@@ -99,6 +99,7 @@ public class ThanhToanController {
 		
 		if (khachHangSession != null) {
 			KhachHangInputBean khachHangInputBean = new KhachHangInputBean();
+			khachHangInputBean.setIdKhachHang(khachHangSession.getIdKhachHang());
 			khachHangInputBean.setPathJSP(path);
 			khachHangInputBean.setSoDiem(SMSComons.cong(khachHangSession.getDiemTichLuy(), hoaDonInputBean.getDiemTichLuy()) +"");
 			if(loaiTheOutputRowBeans != null && loaiTheOutputRowBeans.size()> 0){
@@ -107,6 +108,7 @@ public class ThanhToanController {
 				}
 			}
 			khachHangInputBean.setLoaiThe(khachHangSession.getLoaiThe());
+			System.out.println("idkhach: "+khachHangInputBean.getIdKhachHang());
 			cnt = KhachHangDAO.intances.updateDiemAndLoaiThe(khachHangInputBean);
 		}
 		

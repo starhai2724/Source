@@ -7,7 +7,7 @@
  <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%> 
  <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> 
  <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-    <title>Thời trang cao cấp</title>
+    <title>${LayoutForm.tenCuaHang}</title>
     <meta content="" name="keywords" />
     <link rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -82,7 +82,7 @@
 <body>
 <div ng-app="LayoutForm" ng-controller="ctrl">
 <form:form id="LayoutForm" modelAttribute="LayoutForm" role="form" method="GET" >
-	<input type="hidden" ng-model="pathJSP" ng-init="pathJSP='${LayoutForm.pathJSP}'" >
+	<form:input type="hidden" path="pathJSP" ng-model="pathJSP" ng-init="pathJSP='${LayoutForm.pathJSP}'" />
         <div id="fb-root"></div>
 <div class="wrapper page-home">
         <div class="header">
@@ -166,7 +166,7 @@
                         </div>
                     </div>
                     <div class="col-md-9 col-xs-12 col-sm-12 header-right" style="margin-left: -120px">
-                	 	<div class="search hidden-sm hidden-xs" s>
+                	 	<div class="search hidden-sm hidden-xs" >
                             <div class="input-cat form-search clearfix">
                                 <div class="form-search-controls">
 <%--                                     <input  type="text" path="timKiem_TenSP"  name="timKiem_TenSP" ng-model = "timKiem_TenSP"  ng-init ="timKiem_TenSP = '${LayoutForm.timKiem_TenSP}'" onblur="if(this.value=='')this.value='Tìm kiếm...'"

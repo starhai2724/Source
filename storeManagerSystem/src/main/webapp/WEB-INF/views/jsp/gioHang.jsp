@@ -35,7 +35,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body>
 <div ng-app="LayoutForm" ng-controller="ctrl">
 <form:form id="LayoutForm" modelAttribute="LayoutForm" role="form" method="GET" >
-	<input type="hidden" ng-model="pathJSP" ng-init="pathJSP='${LayoutForm.pathJSP}'" >
+	<form:input type="hidden" path="pathJSP" ng-model="pathJSP" ng-init="pathJSP='${LayoutForm.pathJSP}'" />
 	<!-- header-section-starts -->
 	<div class="header">
 		<div class="header-top-strip">
