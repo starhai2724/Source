@@ -27,6 +27,24 @@ public class SMSComons {
 		return result;
 	}
 	
+	public static int compareDate(String ngayBD, String ngayKT){
+		int result = -1;
+		if(ngayBD.length() != 8 || ngayKT.length() != 8) return result;
+		if(ngayBD.substring(0, 4).compareTo(ngayKT.substring(0, 4)) > 0){
+			result = 1;
+		}else if(ngayBD.substring(0, 4).compareTo(ngayKT.substring(0, 4)) == 0){
+			if(ngayBD.substring(4, 6).compareTo(ngayKT.substring(4, 6)) > 0){
+				result = 1;
+			}else if(ngayBD.substring(4, 6).compareTo(ngayKT.substring(4, 6)) == 0){
+				if(ngayBD.substring(6, 8).compareTo(ngayKT.substring(6, 8)) > 0){
+					result = 1;
+				}else if(ngayBD.substring(6, 8).compareTo(ngayKT.substring(6, 8)) == 0){
+					result = 0;
+				}
+			}
+		}
+		return result;
+	}
 	
 	/**
 	 * 
