@@ -83,7 +83,6 @@ public class LayoutController {
 		}
 		//get Dot KM
 		List<DotKhuyenMaiOutputRowBean> listDKM = DotKhuyenMaiDAO.intances.getDotKMApDung(path, SMSComons.getDate());
-//		DotKhuyenMaiOutputRowBean dotKhuyenMaiOutputRowBean= listDKM.get(0);
 		
 		//get san pham 
 		SanPhamInputBean sanPhamInputBean = new SanPhamInputBean();
@@ -97,7 +96,16 @@ public class LayoutController {
 			productFormRow.setTenSP(sanPhamOutputRowBean.getTenSP());
 			productFormRow.setTenLoaiSP(sanPhamOutputRowBean.getTenLoaiSP());
 			productFormRow.setGiaMua(sanPhamOutputRowBean.getGiaMua());
-			productFormRow.setGiaBanKM(sanPhamOutputRowBean.getGiaBanKM());
+			//get san pham KM
+			if(listDKM != null && listDKM.size() > 0){
+				List<SanPhamOutputRowBean> lstSPKM = DotKhuyenMaiDAO.intances.getSanPhamKM(path, listDKM.get(0).getMaDKM());
+				for (SanPhamOutputRowBean spkm : lstSPKM) {
+					if(spkm.getSEQ().equals(sanPhamOutputRowBean.getSEQ())){ // la sp dc KM
+						System.out.println("sanr phaam KM : " + sanPhamOutputRowBean.getTenSP());
+						productFormRow.setGiaBanKM(sanPhamOutputRowBean.getGiaBanKM());
+					}
+				}
+			}
 			productFormRow.setGiaBan(sanPhamOutputRowBean.getGiaBan());
 			productFormRow.setNgayTao(sanPhamOutputRowBean.getNgayTao());
 			productFormRow.setNgayChinhSua(sanPhamOutputRowBean.getNgayChinhSua());

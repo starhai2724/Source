@@ -53,11 +53,9 @@
 			</div>
 			<div class="col-sm-3">
 				<div class="form-group">
-					<label>Loại Thẻ</label> 
-					<form:select class="form-control" path="dk_loaiThe">
-					    <form:options items="${DotKhuyenMaiForm.lst_dk_loaiThe}" />
-					</form:select>
-					<p style="color: red;">{{dk_loaiThe_err}}</p>
+					<label>Tổng hóa đơn</label> 
+						 <form:input  maxlength="10"  placeholder="Tổng hóa đơn"  class="form-control" type="text" path="dk_tongHD"  name="dk_tongHD" ng-model = "dk_tongHD"  ng-init ="dk_tongHD = '${DotKhuyenMaiForm.dk_tongHD}'" />	
+						<p style="color: red;">{{dk_tongHD_err}}</p>
 				</div>
 			</div>
 		</div>
@@ -72,20 +70,11 @@
 			<div class="col-sm-3">
 				<div class="form-group">
 					<label>Mức giảm giá</label> 
-					<form:input maxlength="10" style="width: 150px" placeholder="Mức"  class="form-control" type="text" path="mucKM"  name="mucKM" ng-model = "mucKM"  ng-init ="mucKM = '${DotKhuyenMaiForm.mucKM}'" />
-					<form:select style="margin-left: 155px;width: 180px;margin-top: -35px" class="form-control" path="donViKM">
-					    <form:options items="${DotKhuyenMaiForm.lst_donViKM}" />
-					</form:select>
+					<form:input maxlength="10" placeholder="Mức"  class="form-control" type="text" path="mucKM"  name="mucKM" ng-model = "mucKM"  ng-init ="mucKM = '${DotKhuyenMaiForm.mucKM}'" />
 					<p style="color: red;">{{mucKM_err}}</p>
 				</div>
 			</div>
-			<div class="col-sm-3">
-				<div class="form-group">
-					<label>Tổng hóa đơn</label> 
-						 <form:input  maxlength="10"  placeholder="Tổng hóa đơn"  class="form-control" type="text" path="dk_tongHD"  name="dk_tongHD" ng-model = "dk_tongHD"  ng-init ="dk_tongHD = '${DotKhuyenMaiForm.dk_tongHD}'" />	
-						<p style="color: red;">{{dk_tongHD_err}}</p>
-				</div>
-			</div>
+
 		</div>
 		<div class="row">
 			<div class="col-sm-3">
@@ -127,7 +116,6 @@
 										<th style="padding-left: 5px;width: 110px;padding-right: 4px;">Ngày kết thúc</th>
 										<th style="padding-left: 5px;padding-right: 4px;width: 150px;">Loại khuyến mãi</th>
 										<th style="padding-left: 5px;padding-right: 4px;width: 130px;">Mức giảm giá</th>
-										<th style="padding-left: 5px;padding-right: 4px;width: 120px;">ĐK_Loại thẻ</th>
 										<th style="padding-left: 5px;padding-right: 4px;width: 100px;">ĐK_Tổng HĐ</th>
 										<th style="padding-left: 17px;padding-right: 2px;width: 140px;">Thao tác</th>
                                     </tr>
@@ -142,7 +130,6 @@
 		                                      	 <td class="center" style="text-align: center">${items.ngayKT}</td>
 					                    		 <td class="center" style="padding-left: 5px;padding-right: 4px;width: 130px;">${items.loaiKM}</td>
 		                                       	 <td>${items.mucGiamGia}</td>
-		                                        <td style="padding-left: 5px;padding-right: 4px;width: 120px;">${items.dk_loaiThe}</td>
 		                                        <td style="width: 100px;">${items.dk_tongHD}</td>
 		                                        <td class="center" style="text-align: center;width: 140px;">
 		                                        		<button class="btn" type="button" ng-click="btnGetById('${items.maDKM}');">
