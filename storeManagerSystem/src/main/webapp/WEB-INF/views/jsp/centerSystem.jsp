@@ -15,7 +15,7 @@
 	}else{
 		
 %>
-<jsp:include page="<%="thongTinCuaHang.jsp"%>"></jsp:include>
+<%-- <jsp:include page="<%="thongTinCuaHang.jsp"%>"></jsp:include> --%>
 <%
 	}
 %>

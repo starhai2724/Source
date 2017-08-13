@@ -6,6 +6,7 @@
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %> 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
+<div id="wrapper">
 <div id="page-wrapper" ng-app="DatHangForm" ng-controller="ctrl">
 		<div class="row">
 			<div class="col-lg-12">
@@ -20,8 +21,16 @@
 		<div class="row" align="right">
 			<div class="col-sm-12">
 				<div class="form-group">
-					<input type="button" name="" class="btn btn-info " ng-click ="btnChonSP()" value="Chọn sản phẩm">
+					<c:choose>
+					<c:when test="${DatHangForm.flagXacNhan eq ('1')}">
+						<input type="button" name="" disabled="disabled" class="btn btn-info " ng-click ="btnChonSP()" value="Chọn sản phẩm">
+						<input type="button" name="" disabled="disabled" class="btn btn-info " ng-click = "btnXoaDong()"  value="Xóa dòng">
+					</c:when>
+					<c:otherwise>
+						<input type="button" name="" class="btn btn-info " ng-click ="btnChonSP()" value="Chọn sản phẩm">
 					<input type="button" name="" class="btn btn-info " ng-click = "btnXoaDong()"  value="Xóa dòng">
+					</c:otherwise>
+					</c:choose>
 					<input type="button" name="" class="btn btn-info " ng-click="exportToExcel('#tableExport')" value="In">
 				</div>
 			</div>
@@ -74,7 +83,7 @@
 		                			{{ (chiTietDatHangRowForms[${status.index}].soLuongNhap * chiTietDatHangRowForms[${status.index}].giaNhap) | number }}
 		                		</td>
 		                		<td class="center" style="text-align: right">
-		                			<form:input  maxlength="10" class="form-control" path="chiTietDatHangRowForms[${status.index}].diaChi"   
+		                			<form:input  class="form-control" path="chiTietDatHangRowForms[${status.index}].diaChi"   
 		                			ng-model = "chiTietDatHangRowForms[${status.index}].diaChi"  ng-init ="chiTietDatHangRowForms[${status.index}].diaChi = '${items.diaChi}'" />
 		                		</td> 
                         </tr>
@@ -112,7 +121,14 @@
 		<!--Message (E)-->
 		<div class="row" align="right" style="width: 100%">
 			<div>
-				<input type="button" name="" class="btn btn-info " ng-click="btnDangKy();"  value="Đăng ký">
+			<c:choose>
+				<c:when test="${DatHangForm.flagXacNhan eq ('1')}">
+					<input type="button" disabled="disabled" name="" class="btn btn-info " ng-click="btnDangKy();"  value="Đăng ký">
+				</c:when>
+				<c:otherwise>
+					<input type="button" name="" class="btn btn-info " ng-click="btnDangKy();"  value="Đăng ký">
+				</c:otherwise>
+			</c:choose>
 				<input type="button" name="" class="btn btn-info " ng-click="exportToExcel('#dataTables-example')" value="In">
 				<input type="button" name="" class="btn btn-info " ng-click="btnClear();" value="Hủy">
 			</div>
@@ -145,12 +161,20 @@
 		                                         <td class="center" style="text-align: center">${items.ngayNhanHang}</td>
 		                                         <td class="center" style="text-align: center">
 														<button class="btn" type="button" >
-															<span class="fa fa-list-alt" data-toggle="tooltip" data-original-title="Sửa" ng-click="btnGetById('${items.idDonHang}');"></span>
+															<span class="fa fa-list-alt" data-toggle="tooltip" data-original-title="Sửa" ng-click="btnGetById('${items.idDonHang}', '${items.idTrangThai}');"></span>
 														</button>
-														<button class="btn" type="button" >
+														<c:choose>
+															<c:when test="${items.idTrangThai eq ('1')}">
+																<button class="btn" type="button" disabled="disabled" >
 															<span class="glyphicon glyphicon-trash" data-toggle="tooltip" data-original-title="Xóa" ng-click="btnDelete('${items.idDonHang}');"></span>
-														</button>
-														
+																</button>
+										   					</c:when>
+										   					 <c:otherwise>
+																<button class="btn" type="button">
+															<span class="glyphicon glyphicon-trash" data-toggle="tooltip" data-original-title="Xóa" ng-click="btnDelete('${items.idDonHang}');"></span>
+																</button>
+										   					 </c:otherwise> 
+									   					 </c:choose>
 		                                        </td>
 		                                 </tr>
 		                             </c:forEach>    
@@ -162,4 +186,5 @@
 		</form:form>
 		<script src="/storeManagerSystem/view/js/datHang.js"></script>
           <!-- Detail (E) -->
+	</div>
 	</div>

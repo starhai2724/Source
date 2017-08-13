@@ -11,6 +11,10 @@ import com.sms.formRows.DatHangRowForm;
 public class DatHangForm extends AbstractForm{
 	
 	private String flagUpdate;
+
+	// Th don hang da dc xac nhan thi khong cho chinh sua (S)
+	private String flagXacNhan;
+	// Th don hang da dc xac nhan thi khong cho chinh sua (E)
 	
 	private String idDatHang;
 	
@@ -30,6 +34,15 @@ public class DatHangForm extends AbstractForm{
 
 	
 	
+	
+	public String getFlagXacNhan() {
+		return flagXacNhan;
+	}
+
+	public void setFlagXacNhan(String flagXacNhan) {
+		this.flagXacNhan = flagXacNhan;
+	}
+
 	public Map<String, String> getLoaiTrangThai() {
 		return loaiTrangThai;
 	}

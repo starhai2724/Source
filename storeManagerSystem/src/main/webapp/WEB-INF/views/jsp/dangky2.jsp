@@ -26,6 +26,7 @@
         <div class="step-block-box clearfix" >
             <div class="step-block2 clearfix">
                 <h2>Bước 2: Chọn giao diện</h2>
+                <p style="color: red; font-weight: bold;">${DangKiWebForm.messageErr }</p>
                 <div class="product-template clearfix" style="padding-left: 10px">
 <%--                 <c:forEach var="items" items="${DangKiWebForm.lstLoaiKinhDoanh }">
                     <div class="col-md-4 col-sm-4 col-sm-12" ng-click="btnOpenStep3('${items.idTemplate}');">

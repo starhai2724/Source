@@ -655,9 +655,9 @@ public class CreateTableProductDAO {
 	 * @return
 	 * @throws IOException 
 	 */
-	public SanPhamOutputBean getSanPhamApDung(String pathJSP) {
+	public SanPhamOutputBean getSanPhamApDung(String pathJSP, String limit) {
 		Session session = HibernateUtil.getSessionDAO();
-		String hql = getSQLSanPhamApDung(pathJSP);
+		String hql = getSQLSanPhamApDung(pathJSP, limit);
 		SanPhamOutputBean outputBean = new SanPhamOutputBean();
 		SanPhamOutputRowBean outputRowBean = null;
 		try {
@@ -982,7 +982,7 @@ public class CreateTableProductDAO {
 	 * getSQlMaxIdStoreOwner
 	 * @return
 	 */
-	private String getSQLSanPhamApDung(String pathJSP) {
+	private String getSQLSanPhamApDung(String pathJSP, String limit) {
 		String tableName = pathJSP+"_PRODUCT";
 		StringBuffer sb = new StringBuffer();
 		sb.append("     	SELECT                                                                                         ");
@@ -1025,7 +1025,9 @@ public class CreateTableProductDAO {
 		sb.append("     	) MAIN                                                                                         ");
 		sb.append("     WHERE                                                                                              ");
 		sb.append("     	MAIN.MAX_NGAY_TAO = MAIN.NGAY_TAO                                                              ");
-		
+		if(!"".equals(limit)){
+			sb.append("     	LIMIT 10 OFFSET "+limit+"                                                              ");
+		}
 		return sb.toString();
 	}
 	

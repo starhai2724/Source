@@ -17,6 +17,17 @@ public class LayoutForm extends AbstractForm {
 	private String diaChi;
 	
 	private String timKiem_TenSP;
+	
+	
+	
+	//su dung cho phan trang (S)
+	
+	private String indexPage;
+	
+//	private String count;
+	//su dung cho phan trang (E)
+	
+	private String limit;
 
 	private List<RegisterProductCategoryFormRow> loaiSanPham = new ArrayList<>();
 	
@@ -81,8 +92,26 @@ public class LayoutForm extends AbstractForm {
 	
 	//Lien He (E)
 	
+	
+	
 	public LienHeForm getLienHeForm() {
 		return lienHeForm;
+	}
+
+	public String getIndexPage() {
+		return indexPage;
+	}
+
+	public void setIndexPage(String indexPage) {
+		this.indexPage = indexPage;
+	}
+
+	public String getLimit() {
+		return limit;
+	}
+
+	public void setLimit(String limit) {
+		this.limit = limit;
 	}
 
 	public void setLienHeForm(LienHeForm lienHeForm) {

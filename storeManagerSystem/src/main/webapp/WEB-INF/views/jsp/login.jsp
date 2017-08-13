@@ -97,7 +97,9 @@
                 <div class ="form-group has-feedback" align="left">
 					<a href ="javascript:void(0)" ng-click="btnRegister();">Đăng kí</a>
 					</br>
-					<a href ="javascript:void(0)">Quên mật khẩu</a>
+					<a href ="/storeManagerSystem/quenMatKhau/init" >Quên mật khẩu</a>
+					</br>
+					<a href ="/storeManagerSystem/doiMatKhau/init">Đổi mật khẩu</a>
 					
 				</div>
                 <div class="form-group button-group">

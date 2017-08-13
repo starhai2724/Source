@@ -11,6 +11,7 @@ import com.sms.common.SMSComons;
 import com.sms.dao.common.HibernateUtil;
 import com.sms.form.DangKiWebForm;
 import com.sms.input.DangKiWebInputBean;
+import com.sms.input.QuenMatKhauInputBean;
 import com.sms.input.SanPhamInputBean;
 import com.sms.output.DangKiWebOutputBean;
 
@@ -74,7 +75,7 @@ public class DangKiWebDAO {
 		try {
 			SQLQuery query = session.createSQLQuery(hql);
 			//id cua hang va id nguoi dung cung mot gia tri
-			query.setParameter(0, ("100124"));
+			query.setParameter(0, id);
 			// Username se duoc gan bang gia tri cua email
 			query.setParameter(1, "");
 			query.setParameter(2, "");
@@ -249,6 +250,37 @@ public class DangKiWebDAO {
 	}
 	
 	
+	/**
+	 * 
+	 * 
+	 * @return
+	 */
+	public String getAccount(String username, String password) {
+		Session session = HibernateUtil.getSessionDAO();
+		String hql = getSQlAccount();
+		String result = "";
+		try {
+			Transaction tx = session.beginTransaction();
+			SQLQuery query = session.createSQLQuery(hql);
+			query.setParameter(0, username);
+			query.setParameter(1, password);
+			List<Object> data = query.list();
+			for (Object object : data) {
+				result = SMSComons.convertString(object);
+			}
+			tx.commit();
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		} finally {
+			session.flush();
+			session.clear();
+			session.close();
+		}
+		return result;
+	}
+	
+	
 	public int update(DangKiWebInputBean inputBean){
 		//session
 		Session session = HibernateUtil.getSessionDAO();
@@ -281,6 +313,29 @@ public class DangKiWebDAO {
 		}
 		return cnt;
 	}
+	
+	public int updatePassword(QuenMatKhauInputBean inputBean){
+		//session
+		Session session = HibernateUtil.getSessionDAO();
+		int cnt = 0; 
+		Transaction tx = session.beginTransaction();
+		//sql 
+		String hql = getSQLUpdatePassword();
+		try {
+			SQLQuery query = session.createSQLQuery(hql);
+			query.setParameter(0, inputBean.getPassword());
+			query.setParameter(1, inputBean.getEmail());
+			cnt = query.executeUpdate();
+			tx.commit();
+		} catch (Exception e) {
+		} finally {
+			session.flush();
+			session.clear();
+			session.close();
+		}
+		return cnt;
+	}
+	
 	//---------------------------------------------------------
 	
 	
@@ -419,6 +474,15 @@ public class DangKiWebDAO {
 
 	}
 	
+	private String getSQLUpdatePassword() {
+		StringBuffer sb = new StringBuffer();
+		sb.append("  UPDATE  STORE_OWNER     		        ");
+		sb.append("  		SET PASSWORD 		= ?	        ");
+		sb.append("  		 WHERE EMAIL  = ?        ");
+		return sb.toString();
+		
+	}
+	
 	
 	/**
 	 * 
@@ -467,12 +531,30 @@ public class DangKiWebDAO {
 		return sb.toString();
 	}
 	
+	
+	/**
+	 * 
+	 * @return
+	 */
+	private String getSQlAccount() {
+		StringBuffer sb = new StringBuffer();
+		sb.append(" 	SELECT                  ");
+		sb.append(" 	SO.USERNAME              ");
+		sb.append(" FROM                        ");
+		sb.append(" 	STORE_OWNER SO           ");
+		sb.append(" WHERE                       ");
+		sb.append(" 	SO.USERNAME = ?         ");
+		sb.append(" AND SO.PASSWORD = ?         ");
+		
+		return sb.toString();
+	}
+	
 	public static void main(String[] args) {
 		DangKiWebInputBean inputBean = new DangKiWebInputBean();
 		
-		DangKiWebDAO.intances.insertStoreInfo(inputBean);
+//		DangKiWebDAO.intances.insertStoreInfo(inputBean);
 	
-		
+		DangKiWebDAO.intances.getDataByPathJSP("haha_2");
 	}
 	
 }

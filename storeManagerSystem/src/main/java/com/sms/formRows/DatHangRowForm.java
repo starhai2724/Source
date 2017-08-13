@@ -16,12 +16,24 @@ public class DatHangRowForm {
 	
 	private String trangThai;
 	
+	private String idTrangThai;
+	
 	private String thanhTien;
 	
 	private String ngayDatHang;
 	
 	private String ngayNhanHang;
 	
+	
+	
+	public String getIdTrangThai() {
+		return idTrangThai;
+	}
+
+	public void setIdTrangThai(String idTrangThai) {
+		this.idTrangThai = idTrangThai;
+	}
+
 	public String getTenCuaHang() {
 		return tenCuaHang;
 	}
