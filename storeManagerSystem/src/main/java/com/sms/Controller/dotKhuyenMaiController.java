@@ -18,6 +18,7 @@ import com.sms.common.SMSComons;
 import com.sms.common.SystemCommon;
 import com.sms.dao.DotKhuyenMaiDAO;
 import com.sms.dao.LayoutDAO;
+import com.sms.domain.SystemControl;
 import com.sms.form.DotKhuyenMaiForm;
 import com.sms.formRows.DotKhuyenMaiRowForm;
 import com.sms.input.DotKhuyenMaiInputBean;
@@ -71,32 +72,19 @@ public class dotKhuyenMaiController {
 	
 	private void initData(DotKhuyenMaiForm form, String pathJSP){
 		//Loai KM
-		form.getLst_loaiKM().put("00", "--- Chọn loại khuyến mãi ---");
-		form.getLst_loaiKM().put("01", "Theo giá khuyến mãi có sẵn");
-		form.getLst_loaiKM().put("02", "Theo phần trăm sản phẩm");
-		form.getLst_loaiKM().put("03", "Theo phần trăm hóa đơn");
-		form.getLst_loaiKM().put("04", "Tặng kèm sản phầm");
-		form.getLst_loaiKM().put("05", "Tặng phiếu giảm giá");
-		form.getLst_loaiKM().put("06", "Tặng phiếu quà tặng");
-		form.getLst_loaiKM().put("07", "Miễn phí ship hàng");
-		
+		form.getLst_loaiKM().put("00", "Theo giá khuyến mãi có sẵn");
+		form.getLst_loaiKM().put("01", "Theo phần trăm hóa đơn");
 		
 		// Loai The
-		form.getLst_dk_loaiThe().put("00", "--- Chọn loại thẻ ---");
+		form.getLst_dk_loaiThe().put("00", "Thẻ thành viên");
 		form.getLst_dk_loaiThe().put("01", "Thẻ khách hàng");
-		form.getLst_dk_loaiThe().put("02", "Thẻ thành viên");
-		form.getLst_dk_loaiThe().put("03", "Thẻ vàng");
-		form.getLst_dk_loaiThe().put("04", "Thẻ VIP");
+		form.getLst_dk_loaiThe().put("02", "Thẻ vàng");
+		form.getLst_dk_loaiThe().put("03", "Thẻ VIP");
 		
 		
 		// Don vị KM
-		form.getLst_donViKM().put("00", "--- Chọn đơn vị ---");
+		form.getLst_donViKM().put("00", " VNĐ");
 		form.getLst_donViKM().put("01", " % Hóa đơn");
-		form.getLst_donViKM().put("02", " % Sản phẩm");
-		form.getLst_donViKM().put("03", " VNĐ");
-		form.getLst_donViKM().put("04", " Cái");
-		
-		
 		
 		List<DotKhuyenMaiOutputRowBean> lst = DotKhuyenMaiDAO.intances.getAll(pathJSP);
 		DotKhuyenMaiRowForm formRow; 
@@ -171,46 +159,113 @@ public class dotKhuyenMaiController {
 			// quay ve trang login
 			return "redirect:/";
 		}
-		// trong 1 thoi gian chi co the ton tai mot dot khuyen mai
-		boolean checkExistOfMonth= false;
-		List<DotKhuyenMaiOutputRowBean> lst = DotKhuyenMaiDAO.intances.getAll(pathJSP);
-		for(DotKhuyenMaiOutputRowBean dotKhuyenMaiOutputRowBean : lst) {
-			if(SMSComons.getDate().compareTo(dotKhuyenMaiOutputRowBean.getNgayKT()) < 0 ){
-				checkExistOfMonth = true;
+		boolean valid = true;
+		if ("00".equals(form.getLoaiKM().trim())) {
+			if ("0".equals(form.getMucKM().trim())){
+				form.setMessageErr("Trường hợp chọn giá KM có sẵn thì mức giảm giá phải là số lớn hơn 0.");
+				valid = false;
+			}else{
+				if("01".equals(form.getDonViKM().trim())){
+					form.setMessageErr("Trường hợp chọn giá KM có sẵn thì đơn vị giảm giá phải là 'VNĐ' .");
+					valid = false;
+				}
+			}
+			
+		}else{
+			if ("0".equals(form.getMucKM().trim()) || Integer.parseInt(form.getMucKM().trim()) > 100) {
+				form.setMessageErr("Trường hợp chọn KM theo phần trăm hóa đơn thì mức giảm giá phải là số từ 0 đến 100.");
+				valid = false;
+			}else{
+				if("00".equals(form.getDonViKM().trim())){
+					form.setMessageErr("Trường hợp chọn KM theo phần trăm hóa đơn thì đơn vị giảm giá phải là '% Hóa Đơn' .");
+					valid = false;
+				}
 			}
 		}
 		
-		if(checkExistOfMonth){
-			form.setMessageErr("Trong một khoảng thời gian chỉ có thể tồn tại một đợt khuyến mãi.");
-			form.setMessage("");
-		}else {
+		String ngayBD = SMSComons.formatDateInput(form.getNgayBD());
+		String ngayKT = SMSComons.formatDateInput(form.getNgayKT());
 		
-			//input
-			DotKhuyenMaiInputBean inputBean = new DotKhuyenMaiInputBean();
-			inputBean.setPathJSP(pathJSP);
-			inputBean.setMaDKM("");
-			inputBean.setTenDKM(form.getTenDKM());
-			inputBean.setLoaiKM(form.getLoaiKM());
-			inputBean.setNgayBD(SMSComons.formatDateInput(form.getNgayBD()));
-			inputBean.setNgayKT(SMSComons.formatDateInput(form.getNgayKT()));
-			inputBean.setMucKM(form.getMaDKM());
-			inputBean.setDonViKM(form.getDonViKM());
-			inputBean.setMoTa(form.getMoTa());
-			inputBean.setDk_loaiThe(form.getDk_loaiThe());
-			inputBean.setDk_tongHD(form.getDk_tongHD());
-			inputBean.setDk_tongSL(form.getDk_tongSL());
-			inputBean.setDk_tongSL(form.getDk_tongSL());
-			
-			//insert
-			int cnt = DotKhuyenMaiDAO.intances.insert(inputBean);
-			
-			if(cnt == 1){
-				form.setMessage("Xử lý đăng kí thành công.");
-				form.setMessageErr("");
-			}else {
-				form.setMessageErr("Xử lý đăng kí không thành công.");
-				form.setMessage("");
-			}
+		System.out.println("loaiKM : " + form.getLoaiKM());
+		System.out.println("mucKM : " + form.getMucKM());
+		System.out.println("donviKM : " + form.getDonViKM());
+		System.out.println("SMSComons.getDate() : " + SMSComons.getDate());
+		System.out.println("form.getNgayBD() : " + ngayBD);
+		System.out.println("form.getNgayKT() : " + ngayKT);
+		
+		
+		if(SMSComons.compareDate(ngayBD,SMSComons.getDate()) < 0){
+			form.setMessageErr("Hãy chọn ngày bắt đầu KM từ hôm nay trở đi.");
+			form.setMessage("");
+			valid = false;
+		}
+		if(SMSComons.compareDate(ngayBD,ngayKT) > 0){
+			form.setMessageErr("Hãy chọn ngày bắt đầu KM nhỏ hơn ngày kết thúc KM.");
+			form.setMessage("");
+			valid = false;
+		}
+		
+		if(!valid){
+				// trong 1 thoi gian chi co the ton tai mot dot khuyen mai
+				boolean checkExistOfMonth= false;
+				List<DotKhuyenMaiOutputRowBean> lst = DotKhuyenMaiDAO.intances.getAll(pathJSP);
+				for(DotKhuyenMaiOutputRowBean dotKhuyenMaiOutputRowBean : lst) {
+					System.out.println("dotKhuyenMaiOutputRowBean.getMaDKM(): "+ dotKhuyenMaiOutputRowBean.getMaDKM());
+					System.out.println("form.getMaDKM(): "+ form.getMaDKM());
+					if(dotKhuyenMaiOutputRowBean.getMaDKM().equals(form.getMaDKM())) continue;
+					if(SMSComons.compareDate(ngayBD,dotKhuyenMaiOutputRowBean.getNgayBD().trim()) == 0  && 
+							SMSComons.compareDate(ngayKT,dotKhuyenMaiOutputRowBean.getNgayKT().trim()) == 0){
+						checkExistOfMonth = true;
+					}
+					if(SMSComons.compareDate(ngayBD,dotKhuyenMaiOutputRowBean.getNgayBD().trim()) > 0  && 
+							SMSComons.compareDate(ngayKT,dotKhuyenMaiOutputRowBean.getNgayKT().trim()) < 0){
+						checkExistOfMonth = true;
+					}
+					if(SMSComons.compareDate(ngayBD,dotKhuyenMaiOutputRowBean.getNgayBD().trim()) < 0  && 
+							SMSComons.compareDate(ngayKT,dotKhuyenMaiOutputRowBean.getNgayKT().trim()) < 0){
+						checkExistOfMonth = true;
+					}
+					if(SMSComons.compareDate(ngayBD,dotKhuyenMaiOutputRowBean.getNgayBD().trim()) > 0  && 
+							SMSComons.compareDate(ngayKT,dotKhuyenMaiOutputRowBean.getNgayKT().trim()) > 0){
+						checkExistOfMonth = true;
+					}
+					if(SMSComons.compareDate(ngayBD,dotKhuyenMaiOutputRowBean.getNgayBD().trim()) < 0  && 
+							SMSComons.compareDate(ngayKT,dotKhuyenMaiOutputRowBean.getNgayKT().trim()) > 0){
+						checkExistOfMonth = true;
+					}
+				}
+				
+				if(checkExistOfMonth){
+					form.setMessageErr("Trong một khoảng thời gian chỉ có thể tồn tại 1 đợt khuyến mãi.Hãy chọn ngày khác.");
+					form.setMessage("");
+				}else {
+					//input
+					DotKhuyenMaiInputBean inputBean = new DotKhuyenMaiInputBean();
+					inputBean.setPathJSP(pathJSP);
+					inputBean.setMaDKM("");
+					inputBean.setTenDKM(form.getTenDKM());
+					inputBean.setLoaiKM(form.getLoaiKM());
+					inputBean.setNgayBD(ngayBD);
+					inputBean.setNgayKT(ngayKT);
+					inputBean.setMucKM(form.getMaDKM());
+					inputBean.setDonViKM(form.getDonViKM());
+					inputBean.setMoTa(form.getMoTa());
+					inputBean.setDk_loaiThe(form.getDk_loaiThe());
+					inputBean.setDk_tongHD(form.getDk_tongHD());
+					inputBean.setDk_tongSL(form.getDk_tongSL());
+					inputBean.setDk_tongSL(form.getDk_tongSL());
+					
+					//insert
+					int cnt = DotKhuyenMaiDAO.intances.insert(inputBean);
+					
+					if(cnt == 1){
+						form.setMessage("Xử lý đăng kí thành công.");
+						form.setMessageErr("");
+					}else {
+						form.setMessageErr("Xử lý đăng kí không thành công.");
+						form.setMessage("");
+					}
+				}
 		}
 		//init data
 		initData(form, pathJSP);
@@ -234,32 +289,115 @@ public class dotKhuyenMaiController {
 			// quay ve trang login
 			return "redirect:/";
 		}
-		//input
-		DotKhuyenMaiInputBean inputBean = new DotKhuyenMaiInputBean();
-		inputBean.setPathJSP(pathJSP);
-		inputBean.setMaDKM(form.getMaDKM());
-		inputBean.setTenDKM(form.getTenDKM());
-		inputBean.setLoaiKM(form.getLoaiKM());
-		inputBean.setNgayBD(SMSComons.formatDateInput(form.getNgayBD()));
-		inputBean.setNgayKT(SMSComons.formatDateInput(form.getNgayKT()));
-		inputBean.setMucKM(form.getMaDKM());
-		inputBean.setDonViKM(form.getDonViKM());
-		inputBean.setMoTa(form.getMoTa());
-		inputBean.setDk_loaiThe(form.getDk_loaiThe());
-		inputBean.setDk_tongHD(form.getDk_tongHD());
-		inputBean.setDk_tongSL(form.getDk_tongSL());
 		
-		//insert
-		int cnt = DotKhuyenMaiDAO.intances.update(inputBean);
+		boolean valid = true;
+		if ("00".equals(form.getLoaiKM().trim())) {
+			if ("0".equals(form.getMucKM().trim())){
+				form.setMessageErr("Trường hợp chọn giá KM có sẵn thì mức giảm giá phải là số lớn hơn 0.");
+				valid = false;
+			}else{
+				if("01".equals(form.getDonViKM().trim())){
+					form.setMessageErr("Trường hợp chọn giá KM có sẵn thì đơn vị giảm giá phải là 'VNĐ' .");
+					valid = false;
+				}
+			}
+			
+		}else{
+			if ("0".equals(form.getMucKM().trim()) || Integer.parseInt(form.getMucKM().trim()) > 100) {
+				form.setMessageErr("Trường hợp chọn KM theo phần trăm hóa đơn thì mức giảm giá phải là số từ 0 đến 100.");
+				valid = false;
+			}else{
+				if("00".equals(form.getDonViKM().trim())){
+					form.setMessageErr("Trường hợp chọn KM theo phần trăm hóa đơn thì đơn vị giảm giá phải là '% Hóa Đơn' .");
+					valid = false;
+				}
+			}
+		}
 		
-		if(cnt == 1){
-			form.setMessage("Xử lý đăng kí thành công.");
-			form.setMessageErr("");
-			//Flag update
-			form.setFlagUpdate("0");
-		}else {
-			form.setMessageErr("Xử lý đăng kí không thành công.");
+		String ngayBD = SMSComons.formatDateInput(form.getNgayBD());
+		String ngayKT = SMSComons.formatDateInput(form.getNgayKT());
+		
+		System.out.println("loaiKM : " + form.getLoaiKM());
+		System.out.println("mucKM : " + form.getMucKM());
+		System.out.println("donviKM : " + form.getDonViKM());
+		System.out.println("SMSComons.getDate() : " + SMSComons.getDate());
+		System.out.println("form.getNgayBD() : " + ngayBD);
+		System.out.println("form.getNgayKT() : " + ngayKT);
+		
+		
+		if(SMSComons.compareDate(ngayBD,SMSComons.getDate()) < 0){
+			form.setMessageErr("Hãy chọn ngày bắt đầu KM từ hôm nay trở đi.");
 			form.setMessage("");
+			valid = false;
+		}
+		if(SMSComons.compareDate(ngayBD,ngayKT) > 0){
+			form.setMessageErr("Hãy chọn ngày bắt đầu KM nhỏ hơn ngày kết thúc KM.");
+			form.setMessage("");
+			valid = false;
+		}
+		
+		if(!valid){
+				// trong 1 thoi gian chi co the ton tai mot dot khuyen mai
+				boolean checkExistOfMonth= false;
+				List<DotKhuyenMaiOutputRowBean> lst = DotKhuyenMaiDAO.intances.getAll(pathJSP);
+				for(DotKhuyenMaiOutputRowBean dotKhuyenMaiOutputRowBean : lst) {
+					System.out.println("dotKhuyenMaiOutputRowBean.getMaDKM(): "+ dotKhuyenMaiOutputRowBean.getMaDKM());
+					System.out.println("form.getMaDKM(): "+ form.getMaDKM());
+					if(dotKhuyenMaiOutputRowBean.getMaDKM().equals(form.getMaDKM())) continue;
+					if(SMSComons.compareDate(ngayBD,dotKhuyenMaiOutputRowBean.getNgayBD().trim()) == 0  && 
+							SMSComons.compareDate(ngayKT,dotKhuyenMaiOutputRowBean.getNgayKT().trim()) == 0){
+						checkExistOfMonth = true;
+					}
+					if(SMSComons.compareDate(ngayBD,dotKhuyenMaiOutputRowBean.getNgayBD().trim()) > 0  && 
+							SMSComons.compareDate(ngayKT,dotKhuyenMaiOutputRowBean.getNgayKT().trim()) < 0){
+						checkExistOfMonth = true;
+					}
+					if(SMSComons.compareDate(ngayBD,dotKhuyenMaiOutputRowBean.getNgayBD().trim()) < 0  && 
+							SMSComons.compareDate(ngayKT,dotKhuyenMaiOutputRowBean.getNgayKT().trim()) < 0){
+						checkExistOfMonth = true;
+					}
+					if(SMSComons.compareDate(ngayBD,dotKhuyenMaiOutputRowBean.getNgayBD().trim()) > 0  && 
+							SMSComons.compareDate(ngayKT,dotKhuyenMaiOutputRowBean.getNgayKT().trim()) > 0){
+						checkExistOfMonth = true;
+					}
+					if(SMSComons.compareDate(ngayBD,dotKhuyenMaiOutputRowBean.getNgayBD().trim()) < 0  && 
+							SMSComons.compareDate(ngayKT,dotKhuyenMaiOutputRowBean.getNgayKT().trim()) > 0){
+						checkExistOfMonth = true;
+					}
+				}
+			
+				if(checkExistOfMonth){
+					form.setMessageErr("Trong một khoảng thời gian chỉ có thể tồn tại 1 đợt khuyến mãi.Hãy chọn ngày khác.");
+					form.setMessage("");
+				}else {
+				//input
+				DotKhuyenMaiInputBean inputBean = new DotKhuyenMaiInputBean();
+				inputBean.setPathJSP(pathJSP);
+				inputBean.setMaDKM(form.getMaDKM());
+				inputBean.setTenDKM(form.getTenDKM());
+				inputBean.setLoaiKM(form.getLoaiKM());
+				inputBean.setNgayBD(ngayBD);
+				inputBean.setNgayKT(ngayKT);
+				inputBean.setMucKM(form.getMaDKM());
+				inputBean.setDonViKM(form.getDonViKM());
+				inputBean.setMoTa(form.getMoTa());
+				inputBean.setDk_loaiThe(form.getDk_loaiThe());
+				inputBean.setDk_tongHD(form.getDk_tongHD());
+				inputBean.setDk_tongSL(form.getDk_tongSL());
+				
+				//insert
+				int cnt = DotKhuyenMaiDAO.intances.update(inputBean);
+				
+				if(cnt == 1){
+					form.setMessage("Xử lý đăng kí thành công.");
+					form.setMessageErr("");
+					//Flag update
+					form.setFlagUpdate("0");
+				}else {
+					form.setMessageErr("Xử lý đăng kí không thành công.");
+					form.setMessage("");
+				}
+			}
 		}
 		//init data
 		initData(form, pathJSP);
@@ -267,7 +405,7 @@ public class dotKhuyenMaiController {
 		session.setAttribute("PAGEIDSTORE", DOTKHUYENMAI);
 		return  SystemCommon.ADMIN_STORE;
 	}
-	
+
 	/**
 	 * 
 	 * @param form

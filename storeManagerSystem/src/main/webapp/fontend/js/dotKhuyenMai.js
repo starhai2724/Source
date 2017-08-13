@@ -70,9 +70,9 @@ app.factory('Excel',function($window){
 	
 	$scope.btnCreate = function() {
 		if($scope.flagUpdate == 1){
-			update($scope)
+			update($scope,$window)
 		}else{
-			create($scope);
+			create($scope,$window);
 		}
 	}
 	
@@ -95,17 +95,12 @@ app.factory('Excel',function($window){
 });
 //export Excel (S)	
 
-function create($scope) {
+function create($scope, $window) {
 	
 	var valid = true;
 	var reg = new RegExp('^[0-9]+$');
 	if ($scope.tenDKM == "") {
 		$scope.tenDKM_err = "Hãy nhập tên đợt khuyến mãi."
-		valid = false;
-	}
-	
-	if ($scope.loaiKM == "" || $scope.loaiKM == "00") {
-		$scope.loaiKM_err = "Hãy chọn loại KM."
 		valid = false;
 	}
 	
@@ -125,22 +120,20 @@ function create($scope) {
 		valid = false;
 	}
 	
-	if ($scope.mucKM == "" && $scope.donViKM != "00") {
+	if ($scope.loaiKM == "") {
+		$scope.loaiKM_err = "Hãy chọn loại KM."
+		valid = false;
+	}
+	
+	if ($scope.mucKM == "") {
 		$scope.mucKM_err = "Hãy nhập mức giảm giá."
 		valid = false;
-	}else if($scope.mucKM != "" && $scope.donViKM == "00") {
-		$scope.mucKM_err = "Hãy nhập đơn vị khuyến mãi."
-			valid = false;
-	}else if($scope.mucKM == "" && $scope.moTa == ""){
-			$scope.mucKM_err = "Hãy nhập mức giảm giá hoặc chi tiết giảm giá."
-			valid = false;
 	}
 	
-	if($scope.mucKM != "" && !reg.test($scope.mucKM)){
-		$scope.mucKM_err = "Mức giảm giá phải là số."
+	if($scope.lst_donViKM == "" ){
+		$scope.mucKM_err = "Hãy chọn đơn vị Khuyến mãi"
 		valid = false;
 	}
-	
 	
 	if (true == valid) {
 		if(confirm("Bạn có muốn đăng ký?")){
@@ -151,37 +144,14 @@ function create($scope) {
 	}
 }
 
-function update($scope) {
+function update($scope, $window) {
+	
 	var valid = true;
 	var reg = new RegExp('^[0-9]+$');
 	if ($scope.tenDKM == "") {
 		$scope.tenDKM_err = "Hãy nhập tên đợt khuyến mãi."
 		valid = false;
 	}
-
-	if ($scope.mucKM == "" && $scope.donViKM != "00") {
-		$scope.mucKM_err = "Hãy nhập mức giảm giá."
-		valid = false;
-	}else if($scope.mucKM != "" && $scope.donViKM == "00") {
-		$scope.mucKM_err = "Hãy nhập đơn vị khuyến mãi."
-			valid = false;
-	}else{
-		if($scope.mucKM == "" && $scope.moTa == ""){
-			$scope.mucKM_err = "Hãy nhập mức giảm giá hoặc chi tiết giảm giá."
-			valid = false;
-		}
-	}
-	
-	if($scope.mucKM != "" && !reg.test($scope.mucKM)){
-		$scope.mucKM_err = "Mức giảm giá phải là số."
-		valid = false;
-	}
-	
-	if ($scope.loaiKM == "" || $scope.loaiKM == "00") {
-		$scope.loaiKM_err = "Hãy chọn loại KM."
-		valid = false;
-	}
-	
 	
 	if ($scope.ngayKT == "") {
 		$scope.ngayKT_err = "Hãy nhập ngày kết thúc khuyến mãi."
@@ -196,6 +166,21 @@ function update($scope) {
 		valid = false;
 	}else if(!reg.test($scope.mucKM)){
 		$scope.ngayBD_err =  "Hãy nhập ngày bắt đầu khuyến mãi."
+		valid = false;
+	}
+	
+	if ($scope.loaiKM == "") {
+		$scope.loaiKM_err = "Hãy chọn loại KM."
+		valid = false;
+	}
+	
+	if ($scope.mucKM == "") {
+		$scope.mucKM_err = "Hãy nhập mức giảm giá."
+		valid = false;
+	}
+	
+	if($scope.lst_donViKM == "" ){
+		$scope.mucKM_err = "Hãy chọn đơn vị Khuyến mãi"
 		valid = false;
 	}
 

@@ -37,7 +37,7 @@
 			<div class="col-sm-3">
 				<div class="form-group">
 					<label>Tên đợt KM</label> 
-					<form:input placeholder="Tên đợt KM"  class="form-control" type="text" path="tenDKM"  name="tenDKM" ng-model = "tenDKM"  ng-init ="tenDKM = '${DotKhuyenMaiForm.tenDKM}'" />
+					<form:input maxlength="30" placeholder="Tên đợt KM"  class="form-control" type="text" path="tenDKM"  name="tenDKM" ng-model = "tenDKM"  ng-init ="tenDKM = '${DotKhuyenMaiForm.tenDKM}'" />
 					<form:input class="form-control" type="hidden" path="maDKM"  name="maDKM" />
 					<p style="color: red;">{{tenDKM_err}}</p>
 				</div>
@@ -81,9 +81,9 @@
 			</div>
 			<div class="col-sm-3">
 				<div class="form-group">
-					<label>Tổng số lượng sản phẩm</label> 
-					<form:input maxlength="5" placeholder="Tổng số lượng sản phẩm"  class="form-control" type="text" path="dk_tongSL"  name="dk_tongSL" ng-model = "dk_tongSL"  ng-init ="dk_tongSL = '${DotKhuyenMaiForm.dk_tongSL}'" />
-					<p style="color: red;">{{dk_tongSL_err}}</p>
+					<label>Tổng hóa đơn</label> 
+						 <form:input  maxlength="10"  placeholder="Tổng hóa đơn"  class="form-control" type="text" path="dk_tongHD"  name="dk_tongHD" ng-model = "dk_tongHD"  ng-init ="dk_tongHD = '${DotKhuyenMaiForm.dk_tongHD}'" />	
+						<p style="color: red;">{{dk_tongHD_err}}</p>
 				</div>
 			</div>
 		</div>
@@ -95,24 +95,10 @@
 <!-- 						<p style="color: red;">{{ngayKT_err}}</p> -->
 				</div>
 			</div>
-			<div class="col-sm-3">
-				<div class="form-group">
-					<label>Mô tả chi tiết</label> 
-						<form:textarea  class="form-control"  rows="1"	 path="moTa"  name="moTa" ng-model ="moTa" ng-init="moTa='${DotKhuyenMaiForm.moTa}'"  />
-						<p style="color: red;">{{moTa_err}}</p>
-				</div>
-			</div>
-			<div class="col-sm-3">
-				<div class="form-group">
-					<label>Tổng hóa đơn</label> 
-						 <form:input  maxlength="10"  placeholder="Tổng hóa đơn"  class="form-control" type="text" path="dk_tongHD"  name="dk_tongHD" ng-model = "dk_tongHD"  ng-init ="dk_tongHD = '${DotKhuyenMaiForm.dk_tongHD}'" />	
-						<p style="color: red;">{{dk_tongHD_err}}</p>
-				</div>
-			</div>
 		</div>
 		<!--Message (S)-->
 		<div class="row">
-			<div class="col-sm-3">
+			<div class="col-sm-8">
 				<div class="form-group">
 					<p style="color: blue; font-weight: bold;">${DotKhuyenMaiForm.message }</p>
 					<p style="color: red; font-weight: bold;">${DotKhuyenMaiForm.messageErr }</p>
@@ -143,7 +129,6 @@
 										<th style="padding-left: 5px;padding-right: 4px;width: 130px;">Mức giảm giá</th>
 										<th style="padding-left: 5px;padding-right: 4px;width: 120px;">ĐK_Loại thẻ</th>
 										<th style="padding-left: 5px;padding-right: 4px;width: 100px;">ĐK_Tổng HĐ</th>
-										<th style="padding-left: 5px;padding-right: 4px;width: 80px;">ĐK_SLSP</th>
 										<th style="padding-left: 17px;padding-right: 2px;width: 140px;">Thao tác</th>
                                     </tr>
                                 </thead>
@@ -159,7 +144,6 @@
 		                                       	 <td>${items.mucGiamGia}</td>
 		                                        <td style="padding-left: 5px;padding-right: 4px;width: 120px;">${items.dk_loaiThe}</td>
 		                                        <td style="width: 100px;">${items.dk_tongHD}</td>
-		                                        <td class="center" style="text-align: center;width: 80px;">${items.dk_tongSL}</td>
 		                                        <td class="center" style="text-align: center;width: 140px;">
 		                                        		<button class="btn" type="button" ng-click="btnGetById('${items.maDKM}');">
 															<span class="glyphicon glyphicon-pencil" data-toggle="tooltip" data-original-title="Sửa"></span>
