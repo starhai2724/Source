@@ -29,10 +29,10 @@
 								</div>
 								<div class="form-group">
 <%-- 									<form:input class="form-control" type="text" path ="sdt" placeholder="Số điện thoại"  ng-model="sdt" ng-init ="sdt='${KhachHangDangNhapForm.sdt}'" autofocus/> --%>
-									<form:input type="text" class="form-control" path="sdt" placeholder="Số điện thoại" ng-model="sdt" ng-init="sdt='${KhachHangDangNhapForm.sdt}'"  />
+									<form:input maxlength="12" type="text" class="form-control" path="sdt" placeholder="Số điện thoại" ng-model="sdt" ng-init="sdt='${KhachHangDangNhapForm.sdt}'"  />
 								</div>
 								<div class="form-group">
-									<form:input type="password" class="form-control" path="matKhau" placeholder="Mật khẩu" ng-model="matKhau" ng-init="matKhau='${KhachHangDangNhapForm.matKhau}'" />
+									<form:input maxlength="15" type="password" class="form-control" path="matKhau" placeholder="Mật khẩu" ng-model="matKhau" ng-init="matKhau='${KhachHangDangNhapForm.matKhau}'" />
 								</div>
 								<div class ="form-group">
 									<a href ="#">Quên mật khẩu</a>

@@ -11,7 +11,7 @@
                 <p style="color: red; font-weight: bold;">${QuenMatKhauForm.messageErr }</p>
                 <p style="color: red; font-weight: bold;">${QuenMatKhauForm.message }</p>
                 <div class="form-group has-feedback">
-                    <form:input type="text" class="form-control" placeholder="Email" path="email"  ng-model="email" ng-init="email='${QuenMatKhauForm.email}'" pattern="^[a-zA-Z0-9_-]{3,60}$" ng-minlength="3" ng-maxlength="50"/>
+                    <form:input type="text" maxlength="50" class="form-control" placeholder="Email" path="email"  ng-model="email" ng-init="email='${QuenMatKhauForm.email}'" pattern="^[a-zA-Z0-9_-]{3,60}$" ng-minlength="3" ng-maxlength="50"/>
                     <span class="form-control-feedback color7" aria-hidden="true">*</span>
                     <p style="color: red;">{{email_err}}</p>
                 </div>

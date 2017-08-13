@@ -23,13 +23,13 @@
 					<label>Họ tên</label>
 						<form:input class="form-control" disabled="true" type="text" path="tenKH" />
 					<!--set so id khi chinh sua  -->
-					<form:input class="form-control" type="hidden" path="idLienHe"   />
+					<form:input maxlength="30" class="form-control" type="hidden" path="idLienHe"   />
 				</div>
 			</div>
 			<div class="col-sm-4">
 				<div class="form-group">
 					<label>Địa chỉ</label> 
-					<form:input class="form-control" disabled="true" type="text" path="diaChi" />
+					<form:input maxlength="50" class="form-control" disabled="true" type="text" path="diaChi" />
 				</div>
 			</div>
 		</div>
@@ -37,13 +37,13 @@
 			<div class="col-sm-4">
 				<div class="form-group">
 					<label>Email</label>
-						<form:input class="form-control" disabled="true" type="text" path="email" />
+						<form:input maxlength="20" class="form-control" disabled="true" type="text" path="email" />
 				</div>
 			</div>
 			<div class="col-sm-4">
 				<div class="form-group">
 					<label>Điện thoại</label> 
-					<form:input class="form-control" disabled="true" type="text" path="sdt" />
+					<form:input maxlength="12" class="form-control" disabled="true" type="text" path="sdt" />
 				</div>
 			</div>
 		</div>
@@ -51,7 +51,7 @@
 			<div class="col-sm-4">
 				<div class="form-group">
 					<label>Tiêu đề</label>
-						<form:input class="form-control" disabled="true" type="text" path="tieuDe" />
+						<form:input maxlength="30" class="form-control" disabled="true" type="text" path="tieuDe" />
 				</div>
 			</div>
 		</div>

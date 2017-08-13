@@ -30,7 +30,7 @@
 			<div class="col-sm-4">
 				<div class="form-group">
 					<label>Tên nhóm sản phẩm</label> 
-					<form:input class="form-control" type="text" path="nameProductCategory"  ng-model = "nameProductCategory"  ng-init ="nameProductCategory = '${RegisterProductCategory.nameProductCategory}'" />
+					<form:input maxlength="30" class="form-control" type="text" path="nameProductCategory"  ng-model = "nameProductCategory"  ng-init ="nameProductCategory = '${RegisterProductCategory.nameProductCategory}'" />
 					<form:input class="form-control" type="hidden" path="idProductCategory"  />
 					<p style="color: red;">{{nameProductCategory_err}}</p>
 				</div>
@@ -40,7 +40,7 @@
 				<div class="col-sm-4" style="margin-left: 550px;margin-top: -70px">
 					<div class="form-group" >
 						<label>Tên loại sản phẩm</label> 
-						<form:input class="form-control" type="text" path="tenLoaiSP"  ng-model = "tenLoaiSP"  ng-init ="tenLoaiSP = '${RegisterProductCategory.tenLoaiSP}'" />
+						<form:input maxlength="50" class="form-control" type="text" path="tenLoaiSP"  ng-model = "tenLoaiSP"  ng-init ="tenLoaiSP = '${RegisterProductCategory.tenLoaiSP}'" />
 						<form:input class="form-control" type="hidden" path="idLoaiSP"  />
 						<p style="color: red;">{{nameProductCategory_err}}</p>
 					</div>

@@ -29,14 +29,14 @@
 			<div class="col-sm-6">
 				<div class="form-group">
 					<label>Tên cửa hàng</label> 
-					<form:input class="form-control" type="text" path="storeName" placeholder="Họ tên" ng-model = "storeName"  ng-init ="storeName = '${registerStoreInfomation.storeName}'" />
+					<form:input maxlength="20" class="form-control" type="text" path="storeName" placeholder="Họ tên" ng-model = "storeName"  ng-init ="storeName = '${registerStoreInfomation.storeName}'" />
 					<p style="color: red;">{{storeName_err}}</p>
 				</div>
 			</div>
 			<div class="col-sm-6">
 				<div class="form-group">
 					<label>Địa chỉ gian hàng</label> 
-					<form:input class="form-control" type="text" path="domain" placeholder="Địa chỉ gian hàng" ng-model ="domain" ng-init="domain='${registerStoreInfomation.domain }'"  />
+					<form:input maxlength="30" class="form-control" type="text" path="domain" placeholder="Địa chỉ gian hàng" ng-model ="domain" ng-init="domain='${registerStoreInfomation.domain }'"  />
 					<p style="color: red;">{{domain_err}}</p>
 				</div>
 			</div>
@@ -45,14 +45,14 @@
 			<div class="col-sm-6">
 				<div class="form-group">
 					<label>Số điện thoại</label> 
-					<form:input class="form-control" type="text" path="telephone" placeholder="Số điện thoại" name="telephone" ng-model ="telephone" ng-init="telephone='${registerStoreInfomation.telephone }'"  />
+					<form:input maxlength="12" class="form-control" type="text" path="telephone" placeholder="Số điện thoại" name="telephone" ng-model ="telephone" ng-init="telephone='${registerStoreInfomation.telephone }'"  />
 					<p style="color: red;">{{telephone_err}}</p>
 				</div>
 			</div>
 			<div class="col-sm-6">
 				<div class="form-group">
 					<label>Địa chỉ email</label> 
-					<form:input class="form-control" type="text" path="email" placeholder="Địa chỉ email" ng-model ="email" ng-init="email='${registerStoreInfomation.email }'" ng-disabled="mySwitch" />
+					<form:input maxlength="30" class="form-control" type="text" path="email" placeholder="Địa chỉ email" ng-model ="email" ng-init="email='${registerStoreInfomation.email }'" ng-disabled="mySwitch" />
 					<p style="color: red;">{{email_err}}</p>
 				</div>
 			</div>
@@ -76,7 +76,7 @@
 			<div class="col-sm-6">
 				<div class="form-group">
 					<label>Địa chỉ cửa hàng</label> 
-					<form:input class="form-control" type="text" path="address" placeholder="Địa chỉ cửa hàng" ng-model ="address" ng-init="address='${registerStoreInfomation.address }'" ng-disabled="mySwitch" />
+					<form:input maxlength="50" class="form-control" type="text" path="address" placeholder="Địa chỉ cửa hàng" ng-model ="address" ng-init="address='${registerStoreInfomation.address }'" ng-disabled="mySwitch" />
 					<p style="color: red;">{{address_err}}</p>
 				</div>
 			</div>

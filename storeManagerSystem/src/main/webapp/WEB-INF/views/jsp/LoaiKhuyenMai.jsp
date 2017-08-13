@@ -26,7 +26,7 @@
 			<div class="col-sm-4">
 				<div class="form-group">
 					<label>Tên loại KM</label> 
-					<form:input class="form-control" type="text" path="username" placeholder="Tên đăng nhập" name="username" ng-model ="username" ng-init="username='${storeOwnerListForm.username }'" />
+					<form:input maxlength="30" class="form-control" type="text" path="username" placeholder="Tên đăng nhập" name="username" ng-model ="username" ng-init="username='${storeOwnerListForm.username }'" />
 				</div>
 			</div>
 		</div>
