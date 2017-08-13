@@ -77,7 +77,7 @@ app.factory('Excel',function($window){
 	       var exportHref=Excel.tableToExcel(tableId,'WireWorkbenchDataExport');
 	       $timeout(function(){location.href=exportHref;},100); // trigger download
 	   }
-	 $scope.giaNhap_err ="";
+	 	$scope.giaNhap_err ="";
 		$scope.diaChi_err =""; 
 		$scope.listCheckBox = "";
 		$scope.checkboxModel = {
@@ -85,8 +85,8 @@ app.factory('Excel',function($window){
 			       value2 : false
 			     };
 		
-		$scope.btnGetById = function(id){
-			getById($scope,$window, id);
+		$scope.btnGetById = function(id, status){
+			getById($scope,$window, id, status);
 		}
 		// sd cho he thong quan ly dat hang (S)
 		$scope.btnGetByIdQLDT = function(id){
@@ -131,8 +131,8 @@ app.factory('Excel',function($window){
 });
 //export Excel (S)	
 
-function getById($scope, $window, id){
-	var url = "/storeManagerSystem/datHang/getById/"+id;
+function getById($scope, $window, id, status){
+	var url = "/storeManagerSystem/datHang/getById/"+id+"/"+status;
 	document.getElementById("DatHangForm").action = url;
 	document.getElementById("DatHangForm").method = "POST";
 	document.getElementById("DatHangForm").submit();

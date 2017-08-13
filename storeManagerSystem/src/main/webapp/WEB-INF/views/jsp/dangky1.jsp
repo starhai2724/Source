@@ -24,6 +24,7 @@
         <form:form  class="step-block-box clearfix" id="DangKiWebForm"  modelAttribute="DangKiWebForm"  method="get"> 
             <div class="col-sm-8 col-xs-13 col-sm-offset-2 step-block1 ">
                 <h2>Bước 1: Điền thông tin website</h2>
+                <p style="color: red; font-weight: bold;">${DangKiWebForm.messageErr }</p>
                 <div class="form-group has-feedback">
                     <form:input type="text" class="form-control" placeholder="Tên Website" path="tenWebSite"  ng-model="tenWebSite" name="tenWebSite" ng-init="tenWebSite='${DangKiWebForm.tenWebSite}'" pattern="^[a-zA-Z0-9_-]{3,60}$" ng-minlength="3" ng-maxlength="50"/>
                     <span class="form-control-feedback color7" aria-hidden="true">*</span>

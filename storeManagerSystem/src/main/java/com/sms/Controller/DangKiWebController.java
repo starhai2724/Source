@@ -17,8 +17,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.sms.common.MD5HashingExample;
 import com.sms.common.SMSComons;
-import com.sms.common.SystemCommon;
-import com.sms.common.SystemURL;
 import com.sms.dao.ChiTietHoaDonDAO;
 import com.sms.dao.CreateTableProductDAO;
 import com.sms.dao.DangKiWebDAO;
@@ -26,6 +24,7 @@ import com.sms.dao.DotKhuyenMaiDAO;
 import com.sms.dao.HoaDonDAO;
 import com.sms.dao.KhachHangDAO;
 import com.sms.dao.KhoHangDAO;
+import com.sms.dao.LienHeDAO;
 import com.sms.dao.LoaiKinhDoanhDAO;
 import com.sms.dao.LoaiTheDAO;
 import com.sms.dao.NhomSanPhamDAO;
@@ -57,6 +56,8 @@ public class DangKiWebController {
 	 */
 	@RequestMapping(value="/buoc1")
 	public String step1(@ModelAttribute("DangKiWebForm") DangKiWebForm form, HttpSession session){
+		form.setMessage("");
+		form.setMessageErr("");
 		session.setAttribute(PAGECENTER, PAGE_STEP1);
 		return PAGE;
 	}
@@ -184,14 +185,14 @@ public class DangKiWebController {
 		
 		cnt = KhoHangDAO.intances.createTable(inputBean.getPathJSP());
 		
+		cnt = LienHeDAO.intances.createTable(inputBean.getPathJSP());
 		if(cnt == 0){
-			return SystemCommon.PAGE_LOGIN;
+			return "redirect:/";
 		}else {
 			session.setAttribute(PAGECENTER, PAGE_STEP3);
 			form.setMessageErr("Xử lý đăng kí không thành công.");
 			form.setMessage("");
 		}
-		
 		return PAGE;
 	}
 	

@@ -715,7 +715,7 @@ public class KhoHangDAO {
 		StringBuffer sb = new StringBuffer();
 		String tableName = pathJSP+"_KHOHANG";
 		sb.append(" CREATE TABLE "+tableName+ " (        ");
-		sb.append("  ID_SP	    	INT (6)           ");
+		sb.append("  ID_SP	    	VARCHAR (12)           ");
 		sb.append(" ,SO_LUONG	    VARCHAR (12)         ");
 		sb.append(" 	)                                ");
 		return sb.toString();
@@ -1027,9 +1027,9 @@ public class KhoHangDAO {
 		String tableName = pathJSP+"_CHITIETDONHANG";
 		StringBuffer sb = new StringBuffer();
 		sb.append("  DELETE  ");
-		sb.append("  FROM "+tableName+"  CTDH ");
+		sb.append("  FROM "+tableName+"   ");
 		sb.append("  WHERE                                                                                 ");
-		sb.append("  	CTDH.ID_DONHANG = ?   ");
+		sb.append("  	ID_DONHANG = ?   ");
 		return sb.toString();
 	}
 	

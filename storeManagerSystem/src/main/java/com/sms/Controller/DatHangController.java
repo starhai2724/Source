@@ -54,6 +54,7 @@ public class DatHangController {
 		
 		//Flag update
 		form.setFlagUpdate("0");
+		form.setFlagXacNhan("0");
 		
 		//reset message
 		form.setMessage("");
@@ -81,25 +82,24 @@ public class DatHangController {
 		
 		for(DatHangOutputRowBean outputRowBean : outputBean.getDatHangOutputRowBeans()){
 			if(outputRowBean.getIdDonHang().equals(id) && "1".equals(outputRowBean.getTrangThai()) ){
-				form.setMessageErr("Không thể xóa đơn hàng đã hoàn thành.");
+				form.setMessageErr("Không thể xóa đơn hàng đã xác nhận.");
 				session.setAttribute("PAGEIDSTORE", DAT_HANG);
 				return  SystemCommon.ADMIN_STORE;
 			}
 		}
 		
 		cnt = KhoHangDAO.intances.deleteByIdDonHang(pathJSP, id);
-		
 		cnt = KhoHangDAO.intances.deleteChiTietDonHangByIdDonHang(pathJSP, id);
 		
 		//init data
 		initData(form, pathJSP);
 		
-		if(cnt == 1){
-			form.setMessage("Xử lý đăng kí thành công.");
-			form.setMessageErr("");
-		}else {
-			form.setMessageErr("Xử lý đăng kí không thành công.");
+		if(cnt == 0){
+			form.setMessageErr("Xử lý xóa không thành công.");
 			form.setMessage("");
+		}else {
+			form.setMessage("Xử lý xóa thành công.");
+			form.setMessageErr("");
 		}
 		
 		session.setAttribute("PAGEIDSTORE", DAT_HANG);
@@ -131,6 +131,7 @@ public class DatHangController {
 				formRow.setThanhTien(outputRowBean.getThanhTien());
 				formRow.setNgayDatHang(SMSComons.formatDate(outputRowBean.getNgayDatHang()));
 				formRow.setNgayNhanHang(SMSComons.formatDate(outputRowBean.getNgayNhanHang()));
+				formRow.setIdTrangThai(outputRowBean.getTrangThai());
 				if("0".equals(outputRowBean.getTrangThai())  ){
 					formRow.setTrangThai("Đặt hàng");
 				}else if("1".equals(outputRowBean.getTrangThai())  ) {
@@ -151,6 +152,9 @@ public class DatHangController {
 			// quay ve trang login
 			return "redirect:/";
 		}
+		//reset message
+		form.setMessage("");
+		form.setMessageErr("");
 		
 		session.setAttribute("LINK", "/datHang/initPhanAnh");
 		session.setAttribute("PAGEIDSTORE", "/product/init");
@@ -239,7 +243,6 @@ public class DatHangController {
 					//Delete cac san pham dc chon
 					if(parts[i].trim().equals(lst.get(k).getSEQ())){
 						lst.remove(lst.get(k));
-						System.out.println("size: "+ lst.size());
 					}
 				}
 			}
@@ -326,8 +329,8 @@ public class DatHangController {
 		return  SystemCommon.ADMIN_STORE;
 	}
 	
-	@RequestMapping(value="/datHang/getById/{id}", method = RequestMethod.POST)
-	public String getProductById(@ModelAttribute("DatHangForm") DatHangForm form, HttpSession session, @PathVariable("id") String id){
+	@RequestMapping(value="/datHang/getById/{id}/{status}", method = RequestMethod.POST)
+	public String getProductById(@ModelAttribute("DatHangForm") DatHangForm form, HttpSession session, @PathVariable("id") String id, @PathVariable("status") String status){
 		//get domain
 		String pathJSP = (String)session.getAttribute("pathURL"); 
 		// check pathJSP
@@ -335,13 +338,17 @@ public class DatHangController {
 			// quay ve trang login
 			return "redirect:/";
 		}
+		// Disable item t/h dot hang da dc xac nhan (S)
+			form.setFlagXacNhan("0");
+		// Disable item t/h dot hang da dc xac nhan (E)
+		//reset message
+		form.setMessage("");
+		form.setMessageErr("");	
 		
 		List<ChiTietDatHangOutputBean> lst = KhoHangDAO.intances.getChiTietHDonHangByIdDonHang(pathJSP, id);
-		System.out.println("size: "+lst.size());
 		ChiTietDatHangRowForm chiTietDatHangRowForm;
 		form.getChiTietDatHangRowForms().clear();
 		for(ChiTietDatHangOutputBean outputRowBean : lst){
-			 System.out.println("id: "+outputRowBean.getIdSanPham());
 			 
 			 chiTietDatHangRowForm = new ChiTietDatHangRowForm();
 			 chiTietDatHangRowForm.setIdDatHang(outputRowBean.getIdDotHang());
@@ -357,6 +364,11 @@ public class DatHangController {
 			 form.getChiTietDatHangRowForms().add(chiTietDatHangRowForm);
 		}
 		
+		// Disable item t/h dot hang da dc xac nhan (S)
+		if("1".equals(status)){
+			form.setFlagXacNhan("1");
+		}
+		// Disable item t/h dot hang da dc xac nhan (E)
 		//Flag update
 		form.setFlagUpdate("1");
 		//init data
@@ -391,7 +403,7 @@ public class DatHangController {
 			chiTietDatHangInputBean.setThanhTien(Double.parseDouble(rowForm.getGiaNhap()) * Integer.parseInt(rowForm.getSoLuongNhap()) + "");
 			chiTietDatHangInputBean.setDiaChi(rowForm.getDiaChi());
 			chiTietDatHangInputBean.setGiaNhap(rowForm.getGiaNhap());
-			
+			System.out.println("rowForm.getGiaNhap(): "+rowForm.getGiaNhap());
 			soLuong = soLuong + Integer.parseInt(rowForm.getSoLuongNhap()); 
 			thanhTien = thanhTien + Double.parseDouble(rowForm.getGiaNhap()) * Integer.parseInt(rowForm.getSoLuongNhap()); 
 			inputBean.getChiTietDatHangInputBeans().add(chiTietDatHangInputBean);

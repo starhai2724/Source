@@ -285,6 +285,9 @@ public class ProductController {
 			// quay ve trang login
 			return "redirect:/";
 		}
+		//reset message
+		form.setMessage("");
+		form.setMessageErr("");
 		SanPhamInputBean input = new SanPhamInputBean();
 		input.setPathJSP(pathJSP);
 		input.setSEQ(SEQ);

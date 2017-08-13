@@ -78,6 +78,15 @@ app.controller('ctrl', function($scope, $window) {
 	}
 	
 	//Lien he (E)
+	
+	//Phan trang(S)
+	
+	$scope.btnPhanTrang = function(id){
+		phanTrang($scope, $window ,id);
+	}
+	
+	//Phan trang(E)
+	
 });
 
 
@@ -189,6 +198,13 @@ function timKiem($scope, $window, idSanPham){
 
 function gioiThieu($scope, $window, idSanPham){
 	var url = "/storeManagerSystem/" + $scope.pathJSP +"/gioiThieu";
+	document.getElementById("LayoutForm").action = url;
+	document.getElementById("LayoutForm").method = "POST";
+	document.getElementById("LayoutForm").submit();
+}
+
+function phanTrang($scope, $window, id){
+	var url = "/storeManagerSystem/" + $scope.pathJSP +"/phanTrang/"+id;
 	document.getElementById("LayoutForm").action = url;
 	document.getElementById("LayoutForm").method = "POST";
 	document.getElementById("LayoutForm").submit();

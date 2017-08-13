@@ -54,11 +54,11 @@ public class ClientLoginController {
 		ClientLoginImpl loginImpl = new ClientLoginImpl();
 		User response = loginImpl.checkLogin(req);
 		if(null != response && !StringUtils.isEmpty(response.getUsername())){
-			session.setAttribute(PAGE_ID, PAGE_INFO);
 			User userlocal = response;
 			// set session userlocal
 			session.setAttribute("userLocal", userlocal);
 			
+			System.out.println("role: "+userlocal.getRole());
 			//role User
 			if(SystemCommon.USER.equals(userlocal.getRole())){
 				session.setAttribute("pathURL", userlocal.getURLStore());
@@ -66,6 +66,7 @@ public class ClientLoginController {
 				
 			//role Root
 			}else if(SystemCommon.ROOT.equals(userlocal.getRole())){
+				System.out.println("abc");
 				return SystemCommon.PAGE_HOME;
 			}
 		}

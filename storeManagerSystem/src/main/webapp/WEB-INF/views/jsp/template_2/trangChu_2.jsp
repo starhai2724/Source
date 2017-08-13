@@ -398,23 +398,24 @@
         </c:forEach> 
                 <!-- San pham (E)  -->        
         </div>
-           <!--  <div class="navigation">
+           <div class="navigation">
                 <ul class="pagination">
                     <li>
-                        <a href="trang-chu2679.html?page=1" aria-label="Previous">
+                        <a href="javascript:void(0)" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
-                            <li class="active"><a href="trang-chu2679.html?page=1">1</a></li>
-                            <li><a href="trang-chu4658.html?page=2">2</a></li>
-                            <li><a href="trang-chu9ba9.html?page=3">3</a></li>
+                    
+                            <li><a href="javascript:void(0)" ng-click= "btnPhanTrang('1')">1</a></li>
+                            <li><a href="javascript:void(0)" ng-click= "btnPhanTrang('2')">2</a></li>
+                            <li><a href="javascript:void(0)" ng-click= "btnPhanTrang('3')">3</a></li>
                     <li>
-                        <a href="trang-chu9ba9.html?page=3" aria-label="Next">
+                        <a href="javascript:void(0)" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>
                 </ul>
-            </div> -->
+            </div>
     </section>
                     </div>
             </div>

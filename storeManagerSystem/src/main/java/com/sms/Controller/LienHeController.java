@@ -1,6 +1,7 @@
 package com.sms.Controller;
 
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.http.HttpSession;
 
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.sms.common.MailUtilLocal;
 import com.sms.common.SMSComons;
 import com.sms.common.SendMail;
 import com.sms.common.SystemCommon;
@@ -133,24 +135,27 @@ public class LienHeController {
 		inputBean.setIdLienHe(id);
 		
 		List<LienHeOutputBean> lst = LienHeDAO.intances.getAllByID(pathJSP, id);
-		LienHeOutputBean outputRowBean = lst.get(0);
-
-		form.setIdLienHe(outputRowBean.getIdLienHe());
-		form.setTenKH(outputRowBean.getTenKH());
-		form.setDiaChi(outputRowBean.getDiaChi());
-		form.setEmail(outputRowBean.getEmail());
-		form.setSdt(outputRowBean.getSdt());
-		form.setTieuDe(outputRowBean.getTieuDe());
-		form.setNoiDungNhan(outputRowBean.getNoiDungNhan());
-		form.setNoiDungTraLoi(outputRowBean.getNgayTraLoi());
-		if("1".equals(outputRowBean.getTrangThai())){
-			form.setTrangThai("Chưa trả lời");
-		}else {
-			form.setTrangThai("Đã trả lời");
+		if(lst != null && lst.size() > 0){
+			
+			LienHeOutputBean outputRowBean = lst.get(0);
+	
+			form.setIdLienHe(outputRowBean.getIdLienHe());
+			form.setTenKH(outputRowBean.getTenKH());
+			form.setDiaChi(outputRowBean.getDiaChi());
+			form.setEmail(outputRowBean.getEmail());
+			form.setSdt(outputRowBean.getSdt());
+			form.setTieuDe(outputRowBean.getTieuDe());
+			form.setNoiDungNhan(outputRowBean.getNoiDungNhan());
+			form.setNoiDungTraLoi(outputRowBean.getNgayTraLoi());
+			if("1".equals(outputRowBean.getTrangThai())){
+				form.setTrangThai("Chưa trả lời");
+			}else {
+				form.setTrangThai("Đã trả lời");
+			}
+			form.setNgayNhan(outputRowBean.getNgayNhan());
+			form.setNgayTraLoi(outputRowBean.getNgayTraLoi());
+			form.setIdKH(outputRowBean.getIdKH());
 		}
-		form.setNgayNhan(outputRowBean.getNgayNhan());
-		form.setNgayTraLoi(outputRowBean.getNgayTraLoi());
-		form.setIdKH(outputRowBean.getIdKH());
 		
 		//Flag update
 		form.setFlagUpdate("1");
@@ -172,22 +177,40 @@ public class LienHeController {
 			return "redirect:/";
 		}
 		
+		List<LienHeOutputBean> lst = LienHeDAO.intances.getAllByID(pathJSP, form.getIdLienHe());
+		if(lst != null && lst.size() > 0){
+			LienHeOutputBean outputRowBean = lst.get(0);
+			form.setIdLienHe(outputRowBean.getIdLienHe());
+			form.setTenKH(outputRowBean.getTenKH());
+			form.setDiaChi(outputRowBean.getDiaChi());
+			form.setEmail(outputRowBean.getEmail());
+			form.setSdt(outputRowBean.getSdt());
+			form.setTieuDe(outputRowBean.getTieuDe());
+			form.setNoiDungNhan(outputRowBean.getNoiDungNhan());
+			form.setNgayNhan(outputRowBean.getNgayNhan());
+			form.setNgayTraLoi(outputRowBean.getNgayTraLoi());
+			form.setIdKH(outputRowBean.getIdKH());
+		}
+		
+		
 		LienHeInputBean inputBean = new LienHeInputBean();
 		inputBean.setPathJSP(pathJSP);
 		inputBean.setIdLienHe(form.getIdLienHe());
 		inputBean.setNoiDungTraLoi(form.getNoiDungTraLoi());
 		inputBean.setTrangThai("2");
 		inputBean.setNgayTraLoi(SMSComons.getDate());
-		
 		//insert
 		int cnt = LienHeDAO.intances.update(inputBean);
-		
-		SendMail sendMail = new SendMail();
-		if(sendMail.send(form.getTieuDe(), form.getNgayTraLoi(), form.getTenKH(), form.getEmail())){
-			cnt = 1;
-		}else {
-			cnt = 0;
-		}
+		Random rd = new Random();
+		String num = "" + rd.nextInt(1000000);
+		String thongBao = "<center>";
+		thongBao += "<h3>"+form.getTieuDe()+"</h3><br>";
+		thongBao += "<p>Cám ơn " + form.getTenKH()
+				+ " đã liên hệ với chúng tôi</p><br>";
+		thongBao += "<p>" + form.getNgayTraLoi() + "</p>";
+		thongBao += "</center>";
+		System.out.println("form.getEmail(): "+form.getEmail());
+		MailUtilLocal.guiMail(form.getEmail(), thongBao,form.getTieuDe());
 		
 		if(cnt == 1){
 			form.setMessage("Xử lý đăng kí thành công.");
@@ -198,10 +221,8 @@ public class LienHeController {
 			form.setMessageErr("Xử lý đăng kí không thành công.");
 			form.setMessage("");
 		}
-		
 		//init data
 		initData(form, pathJSP);
-		
 		session.setAttribute("PAGEIDSTORE",LIENHE);
 		return  SystemCommon.ADMIN_STORE;
 	}
