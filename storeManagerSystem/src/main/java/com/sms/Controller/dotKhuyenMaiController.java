@@ -100,7 +100,6 @@ public class dotKhuyenMaiController {
 				formRow.setMaDKM(outputRowBean.getMaDKM());
 				formRow.setTenDKM(outputRowBean.getTenDKM());
 				String loaiKM = outputRowBean.getLoaiKM();
-				String donViKM = outputRowBean.getDonViKM();
 				String loaiThe = outputRowBean.getDk_loaiThe();
 				
 				Iterator<Entry<String, String>> its_loaiKM = lst_loaiKM.entrySet().iterator();
@@ -111,16 +110,8 @@ public class dotKhuyenMaiController {
 				    }
 				}
 				
-				Iterator<Entry<String, String>> its_donViKM = lst_donViKM.entrySet().iterator();
-				while (its_donViKM.hasNext()) {
-				    Entry<String, String> it = its_donViKM.next();
-				    if(donViKM.equals(it.getKey())){
-				    	formRow.setMucGiamGia(outputRowBean.getMucKM() + " " + it.getValue());
-				    	if(it.getKey().equals("03") && !outputRowBean.getMucKM().equals("") && outputRowBean.getMucKM().trim().length() != 0){
-					    	formRow.setMucGiamGia(String.format("%,.2f",Double.parseDouble(outputRowBean.getMucKM())) + " " + it.getValue());
-					    }
-				    }
-				}
+				if(loaiKM.equals("00")) formRow.setMucGiamGia(String.format("%,.2f",Double.parseDouble(outputRowBean.getMucKM())) + " VNĐ." );
+				else if(loaiKM.equals("01")) formRow.setMucGiamGia(String.format("%,.2f",Double.parseDouble(outputRowBean.getMucKM())) + " % Hóa Đơn." );
 				
 				Iterator<Entry<String, String>> its_loaiThe = lst_loaiThe.entrySet().iterator();
 				while (its_loaiThe.hasNext()) {
@@ -160,39 +151,21 @@ public class dotKhuyenMaiController {
 			return "redirect:/";
 		}
 		boolean valid = true;
-		if ("00".equals(form.getLoaiKM().trim())) {
+		if ("00".equals(form.getLoaiKM().trim())) { // gia KM có san
 			if ("0".equals(form.getMucKM().trim())){
 				form.setMessageErr("Trường hợp chọn giá KM có sẵn thì mức giảm giá phải là số lớn hơn 0.");
 				valid = false;
-			}else{
-				if("01".equals(form.getDonViKM().trim())){
-					form.setMessageErr("Trường hợp chọn giá KM có sẵn thì đơn vị giảm giá phải là 'VNĐ' .");
-					valid = false;
-				}
 			}
 			
 		}else{
 			if ("0".equals(form.getMucKM().trim()) || Integer.parseInt(form.getMucKM().trim()) > 100) {
 				form.setMessageErr("Trường hợp chọn KM theo phần trăm hóa đơn thì mức giảm giá phải là số từ 0 đến 100.");
 				valid = false;
-			}else{
-				if("00".equals(form.getDonViKM().trim())){
-					form.setMessageErr("Trường hợp chọn KM theo phần trăm hóa đơn thì đơn vị giảm giá phải là '% Hóa Đơn' .");
-					valid = false;
-				}
 			}
 		}
 		
 		String ngayBD = SMSComons.formatDateInput(form.getNgayBD());
 		String ngayKT = SMSComons.formatDateInput(form.getNgayKT());
-		
-		System.out.println("loaiKM : " + form.getLoaiKM());
-		System.out.println("mucKM : " + form.getMucKM());
-		System.out.println("donviKM : " + form.getDonViKM());
-		System.out.println("SMSComons.getDate() : " + SMSComons.getDate());
-		System.out.println("form.getNgayBD() : " + ngayBD);
-		System.out.println("form.getNgayKT() : " + ngayKT);
-		
 		
 		if(SMSComons.compareDate(ngayBD,SMSComons.getDate()) < 0){
 			form.setMessageErr("Hãy chọn ngày bắt đầu KM từ hôm nay trở đi.");
@@ -205,32 +178,34 @@ public class dotKhuyenMaiController {
 			valid = false;
 		}
 		
-		if(!valid){
+		if(valid == true){
 				// trong 1 thoi gian chi co the ton tai mot dot khuyen mai
 				boolean checkExistOfMonth= false;
 				List<DotKhuyenMaiOutputRowBean> lst = DotKhuyenMaiDAO.intances.getAll(pathJSP);
 				for(DotKhuyenMaiOutputRowBean dotKhuyenMaiOutputRowBean : lst) {
-					System.out.println("dotKhuyenMaiOutputRowBean.getMaDKM(): "+ dotKhuyenMaiOutputRowBean.getMaDKM());
-					System.out.println("form.getMaDKM(): "+ form.getMaDKM());
 					if(dotKhuyenMaiOutputRowBean.getMaDKM().equals(form.getMaDKM())) continue;
 					if(SMSComons.compareDate(ngayBD,dotKhuyenMaiOutputRowBean.getNgayBD().trim()) == 0  && 
 							SMSComons.compareDate(ngayKT,dotKhuyenMaiOutputRowBean.getNgayKT().trim()) == 0){
 						checkExistOfMonth = true;
 					}
 					if(SMSComons.compareDate(ngayBD,dotKhuyenMaiOutputRowBean.getNgayBD().trim()) > 0  && 
-							SMSComons.compareDate(ngayKT,dotKhuyenMaiOutputRowBean.getNgayKT().trim()) < 0){
+							SMSComons.compareDate(ngayKT,dotKhuyenMaiOutputRowBean.getNgayKT().trim()) < 0
+							&& SMSComons.compareDate(ngayBD,ngayKT) > 0){
 						checkExistOfMonth = true;
 					}
 					if(SMSComons.compareDate(ngayBD,dotKhuyenMaiOutputRowBean.getNgayBD().trim()) < 0  && 
-							SMSComons.compareDate(ngayKT,dotKhuyenMaiOutputRowBean.getNgayKT().trim()) < 0){
+							SMSComons.compareDate(ngayKT,dotKhuyenMaiOutputRowBean.getNgayKT().trim()) < 0
+							&& SMSComons.compareDate(ngayBD,ngayKT) > 0 && SMSComons.compareDate(ngayKT,dotKhuyenMaiOutputRowBean.getNgayBD().trim()) > 0){
 						checkExistOfMonth = true;
 					}
 					if(SMSComons.compareDate(ngayBD,dotKhuyenMaiOutputRowBean.getNgayBD().trim()) > 0  && 
-							SMSComons.compareDate(ngayKT,dotKhuyenMaiOutputRowBean.getNgayKT().trim()) > 0){
+							SMSComons.compareDate(ngayKT,dotKhuyenMaiOutputRowBean.getNgayKT().trim()) > 0
+						&& SMSComons.compareDate(ngayBD,ngayKT) > 0 && SMSComons.compareDate(ngayBD,dotKhuyenMaiOutputRowBean.getNgayKT().trim()) < 0){
 						checkExistOfMonth = true;
 					}
 					if(SMSComons.compareDate(ngayBD,dotKhuyenMaiOutputRowBean.getNgayBD().trim()) < 0  && 
-							SMSComons.compareDate(ngayKT,dotKhuyenMaiOutputRowBean.getNgayKT().trim()) > 0){
+							SMSComons.compareDate(ngayKT,dotKhuyenMaiOutputRowBean.getNgayKT().trim()) > 0
+							&& SMSComons.compareDate(ngayBD,ngayKT) > 0){
 						checkExistOfMonth = true;
 					}
 				}
@@ -247,7 +222,7 @@ public class dotKhuyenMaiController {
 					inputBean.setLoaiKM(form.getLoaiKM());
 					inputBean.setNgayBD(ngayBD);
 					inputBean.setNgayKT(ngayKT);
-					inputBean.setMucKM(form.getMaDKM());
+					inputBean.setMucKM(form.getMucKM());
 					inputBean.setDonViKM(form.getDonViKM());
 					inputBean.setMoTa(form.getMoTa());
 					inputBean.setDk_loaiThe(form.getDk_loaiThe());
@@ -291,39 +266,21 @@ public class dotKhuyenMaiController {
 		}
 		
 		boolean valid = true;
-		if ("00".equals(form.getLoaiKM().trim())) {
+		if ("00".equals(form.getLoaiKM().trim())) { // gia KM có san
 			if ("0".equals(form.getMucKM().trim())){
 				form.setMessageErr("Trường hợp chọn giá KM có sẵn thì mức giảm giá phải là số lớn hơn 0.");
 				valid = false;
-			}else{
-				if("01".equals(form.getDonViKM().trim())){
-					form.setMessageErr("Trường hợp chọn giá KM có sẵn thì đơn vị giảm giá phải là 'VNĐ' .");
-					valid = false;
-				}
 			}
 			
 		}else{
 			if ("0".equals(form.getMucKM().trim()) || Integer.parseInt(form.getMucKM().trim()) > 100) {
 				form.setMessageErr("Trường hợp chọn KM theo phần trăm hóa đơn thì mức giảm giá phải là số từ 0 đến 100.");
 				valid = false;
-			}else{
-				if("00".equals(form.getDonViKM().trim())){
-					form.setMessageErr("Trường hợp chọn KM theo phần trăm hóa đơn thì đơn vị giảm giá phải là '% Hóa Đơn' .");
-					valid = false;
-				}
 			}
 		}
 		
 		String ngayBD = SMSComons.formatDateInput(form.getNgayBD());
 		String ngayKT = SMSComons.formatDateInput(form.getNgayKT());
-		
-		System.out.println("loaiKM : " + form.getLoaiKM());
-		System.out.println("mucKM : " + form.getMucKM());
-		System.out.println("donviKM : " + form.getDonViKM());
-		System.out.println("SMSComons.getDate() : " + SMSComons.getDate());
-		System.out.println("form.getNgayBD() : " + ngayBD);
-		System.out.println("form.getNgayKT() : " + ngayKT);
-		
 		
 		if(SMSComons.compareDate(ngayBD,SMSComons.getDate()) < 0){
 			form.setMessageErr("Hãy chọn ngày bắt đầu KM từ hôm nay trở đi.");
@@ -336,32 +293,34 @@ public class dotKhuyenMaiController {
 			valid = false;
 		}
 		
-		if(!valid){
+		if(valid == true){
 				// trong 1 thoi gian chi co the ton tai mot dot khuyen mai
 				boolean checkExistOfMonth= false;
 				List<DotKhuyenMaiOutputRowBean> lst = DotKhuyenMaiDAO.intances.getAll(pathJSP);
 				for(DotKhuyenMaiOutputRowBean dotKhuyenMaiOutputRowBean : lst) {
-					System.out.println("dotKhuyenMaiOutputRowBean.getMaDKM(): "+ dotKhuyenMaiOutputRowBean.getMaDKM());
-					System.out.println("form.getMaDKM(): "+ form.getMaDKM());
 					if(dotKhuyenMaiOutputRowBean.getMaDKM().equals(form.getMaDKM())) continue;
 					if(SMSComons.compareDate(ngayBD,dotKhuyenMaiOutputRowBean.getNgayBD().trim()) == 0  && 
 							SMSComons.compareDate(ngayKT,dotKhuyenMaiOutputRowBean.getNgayKT().trim()) == 0){
 						checkExistOfMonth = true;
 					}
 					if(SMSComons.compareDate(ngayBD,dotKhuyenMaiOutputRowBean.getNgayBD().trim()) > 0  && 
-							SMSComons.compareDate(ngayKT,dotKhuyenMaiOutputRowBean.getNgayKT().trim()) < 0){
+							SMSComons.compareDate(ngayKT,dotKhuyenMaiOutputRowBean.getNgayKT().trim()) < 0
+							&& SMSComons.compareDate(ngayBD,ngayKT) > 0){
 						checkExistOfMonth = true;
 					}
 					if(SMSComons.compareDate(ngayBD,dotKhuyenMaiOutputRowBean.getNgayBD().trim()) < 0  && 
-							SMSComons.compareDate(ngayKT,dotKhuyenMaiOutputRowBean.getNgayKT().trim()) < 0){
+							SMSComons.compareDate(ngayKT,dotKhuyenMaiOutputRowBean.getNgayKT().trim()) < 0
+							&& SMSComons.compareDate(ngayBD,ngayKT) > 0 && SMSComons.compareDate(ngayKT,dotKhuyenMaiOutputRowBean.getNgayBD().trim()) > 0){
 						checkExistOfMonth = true;
 					}
 					if(SMSComons.compareDate(ngayBD,dotKhuyenMaiOutputRowBean.getNgayBD().trim()) > 0  && 
-							SMSComons.compareDate(ngayKT,dotKhuyenMaiOutputRowBean.getNgayKT().trim()) > 0){
+							SMSComons.compareDate(ngayKT,dotKhuyenMaiOutputRowBean.getNgayKT().trim()) > 0
+						&& SMSComons.compareDate(ngayBD,ngayKT) > 0 && SMSComons.compareDate(ngayBD,dotKhuyenMaiOutputRowBean.getNgayKT().trim()) < 0){
 						checkExistOfMonth = true;
 					}
 					if(SMSComons.compareDate(ngayBD,dotKhuyenMaiOutputRowBean.getNgayBD().trim()) < 0  && 
-							SMSComons.compareDate(ngayKT,dotKhuyenMaiOutputRowBean.getNgayKT().trim()) > 0){
+							SMSComons.compareDate(ngayKT,dotKhuyenMaiOutputRowBean.getNgayKT().trim()) > 0
+							&& SMSComons.compareDate(ngayBD,ngayKT) > 0){
 						checkExistOfMonth = true;
 					}
 				}
@@ -378,7 +337,7 @@ public class dotKhuyenMaiController {
 				inputBean.setLoaiKM(form.getLoaiKM());
 				inputBean.setNgayBD(ngayBD);
 				inputBean.setNgayKT(ngayKT);
-				inputBean.setMucKM(form.getMaDKM());
+				inputBean.setMucKM(form.getMucKM());
 				inputBean.setDonViKM(form.getDonViKM());
 				inputBean.setMoTa(form.getMoTa());
 				inputBean.setDk_loaiThe(form.getDk_loaiThe());

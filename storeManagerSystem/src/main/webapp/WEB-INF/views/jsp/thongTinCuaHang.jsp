@@ -20,7 +20,7 @@
 			<div class="col-sm-3">
 				<div class="form-group">
 					<label>Tên cửa hàng</label> 
-					<form:input placeholder="Tên cửa hàng"  class="form-control" type="text" path="tenWebSite"  name="tenWebSite" ng-model = "tenWebSite"  ng-init ="tenWebSite = '${DangKiWebForm.tenWebSite}'" />
+					<form:input maxlength="20" placeholder="Tên cửa hàng"  class="form-control" type="text" path="tenWebSite"  name="tenWebSite" ng-model = "tenWebSite"  ng-init ="tenWebSite = '${DangKiWebForm.tenWebSite}'" />
 					<form:input class="form-control" type="hidden" path="pathJSP"  name="pathJSP" />
 					<p style="color: red;">{{tenWebSite_err}}</p>
 				</div>
@@ -28,14 +28,14 @@
 			<div class="col-sm-3">
 				<div class="form-group">
 					<label>Số điện thoại liên hệ</label> 
-					<form:input placeholder="Số điện thoại liên hệ"  class="form-control" type="text" path="sdt"  name="sdt" ng-model = "sdt"  ng-init ="sdt = '${DangKiWebForm.sdt}'" />
+					<form:input maxlength="12" placeholder="Số điện thoại liên hệ"  class="form-control" type="text" path="sdt"  name="sdt" ng-model = "sdt"  ng-init ="sdt = '${DangKiWebForm.sdt}'" />
 					<p style="color: red;">{{sdt_err}}</p>
 				</div>
 			</div>
 			<div class="col-sm-3">
 				<div class="form-group">
 					<label>Địa chỉ cửa hàng</label> 
-					<form:input placeholder="Địa chỉ cửa hàng"  class="form-control" type="text" path="diaChi"  name="diaChi" ng-model = "diaChi"  ng-init ="diaChi = '${DangKiWebForm.diaChi}'" />
+					<form:input maxlength="30" placeholder="Địa chỉ cửa hàng"  class="form-control" type="text" path="diaChi"  name="diaChi" ng-model = "diaChi"  ng-init ="diaChi = '${DangKiWebForm.diaChi}'" />
 					<p style="color: red;">{{diaChi_err}}</p>
 				</div>
 			</div>
@@ -44,14 +44,14 @@
 			<div class="col-sm-3">
 				<div class="form-group">
 					<label>Điều kiện giao hàng miễn phí</label> 
-	                <form:input placeholder="Điều kiện giao hàng miễn phí"  class="form-control" type="text" path="dkGiaoHangFree"  name="dkGiaoHangFree" ng-model = "dkGiaoHangFree"  ng-init ="dkGiaoHangFree = '${DangKiWebForm.dkGiaoHangFree}'" />
+	                <form:input maxlength="50" placeholder="Điều kiện giao hàng miễn phí"  class="form-control" type="text" path="dkGiaoHangFree"  name="dkGiaoHangFree" ng-model = "dkGiaoHangFree"  ng-init ="dkGiaoHangFree = '${DangKiWebForm.dkGiaoHangFree}'" />
 					<p style="color: red;">{{dkGiaoHangFree_err}}</p>
 				</div>
 			</div>
 			 <div class="col-sm-3">
 				<div class="form-group">
 					<label>Đường dẫn Fanpage Facebook</label> 
-	                <form:input placeholder="Đường dẫn Fanpage Facebook"  class="form-control" type="text" path="linkFanpage"  name="linkFanpage" ng-model = "linkFanpage"  ng-init ="linkFanpage = '${DangKiWebForm.linkFanpage}'" />
+	                <form:input  placeholder="Đường dẫn Fanpage Facebook"  class="form-control" type="text" path="linkFanpage"  name="linkFanpage" ng-model = "linkFanpage"  ng-init ="linkFanpage = '${DangKiWebForm.linkFanpage}'" />
 					<p style="color: red;">{{linkFanpage_err}}</p>
 				</div>
 			</div> 

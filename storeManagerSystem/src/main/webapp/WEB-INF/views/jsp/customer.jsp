@@ -19,7 +19,7 @@
 			<div class="col-sm-4">
 				<div class="form-group">
 					<label>Tên khách hàng</label> 
-					<form:input class="form-control" type="text" path="tenKhachHang"  name="tenKhachHang" ng-model = "tenKhachHang"  ng-init ="tenKhachHang = '${KhachHangForm.tenKhachHang}'" />
+					<form:input maxlength="30" class="form-control" type="text" path="tenKhachHang"  name="tenKhachHang" ng-model = "tenKhachHang"  ng-init ="tenKhachHang = '${KhachHangForm.tenKhachHang}'" />
 					<form:input class="form-control" type="hidden" path="idKhachHang"  name="idKhachHang" />
 					<p style="color: red;">{{tenKhachHang_err}}</p>
 				</div>
@@ -27,7 +27,7 @@
 			<div class="col-sm-4">
 				<div class="form-group">
 					<label>Số điện thoại</label> 
-					<form:input class="form-control" type="text" path="soDienThoai"  name="soDienThoai" ng-model = "soDienThoai"  ng-init ="soDienThoai = '${KhachHangForm.soDienThoai}'" />
+					<form:input maxlength="12" class="form-control" type="text" path="soDienThoai"  name="soDienThoai" ng-model = "soDienThoai"  ng-init ="soDienThoai = '${KhachHangForm.soDienThoai}'" />
 					<p style="color: red;">{{soDienThoai_err}}</p>
 				</div>
 			</div>
@@ -54,14 +54,14 @@
 			<div class="col-sm-4">
 				<div class="form-group">
 					<label>Điểm tích lũy</label> 
-					<form:input class="form-control" type="text" path="soDiem"  name="soDiem" ng-model = "soDiem"  ng-init ="soDiem = '${KhachHangForm.soDiem}'" />
+					<form:input maxlength="10" class="form-control" type="text" path="soDiem"  name="soDiem" ng-model = "soDiem"  ng-init ="soDiem = '${KhachHangForm.soDiem}'" />
 					<p style="color: red;">{{soDiem_err}}</p>
 				</div>
 			</div>
 			<div class="col-sm-4">
 				<div class="form-group">
 					<label>Địa chỉ</label> 
-					<form:input class="form-control" type="text" path="diaChi"  name="diaChi" ng-model = "diaChi"  ng-init ="diaChi = '${KhachHangForm.diaChi}'" />
+					<form:input maxlength="40" class="form-control" type="text" path="diaChi"  name="diaChi" ng-model = "diaChi"  ng-init ="diaChi = '${KhachHangForm.diaChi}'" />
 					<p style="color: red;">{{diaChi_err}}</p>
 				</div>
 			</div>

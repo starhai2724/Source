@@ -20,7 +20,7 @@
 			<div class="col-sm-4">
 				<div class="form-group">
 					<label>Tên sản phẩm</label> 
-					<form:input class="form-control" type="text" path="tenSP"  name="tenSP" ng-model = "tenSP"  ng-init ="tenSP = '${ProductForm.tenSP}'" />
+					<form:input maxlength="30" class="form-control" type="text" path="tenSP"  name="tenSP" ng-model = "tenSP"  ng-init ="tenSP = '${ProductForm.tenSP}'" />
 					<form:input class="form-control" type="hidden" path="idSanPham"  name="idSanPham" />
 					<p style="color: red;">{{tenSP_err}}</p>
 				</div>
@@ -38,14 +38,14 @@
 			<div class="col-sm-4">
 				<div class="form-group">
 					<label>Giá mua</label> 
-					<form:input class="form-control" type="text"  path="giaMua"  name="giaMua" ng-model ="giaMua" ng-init="giaMua='${ProductForm.giaMua}'"  />
+					<form:input maxlength="10" class="form-control" type="text"  path="giaMua"  name="giaMua" ng-model ="giaMua" ng-init="giaMua='${ProductForm.giaMua}'"  />
 					<p style="color: red;">{{giaMua_err}}</p>
 				</div>
 			</div>
 			<div class="col-sm-4">
 				<div class="form-group">
 					<label>Giá bán</label> 
-					<form:input class="form-control" type="text"  path="giaBan"  name="giaBan" ng-model ="giaBan" ng-init="giaBan='${ProductForm.giaBan}'" />
+					<form:input maxlength="10" class="form-control" type="text"  path="giaBan"  name="giaBan" ng-model ="giaBan" ng-init="giaBan='${ProductForm.giaBan}'" />
 					<p style="color: red;">{{giaBan_err}}</p>
 				</div>
 			</div>

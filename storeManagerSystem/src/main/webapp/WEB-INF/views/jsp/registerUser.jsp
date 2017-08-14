@@ -30,7 +30,7 @@
 			<div class="col-sm-6">
 				<div class="form-group">
 					<label>Họ tên *</label> 
-					<form:input class="form-control" type="text" path="fullName" placeholder="Họ tên" name="fullName" ng-model = "fullName"  ng-init ="fullName = '${registerUserForm.fullName}'" />
+					<form:input maxlength="30" class="form-control" type="text" path="fullName" placeholder="Họ tên" name="fullName" ng-model = "fullName"  ng-init ="fullName = '${registerUserForm.fullName}'" />
 					<p style="color: red;">{{fullname_err}}</p>
 					<p style="color: red;">${registerUserForm.fullName }</p>
 				</div>
@@ -40,14 +40,14 @@
 			<div class="col-sm-6">
 				<div class="form-group">
 					<label>Địa chỉ</label> 
-					<form:input class="form-control" type="text" path="address" placeholder="Địa chỉ" name="address" ng-model ="address" ng-init="address='${registerUserForm.address }'"  />
+					<form:input maxlength="50" class="form-control" type="text" path="address" placeholder="Địa chỉ" name="address" ng-model ="address" ng-init="address='${registerUserForm.address }'"  />
 					<p style="color: red;">{{address_err}}</p>
 				</div>
 			</div>
 			<div class="col-sm-6">
 				<div class="form-group">
 					<label>Số điện thoại *</label> 
-					<form:input class="form-control" type="text" path="telephone" placeholder="Số điện thoại" name="telephone" ng-model ="telephone" ng-init="telephone='${registerUserForm.telephone }'"  />
+					<form:input maxlength="12" class="form-control" type="text" path="telephone" placeholder="Số điện thoại" name="telephone" ng-model ="telephone" ng-init="telephone='${registerUserForm.telephone }'"  />
 					<p style="color: red;">{{telephone_err}}</p>
 				</div>
 			</div>
@@ -56,14 +56,14 @@
 			<div class="col-sm-6">
 				<div class="form-group">
 					<label>Tên đăng nhập *</label> 
-					<form:input class="form-control" type="text" path="username" placeholder="Tên đăng nhập" name="username" ng-model ="username" ng-init="username='${registerUserForm.username }'" ng-disabled="mySwitch" />
+					<form:input maxlength="20" class="form-control" type="text" path="username" placeholder="Tên đăng nhập" name="username" ng-model ="username" ng-init="username='${registerUserForm.username }'" ng-disabled="mySwitch" />
 					<p style="color: red;">{{username_err}}</p>
 				</div>
 			</div>
 			<div class="col-sm-6">
 				<div class="form-group">
 					<label>Địa chỉ email *</label> 
-					<form:input class="form-control" path="email" type="text" placeholder="Địa chỉ email" name="email" ng-model ="email" ng-init="email='${registerUserForm.email }'" />
+					<form:input maxlength="20" class="form-control" path="email" type="text" placeholder="Địa chỉ email" name="email" ng-model ="email" ng-init="email='${registerUserForm.email }'" />
 					<p style="color: red;">{{email_err}}</p>	
 				</div>
 			</div>
@@ -72,14 +72,14 @@
 			<div class="col-sm-6">
 				<div class="form-group">
 					<label>Mật khẩu *</label> 
-					<form:input class="form-control" type="password" path="password" placeholder="Mật khẩu" name="password" ng-model ="password" ng-init="password='${registerUserForm.password }'" ng-disabled="mySwitch" />
+					<form:input maxlength="15" class="form-control" type="password" path="password" placeholder="Mật khẩu" name="password" ng-model ="password" ng-init="password='${registerUserForm.password }'" ng-disabled="mySwitch" />
 					<p style="color: red;">{{password_err}}</p>
 				</div>
 			</div>
 			<div class="col-sm-6">
 				<div class="form-group">
 					<label>Xác nhận mật khẩu *</label> 
-					<input class="form-control" type="password"  placeholder="Xác nhận mật khẩu" name="repassword" ng-model ="repassword" ng-init="repassword=''" ng-disabled="mySwitch" >
+					<input maxlength="15" class="form-control" type="password"  placeholder="Xác nhận mật khẩu" name="repassword" ng-model ="repassword" ng-init="repassword=''" ng-disabled="mySwitch" >
 					<p style="color: red;">{{repassword_err}}</p>
 				</div>
 			</div>

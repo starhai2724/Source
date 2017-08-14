@@ -20,13 +20,13 @@
 			<div class="col-sm-4">
 				<div class="form-group">
 					<label>Họ tên</label> 
-					<form:input class="form-control" type="text" path="fullName" placeholder="Họ tên" name="fullName" ng-model = "fullName"  ng-init ="fullName = '${storeOwnerListForm.fullName}'" />
+					<form:input maxlength="20" class="form-control" type="text" path="fullName" placeholder="Họ tên" name="fullName" ng-model = "fullName"  ng-init ="fullName = '${storeOwnerListForm.fullName}'" />
 				</div>
 			</div>
 			<div class="col-sm-4">
 				<div class="form-group">
 					<label>Tên đăng nhập</label> 
-					<form:input class="form-control" type="text" path="username" placeholder="Tên đăng nhập" name="username" ng-model ="username" ng-init="username='${storeOwnerListForm.username }'" />
+					<form:input maxlength="20" class="form-control" type="text" path="username" placeholder="Tên đăng nhập" name="username" ng-model ="username" ng-init="username='${storeOwnerListForm.username }'" />
 				</div>
 			</div>
 		</div>
@@ -34,13 +34,13 @@
 			<div class="col-sm-4">
 				<div class="form-group">
 					<label>Số điện thoại</label> 
-					<form:input class="form-control" type="text"  path="telephone" placeholder="Số điện thoại" name="telephone" ng-model ="telephone" ng-init="telephone='${storeOwnerListForm.telephone }'"  />
+					<form:input maxlength="12" class="form-control" type="text"  path="telephone" placeholder="Số điện thoại" name="telephone" ng-model ="telephone" ng-init="telephone='${storeOwnerListForm.telephone }'"  />
 				</div>
 			</div>
 			<div class="col-sm-4">
 				<div class="form-group">
 					<label>Địa chỉ email</label> 
-					<form:input class="form-control" type="email"  path="email" placeholder="Địa chỉ email" name="email" ng-model ="email" ng-init="email='${storeOwnerListForm.email }'" />
+					<form:input maxlength="20" class="form-control" type="email"  path="email" placeholder="Địa chỉ email" name="email" ng-model ="email" ng-init="email='${storeOwnerListForm.email }'" />
 				</div>
 			</div>
 		</div>

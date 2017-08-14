@@ -10,9 +10,11 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.sms.OutputRows.DotKhuyenMaiOutputRowBean;
+import com.sms.OutputRows.SanPhamOutputRowBean;
 import com.sms.common.SMSComons;
 import com.sms.dao.common.HibernateUtil;
 import com.sms.input.DotKhuyenMaiInputBean;
+import com.sms.output.SanPhamOutputBean;
 
 public class DotKhuyenMaiDAO {
 	
@@ -312,7 +314,48 @@ public class DotKhuyenMaiDAO {
 	}
 	
 	// ----------------------------------------------------------------------------------------------------------
-	
+	public List<SanPhamOutputRowBean> getSanPhamKM(String pathJSP, String id_DKM) {
+		Session session = HibernateUtil.getSessionDAO();
+		String hql = getSQLSanPhamKM(pathJSP, id_DKM);
+		List<SanPhamOutputRowBean> lst = new ArrayList<>();
+		SanPhamOutputRowBean outputRowBean;
+		try {
+			Transaction tx = session.beginTransaction();
+			SQLQuery query = session.createSQLQuery(hql);
+			List<Object[]> data = query.list();
+			for (Object[] object : data) {
+				outputRowBean = new SanPhamOutputRowBean();
+				outputRowBean.setIdSanPham(SMSComons.convertString(object[0]));
+				outputRowBean.setTenSP(SMSComons.convertString(object[1]));
+				outputRowBean.setIdCuaHang(SMSComons.convertString(object[2]));
+				outputRowBean.setIdLoaiSP(SMSComons.convertString(object[3]));
+				outputRowBean.setGiaMua(SMSComons.convertString(object[4]));
+				outputRowBean.setGiaBan(SMSComons.convertString(object[5]));
+				outputRowBean.setGiaBanKM(SMSComons.convertString(object[6]));
+				outputRowBean.setHinh((byte[]) object[7]);
+				outputRowBean.setMoTa(SMSComons.convertString(object[8]));
+				outputRowBean.setTrangThai(SMSComons.convertString(object[9]));
+				outputRowBean.setNgayTao(SMSComons.convertString(object[10]));
+				outputRowBean.setNgayChinhSua(SMSComons.convertString(object[11]));
+				outputRowBean.setTenLoaiSP(SMSComons.convertString(object[12]));
+				outputRowBean.setSEQ(SMSComons.convertString(object[13]));
+				outputRowBean.setHinhChiTiet1((byte[]) object[14]);
+				outputRowBean.setHinhChiTiet2((byte[]) object[15]);
+				outputRowBean.setHinhChiTiet3((byte[]) object[16]);
+				outputRowBean.setId_DKM(id_DKM);
+				lst.add(outputRowBean);
+			}
+			tx.commit();
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		} finally {
+			session.flush();
+			session.clear();
+			session.close();
+		}
+		return lst;
+	}
 	
 	
 	/**
@@ -417,8 +460,57 @@ public class DotKhuyenMaiDAO {
 		sb.append("  		,DK_TONG_HD 	       ");
 		sb.append("  		,DK_TONG_SL     ");
 		sb.append("  FROM "+tableName+"          	");
-		sb.append("  WHERE   NGAY_BD < '"+ ngayHienTai+ "'       	");
-		sb.append("  AND     NGAY_KT > '"+ ngayHienTai+ "'       	");
+		sb.append("  WHERE   NGAY_BD <= '"+ ngayHienTai+ "'       	");
+		sb.append("  AND     NGAY_KT >= '"+ ngayHienTai+ "'       	");
+		return sb.toString();
+	}
+	
+	private String getSQLSanPhamKM(String pathJSP, String id_DKM) {
+		String tableName = pathJSP+"_PRODUCT";
+		StringBuffer sb = new StringBuffer();
+		sb.append("     	SELECT                                                                                         ");
+		sb.append("     	*                                                                                              ");
+		sb.append("     FROM                                                                                               ");
+		sb.append("     	(                                                                                              ");
+		sb.append("     		SELECT                                                                                     ");
+		sb.append("     			*, (                                                                                   ");
+		sb.append("     				SELECT                                                                             ");
+		sb.append("     					MAX(NGAY_TAO)                                                                  ");
+		sb.append("     				FROM                                                                               ");
+		sb.append("     					"+tableName+" product_1                                             ");
+		sb.append("     				WHERE                                                                              ");
+		sb.append("     					product_1.ID_SP = TEMP.ID_SP                                                   ");
+		sb.append("     			) MAX_NGAY_TAO                                                                         ");
+		sb.append("     		FROM                                                                                       ");
+		sb.append("     			(                                                                                      ");
+		sb.append("     				SELECT                                                                             ");
+		sb.append("     					product.ID_SP,                                                                 ");
+		sb.append("     					product.TEN_SP,                                                                ");
+		sb.append("     					product.ID_CUAHANG,                                                            ");
+		sb.append("     					product.ID_LOAI_SP,                                                            ");
+		sb.append("     					product.GIA_MUA,                                                               ");
+		sb.append("     					product.GIA_BAN,                                                               ");
+		sb.append("     					product.GIA_BAN_KM,                                                               ");
+		sb.append("     					product.HINH,                                                                  ");
+		sb.append("     					product.MO_TA,                                                                 ");
+		sb.append("     					product.TRANG_THAI,                                                            ");
+		sb.append("     					product.NGAY_TAO,                                                              ");
+		sb.append("     					product.NGAY_CHINH_SUA,                                                        ");
+		sb.append("     					loaiSP.TEN_LOAI_SP,                                                             ");
+		sb.append("     					product.SEQ                                                             ");
+		sb.append("  						,product.CHITIET_1                                ");
+		sb.append("  						,product.CHITIET_2                                ");
+		sb.append("  						,product.CHITIET_3                                ");
+		sb.append("  						,product.ID_DKM                                ");
+		sb.append("     		FROM                                                                                       ");
+		sb.append("     			"+tableName+" product                                                       ");
+		sb.append("     		LEFT JOIN "+pathJSP+"_loai_sp loaiSP ON product.ID_LOAI_SP = loaiSP.ID_LOAI_SP        ");
+		sb.append("     			) TEMP                                                                                 ");
+		sb.append("     	) MAIN                                                                                         ");
+		sb.append("     WHERE                                                                                              ");
+		sb.append("     	MAIN.MAX_NGAY_TAO = MAIN.NGAY_TAO                                                              ");
+		sb.append("     	and MAIN.ID_DKM = '" + id_DKM + "'");
+		
 		return sb.toString();
 	}
 	
