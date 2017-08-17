@@ -462,16 +462,7 @@
                     </h3>
                 </div>
                 <ul>
-                        <li>
-                            <a href="content/huong-dan-thanh-toan.html">
-                                Hướng dẫn thanh to&#225;n
-                            </a>
-                        </li>
-                        <li>
-                            <a href="content/chinh-sach-ban-hang.html">
-                                Hướng dẫn đặt hàng
-                            </a>
-                        </li>
+                    <li><a ng-click="btnHuongDan()">Hướng dẫn thanh toán</a></li>
                 </ul>
             </div>
                 <div class="footer-box box-address col-md-3 col-sm-12 col-xs-12">
@@ -495,14 +486,14 @@
                             Facebook
                         </h3>
                         <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
-                        <div class="fb-like-box" data-href="https://www.facebook.com/runtime.vn" data-width="289"
+                        <div class="fb-like-box" data-href="https://www.facebook.com/C%E1%BB%ADa-h%C3%A0ng-th%E1%BB%9Di-trang-255302581636729/" data-width="289"
                              data-height="190" data-colorscheme="dark" data-show-faces="true" data-header="false"
                              data-stream="false" data-show-border="false">
                         </div>
                         <div class="social-icon">
                             <ul>
                                 <li><a target="_blank"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="https://www.facebook.com/runtime.vn" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://www.facebook.com/C%E1%BB%ADa-h%C3%A0ng-th%E1%BB%9Di-trang-255302581636729/" target="_blank"><i class="fa fa-facebook"></i></a></li>
                                 <li><a target="_blank"><i class="fa fa-youtube"></i></a></li>
                                 <li><a target="_blank"><i class="fa fa-twitter "></i></a></li>
                                 

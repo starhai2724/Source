@@ -26,11 +26,6 @@
 					<h4>LOẠI KHUYẾN MÃI</h4> 		
 				</div>
 			</div>
-			<div class="col-sm-3">
-				<div class="form-group">
-					<h4>ĐIỀU KIỆN ÁP DỤNG</h4> 		
-				</div>
-			</div>
 		</div>
 		<form:form id="DotKhuyenMaiForm" modelAttribute="DotKhuyenMaiForm" role="form" method="POST" >
 		<div class="row">
@@ -49,13 +44,6 @@
 					    <form:options items="${DotKhuyenMaiForm.lst_loaiKM}" />
 					</form:select>
 					<p style="color: red;">{{loaiKM_err}}</p>
-				</div>
-			</div>
-			<div class="col-sm-3">
-				<div class="form-group">
-					<label>Tổng hóa đơn</label> 
-						 <form:input  maxlength="10"  placeholder="Tổng hóa đơn"  class="form-control" type="text" path="dk_tongHD"  name="dk_tongHD" ng-model = "dk_tongHD"  ng-init ="dk_tongHD = '${DotKhuyenMaiForm.dk_tongHD}'" />	
-						<p style="color: red;">{{dk_tongHD_err}}</p>
 				</div>
 			</div>
 		</div>
@@ -116,7 +104,6 @@
 										<th style="padding-left: 5px;width: 110px;padding-right: 4px;">Ngày kết thúc</th>
 										<th style="padding-left: 5px;padding-right: 4px;width: 150px;">Loại khuyến mãi</th>
 										<th style="padding-left: 5px;padding-right: 4px;width: 130px;">Mức giảm giá</th>
-										<th style="padding-left: 5px;padding-right: 4px;width: 100px;">ĐK_Tổng HĐ</th>
 										<th style="padding-left: 17px;padding-right: 2px;width: 140px;">Thao tác</th>
                                     </tr>
                                 </thead>
@@ -130,7 +117,6 @@
 		                                      	 <td class="center" style="text-align: center">${items.ngayKT}</td>
 					                    		 <td class="center" style="padding-left: 5px;padding-right: 4px;width: 130px;">${items.loaiKM}</td>
 		                                       	 <td>${items.mucGiamGia}</td>
-		                                        <td style="width: 100px;">${items.dk_tongHD}</td>
 		                                        <td class="center" style="text-align: center;width: 140px;">
 		                                        		<button class="btn" type="button" ng-click="btnGetById('${items.maDKM}');">
 															<span class="glyphicon glyphicon-pencil" data-toggle="tooltip" data-original-title="Sửa"></span>

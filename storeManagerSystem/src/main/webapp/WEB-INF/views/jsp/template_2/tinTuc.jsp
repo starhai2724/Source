@@ -209,7 +209,7 @@
             }
         </script>
 <section class="navigation-menu clearfix">
-    <div class="container" style="width: 1370px;font-size: 18px">
+    <div class="container" style="width: 1470px;font-size: 18px">
         <div class="menu-top">
             <div class="row">
                 <div class="col-md-12">
@@ -258,16 +258,6 @@
   <div class="container" style="width: 1370px">
      <div class="row">
          <div class="col-md-3">
-				<div class="menu-news">
-				    <h3>
-				        <span>
-				            Tin tức
-				        </span>
-				    </h3>
-				    <ul class="level0"><li><a href="http://runecom22.runtime.vn/tin-tuc/tin-trong-nuoc"><i class="fa fa-arrow-circle-o-right"></i>Tin trong nước</a></li>
-					<li><a href="http://runecom22.runtime.vn/tin-tuc/tin-quoc-te"><i class="fa fa-arrow-circle-o-right"></i>Tin quốc tế</a></li>
-					</ul>
-				</div>
 				<div class="box-news">
 				    <h3>
 				        <span>
@@ -395,12 +385,12 @@
                 </div>
                 <ul>
                         <li>
-                            <a href="gioi-thieu.html">
+                            <a ng-click="btnGioiThieu()">
                                 Về ch&#250;ng t&#244;i
                             </a>
                         </li>
                         <li>
-                            <a href="content/hoi-dap.html">
+                            <a ng-click="btnLienHe()">
                                 Hỏi đ&#225;p
                             </a>
                         </li>
@@ -413,16 +403,7 @@
                     </h3>
                 </div>
                 <ul>
-                        <li>
-                            <a ng-click="btnGioiThieu()">
-                                Về ch&#250;ng t&#244;i
-                            </a>
-                        </li>
-                        <li>
-                            <a ng-click="btnLienHe()">
-                                Hỏi đ&#225;p
-                            </a>
-                        </li>
+                        <li><a ng-click="btnHuongDan()">Hướng dẫn thanh toán</a></li>
                 </ul>
             </div>
                 <div class="footer-box box-address col-md-3 col-sm-12 col-xs-12">
@@ -445,14 +426,14 @@
                         <h3>
                             Facebook
                         </h3>
-                        <div class="fb-like-box" data-href="https://www.facebook.com/runtime.vn" data-width="289"
+                        <div class="fb-like-box" data-href="https://www.facebook.com/C%E1%BB%ADa-h%C3%A0ng-th%E1%BB%9Di-trang-255302581636729/" data-width="289"
                              data-height="190" data-colorscheme="dark" data-show-faces="true" data-header="false"
                              data-stream="false" data-show-border="false">
                         </div>
                         <div class="social-icon">
                             <ul>
                                 <li><a target="_blank"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="https://www.facebook.com/runtime.vn" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://www.facebook.com/C%E1%BB%ADa-h%C3%A0ng-th%E1%BB%9Di-trang-255302581636729/" target="_blank"><i class="fa fa-facebook"></i></a></li>
                                 <li><a target="_blank"><i class="fa fa-youtube"></i></a></li>
                                 <li><a target="_blank"><i class="fa fa-twitter "></i></a></li>
                             </ul>

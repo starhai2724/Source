@@ -96,10 +96,12 @@ public class ChiTietDKMController {
 			input.setPathJSP(pathJSP);
 			input.setIdSanPham(idSP);
 			input.setSEQ(idSP);
-			
+			System.out.println("idSP KM: " + idSP);
 			//get data theo id va group theo id 
 			outputBean = CreateTableProductDAO.intances.getProductById_GroupById(input);
 			outputRowBean = outputBean.getLst().get(0);
+			System.out.println("outputRowBean.getGiaMua(): " + outputRowBean.getGiaMua());
+			System.out.println("outputRowBean.getGiaBan(): " + outputRowBean.getGiaBan());
 			// set data
 			formRow =  new ProductFormRow();
 			formRow.setNo(String.valueOf(cnt++));
@@ -112,10 +114,10 @@ public class ChiTietDKMController {
 		    	formRow.setGiaMua(SMSComons.formatMoney(outputRowBean.getGiaMua()));
 		    }
 			if(null != outputRowBean.getGiaBanKM() && !"".equals(outputRowBean.getGiaBanKM()) && 0 != outputRowBean.getGiaBanKM().length()){
-		    	formRow.setGiaMua(SMSComons.formatMoney(outputRowBean.getGiaBanKM()));
+		    	formRow.setGiaBan(SMSComons.formatMoney(outputRowBean.getGiaBanKM()));
 		    }
 			if(!"".equals(outputRowBean.getGiaBan()) && 0 != outputRowBean.getGiaBan().trim().length() ){
-		    	formRow.setGiaMua(SMSComons.formatMoney(outputRowBean.getGiaBan()));
+		    	formRow.setGiaBan(SMSComons.formatMoney(outputRowBean.getGiaBan()));
 		    }
 			formRow.setIndex(i);
 			formRow.setChecked(1);

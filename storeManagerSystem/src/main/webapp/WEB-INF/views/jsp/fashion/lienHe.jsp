@@ -91,7 +91,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			            </c:if>
 			        </li>
 		        </c:forEach>
-					<!-- <li><a href="typography.html">TYPO</a></li> -->
+					<li><a ng-click="btnTinTuc()">Tin tức</a></li>
 					<li><a ng-click="btnLienHe()">Liên hệ</a></li>
 	        </ul>
 	    </div>
@@ -147,16 +147,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-3 span1_of_4">
 					<h4>Trợ giúp</h4>
 					<ul class="f_nav">
-                        <li>
-                            <a href="content/huong-dan-thanh-toan.html">
-                                Hướng dẫn thanh to&#225;n
-                            </a>
-                        </li>
-                        <li>
-                            <a href="content/chinh-sach-ban-hang.html">
-                                Hướng dẫn đặt hàng
-                            </a>
-                        </li>
+<li><a ng-click="btnHuongDan()">Hướng dẫn thanh toán</a></li>
 					</ul>	
 				</div>
 				<div class="col-md-5 span1_of_4">

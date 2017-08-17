@@ -149,6 +149,98 @@ public class ThongKeController {
 		return  SystemCommon.ADMIN_STORE;
 	}
 	
+	@RequestMapping(value ="/thongKe/ngay", method = RequestMethod.POST)	
+	public String ngay(@ModelAttribute("ThongKeForm") ThongKeForm form, HttpSession session){
+		String pathJSP = (String)session.getAttribute("pathURL"); 
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
+		 double tongDoanhThu_trongNgay = 0;
+		 int tongGiaoDich_trongNgay = 0;
+		 int tongSoThanhVienMoi_trongNgay = 0;
+		 int sanPhamMoi_chiTiet = 0;
+		 int tongSPBanRa = 0;
+		
+		
+		//String ngayHienHanh = "20170703";
+		 
+		HoaDonInputBean inputBean = new HoaDonInputBean();
+		inputBean.setPathJSP(pathJSP);
+		inputBean.setNgayLap(NgayHienHanh);
+		
+		List<HoaDonOutputRowBean> lstHD = HoaDonDAO.intances.getByNgayLapHD(inputBean);
+		for (HoaDonOutputRowBean hoaDon : lstHD) {
+			if(null!= hoaDon.getTongTien() && !"".equals(hoaDon.getTongTien())){
+				tongDoanhThu_trongNgay += Double.parseDouble(hoaDon.getTongTien());
+			}
+			if(null!= hoaDon.getSoLuongSP() && !"".equals(hoaDon.getSoLuongSP())){
+				tongSPBanRa += Integer.parseInt(hoaDon.getSoLuongSP());
+			}
+		}
+		
+		KhachHangInputBean inputBeanKH = new KhachHangInputBean();
+		inputBeanKH.setPathJSP(pathJSP);
+		inputBeanKH.setNgayTao(NgayHienHanh);
+		List<KhachHangOutputRowBean> lstKH = KhachHangDAO.intances.getByNgayTao(inputBeanKH);
+		tongSoThanhVienMoi_trongNgay = lstKH.size();
+		tongGiaoDich_trongNgay = lstHD.size();
+		
+		SanPhamInputBean inputBeanSP = new SanPhamInputBean();
+		inputBeanSP.setPathJSP(pathJSP);
+		inputBeanSP.setNgayTao(NgayHienHanh);
+		List<SanPhamOutputRowBean> lstSP = CreateTableProductDAO.intances.getProductByNgayTao(inputBeanSP);
+		
+		NhomSanPhamInputBean nhomSanPhamInputBean = new NhomSanPhamInputBean();
+		nhomSanPhamInputBean.setPathJSP(pathJSP);
+		List<NhomSanPhamOutputBean> listNhomSP = NhomSanPhamDAO.intances.getNhomSP(nhomSanPhamInputBean);
+		
+		LoaiSanPhamInputBean loaiSanPhamInputBean = new LoaiSanPhamInputBean();
+		loaiSanPhamInputBean.setPathJSP(pathJSP);
+		List<LoaiSanPhamOutputBean> listLoaiSP = NhomSanPhamDAO.intances.getLoaiSP(loaiSanPhamInputBean);
+		
+		
+		// header
+		form.setTongLuotTheoDoi_trongNgay("0");
+		form.setTongDoanhThu_trongNgay(String.format("%,.2f",tongDoanhThu_trongNgay) + "");
+		form.setTongGiaoDich_trongNgay(tongGiaoDich_trongNgay +"");
+		form.setTongSoThanhVienMoi_trongNgay(tongSoThanhVienMoi_trongNgay + "");
+		//Detail
+		form.setLuotTheoDoi_chiTiet("0");
+		form.setDoanhThu_chiTiet(String.format("%,.2f",tongDoanhThu_trongNgay) + "");
+		form.setSanPhamDuocBanRa_chiTiet(tongSPBanRa + "");
+		form.setGiaoDich_chiTiet(tongGiaoDich_trongNgay + "");
+		form.setTongThanhVien_chiTiet(tongSoThanhVienMoi_trongNgay +"");
+		form.setTongSPMoi_chiTiet(lstSP.size() + "");
+		form.setTongNhomSP_chiTiet(listNhomSP.size() + "");
+		form.setTongLoaiSP_chiTiet(listLoaiSP.size() + "");
+		
+		//thong ke bieu do
+		int namBD = Integer.parseInt("2017");
+		int namKT =Integer.parseInt("2017");
+		String tong = "0";
+		List<Quy> lst = listQuy(namBD, namKT);
+		List<ThongKeTheoQuyForm> theoQuyForms = new ArrayList<>();
+		ThongKeTheoQuyForm thongKeTheoQuyForm;
+		for(Quy quy : lst){
+			thongKeTheoQuyForm = new ThongKeTheoQuyForm();
+			thongKeTheoQuyForm.setNam(quy.getNam()+" "+quy.getQuy());
+			thongKeTheoQuyForm.setQuy(quy.getQuy());
+			tong = HoaDonDAO.intances.getThongKeTheoQuy(pathJSP, quy.getNgayBD(), quy.getNgayKT());
+			if(tong == null || "".equals(tong)){
+				thongKeTheoQuyForm.setTongDoanhThu("0");
+			}else {
+				thongKeTheoQuyForm.setTongDoanhThu(tong);
+			}
+			theoQuyForms.add(thongKeTheoQuyForm);
+		}
+		
+		session.setAttribute("ThongKeTheoQuyForm", theoQuyForms);
+		session.setAttribute("PAGEIDSTORE", THONGKE);
+		return  SystemCommon.ADMIN_STORE;
+	}
+	
 	@RequestMapping(value ="/thongKe/thang", method = RequestMethod.POST)	
 	public String thongKe_thang(@ModelAttribute("ThongKeForm") ThongKeForm form, HttpSession session){
 		String pathJSP = (String)session.getAttribute("pathURL"); 

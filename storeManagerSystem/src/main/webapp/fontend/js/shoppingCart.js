@@ -60,6 +60,10 @@ app.controller('ctrl', function($scope, $window) {
 		gioiThieu($scope);
 	}
 	
+	$scope.btnHuongDan = function(){
+		huongDan($scope);
+	}
+	
 	$scope.btnSearchByMenu = function(idLoaiSp){
 		searchByMenu($scope,idLoaiSp);
 	}
@@ -198,6 +202,13 @@ function timKiem($scope, $window, idSanPham){
 
 function gioiThieu($scope, $window, idSanPham){
 	var url = "/storeManagerSystem/" + $scope.pathJSP +"/gioiThieu";
+	document.getElementById("LayoutForm").action = url;
+	document.getElementById("LayoutForm").method = "POST";
+	document.getElementById("LayoutForm").submit();
+}
+
+function huongDan($scope, $window, idSanPham){
+	var url = "/storeManagerSystem/" + $scope.pathJSP +"/huongDan";
 	document.getElementById("LayoutForm").action = url;
 	document.getElementById("LayoutForm").method = "POST";
 	document.getElementById("LayoutForm").submit();
