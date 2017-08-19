@@ -78,10 +78,8 @@ public class DangkiTaiKhoanController {
 		inputBean.setNgaySua("");
 		inputBean.setMatKhau(MD5HashingExample.MD5(form.getPassword()));
 		
-		
 		//insert
 		int cnt = KhachHangDAO.intances.insert(inputBean);
-		System.out.println("cnt: "+cnt);
 		if(cnt == 1){
 			form.setMessage("Xử lý đăng kí thành công.");
 			form.setMessageErr("");
@@ -89,6 +87,6 @@ public class DangkiTaiKhoanController {
 			form.setMessageErr("Xử lý đăng kí không thành công.");
 			form.setMessage("");
 		}
-		return  "login";
+		return  "redirect:/"+path+"/dangNhap";
 	}
 }

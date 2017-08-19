@@ -529,7 +529,6 @@ public class KhoHangDAO {
 			query.setParameter(0, inputBean.getTrangThai());
 			query.setParameter(1, inputBean.getNgayNhanHang());
 			query.setParameter(2, inputBean.getIdDonHang());
-			
 			cnt = query.executeUpdate();
 			tx.commit();
 		} catch (Exception e) {
@@ -859,7 +858,7 @@ public class KhoHangDAO {
 		String tableName = pathJSP+"_DONHANG";
 		sb.append("  UPDATE  "+tableName+"     		");
 		sb.append("  		SET TRANG_THAI 	= ?	        ");
-		sb.append("  		SET NGAY_NHAN 	= ?	        ");
+		sb.append("  		, NGAY_NHAN 	= ?	        ");
 		sb.append("  		 WHERE ID_DONHANG = ?        ");
 		return sb.toString();
 	}

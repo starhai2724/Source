@@ -58,7 +58,6 @@ public class ClientLoginController {
 			// set session userlocal
 			session.setAttribute("userLocal", userlocal);
 			
-			System.out.println("role: "+userlocal.getRole());
 			//role User
 			if(SystemCommon.USER.equals(userlocal.getRole())){
 				session.setAttribute("pathURL", userlocal.getURLStore());
@@ -66,7 +65,6 @@ public class ClientLoginController {
 				
 			//role Root
 			}else if(SystemCommon.ROOT.equals(userlocal.getRole())){
-				System.out.println("abc");
 				return SystemCommon.PAGE_HOME;
 			}
 		}

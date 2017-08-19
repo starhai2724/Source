@@ -62,6 +62,11 @@ dependencies {
     // https://mvnrepository.com/artifact/javax.mail/javax.mail-api
 	//compile group: 'javax.mail', name: 'javax.mail-api', version: '1.5.1'
       compile 'javax.mail:mail:1.4.7'
+      
+      //IBM watson (S)
+      'com.ibm.watson.developer_cloud:conversation:3.8.0'
+      //IBM watson (E)
+      
 }
 
 

@@ -9,7 +9,7 @@
             <div class="col-sm-8 col-xs-13 col-sm-offset-2 step-block1 ">
                 <h2>Đổi mật khẩu</h2>
                 <p style="color: red; font-weight: bold;">${QuenMatKhauForm.messageErr }</p>
-                <p style="color: red; font-weight: bold;">${QuenMatKhauForm.message }</p>
+                <p style="color: blue; font-weight: bold;">${QuenMatKhauForm.message }</p>
                 <div class="form-group has-feedback">
                     <form:input type="text" class="form-control" placeholder="Tên đăng nhập" path="email"  ng-model="email" ng-init="email='${QuenMatKhauForm.email}'" pattern="^[a-zA-Z0-9_-]{3,60}$" ng-minlength="3" ng-maxlength="50"/>
                     <span class="form-control-feedback color7" aria-hidden="true">*</span>
