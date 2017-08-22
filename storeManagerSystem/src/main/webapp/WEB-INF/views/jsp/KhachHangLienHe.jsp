@@ -13,10 +13,19 @@
 			<div class="col-lg-12">
 				<h1 class="page-header">Quản lý liên hệ</h1>
 			</div>
+			<i style="font-size:24px;margin-left: 1400px;margin-top: -10px" data-toggle="collapse" data-target="#demo" class="fa">&#xf106;</i>
 			<!-- /.col-lg-12 -->
 		</div>
 		<!-- /.row -->
 	<form:form id="LienHeForm" modelAttribute="LienHeForm" role="form" method="POST" >
+	<c:choose>
+		<c:when test="${LienHeForm.flagUpdate eq ('1')}">
+		<div id="demo" class="collapse in">
+		</c:when>
+		<c:otherwise>
+		<div id="demo" class="collapse">
+		</c:otherwise>
+		</c:choose>
 		<div class="row">
 			<div class="col-sm-4">
 				<div class="form-group">
@@ -80,6 +89,7 @@
 					<p style="color: red; font-weight: bold;">${LienHeForm.messageErr }</p>
 				</div>
 			</div>
+		</div>
 		</div>
 		<!--Message (E)-->
 		<div class="row" align="right" style="width: 100%">

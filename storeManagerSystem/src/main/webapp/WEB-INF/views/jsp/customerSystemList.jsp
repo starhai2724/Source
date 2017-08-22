@@ -10,7 +10,7 @@
 	<div id="page-wrapper" ng-app="storeOwnerList" ng-controller="ctrl">
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Người dùng</h1>
+				<h1 class="page-header">Quản lý Người dùng</h1>
 			</div>
 			<!-- /.col-lg-12 -->
 		</div>

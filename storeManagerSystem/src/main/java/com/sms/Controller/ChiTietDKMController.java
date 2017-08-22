@@ -66,14 +66,12 @@ public class ChiTietDKMController {
 		List<String> lst_idSP = (List<String>)session.getAttribute("lstPhanAnh");
 		List<ProductFormRow> lst = form.getLst();
 		//init data
-		 
 		 ArrayList<String> lstMaSPKM_old = new ArrayList<>();
 		 if(lst != null && lst.size() > 0){
 			 for(int i = 0; i< lst.size() ; i++){
-				 lstMaSPKM_old.add(lst.get(i).getSEQ());
+				 lstMaSPKM_old.add(lst.get(i).getIdSanPham());
 			 }
 		 }
-		 
 		boolean checkErr = false;
 		String idSP = "";
 		ProductFormRow formRow; 
@@ -82,46 +80,52 @@ public class ChiTietDKMController {
 		SanPhamOutputRowBean outputRowBean;
 		int cnt = 1;
 		for(int i = 0; i< lst_idSP.size() ; i++){
-			idSP = lst_idSP.get(i);
+			input = new SanPhamInputBean();
+			input.setPathJSP(pathJSP);
+			input.setSEQ(lst_idSP.get(i));
+			SanPhamOutputBean sanPhamOutputBean = CreateTableProductDAO.intances.getProductById(input);
+			if(sanPhamOutputBean != null && sanPhamOutputBean.getLst().size() > 0){
+				idSP = sanPhamOutputBean.getLst().get(0).getIdSanPham();
+				System.out.println("idSP: "+idSP);
+			}
 			for (String str : lstMaSPKM_old) {
 				if(str.equals(idSP)){
 					checkErr = true;
 				}
 			}
 			if(checkErr) {
+				checkErr = false;
 				continue;
 			}
-			
 			input = new SanPhamInputBean();
 			input.setPathJSP(pathJSP);
 			input.setIdSanPham(idSP);
-			input.setSEQ(idSP);
-			System.out.println("idSP KM: " + idSP);
+			input.setSEQ(lst_idSP.get(i));
 			//get data theo id va group theo id 
 			outputBean = CreateTableProductDAO.intances.getProductById_GroupById(input);
-			outputRowBean = outputBean.getLst().get(0);
-			System.out.println("outputRowBean.getGiaMua(): " + outputRowBean.getGiaMua());
-			System.out.println("outputRowBean.getGiaBan(): " + outputRowBean.getGiaBan());
-			// set data
-			formRow =  new ProductFormRow();
-			formRow.setNo(String.valueOf(cnt++));
-			formRow.setSEQ(outputRowBean.getSEQ());
-			formRow.setIdSanPham(outputRowBean.getIdSanPham());
-			formRow.setTenSP(outputRowBean.getTenSP());
-			formRow.setTenLoaiSP(outputRowBean.getTenLoaiSP());
-			formRow.setIdLoaiSP(outputRowBean.getIdLoaiSP());
-			if(!"".equals(outputRowBean.getGiaMua()) && 0 != outputRowBean.getGiaMua().trim().length()){
-		    	formRow.setGiaMua(SMSComons.formatMoney(outputRowBean.getGiaMua()));
-		    }
-			if(null != outputRowBean.getGiaBanKM() && !"".equals(outputRowBean.getGiaBanKM()) && 0 != outputRowBean.getGiaBanKM().length()){
-		    	formRow.setGiaBan(SMSComons.formatMoney(outputRowBean.getGiaBanKM()));
-		    }
-			if(!"".equals(outputRowBean.getGiaBan()) && 0 != outputRowBean.getGiaBan().trim().length() ){
-		    	formRow.setGiaBan(SMSComons.formatMoney(outputRowBean.getGiaBan()));
-		    }
-			formRow.setIndex(i);
-			formRow.setChecked(1);
-			form.getLst().add(formRow);
+			if(outputBean != null && outputBean.getLst().size() > 0){
+				outputRowBean = outputBean.getLst().get(0);
+				// set data
+				formRow =  new ProductFormRow();
+				formRow.setNo(String.valueOf(cnt++));
+				formRow.setSEQ(outputRowBean.getSEQ());
+				formRow.setIdSanPham(outputRowBean.getIdSanPham());
+				formRow.setTenSP(outputRowBean.getTenSP());
+				formRow.setTenLoaiSP(outputRowBean.getTenLoaiSP());
+				formRow.setIdLoaiSP(outputRowBean.getIdLoaiSP());
+				if(!"".equals(outputRowBean.getGiaMua()) && 0 != outputRowBean.getGiaMua().trim().length()){
+			    	formRow.setGiaMua(SMSComons.formatMoney(outputRowBean.getGiaMua()));
+			    }
+				if(null != outputRowBean.getGiaBanKM() && !"".equals(outputRowBean.getGiaBanKM()) && 0 != outputRowBean.getGiaBanKM().length()){
+			    	formRow.setGiaBan(SMSComons.formatMoney(outputRowBean.getGiaBanKM()));
+			    }
+				if(!"".equals(outputRowBean.getGiaBan()) && 0 != outputRowBean.getGiaBan().trim().length() ){
+			    	formRow.setGiaBan(SMSComons.formatMoney(outputRowBean.getGiaBan()));
+			    }
+				formRow.setIndex(i);
+				formRow.setChecked(1);
+				form.getLst().add(formRow);
+			}
 		}
 		
 		model.addAttribute("lst_dangKy", form);
@@ -143,7 +147,6 @@ public class ChiTietDKMController {
 		}else{
 			result = "0";
 		}
-		System.out.println("result: " + result);
 		return result;
 	}
 	
@@ -157,6 +160,7 @@ public class ChiTietDKMController {
 			return "redirect:/";
 		}
 		String idDKM = (String)session.getAttribute("idDKM");
+		System.out.println("idDKM: "+idDKM);
 		List<ProductFormRow> lst = form.getLst();
 		//init data
 		ProductFormRow formRow;
@@ -173,36 +177,40 @@ public class ChiTietDKMController {
 				input.setPathJSP(pathJSP);
 				input.setIdSanPham(formRow.getIdSanPham());
 				input.setSEQ(formRow.getSEQ());
-				outputBean = CreateTableProductDAO.intances.getProductById(input);
-				outputRowBean = outputBean.getLst().get(0);
+				System.out.println("formRow.getSEQ(): "+formRow.getSEQ());
+				input.setId_DKM(idDKM);
+				outputBean = CreateTableProductDAO.intances.getProductByIdAndIdDKM(input);
 				// check ton tai
-				if(null != outputRowBean.getId_DKM() && 0 != outputRowBean.getId_DKM().trim().length() ){
+				if(null != outputBean && outputBean.getLst().size() > 0){
+					outputRowBean = outputBean.getLst().get(0);
 					// la san pham da KM -> update
 					input.setId_DKM(outputRowBean.getId_DKM());
 					input.setNgayChinhSua(SMSComons.getDate());
 					input.setGiaBanKM(formRow.getGiaBanKM());
 					input.setSEQ(formRow.getSEQ());
 					cnt = CreateTableProductDAO.intances.update_SPKM(input);
-					
 				}else{
 					// la san pham chua KM -> insert
-					input.setSEQ("");
-					input.setIdSanPham(formRow.getIdSanPham());
-					input.setTenSP(outputRowBean.getTenSP());
-					input.setIdCuaHang(outputRowBean.getIdCuaHang());
-					input.setIdLoaiSP(outputRowBean.getIdLoaiSP());
-					input.setGiaMua(outputRowBean.getGiaMua());
-					input.setGiaBan(outputRowBean.getGiaBan());
-					input.setHinh(outputRowBean.getHinh());
-					input.setMoTa(outputRowBean.getMoTa());
-					input.setTrangThai("0");
-					input.setNgayTao(SMSComons.getDate());
-					input.setNgayChinhSua(outputRowBean.getNgayChinhSua());
-					input.setGiaBanKM(form.getLst().get(i).getGiaBanKM());
-					input.setId_DKM(idDKM);
-					input.setIndex(1);
-					
-					 cnt = CreateTableProductDAO.intances.insertSPKM(input);
+					outputBean = CreateTableProductDAO.intances.getProductById(input);
+					if(outputBean != null && outputBean.getLst().size() > 0){
+						outputRowBean = outputBean.getLst().get(0);
+						input.setSEQ("");
+						input.setIdSanPham(formRow.getIdSanPham());
+						input.setTenSP(outputRowBean.getTenSP());
+						input.setIdCuaHang(outputRowBean.getIdCuaHang());
+						input.setIdLoaiSP(outputRowBean.getIdLoaiSP());
+						input.setGiaMua(outputRowBean.getGiaMua());
+						input.setGiaBan(outputRowBean.getGiaBan());
+						input.setHinh(outputRowBean.getHinh());
+						input.setMoTa(outputRowBean.getMoTa());
+						input.setTrangThai("0");
+						input.setNgayTao(SMSComons.getDate());
+						input.setNgayChinhSua(outputRowBean.getNgayChinhSua());
+						input.setGiaBanKM(form.getLst().get(i).getGiaBanKM());
+						input.setId_DKM(idDKM);
+						input.setIndex(1);
+						cnt = CreateTableProductDAO.intances.insertSPKM(input);
+					}
 				}
 					
 				if(cnt != 1){
@@ -217,6 +225,7 @@ public class ChiTietDKMController {
 				}
 			}
 		}
+		initData(form, pathJSP,idDKM);
 		
 		session.setAttribute("PAGEIDSTORE", CHITIETDKM);
 		return  SystemCommon.ADMIN_STORE;
@@ -326,6 +335,27 @@ public class ChiTietDKMController {
 				form.getLst().add(formRow);
 			}
 		}
+		
+		//Su dung de phan anh danh sach san pham (S)
+		form.getLstSanPham().clear();
+		SanPhamOutputBean outputBeanPhanAnh = CreateTableProductDAO.intances.getProducts(pathJSP);
+		ProductFormRow formRowPhanAnh; 
+		int cntPhanAnh = 1;
+		if(outputBeanPhanAnh != null && outputBeanPhanAnh.getLst().size() > 0){
+			for(int i = 0; i <  outputBeanPhanAnh.getLst().size() ; i++){
+				SanPhamOutputRowBean outputRowBean = outputBeanPhanAnh.getLst().get(i);	
+				formRowPhanAnh = new ProductFormRow();
+				formRowPhanAnh.setNo(String.valueOf(cntPhanAnh++));
+				formRowPhanAnh.setSEQ(outputRowBean.getSEQ());
+				formRowPhanAnh.setIdSanPham(outputRowBean.getIdSanPham());
+				formRowPhanAnh.setTenSP(outputRowBean.getTenSP());
+				formRowPhanAnh.setTenLoaiSP(outputRowBean.getTenLoaiSP());
+				formRowPhanAnh.setGiaMua(SMSComons.formatMoney(outputRowBean.getGiaMua()));
+				formRowPhanAnh.setGiaBan(SMSComons.formatMoney(outputRowBean.getGiaBan()));
+				form.getLstSanPham().add(formRowPhanAnh);
+			}
+		}
+		//Su dung de phan anh danh sach san pham (E)
 	}
 	
 	@RequestMapping(value  = "/chiTietDKM/chonSPKM")
@@ -376,5 +406,19 @@ public class ChiTietDKMController {
 		return  SystemCommon.ADMIN_STORE;
 	}
 	
-	
+	@RequestMapping(value="product/phanAnh/{listId}", method = RequestMethod.POST)
+	public String phanAnh(@ModelAttribute("ProductForm3") ProductForm form, HttpSession session,@PathVariable("listId") String listId){
+		List lstPhanAnh = new ArrayList<String>();
+		// remove ","
+		if (!"".equals(listId) && !"0".equals(listId)) {
+			listId = listId.substring(1);
+			String[] parts = listId.split(",");
+			listId = "";
+			for (int i = 0; i < parts.length; i++) {
+				lstPhanAnh.add(parts[i]);
+			}
+		}
+		session.setAttribute("lstPhanAnh", lstPhanAnh);
+		return  "redirect:/chiTietDKM/initPhanAnh";
+	}
 }

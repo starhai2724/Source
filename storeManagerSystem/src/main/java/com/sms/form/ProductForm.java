@@ -117,9 +117,20 @@ public class ProductForm extends AbstractForm{
 	}
 
 	private List<ProductFormRow> lst = new ArrayList<>();
+	// su dung de phan anh san pham (S)
+	private List<ProductFormRow> lstSanPham = new ArrayList<>();
+	// su dung de phan anh san pham (E)
 
 	public List<ProductFormRow> getLst() {
 		return lst;
+	}
+
+	public List<ProductFormRow> getLstSanPham() {
+		return lstSanPham;
+	}
+
+	public void setLstSanPham(List<ProductFormRow> lstSanPham) {
+		this.lstSanPham = lstSanPham;
 	}
 
 	public void setLst(List<ProductFormRow> lst) {
