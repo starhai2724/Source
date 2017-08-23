@@ -13,7 +13,14 @@
 			<i style="font-size:24px;margin-left: 1400px;margin-top: -10px" data-toggle="collapse" data-target="#demo" class="fa">&#xf106;</i>
 			<!-- /.col-lg-12 -->
 		</div>
+		<c:choose>
+		<c:when test="${DotKhuyenMaiForm.flagUpdate eq ('1')}">
 		<div id="demo" class="collapse in">
+		</c:when>
+		<c:otherwise>
+		<div id="demo" class="collapse">
+		</c:otherwise>
+		</c:choose>
 		<!-- /.row -->
 		<div class="row">
 			<div class="col-sm-3">
@@ -73,6 +80,7 @@
 				</div>
 			</div>
 		</div>
+		
 		<!--Message (S)-->
 		<div class="row">
 			<div class="col-sm-8">
@@ -86,7 +94,7 @@
 		<div class="row" align="right" style="width: 100%">
 			<div >
 				<input type="button" name="" class="btn btn-info " ng-click ="btnCreate()" value="Đăng kí">
-				<input type="button" name="" class="btn btn-info " ng-click="exportToExcel('#dataTables-example')" value="In">
+				<input type="button" name="" class="btn btn-info " ng-click="exportToExcel('#dataTables-example')" value="Export Excel">
 				<input type="button" name="" class="btn btn-info " ng-click ="btnClear()" value="Hủy">
 			</div>
 		</div>
@@ -121,12 +129,13 @@
 		                                        		<button class="btn" type="button" ng-click="btnGetById('${items.maDKM}');">
 															<span class="glyphicon glyphicon-pencil" data-toggle="tooltip" data-original-title="Sửa"></span>
 														</button>
-														<button class="btn" type="button" ng-click="btnDelete('${items.maDKM}');" >
-															<span class="glyphicon glyphicon-trash" data-toggle="tooltip" data-original-title="Xóa"></span>
-														</button>
 														<button class="btn" type="button" ng-click="btnDetail('${items.maDKM}');" >
 															<span class="glyphicon glyphicon-list" data-toggle="tooltip" data-original-title="Chi tiết"></span>
 														</button>
+														<button class="btn" type="button" ng-click="btnDelete('${items.maDKM}');" >
+															<span class="glyphicon glyphicon-trash" data-toggle="tooltip" data-original-title="Xóa"></span>
+														</button>
+														
 		                                        </td>
 		                                 </tr>
 		                        </c:forEach>

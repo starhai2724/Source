@@ -139,9 +139,8 @@
 															<span class="fa fa-list-alt" data-toggle="tooltip" data-original-title="Sửa" ng-click="btnGetByIdQLDT('${items.idDonHang}');"></span>
 														</button>
 														<button class="btn" type="button" >
-															<span class="glyphicon glyphicon-trash" data-toggle="tooltip" data-original-title="Xác nhận" ng-click="btnXacNhan('${items.idDonHang}');"></span>
+															<span class="glyphicon glyphicon-check" data-toggle="tooltip" data-original-title="Xác nhận" ng-click="btnXacNhan('${items.idDonHang}');"></span>
 														</button>
-														
 		                                        </td>
 		                                 </tr>
 		                             </c:forEach>    

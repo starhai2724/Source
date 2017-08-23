@@ -30,6 +30,48 @@
 <div id="wrapper">
 	<!-- Navigation -->
 	<div id="page-wrapper" ng-app="ProductForm" ng-controller="ctrl">
+	<form:form id="ProductForm" modelAttribute="ProductForm3" role="form" method="POST" >
+	<!-- Danh Sach San pham (S) -->
+	<div id="sanPhamPhanAnh" class="collapse" > 
+	<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">Danh sách sản phẩm</h1>
+			</div>
+			<!-- /.col-lg-12 -->
+	</div>
+	<div class="row">
+		<input type="button" name="" class="btn btn-info " style="margin-left: 30px" ng-click ="btnPhanAnh()" value="Phản ánh">
+	</div>
+	<div class="panel-body">
+                     <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                         <thead>
+                             <tr>
+                             	<th style="text-align: center; width: 5px;"></th>
+                                <th style="text-align: center; width: 10px;padding-left: 5px;padding-right: 4px; ">STT</th>
+								<th style="text-align: center; width: 50px;padding-left: 5px;padding-right: 4px; ">Mã SP</th>
+								<th style="text-align: center; width: 150px">Tên sản phẩm</th>
+								<th style="text-align: center; width: 120px">Loại SP</th>
+								<th style="text-align: center; width: 80px;padding-left: 5px;padding-right: 4px; ">Giá mua</th>
+								<th style="text-align: center; width: 80px;padding-left: 5px;padding-right: 4px; ">Giá bán</th>
+                             </tr>
+                         </thead>
+                         <tbody style="overflow: auto; height:50px" ng-model = "listSanPham" ng-init ="listSanPham = '${fn:length(ProductForm3.lstSanPham)}'">
+                       		  <c:forEach var="items" items="${ProductForm3.lstSanPham }">
+                           <tr class="odd gradeX">
+                            	   <td class="center" style="text-align: center"><input type="checkbox" ng-model="selected1[${items.no}]"  ng-init ="selected1[${items.no}]='false'" ng-true-value="'${items.SEQ }'" ng-false-value="'NO'"></td>
+                                   <td style="text-align: center">${items.no}</td>
+                                   <td>${items.idSanPham}</td>
+                    			   <td>${items.tenSP}</td>
+                                   <td>${items.tenLoaiSP }</td>
+                                   <td style="text-align: right">${items.giaMua }</td>
+                  		           <td style="text-align: right">${items.giaBan }</td>
+                            </tr>
+              				</c:forEach>
+                         </tbody>
+                     </table>
+    </div>
+    </div>
+	<!-- Danh Sach San pham (E) -->
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">Chi Tiết Sản Phẩm Khuyến Mãi</h1>
@@ -37,11 +79,12 @@
 			<!-- /.col-lg-12 -->
 		</div>
 		<!-- /.row -->
-	<form:form id="ProductForm" modelAttribute="ProductForm3" role="form" method="POST" >
 		<div class="row" align="right" style="width: 100%">
-			<div >
-				<input type="button" name="" class="btn btn-info " ng-click ="btnChonSPKM()" value="Chọn SP Khuyến Mãi">
+			<div>
+				<input type="button" name="" class="btn btn-info " ng-click ="btnDangKy()" value="Đăng ký">
+				<input type="button" name="" class="btn btn-info " data-toggle="collapse" data-target="#sanPhamPhanAnh" value="Chọn SP Khuyến Mãi">
 				<input type="button" name="" class="btn btn-info " ng-click ="btnXoaDong()" value="Xóa dòng">
+				<input type="button" name="" class="btn btn-info " ng-click ="btnQuayVe()" value="Quay về">
 			</div>
 		</div>
 		<!--Message (S)-->
@@ -68,7 +111,7 @@
 										<th style="width: 180px;text-align:center">Giá mua</th>
 										<th style="text-align:center; width: 180px;">Giá bán</th>
 										<th style="text-align:center; width: 220px;">Giá bán KM</th>
-										<th style="text-align:center; width: 150px;">Loại SP</th>
+										<!-- <th style="text-align:center; width: 150px;">Loại SP</th> -->
                                     </tr>
                                 </thead>
                                 <tbody style="overflow: scroll; height:50px;">
@@ -84,8 +127,8 @@
 		                                         <td>
 		                                         	<form:input  maxlength="10" class="form-control" path="lst[${status.index}].giaBanKM"   ng-model = "lst[${status.index}].giaBanKM"  ng-init ="lst[${status.index}].giaBanKM = '${items.giaBanKM}'" />	
 		                                         </td>
-		                                         <td>${items.tenLoaiSP }</td>
-		                                         <td hidden="">${items.idLoaiSP }</td>
+		                                         <%-- <td>${items.tenLoaiSP }</td> --%>
+		                                         <%-- <td hidden="">${items.idLoaiSP }</td> --%>
 		                                 </tr>
 					                </c:forEach>
                                 </tbody>
@@ -115,11 +158,11 @@
              </div>
 		</c:if>
 		<form:input class="form-control" type="hidden"  path="flagUpdate"  name="flagUpdate" ng-model ="flagUpdate" ng-init="flagUpdate='${ProductForm.flagUpdate}'" />
-		<div class="row" align="center" style="width: 100%">
+		<!-- <div class="row" align="center" style="width: 100%">
 			<div >
 				<input type="button" name="" class="btn btn-info " ng-click ="btnDangKy()" value="Đăng ký">
 			</div>
-		</div>
+		</div> -->
 		
 	</form:form>		
 		<!-- /#page-wrapper -->

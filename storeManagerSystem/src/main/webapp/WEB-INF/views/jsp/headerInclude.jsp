@@ -34,7 +34,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
         <!-- Bootstrap Core CSS -->
-    <link href="/storeManagerSystem/view/thongKe/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!--     <link href="/storeManagerSystem/view/thongKe/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
 
     <!-- MetisMenu CSS -->
     <link href="/storeManagerSystem/view/thongKe/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
@@ -53,7 +53,7 @@
     <script src="/storeManagerSystem/view/thongKe/vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="/storeManagerSystem/view/thongKe/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--     <script src="/storeManagerSystem/view/thongKe/vendor/bootstrap/js/bootstrap.min.js"></script> -->
 
     <!-- Metis Menu Plugin JavaScript -->
     <script src="/storeManagerSystem/view/thongKe/vendor/metisMenu/metisMenu.min.js"></script>
@@ -68,7 +68,16 @@
     
 <!--     <script src="/storeManagerSystem/view/thongKe/custom.min.js"></script> -->
     
-    <script src="/storeManagerSystem/view/templateDK/jquery-2.1.0.min.js" type="text/javascript"></script>
+<!--     <script src="/storeManagerSystem/view/templateDK/jquery-2.1.0.min.js" type="text/javascript"></script> -->
     
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <!-- Export file (S)  -->
+  	
     
+<!--     <script src="/storeManagerSystem/view/export/app.js"></script> -->
+  <!-- Export file (E)  -->
+  
     

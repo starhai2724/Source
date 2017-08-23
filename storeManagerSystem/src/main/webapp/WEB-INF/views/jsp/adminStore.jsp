@@ -16,29 +16,22 @@
   <!-- Navigation -->
   <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+     <!--  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar">Đăng xuất</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="index.html">Quản lý</a>
+      </button> -->
+      <a class="navbar-brand" href="javascript:void(0)">Quản lý</a>
     </div>
     <!-- /.navbar-header -->
-    <ul class="nav navbar-top-links navbar-right">
+    <ul class="nav navbar-top-links navbar-right" style="margin-right:3px">
       <!-- /.dropdown -->
       <!-- /.dropdown -->
       <li class="dropdown">
         <a class="dropdown-toggle" href="/storeManagerSystem/dangXuat">
           <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"> Đăng xuất</i>
         </a>
-        <ul class="dropdown-menu dropdown-user">
-          <li><a href="#"><i class="fa fa-gear fa-fw"></i> Cài đặt</a>
-          </li>
-          <li class="divider"></li>
-          <li><a href="/storeManagerSystem/dangXuat"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>
-          </li>
-        </ul>
         <!-- /.dropdown-user -->
       </li>
       <!-- /.dropdown -->

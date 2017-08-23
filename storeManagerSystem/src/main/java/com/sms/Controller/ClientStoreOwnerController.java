@@ -120,10 +120,8 @@ public class ClientStoreOwnerController {
 		
 		if(resultObject.getStatus() == Status.SUCCESS){
 			modelMap.addAttribute("storeOwners", outputBean);
-//			modelMap.addAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEMLIST);
 			session.setAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEMLIST);
 		}else{
-//			modelMap.addAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEMLIST);
 			session.setAttribute(SystemCommon.PAGE_ID, CUSTOMER_SYSTEMLIST);
 			storeOwnerListForm.setMessageErr("Không có dữ liệu. Vui lòng thay đổi điều kiện tìm kiếm.");
 		}

@@ -61,6 +61,7 @@ public class ProductController {
 		form.setGiaBan("");
 		form.setMoTa("");
 		form.setIdLoaiSP("");
+		form.setPathJSP(pathJSP);
 		//Flag update
 		form.setFlagUpdate("0");
 		//reset message
@@ -115,8 +116,9 @@ public class ProductController {
 	
 	
 	@RequestMapping(value ="/product/insert", method = RequestMethod.POST)
-	public String insert(@ModelAttribute("ProductForm") ProductForm form, @RequestParam("file") MultipartFile file, @RequestParam("file_1") MultipartFile file_1
-			, @RequestParam("file_2") MultipartFile file_2, @RequestParam("file_3") MultipartFile file_3, HttpSession session) {
+//	public String insert(@ModelAttribute("ProductForm") ProductForm form, @RequestParam("file") MultipartFile file, @RequestParam("file_1") MultipartFile file_1
+//			, @RequestParam("file_2") MultipartFile file_2, @RequestParam("file_3") MultipartFile file_3, HttpSession session) {
+		public String insert(@ModelAttribute("ProductForm") ProductForm form, @RequestParam("file") MultipartFile file, HttpSession session) {
 		//get domain
 		String pathJSP = (String)session.getAttribute("pathURL"); 
 		// check pathJSP
@@ -144,29 +146,29 @@ public class ProductController {
 		}
 		input.setHinh(bFile);
 		
-		byte[] bFile_1 = null;
-		try {
-			bFile_1 = file_1.getBytes();
-		} catch (IOException e) {
-		
-		}
-		input.setHinhChiTiet1(bFile_1);
-		
-		byte[] bFile_2 = null;
-		try {
-			bFile_2 = file_2.getBytes();
-		} catch (IOException e) {
-		
-		}
-		input.setHinhChiTiet2(bFile_2);
-		
-		byte[] bFile_3 = null;
-		try {
-			bFile_3 = file_3.getBytes();
-		} catch (IOException e) {
-		
-		}
-		input.setHinhChiTiet3(bFile_3);
+//		byte[] bFile_1 = null;
+//		try {
+//			bFile_1 = file_1.getBytes();
+//		} catch (IOException e) {
+//		
+//		}
+//		input.setHinhChiTiet1(bFile_1);
+//		
+//		byte[] bFile_2 = null;
+//		try {
+//			bFile_2 = file_2.getBytes();
+//		} catch (IOException e) {
+//		
+//		}
+//		input.setHinhChiTiet2(bFile_2);
+//		
+//		byte[] bFile_3 = null;
+//		try {
+//			bFile_3 = file_3.getBytes();
+//		} catch (IOException e) {
+//		
+//		}
+//		input.setHinhChiTiet3(bFile_3);
 		//Image (E)
 		
 		
@@ -186,7 +188,7 @@ public class ProductController {
 			form.setMessage("Xử lý đăng kí thành công.");
 			form.setMessageErr("");
 			//Flag update
-			form.setFlagUpdate("1");
+			form.setFlagUpdate("0");
 		}else {
 			form.setMessageErr("Xử lý đăng kí không thành công.");
 			form.setMessage("");
@@ -200,8 +202,9 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value ="/product/update", method = RequestMethod.POST)
-	public String update(@ModelAttribute("ProductForm") ProductForm form, @RequestParam("file") MultipartFile file, @RequestParam("file_1") MultipartFile file_1
-			, @RequestParam("file_2") MultipartFile file_2, @RequestParam("file_3") MultipartFile file_3 , HttpSession session){
+//	public String update(@ModelAttribute("ProductForm") ProductForm form, @RequestParam("file") MultipartFile file, @RequestParam("file_1") MultipartFile file_1
+//			, @RequestParam("file_2") MultipartFile file_2, @RequestParam("file_3") MultipartFile file_3 , HttpSession session){
+		public String update(@ModelAttribute("ProductForm") ProductForm form, @RequestParam("file") MultipartFile file,  HttpSession session){
 		//get domain
 		String pathJSP = (String)session.getAttribute("pathURL"); 
 		// check pathJSP
@@ -219,39 +222,37 @@ public class ProductController {
 		input.setGiaBan(form.getGiaBan());
 		input.setTrangThai("0");
 		input.setMoTa(form.getMoTa());
-		System.out.println("form.getTenSP(): "+form.getTenSP());
 		//Image (S)
 		byte[] bFile = null;
 		try {
 			bFile = file.getBytes();
 		} catch (IOException e) {
-		
 		}
 		input.setHinh(bFile); 
 		
-		byte[] bFile_1 = null;
-		try {
-			bFile_1 = file_1.getBytes();
-		} catch (IOException e) {
-		
-		}
-		input.setHinhChiTiet1(bFile_1);
-		
-		byte[] bFile_2 = null;
-		try {
-			bFile_2 = file_2.getBytes();
-		} catch (IOException e) {
-		
-		}
-		input.setHinhChiTiet2(bFile_2);
-		
-		byte[] bFile_3 = null;
-		try {
-			bFile_3 = file_3.getBytes();
-		} catch (IOException e) {
-		
-		}
-		input.setHinhChiTiet3(bFile_3);
+//		byte[] bFile_1 = null;
+//		try {
+//			bFile_1 = file_1.getBytes();
+//		} catch (IOException e) {
+//		
+//		}
+//		input.setHinhChiTiet1(bFile_1);
+//		
+//		byte[] bFile_2 = null;
+//		try {
+//			bFile_2 = file_2.getBytes();
+//		} catch (IOException e) {
+//		
+//		}
+//		input.setHinhChiTiet2(bFile_2);
+//		
+//		byte[] bFile_3 = null;
+//		try {
+//			bFile_3 = file_3.getBytes();
+//		} catch (IOException e) {
+//		
+//		}
+//		input.setHinhChiTiet3(bFile_3);
 		//Image (E)
 		input.setNgayChinhSua(SMSComons.getDate());
 		
@@ -262,7 +263,7 @@ public class ProductController {
 			form.setMessage("Xử lý đăng kí thành công.");
 			form.setMessageErr("");
 			//Flag update
-			form.setFlagUpdate("1");
+			form.setFlagUpdate("0");
 		}else {
 			form.setMessageErr("Xử lý đăng kí không thành công.");
 			form.setMessage("");
@@ -276,8 +277,9 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="product/getProductById/{SEQ}", method = RequestMethod.POST)
-	public String getProductById(@ModelAttribute("ProductForm") ProductForm form, @PathVariable("SEQ") String SEQ, @RequestParam("file") MultipartFile file, @RequestParam("file_1") MultipartFile file_1
-			, @RequestParam("file_2") MultipartFile file_2, @RequestParam("file_3") MultipartFile file_3, HttpSession session){
+//	public String getProductById(@ModelAttribute("ProductForm") ProductForm form, @PathVariable("SEQ") String SEQ, @RequestParam("file") MultipartFile file, @RequestParam("file_1") MultipartFile file_1
+//			, @RequestParam("file_2") MultipartFile file_2, @RequestParam("file_3") MultipartFile file_3, HttpSession session){
+		public String getProductById(@ModelAttribute("ProductForm") ProductForm form, @PathVariable("SEQ") String SEQ, @RequestParam("file") MultipartFile file, HttpSession session){
 		//get domain
 		String pathJSP = (String)session.getAttribute("pathURL"); 
 		// check pathJSP
@@ -370,21 +372,4 @@ public class ProductController {
 		return  SystemCommon.ADMIN_STORE;
 	}
 	
-	@RequestMapping(value="product/phanAnh/{listId}", method = RequestMethod.POST)
-	public String phanAnh(@ModelAttribute("ProductForm") ProductForm form, HttpSession session,@PathVariable("listId") String listId){
-		
-		List lstPhanAnh = new ArrayList<String>();
-		// remove ","
-		if (!"".equals(listId) && !"0".equals(listId)) {
-			listId = listId.substring(1);
-			String[] parts = listId.split(",");
-			listId = "";
-			for (int i = 0; i < parts.length; i++) {
-				lstPhanAnh.add(parts[i]);
-			}
-		}
-		session.setAttribute("lstPhanAnh", lstPhanAnh);
-		String forward = (String) session.getAttribute("LINK");
-		return  "redirect:"+forward;
-	}
 }

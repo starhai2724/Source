@@ -170,10 +170,8 @@ public class CreateTableProductDAO {
 			query.setParameter(i++, inputBean.getIdLoaiSP());
 			query.setParameter(i++, inputBean.getGiaMua());
 			query.setParameter(i++, inputBean.getGiaBan());
-			System.out.println("hinh anh1");
 			if(inputBean.getHinh() != null && inputBean.getHinh().length > 0){
 				query.setParameter(i++, inputBean.getHinh());
-				System.out.println("hinh anh");
 			}
 			query.setParameter(i++, inputBean.getMoTa());
 			query.setParameter(i++, inputBean.getNgayChinhSua());
@@ -309,6 +307,55 @@ public class CreateTableProductDAO {
 			Transaction tx = session.beginTransaction();
 			SQLQuery query = session.createSQLQuery(hql);
 			query.setParameter(0, inputBean.getSEQ());
+			List<Object[]> data = query.list();
+			for (Object[] object : data) {
+				outputRowBean = new SanPhamOutputRowBean();
+				outputRowBean.setIdSanPham(SMSComons.convertString(object[0]));
+				outputRowBean.setTenSP(SMSComons.convertString(object[1]));
+				outputRowBean.setIdCuaHang(SMSComons.convertString(object[2]));
+				outputRowBean.setIdLoaiSP(SMSComons.convertString(object[3]));
+				outputRowBean.setGiaMua(SMSComons.convertString(object[4]));
+				outputRowBean.setGiaBan(SMSComons.convertString(object[5]));
+				outputRowBean.setHinh((byte[]) object[6]);
+				outputRowBean.setMoTa(SMSComons.convertString(object[7]));
+				outputRowBean.setTrangThai(SMSComons.convertString(object[8]));
+				outputRowBean.setNgayTao(SMSComons.convertString(object[9]));
+				outputRowBean.setNgayChinhSua(SMSComons.convertString(object[10]));
+				outputRowBean.setId_DKM(SMSComons.convertString(object[11]));
+				outputRowBean.setSEQ(SMSComons.convertString(object[12]));
+				outputRowBean.setHinhChiTiet1((byte[]) object[13]);
+				outputRowBean.setHinhChiTiet2((byte[]) object[14]);
+				outputRowBean.setHinhChiTiet3((byte[]) object[15]);
+				outputBean.getLst().add(outputRowBean);
+			}
+			tx.commit();
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		} finally {
+			session.flush();
+			session.clear();
+			session.close();
+		}
+		return outputBean;
+	}
+	
+	/**
+	 * 
+	 * 
+	 * @return
+	 * @throws IOException 
+	 */
+	public SanPhamOutputBean getProductByIdAndIdDKM(SanPhamInputBean inputBean){
+		Session session = HibernateUtil.getSessionDAO();
+		String hql = getSQLProductByIdAndIdDotKM(inputBean.getPathJSP());
+		SanPhamOutputBean outputBean = new SanPhamOutputBean();
+		SanPhamOutputRowBean outputRowBean = null;
+		try {
+			Transaction tx = session.beginTransaction();
+			SQLQuery query = session.createSQLQuery(hql);
+			query.setParameter(0, inputBean.getSEQ());
+			query.setParameter(1, inputBean.getId_DKM());
 			List<Object[]> data = query.list();
 			for (Object[] object : data) {
 				outputRowBean = new SanPhamOutputRowBean();
@@ -1130,6 +1177,35 @@ public class CreateTableProductDAO {
 		sb.append("  ,CHITIET_3                                ");
 		sb.append("  FROM "+tableName+"          			");
 		sb.append("  WHERE SEQ = ?          			");
+		return sb.toString();
+	}
+	/**
+	 * getSQlMaxIdStoreOwner
+	 * @return
+	 */
+	private String getSQLProductByIdAndIdDotKM(String pathJSP) {
+		String tableName = pathJSP+"_PRODUCT";
+		StringBuffer sb = new StringBuffer();
+		sb.append("  SELECT                                 ");
+		sb.append("   ID_SP		                            ");
+		sb.append("  ,TEN_SP 	                            ");
+		sb.append("  ,ID_CUAHANG                            ");
+		sb.append("  ,ID_LOAI_SP                            ");
+		sb.append("  ,GIA_MUA 	                            ");
+		sb.append("  ,GIA_BAN 	                            ");
+		sb.append("  ,HINH                                  ");
+		sb.append("  ,MO_TA                                 ");
+		sb.append("  ,TRANG_THAI                            ");
+		sb.append("  ,NGAY_TAO 	                            ");
+		sb.append("  ,NGAY_CHINH_SUA                        ");
+		sb.append("  ,ID_DKM                                ");
+		sb.append("  ,SEQ                                ");
+		sb.append("  ,CHITIET_1                                ");
+		sb.append("  ,CHITIET_2                                ");
+		sb.append("  ,CHITIET_3                                ");
+		sb.append("  FROM "+tableName+"          			");
+		sb.append("  WHERE SEQ = ?          			");
+		sb.append("  AND ID_DKM = ?          			");
 		return sb.toString();
 	}
 	

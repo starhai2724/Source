@@ -5,7 +5,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 	<!-- Navigation -->
-	<div id="page-wrapper" ng-app="DangKiWebForm" ng-controller="ctrl">
+	<div id="page-wrapper" ng-app="ThoiHanSuDungForm" ng-controller="ctrl">
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">Thông Tin Cửa Hàng</h1>

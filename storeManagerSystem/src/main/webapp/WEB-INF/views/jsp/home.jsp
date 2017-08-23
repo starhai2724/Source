@@ -54,6 +54,9 @@
           <li>
             <a href="/storeManagerSystem/quanLyDatHang/init"><i class="fa fa-wrench fa-fw"></i> Quản lý đặt hàng</a>
           </li>
+          <li>
+            <a href="/storeManagerSystem/thoiGianSuDung/init"><i class="fa fa-wrench fa-fw"></i> Quản lý thời gian sử dụng</a>
+          </li>
         </ul>
       </div>
       <!-- /.sidebar-collapse -->

@@ -71,6 +71,7 @@ public class dotKhuyenMaiController {
 	 */
 	
 	private void initData(DotKhuyenMaiForm form, String pathJSP){
+		form.getLst().clear();
 		//Loai KM
 		form.getLst_loaiKM().put("00", "Theo giá khuyến mãi có sẵn");
 		form.getLst_loaiKM().put("01", "Theo phần trăm hóa đơn");
