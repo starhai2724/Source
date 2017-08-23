@@ -75,7 +75,8 @@
 			        <div class="form-group">
                         <input type="file" name="file"/>  
                     </div>
-			        <label>Chi tiết 1</label>
+                    <img style="height: 400px;width: 300px;" src="/storeManagerSystem/myImage/${ProductForm.pathJSP }/imageDisplay/${ProductForm.SEQ}" alt="" /></a>
+			        <!-- <label>Chi tiết 1</label>
 			        <div class="form-group">
                         <input type="file" name="file_1"/>  
                     </div>
@@ -86,7 +87,7 @@
 			        <label>Chi tiết 3</label>
 			        <div class="form-group">
                         <input type="file" name="file_3"/>  
-                    </div>
+                    </div> -->
     			</div>
 			</div>
 		</div>

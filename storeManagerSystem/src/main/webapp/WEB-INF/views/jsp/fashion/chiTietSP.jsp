@@ -1,12 +1,14 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%> 
  <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%> 
  <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> 
-<html lang="en">
+ <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html>
+<html>
 <head>
-<title>Cửa hàng thời trang</title>
+
+<title>${LayoutForm.tenCuaHang }</title>
 <link href="/storeManagerSystem/view/fontend_index2/css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="/storeManagerSystem/view/fontend_index2/js/jquery.min.js"></script>
@@ -31,26 +33,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-cookies.js"></script>
 </head>
 <body>
-	<!-- header-section-starts -->
 <div ng-app="LayoutForm" ng-controller="ctrl">
 <form:form id="LayoutForm" modelAttribute="LayoutForm" role="form" method="GET" >
-	<input type="hidden" ng-model="pathJSP" ng-init="pathJSP='${LayoutForm.pathJSP}'" >
+	<form:input type="hidden" path="pathJSP" ng-model="pathJSP" ng-init="pathJSP='${LayoutForm.pathJSP}'" />
+	<!-- header-section-starts -->
 	<div class="header">
 		<div class="header-top-strip">
 			<div class="container">
 				<div class="header-top-left">
 					<ul>
 						<li><a href="/storeManagerSystem/${LayoutForm.pathJSP }/dangNhap"><span class="glyphicon glyphicon-user"> </span>Đăng nhập</a></li>
-						<li><a href="/storeManagerSystem/${LayoutForm.pathJSP }/dangkitaikhoan"><span class="glyphicon glyphicon-lock"> </span>Tạo tài khoản</a></li>		
+						<li><a href="/storeManagerSystem/${LayoutForm.pathJSP }/dangkitaikhoan"><span class="glyphicon glyphicon-lock"> </span>Tạo tài khoản</a></li>			
 					</ul>
 				</div>
 				<div class="header-right">
 						<div class="cart box_1">
-							<a href="checkout2.html">
+							<a href="javascript:void(0)">
 								<h3> <span ng-model = "cartPrice" >{{cartPrice | number}} VNĐ</span>(<span ng-model = "cartQuantity"  >{{cartQuantity}}</span>)<img src="/storeManagerSystem/view/fontend_index2/images/bag.png" alt=""></h3>
 							</a>	
-							<p><a ng-click="btnCart();" class="simpleCart_empty">Giỏ hàng</a></p>
-							<p><a ng-click="btnCart();" class="simpleCart_empty">Thanh Toán</a></p>
+							<p><a href="javascript:void(0)" ng-click="btnCart();" class="simpleCart_empty">Giỏ hàng</a></p>
+							<p style="color: red" class="simpleCart_empty">${LayoutForm.tenKhachHang}</p>
 							<div class="clearfix"> </div>
 						</div>
 				</div>
@@ -59,7 +61,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 	<!-- header-section-ends -->
-				<div class="banner-top">
+			<div class="banner-top">
 		<div class="container">
 				<nav class="navbar navbar-default" role="navigation">
 	    <div class="navbar-header">
@@ -70,12 +72,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		        <span class="icon-bar"></span>
 	        </button>
 				<div class="logo">
-					<h1><a href="/storeManagerSystem/${LayoutForm.pathJSP }"><span>E</span> -Thời trang</a></h1>
+					<h1><a href="/storeManagerSystem/${LayoutForm.pathJSP }"><span>E</span> -${LayoutForm.tenCuaHang}</a></h1>
 				</div>
 	    </div>
 	    <!--/.navbar-header-->
-     
-            
+				<div class="container">
+				<div class="join">
+					<div class="sub-left-right">
+						<form>
+							<input style="width: 400px" type="text" value="Nhập sản phẩm muốn tìm kiếm" path="timKiem_TenSP"  name="timKiem_TenSP" ng-model = "timKiem_TenSP"  ng-init ="timKiem_TenSP = '${LayoutForm.timKiem_TenSP}'" />
+							<input style="width: 150px" type="submit" value="Tìm Kiếm" ng-click ="btnTimKiem()"/>
+						</form>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	        <ul class="nav navbar-nav">
 			<li><a href="/storeManagerSystem/${LayoutForm.pathJSP }">Trang chủ</a></li>
@@ -94,7 +105,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			            </c:if>
 			        </li>
 		        </c:forEach>
-					<li><a ng-click="btnTinTuc()">Tin tức</a></li>
+		        	<li><a ng-click="btnTinTuc()">Tin tức</a></li>
+					<!-- <li><a href="typography.html">TYPO</a></li> -->
 					<li><a ng-click="btnLienHe()">Liên hệ</a></li>
 	        </ul>
 	    </div>
@@ -106,19 +118,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!-- content-section-starts -->
 	<div class="container">
 	   <div class="products-page" >
-				<div class="col-md-7 zoom-grid">
-					<div class="flexslider">
+				<div class="col-md-6 zoom-grid">
+					<div style="margin-left: 150px;width: 350px;">
 						<c:forEach var="items" items="${LayoutForm.products }">
-							<ul class="slides" style="width: 1200px">
+							<ul >
 								<li data-thumb="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplay/${items.SEQ}">
-									<div> <img style="widows: 850px;height: 950px" src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplay/${items.SEQ}" alt=""  /> </div>
+									<div> <img style="width: 350px;height: 450px" src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplay/${items.SEQ}" alt=""  /> </div>
 								</li>
-								<li data-thumb="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplay_1/${items.SEQ}">
-									<div> <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplay_1/${items.SEQ}" data-imagezoom="true" class="img-responsive" alt="" /> </div>
-								</li>
-								<li data-thumb="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplay_2/${items.SEQ}">
-									<div > <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplay_2/${items.SEQ}" data-imagezoom="true" class="img-responsive" alt="" /> </div>
-								</li> 
 							</ul>
 						</c:forEach>
 					</div>
@@ -139,21 +145,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="clearfix"></div>
 							<p>${items.moTa }</p>
 						</div>
-		        	</c:forEach>
-					<div class="purchase">
+						<div class="purchase">
 						<div >
-						   <input type="submit" value="Đặt Hàng" class="btn btn-primary active" style="widows: 100px;margin-top: -80px">
+						    <a  class="btn btn-primary" href="javascript:void(0)" ng-click="btnPurchase('${items.giaBan}','${items.giaBanKM }' ,'${items.SEQ} ')"><i class="glyphicon glyphicon-shopping-cart"></i>Thêm giỏ hàng</a>
 						   <br>
 						</div>
 						<div class="social-icons">
-							<ul>
-								<li><a class="facebook1" href="#"></a></li>
-								<li><a class="twitter1" href="#"></a></li>
-								<li><a class="googleplus1" href="#"></a></li>
-							</ul>
 						</div>
 						<div class="clearfix"></div>
 					</div>
+		        	</c:forEach>
+					
 				<script src="/storeManagerSystem/view/fontend_index2/js/imagezoom.js"></script>
 					<!-- FlexSlider -->
 					<script defer src="/storeManagerSystem/view/fontend_index2/js/jquery.flexslider.js"></script>
@@ -239,4 +241,5 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div id="fb-root"></div>
 </form:form>
 </body>
+<script src="/storeManagerSystem/view/js/shoppingCart.js"></script>
 </html>
