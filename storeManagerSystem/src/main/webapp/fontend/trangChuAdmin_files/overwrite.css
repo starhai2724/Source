@@ -1,0 +1,977 @@
+/* ==============================================================
+
+Template name : Runtime modern software landing page v1.0.0
+Categorie : Landing page
+Author : Thanh Nhan
+Version : v1.0.0
+Created : 10 August 2015
+
+-----------------------------------------------------------------
+CSS structure
+-----------------------------------------------------------------
+
+01. Typography
+02. Images
+03. Breadcrumb
+04. Navigation
+05. Pagination
+06. Tab
+07. Accordion
+08. Alert
+09. Form
+10. Buttons
+	
+============================================================== */
+
+/*
+Typography
+=========================== */
+.has-error .form-control, .has-error .form-control:focus {
+    border-color: #ff0000 !important;
+}
+
+.help-block {
+    color: #ff0000;
+    text-align: left;
+    font-weight: normal;
+    font-size: 11px;
+}
+
+body {
+    background: #fff;
+    font-family: Arial,"Roboto",Helvetica Neue,Helvetica,sans-serif;
+    font-size: 13px;
+    color: #454545;
+}
+
+section {
+    padding: 30px 0;
+}
+
+a,
+a:active,
+a:focus,
+a:hover, h5, h5:hover {
+    outline: none;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+    a:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 10px 0;
+    font-weight: bold;
+}
+
+.home-section h1, .home-section h2, .home-section h3, .home-section h4, .home-section h5, .home-section h6,
+.inner-heading h1, .inner-heading h2, .inner-heading h3, .inner-heading h4, .inner-heading h5, .inner-heading h6,
+.dark-section h1, .dark-section h2, .dark-section h3, .dark-section h4, .dark-section h5, .dark-section h6,
+.parallax h1, .parallax h2, .parallax h3, .parallax h4, .parallax h5, .parallax h6,
+footer h1, footer h2, footer h3, footer h4, footer h5, footer h6 {
+    color: #fff;
+}
+
+i {
+    margin-right: 5px;
+}
+
+h1 {
+    font-size: 36px;
+    line-height: 36px;
+}
+
+h2 {
+    font-size: 30px;
+    line-height: 28px;
+    font-weight:400;
+}
+
+h3 {
+    font-size: 24px;
+    line-height: 28px;
+    margin: 15px 0;
+}
+
+h4 {
+    font-size: 24px;
+    line-height: 36px;
+}
+
+h5 {
+    font-size: 18px;
+    line-height: 30px;
+    margin: 0 0 15px 0;
+}
+
+h6 {
+    font-size: 13px;
+    line-height: 24px;
+    margin: 0 0 10px 0;
+}
+
+
+label {
+    color: #333;
+}
+
+p {
+}
+
+.check-list {
+    margin: 0 0 30px 0;
+    padding: 0;
+}
+
+    .check-list li {
+        position: relative;
+        list-style: none;
+        margin: 0 0 20px 0;
+        padding: 0 0 0 45px;
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+        .check-list li .fa {
+            position: absolute;
+            font-size: 18px;
+            line-height: 22px;
+            width: 30px;
+            height: 30px;
+            top: 0;
+            left: 0;
+            border: 3px solid;
+            border-radius: 50%;
+            text-align: center;
+        }
+
+.feature-list {
+    margin: 0 0 30px 0;
+    padding: 0;
+}
+
+    .feature-list li {
+        list-style: none;
+        margin: 0 0 20px 0;
+        padding: 0;
+        border-bottom: 1px solid #f0f1f4;
+    }
+
+        .feature-list li h5 {
+            margin-bottom: 10px;
+        }
+
+/*
+Images
+================================== */
+.alignleft {
+    float: left;
+    margin: 0 20px 20px 0;
+}
+
+.alignright {
+    float: right;
+    margin: 0 0 20px 20px;
+}
+
+.img-responsive {
+    display: inline-block;
+}
+
+/*
+Breadcrumb
+================================== */
+ol.breadcrumb {
+    background: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+    ol.breadcrumb li {
+        margin: 0;
+        padding: 0;
+    }
+
+        ol.breadcrumb li a {
+            color: #fff;
+        }
+
+.breadcrumb > li + li:before {
+    padding: 2px 10px 2px 10px;
+    color: #fff;
+    content: "|";
+}
+
+/*
+Navigation
+=========================== */
+.navbar-brand {
+    position: relative;
+    padding: 0px 0 5px 0;
+}
+
+    .navbar-brand .scroller-logo {
+        top: 5px;
+        left: 0;
+        display: none;
+    }
+
+.navbar-default {
+    background: none;
+    border: none;
+    padding-top: 10px;
+    -webkit-transition: background .8s ease-in-out,padding .8s ease-in-out;
+    -moz-transition: background .8s ease-in-out,padding .8s ease-in-out;
+    transition: background .8s ease-in-out,padding .8s ease-in-out;
+}
+
+.static-nav-collapse,
+.top-nav-collapse {
+    background: #1e2228;
+    padding-top: 10px;
+    padding-bottom: 0px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    -webkit-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);
+    margin-bottom:0px;
+}
+
+    .static-nav-collapse:hover,
+    .top-nav-collapse:hover {
+        opacity: 1;
+    }
+
+    .static-nav-collapse .navbar-brand .scroller-logo,
+    .top-nav-collapse .navbar-brand .scroller-logo {
+        display: inline-block;
+    }
+
+    .static-nav-collapse .navbar-brand .default-logo,
+    .top-nav-collapse .navbar-brand .default-logo {
+        display: none;
+    }
+
+.navbar-default .navbar-nav {
+    padding: 0;
+}
+
+    .navbar-default .navbar-nav > li > a {
+        font-weight:bold;
+        font-size:14px;
+        padding: 8px 12px 8px 12px;
+        margin-bottom: -1px;
+    }
+
+.static-nav-collapse .navbar-nav > li > a,
+.top-nav-collapse .navbar-nav > li > a {
+    color: #333;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-nav > li > a:active {
+    color: #fff;
+}
+
+.navbar-default .navbar-nav > li > a.login {
+    border: 1px solid #fff;
+    border-radius: 2px;
+    padding: 8px 25px 8px 25px;
+    margin-left: 5px;
+}
+
+.static-nav-collapse .navbar-nav > li > a.login,
+.top-nav-collapse .navbar-nav > li > a.login {
+    border: 1px solid #333;
+}
+
+.navbar-default .navbar-nav > li > a.login:hover {
+    background: #fff;
+    color: #333;
+}
+
+.static-nav-collapse .navbar-nav > li > a.login:hover,
+.top-nav-collapse .navbar-nav > li > a.login:hover,
+.static-nav-collapse .navbar-nav > li > a.login:active,
+.top-nav-collapse .navbar-nav > li > a.login:active,
+.static-nav-collapse .navbar-nav > li > a.login:focus,
+.top-nav-collapse .navbar-nav > li > a.login:focus {
+    color: #fff;
+}
+
+.navbar-default .navbar-nav li a.selected,
+.navbar-default .navbar-nav li a:hover,
+.navbar-default .navbar-nav .active a,
+.navbar-default .navbar-nav .dropdown.active a,
+.navbar-default .navbar-nav .active a:hover,
+.navbar-default .navbar-nav .dropdown.active a:hover,
+.navbar-default .navbar-nav .active a:focus,
+.navbar-default .navbar-nav .dropdown.active a:focus {
+    background: none;
+}
+
+.dropdown-menu {
+    background: rgba(255, 255, 255, 0.98);
+    color: #3b3b3b;
+    border: none;
+    right: auto;
+    font-size: 13px;
+    border-radius: 4px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.navbar .nav > li > .dropdown-menu:before {
+    /*position: absolute;
+    top: -7px;
+    left: 10px;
+    display: inline-block;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #ccc;
+    border-left: 7px solid transparent;
+    border-bottom-color: rgba(255, 255, 255, 0.98);
+    content: '';*/
+}
+
+.dropdown-menu li a {
+    color: #3b3b3b;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+    .dropdown-menu li a:hover {
+        background: none;
+    }
+
+.navbar-default .navbar-nav > li.dropdown > a.dropdown-toggle:hover,
+.navbar-default .navbar-nav > li.dropdown > a.dropdown-toggle:focus,
+.navbar-default .navbar-nav > li.dropdown > a.dropdown-toggle:active {
+    background: none;
+}
+
+.dropdown-menu .sub-menu {
+    left: 100%;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    margin-top: -1px;
+    margin-left: 7px;
+}
+
+.dropdown-menu li:hover .sub-menu {
+    visibility: visible;
+}
+
+li.dropdown .sub-menu:before,
+li.dropdown .sub-menu:after {
+    position: absolute;
+    top: 10px;
+    left: -7px;
+    display: inline-block;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-right-color: rgba(255, 255, 255, 0.98);
+    content: '';
+    border-right: 7px solid rgba(255, 255, 255, 0.98);
+}
+
+.navbar-default .navbar-toggle,
+.navbar-default .navbar-toggle:active,
+.navbar-default .navbar-toggle:focus {
+    border: none !important;
+}
+
+    .navbar-default .navbar-toggle:hover {
+    }
+
+    .navbar-default .navbar-toggle .icon-bar,
+    .navbar-default .navbar-toggle:focus .icon-bar {
+        background-color: #37c6f5;
+    }
+
+        .navbar-default .navbar-toggle .icon-bar:hover {
+            background-color: #707070;
+        }
+
+/*
+Pagination
+=========================== */
+.pager {
+    margin: 0;
+}
+
+ul.pagination li a {
+    padding: 0;
+    font-size: 12px;
+    line-height: 30px;
+    border: 0;
+    border-radius: 0px !important;
+    -moz-border-radius: 0px !important;
+    -webkit-border-radius: 0px !important;
+    -o-border-radius: 0px !important;
+}
+
+
+
+/*
+Tab
+================================== */
+.nav-tabs {
+    border-bottom: none;
+}
+
+    .nav-tabs > li > a {
+        border-radius: 0px;
+        -moz-border-radius: 0px;
+        -webkit-border-radius: 0px;
+        -o-border-radius: 0px;
+        text-transform: uppercase;
+        font-size: 14px;
+        background: rgba(0,0,0,0.7);
+        color: #fff;
+        border: none;
+        margin-bottom: 3px;
+    }
+
+        .nav-tabs > li > a:hover {
+            background: #fcfcfc;
+            border-color: #eee #eee #ddd;
+        }
+/*
+Accordion
+================================== */
+.panel-group .panel {
+    margin-bottom: 0;
+    border: 1px solid #e0e0e0;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.panel-body {
+    padding: 15px 20px 0 20px;
+    border-radius: 0;
+}
+
+.panel-heading {
+    position: relative;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    background: #fff;
+    padding: 8px 15px 8px 45px;
+}
+
+.panel-title {
+    font-size: 16px;
+    color: inherit;
+    border-radius: 0;
+    font-weight: 400;
+    text-transform: none;
+    margin-bottom: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+    .panel-title a {
+        display: block;
+        border-radius: 0;
+    }
+
+        .panel-title a:hover,
+        .panel-title a:focus,
+        .panel-title a:active {
+            text-decoration: none;
+        }
+
+.plus,
+.minus {
+    position: absolute;
+    font-size: 22px;
+    top: 16px;
+    left: 15px;
+}
+
+.minus {
+    display: none;
+}
+
+.panel-title a.active .plus {
+    display: none;
+}
+
+.panel-title a.active .minus {
+    display: block;
+}
+
+.panel-default > .panel-heading {
+    color: #444;
+    background: none;
+    border-color: none;
+    border-radius: 0;
+}
+
+/*
+Alert
+================================== */
+.alert {
+    padding: 10px 30px 10px 30px;
+    margin-bottom: 20px;
+    border: 1px solid #fff;
+    border-radius: 2px;
+    background: none;
+}
+
+.alert-warning {
+    border-color: #fac67b;
+    color: #9e7841;
+    background: #ffdaa4;
+}
+
+.alert-info {
+    border-color: #98e1ee;
+    color: #457982;
+    background: #bef5ff;
+}
+
+.alert-danger {
+    text-align: left;
+    border-color: #e39090;
+    color: #974c4c;
+    background: #ffb9b9;
+}
+
+.alert-success {
+    text-align: left;
+    border-color: #a6dec4;
+    color: #5e8d77;
+    background: #c9f4e0;
+}
+
+/*
+
+Button
+================================== */
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-bottom: 0;
+    font-size: 12px;
+    text-transform: uppercase;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+
+.btn-default.btn-bordered {
+    color: #242424;
+    background: none;
+    border: 2px solid #242424;
+}
+
+    .btn-default:hover,
+    .btn-default:focus,
+    .btn-default.focus,
+    .btn-default:active,
+    .btn-default.active,
+    .open > .dropdown-toggle.btn-default,
+    .btn-default.disabled,
+    .btn-default[disabled],
+    fieldset[disabled] .btn-default,
+    .btn-default.disabled:hover,
+    .btn-default[disabled]:hover,
+    fieldset[disabled] .btn-default:hover,
+    .btn-default.disabled:focus,
+    .btn-default[disabled]:focus,
+    fieldset[disabled] .btn-default:focus,
+    .btn-default.disabled.focus,
+    .btn-default[disabled].focus,
+    fieldset[disabled] .btn-default.focus,
+    .btn-default.disabled:active,
+    .btn-default[disabled]:active,
+    fieldset[disabled] .btn-default:active,
+    .btn-default.disabled.active,
+    .btn-default[disabled].active,
+    fieldset[disabled] .btn-default.active,
+    .btn-default.btn-bordered:hover,
+    .btn-default.btn-bordered:focus,
+    .btn-default.btn-bordered.focus,
+    .btn-default.btn-bordered:active,
+    .btn-default.btn-bordered.active,
+    .open > .dropdown-toggle.btn-default.btn-bordered,
+    .btn-default.btn-bordered.disabled,
+    .btn-default.btn-bordered[disabled],
+    fieldset[disabled] .btn-default.btn-borderedt,
+    .btn-default.btn-bordered.disabled:hover,
+    .btn-default.btn-bordered[disabled]:hover,
+    fieldset[disabled] .btn-default.btn-bordered:hover,
+    .btn-default.btn-bordered.disabled:focus,
+    .btn-default.btn-bordered[disabled]:focus,
+    fieldset[disabled] .btn-default.btn-bordered:focus,
+    .btn-default.btn-bordered.disabled.focus,
+    .btn-default.btn-bordered[disabled].focus,
+    fieldset[disabled] .btn-default.btn-bordered.focus,
+    .btn-default.btn-bordered.disabled:active,
+    .btn-default.btn-bordered[disabled]:active,
+    fieldset[disabled] .btn-default.btn-bordered:active,
+    .btn-default.btn-bordered.disabled.active,
+    .btn-default.btn-bordered[disabled].active,
+    fieldset[disabled] .btn-default.btn-bordered.active {
+        color: #fff;
+        background-color: #242424;
+        border-color: #242424;
+    }
+
+.btn-primary.btn-bordered {
+    background: none;
+    border: 2px solid;
+}
+
+    .btn-primary.btn-bordered:hover,
+    .btn-primary.btn-bordered:focus,
+    .btn-primary.btn-bordered.focus,
+    .btn-primary.btn-bordered:active,
+    .btn-primary.btn-bordered.active,
+    .open > .dropdown-toggle.btn-primary.btn-bordered,
+    .btn-primary.btn-bordered.disabled,
+    .btn-primary.btn-bordered[disabled],
+    fieldset[disabled] .btn-primary.btn-borderedt,
+    .btn-primary.btn-bordered.disabled:hover,
+    .btn-primary.btn-bordered[disabled]:hover,
+    fieldset[disabled] .btn-primary.btn-bordered:hover,
+    .btn-primary.btn-bordered.disabled:focus,
+    .btn-primary.btn-bordered[disabled]:focus,
+    fieldset[disabled] .btn-primary.btn-bordered:focus,
+    .btn-primary.btn-bordered.disabled.focus,
+    .btn-primary.btn-bordered[disabled].focus,
+    fieldset[disabled] .btn-primary.btn-bordered.focus,
+    .btn-primary.btn-bordered.disabled:active,
+    .btn-primary.btn-bordered[disabled]:active,
+    fieldset[disabled] .btn-primary.btn-bordered:active,
+    .btn-primary.btn-bordered.disabled.active,
+    .btn-primary.btn-bordered[disabled].active,
+    fieldset[disabled] .btn-primary.btn-bordered.active {
+        color: #fff;
+    }
+
+.btn-success {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #5cb85c;
+}
+
+    .btn-success.btn-bordered {
+        color: #5cb85c;
+        background: none;
+        border: 2px solid #5cb85c;
+    }
+
+        .btn-success:hover,
+        .btn-success:focus,
+        .btn-success.focus,
+        .btn-success:active,
+        .btn-success.active,
+        .open > .dropdown-toggle.btn-success,
+        .btn-success.disabled,
+        .btn-success[disabled],
+        fieldset[disabled] .btn-success,
+        .btn-success.disabled:hover,
+        .btn-success[disabled]:hover,
+        fieldset[disabled] .btn-success:hover,
+        .btn-success.disabled:focus,
+        .btn-success[disabled]:focus,
+        fieldset[disabled] .btn-success:focus,
+        .btn-success.disabled.focus,
+        .btn-success[disabled].focus,
+        fieldset[disabled] .btn-success.focus,
+        .btn-success.disabled:active,
+        .btn-success[disabled]:active,
+        fieldset[disabled] .btn-success:active,
+        .btn-success.disabled.active,
+        .btn-success[disabled].active,
+        fieldset[disabled] .btn-success.active,
+        .btn-success.btn-bordered:hover,
+        .btn-success.btn-bordered:focus,
+        .btn-success.btn-bordered.focus,
+        .btn-success.btn-bordered:active,
+        .btn-success.btn-bordered.active,
+        .open > .dropdown-toggle.btn-success.btn-bordered,
+        .btn-success.btn-bordered.disabled,
+        .btn-success.btn-bordered[disabled],
+        fieldset[disabled] .btn-success.btn-bordered,
+        .btn-success.btn-bordered.disabled:hover,
+        .btn-success.btn-bordered[disabled]:hover,
+        fieldset[disabled] .btn-success.btn-bordered:hover,
+        .btn-success.btn-bordered.disabled:focus,
+        .btn-success.btn-bordered[disabled]:focus,
+        fieldset[disabled] .btn-success.btn-bordered:focus,
+        .btn-success.btn-bordered.disabled.focus,
+        .btn-success.btn-bordered[disabled].focus,
+        fieldset[disabled] .btn-success.btn-bordered.focus,
+        .btn-success.btn-bordered.disabled:active,
+        .btn-success.btn-bordered[disabled]:active,
+        fieldset[disabled] .btn-success.btn-bordered:active,
+        .btn-success.btn-bordered.disabled.active,
+        .btn-success.btn-bordered[disabled].active,
+        fieldset[disabled] .btn-success.btn-bordered.active {
+            color: #fff;
+            background-color: #449d44;
+            border-color: #449d44;
+        }
+
+.btn-info {
+    color: #fff;
+    background-color: #5bc0de;
+    border-color: #5bc0de;
+}
+
+    .btn-info.btn-bordered {
+        color: #5bc0de;
+        background: none;
+        border: 2px solid #5bc0de;
+    }
+
+        .btn-info:hover,
+        .btn-info:focus,
+        .btn-info.focus,
+        .btn-info:active,
+        .btn-info.active,
+        .open > .dropdown-toggle.btn-info,
+        .btn-info.disabled,
+        .btn-info[disabled],
+        fieldset[disabled] .btn-info,
+        .btn-info.disabled:hover,
+        .btn-info[disabled]:hover,
+        fieldset[disabled] .btn-info:hover,
+        .btn-info.disabled:focus,
+        .btn-info[disabled]:focus,
+        fieldset[disabled] .btn-info:focus,
+        .btn-info.disabled.focus,
+        .btn-info[disabled].focus,
+        fieldset[disabled] .btn-info.focus,
+        .btn-info.disabled:active,
+        .btn-info[disabled]:active,
+        fieldset[disabled] .btn-info:active,
+        .btn-info.disabled.active,
+        .btn-info[disabled].active,
+        fieldset[disabled] .btn-info.active,
+        .btn-info.btn-bordered:hover,
+        .btn-info.btn-bordered:focus,
+        .btn-info.btn-bordered.focus,
+        .btn-info.btn-bordered:active,
+        .btn-info.btn-bordered.active,
+        .open > .dropdown-toggle.btn-info.btn-bordered,
+        .btn-info.btn-bordered.disabled,
+        .btn-info.btn-bordered[disabled],
+        fieldset[disabled] .btn-info.btn-bordered,
+        .btn-info.btn-bordered.disabled:hover,
+        .btn-info.btn-bordered[disabled]:hover,
+        fieldset[disabled] .btn-info.btn-bordered:hover,
+        .btn-info.btn-bordered.disabled:focus,
+        .btn-info.btn-bordered[disabled]:focus,
+        fieldset[disabled] .btn-info.btn-bordered:focus,
+        .btn-info.btn-bordered.disabled.focus,
+        .btn-info.btn-bordered[disabled].focus,
+        fieldset[disabled] .btn-info.btn-bordered.focus,
+        .btn-info.btn-bordered.disabled:active,
+        .btn-info.btn-bordered[disabled]:active,
+        fieldset[disabled] .btn-info:active,
+        .btn-info.btn-bordered.disabled.active,
+        .btn-info.btn-bordered[disabled].active,
+        fieldset[disabled] .btn-info.btn-bordered.active {
+            color: #fff;
+            background-color: #31b0d5;
+            border-color: #31b0d5;
+        }
+
+.btn-warning {
+    color: #fff;
+    background-color: #f0ad4e;
+    border-color: #f0ad4e;
+}
+
+    .btn-warning.btn-bordered {
+        color: #f0ad4e;
+        background: none;
+        border: 2px solid #f0ad4e;
+    }
+
+        .btn-warning:hover,
+        .btn-warning:focus,
+        .btn-warning.focus,
+        .btn-warning:active,
+        .btn-warning.active,
+        .open > .dropdown-toggle.btn-warning,
+        .btn-warning.disabled,
+        .btn-warning[disabled],
+        fieldset[disabled] .btn-warning,
+        .btn-warning.disabled:hover,
+        .btn-warning[disabled]:hover,
+        fieldset[disabled] .btn-warning:hover,
+        .btn-warning.disabled:focus,
+        .btn-warning[disabled]:focus,
+        fieldset[disabled] .btn-warning:focus,
+        .btn-warning.disabled.focus,
+        .btn-warning[disabled].focus,
+        fieldset[disabled] .btn-warning.focus,
+        .btn-warning.disabled:active,
+        .btn-warning[disabled]:active,
+        fieldset[disabled] .btn-warning:active,
+        .btn-warning.disabled.active,
+        .btn-warning[disabled].active,
+        fieldset[disabled] .btn-warning.active,
+        .btn-warning.btn-bordered:hover,
+        .btn-warning.btn-bordered:focus,
+        .btn-warning.btn-bordered.focus,
+        .btn-warning.btn-bordered:active,
+        .btn-warning.btn-bordered.active,
+        .open > .dropdown-toggle.btn-warning.btn-bordered,
+        .btn-warning.btn-bordered.disabled,
+        .btn-warning.btn-bordered[disabled],
+        fieldset[disabled] .btn-warning.btn-bordered,
+        .btn-warning.btn-bordered.disabled:hover,
+        .btn-warning.btn-bordered[disabled]:hover,
+        fieldset[disabled] .btn-warning.btn-bordered:hover,
+        .btn-warning.btn-bordered.disabled:focus,
+        .btn-warning.btn-bordered[disabled]:focus,
+        fieldset[disabled] .btn-warning.btn-bordered:focus,
+        .btn-warning.btn-bordered.disabled.focus,
+        .btn-warning.btn-bordered[disabled].focus,
+        fieldset[disabled] .btn-warning.btn-bordered.focus,
+        .btn-warning.btn-bordered.disabled:active,
+        .btn-warning.btn-bordered[disabled]:active,
+        fieldset[disabled] .btn-warning.btn-bordered:active,
+        .btn-warning.btn-bordered.disabled.active,
+        .btn-warning.btn-bordered[disabled].active,
+        fieldset[disabled] .btn-warning.btn-bordered.active {
+            color: #fff;
+            background-color: #ec971f;
+            border-color: #ec971f;
+        }
+
+.btn-danger {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d9534f;
+}
+
+    .btn-danger.btn-bordered {
+        color: #d9534f;
+        background: none;
+        border: 2px solid #d9534f;
+    }
+
+        .btn-danger:hover,
+        .btn-danger:focus,
+        .btn-danger.focus,
+        .btn-danger:active,
+        .btn-danger.active,
+        .open > .dropdown-toggle.btn-danger,
+        .btn-danger.disabled,
+        .btn-danger[disabled],
+        fieldset[disabled] .btn-danger,
+        .btn-danger.disabled:hover,
+        .btn-danger[disabled]:hover,
+        fieldset[disabled] .btn-danger:hover,
+        .btn-danger.disabled:focus,
+        .btn-danger[disabled]:focus,
+        fieldset[disabled] .btn-danger:focus,
+        .btn-danger.disabled.focus,
+        .btn-danger[disabled].focus,
+        fieldset[disabled] .btn-danger.focus,
+        .btn-danger.disabled:active,
+        .btn-danger[disabled]:active,
+        fieldset[disabled] .btn-danger:active,
+        .btn-danger.disabled.active,
+        .btn-danger[disabled].active,
+        fieldset[disabled] .btn-danger.active,
+        .btn-danger.btn-bordered:hover,
+        .btn-danger.btn-bordered:focus,
+        .btn-danger.btn-bordered.focus,
+        .btn-danger.btn-bordered:active,
+        .btn-danger.btn-bordered.active,
+        .open > .dropdown-toggle.btn-danger.btn-bordered,
+        .btn-danger.btn-bordered.disabled,
+        .btn-danger.btn-bordered[disabled],
+        fieldset[disabled] .btn-danger.btn-bordered,
+        .btn-danger.btn-bordered.disabled:hover,
+        .btn-danger.btn-bordered[disabled]:hover,
+        fieldset[disabled] .btn-danger.btn-bordered:hover,
+        .btn-danger.btn-bordered.disabled:focus,
+        .btn-danger.btn-bordered[disabled]:focus,
+        fieldset[disabled] .btn-danger.btn-bordered:focus,
+        .btn-dange.btn-borderedr.disabled.focus,
+        .btn-danger.btn-bordered[disabled].focus,
+        fieldset[disabled] .btn-danger.btn-bordered.focus,
+        .btn-danger.btn-bordered.disabled:active,
+        .btn-danger.btn-bordered[disabled]:active,
+        fieldset[disabled] .btn-danger.btn-bordered:active,
+        .btn-danger.btn-bordered.disabled.active,
+        .btn-danger.btn-bordered[disabled].active,
+        fieldset[disabled] .btn-danger.btn-bordered.active {
+            color: #fff;
+            background-color: #c9302c;
+            border-color: #c9302c;
+        }
+
+.btn-rounded {
+    border-radius: 50px;
+}
+
+.btn-sm {
+    font-size: 14px;
+    padding: 8px 25px;
+}
+.btn-small {
+    padding: 4px 4px;
+}
+
+.btn-lg {
+    font-size: 24px;
+    padding: 18px 45px;
+}
+
+.link-group a {
+    margin-bottom: 5px;
+}
+
+.btn-horizontal a {
+    margin: 0 5px 5px 0;
+}
+
+.form-control-feedback {
+    right: 22px;
+    width: auto;
+}
+/*Form control*/
+.form-control {
+    box-shadow: none;
+}
