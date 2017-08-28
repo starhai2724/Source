@@ -101,8 +101,12 @@
 		</div>
 		<!--Message (E)-->
 		<div class="row" align="right" style="width: 80%">
-			<div >
-				<input type="button" name="" class="btn btn-info " ng-click ="btnUpdate()" value="Cập nhật">
+			<div>
+				
+				<button type="button" class="btn btn-info" ng-click ="btnUpdate()">
+				  <i class="glyphicon glyphicon-pencil"></i> Cập nhật
+				</button>
+<!-- 				<input type="button" name="" class="btn btn-info " ng-click ="btnUpdate()" value="Cập nhật"> -->
 			</div>
 		</div>
 </form:form>	

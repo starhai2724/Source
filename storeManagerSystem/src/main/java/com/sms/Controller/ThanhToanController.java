@@ -108,7 +108,6 @@ public class ThanhToanController {
 				}
 			}
 			khachHangInputBean.setLoaiThe(khachHangSession.getLoaiThe());
-			System.out.println("idkhach: "+khachHangInputBean.getIdKhachHang());
 			cnt = KhachHangDAO.intances.updateDiemAndLoaiThe(khachHangInputBean);
 		}
 		

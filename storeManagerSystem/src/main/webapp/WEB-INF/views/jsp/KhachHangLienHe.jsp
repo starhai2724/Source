@@ -93,10 +93,24 @@
 		</div>
 		<!--Message (E)-->
 		<div class="row" align="right" style="width: 100%">
-			<div >
-				<input type="button" name="" class="btn btn-info " ng-click ="btnCreate()" value="Đăng kí">
-				<input type="button" name="" class="btn btn-info " ng-click="exportToExcel('#dataTables-example')" value="In">
-				<input type="button" name="" class="btn btn-info " ng-click ="btnClear()" value="Hủy">
+			<div>
+			
+				<button type="button" class="btn btn-info" ng-click ="btnCreate()">
+				  <i class="glyphicon glyphicon-plus"></i> Thêm
+				</button>
+				<button type="button" class="btn btn-info" ng-click="exportToExcel('#dataTables-example')">
+				  <i class="glyphicon glyphicon-save-file"></i> Export Excel
+				</button>
+				<button type="button" class="btn btn-info" onclick="exportPDF();">
+				  <i class="glyphicon glyphicon-print"></i> Export Pdf
+				</button>
+				<button type="button" class="btn btn-info" ng-click ="btnClear()">
+				  <i class="glyphicon glyphicon-refresh"></i> Refesh
+				</button>
+				
+<!-- 				<input type="button" name="" class="btn btn-info " ng-click ="btnCreate()" value="Đăng kí"> -->
+<!-- 				<input type="button" name="" class="btn btn-info " ng-click="exportToExcel('#dataTables-example')" value="In"> -->
+<!-- 				<input type="button" name="" class="btn btn-info " ng-click ="btnClear()" value="Hủy"> -->
 			</div>
 		</div>
 		

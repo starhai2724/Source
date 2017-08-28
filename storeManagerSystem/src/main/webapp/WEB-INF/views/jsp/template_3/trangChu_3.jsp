@@ -221,7 +221,7 @@
                             <div class="input-cat form-search clearfix">
                                 <div class="form-search-controls  input-group">
 									<input style="width: 400px" type="text" placeholder="Nhập sản phẩm muốn tìm kiếm" path="timKiem_TenSP"  name="timKiem_TenSP" ng-model = "timKiem_TenSP"   />
-									<input style="width: 150px;background-color: #f46164;font-weight: bold;" type="submit" value="Tìm Kiếm" ng-click ="btnTimKiem()"/>
+									<input style="width: 150px;background-color: #f46164;font-weight: bold;" type="submit" value="Tìm kiếm" ng-click ="btnTimKiem()"/>
                                 </div>
                             </div>
                         </div>

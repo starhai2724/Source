@@ -1,4 +1,4 @@
-var app = angular.module('DangKiWebForm', []);;
+var app = angular.module('ThoiHanSuDungForm', []);;
 app.controller('ctrl', function($scope, $window) {
 	$scope.tenWebSite_err = "";
 	$scope.sdt_err = "";
@@ -6,11 +6,9 @@ app.controller('ctrl', function($scope, $window) {
 	$scope.dkGiaoHangFree_err = "";
 	$scope.linkFanpage_err = "";
 	
-	
 	$scope.btnUpdate = function(){
 		update($scope);
 	}
-	
 	
 });
 

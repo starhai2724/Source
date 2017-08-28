@@ -11,7 +11,7 @@
 			<div class="col-lg-12">
 				<h1 class="page-header">Khách hàng</h1>
 			</div>
-			<i style="font-size:24px;margin-left: 1400px;margin-top: -10px" data-toggle="collapse" data-target="#demo" class="fa">&#xf106;</i>
+<!-- 			<i style="font-size:24px;margin-left: 1400px;margin-top: -10px" data-toggle="collapse" data-target="#demo" class="fa">&#xf106;</i> -->
 			<!-- /.col-lg-12 -->
 		</div>
 		<!-- /.row -->
@@ -85,6 +85,13 @@
 				</div>
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-sm-4">
+				<button type="button" class="btn btn-info"  ng-click ="btnCreate()">
+				  <i class="glyphicon glyphicon-ok"></i> Đăng kí
+				</button>
+			</div>
+		</div>
 		</div>
 		<!--Message (S)-->
 		<div class="row">
@@ -97,10 +104,27 @@
 		</div>
 		<!--Message (E)-->
 		<div class="row" align="right" style="width: 100%">
-			<div >
-				<input type="button" name="" class="btn btn-info " ng-click ="btnCreate()" value="Đăng kí">
-				<input type="button" name="" class="btn btn-info " ng-click="exportToExcel('#dataTables-example')" value="Export Excel">
-				<input type="button" name="" class="btn btn-info " ng-click ="btnClear()" value="Refesh">
+			<div>
+				<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">
+				  <i class="glyphicon glyphicon-plus"></i> Thêm
+				</button>
+				<button type="button" class="btn btn-info" onclick="testExcel()">
+				  <i class="glyphicon glyphicon-save-file"></i> Export Excel
+				</button>
+				<!-- <button type="button" class="btn btn-info" ng-click="exportToExcel('#dataTables-example')">
+				  <i class="glyphicon glyphicon-save-file"></i> Export Excel
+				</button>
+				<button type="button" class="btn btn-info" onclick="exportPDF();">
+				  <i class="glyphicon glyphicon-print"></i> Export Pdf
+				</button> -->
+				<button type="button" class="btn btn-info" ng-click ="btnClear()">
+				  <i class="glyphicon glyphicon-refresh"></i> Refesh
+				</button>
+			
+<!-- 				<input type="button" name="" class="btn btn-info " ng-click ="btnCreate()" value="Đăng kí"> -->
+<!-- 				<input type="button" name="" class="btn btn-info " ng-click="exportToExcel('#dataTables-example')" value="Export Excel"> -->
+<!-- 				<input type="button" name="" class="btn btn-info " onclick="exportPDF();" value="Export PDF"> -->
+<!-- 				<input type="button" name="" class="btn btn-info " ng-click ="btnClear()" value="Refesh"> -->
 			</div>
 		</div>
 		
@@ -122,7 +146,7 @@
 										<th style="text-align: center; width: 50px">Loại thẻ</th>
 										<th style="padding-left: 5px;padding-right: 1px;width: 20px;text-align: center;">Điểm</th>
 										<th style="text-align: center; width: 80px">Ngày tạo</th>
-										<th style="text-align: center;	width: 60px">Thao tác</th>
+										<th style="text-align: center;	width: 60px" data-tableexport-display="none" >Thao tác</th>
                                     </tr>
                                 </thead>
                                 <tbody style="overflow: auto; height:50px">
@@ -137,7 +161,7 @@
 		                                       	<td>${items.loaiThe}</td>
 		                                        <td  style="text-align: right">${items.soDiem }</td>
 		                                         <td style="text-align: center">${items.ngayTao }</td>
-		                                        <td class="center" style="text-align: center">
+		                                        <td class="center" style="text-align: center" data-tableexport-display="none"  >
 		                                        		<button class="btn" type="button" ng-click="btnGetById('${items.idKhachHang}');">
 															<span class="glyphicon glyphicon-pencil" data-toggle="tooltip" data-original-title="Sửa"></span>
 														</button>
@@ -156,6 +180,75 @@
 		<!-- /#page-wrapper -->
 	</div>
 </div>
+<!-- Export (S) -->
+<script>
+// function exportPDF(){
+// 	//PDF export using jsPDF only
+// 	$('#dataTables-example').tableExport({
+// 		fileName:'sanPham',
+// 		type:'pdf',
+// 		jspdf: {
+// 	          orientation:  'p',
+// 	          unit:         'pt',
+// 	          format:       'a3',             // jspdf page format or 'bestfit' for autmatic paper format selection
+// 	          margins:      {left: 20, right: 10, top: 10, bottom: 10},
+// 	          onDocCreated: null,
+// 	          autotable: {
+// 	            styles: {
+// 	              cellPadding: 2,
+// 	              rowHeight:   12,
+// 	              fontSize:    8,
+// 	              fillColor:   [94, 157, 200],           // color value or 'inherit' to use css background-color from html table
+// 	              textColor:   50,            // color value or 'inherit' to use css color from html table
+// 	              fontStyle:   'normal',      // normal, bold, italic, bolditalic or 'inherit' to use css font-weight and fonst-style from html table
+// 	              overflow:    'ellipsize',   // visible, hidden, ellipsize or linebreak
+// 	              halign:      'left',        // left, center, right
+// 	              valign:      'middle'       // top, middle, bottom
+// 	            },
+// 	            headerStyles: {
+// 	              fillColor: [94, 157, 200],
+// 	              textColor: 255,
+// 	              fontStyle: 'bold',
+// 	              halign:    'center'
+// 	            },
+// 	            alternateRowStyles: {
+// 	              fillColor: 245
+// 	            },
+// 	            autotable: false,
+// 	            tableExport: {
+// 	              doc:               null,    // jsPDF doc object. If set, an already created doc will be used to export to
+// 	              onAfterAutotable:  null,
+// 	              onBeforeAutotable: null,
+// 	              onAutotableText:   null,
+// 	              onTable:           null,
+// 	              outputImages:      true
+// 	            }
+// 	          }
+// 	        }
+//    });
+// } 
+
+
+function testExcel(){
+	$('#dataTables-example').tableExport({
+		fileName:'khachHang',
+		type:'excel',
+	    excelFileFormat:'xmlss',
+	    worksheetName: ['Table 1','Table 2', 'Table 3']});
+	}
+</script>
+
+<script type="text/javascript" src="/storeManagerSystem/view/export/FileSaver/FileSaver.min.js"></script>  
+<script type="text/javascript" src="/storeManagerSystem/view/export/jsPDF/jspdf.min.js"></script>
+<script type="text/javascript" src="/storeManagerSystem/view/export/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>      
+<script type="text/javascript" src="/storeManagerSystem/view/export/html2canvas/html2canvas.min.js"></script>
+<script type="text/javascript" src="/storeManagerSystem/view/export/tableExport.js"></script>
+<script src="/storeManagerSystem/view/export/app/jquery.base64.js"></script>
+<script src="/storeManagerSystem/view/export/app/sprintf.js"></script>
+<script src="/storeManagerSystem/view/export/app/base64.js"></script>
+	
+
+<!-- Export (E) -->
 <script src="/storeManagerSystem/view/js/customer.js"></script>
 
 <!-- /#wrapper -->

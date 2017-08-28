@@ -86,7 +86,6 @@ public class ChiTietDKMController {
 			SanPhamOutputBean sanPhamOutputBean = CreateTableProductDAO.intances.getProductById(input);
 			if(sanPhamOutputBean != null && sanPhamOutputBean.getLst().size() > 0){
 				idSP = sanPhamOutputBean.getLst().get(0).getIdSanPham();
-				System.out.println("idSP: "+idSP);
 			}
 			for (String str : lstMaSPKM_old) {
 				if(str.equals(idSP)){
@@ -177,7 +176,6 @@ public class ChiTietDKMController {
 				input.setPathJSP(pathJSP);
 				input.setIdSanPham(formRow.getIdSanPham());
 				input.setSEQ(formRow.getSEQ());
-				System.out.println("formRow.getSEQ(): "+formRow.getSEQ());
 				input.setId_DKM(idDKM);
 				outputBean = CreateTableProductDAO.intances.getProductByIdAndIdDKM(input);
 				// check ton tai

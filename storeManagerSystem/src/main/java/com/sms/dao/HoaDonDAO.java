@@ -406,6 +406,7 @@ public class HoaDonDAO {
 		sb.append("  FROM "+tableName+"  HOADON        						");
 		sb.append("  LEFT JOIN "+pathJSP+"_KHACH_HANG KHACH_HANG          	");
 		sb.append("  ON  KHACH_HANG.ID_KHACHHANG = HOADON.ID_KHACHHANG          	");
+		sb.append("  ORDER BY ID_HOADON DESC          	");
 		return sb.toString();
 	}
 	
