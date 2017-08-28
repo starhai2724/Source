@@ -214,6 +214,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<!--San pham (E) --------------------------------------------------------------------------------------------------------------------------------------------- -->
 					<div class="clearfix"></div>
 				</div>
+				<!-- Page (S)  -->
+				<div class="navigation" style="text-align: center;">
+                <ul class="pagination">
+                    <li>
+                        <a href="javascript:void(0)" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                            <li><a href="javascript:void(0)" ng-click= "btnPhanTrang('1')">1</a></li>
+                            <li><a href="javascript:void(0)" ng-click= "btnPhanTrang('2')">2</a></li>
+                            <li><a href="javascript:void(0)" ng-click= "btnPhanTrang('3')">3</a></li>
+                    <li>
+                        <a href="javascript:void(0)" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            	</div>
+            <!-- Page (E)  -->
 			</div>
 
 		</div>

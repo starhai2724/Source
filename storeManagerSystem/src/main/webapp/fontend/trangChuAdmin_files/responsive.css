@@ -1,0 +1,221 @@
+@charset "UTF-8";
+/*mau trang*/
+/*#707070:mau xam*/
+/*#37c6f5:mau xanh duong*/
+/*mau xanh dam*/
+/*mau xam nhat*/
+/*mau xam*/
+@media (max-width: 991px) {
+  .home-section .container h1 {
+    font-style: normal;
+  }
+  .home-section .container h1 .sologan-1 {
+    line-height: 50px;
+    font-size: 28px;
+    font-weight: 700;
+  }
+  .home-section .container h1 .sologan-2 {
+    line-height: 60px;
+    font-size: 60px;
+    font-weight: 700;
+    letter-spacing: -2px;
+  }
+  .home-section .container h1 b {
+    font-size: 45px;
+  }
+  .home-section .container h2 {
+    font-size: 22px;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 24px;
+  }
+  .hotline .parallax {
+    height: auto;
+  }
+  .hotline .contact-info {
+    text-align: left;
+    margin-bottom: 15px;
+  }
+  .hotline .contact-info span {
+    text-align: center;
+  }
+  .theme-list .product-template .product-item {
+    margin-bottom: 15px;
+    height: 600px;
+  }
+  .call-action button {
+    margin-bottom: 15px;
+    margin-left: 15px;
+  }
+  .navbar-right li a {
+    padding: 8px 7px !important;
+    margin-right: 8px !important;
+  }
+}
+@media (max-width: 767px) {
+  .home-section .container h1 {
+    font-style: normal;
+  }
+  .home-section .container h1 .sologan-1 {
+    line-height: 35px;
+    font-size: 24px;
+    font-weight: normal;
+  }
+  .home-section .container h1 .sologan-2 {
+    line-height: 60px;
+    font-size: 50px;
+    font-weight: 700;
+    letter-spacing: -2px;
+  }
+  .home-section .container h1 b {
+    font-size: 45px;
+  }
+  .home-section .container h2 {
+    font-size: 18px;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 24px;
+  }
+  .container > .navbar-header {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .navbar-default .navbar-collapse,
+  .navbar-default .navbar-form {
+    border-color: transparent;
+  }
+  .navbar-default {
+    background-color: #1e2228;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: #ffffff;
+  }
+  .navbar-default .navbar-nav {
+    border-top: 2px solid #2990ea;
+  }
+  .navbar-default .navbar-nav li a {
+    color: #ffffff;
+    border-bottom: none !important;
+  }
+  .navbar-default .navbar-nav li a:hover {
+    color: #2990ea;
+    background: none;
+  }
+  .navbar-default .navbar-nav li.active a {
+    color: #2990ea;
+  }
+  .navbar-default ul.create-menu {
+    margin-top: 8px;
+  }
+  .navbar-default .navbar-toggle,
+  .navbar-default .navbar-toggle:active,
+  .navbar-default .navbar-toggle:focus {
+    background-color: #fff;
+  }
+  .navbar-default .navbar-nav .active a:hover,
+  .navbar-default .navbar-nav .active a:focus {
+    color: #666c70;
+  }
+  .navbar-fixed-bottom .navbar-collapse,
+  .navbar-fixed-top .navbar-collapse {
+    max-height: inherit;
+  }
+  .navbar-right li a {
+    padding: 7px !important;
+  }
+  .theme-list .product-template .product-item {
+    margin-bottom: 15px;
+    height: 400px;
+  }
+  .theme-list .nav-tabs li {
+    text-align: center;
+  }
+  .theme-list .nav-tabs li a {
+    background-color: #ebebeb;
+    color: #666c70;
+    border: none !important;
+    margin-bottom: 15px;
+  }
+  .theme-list .nav-tabs li a:hover {
+    background-color: #2990ea;
+    color: #ffffff !important;
+  }
+  .theme-list .nav-tabs li.active a {
+    background-color: #2990ea;
+    color: #ffffff !important;
+  }
+  .color ul {
+    margin-left: 0;
+  }
+  .color ul li {
+    float: left;
+  }
+  .color ul li a {
+    float: left;
+  }
+  .fixed-sidebar {
+    position: relative !important;
+  }
+}
+@media (max-width: 420px) {
+  .home-section .container h1 {
+    font-style: normal;
+  }
+  .home-section .container h1 .sologan-1 {
+    line-height: 30px;
+    font-size: 20px;
+    font-weight: normal;
+  }
+  .home-section .container h1 .sologan-2 {
+    line-height: 50px;
+    font-size: 45px;
+    font-weight: 700;
+    letter-spacing: -2px;
+  }
+  .home-section .container h1 b {
+    font-size: 45px;
+  }
+  .home-section .container h2 {
+    font-size: 18px;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 24px;
+  }
+  .btn {
+    width: 100%;
+  }
+  .fixed-sidebar {
+    position: relative !important;
+  }
+}
+@media (max-width: 321px) {
+  .home-section .container h1 {
+    font-style: normal;
+  }
+  .home-section .container h1 .sologan-1 {
+    line-height: 24px;
+    font-size: 20px;
+    font-weight: normal;
+  }
+  .home-section .container h1 .sologan-2 {
+    line-height: 40px;
+    font-size: 35px;
+    font-weight: 700;
+    letter-spacing: -2px;
+  }
+  .home-section .container h1 b {
+    font-size: 45px;
+  }
+  .home-section .container h2 {
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 24px;
+  }
+  .btn {
+    width: 100%;
+  }
+  .fixed-sidebar {
+    position: relative !important;
+  }
+}

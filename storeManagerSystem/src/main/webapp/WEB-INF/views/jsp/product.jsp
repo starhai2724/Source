@@ -4,13 +4,11 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib uri="http://ckeditor.com" prefix="ckeditor" %>
-<script>document.write('<base href="' + document.location + '" />');</script>
-    
+
+
 <div id="wrapper">
 	<!-- Navigation -->
 	<div id="page-wrapper" ng-app="ProductForm" ng-controller="ctrl">
-	
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">Sản phẩm</h1>
@@ -19,15 +17,7 @@
 			<!-- /.col-lg-12 -->
 		</div>
 		<!-- /.row -->
-	<form:form id="ProductForm" modelAttribute="ProductForm" role="form" method="POST" enctype="multipart/form-data" >
-	<c:choose>
-		<c:when test="${ProductForm.flagUpdate eq ('1')}">
-		<div id="demo" class="collapse in">
-		</c:when>
-		<c:otherwise>
-		<div id="demo" class="collapse">
-		</c:otherwise>
-		</c:choose>
+	<form:form id="ProductForm" modelAttribute="ProductForm" role="form" method="POST"  enctype="multipart/form-data">
 		<div class="row">
 			<div class="col-sm-4">
 				<div class="form-group">
@@ -83,24 +73,27 @@
 			<div class="col-sm-4">
 				<div class="form-group">
 			        <label>Hình ảnh Sản phẩm</label>
-			        <div class="form-group" >
-                        <input type="file" name="file" onchange="readURL(this);" />
-                        	</br>
-                    </div>
 			        <div class="form-group">
-                        <img id="blah" src="#" />
-                        <c:if test="${ProductForm.flagUpdate eq ('1')}">
+                        <input type="file" name="file"/>  
+                    </div>
+                    <img style="height: 400px;width: 300px;" src="/storeManagerSystem/myImage/${ProductForm.pathJSP }/imageDisplay/${ProductForm.SEQ}" alt="" /></a>
+			        	<c:if test="${ProductForm.flagUpdate eq ('1')}">
                         	<img id="blahEdit" style="height: 400px;width: 300px;" src="/storeManagerSystem/myImage/${ProductForm.pathJSP}/imageDisplay/${ProductForm.SEQ }" alt="" />
 						</c:if>
+			        <!-- <label>Chi tiết 1</label>
+			        <div class="form-group">
+                        <img id="blah" src="#" />
+                        
+                        <input type="file" name="file_1"/>  
                     </div>
-			        <!-- <label>Chi tiết 2</label>
+			        <label>Chi tiết 2</label>
 			        <div class="form-group">
                         <input type="file" name="file_2"/>  
                     </div>
 			        <label>Chi tiết 3</label>
 			        <div class="form-group">
                         <input type="file" name="file_3"/>  
-                    </div> --> 
+                    </div> -->
     			</div>
 			</div>
 		</div>
@@ -115,6 +108,7 @@
 				</div>
 			</div>
 		</div>
+<<<<<<< HEAD
 		<div class="row">
 			<div class="col-sm-4">
 				<button type="button" class="btn btn-info"  ng-click ="btnCreate()">
@@ -123,6 +117,8 @@
 			</div>
 		</div>
 		</div>
+=======
+>>>>>>> 56c1acbda805a2ec4a65365944f18be3b97a8cb4
 		<!--Message (S)-->
 		<div class="row">
 			<div class="col-sm-4">
@@ -135,6 +131,7 @@
 		<!--Message (E)-->
 		<div class="row" align="right" style="width: 100%">
 			<div >
+<<<<<<< HEAD
 				<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">
 				  <i class="glyphicon glyphicon-plus"></i> Thêm
 				</button>
@@ -158,6 +155,12 @@
 <!-- 				<input type="button" name="" class="btn btn-info " ng-click="exportToExcel('#dataTables-example')" value="Export Excel"> -->
 <!-- 				<input type="button" name="" class="btn btn-info " onclick="exportPDF();"  value="Export Pdf"> -->
 <!-- 				<input type="button" name="" class="btn btn-info " ng-click ="btnClear()" value="Refesh"> -->
+=======
+				<input type="button" name="" class="btn btn-info " ng-click ="btnCreate()" value="Đăng kí">
+				<input type="button" name="" class="btn btn-info " ng-click ="btnPhanAnh()" value="Phản ánh">
+				<input type="button" name="" class="btn btn-info " ng-click="exportToExcel('#dataTables-example')" value="In">
+				<input type="button" name="" class="btn btn-info " ng-click ="btnClear()" value="Hủy">
+>>>>>>> 56c1acbda805a2ec4a65365944f18be3b97a8cb4
 			</div>
 		</div>
 		
@@ -167,10 +170,17 @@
 		
 		<c:if test="${!empty ProductForm.lst }">
 		<div class="panel-body">
+<<<<<<< HEAD
                             <table  width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead >
                                     <tr >
                                     	<!-- <th style="text-align: center; width: 5px;"></th> -->
+=======
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <thead>
+                                    <tr>
+                                    	<th style="text-align: center; width: 5px;"></th>
+>>>>>>> 56c1acbda805a2ec4a65365944f18be3b97a8cb4
                                         <th style="text-align: center; width: 10px;padding-left: 5px;padding-right: 4px; ">STT</th>
 										<th style="text-align: center; width: 50px;padding-left: 5px;padding-right: 4px; ">Mã SP</th>
 										<th style="text-align: center; width: 150px">Tên sản phẩm</th>
@@ -184,8 +194,13 @@
                                 </thead>
                                 <tbody style="overflow: auto; height:50px" ng-model = "listSanPham" ng-init ="listSanPham = '${fn:length(ProductForm.lst)}'">
                               		  <c:forEach var="items" items="${ProductForm.lst }">
+<<<<<<< HEAD
 		                                <tr class="odd gradeX" >
 		                                 		<%-- <td class="center" style="text-align: center"><input type="checkbox" ng-model="selected[${items.no}]"  ng-init ="selected[${items.no}]='false'" ng-true-value="'${items.SEQ }'" ng-false-value="'NO'"></td> --%>
+=======
+		                                <tr class="odd gradeX">
+		                                 		<td class="center" style="text-align: center"><input type="checkbox" ng-model="selected[${items.no}]"  ng-init ="selected[${items.no}]='false'" ng-true-value="'${items.SEQ }'" ng-false-value="'NO'"></td>
+>>>>>>> 56c1acbda805a2ec4a65365944f18be3b97a8cb4
 		                                        <td style="text-align: center">${items.no}</td>
 		                                        <td >${items.idSanPham}</td>
 							                    <td data-tableexport-value="${items.tenSP}" >${items.tenSP}</td>
@@ -209,11 +224,11 @@
                         </div>
 		</c:if>
 		<form:input class="form-control" type="hidden"  path="flagUpdate"  name="flagUpdate" ng-model ="flagUpdate" ng-init="flagUpdate='${ProductForm.flagUpdate}'" />
-<%-- 	<ckeditor:replace replace="moTa" basePath="/ckeditor/" /> --%>
 	</form:form>		
 		<!-- /#page-wrapper -->
 	</div>
 </div>
+<<<<<<< HEAD
 
 
 
@@ -294,5 +309,7 @@ $('#dataTables-example').tableExport({
 
 
 
+=======
+>>>>>>> 56c1acbda805a2ec4a65365944f18be3b97a8cb4
 <script src="/storeManagerSystem/view/js/product.js"></script>
 <!-- /#wrapper -->
