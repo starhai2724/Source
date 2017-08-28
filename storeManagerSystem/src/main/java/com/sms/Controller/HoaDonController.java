@@ -1,5 +1,6 @@
 package com.sms.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -9,29 +10,42 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.sms.OutputRows.ChiTietHoaDonOutputRowBean;
 import com.sms.OutputRows.HoaDonOutputRowBean;
 import com.sms.OutputRows.KhachHangOutputRowBean;
+import com.sms.OutputRows.SanPhamOutputRowBean;
 import com.sms.common.SMSComons;
 import com.sms.common.SystemCommon;
 import com.sms.dao.ChiTietHoaDonDAO;
+import com.sms.dao.CreateTableProductDAO;
 import com.sms.dao.HoaDonDAO;
 import com.sms.dao.KhachHangDAO;
 import com.sms.dao.LayoutDAO;
 import com.sms.form.HoaDonForm;
 import com.sms.form.KhachHangForm;
+import com.sms.form.ProductForm;
 import com.sms.formRows.ChiTietHoaDonRowForm;
 import com.sms.formRows.HoaDonRowForm;
 import com.sms.formRows.KhachHangRowForm;
+import com.sms.formRows.ProductFormRow;
 import com.sms.input.ChiTietHoaDonInputBean;
 import com.sms.input.HoaDonInputBean;
 import com.sms.input.KhachHangInputBean;
+import com.sms.input.SanPhamInputBean;
+import com.sms.output.SanPhamOutputBean;
 
 @Controller
+@SessionAttributes(value = {"HoaDonForm"}, types = {HoaDonForm.class})
 public class HoaDonController {
 
 	public static final String PAGE = "hoaDon.jsp";
+	
+	 @ModelAttribute("HoaDonForm")
+	 public HoaDonForm getHoaDonForm() {
+	   return new HoaDonForm(); //or however you create a default
+	 }
 	
 	@RequestMapping(value  = "/bill/init")
 	public String init(@ModelAttribute("HoaDonForm") HoaDonForm form, HttpSession session){
@@ -73,6 +87,8 @@ public class HoaDonController {
 		
 		List<HoaDonOutputRowBean> lst = HoaDonDAO.intances.getAll(pathJSP);
 		
+		form.getChiTietHoaDonRowForms().clear();
+		form.getLst().clear();
 		HoaDonRowForm formRow; 
 		int cnt = 1;
 		if(lst != null && lst.size() > 0){
@@ -91,7 +107,26 @@ public class HoaDonController {
 				form.getLst().add(formRow);
 			}
 		}
-		
+		//Su dung de phan anh danh sach san pham (S)
+		form.getLstSanPham().clear();
+		SanPhamOutputBean outputBeanPhanAnh = CreateTableProductDAO.intances.getSanPhamApDung(pathJSP,"");
+		ProductFormRow formRowPhanAnh; 
+		int cntPhanAnh = 1;
+		if(outputBeanPhanAnh != null && outputBeanPhanAnh.getLst().size() > 0){
+			for(int i = 0; i <  outputBeanPhanAnh.getLst().size() ; i++){
+				SanPhamOutputRowBean outputRowBean = outputBeanPhanAnh.getLst().get(i);	
+				formRowPhanAnh = new ProductFormRow();
+				formRowPhanAnh.setNo(String.valueOf(cntPhanAnh++));
+				formRowPhanAnh.setSEQ(outputRowBean.getSEQ());
+				formRowPhanAnh.setIdSanPham(outputRowBean.getIdSanPham());
+				formRowPhanAnh.setTenSP(outputRowBean.getTenSP());
+				formRowPhanAnh.setTenLoaiSP(outputRowBean.getTenLoaiSP());
+				formRowPhanAnh.setGiaMua(outputRowBean.getGiaMua());
+				formRowPhanAnh.setGiaBan(outputRowBean.getGiaBan());
+				form.getLstSanPham().add(formRowPhanAnh);
+			}
+		}
+		//Su dung de phan anh danh sach san pham (E)
 	}
 	
 	/**
@@ -110,19 +145,45 @@ public class HoaDonController {
 			// quay ve trang login
 			return "redirect:/";
 		}
+		
+		double totalMoney = 0;
+		int soLuong = 0;
+		for(ChiTietHoaDonRowForm chiTietHoaDonRowForm : form.getChiTietHoaDonRowForms()){
+			totalMoney += Integer.parseInt(chiTietHoaDonRowForm.getSoLuongSP())*Double.parseDouble(chiTietHoaDonRowForm.getGiaMua());
+			soLuong += Integer.parseInt(chiTietHoaDonRowForm.getSoLuongSP());
+			System.out.println("chiTietHoaDonRowForm.getSoLuongSP(): "+chiTietHoaDonRowForm.getSoLuongSP());
+		}
+		
 		//input
-		HoaDonInputBean inputBean = new HoaDonInputBean();
-		inputBean.setPathJSP(pathJSP);
-		inputBean.setIdHoaDon("");
-		inputBean.setIdKhachHang(form.getIdKhachHang());
-		inputBean.setNgayLap(SMSComons.getDate());
-		inputBean.setSoLuongSP(form.getSoLuongSP());
-		inputBean.setDiemTichLuy(form.getDiemTichLuy());
-		inputBean.setTongDiemTichLuy(form.getTongDiemTichLuy());
-		inputBean.setTienKhuyenMai(form.getTienKhuyenMai());
-		inputBean.setTongTien(form.getTongTien());
+		HoaDonInputBean hoaDonInputBean = new HoaDonInputBean();
+		hoaDonInputBean.setIdHoaDon("");
+		hoaDonInputBean.setIdKhachHang(form.getIdKhachHang());
+		hoaDonInputBean.setPathJSP(pathJSP);
+		hoaDonInputBean.setSoLuongSP(String.valueOf(soLuong));
+		hoaDonInputBean.setTienKhuyenMai("");
+		// 10000 d set duoc tinh la 1 diem
+		hoaDonInputBean.setTongDiemTichLuy(String.valueOf(totalMoney / 10000));
+		hoaDonInputBean.setTongTien(String.valueOf(totalMoney));
+		hoaDonInputBean.setNgayLap(SMSComons.getDate());
 		//insert
-		int cnt = HoaDonDAO.intances.insert(inputBean);
+		int cnt = HoaDonDAO.intances.insert(hoaDonInputBean);
+		
+		if (cnt == 1) {
+			String idHoaDon = HoaDonDAO.intances.getMaxId(pathJSP);
+			
+			for(ChiTietHoaDonRowForm chiTietHoaDonRowForm : form.getChiTietHoaDonRowForms()){
+				
+				ChiTietHoaDonInputBean chiTietHoaDonInputBean = new ChiTietHoaDonInputBean();
+				chiTietHoaDonInputBean.setPathJSP(pathJSP);
+				chiTietHoaDonInputBean.setIdChiTietHoaDon("");
+				chiTietHoaDonInputBean.setIdHoaDon(idHoaDon);
+				chiTietHoaDonInputBean.setIdSanPham(chiTietHoaDonRowForm.getIdSanPham());
+				chiTietHoaDonInputBean.setGiaMua(chiTietHoaDonRowForm.getGiaMua());
+				chiTietHoaDonInputBean.setSoLuongSP(chiTietHoaDonRowForm.getSoLuongSP());
+				chiTietHoaDonInputBean.setThanhTien(Integer.parseInt(chiTietHoaDonRowForm.getSoLuongSP())*Double.parseDouble(chiTietHoaDonRowForm.getGiaMua())+"");
+				cnt = ChiTietHoaDonDAO.intances.insert(chiTietHoaDonInputBean);
+			}
+		}	
 		
 		if(cnt == 1){
 			form.setMessage("Xử lý đăng kí thành công.");
@@ -132,7 +193,7 @@ public class HoaDonController {
 			form.setMessage("");
 		}
 		
-		//init data
+		//init data	
 		initData(form, pathJSP);
 		
 		session.setAttribute("PAGEIDSTORE", PAGE);
@@ -202,6 +263,9 @@ public class HoaDonController {
 			// quay ve trang login
 			return "redirect:/";
 		}
+		
+		form.getChiTietHoaDonRowForms().clear();
+
 		HoaDonInputBean inputBean = new HoaDonInputBean();
 		inputBean.setPathJSP(pathJSP);
 		inputBean.setIdHoaDon(id);
@@ -231,17 +295,15 @@ public class HoaDonController {
 			chiTietHoaDonRowForm.setLoaiSanPham(chiTietHoaDonOutputRowBean.getLoaiSanPham());
 			chiTietHoaDonRowForm.setTenSanPham(chiTietHoaDonOutputRowBean.getTenSanPham());
 			chiTietHoaDonRowForm.setSoLuongSP(chiTietHoaDonOutputRowBean.getSoLuongSP());
-			chiTietHoaDonRowForm.setGiaMua(SMSComons.formatMoney(chiTietHoaDonOutputRowBean.getGiaMua()));
-			chiTietHoaDonRowForm.setThanhTien(SMSComons.formatMoney(chiTietHoaDonOutputRowBean.getThanhTien()));
+			chiTietHoaDonRowForm.setGiaMua(chiTietHoaDonOutputRowBean.getGiaMua());
+			chiTietHoaDonRowForm.setThanhTien(chiTietHoaDonOutputRowBean.getThanhTien());
 			form.getChiTietHoaDonRowForms().add(chiTietHoaDonRowForm);
 		}
 		
-		
 		//Flag update
 		form.setFlagUpdate("1");
-		
 		//init data
-		initData(form, pathJSP);
+//		initData(form, pathJSP);
 		
 		session.setAttribute("PAGEIDSTORE",PAGE);
 		return  SystemCommon.ADMIN_STORE;
@@ -284,6 +346,98 @@ public class HoaDonController {
 		}
 		//init data
 		initData(form, pathJSP);
+		
+		session.setAttribute("PAGEIDSTORE", PAGE);
+		return  SystemCommon.ADMIN_STORE;
+	}
+	
+	
+	@RequestMapping(value="/bill/phanAnh/{listId}", method = RequestMethod.POST)
+	public String phanAnh(@ModelAttribute("HoaDonForm") HoaDonForm form, HttpSession session,@PathVariable("listId") String listId){
+		//get domain
+		String pathJSP = (String)session.getAttribute("pathURL");
+		List lstPhanAnh = new ArrayList<String>();
+		// remove ","
+		if (!"".equals(listId) && !"0".equals(listId)) {
+			listId = listId.substring(1);
+			String[] parts = listId.split(",");
+			listId = "";
+			for (int i = 0; i < parts.length; i++) {
+				lstPhanAnh.add(parts[i]);
+			}
+		}
+		SanPhamOutputBean outputBean;
+		SanPhamOutputRowBean outputRowBean;
+		SanPhamInputBean input;
+		ChiTietHoaDonRowForm chiTietHoaDonRowForm;
+		String idSP = "";
+		int cnt = 1;
+		boolean checkErr = false;
+		for(int i = 0; i< lstPhanAnh.size() ; i++){
+			
+			input = new SanPhamInputBean();
+			input.setPathJSP(pathJSP);
+			input.setSEQ(lstPhanAnh.get(i).toString());
+			SanPhamOutputBean sanPhamOutputBean = CreateTableProductDAO.intances.getProductById(input);
+			if(sanPhamOutputBean != null && sanPhamOutputBean.getLst().size() > 0){
+				idSP = sanPhamOutputBean.getLst().get(0).getIdSanPham();
+			}
+			for (ChiTietHoaDonRowForm chiTietHoaDonRowForm2 : form.getChiTietHoaDonRowForms()) {
+				if(chiTietHoaDonRowForm2.getIdSanPham().equals(idSP)){
+					checkErr = true;
+					idSP = "";
+				}
+			}
+			if(checkErr) {
+				checkErr = false;
+				continue;
+			}
+			
+			input = new SanPhamInputBean();
+			input.setPathJSP(pathJSP);
+			input.setSEQ(lstPhanAnh.get(i).toString());
+			//get data theo id va group theo id 
+			outputBean = CreateTableProductDAO.intances.getProductById_GroupById(input);
+			if(outputBean != null && outputBean.getLst().size() > 0){
+				outputRowBean = outputBean.getLst().get(0);
+				chiTietHoaDonRowForm = new ChiTietHoaDonRowForm();
+				chiTietHoaDonRowForm.setNo(String.valueOf(cnt++));
+				chiTietHoaDonRowForm.setIdChiTietHoaDon("");
+				chiTietHoaDonRowForm.setIdSanPham(outputRowBean.getIdSanPham());
+				chiTietHoaDonRowForm.setLoaiSanPham(outputRowBean.getTenLoaiSP());
+				chiTietHoaDonRowForm.setTenSanPham(outputRowBean.getTenSP());
+				chiTietHoaDonRowForm.setSoLuongSP("1");
+				if(outputRowBean.getGiaBanKM() == null || "".equals(outputRowBean.getGiaBanKM())){
+					chiTietHoaDonRowForm.setGiaMua(outputRowBean.getGiaBan());
+				}else {
+					chiTietHoaDonRowForm.setGiaMua(outputRowBean.getGiaBanKM());
+				}
+				chiTietHoaDonRowForm.setThanhTien("");
+				form.getChiTietHoaDonRowForms().add(chiTietHoaDonRowForm);
+			}
+		}		
+		session.setAttribute("PAGEIDSTORE", PAGE);
+		return  SystemCommon.ADMIN_STORE;
+	}
+	
+	@RequestMapping(value  = "/bill/xoaDong/{listId}", method = RequestMethod.POST)
+	public String xoaDong(@ModelAttribute("HoaDonForm") HoaDonForm form, HttpSession session, @PathVariable("listId") String listId){
+		List<ChiTietHoaDonRowForm> lst = form.getChiTietHoaDonRowForms();
+		
+		// remove ","
+		if (!"".equals(listId)) {
+			listId = listId.substring(1);
+			String[] parts = listId.split(",");
+			listId = "";
+			for (int i = 0; i < parts.length; i++) {
+				for(int k = 0; k < form.getLst().size();k++){
+					//Delete cac san pham dc chon
+					if(parts[i].equals(form.getLst().get(k).getNo())){
+						lst.remove(form.getChiTietHoaDonRowForms().get(k));
+					}
+				}
+			}
+		}
 		
 		session.setAttribute("PAGEIDSTORE", PAGE);
 		return  SystemCommon.ADMIN_STORE;

@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.sms.formRows.ChiTietHoaDonRowForm;
 import com.sms.formRows.HoaDonRowForm;
+import com.sms.formRows.ProductFormRow;
 
 public class HoaDonForm extends AbstractForm{
 	
@@ -25,13 +26,29 @@ public class HoaDonForm extends AbstractForm{
 	private String tongTien;
 	
 	private String flagUpdate;
+	//su dung de khi tao moi (S)
+	private String flagNew;
+	//su dung de khi tao moi (E)
 	
 	private List<ChiTietHoaDonRowForm> chiTietHoaDonRowForms = new ArrayList<>(); 
 	
 	private List<HoaDonRowForm> lst = new ArrayList<>();
 	
+	// su dung de phan anh san pham (S)
+	private List<ProductFormRow> lstSanPham = new ArrayList<>();
+	// su dung de phan anh san pham (E)
+	
+	
 	public List<ChiTietHoaDonRowForm> getChiTietHoaDonRowForms() {
 		return chiTietHoaDonRowForms;
+	}
+
+	public List<ProductFormRow> getLstSanPham() {
+		return lstSanPham;
+	}
+
+	public void setLstSanPham(List<ProductFormRow> lstSanPham) {
+		this.lstSanPham = lstSanPham;
 	}
 
 	public void setChiTietHoaDonRowForms(List<ChiTietHoaDonRowForm> chiTietHoaDonRowForms) {
@@ -117,6 +134,14 @@ public class HoaDonForm extends AbstractForm{
 
 	public void setLst(List<HoaDonRowForm> lst) {
 		this.lst = lst;
+	}
+
+	public String getFlagNew() {
+		return flagNew;
+	}
+
+	public void setFlagNew(String flagNew) {
+		this.flagNew = flagNew;
 	}
 
 	

@@ -46,10 +46,27 @@
 		</div>
 		<!--Message (E)-->
 		<div class="row" align="right" style="width: 650px">
-			<div >
-				<input type="button" name="" class="btn btn-info " ng-click ="btnCreate()" value="Đăng kí">
-				<input type="button" name="" class="btn btn-info " ng-click="exportToExcel('#dataTables-example')" value="In">
-				<input type="button" name="" class="btn btn-info " ng-click ="btnClear()" value="Hủy">
+			<div>
+			
+				<button type="button" class="btn btn-info" ng-click ="btnCreate()">
+				  <i class="glyphicon glyphicon-plus"></i> Đăng kí
+				</button>
+				<!-- <button type="button" class="btn btn-info" ng-click="exportToExcel('#dataTables-example')">
+				  <i class="glyphicon glyphicon-save-file"></i> Export Excel
+				</button> -->
+				<button type="button" class="btn btn-info" onclick="testExcel()">
+				  <i class="glyphicon glyphicon-save-file"></i> Export Excel
+				</button>
+				<!-- <button type="button" class="btn btn-info" onclick="exportPDF();">
+				  <i class="glyphicon glyphicon-print"></i> Export Pdf
+				</button> -->
+				<button type="button" class="btn btn-info" ng-click ="btnClear()">
+				  <i class="glyphicon glyphicon-refresh"></i> Refesh
+				</button>
+				
+<!-- 				<input type="button" name="" class="btn btn-info " ng-click ="btnCreate()" value="Đăng kí"> -->
+<!-- 				<input type="button" name="" class="btn btn-info " ng-click="exportToExcel('#dataTables-example')" value="In"> -->
+<!-- 				<input type="button" name="" class="btn btn-info " ng-click ="btnClear()" value="Hủy"> -->
 			</div>
 		</div>
 		
@@ -65,7 +82,7 @@
                                         <th style="text-align: center; width: 40px;">STT</th>
 										<th style="text-align: center; width: 250px">Tên loại thẻ</th>
 										<th style="text-align: center; width: 80px">Điểm</th>
-										<th style="text-align: center;	width: 60px">Thao tác</th>
+										<th style="text-align: center;	width: 60px" data-tableexport-display="none">Thao tác</th>
                                     </tr>
                                 </thead>
                                 <tbody style="overflow: auto; height:50px">
@@ -74,7 +91,7 @@
 		                                        <td class="center" style="text-align: center">${items.no}</td>
 		                                        <td>${items.tenLoaiThe}</td>
 							                    <td>${items.diem}</td>
-		                                        <td class="center" style="text-align: center">
+		                                        <td class="center" style="text-align: center" data-tableexport-display="none">
 		                                        		<button class="btn" type="button" ng-click="btnGetById('${items.idLoaiThe}');">
 															<span class="glyphicon glyphicon-pencil" data-toggle="tooltip" data-original-title="Sửa"></span>
 														</button>
@@ -93,6 +110,15 @@
 		<!-- /#page-wrapper -->
 	</div>
 </div>
+<script>
+function testExcel(){
+	$('#dataTables-example').tableExport({
+		fileName:'LoaiThe',
+		type:'excel',
+	    excelFileFormat:'xmlss',
+	    worksheetName: ['Table 1','Table 2', 'Table 3']});
+	}
+</script>
 <script src="/storeManagerSystem/view/js/cardType.js"></script>
 
 <!-- /#wrapper -->

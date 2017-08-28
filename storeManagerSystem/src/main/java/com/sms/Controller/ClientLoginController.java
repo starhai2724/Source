@@ -21,14 +21,12 @@ import com.sms.form.LoginForm;
 import com.sms.form.StoreOwnerForm;
 import com.sms.impl.ClientLoginImpl;
 import com.sms.models.User;
-
 @Controller
 public class ClientLoginController {
 
 	public static final String PAGE_INFO = "thongTinCuaHang.jsp";
 	public static final String PAGE_ID = "PAGE_ID";
 	public static final String PAGE_REGISTER = "registerUser";
-	
 	
 	@RequestMapping(value ="/", method = RequestMethod.GET)	
 	public String home(@ModelAttribute("LoginForm") LoginForm loginForm, HttpSession session, Model model, BindingResult result){
@@ -45,7 +43,6 @@ public class ClientLoginController {
 //		model.addAttribute("password", password);
 //		model.addAttribute("message", "Sai Tên đăng nhập hoặc mật khẩu");
 		
-		
 		model.addAttribute("LoginForm", loginForm);
 		loginForm.setMessageErr("Sai Tên đăng nhập hoặc mật khẩu");
 		User req = new User();
@@ -61,7 +58,8 @@ public class ClientLoginController {
 			//role User
 			if(SystemCommon.USER.equals(userlocal.getRole())){
 				session.setAttribute("pathURL", userlocal.getURLStore());
-				return SystemCommon.ADMIN_STORE;
+				
+				return "redirect:/thongKe/init";
 				
 			//role Root
 			}else if(SystemCommon.ROOT.equals(userlocal.getRole())){
@@ -82,6 +80,4 @@ public class ClientLoginController {
 		session.removeAttribute("pathURL");
 		return SystemCommon.PAGE_LOGIN;
 	}
-	
 }
-

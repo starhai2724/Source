@@ -185,7 +185,7 @@
                                     <i class="fa fa-search"></i>
                                 </button> --%>
                                 	<input style="width: 400px" type="text" placeholder="Nhập sản phẩm muốn tìm kiếm" path="timKiem_TenSP"  name="timKiem_TenSP" ng-model = "timKiem_TenSP"  ng-init ="timKiem_TenSP = '${LayoutForm.timKiem_TenSP}'" />
-									<input style="width: 150px;background-color: #42a8bf;font-weight: bold;" type="submit" value="Tìm Kiếm" ng-click ="btnTimKiem()"/>
+									<input style="width: 150px;background-color: #42a8bf;font-weight: bold;" type="submit" value="Tìm kiếm" ng-click ="btnTimKiem()"/>
                             </div>
                         </div>
                 	 </div>

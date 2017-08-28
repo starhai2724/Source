@@ -129,12 +129,11 @@ $(document).ready(function () {
 <div id="page-wrapper" ng-app="ThongKeForm" ng-controller="ctrl">
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Đợt Khuyến Mãi</h1>
+				<h1 class="page-header">Thống kê</h1>
 			</div>
 			<i style="font-size:24px;margin-left: 1400px;margin-top: -10px" data-toggle="collapse" data-target="#demo" class="fa">&#xf106;</i>
-			<!-- /.col-lg-12 -->
+			<!-- /.col-lg-12 -->	
 		</div>
-		
 <form:form id="ThongKeForm" modelAttribute="ThongKeForm" role="form" method="POST" >
     <div id="wrapper">
  <div class="row">

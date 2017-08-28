@@ -143,7 +143,6 @@ public class KhachHangController {
 		inputBean.setDiaChi(form.getDiaChi());
 		inputBean.setSoDiem(form.getSoDiem());
 		inputBean.setNgaySinh(SMSComons.formatDateInput(form.getNgaySinh()));
-		System.out.println("");
 		inputBean.setNgayTao(SMSComons.getDate());
 		inputBean.setNgaySua("");
 		
@@ -157,6 +156,18 @@ public class KhachHangController {
 			form.setMessageErr("Xử lý đăng kí không thành công.");
 			form.setMessage("");
 		}
+		
+		//reset
+		form.setIdKhachHang("");
+		form.setTenKhachHang("");
+		form.setLoaiThe("");
+		form.setGioiTinh("");
+		form.setDiaChi("");
+		form.setNgaySinh("");
+		form.setSoDienThoai("");
+		form.setSoDiem("");
+		//Flag update
+		form.setFlagUpdate("0");
 		
 		//init data
 		initData(form, pathJSP);
@@ -192,7 +203,6 @@ public class KhachHangController {
 		inputBean.setDiaChi(form.getDiaChi());
 		inputBean.setSoDiem(form.getSoDiem());
 		inputBean.setNgaySinh(SMSComons.formatDateInput(form.getNgaySinh()));
-		System.out.println(inputBean.getNgaySinh());
 		inputBean.setNgayTao(SMSComons.getDate());
 		inputBean.setNgaySua("");
 		
@@ -208,6 +218,19 @@ public class KhachHangController {
 			form.setMessageErr("Xử lý đăng kí không thành công.");
 			form.setMessage("");
 		}
+		
+		//reset
+		form.setIdKhachHang("");
+		form.setTenKhachHang("");
+		form.setLoaiThe("");
+		form.setGioiTinh("");
+		form.setDiaChi("");
+		form.setNgaySinh("");
+		form.setSoDienThoai("");
+		form.setSoDiem("");
+		//Flag update
+		form.setFlagUpdate("0");
+		
 		//init data
 		initData(form, pathJSP);
 		
