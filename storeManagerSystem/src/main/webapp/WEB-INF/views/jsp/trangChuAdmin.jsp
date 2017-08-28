@@ -338,7 +338,7 @@
 									<h2 class="wow bounceInUp sologan-3" data-wow-delay="1s"
 										data-wow-duration="1.2s"
 										style="visibility: visible; animation-duration: 1.2s; animation-delay: 1s; animation-name: bounceInUp;"></h2>
-									<div class="col-md-5 col-md-offset-1 wow bounceInLeft"
+									<div class="col-md-7 col-md-offset-1 wow bounceInLeft"
 										data-wow-delay="1.2s" data-wow-duration="1.5s"
 										style="visibility: visible; animation-duration: 1.5s; animation-delay: 1.2s; animation-name: bounceInLeft;">
 										<figure> <img
@@ -895,7 +895,7 @@
 													<a href="#"><img
 														ng-src="/Images/blank.gif"
 														data-original="/storeManagerSystem/view/trangChuAdmin_files/runecom02.jpg"
-														class="img-responsive lazy" alt="Bán hàng RUNECOM02"
+														class="img-responsive lazy" alt="Bán hàng RUNECOM01"
 														src="/storeManagerSystem/view/trangChuAdmin_files/runecom02.jpg"
 														></a>
 												</div>
@@ -905,7 +905,7 @@
 												<div class="product-info">
 													<h2 class="name">
 														<a href="#"
-															class="ng-binding">Bán hàng RUNECOM02</a>
+															class="ng-binding">Bán hàng RUNECOM01</a>
 													</h2>
 													<!-- ngIf: item.IsFree==false -->
 													<!-- ngIf: item.IsFree==true -->
@@ -933,7 +933,7 @@
 													<a href="#"><img
 														ng-src="/Images/blank.gif"
 														data-original="/storeManagerSystem/view/trangChuAdmin_files/runecom04.jpg"
-														class="img-responsive lazy" alt="Bán hàng RUNECOM04"
+														class="img-responsive lazy" alt="Bán hàng RUNECOM02"
 														src="/storeManagerSystem/view/trangChuAdmin_files/runecom04.jpg"
 														></a>
 												</div>
@@ -943,7 +943,7 @@
 												<div class="product-info">
 													<h2 class="name">
 														<a href="#"
-															class="ng-binding">Bán hàng RUNECOM04</a>
+															class="ng-binding">Bán hàng RUNECOM02</a>
 													</h2>
 													<!-- ngIf: item.IsFree==false -->
 													<!-- ngIf: item.IsFree==true -->
@@ -971,7 +971,7 @@
 													<a href="#"><img
 														ng-src="/Images/blank.gif"
 														data-original="/storeManagerSystem/view/trangChuAdmin_files/runecom48.jpg"
-														class="img-responsive lazy" alt="Doanh nghiệp RUNECOM48"
+														class="img-responsive lazy" alt="Bán hàng RUNECOM03"
 														src="/storeManagerSystem/view/trangChuAdmin_files/runecom48.jpg"
 														></a>
 												</div>
@@ -981,7 +981,7 @@
 												<div class="product-info">
 													<h2 class="name">
 														<a href="#"
-															class="ng-binding">Doanh nghiệp RUNECOM48</a>
+															class="ng-binding">Bán hàng RUNECOM03</a>
 													</h2>
 													<!-- ngIf: item.IsFree==false -->
 													<!-- ngIf: item.IsFree==true -->
@@ -1051,6 +1051,35 @@
 								</div>
 							</div>
 							</section>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+  <style>#cfacebook{position:fixed;bottom:0px;right:100px;z-index:999999999999999;width:250px;height:auto;box-shadow:6px 6px 6px 10px rgba(0,0,0,0.2);border-top-left-radius:5px;border-top-right-radius:5px;overflow:hidden;}#cfacebook .fchat{float:left;width:100%;height:270px;overflow:hidden;display:none;background-color:#fff;}#cfacebook .fchat .fb-page{margin-top:-130px;float:left;}#cfacebook a.chat_fb{float:left;padding:0 25px;width:250px;color:#fff;text-decoration:none;height:40px;line-height:40px;text-shadow:0 1px 0 rgba(0,0,0,0.1);background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAqCAMAAABFoMFOAAAAWlBMV…8/UxBxQDQuFwlpqgBZBq6+P+unVY1GnDgwqbD2zGz5e1lBdwvGGPE6OgAAAABJRU5ErkJggg==);background-repeat:repeat-x;background-size:auto;background-position:0 0;background-color:#3a5795;border:0;border-bottom:1px solid #133783;z-index:9999999;margin-right:12px;font-size:18px;}#cfacebook a.chat_fb:hover{color:yellow;text-decoration:none;}</style>
+  <script>
+  jQuery(document).ready(function () {
+  jQuery(".chat_fb").click(function() {
+jQuery('.fchat').toggle('slow');
+  });
+  });
+  </script>
+  <div id="cfacebook">
+  <a href="javascript:;" class="chat_fb" onclick="return:false;"><i class="fa fa-facebook-square"></i> Phản hồi của bạn</a>
+  <div class="fchat">
+  <div class="fb-page" data-tabs="messages" data-href="https://www.facebook.com/C%E1%BB%ADa-h%C3%A0ng-th%E1%BB%9Di-trang-255302581636729/" data-width="250" data-height="400" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="false"></div>
+  </div>
+  </div>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/nl_NL/sdk.js#xfbml=1&version=v2.10";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 	<footer class="no-margin footer">
 	<div class="footer-left-bg"></div>
 	<div class="footer-right-bg"></div>
@@ -1113,38 +1142,6 @@
 		</div>
 	</div>
 	</footer>
-
-	<!-- Google Code dành cho Thẻ tiếp thị lại -->
-	<!--------------------------------------------------
-    Không thể liên kết thẻ tiếp thị lại với thông tin nhận dạng cá nhân hay đặt thẻ tiếp thị lại trên các trang có liên quan đến danh mục nhạy cảm. Xem thêm thông tin và hướng dẫn về cách thiết lập thẻ trên: http://google.com/ads/remarketingsetup
-    --------------------------------------------------->
-	<script type="text/javascript">
-		/* <![CDATA[ */
-		var google_conversion_id = 997528389;
-		var google_custom_params = window.google_tag_params;
-		var google_remarketing_only = true;
-		/* ]]> */
-	</script>
-	<script type="text/javascript"
-		src="/storeManagerSystem/view/trangChuAdmin_files/conversion.js.tải xuống">
-		
-	</script>
-	<iframe name="google_conversion_frame" title="Google conversion frame"
-		width="300" height="13"
-		src="/storeManagerSystem/view/trangChuAdmin_files/saved_resource.html"
-		frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0"
-		allowtransparency="true" scrolling="no"></iframe>
-	<noscript>&lt;div style="display:inline;"&gt; &lt;img
-		height="1" width="1" style="border-style:none;" alt=""
-		src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/997528389/?value=0&amp;amp;guid=ON&amp;amp;script=0"
-		/&gt; &lt;/div&gt;</noscript>
-	<div style="display: none;" id="loading-mask">
-		<div id="loading_mask_loader" class="loader">
-			<img alt="Loading..."
-				src="/storeManagerSystem/view/trangChuAdmin_files/ajax-loader-main.gif">
-				<div>Please wait...</div>
-		</div>
-	</div>
 
 	<div class="zopim" __jx__id="___$_1"
 		style="position: absolute; visibility: hidden; margin: 0px; padding: 0px; border: 0px; height: 0px; width: 0px;"></div>
