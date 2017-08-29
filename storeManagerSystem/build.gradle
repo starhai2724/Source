@@ -64,16 +64,22 @@ dependencies {
       compile 'javax.mail:mail:1.4.7'
       
       //IBM watson (S)
-      'com.ibm.watson.developer_cloud:conversation:3.8.0'
+      'com.ibm.watson.developer_cloud:java-sdk:3.9.1'
       //IBM watson (E)
       
       
       // https://mvnrepository.com/artifact/com.itextpdf/itextpdf
 	 compile group: 'com.itextpdf', name: 'itextpdf', version: '5.0.6'
       
-      
+      //local file
+    //compile files('D:/THISIS/Data/java-sdk-3.9.1-jar-with-dependencies.jar')
 }
 
+allprojects {
+    repositories {
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+    }
+}
 
 jettyRun{
 	contextPath = "storeManagerSystem"

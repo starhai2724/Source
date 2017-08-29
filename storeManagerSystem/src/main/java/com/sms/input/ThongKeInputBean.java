@@ -1,6 +1,6 @@
 package com.sms.input;
 
-public class ThongkeTheoSanPhamInputBean {
+public class ThongKeInputBean {
 
 	private String pathJSP;
 

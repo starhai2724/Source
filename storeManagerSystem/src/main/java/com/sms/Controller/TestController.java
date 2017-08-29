@@ -2,7 +2,6 @@ package com.sms.Controller;
 
 import javax.servlet.http.HttpSession;
 
-import org.json.HTTP;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -85,6 +84,22 @@ public class TestController {
 	@RequestMapping(value ="/test_6", method = RequestMethod.GET)	
 	public String thongKe(){
 		return "template_2/trang-chu";
+	}
+	
+	@RequestMapping(value ="/test_7", method = RequestMethod.GET)	
+	public String test_7(){
+//		String req = "Hello";
+//		System.out.println("req: "+req);
+//		Map context = new HashMap();
+////		MessageResponse response = conversationAPI(req, context);
+//		BVTService bvtService = new BVTService();
+//		MessageResponse response = bvtService.conversationAPI(req, context);
+//		context = response.getContext();
+//		System.out.println("Watson Response:" + response.getText().get(0));
+//		context = response.getContext();
+//		System.out.println("———–");
+//		System.out.println(response.getText().get(0));
+		return "conversation";
 	}
 	
 }
