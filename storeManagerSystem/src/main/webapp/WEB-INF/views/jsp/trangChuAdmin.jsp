@@ -173,26 +173,9 @@
 }
 </style>
 </head>
-<body ng-app="appMain" class="ng-scope">
+<body ng-app="appMain" class="ng-scope" style="font-size: 16px">
 	<div class="vegas-loading" style="opacity: 0.975528;"></div>
-	<img class="vegas-background"
-		src="/storeManagerSystem/view/trangChuAdmin_files/slide-bg01.jpg"
-		style="position: fixed; width: 1366px; height: 741.225px; top: -76.1123px; bottom: auto; left: 0px; right: auto;"><img
-		class="vegas-background"
-		src="/storeManagerSystem/view/trangChuAdmin_files/slide-bg02.jpg"
-		style="position: fixed; opacity: 0.99987; width: 1366px; height: 741.225px; top: -76.1123px; bottom: auto; left: 0px; right: auto;"><img
-			class="vegas-background"
-			src="/storeManagerSystem/view/trangChuAdmin_files/slide-bg03.jpg"
-			style="position: fixed; width: 1366px; height: 741.225px; top: -76.1123px; bottom: auto; left: 0px; right: auto; opacity: 1;"><img
-				class="vegas-background"
-				src="/storeManagerSystem/view/trangChuAdmin_files/slide-bg01.jpg"
-				style="position: fixed; width: 1366px; height: 732.111px; top: -71.5556px; bottom: auto; left: 0px; right: auto; opacity: 0.99999;"><img
-					class="vegas-background"
-					src="/storeManagerSystem/view/trangChuAdmin_files/slide-bg02.jpg"
-					style="position: fixed; width: 1366px; height: 732.111px; top: -71.5556px; bottom: auto; left: 0px; right: auto; opacity: 0.0198532;"><div
-							class="vegas-overlay"
-							style="margin: 0px; padding: 0px; position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; background-image: url(&quot;/storeManagerSystem/view/trangChuAdmin_files/bg-overlay.png&quot;);"></div>
-
+<img class="vegas-background" src="/storeManagerSystem/view/trangChuAdmin_files/slide-bg02.jpg" style="position: fixed; width: 1707px; height: 926.397px; top: -95.1984px; bottom: auto; left: 0px; right: auto;"><img class="vegas-background" src="/storeManagerSystem/view/trangChuAdmin_files/slide-bg03.jpg" style="position: fixed; opacity: 0.999701; width: 1707px; height: 926.397px; top: -95.1984px; bottom: auto; left: 0px; right: auto;"><img class="vegas-background" src="/storeManagerSystem/view/trangChuAdmin_files/slide-bg01.jpg" style="position: fixed; opacity: 0.999904; width: 1707px; height: 926.397px; top: -95.1984px; bottom: auto; left: 0px; right: auto;"><img class="vegas-background" src="/storeManagerSystem/view/trangChuAdmin_files/slide-bg02.jpg" style="position: fixed; opacity: 0.99999; width: 1707px; height: 926.397px; top: -95.1984px; bottom: auto; left: 0px; right: auto;"><img class="vegas-background" src="/storeManagerSystem/view/trangChuAdmin_files/slide-bg03.jpg" style="position: fixed; opacity: 0.999992; width: 1707px; height: 926.397px; top: -95.1984px; bottom: auto; left: 0px; right: auto;"><img class="vegas-background" src="/storeManagerSystem/view/trangChuAdmin_files/slide-bg01.jpg" style="position: fixed; opacity: 0.999999; width: 1707px; height: 926.397px; top: -95.1984px; bottom: auto; left: 0px; right: auto;"><img class="vegas-background" src="/storeManagerSystem/view/trangChuAdmin_files/slide-bg02.jpg" style="position: fixed; width: 1707px; height: 926.397px; top: -95.1984px; bottom: auto; left: 0px; right: auto; opacity: 0.999999;"><img class="vegas-background" src="/storeManagerSystem/view/trangChuAdmin_files/slide-bg03.jpg" style="position: fixed; width: 1707px; height: 915.26px; top: -89.6299px; bottom: auto; left: 0px; right: auto; opacity: 0.9998;"><div class="vegas-overlay" style="margin: 0px; padding: 0px; position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; background-image: url(&quot;/storeManagerSystem/view/trangChuAdmin_files/bg-overlay.png&quot;);"></div>
 						<!-- START HEADER --> <header class="clearfix">
 						<div class="container clearfix">
 							<!-- Start navbar -->
@@ -202,10 +185,10 @@
 								<div class="navbar-header">
 									<a class="navbar-brand hidden-xs hidden-sm"
 										href="http://runtime.vn/"> <img
-										style="width: 100px; height: 50px" alt="runtime"
+										style="width: 350px; height: 40px" alt="runtime"
 										class="scroller-logo"
-										src="/storeManagerSystem/view/templateDK/logoHeader.jpg">
-											<img src="/storeManagerSystem/view/templateDK/logoHeader.jpg"
+										src="/storeManagerSystem/view/layoutHeader/img/logo.png">
+											<img src="/storeManagerSystem/view/layoutHeader/img/logo.png"
 											class="default-logo img-responsive" alt="runtime"></a> <a
 										class="navbar-brand logo-mobile hidden-md hidden-lg"
 										href="http://runtime.vn/"> <img alt="runtime"
@@ -237,10 +220,10 @@
 										id="menu" aria-expanded="false">
 
 										<li><a href="http://runtime.vn/gioi-thieu.html" id=""
-											class="">Giới thiệu</a></li>
-										<li><a href="http://runtime.vn/kho-giao-dien.html" id="">Kho
+											class="" style="font-size: 16px">Giới thiệu</a></li>
+										<li><a style="font-size: 16px" href="http://runtime.vn/kho-giao-dien.html" id="">Kho
 												giao diện</a></li>
-										<li><a href="http://runtime.vn/tinh-nang.html" id="">Tính
+										<li><a style="font-size: 16px" href="http://runtime.vn/tinh-nang.html" id="">Tính
 												năng</a></li>
 									</ul>
 								</div>
@@ -323,25 +306,23 @@
 								src="/storeManagerSystem/view/trangChuAdmin_files/registerServices.js.tải xuống"></script>
 							<script
 								src="/storeManagerSystem/view/trangChuAdmin_files/registerController.js.tải xuống"></script>
-							<section class="home-section default-bg parallax-bg ng-scope"
+							<section class="home-section default-bg parallax-bg ng-scope" 
 								ng-controller="startRegisterController"
-								ng-init="initController()">
-							<div class="container">
-								<div class="text-center">
-									<h1 class="wow bounceInDown" data-wow-delay="1s"
+								ng-init="initController()" >
+							<div class="container" style="height: 780px">
+								<div class="text-center" style="font-size: 17px">
+									<h1 class="wow bounceInDown" data-wow-delay="1s" 
 										data-wow-duration="1s"
 										style="visibility: visible; animation-duration: 1s; animation-delay: 1s; animation-name: bounceInDown;">
 										<span class="sologan-1">Tạo web kinh doanh chuyên
 											nghiệp</span><br><span class="sologan-2"> chưa bao giờ
 												dễ đến thế!</span>
 									</h1>
-									<h2 class="wow bounceInUp sologan-3" data-wow-delay="1s"
-										data-wow-duration="1.2s"
-										style="visibility: visible; animation-duration: 1.2s; animation-delay: 1s; animation-name: bounceInUp;"></h2>
+							<h2 class="wow bounceInUp sologan-3" data-wow-delay="1s" data-wow-duration="1.2s" style="visibility: visible; animation-duration: 1.2s; animation-delay: 1s; animation-name: bounceInUp;">Trải nghiệm 30 ngày miễn phí sau 15 giây khởi tạo</h2>
 									<div class="col-md-7 col-md-offset-1 wow bounceInLeft"
 										data-wow-delay="1.2s" data-wow-duration="1.5s"
 										style="visibility: visible; animation-duration: 1.5s; animation-delay: 1.2s; animation-name: bounceInLeft;">
-										<figure> <img
+										<figure> <img style="width: 600px;margin-left: -300px"
 											src="/storeManagerSystem/view/trangChuAdmin_files/responsive.png"
 											class="img-responsive" alt="runtime"></figure>
 									</div>
@@ -351,7 +332,7 @@
 											src="/storeManagerSystem/view/trangChuAdmin_files/arrow.png"
 											class="img-responsive" alt="runtime"></figure>
 									</div>
-									<div class="col-md-3 wow bounceInRight">
+									<div class="col-md-3 wow bounceInRight" style="margin-left: 50px">
 										<div class="form-action">
 											<form class="ng-pristine ng-valid ng-valid-email">
 												<button class="btn btn-default full-width" type="button"
@@ -361,208 +342,52 @@
 											</form>
 
 										</div>
-										<p class="text-left">
-											Hãy gọi cho chúng tôi <span class="color3">0908 77 00
-												95</span> để được tư vấn
+										<p class="text-left" style="width: 300px">
+											Hãy gọi cho chúng tôi <span class="color3">0908 77 00 95
+												</span> để được tư vấn
 										</p>
 									</div>
 								</div>
 							</div>
 							</section>
 							<script type="text/javascript">
-								$(document)
-										.ready(
-												function() {
-													var slides = new Array();
-													var arr = [
-															{
-																"Id" : 1,
-																"Name" : "main",
-																"Title" : "Chỉ mất 30S để có 1 website chuyên nghiệp nhất hiện nay",
-																"TitleSub" : "Miễn phí 100% giao diện",
-																"Summary" : null,
-																"Embed" : null,
-																"Image" : "/storeManagerSystem/view/trangChuAdmin_files/slide-bg01.jpg",
-																"Image1" : "/storeManagerSystem/view/trangChuAdmin_files/slide01-left.png",
-																"Image2" : "/storeManagerSystem/view/trangChuAdmin_files/slide01-right.png",
-																"Link" : "#",
-																"TransitionType" : "fade",
-																"Image1_X" : 0,
-																"Image1_Y" : 40,
-																"Image1_Easing" : "easeOutExpo",
-																"Image1_Animation" : "lft",
-																"Image1_Style" : "small_text",
-																"Image2_X" : 671,
-																"Image2_Y" : 330,
-																"Image2_Easing" : "easeOutBack",
-																"Image2_Animation" : "lft",
-																"Image2_Style" : "small_text",
-																"Title_X" : 450,
-																"Title_Y" : 40,
-																"Title_Easing" : "easeOutExpo",
-																"Title_Animation" : "lft",
-																"Title_Style" : "title1",
-																"TitleSub_X" : 450,
-																"TitleSub_Y" : 90,
-																"TitleSub_Easing" : "easeOutBack",
-																"TitleSub_Animation" : "lft",
-																"TitleSub_Style" : "title2",
-																"Summary_X" : 450,
-																"Summary_Y" : 150,
-																"Summary_Easing" : "easeOutExpo",
-																"Summary_Animation" : "lfr",
-																"Summary_Style" : "title3",
-																"Embed_X" : 500,
-																"Embed_Y" : 240,
-																"Embed_Easing" : "easeOutExpo",
-																"Embed_Animation" : "lfr",
-																"Embed_Style" : "small_text",
-																"Index" : 1,
-																"Inactive" : false,
-																"Timestamp" : "AAAAAAAWYzk="
-															},
-															{
-																"Id" : 3,
-																"Name" : "2",
-																"Title" : "2",
-																"TitleSub" : null,
-																"Summary" : null,
-																"Embed" : null,
-																"Image" : "/storeManagerSystem/view/trangChuAdmin_files/slide-bg02.jpg",
-																"Image1" : null,
-																"Image2" : null,
-																"Link" : "#",
-																"TransitionType" : "boxfade",
-																"Image1_X" : 0,
-																"Image1_Y" : 0,
-																"Image1_Easing" : "easeInQuad",
-																"Image1_Animation" : "sft",
-																"Image1_Style" : "title1",
-																"Image2_X" : 0,
-																"Image2_Y" : 0,
-																"Image2_Easing" : "easeInQuad",
-																"Image2_Animation" : "sft",
-																"Image2_Style" : "title1",
-																"Title_X" : 0,
-																"Title_Y" : 0,
-																"Title_Easing" : "easeInQuad",
-																"Title_Animation" : "sft",
-																"Title_Style" : "title1",
-																"TitleSub_X" : 0,
-																"TitleSub_Y" : 0,
-																"TitleSub_Easing" : "easeInQuad",
-																"TitleSub_Animation" : "sft",
-																"TitleSub_Style" : "title1",
-																"Summary_X" : 0,
-																"Summary_Y" : 0,
-																"Summary_Easing" : "easeInQuad",
-																"Summary_Animation" : "sft",
-																"Summary_Style" : "title1",
-																"Embed_X" : 0,
-																"Embed_Y" : 0,
-																"Embed_Easing" : "easeInQuad",
-																"Embed_Animation" : "sft",
-																"Embed_Style" : "title1",
-																"Index" : 2,
-																"Inactive" : false,
-																"Timestamp" : "AAAAAAAWYzQ="
-															},
-															{
-																"Id" : 4,
-																"Name" : "3",
-																"Title" : "3",
-																"TitleSub" : null,
-																"Summary" : null,
-																"Embed" : null,
-																"Image" : "/storeManagerSystem/view/trangChuAdmin_files/slide-bg03.jpg",
-																"Image1" : null,
-																"Image2" : null,
-																"Link" : "#",
-																"TransitionType" : "boxfade",
-																"Image1_X" : 0,
-																"Image1_Y" : 0,
-																"Image1_Easing" : "easeInQuad",
-																"Image1_Animation" : "sft",
-																"Image1_Style" : "title1",
-																"Image2_X" : 0,
-																"Image2_Y" : 0,
-																"Image2_Easing" : "easeInQuad",
-																"Image2_Animation" : "sft",
-																"Image2_Style" : "title1",
-																"Title_X" : 0,
-																"Title_Y" : 0,
-																"Title_Easing" : "easeInQuad",
-																"Title_Animation" : "sft",
-																"Title_Style" : "title1",
-																"TitleSub_X" : 0,
-																"TitleSub_Y" : 0,
-																"TitleSub_Easing" : "easeInQuad",
-																"TitleSub_Animation" : "sft",
-																"TitleSub_Style" : "title1",
-																"Summary_X" : 0,
-																"Summary_Y" : 0,
-																"Summary_Easing" : "easeInQuad",
-																"Summary_Animation" : "sft",
-																"Summary_Style" : "title1",
-																"Embed_X" : 0,
-																"Embed_Y" : 0,
-																"Embed_Easing" : "easeInQuad",
-																"Embed_Animation" : "sft",
-																"Embed_Style" : "title1",
-																"Index" : 3,
-																"Inactive" : false,
-																"Timestamp" : "AAAAAAAWYzI="
-															} ];
-													$.each(arr, function(index,
-															it) {
-														var obj = {
-															src : it.Image,
-															fade : 5000
-														};
-														slides.push(obj);
-													});
-													if (arr.length <= 0) {
-														slides = [
-																{
-																	src : '/storeManagerSystem/view/trangChuAdmin_files/slide-bg01.jpg',
-																	fade : 4000
-																},
-																{
-																	src : '/storeManagerSystem/view/trangChuAdmin_files/slide-bg02.jpg',
-																	fade : 4000
-																},
-																{
-																	src : '/storeManagerSystem/view/trangChuAdmin_files/slide-bg03.jpg',
-																	fade : 4000
-																} ]
-													}
+    $(document).ready(function () {
+        var slides = new Array();
+        var arr = [{"Id":1,"Name":"main","Title":"Chỉ mất 30S để có 1 website chuyên nghiệp nhất hiện nay","TitleSub":"Miễn phí 100% giao diện","Summary":null,"Embed":null,"Image":"/storeManagerSystem/view/trangChuAdmin_files/slide-bg01.jpg","Image1":"/storeManagerSystem/view/trangChuAdmin_files/slide01-left.png","Image2":"/storeManagerSystem/view/trangChuAdmin_files/slide01-right.png","Link":"#","TransitionType":"fade","Image1_X":0,"Image1_Y":40,"Image1_Easing":"easeOutExpo","Image1_Animation":"lft","Image1_Style":"small_text","Image2_X":671,"Image2_Y":330,"Image2_Easing":"easeOutBack","Image2_Animation":"lft","Image2_Style":"small_text","Title_X":450,"Title_Y":40,"Title_Easing":"easeOutExpo","Title_Animation":"lft","Title_Style":"title1","TitleSub_X":450,"TitleSub_Y":90,"TitleSub_Easing":"easeOutBack","TitleSub_Animation":"lft","TitleSub_Style":"title2","Summary_X":450,"Summary_Y":150,"Summary_Easing":"easeOutExpo","Summary_Animation":"lfr","Summary_Style":"title3","Embed_X":500,"Embed_Y":240,"Embed_Easing":"easeOutExpo","Embed_Animation":"lfr","Embed_Style":"small_text","Index":1,"Inactive":false,"Timestamp":"AAAAAAAWYzk="},{"Id":3,"Name":"2","Title":"2","TitleSub":null,"Summary":null,"Embed":null,"Image":"/storeManagerSystem/view/trangChuAdmin_files/slide-bg02.jpg","Image1":null,"Image2":null,"Link":"#","TransitionType":"boxfade","Image1_X":0,"Image1_Y":0,"Image1_Easing":"easeInQuad","Image1_Animation":"sft","Image1_Style":"title1","Image2_X":0,"Image2_Y":0,"Image2_Easing":"easeInQuad","Image2_Animation":"sft","Image2_Style":"title1","Title_X":0,"Title_Y":0,"Title_Easing":"easeInQuad","Title_Animation":"sft","Title_Style":"title1","TitleSub_X":0,"TitleSub_Y":0,"TitleSub_Easing":"easeInQuad","TitleSub_Animation":"sft","TitleSub_Style":"title1","Summary_X":0,"Summary_Y":0,"Summary_Easing":"easeInQuad","Summary_Animation":"sft","Summary_Style":"title1","Embed_X":0,"Embed_Y":0,"Embed_Easing":"easeInQuad","Embed_Animation":"sft","Embed_Style":"title1","Index":2,"Inactive":false,"Timestamp":"AAAAAAAWYzQ="},{"Id":4,"Name":"3","Title":"3","TitleSub":null,"Summary":null,"Embed":null,"Image":"/storeManagerSystem/view/trangChuAdmin_files/slide-bg03.jpg","Image1":null,"Image2":null,"Link":"#","TransitionType":"boxfade","Image1_X":0,"Image1_Y":0,"Image1_Easing":"easeInQuad","Image1_Animation":"sft","Image1_Style":"title1","Image2_X":0,"Image2_Y":0,"Image2_Easing":"easeInQuad","Image2_Animation":"sft","Image2_Style":"title1","Title_X":0,"Title_Y":0,"Title_Easing":"easeInQuad","Title_Animation":"sft","Title_Style":"title1","TitleSub_X":0,"TitleSub_Y":0,"TitleSub_Easing":"easeInQuad","TitleSub_Animation":"sft","TitleSub_Style":"title1","Summary_X":0,"Summary_Y":0,"Summary_Easing":"easeInQuad","Summary_Animation":"sft","Summary_Style":"title1","Embed_X":0,"Embed_Y":0,"Embed_Easing":"easeInQuad","Embed_Animation":"sft","Embed_Style":"title1","Index":3,"Inactive":false,"Timestamp":"AAAAAAAWYzI="}];
+        $.each(arr, function (index, it) {
+            var obj = {
+                src: it.Image,
+                fade: 5000
+            };
+            slides.push(obj);
+        });
+        if (arr.length <= 0) {
+            slides =[
+             { src: '/storeManagerSystem/view/trangChuAdmin_files/slide-bg01.jpg', fade: 4000 },
+             { src: '/storeManagerSystem/view/trangChuAdmin_files/slide-bg02.jpg', fade: 4000 },
+             { src: '/storeManagerSystem/view/trangChuAdmin_files/slide-bg03.jpg', fade: 4000 }
+            ]
+        }
 
-													$
-															.vegas(
-																	'slideshow',
-																	{
-																		delay : 4000,
-																		backgrounds : slides
-																	})
-															(
-																	'overlay',
-																	{
-																		src : '/storeManagerSystem/view/trangChuAdmin_files/bg-overlay.png'
-																	});
-													if ($.fn.cssOriginal != undefined)
-														$.fn.css = $.fn.cssOriginal;
-													var wow = new WOW(
-															{
-																boxClass : 'wow', // default
-																animateClass : 'animated', // default
-																offset : 0, // default
-																mobile : true, // default
-																live : true
-															// default
-															});
-													wow.init();
-												});
-							</script>
+        $.vegas('slideshow', {
+            delay: 4000,
+            backgrounds: slides
+        })('overlay', {
+            src: '/storeManagerSystem/view/trangChuAdmin_files/bg-overlay.png'
+        });
+        if ($.fn.cssOriginal != undefined)
+            $.fn.css = $.fn.cssOriginal;
+        var wow = new WOW(
+        {
+            boxClass: 'wow',      // default
+            animateClass: 'animated', // default
+            offset: 0,          // default
+            mobile: true,       // default
+            live: true        // default
+        });
+        wow.init();
+    });
+</script>
 
 							<section class="feature-video clearfix">
 							<div class="container">
@@ -590,14 +415,13 @@
 										</div>
 										<div
 											class="col-lg-4 col-md-4 col-sm-12 col-xs-12 contact-info text-center">
-											<span><i class="glyphicon glyphicon-earphone"></i></span> <a
+											<span><i class="glyphicon glyphicon-envelope"></i></span> <a
 												href="tel:0908 77 00 95">0908 77 00 95</a>
 										</div>
 										<div
 											class="col-lg-4 col-md-4 col-sm-12 col-xs-12 contact-info text-center">
-											<span><i class="fa fa-comment-o"></i></span> <a
-												href="javascript:void(0)" onclick="ShopLiveChat()">Live
-												chat with us</a>
+											<span><i class="glyphicon glyphicon-envelope"></i></span> <a
+												href="tel:0908 77 00 95"> Live chat with us</a>
 										</div>
 
 									</div>
@@ -612,7 +436,7 @@
 									<table>
 									<tr>
 											<td style="height: 436px">
-										<div class="owl-item" style="width: 380px;">
+										<div class="owl-item" style="width: 420px;">
 													<div class="feature-item text-center wow fadeInLeft"
 														style="visibility: visible; animation-name: fadeInLeft;">
 														<div class="bgicons">
@@ -639,7 +463,7 @@
 												</div>
 												</td>
 												<td style="height: 436px">
-										<div class="owl-item" style="width: 380px;">
+										<div class="owl-item" style="width: 420px;">
 													<div class="feature-item text-center wow fadeInLeft"
 														style="visibility: visible; animation-name: fadeInLeft;">
 														<div class="bgicons">
@@ -667,7 +491,7 @@
 												</div>
 												</td>
 												<td style="height: 436px">
-										<div class="owl-item" style="width: 380px;">
+										<div class="owl-item" style="width: 420px;">
 													<div class="feature-item text-center wow fadeInLeft"
 														style="visibility: visible; animation-name: fadeInLeft;">
 														<div class="bgicons">
@@ -696,7 +520,7 @@
 										</tr>
 										<tr>
 										<td style="height: 436px">
-										<div class="owl-item" style="width: 380px;">
+										<div class="owl-item" style="width: 420px;">
 													<div class="feature-item text-center wow fadeInLeft"
 														style="visibility: visible; animation-name: fadeInLeft;">
 														<div class="bgicons">
@@ -722,7 +546,7 @@
 												</div>
 										</td>
 										<td style="height: 436px">
-										<div class="owl-item" style="width: 380px;">
+										<div class="owl-item" style="width: 420px;">
 													<div class="feature-item text-center wow fadeInLeft"
 														style="visibility: visible; animation-name: fadeInLeft;">
 														<div class="bgicons">
@@ -749,7 +573,7 @@
 												</div>
 										</td>
 										<td style="height: 436px">
-										<div class="owl-item" style="width: 380px;">
+										<div class="owl-item" style="width: 420px;">
 													<div class="feature-item text-center wow fadeInLeft"
 														style="visibility: visible; animation-name: fadeInLeft;">
 														<div class="bgicons">
@@ -777,7 +601,7 @@
 										</tr>
 										<tr>
 										<td style="height: 436px">
-										<div class="owl-item" style="width: 380px;">
+										<div class="owl-item" style="width: 420px;">
 													<div class="feature-item text-center wow fadeInLeft"
 														style="visibility: visible; animation-name: fadeInLeft;">
 														<div class="bgicons">
@@ -830,7 +654,7 @@
 												</div>
 										</td>
 										<td style="height: 436px">
-										<div class="owl-item" style="width: 380px;">
+										<div class="owl-item" style="width: 420px;">
 													<div class="feature-item text-center wow fadeInLeft"
 														style="visibility: visible; animation-name: fadeInLeft;">
 														<div class="bgicons">
@@ -858,7 +682,7 @@
 										</tr>
 										</table>
 												<!-- 
-												<div class="owl-item" style="width: 380px;">
+												<div class="owl-item" style="width: 420px;">
 													<div class="feature-item text-center wow fadeInLeft"
 														style="visibility: visible; animation-name: fadeInLeft;">
 														<div class="bgicons">
@@ -1097,7 +921,7 @@ jQuery('.fchat').toggle('slow');
 					<li><a href="http://runtime.vn/lien-he.html">Liên hệ</a></li>
 				</ul>
 			</div>
-			<div class="col-md-3 col-sm-12 col-xs-12">
+			<div class="col-md-3 col-sm-12 col-xs-12" style="font-size: 20px">
 				<h2>
 					Giới thiệu<span class="line"></span>
 				</h2>
