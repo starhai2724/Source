@@ -10,7 +10,7 @@
 			<div class="col-lg-12">
 				<h1 class="page-header">Đợt Khuyến Mãi</h1>
 			</div>
-			<i style="font-size:24px;margin-left: 1400px;margin-top: -10px" data-toggle="collapse" data-target="#demo" class="fa">&#xf106;</i>
+<!-- 			<i style="font-size:24px;margin-left: 1400px;margin-top: -10px" data-toggle="collapse" data-target="#demo" class="fa">&#xf106;</i> -->
 			<!-- /.col-lg-12 -->
 		</div>
 		<c:choose>
@@ -80,7 +80,15 @@
 				</div>
 			</div>
 		</div>
+		<div class="row" >
+			<div class="col-sm-3">
+				<button type="button" class="btn btn-info" ng-click ="btnCreate()">
+				  <i class="glyphicon glyphicon-ok"></i> Đăng kí
+				</button>
+			</div>
+		</div>
 		
+		</div>
 		<!--Message (S)-->
 		<div class="row">
 			<div class="col-sm-8">
@@ -93,11 +101,13 @@
 		<!--Message (E)-->
 		<div class="row" align="right" style="width: 100%">
 			<div >
-			
-				<button type="button" class="btn btn-info" ng-click ="btnCreate()">
+				<button type="button" class="btn btn-info"  data-toggle="collapse" data-target="#demo">
 				  <i class="glyphicon glyphicon-plus"></i> Thêm
 				</button>
-				<button type="button" class="btn btn-info" ng-click="exportToExcel('#dataTables-example')">
+				<!-- <button type="button" class="btn btn-info" ng-click="exportToExcel('#dataTables-example')">
+				  <i class="glyphicon glyphicon-save-file"></i> Export Excel
+				</button> -->
+				<button type="button" class="btn btn-info" onclick="testExcel()">
 				  <i class="glyphicon glyphicon-save-file"></i> Export Excel
 				</button>
 				<button type="button" class="btn btn-info" onclick="exportPDF();">
@@ -112,7 +122,6 @@
 <!-- 				<input type="button" name="" class="btn btn-info " ng-click ="btnClear()" value="Hủy"> -->
 			</div>
 		</div>
-		</div>
 		<!-- Detail (S) -->
 		<c:if test="${!empty DotKhuyenMaiForm.lst }">
 		<div class="panel-body">
@@ -126,7 +135,7 @@
 										<th style="padding-left: 5px;width: 110px;padding-right: 4px;">Ngày kết thúc</th>
 										<th style="padding-left: 5px;padding-right: 4px;width: 150px;">Loại khuyến mãi</th>
 										<th style="padding-left: 5px;padding-right: 4px;width: 130px;">Mức giảm giá</th>
-										<th style="padding-left: 17px;padding-right: 2px;width: 140px;">Thao tác</th>
+										<th style="padding-left: 17px;padding-right: 2px;width: 140px;" data-tableexport-display="none" >Thao tác</th>
                                     </tr>
                                 </thead>
                                 <tbody style="overflow: auto; height:50px">
@@ -139,7 +148,7 @@
 		                                      	 <td class="center" style="text-align: center">${items.ngayKT}</td>
 					                    		 <td class="center" style="padding-left: 5px;padding-right: 4px;width: 130px;">${items.loaiKM}</td>
 		                                       	 <td>${items.mucGiamGia}</td>
-		                                        <td class="center" style="text-align: center;width: 140px;">
+		                                        <td class="center" style="text-align: center;width: 140px;" data-tableexport-display="none">
 		                                        		<button class="btn" type="button" ng-click="btnGetById('${items.maDKM}');">
 															<span class="glyphicon glyphicon-pencil" data-toggle="tooltip" data-original-title="Sửa"></span>
 														</button>
@@ -161,5 +170,14 @@
           <form:input class="form-control" type="hidden"  path="flagUpdate"  name="flagUpdate" ng-model ="flagUpdate" ng-init="flagUpdate='${DotKhuyenMaiForm.flagUpdate}'" />
     	</form:form>	
 	</div>
+<script>
+function testExcel(){
+	$('#dataTables-example').tableExport({
+		fileName:'dotKhuyenMai',
+		type:'excel',
+	    excelFileFormat:'xmlss',
+	    worksheetName: ['Table 1','Table 2', 'Table 3']});
+	}
+</script>
 <script src="/storeManagerSystem/view/js/dotKhuyenMai.js"></script>
 <!-- /#wrapper -->

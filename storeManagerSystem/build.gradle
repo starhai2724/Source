@@ -67,6 +67,11 @@ dependencies {
       'com.ibm.watson.developer_cloud:conversation:3.8.0'
       //IBM watson (E)
       
+      
+      // https://mvnrepository.com/artifact/com.itextpdf/itextpdf
+	 compile group: 'com.itextpdf', name: 'itextpdf', version: '5.0.6'
+      
+      
 }
 
 

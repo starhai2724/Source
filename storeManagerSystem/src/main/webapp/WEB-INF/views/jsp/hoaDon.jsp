@@ -17,56 +17,58 @@
 		</div>
 		<!-- Danh Sach San pham (S) -->
 	<c:choose>
-	<c:when test="${HoaDonForm.flagUpdate eq ('1')}">
+	<c:when test="${HoaDonForm.flagNew eq ('1')}">
 	<div id="demo" class="collapse in">
 	</c:when>
 	<c:otherwise>
 	<div id="demo" class="collapse">
 	</c:otherwise>
 	</c:choose>
+	<c:if test="${HoaDonForm.flagUpdate ne ('1')}">
 	<div id="sanPhamPhanAnh" class="collapse in" > 
-	<div class="row">
-			<div class="col-lg-12">
-				<span style="font-weight: bold;">Danh sách sản phẩm</span>
-			</div>
-	</div>
-	<div class="panel-body">
-                     <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example1">
-                         <thead>
-                             <tr>
-                             	<th style="text-align: center; width: 5px;"></th>
-                                <th style="text-align: center; width: 10px;padding-left: 5px;padding-right: 4px; ">STT</th>
-								<th style="text-align: center; width: 50px;padding-left: 5px;padding-right: 4px; ">Mã SP</th>
-								<th style="text-align: center; width: 150px">Tên sản phẩm</th>
-								<th style="text-align: center; width: 120px">Loại SP</th>
-								<th style="text-align: center; width: 80px;padding-left: 5px;padding-right: 4px; ">Giá</th>
-                             </tr>
-                         </thead>
-                         <tbody style="overflow: auto; height:50px" ng-model = "listSanPham" ng-init ="listSanPham = '${fn:length(HoaDonForm.lstSanPham)}'">
-                       		  <c:forEach var="items" items="${HoaDonForm.lstSanPham }">
-                           <tr class="odd gradeX">
-                            	   <td class="center" style="text-align: center"><input type="checkbox" ng-model="selected1[${items.no}]"  ng-init ="selected1[${items.no}]='false'" ng-true-value="'${items.SEQ }'" ng-false-value="'NO'"></td>
-                                   <td style="text-align: center">${items.no}</td>
-                                   <td>${items.idSanPham}</td>
-                    			   <td>${items.tenSP}</td>
-                                   <td>${items.tenLoaiSP }</td>
-                  		           <td style="text-align: right">
-                  		           		<fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBan }" />
-                  		           </td>
-                            </tr>
-              				</c:forEach>
-                         </tbody>
-                     </table>
-    </div>
-    <div class="row">
-		<input type="button" name="" class="btn btn-info " style="margin-left: 30px" ng-click ="btnPhanAnh()" value="Phản ánh">
-	</div>
-    <div class="row">
-			<div class="col-lg-12">
-					<hr>
-			</div>
-	</div>
-    </div>
+		<div class="row">
+				<div class="col-lg-12">
+					<span style="font-weight: bold;">Danh sách sản phẩm</span>
+				</div>
+		</div>
+		<div class="panel-body">
+	                     <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example1">
+	                         <thead>
+	                             <tr>
+	                             	<th style="text-align: center; width: 5px;"></th>
+	                                <th style="text-align: center; width: 10px;padding-left: 5px;padding-right: 4px; ">STT</th>
+									<th style="text-align: center; width: 50px;padding-left: 5px;padding-right: 4px; ">Mã SP</th>
+									<th style="text-align: center; width: 150px">Tên sản phẩm</th>
+									<th style="text-align: center; width: 120px">Loại SP</th>
+									<th style="text-align: center; width: 80px;padding-left: 5px;padding-right: 4px; ">Giá</th>
+	                             </tr>
+	                         </thead>
+	                         <tbody style="overflow: auto; height:50px" ng-model = "listSanPham" ng-init ="listSanPham = '${fn:length(HoaDonForm.lstSanPham)}'">
+	                       		  <c:forEach var="items" items="${HoaDonForm.lstSanPham }">
+	                           <tr class="odd gradeX">
+	                            	   <td class="center" style="text-align: center"><input type="checkbox" ng-model="selected1[${items.no}]"  ng-init ="selected1[${items.no}]='false'" ng-true-value="'${items.SEQ }'" ng-false-value="'NO'"></td>
+	                                   <td style="text-align: center">${items.no}</td>
+	                                   <td>${items.idSanPham}</td>
+	                    			   <td>${items.tenSP}</td>
+	                                   <td>${items.tenLoaiSP }</td>
+	                  		           <td style="text-align: right">
+	                  		           		<fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBan }" />
+	                  		           </td>
+	                            </tr>
+	              				</c:forEach>
+	                         </tbody>
+	                     </table>
+	    </div>
+	    <div class="row">
+			<input type="button" name="" class="btn btn-info " style="margin-left: 30px" ng-click ="btnPhanAnh()" value="Phản ánh">
+		</div>
+	    <div class="row">
+				<div class="col-lg-12">
+						<hr>
+				</div>
+		</div>
+	    </div>
+    </c:if>
 	<!-- Danh Sach San pham (E) -->
 		<c:choose>
 		<c:when test="${empty HoaDonForm.chiTietHoaDonRowForms }">
@@ -129,7 +131,8 @@
 		</div>
 		</c:if>
 		<div class="row">
-			<p style="color: red;">{{soLuongSP_err}}</p>
+			<p style="color: red;">{{soLuongSP_err}}</p><br>
+			<p style="color: red;">{{idKhachHang_err}}</p>
 		</div>
 		<div class="panel-body">
                    <table width="100%" class="table table-striped table-bordered table-hover" >
@@ -214,8 +217,8 @@
 		<div class="row">
 			<div class="col-sm-3">
 				<div class="form-group">
-					<p style="color: blue; font-weight: bold;"></p>
-					<p style="color: red; font-weight: bold;"></p>
+					<p style="color: blue; font-weight: bold;">${HoaDonForm.message }</p>
+					<p style="color: red; font-weight: bold;">${HoaDonForm.messageErr }</p>
 				</div>
 			</div>
 		</div>
@@ -225,7 +228,7 @@
 				<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">
 				  <i class="glyphicon glyphicon-plus"></i> Thêm
 				</button>
-				<button type="button" class="btn btn-info" ng-click="exportToExcel('#dataTables-example')">
+				<button type="button" class="btn btn-info" onclick="testExcel()">
 				  <i class="glyphicon glyphicon-save-file"></i> Export Excel
 				</button>
 				<button type="button" class="btn btn-info" onclick="exportPDF();">
@@ -250,11 +253,11 @@
 										<th style="width: 100px; text-align: center">Mã hóa đon</th>
 										<th style="width: 200px; text-align: center">Khách hàng</th>
 										<th style="width: 70px;  text-align: center">SLSP</th>
-										<th style="width: 80px;  text-align: center">Tiền KM</th>
+<!-- 										<th style="width: 80px;  text-align: center">Tiền KM</th> -->
 										<th style="width: 120px; text-align: center">Tổng tiền</th>
 										<th style="width: 70px;  text-align: center">Tổng điểm</th>
 										<th style="width: 80px;  text-align: center">Ngày lập</th>
-										<th style="width: 105px; text-align: center">Thao tác</th>
+										<th style="width: 60px; text-align: center" data-tableexport-display="none">Thao tác</th>
                                     </tr>
                                 </thead>
                                 <tbody style="overflow: auto; height:50px">
@@ -264,17 +267,17 @@
 		                                         <td style="text-align: center">${items.idHoaDon}</td>
 		                                         <td>${items.idKhachHang}</td>
 							                     <td style="text-align: right">${items.soLuongSP}</td>
-							                     <td style="text-align: right">${items.tienKhuyenMai}</td>
+<%-- 							                     <td style="text-align: right">${items.tienKhuyenMai}</td> --%>
 					                    		 <td style="text-align: right">${items.tongTien}</td>
 		                                         <td style="text-align: right">${items.tongDiemTichLuy}</td>
 		                                         <td class="center" style="text-align: center">${items.ngayLap}</td>
-		                                        <td class="center" style="text-align: center">
+		                                        <td class="center" style="text-align: center" data-tableexport-display="none">
 														<button class="btn" type="button" >
 															<span class="fa fa-list-alt" data-toggle="tooltip" data-original-title="Chi tiết" ng-click="btnGetById('${items.idHoaDon}');"></span>
 														</button>
-														<button class="btn" type="button" >
+														<%-- <button class="btn" type="button" >
 															<span class="glyphicon glyphicon-trash" data-toggle="tooltip" data-original-title="Xóa" ng-click="btnDelete('${items.idHoaDon}');"></span>
-														</button>
+														</button> --%>
 														
 		                                        </td>
 		                                 </tr>
@@ -293,6 +296,15 @@
             responsive: true
         });
     });
+    
+    function testExcel(){
+    	$('#dataTables-example').tableExport({
+    		fileName:'hoaDon',
+    		type:'excel',
+    	    excelFileFormat:'xmlss',
+    	    worksheetName: ['Table 1','Table 2', 'Table 3']});
+    	}
+    	</script>
     </script>
           <!-- Detail (E) -->
 	</div>

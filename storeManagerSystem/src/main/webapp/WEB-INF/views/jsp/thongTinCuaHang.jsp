@@ -10,7 +10,7 @@
 			<div class="col-lg-12">
 				<h1 class="page-header">Thông Tin Cửa Hàng</h1>
 			</div>
-			<i style="font-size:24px;margin-left: 1400px;margin-top: -10px" data-toggle="collapse" data-target="#demo" class="fa">&#xf106;</i>
+<!-- 			<i style="font-size:24px;margin-left: 1400px;margin-top: -10px" data-toggle="collapse" data-target="#demo" class="fa">&#xf106;</i> -->
 			<!-- /.col-lg-12 -->
 		</div>
 		<div id="demo" class="collapse in">

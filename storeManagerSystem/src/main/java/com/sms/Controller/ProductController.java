@@ -372,4 +372,15 @@ public class ProductController {
 		return  SystemCommon.ADMIN_STORE;
 	}
 	
+	public String print(@ModelAttribute("ProductForm") ProductForm form, HttpSession session){
+		
+		
+		
+		
+		
+		session.setAttribute("PAGEIDSTORE", PRODUCT);
+		return  SystemCommon.ADMIN_STORE;
+	}
+	
+	
 }
