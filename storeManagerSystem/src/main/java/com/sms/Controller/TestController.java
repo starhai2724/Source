@@ -16,9 +16,9 @@ public class TestController {
 //		return "fashion";
 //	}
 	
-	@RequestMapping(value ="/index", method = RequestMethod.GET)	
+	@RequestMapping(value ="/trangChuAdmin", method = RequestMethod.GET)	
 	public String home1(){
-		return "fashion/index";
+		return "trangChuAdmin";
 	}
 	@RequestMapping(value ="/checkout", method = RequestMethod.GET)	
 	public String checkout(){

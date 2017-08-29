@@ -40,7 +40,6 @@
     <link href="/storeManagerSystem/view/thongKe/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="/storeManagerSystem/view/thongKe/dist/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
     <link href="/storeManagerSystem/view/thongKe/vendor/morrisjs/morris.css" rel="stylesheet">
@@ -70,13 +69,17 @@
     
 <!--     <script src="/storeManagerSystem/view/templateDK/jquery-2.1.0.min.js" type="text/javascript"></script> -->
     
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   
   <!-- Export file (S)  -->
-  	
-    
+<!-- <link rel="stylesheet" href="/storeManagerSystem/view/layoutHeader/css/fullcalendar.css" />
+<link rel="stylesheet" href="/storeManagerSystem/view/layoutHeader/css/matrix-style.css" />
+<link rel="stylesheet" href="/storeManagerSystem/view/layoutHeader/css/matrix-media.css" />
+<link href="/storeManagerSystem/view/layoutHeader/font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link rel="stylesheet" href="/storeManagerSystem/view/layoutHeader/css/jquery.gritter.css" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'> -->
 <!--     <script src="/storeManagerSystem/view/export/app.js"></script> -->
   <!-- Export file (E)  -->
   
