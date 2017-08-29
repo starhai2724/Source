@@ -397,7 +397,7 @@ public static LienHeDAO intances = new LienHeDAO();
 	}
 	
 	public static void main(String[] args) {
-//		LienHeDAO.intances.createTable("cuahangthoitrang");
+		LienHeDAO.intances.createTable("cuahangthoitrang");
 		
 	}
 }

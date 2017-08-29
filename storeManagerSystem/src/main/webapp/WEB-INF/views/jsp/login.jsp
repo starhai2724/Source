@@ -45,8 +45,8 @@
             <div class="container">
                 <div class="navbar-header">
                     <a class="navbar-brand hidden-xs hidden-sm" href="index.html">
-                        <img alt="runtime" class="scroller-logo" src="/storeManagerSystem/view/templateDK/logoHeader.jpg">
-                        <img src="/storeManagerSystem/view/templateDK/logoHeader.jpg" class="default-logo img-responsive" alt="runtime">
+                        <img alt="AGB" class="scroller-logo" src="/storeManagerSystem/view/templateDK/logoHeader.jpg">
+                        <img src="/storeManagerSystem/view/templateDK/logoHeader.jpg" class="default-logo img-responsive" alt="AGB">
                     </a>
                     <button type="button" class="navbar-toggle collapsed pull-right " data-toggle="collapse" data-target="#menu" aria-expanded="false">
                         <span class="icon-bar"></span>
@@ -55,13 +55,17 @@
                     </button>
                 </div>
                 <div class="">
-                    <ul class="nav navbar-nav navbar-right menu-top collapse navbar-collapse" id="menu" aria-expanded="false">
-                        <li><a href="gioi-thieu.html" id="" class="">Giới thiệu</a></li>
-                        <li><a href="kho-giao-dien.html" id="">Kho giao diện</a></li>
-                        <li><a href="bang-gia.html" id="">Bảng giá</a></li>
-                        <li><a href="tinh-nang.html" id="">Tính năng</a></li>
-                        <li><a href="/storeManagerSystem" id="">Đăng nhập</a></li>
-                    </ul>
+									<ul
+										class="nav navbar-nav navbar-right menu-top collapse navbar-collapse"
+										id="menu" aria-expanded="false">
+
+										<li><a href="http://localhost:8080/storeManagerSystem/adminGioiThieu" id=""
+											class="" style="font-size: 16px">Giới thiệu</a></li>
+										<li><a style="font-size: 16px" href="http://localhost:8080/storeManagerSystem/admin_khoGiaoDien" id="">Kho
+												giao diện</a></li>
+										<li><a style="font-size: 16px" href="http://localhost:8080/storeManagerSystem/adminTinhNang" id="">Tính
+												năng</a></li>
+									</ul>
                 </div><!--/.nav-collapse -->
             </div>
         </nav>
@@ -114,54 +118,66 @@
 </section>   
   <!--Content (E) --> 
 <footer class="no-margin footer">
-    <div class="footer-left-bg"></div>
-    <div class="footer-right-bg"></div>
-    <div class="container">
-       <div class="row">
-            <div class="col-md-3 col-sm-12 col-xs-12">
-                <h2>Runtime.vn<span class="line"></span></h2>
-                <ul>
-                    <li><a href="bang-gia.html">Bảng giá</a></li>
-                    <li><a href="lien-he.html">Liên hệ</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 col-sm-12 col-xs-12">
-                <h2>Giới thiệu<span class="line"></span></h2>
-                <ul>
-                    <li><a href="gioi-thieu.html">Về chúng tôi</a></li>
-                    <li><a href="thanh-toan.html">Hình thức thanh toán</a></li>
-                    <li><a href="http://partner.runtime.vn/">Đối tác</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 col-sm-12 col-xs-12">
-                <h2>Hỗ trợ<span class="line"></span></h2>
-                <ul>
-                    <li><a href="tro-giup.html">Tài liệu hướng dẫn sử dụng</a></li>
-                    <li><a href="tro-giup/huong-dan-tao-web.html">Hướng dẫn tạo website</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3 col-sm-12 col-xs-12 social-icon">
-                <h2><span class="line"></span>Kết nối với chúng tôi</h2>
-                <p class="text-uppercase color1">C&#212;NG TY TNHH PH&#193;T TRIỂN C&#212;NG NGHỆ RUNTIME</p>
-                <p><i class="fa fa-envelope-o"></i> runtimevn@gmail.com</p>
-                <p><i class="fa fa-phone"></i> 0908 77 00 95</p>
-                <p><i class="fa fa-home"></i> 36Bis Ho&#224;ng Sa, Phường T&#226;n Định, Quận 1, Tp.Hồ Ch&#237; Minh</p>
-                <ul class="">
-                    <li><a target="_blank"><i class="fa fa-facebook fa-2"></i></a></li>
-                    <li><a target="_blank"><i class="fa fa-google-plus fa-2"></i></a></li>
-                    <li><a target="_blank"><i class="fa fa-twitter fa-2"></i></a></li>
-                    <li><a target="_blank"><i class="fa fa-youtube fa-2"></i></a></li>
-                </ul>
-            </div>
+	<div class="footer-left-bg"></div>
+	<div class="footer-right-bg"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3 col-sm-12 col-xs-12">
+				<h2>
+					AGB<span class="line"></span>
+				</h2>
+				<ul>
+					<li><a href="http://localhost:8080/storeManagerSystem/admin_khoGiaoDien">Kho
+							giao diện</a></li>
+					<li><a href="http://localhost:8080/storeManagerSystem/adminTinhNang">Tính năng</a></li>
 
-        </div>
-    </div>
-    <div class="reserved">
-        <div class="container">
-            <p class="text-left col-md-12">© Copyright 2014. All rights reserved. Runtime.vn - Giải pháp thương mại điện tử hàng đầu Việt nam</p>
-        </div>
-    </div>
-</footer>
+				</ul>
+			</div>
+			<div class="col-md-3 col-sm-12 col-xs-12">
+				<h2>
+					Giới thiệu<span class="line"></span>
+				</h2>
+				<ul>
+					<li><a href="http://localhost:8080/storeManagerSystem/adminGioiThieu">Về chúng
+							tôi</a></li>
+					<li><a href="http://localhost:8080/storeManagerSystem/adminThanhToan">Hình thức
+							thanh toán</a></li>
+				</ul>
+			</div>
+			<div class="col-md-3 col-sm-12 col-xs-12 social-icon">
+				<h2>
+					<span class="line"></span>Kết nối với chúng tôi
+				</h2>
+				<p class="text-uppercase color1">CÔNG TY TNHH PHÁT TRIỂN CÔNG
+					NGHỆ AGB</p>
+				<p>
+					<i class="fa fa-envelope-o"></i> agbvn@gmail.com
+				</p>
+				<p>
+					<i class="fa fa-phone"></i> 0908 77 00 95
+				</p>
+				<p>
+					<i class="fa fa-home"></i> 36Bis Hoàng Sa, Phường Tân Định, Quận 1,
+					Tp.Hồ Chí Minh
+				</p>
+				<ul class="">
+					<li><a target="_blank"><i class="fa fa-facebook fa-2"></i></a></li>
+					<li><a target="_blank"><i class="fa fa-google-plus fa-2"></i></a></li>
+					<li><a target="_blank"><i class="fa fa-twitter fa-2"></i></a></li>
+					<li><a target="_blank"><i class="fa fa-youtube fa-2"></i></a></li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+	<div class="reserved">
+		<div class="container">
+			<p class="text-left col-md-12">© Copyright 2014. All rights
+				reserved. Runtime.vn - Giải pháp thương mại điện tử hàng đầu Việt
+				nam</p>
+		</div>
+	</div>
+	</footer>
 </body>
 <script src="/storeManagerSystem/view/js/controllerLogin.js"></script>
 </html>

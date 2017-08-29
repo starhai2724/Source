@@ -216,8 +216,8 @@
     <li><a href="/storeManagerSystem/khoHang/init"><i class="icon icon-pencil"></i> <span style="margin-left: 5px">Kho hàng</span></a></li>
     <li class="submenu"> <a href="/storeManagerSystem/dotKhuyenMai/init"><i class="icon icon-file"></i> <span style="margin-left: 5px">Đợt khuyến mãi</span> </a></li>
     <li class="submenu"> <a href="/storeManagerSystem/thongKe/init"><i class="icon icon-info-sign"></i> <span style="margin-left: 5px">Thống kê</span> </a></li>
-    <li><a href="/storeManagerSystem/lienHe/init"><i class="icon icon-pencil"></i> <span style="margin-left: 5px">Liên hệ</span></a></li>
-    <li><a href="/storeManagerSystem/thongTinCuaHang/init"><i class="icon icon-pencil"></i> <span style="margin-left: 5px">Thông tin Cửa Hàng</span></a></li>
+    <li><a href="/storeManagerSystem/lienHe/init"><i class="icon icon-th"></i> <span style="margin-left: 5px">Liên hệ</span></a></li>
+    <li><a href="/storeManagerSystem/thongTinCuaHang/init"><i class="icon icon-fullscreen"></i> <span style="margin-left: 5px">Thông tin Cửa Hàng</span></a></li>
         </ul>
       </div>
       <!-- /.sidebar-collapse -->
