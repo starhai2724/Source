@@ -219,11 +219,11 @@
 										class="nav navbar-nav navbar-right menu-top collapse navbar-collapse"
 										id="menu" aria-expanded="false">
 
-										<li><a href="http://runtime.vn/gioi-thieu.html" id=""
+										<li><a href="http://localhost:8080/storeManagerSystem/adminGioiThieu" id=""
 											class="" style="font-size: 16px">Giới thiệu</a></li>
-										<li><a style="font-size: 16px" href="http://runtime.vn/kho-giao-dien.html" id="">Kho
+										<li><a style="font-size: 16px" href="http://localhost:8080/storeManagerSystem/admin_khoGiaoDien" id="">Kho
 												giao diện</a></li>
-										<li><a style="font-size: 16px" href="http://runtime.vn/tinh-nang.html" id="">Tính
+										<li><a style="font-size: 16px" href="http://localhost:8080/storeManagerSystem/adminTinhNang" id="">Tính
 												năng</a></li>
 									</ul>
 								</div>
@@ -467,7 +467,7 @@
 													<div class="feature-item text-center wow fadeInLeft"
 														style="visibility: visible; animation-name: fadeInLeft;">
 														<div class="bgicons">
-															<img
+															<img style="width: 450px"
 																src="/storeManagerSystem/view/trangChuAdmin_files/thu hut khac hang (FILEminimizer).png"
 																class="img-responsive lazy-img"
 																data-original="/storeManagerSystem/view/trangChuAdmin_files/thu%20hut%20khac%20hang%20(FILEminimizer).png"
@@ -904,7 +904,7 @@ jQuery('.fchat').toggle('slow');
   js.src = "//connect.facebook.net/nl_NL/sdk.js#xfbml=1&version=v2.10";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-	<footer class="no-margin footer">
+		<footer class="no-margin footer">
 	<div class="footer-left-bg"></div>
 	<div class="footer-right-bg"></div>
 	<div class="container">
@@ -914,21 +914,20 @@ jQuery('.fchat').toggle('slow');
 					AGB<span class="line"></span>
 				</h2>
 				<ul>
-					<li><a href="http://runtime.vn/kho-giao-dien.html">Kho
+					<li><a href="http://localhost:8080/storeManagerSystem/admin_khoGiaoDien">Kho
 							giao diện</a></li>
-					<li><a href="http://runtime.vn/tinh-nang.html">Tính năng</a></li>
+					<li><a href="http://localhost:8080/storeManagerSystem/adminTinhNang">Tính năng</a></li>
 
-					<li><a href="http://runtime.vn/lien-he.html">Liên hệ</a></li>
 				</ul>
 			</div>
-			<div class="col-md-3 col-sm-12 col-xs-12" style="font-size: 20px">
+			<div class="col-md-3 col-sm-12 col-xs-12">
 				<h2>
 					Giới thiệu<span class="line"></span>
 				</h2>
 				<ul>
-					<li><a href="http://runtime.vn/gioi-thieu.html">Về chúng
+					<li><a href="http://localhost:8080/storeManagerSystem/adminGioiThieu">Về chúng
 							tôi</a></li>
-					<li><a href="http://runtime.vn/thanh-toan.html">Hình thức
+					<li><a href="http://localhost:8080/storeManagerSystem/adminThanhToan">Hình thức
 							thanh toán</a></li>
 				</ul>
 			</div>

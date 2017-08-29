@@ -19,6 +19,23 @@ public class TestController {
 	public String home1(){
 		return "trangChuAdmin";
 	}
+	@RequestMapping(value ="/admin_khoGiaoDien", method = RequestMethod.GET)	
+	public String khoGiaoDIen(){
+		return "admin_khoGiaoDien";
+	}
+	@RequestMapping(value ="/adminTinhNang", method = RequestMethod.GET)	
+	public String admintinhang(){
+		return "admin_tinhnang";
+	}
+	@RequestMapping(value ="/adminThanhToan", method = RequestMethod.GET)	
+	public String adminthanhtoan(){
+		return "admin_thanhtoan";
+	}
+	@RequestMapping(value ="/adminGioiThieu", method = RequestMethod.GET)	
+	public String admingioithieu(){
+		return "admin_gioiThieu";
+	}
+	
 	@RequestMapping(value ="/checkout", method = RequestMethod.GET)	
 	public String checkout(){
 		return "template1/checkout";
