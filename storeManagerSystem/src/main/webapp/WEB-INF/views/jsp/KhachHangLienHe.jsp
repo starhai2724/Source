@@ -13,7 +13,7 @@
 			<div class="col-lg-12">
 				<h1 class="page-header">Quản lý liên hệ</h1>
 			</div>
-			<i style="font-size:24px;margin-left: 1400px;margin-top: -10px" data-toggle="collapse" data-target="#demo" class="fa">&#xf106;</i>
+<!-- 			<i style="font-size:24px;margin-left: 1400px;margin-top: -10px" data-toggle="collapse" data-target="#demo" class="fa">&#xf106;</i> -->
 			<!-- /.col-lg-12 -->
 		</div>
 		<!-- /.row -->
@@ -75,12 +75,22 @@
 		<div class="row">
 			<div class="col-sm-4">
 				<div class="form-group">
-					<label>Nội dung trả lời </label> 
-					<form:textarea  class="form-control"  rows="5"	 path="noiDungTraLoi"  name="noiDungTraLoi" ng-model ="noiDungTraLoi" ng-init="moTa='${LienHeForm.noiDungTraLoi}'"  />
+					<label>Nội dung trả lời </label>
+					<div class="input-group">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span><form:textarea  class="form-control"  rows="5"	 path="noiDungTraLoi"  name="noiDungTraLoi" ng-model ="noiDungTraLoi" ng-init="moTa='${LienHeForm.noiDungTraLoi}'"  />
+					</div>
 					<p style="color: red;">{{noiDungTraLoi_err}}</p>
 				</div>
 			</div>
 		</div>
+		<div class="row">
+			<div class="col-sm-4">
+				<button type="button" class="btn btn-info" ng-click ="btnCreate()" >
+				  <i class="glyphicon glyphicon-ok"></i> Đăng kí
+				</button>
+			</div>
+		</div>
+		
 		<!--Message (S)-->
 		<div class="row">
 			<div class="col-sm-4">
@@ -95,10 +105,10 @@
 		<div class="row" align="right" style="width: 100%">
 			<div>
 			
-				<button type="button" class="btn btn-info" ng-click ="btnCreate()">
+				<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">
 				  <i class="glyphicon glyphicon-plus"></i> Thêm
 				</button>
-				<button type="button" class="btn btn-info" ng-click="exportToExcel('#dataTables-example')">
+				<button type="button" class="btn btn-info" onclick="testExcel()">
 				  <i class="glyphicon glyphicon-save-file"></i> Export Excel
 				</button>
 				<button type="button" class="btn btn-info" onclick="exportPDF();">
@@ -133,7 +143,7 @@
 										<th style="text-align: center; width: 80px;padding-left: 5px;padding-right: 4px; ">Trạng thái</th>
 										<th style="text-align: center; width: 65px">Ngày nhận</th>
 										<th style="text-align: center;	width: 65px">Ngày TL</th>
-										<th style="text-align: center;	width: 50px">Thao tác</th>
+										<th style="text-align: center;	width: 50px" data-tableexport-display="none">Thao tác</th>
                                     </tr>
                                 </thead>
                                 <tbody style="overflow: auto; height:50px">
@@ -149,7 +159,7 @@
 		                                       	<td  style="text-align: center">${items.trangThai}</td>
 		                                       	<td  style="text-align: center">${items.ngayNhan}</td>
 		                                       	<td  style="text-align: center">${items.ngayTraLoi}</td>
-		                                        <td class="center" style="text-align: center">
+		                                        <td class="center" style="text-align: center" data-tableexport-display="none">
 	                                        		<button class="btn" type="button" ng-click="btnGetById('${items.idLienHe}');">
 														<span class="glyphicon glyphicon-pencil" data-toggle="tooltip" data-original-title="Sửa"></span>
 													</button>
@@ -165,5 +175,14 @@
 		<!-- /#page-wrapper -->
 	</div>
 </div>
+<script>
+function testExcel(){
+	$('#dataTables-example').tableExport({
+		fileName:'lienHe',
+		type:'excel',
+	    excelFileFormat:'xmlss',
+	    worksheetName: ['Table 1','Table 2', 'Table 3']});
+	}
+</script>
 <script src="/storeManagerSystem/view/js/khachHangLienHe.js"></script>
 <!-- /#wrapper -->

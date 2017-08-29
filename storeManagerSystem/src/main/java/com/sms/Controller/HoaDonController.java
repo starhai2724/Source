@@ -14,25 +14,19 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.sms.OutputRows.ChiTietHoaDonOutputRowBean;
 import com.sms.OutputRows.HoaDonOutputRowBean;
-import com.sms.OutputRows.KhachHangOutputRowBean;
 import com.sms.OutputRows.SanPhamOutputRowBean;
 import com.sms.common.SMSComons;
 import com.sms.common.SystemCommon;
 import com.sms.dao.ChiTietHoaDonDAO;
 import com.sms.dao.CreateTableProductDAO;
 import com.sms.dao.HoaDonDAO;
-import com.sms.dao.KhachHangDAO;
 import com.sms.dao.LayoutDAO;
 import com.sms.form.HoaDonForm;
-import com.sms.form.KhachHangForm;
-import com.sms.form.ProductForm;
 import com.sms.formRows.ChiTietHoaDonRowForm;
 import com.sms.formRows.HoaDonRowForm;
-import com.sms.formRows.KhachHangRowForm;
 import com.sms.formRows.ProductFormRow;
 import com.sms.input.ChiTietHoaDonInputBean;
 import com.sms.input.HoaDonInputBean;
-import com.sms.input.KhachHangInputBean;
 import com.sms.input.SanPhamInputBean;
 import com.sms.output.SanPhamOutputBean;
 
@@ -66,6 +60,7 @@ public class HoaDonController {
 		form.setTongTien("");
 		//Flag update
 		form.setFlagUpdate("0");
+		form.setFlagNew("0");
 		
 		//reset message
 		form.setMessage("");
@@ -151,7 +146,6 @@ public class HoaDonController {
 		for(ChiTietHoaDonRowForm chiTietHoaDonRowForm : form.getChiTietHoaDonRowForms()){
 			totalMoney += Integer.parseInt(chiTietHoaDonRowForm.getSoLuongSP())*Double.parseDouble(chiTietHoaDonRowForm.getGiaMua());
 			soLuong += Integer.parseInt(chiTietHoaDonRowForm.getSoLuongSP());
-			System.out.println("chiTietHoaDonRowForm.getSoLuongSP(): "+chiTietHoaDonRowForm.getSoLuongSP());
 		}
 		
 		//input
@@ -185,6 +179,8 @@ public class HoaDonController {
 			}
 		}	
 		
+		
+		form.setFlagNew("0");
 		if(cnt == 1){
 			form.setMessage("Xử lý đăng kí thành công.");
 			form.setMessageErr("");
@@ -302,6 +298,7 @@ public class HoaDonController {
 		
 		//Flag update
 		form.setFlagUpdate("1");
+		form.setFlagNew("1");
 		//init data
 //		initData(form, pathJSP);
 		
@@ -415,7 +412,8 @@ public class HoaDonController {
 				chiTietHoaDonRowForm.setThanhTien("");
 				form.getChiTietHoaDonRowForms().add(chiTietHoaDonRowForm);
 			}
-		}		
+		}
+		form.setFlagNew("1");
 		session.setAttribute("PAGEIDSTORE", PAGE);
 		return  SystemCommon.ADMIN_STORE;
 	}
@@ -423,7 +421,6 @@ public class HoaDonController {
 	@RequestMapping(value  = "/bill/xoaDong/{listId}", method = RequestMethod.POST)
 	public String xoaDong(@ModelAttribute("HoaDonForm") HoaDonForm form, HttpSession session, @PathVariable("listId") String listId){
 		List<ChiTietHoaDonRowForm> lst = form.getChiTietHoaDonRowForms();
-		
 		// remove ","
 		if (!"".equals(listId)) {
 			listId = listId.substring(1);
@@ -438,7 +435,6 @@ public class HoaDonController {
 				}
 			}
 		}
-		
 		session.setAttribute("PAGEIDSTORE", PAGE);
 		return  SystemCommon.ADMIN_STORE;
 	}

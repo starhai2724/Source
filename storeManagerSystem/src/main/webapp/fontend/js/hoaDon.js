@@ -162,6 +162,14 @@ function dangKy($scope) {
 	var valid = true;
 	var reg = new RegExp('^[0-9]+$');
 	var len = $scope.lstSize;
+	
+	
+	
+	if ($scope.idKhachHang == "") {
+		$scope.idKhachHang_err = "Hãy nhập khách hàng."
+		valid = false;
+	}
+	
 	for (var i = 0; i < len; i++) {
 		if ($scope.chiTietHoaDonRowForms[i].soLuongSP == "") {
 			$scope.soLuongSP_err = "Hãy nhập số lượng."

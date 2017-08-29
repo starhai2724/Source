@@ -27,6 +27,24 @@ public class SMSComons {
 		return result;
 	}
 	
+	/**
+	 * 
+	 * @param num1
+	 * @param num2
+	 * @return
+	 */
+	public static double tru(String num1, String num2){
+		double result = 0;
+		try{
+			if(num1 != null && !"".equals(num1) && num2 != null && !"".equals(num2)){
+				result = Double.parseDouble(num1) - Double.parseDouble(num2);
+			}
+		}catch(Exception e){
+			return result;
+		}
+		return result;
+	}
+	
 	public static int compareDate(String ngayBD, String ngayKT){
 		int result = -1;
 		if(ngayBD.length() != 8 || ngayKT.length() != 8) return result;

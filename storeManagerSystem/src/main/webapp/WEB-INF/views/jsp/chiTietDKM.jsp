@@ -39,9 +39,6 @@
 			</div>
 			<!-- /.col-lg-12 -->
 	</div>
-	<div class="row">
-		<input type="button" name="" class="btn btn-info " style="margin-left: 30px" ng-click ="btnPhanAnh()" value="Phản ánh">
-	</div>
 	<div class="panel-body">
                      <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                          <thead>
@@ -70,6 +67,14 @@
                          </tbody>
                      </table>
     </div>
+    <div class="row">
+		<input type="button" name="" class="btn btn-info " style="margin-left: 30px" ng-click ="btnPhanAnh()" value="Phản ánh">
+	</div>
+	<div class="row">
+				<div class="col-lg-12">
+						<hr>
+				</div>
+	</div>
     </div>
 	<!-- Danh Sach San pham (E) -->
 		<div class="row">
@@ -81,10 +86,22 @@
 		<!-- /.row -->
 		<div class="row" align="right" style="width: 100%">
 			<div>
-				<input type="button" name="" class="btn btn-info " ng-click ="btnDangKy()" value="Đăng ký">
-				<input type="button" name="" class="btn btn-info " data-toggle="collapse" data-target="#sanPhamPhanAnh" value="Chọn SP Khuyến Mãi">
-				<input type="button" name="" class="btn btn-info " ng-click ="btnXoaDong()" value="Xóa dòng">
-				<input type="button" name="" class="btn btn-info " ng-click ="btnQuayVe()" value="Quay về">
+				<button type="button" class="btn btn-info" ng-click ="btnDangKy()">
+				  <i class="glyphicon glyphicon-ok"></i> Đăng kí
+				</button>
+				<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#sanPhamPhanAnh">
+				  <i class="glyphicon glyphicon-plus"></i> Chọn SP Khuyến Mãi
+				</button>
+				<button  type="button" class="btn btn-info" ng-click ="btnXoaDong()">
+				  <i class="glyphicon glyphicon-trash"></i> Xóa dòng
+				</button>
+				<button type="button" class="btn btn-info" ng-click ="btnQuayVe()">
+				  <i class="glyphicon glyphicon-log-out"></i> Quay về
+				</button>
+<!-- 				<input type="button" name="" class="btn btn-info " ng-click ="btnDangKy()" value="Đăng ký"> -->
+<!-- 				<input type="button" name="" class="btn btn-info " data-toggle="collapse" data-target="#sanPhamPhanAnh" value="Chọn SP Khuyến Mãi"> -->
+<!-- 				<input type="button" name="" class="btn btn-info " ng-click ="btnXoaDong()" value="Xóa dòng"> -->
+<!-- 				<input type="button" name="" class="btn btn-info " ng-click ="btnQuayVe()" value="Quay về"> -->
 			</div>
 		</div>
 		<!--Message (S)-->

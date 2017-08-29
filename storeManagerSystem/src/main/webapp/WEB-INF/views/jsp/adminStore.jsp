@@ -73,6 +73,7 @@
           </li>
           <li>
             <a href="/storeManagerSystem/thongKe/init"><i class="fa fa-list-alt fa-fw"></i> Thống kê</a>
+            <a href="/storeManagerSystem/thongKe/sanPham/init"><i class="fa fa-list-alt fa-fw"></i> Theo sản phẩm</a>
           </li>
           <li>
             <a href="/storeManagerSystem/lienHe/init"><i class="fa fa-list-alt fa-fw"></i> Liên hệ</a>
