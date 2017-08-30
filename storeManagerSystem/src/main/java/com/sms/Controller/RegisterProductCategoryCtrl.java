@@ -314,9 +314,9 @@ public class RegisterProductCategoryCtrl {
 		}
 		int cnt = 0;
 		RegisterProductCategoryInputBean inputBean = new RegisterProductCategoryInputBean();
-			inputBean.setPathJSP(pathJSP);
-			inputBean.setTenLoaiSP(form.getTenLoaiSP());
-			inputBean.setIdNhomSP(idNhomSP);
+		inputBean.setPathJSP(pathJSP);
+		inputBean.setTenLoaiSP(form.getTenLoaiSP());
+		inputBean.setIdNhomSP(idNhomSP);
 			
 			if(form.getFlagUpdate_LSP().equals("0")){
 				// 0 -> insert

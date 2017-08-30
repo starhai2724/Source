@@ -88,6 +88,7 @@
                 <div class="form-group button-group">
                     <div class="button">
                         <input class="btn btn-default" type="button" ng-click="btnCreate('${dangKyTaiKhoanForm.pathJSP }');" value="Đăng ký" />
+                        <a href="/storeManagerSystem/${dangKyTaiKhoanForm.pathJSP }"><input class="btn btn-default" type="button"  value="Quay về" /></a>
                     </div>
                 </div>
             </div>

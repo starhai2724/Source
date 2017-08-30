@@ -111,9 +111,9 @@
 				<button type="button" class="btn btn-info" onclick="testExcel()">
 				  <i class="glyphicon glyphicon-save-file"></i> Export Excel
 				</button>
-				<button type="button" class="btn btn-info" onclick="exportPDF();">
+				<!-- <button type="button" class="btn btn-info" onclick="exportPDF();">
 				  <i class="glyphicon glyphicon-print"></i> Export Pdf
-				</button>
+				</button> -->
 				<button type="button" class="btn btn-info" ng-click ="btnClear()">
 				  <i class="glyphicon glyphicon-refresh"></i> Refesh
 				</button>

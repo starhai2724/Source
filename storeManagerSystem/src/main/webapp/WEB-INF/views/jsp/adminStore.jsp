@@ -218,6 +218,7 @@
     <li class="submenu"> 
     <a href="/storeManagerSystem/thongKe/init"><i class="icon icon-info-sign"></i> <span style="margin-left: 5px">Thống kê</span> </a>
     <a href="/storeManagerSystem/thongKe/sanPham/init"><i class="icon icon-info-sign"></i> <span style="margin-left: 5px">Thống Theo SP</span> </a>
+    <a href="/storeManagerSystem/thongKe/khachHang/init"><i class="icon icon-info-sign"></i> <span style="margin-left: 5px">Thống Theo Khách hàng</span> </a>
     </li>
     <li><a href="/storeManagerSystem/lienHe/init"><i class="icon icon-th"></i> <span style="margin-left: 5px">Liên hệ</span></a></li>
     <li><a href="/storeManagerSystem/thongTinCuaHang/init"><i class="icon icon-fullscreen"></i> <span style="margin-left: 5px">Thông tin Cửa Hàng</span></a></li>

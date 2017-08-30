@@ -10,6 +10,10 @@ app.controller('ctrl', function($scope, $window) {
 			create($scope, pathJSP);
 	}
 	
+//	$scope.btnBack= function(pathJSP) {
+//		back($scope, pathJSP);
+//	}
+	
 });
 
 function create($scope, pathJSP) {
@@ -62,7 +66,17 @@ function create($scope, pathJSP) {
 			document.getElementById("dangKyTaiKhoanForm").submit();
 		}
 	}
-
 }
+
+//function back($scope, pathJSP) {
+//	if (true == valid) {
+//		var url = "/storeManagerSystem/"+ pathJSP
+//		if(confirm("Bạn có muốn đăng ký?")){
+//			document.getElementById("dangKyTaiKhoanForm").action = url;
+//			document.getElementById("dangKyTaiKhoanForm").method = "POST";
+//			document.getElementById("dangKyTaiKhoanForm").submit();
+//		}
+//	}
+//}
 
 

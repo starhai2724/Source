@@ -200,7 +200,7 @@
 									<ul
 										class="create-menu navbar-right pull-right hidden-md hidden-sm hidden-lg">
 										<li><a class="btn btn-default"
-											href="http://runtime.vn/dang-ky.html">Tạo web</a></li>
+											href="/storeManagerSystem/buoc1">Tạo web</a></li>
 									</ul>
 									<button type="button"
 										class="navbar-toggle collapsed pull-right "
@@ -213,7 +213,7 @@
 								<div class="">
 									<ul class="create-menu navbar-right hidden-xs">
 										<li><a class="btn btn-primary"
-											href="http://runtime.vn/dang-ky.html">Tạo web</a></li>
+											href="/storeManagerSystem/buoc1">Tạo web</a></li>
 									</ul>
 									<ul
 										class="nav navbar-nav navbar-right menu-top collapse navbar-collapse"
@@ -335,10 +335,11 @@
 									<div class="col-md-3 wow bounceInRight" style="margin-left: 50px">
 										<div class="form-action">
 											<form class="ng-pristine ng-valid ng-valid-email">
-												<button class="btn btn-default full-width" type="button"
-													ng-click="startRegister()">
+												<a href="/storeManagerSystem/buoc1">
+												<button class="btn btn-default full-width" type="button">
 													<i></i> <strong>Thử ngay</strong>
 												</button>
+												</a>
 											</form>
 
 										</div>
