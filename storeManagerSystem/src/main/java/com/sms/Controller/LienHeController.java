@@ -106,8 +106,8 @@ public class LienHeController {
 				}else {
 					formRow.setTrangThai("Đã trả lời");
 				}
-				formRow.setNgayNhan(outputRowBean.getNgayNhan());
-				formRow.setNgayTraLoi(outputRowBean.getNgayTraLoi());
+				formRow.setNgayNhan(SMSComons.formatDate(outputRowBean.getNgayNhan()));
+				formRow.setNgayTraLoi(SMSComons.formatDate(outputRowBean.getNgayTraLoi()));
 				formRow.setIdKH(outputRowBean.getIdKH());
 				form.getLst().add(formRow);
 			}
@@ -202,13 +202,13 @@ public class LienHeController {
 		//insert
 		int cnt = LienHeDAO.intances.update(inputBean);
 		Random rd = new Random();
-		String num = "" + rd.nextInt(1000000);
-		String thongBao = "<center>";
+		String thongBao = "";
 		thongBao += "<h3>"+form.getTieuDe()+"</h3><br>";
+		thongBao += "<p>"+form.getNoiDungTraLoi()+"</p>";
 		thongBao += "<p>Cám ơn " + form.getTenKH()
 				+ " đã liên hệ với chúng tôi</p><br>";
 		thongBao += "<p>" + form.getNgayTraLoi() + "</p>";
-		thongBao += "</center>";
+		thongBao += "";
 		System.out.println("form.getEmail(): "+form.getEmail());
 		MailUtilLocal.guiMail(form.getEmail(), thongBao,form.getTieuDe());
 		
@@ -246,7 +246,7 @@ public class LienHeController {
 		inputBean.setTieuDe(lienHeForm.getTieuDe());
 		inputBean.setNoiDungNhan(lienHeForm.getNoiDungNhan());
 		inputBean.setNoiDungTraLoi("");
-		inputBean.setTrangThai("0");
+		inputBean.setTrangThai("1");
 		inputBean.setNgayNhan(SMSComons.getDate());
 		inputBean.setNgayTraLoi("");
 		

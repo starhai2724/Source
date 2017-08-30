@@ -3,6 +3,7 @@ package com.sms.form;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sms.formRows.ThongKeTheoThangRowForm;
 import com.sms.formRows.ThongkeTheoKhachHangRowForm;
 import com.sms.formRows.ThongkeTheoSanPhamRowForm;
 
@@ -18,6 +19,17 @@ public class TKeForm extends AbstractForm{
 	
 	private List<ThongkeTheoKhachHangRowForm> khachHangRowForms = new  ArrayList<>(); 
 	
+	private List<ThongKeTheoThangRowForm> thongKeTheoThangRowForms = new  ArrayList<>(); 
+	
+	
+	
+	public List<ThongKeTheoThangRowForm> getThongKeTheoThangRowForms() {
+		return thongKeTheoThangRowForms;
+	}
+
+	public void setThongKeTheoThangRowForms(List<ThongKeTheoThangRowForm> thongKeTheoThangRowForms) {
+		this.thongKeTheoThangRowForms = thongKeTheoThangRowForms;
+	}
 
 	public String getPathJSP() {
 		return pathJSP;

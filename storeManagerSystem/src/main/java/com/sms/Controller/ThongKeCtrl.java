@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.sms.OutputRows.ThongkeTheoKhachHangOutputRowBean;
 import com.sms.OutputRows.ThongkeTheoSanPhamOutputRowBean;
+import com.sms.OutputRows.ThongkeTheoThangOutputRowBean;
 import com.sms.common.SMSComons;
 import com.sms.common.SystemCommon;
 import com.sms.dao.LayoutDAO;
 import com.sms.dao.ThongKeDAO;
 import com.sms.form.TKeForm;
+import com.sms.formRows.ThongKeTheoThangRowForm;
 import com.sms.formRows.ThongkeTheoKhachHangRowForm;
 import com.sms.formRows.ThongkeTheoSanPhamRowForm;
 import com.sms.input.ThongKeInputBean;
@@ -25,6 +27,8 @@ public class ThongKeCtrl {
 	public static final String PAGE = "thongKeTheoSanPham.jsp";
 	
 	public static final String PAGE_KH = "thongKeTheoKhachHang.jsp";
+	
+	public static final String PAGE_THANG = "thongKeTheoThang.jsp";
 	
 	@RequestMapping(value  = "/thongKe/sanPham/init")
 	public String initSanPham(@ModelAttribute("TKeForm") TKeForm form, HttpSession session){
@@ -166,8 +170,70 @@ public class ThongKeCtrl {
 			rowForm.setTongTien(outputRowBean.getTongTien());
 			form.getKhachHangRowForms().add(rowForm);
 		}
-		session.setAttribute("PAGEIDSTORE", PAGE);
+		session.setAttribute("PAGEIDSTORE", PAGE_KH);
 		return  SystemCommon.ADMIN_STORE;
 	}
 	
+	
+	@RequestMapping(value  = "/thongKe/thang/init")
+	public String initThang(@ModelAttribute("TKeForm") TKeForm form, HttpSession session){
+		String pathJSP = (String)session.getAttribute("pathURL");
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
+		
+		form.setNgayBatDau("");
+		form.setNgayKetThuc("");
+		
+		initDataThang(form, pathJSP);
+		
+		session.setAttribute("PAGEIDSTORE", PAGE_THANG);
+		return  SystemCommon.ADMIN_STORE;
+	}
+	
+	private void initDataThang(TKeForm form, String pathJSP){
+		ThongKeInputBean inputBean = new ThongKeInputBean();
+		inputBean.setPathJSP(pathJSP);
+		ThongkeOutputBean outputBean = ThongKeDAO.intances.getThang(inputBean);
+		ThongKeTheoThangRowForm rowForm;
+		for(ThongkeTheoThangOutputRowBean outputRowBean: outputBean.getThongkeTheoThangOutputRowBeans()){
+			rowForm = new ThongKeTheoThangRowForm();
+			rowForm.setThang(outputRowBean.getThang());
+			rowForm.setSoLuong(outputRowBean.getSoLuong());
+			rowForm.setTongTien(outputRowBean.getTongTien());
+			form.getThongKeTheoThangRowForms().add(rowForm);
+		}
+	}
+	
+	@RequestMapping(value  = "/thongKe/thang/timKiem", method=RequestMethod.POST)
+	public String timKiemthang(@ModelAttribute("TKeForm") TKeForm form, HttpSession session){
+		String pathJSP = (String)session.getAttribute("pathURL");
+		// check pathJSP
+		if (!LayoutDAO.intances.checkPathJSP(pathJSP)) {
+			// quay ve trang login
+			return "redirect:/";
+		}
+		ThongKeInputBean inputBean = new ThongKeInputBean();
+		inputBean.setPathJSP(pathJSP);
+		inputBean.setNgayBatDau(SMSComons.formatDateInput(form.getNgayBatDau()));
+		inputBean.setNgayKetThuc(SMSComons.formatDateInput(form.getNgayKetThuc()));
+		ThongkeOutputBean outputBean;
+		if(form.getNgayBatDau() == null || "".equals(form.getNgayBatDau()) || form.getNgayKetThuc() == null || "".equals(form.getNgayKetThuc())){
+			outputBean = ThongKeDAO.intances.getThang(inputBean);
+		}else{
+			outputBean = ThongKeDAO.intances.getThangByThoiGian(inputBean);
+		}
+		ThongKeTheoThangRowForm rowForm;
+		for(ThongkeTheoThangOutputRowBean outputRowBean: outputBean.getThongkeTheoThangOutputRowBeans()){
+			rowForm = new ThongKeTheoThangRowForm();
+			rowForm.setThang(outputRowBean.getThang());
+			rowForm.setSoLuong(outputRowBean.getSoLuong());
+			rowForm.setTongTien(outputRowBean.getTongTien());
+			form.getThongKeTheoThangRowForms().add(rowForm);
+		}
+		session.setAttribute("PAGEIDSTORE", PAGE_THANG);
+		return  SystemCommon.ADMIN_STORE;
+	}
 }

@@ -9,6 +9,7 @@ import org.hibernate.Session;
 
 import com.sms.OutputRows.ThongkeTheoKhachHangOutputRowBean;
 import com.sms.OutputRows.ThongkeTheoSanPhamOutputRowBean;
+import com.sms.OutputRows.ThongkeTheoThangOutputRowBean;
 import com.sms.common.SMSComons;
 import com.sms.dao.common.HibernateUtil;
 import com.sms.input.ThongKeInputBean;
@@ -144,7 +145,7 @@ public class ThongKeDAO {
 	 */
 	public ThongkeOutputBean getKhachHangTheoThoiGian(ThongKeInputBean inputBean) {
 		Session session = HibernateUtil.getSessionDAO();
-		String hql = getSQLKhachHang(inputBean);
+		String hql = getSQLKhachHangTheoThoiGian(inputBean);
 		ThongkeOutputBean outputBean = new ThongkeOutputBean();
 		ThongkeTheoKhachHangOutputRowBean outputRowBean = null;
 		try {
@@ -163,6 +164,102 @@ public class ThongKeDAO {
 				outputRowBean.setSL(SMSComons.convertString(object[5]));
 				outputRowBean.setTongTien(SMSComons.convertString(object[6]));
 				outputBean.getThongkeTheoKhachHangOutputRowBeans().add(outputRowBean);
+			}
+			session.getTransaction().commit();
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		} finally {
+			session.flush();
+			session.clear();
+			session.close();
+		}
+		return outputBean;
+	}
+	
+	
+	/**
+	 * Thong ke theo Thang
+	 * 
+	 * @return
+	 * @throws IOException 
+	 */
+	public ThongkeOutputBean getThangByThoiGian(ThongKeInputBean inputBean) {
+		Session session = HibernateUtil.getSessionDAO();
+		String hql = getSQLThangByThoiGian(inputBean.getPathJSP());
+		ThongkeOutputBean outputBean = new ThongkeOutputBean();
+		ThongkeTheoThangOutputRowBean outputRowBean = null;
+		try {
+			session.getTransaction().begin();
+			SQLQuery query = session.createSQLQuery(hql);
+			query.setParameter(0, inputBean.getNgayBatDau());
+			query.setParameter(1, inputBean.getNgayKetThuc());
+			List<Object[]> data = query.list();
+			String ngay="";
+			String thang = "";
+			String nam = "";
+			String result ="";
+			String date ="";
+			for (Object[] object : data) {
+				outputRowBean = new ThongkeTheoThangOutputRowBean();
+				outputRowBean.setSoLuong(SMSComons.convertString(object[0]));
+				outputRowBean.setTongTien(SMSComons.convertString(object[1]));
+				date = SMSComons.convertString(object[3]);
+				if(date.length() > 7){
+					ngay = date.substring(6,date.length() );
+					thang = date.substring(4,6 );
+					nam = date.substring(0,4 );
+					result = thang + "/" + nam;
+				}
+				outputRowBean.setThang(result);
+				outputBean.getThongkeTheoThangOutputRowBeans().add(outputRowBean);
+			}
+			session.getTransaction().commit();
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		} finally {
+			session.flush();
+			session.clear();
+			session.close();
+		}
+		return outputBean;
+	}
+	
+	/**
+	 * Thong ke theo Thang
+	 * 
+	 * @return
+	 * @throws IOException 
+	 */
+	public ThongkeOutputBean getThang(ThongKeInputBean inputBean) {
+		Session session = HibernateUtil.getSessionDAO();
+		String hql = getSQLThang(inputBean.getPathJSP());
+		ThongkeOutputBean outputBean = new ThongkeOutputBean();
+		ThongkeTheoThangOutputRowBean outputRowBean = null;
+		String ngay="";
+		String thang = "";
+		String nam = "";
+		String result ="";
+		String date ="";
+		try {
+			session.getTransaction().begin();
+			SQLQuery query = session.createSQLQuery(hql);
+			List<Object[]> data = query.list();
+			for (Object[] object : data) {
+				outputRowBean = new ThongkeTheoThangOutputRowBean();
+				outputRowBean.setSoLuong(SMSComons.convertString(object[0]));
+				outputRowBean.setTongTien(SMSComons.convertString(object[1]));
+				date = SMSComons.convertString(object[3]);
+				if(date.length() > 6){
+					ngay = date.substring(6,date.length() );
+					thang = date.substring(4,6 );
+					nam = date.substring(0,4 );
+					result = thang + "/" + nam;
+					System.out.println("result: "+result);
+				}
+				outputRowBean.setThang(result);
+				outputBean.getThongkeTheoThangOutputRowBeans().add(outputRowBean);
 			}
 			session.getTransaction().commit();
 		} catch (HibernateException e) {
@@ -281,6 +378,43 @@ public class ThongKeDAO {
 		sb.append(" 		HD.ID_KHACHHANG                                              ");
 		sb.append(" 	ORDER BY                                                         ");
 		sb.append(" 		TONG_TIEN DESC                                               ");
+		return sb.toString();
+	}
+	
+	private String getSQLThangByThoiGian(String pathJSP) {
+		String tableName = pathJSP+"_hoadon";
+		StringBuffer sb = new StringBuffer();            
+		sb.append(" 		SELECT                               ");
+		sb.append(" 		SUM(HD.SO_LUONG_SP) AS SO_LUONG,     ");
+		sb.append(" 		SUM(HD.TONG_TIEN) AS TONG_TIEN,      ");
+		sb.append(" 		MONTH(HD.NGAY_LAP) AS THANG,          ");
+		sb.append(" 		HD.NGAY_LAP          ");
+		sb.append(" 	FROM                                     ");
+		sb.append(" 		"+tableName+" HD            ");
+		sb.append(" 	WHERE                                                            ");
+		sb.append(" 		HD.NGAY_LAP >= ?                                    ");
+		sb.append(" 	AND HD.NGAY_LAP <= ?                                    ");
+		sb.append(" 	GROUP BY                                 ");
+		sb.append(" 		THANG                                ");
+		sb.append(" 	ORDER BY                                 ");
+		sb.append(" 		TONG_TIEN DESC                       ");
+		return sb.toString();
+	}
+	
+	private String getSQLThang(String pathJSP) {
+		String tableName = pathJSP+"_hoadon";
+		StringBuffer sb = new StringBuffer();            
+		sb.append(" 		SELECT                               ");
+		sb.append(" 		SUM(HD.SO_LUONG_SP) AS SO_LUONG,     ");
+		sb.append(" 		SUM(HD.TONG_TIEN) AS TONG_TIEN,      ");
+		sb.append(" 		MONTH(HD.NGAY_LAP) AS THANG,          ");
+		sb.append(" 		HD.NGAY_LAP          ");
+		sb.append(" 	FROM                                     ");
+		sb.append(" 		"+tableName+" HD            ");
+		sb.append(" 	GROUP BY                                 ");
+		sb.append(" 		THANG                                ");
+		sb.append(" 	ORDER BY                                 ");
+		sb.append(" 		TONG_TIEN DESC                       ");
 		return sb.toString();
 	}
 }

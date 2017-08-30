@@ -1,61 +1,4 @@
 var app = angular.module('DatHangForm', []);
-//app.controller('ctrl', function($scope, $window) {
-//	$scope.giaNhap_err ="";
-//	$scope.diaChi_err =""; 
-//	$scope.listCheckBox = "";
-//	$scope.checkboxModel = {
-//		       value1 : true,
-//		       value2 : false
-//		     };
-//	
-//	$scope.btnGetById = function(id){
-//		getById($scope,$window, id);
-//	}
-//	// sd cho he thong quan ly dat hang (S)
-//	$scope.btnGetByIdQLDT = function(id){
-//		getByIdQLDT($scope,$window, id);
-//	}
-//	
-//	$scope.btnXacNhan = function(id){
-//		xacNhan($scope,$window, id);
-//	}
-//	
-//	$scope.btnTimKiem = function(){
-//		timKiem($scope);
-//	}
-//	$scope.btnHuyQLDT = function(){
-//		clearQLDT($scope);
-//	}
-//	// sd cho he thong quan ly dat hang (E)	
-//	$scope.btnClear = function(){
-//		clear($scope);
-//	}
-//	
-//	$scope.btnDelete = function(id){
-//		remove($scope, $window, id);
-//	}
-//	
-//	$scope.btnChonSP = function(){
-//		chonSanPham($scope);
-//	}
-//	
-//	
-//	$scope.btnXoaDong = function(){
-//		xoaDong($scope);
-//	}
-//	
-//	$scope.btnDangKy = function() {
-//		if($scope.flagUpdate == 1){
-//			update($scope);
-//		}else{
-//			dangKy($scope);
-//		}
-//	}
-//	
-//	
-//	
-//});
-
 //export Excel (S)
 //Code goes here
 app.factory('Excel',function($window){
@@ -80,10 +23,11 @@ app.factory('Excel',function($window){
 	 	$scope.giaNhap_err ="";
 		$scope.diaChi_err =""; 
 		$scope.listCheckBox = "";
+		$scope.listCheckBox1 = "";
 		$scope.checkboxModel = {
-			       value1 : true,
-			       value2 : false
-			     };
+			value1 : true,
+			value2 : false
+		};
 		
 		$scope.btnGetById = function(id, status){
 			getById($scope,$window, id, status);
@@ -104,6 +48,7 @@ app.factory('Excel',function($window){
 			clearQLDT($scope);
 		}
 		// sd cho he thong quan ly dat hang (E)	
+		
 		$scope.btnClear = function(){
 			clear($scope);
 		}
@@ -112,10 +57,17 @@ app.factory('Excel',function($window){
 			remove($scope, $window, id);
 		}
 		
-		$scope.btnChonSP = function(){
-			chonSanPham($scope);
+		$scope.btnPhanAnh = function() {
+			angular.forEach($scope.selected1, function(item) {
+				if (item == "false") {
+					// Do not thing
+				} else {
+					$scope.listCheckBox1 = $scope.listCheckBox1
+							+ "," + item;
+				}
+			});
+			phanAnh($scope);
 		}
-		
 		
 		$scope.btnXoaDong = function(){
 			xoaDong($scope);
@@ -130,6 +82,18 @@ app.factory('Excel',function($window){
 		}
 });
 //export Excel (S)	
+
+function phanAnh($scope) {
+	if ($scope.listCheckBox1 != "") {
+		var url = "/storeManagerSystem/datHang/phanAnh/" + $scope.listCheckBox1;
+	} else {
+		var url = "/storeManagerSystem/datHang/phanAnh/0";
+	}
+	document.getElementById("DatHangForm").action = url;
+	document.getElementById("DatHangForm").method = "POST";
+	document.getElementById("DatHangForm").submit();
+}
+
 
 function getById($scope, $window, id, status){
 	var url = "/storeManagerSystem/datHang/getById/"+id+"/"+status;

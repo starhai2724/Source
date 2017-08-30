@@ -12,6 +12,12 @@ app.controller('ctrl', function($scope, $window) {
 	$scope.btnClearKhachHang = function(){
 		clearKhachHang($scope);
 	}
+	$scope.btnSearchThang = function() {
+		searchThang($scope)
+	}
+	$scope.btnClearKhachHang = function(){
+		clearThang($scope);
+	}
 });
 
 function search($scope) {
@@ -36,9 +42,24 @@ function searchKhachHang($scope) {
 }
 
 
-function btnClearKhachHang($scope){
+function clearKhachHang($scope){
 	if(confirm("Bạn có muốn hủy?")){
 		document.getElementById("TKeForm").action = "/storeManagerSystem/thongKe/khachHang/init";
+		document.getElementById("TKeForm").method = "GET";
+		document.getElementById("TKeForm").submit();
+	}
+}
+
+function searchThang($scope) {
+	document.getElementById("TKeForm").action = "/storeManagerSystem/thongKe/thang/timKiem";
+	document.getElementById("TKeForm").method = "POST";
+	document.getElementById("TKeForm").submit();
+}
+
+
+function clearThang($scope){
+	if(confirm("Bạn có muốn hủy?")){
+		document.getElementById("TKeForm").action = "/storeManagerSystem/thongKe/thang/init";
 		document.getElementById("TKeForm").method = "GET";
 		document.getElementById("TKeForm").submit();
 	}

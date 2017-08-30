@@ -217,9 +217,29 @@
     <li class="submenu"> <a href="/storeManagerSystem/dotKhuyenMai/init"><i class="icon icon-file"></i> <span style="margin-left: 5px">Đợt khuyến mãi</span> </a></li>
     <li class="submenu"> 
     <a href="/storeManagerSystem/thongKe/init"><i class="icon icon-info-sign"></i> <span style="margin-left: 5px">Thống kê</span> </a>
-    <a href="/storeManagerSystem/thongKe/sanPham/init"><i class="icon icon-info-sign"></i> <span style="margin-left: 5px">Thống Theo SP</span> </a>
-    <a href="/storeManagerSystem/thongKe/khachHang/init"><i class="icon icon-info-sign"></i> <span style="margin-left: 5px">Thống Theo Khách hàng</span> </a>
+    <a href="/storeManagerSystem/thongKe/sanPham/init"><i class="icon icon-info-sign"></i> <span style="margin-left: 5px">TK theo SP</span> </a>
+    <a href="/storeManagerSystem/thongKe/khachHang/init"><i class="icon icon-info-sign"></i> <span style="margin-left: 5px">TK theo khách hàng</span> </a>
+    <a href="/storeManagerSystem/thongKe/thang/init"><i class="icon icon-info-sign"></i> <span style="margin-left: 5px">TK theo tháng</span> </a>
     </li>
+     <!-- <li class="submenu">
+      <a href="#"><i class="fa fa-wrench fa-fw"></i> Thống kê<span class="fa arrow"></span></a>
+      <ul class="nav nav-second-level" id="demo" class="collapse in">
+          <li>
+              <a href="/storeManagerSystem/thongKe/init"> Thống kê</a>
+          </li>
+          <li>
+              <a href="/storeManagerSystem/thongKe/sanPham/init"> Theo SP</a>
+          </li>
+          <li>
+              <a href="/storeManagerSystem/thongKe/khachHang/init"> Theo khách hàng</a>
+          </li>
+          <li>
+              <a href="/storeManagerSystem/thongKe/thang/init"> Theo Tháng</a>
+          </li>
+      </ul>
+      /.nav-second-level
+  	</li> -->
+    
     <li><a href="/storeManagerSystem/lienHe/init"><i class="icon icon-th"></i> <span style="margin-left: 5px">Liên hệ</span></a></li>
     <li><a href="/storeManagerSystem/thongTinCuaHang/init"><i class="icon icon-fullscreen"></i> <span style="margin-left: 5px">Thông tin Cửa Hàng</span></a></li>
         </ul>

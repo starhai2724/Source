@@ -7,6 +7,7 @@ import java.util.Map;
 
 import com.sms.formRows.ChiTietDatHangRowForm;
 import com.sms.formRows.DatHangRowForm;
+import com.sms.formRows.ProductFormRow;
 
 public class DatHangForm extends AbstractForm{
 	
@@ -32,11 +33,34 @@ public class DatHangForm extends AbstractForm{
 	
 	private List<ChiTietDatHangRowForm> chiTietDatHangRowForms = new ArrayList<>();
 
+	// su dung de phan anh san pham (S)
+	private List<ProductFormRow> lstSanPham = new ArrayList<>();
+	// su dung de phan anh san pham (E)	
+	
+	//su dung de khi tao moi (S)
+	private String flagNew;
+	//su dung de khi tao moi (E)
 	
 	
 	
 	public String getFlagXacNhan() {
 		return flagXacNhan;
+	}
+
+	public String getFlagNew() {
+		return flagNew;
+	}
+
+	public void setFlagNew(String flagNew) {
+		this.flagNew = flagNew;
+	}
+
+	public List<ProductFormRow> getLstSanPham() {
+		return lstSanPham;
+	}
+
+	public void setLstSanPham(List<ProductFormRow> lstSanPham) {
+		this.lstSanPham = lstSanPham;
 	}
 
 	public void setFlagXacNhan(String flagXacNhan) {

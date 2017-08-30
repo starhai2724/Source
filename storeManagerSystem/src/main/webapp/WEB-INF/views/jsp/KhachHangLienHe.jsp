@@ -90,7 +90,7 @@
 				</button>
 			</div>
 		</div>
-		
+		</div>
 		<!--Message (S)-->
 		<div class="row">
 			<div class="col-sm-4">
@@ -100,11 +100,9 @@
 				</div>
 			</div>
 		</div>
-		</div>
 		<!--Message (E)-->
 		<div class="row" align="right" style="width: 100%">
 			<div>
-			
 				<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">
 				  <i class="glyphicon glyphicon-plus"></i> Thêm
 				</button>

@@ -391,7 +391,7 @@ public class DangKiWebController {
 		inputBean.setTieuDe("Liên hệ 1");
 		inputBean.setNoiDungNhan("Khách hàng liên hệ 1");
 		inputBean.setNoiDungTraLoi("");
-		inputBean.setTrangThai("0");
+		inputBean.setTrangThai("1");
 		inputBean.setNgayNhan(SMSComons.getDate());
 		inputBean.setNgayTraLoi("");
 		inputBean.setIdKH("");
@@ -408,7 +408,7 @@ public class DangKiWebController {
 		inputBean.setTieuDe("Liên hệ 1");
 		inputBean.setNoiDungNhan("Khách hàng liên hệ 2");
 		inputBean.setNoiDungTraLoi("");
-		inputBean.setTrangThai("0");
+		inputBean.setTrangThai("1");
 		inputBean.setNgayNhan(SMSComons.getDate());
 		inputBean.setNgayTraLoi("");
 		inputBean.setIdKH("");
