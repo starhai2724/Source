@@ -10,7 +10,7 @@
 	<div id="page-wrapper" ng-app="TKeForm" ng-controller="ctrl">
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Thống kế theo sản phẩm</h1>
+				<h1 class="page-header">Thống kế theo khách hàng</h1>
 			</div>
 		</div>
 		<!-- /.row -->
@@ -43,49 +43,43 @@
 		<!--Message (E)-->
 		<div class="row" align="right" style="width: 100%">
 			<div>
-				<button type="button" class="btn btn-info" ng-click="btnSearch()">
+				<button type="button" class="btn btn-info" ng-click="btnSearchKhachHang()">
 				  <i class="glyphicon glyphicon-plus"></i> Tìm kiếm
 				</button>
 				<button type="button" class="btn btn-info" onclick="testExcel()">
 				  <i class="glyphicon glyphicon-save-file"></i> Export Excel
 				</button>
-				<button type="button" class="btn btn-info" ng-click ="btnClear()">
+				<button type="button" class="btn btn-info" ng-click ="btnClearKhachHang()">
 				  <i class="glyphicon glyphicon-refresh"></i> Refesh
 				</button>
 			</div>
 		</div>
-		<c:if test="${!empty TKeForm.lst }">
+		<c:if test="${!empty TKeForm.khachHangRowForms }">
 		<div class="panel-body" id ="tableToExport">
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
                                     <tr>
                                         <th style="padding-left: 5px;padding-right: 4px; width: 20px;">STT</th>
-										<th style="text-align: center; width: 100px;">Mã sản phẩm</th>
-										<th style="text-align: center; width: 50px">Tên sản phẩm</th>
-										<th style="padding-left: 5px;padding-right: 4px; width: 50px">Loại sản phẩm</th>
-										<th style="padding-left: 5px;padding-right: 4px;text-align: center; width: 60px">Số lượng</th>
-										<th style="padding-left: -5px; width: 80px; text-align: center">Giá mua</th>
-										<th style="padding-left: 5px;padding-right: 1px;width: 20px;text-align: center;">Tiền lãi</th>
+										<th style="text-align: center; width: 100px;">Khách hàng</th>
+										<th style="padding-left: 5px;padding-right: 4px; width: 50px">SĐT</th>
+										<th style="padding-left: 5px;padding-right: 4px;text-align: center; width: 100px">Địa chỉ</th>
+										<th style="padding-left: -5px; width: 80px; text-align: center">Điểm tích lũy</th>
+										<th style="padding-left: 5px;padding-right: 1px;width: 20px;text-align: center;">Số lượng</th>
 										<th style="text-align: center; width: 80px">Tổng tiền</th>
                                     </tr>
                                 </thead>
                                 <tbody style="overflow: auto; height:50px">
-                              		  <c:forEach var="items" items="${TKeForm.lst }" varStatus="status">
+                              		  <c:forEach var="items" items="${TKeForm.khachHangRowForms }" varStatus="status">
 		                                <tr class="odd gradeX">
 		                                        <td class="center" style="text-align: center">${status.index + 1 }</td>
-		                                        <td>${items.idSanPham}</td>
-							                     <td>${items.tenSP}</td>
-							                     <td>${items.tenLoaiSP }</td>
-		                                      	 <td style="text-align: right;">${items.soLuong }</td>
-					                    		 <td style="text-align: right">
-					                    		 	<fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaMua }" />
-					                    		 </td>
-		                                       	<td style="text-align: right">
-		                                       		<fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.tienLoi }" />
-		                                       	</td>
-		                                        <td  style="text-align: right">
-		                                        	<fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.thanhTien }" />
-		                                        </td>
+		                                        <td>${items.idKhachHang}${items.tenKhachHang}</td>
+							                    <td>${items.SDT}</td>
+							                    <td>${items.diaChi }</td>
+		                                      	<td style="text-align: right;">${items.diemTichLuy }</td>
+		                                      	<td style="text-align: right;">${items.SL }</td>
+					                    		<td style="text-align: right">
+					                    		 	<fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.tongTien }" />
+					                    		</td>
 		                                 </tr>
 					                </c:forEach>
                                 </tbody>
@@ -101,7 +95,7 @@
 
 function testExcel(){
 	$('#dataTables-example').tableExport({
-		fileName:'ThongKeTheoSanPham',
+		fileName:'ThongKeTheoKhachHang',
 		type:'excel',
 	    excelFileFormat:'xmlss',
 	    worksheetName: ['Table 1','Table 2', 'Table 3']});

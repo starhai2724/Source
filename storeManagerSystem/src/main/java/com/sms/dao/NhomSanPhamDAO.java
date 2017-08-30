@@ -119,7 +119,6 @@ public class NhomSanPhamDAO {
 		int cnt = 0; 
 		//id
 		int id = SMSComons.convertInt(getMaxIdLSP(inputBean.getPathJSP()));
-		System.out.println("maxID : " + id);
 		Transaction tx = session.beginTransaction();
 		//sql
 		String hql = this.getSQLInsertLoaiSP(inputBean.getPathJSP());	

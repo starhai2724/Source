@@ -3,9 +3,10 @@ package com.sms.form;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sms.formRows.ThongkeTheoKhachHangRowForm;
 import com.sms.formRows.ThongkeTheoSanPhamRowForm;
 
-public class ThongkeTheoSanPhamForm extends AbstractForm{
+public class TKeForm extends AbstractForm{
 
 	private String pathJSP;
 	
@@ -14,6 +15,9 @@ public class ThongkeTheoSanPhamForm extends AbstractForm{
 	private String ngayKetThuc;
 	
 	private List<ThongkeTheoSanPhamRowForm> lst = new ArrayList<>();
+	
+	private List<ThongkeTheoKhachHangRowForm> khachHangRowForms = new  ArrayList<>(); 
+	
 
 	public String getPathJSP() {
 		return pathJSP;
@@ -46,6 +50,15 @@ public class ThongkeTheoSanPhamForm extends AbstractForm{
 	public void setLst(List<ThongkeTheoSanPhamRowForm> lst) {
 		this.lst = lst;
 	}
+
+	public List<ThongkeTheoKhachHangRowForm> getKhachHangRowForms() {
+		return khachHangRowForms;
+	}
+
+	public void setKhachHangRowForms(List<ThongkeTheoKhachHangRowForm> khachHangRowForms) {
+		this.khachHangRowForms = khachHangRowForms;
+	}
+	
 	
 	
 }

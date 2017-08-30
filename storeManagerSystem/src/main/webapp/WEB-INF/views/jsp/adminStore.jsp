@@ -194,7 +194,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0;background-color:#1f262d ">
 <div id="header">
-  <h1><a href="dashboard.html">Matrix Admin</a></h1>
+  <h1><a href="javascript:void(0)">Matrix Admin</a></h1>
 </div>
 <div >
   <ul class="nav">
@@ -215,7 +215,11 @@
     <li><a href="/storeManagerSystem/datHang/init"><i class="icon icon-tint"></i> <span style="margin-left: 5px">Đặt hàng</span></a></li>
     <li><a href="/storeManagerSystem/khoHang/init"><i class="icon icon-pencil"></i> <span style="margin-left: 5px">Kho hàng</span></a></li>
     <li class="submenu"> <a href="/storeManagerSystem/dotKhuyenMai/init"><i class="icon icon-file"></i> <span style="margin-left: 5px">Đợt khuyến mãi</span> </a></li>
-    <li class="submenu"> <a href="/storeManagerSystem/thongKe/init"><i class="icon icon-info-sign"></i> <span style="margin-left: 5px">Thống kê</span> </a></li>
+    <li class="submenu"> 
+    <a href="/storeManagerSystem/thongKe/init"><i class="icon icon-info-sign"></i> <span style="margin-left: 5px">Thống kê</span> </a>
+    <a href="/storeManagerSystem/thongKe/sanPham/init"><i class="icon icon-info-sign"></i> <span style="margin-left: 5px">Thống Theo SP</span> </a>
+    <a href="/storeManagerSystem/thongKe/khachHang/init"><i class="icon icon-info-sign"></i> <span style="margin-left: 5px">Thống Theo Khách hàng</span> </a>
+    </li>
     <li><a href="/storeManagerSystem/lienHe/init"><i class="icon icon-th"></i> <span style="margin-left: 5px">Liên hệ</span></a></li>
     <li><a href="/storeManagerSystem/thongTinCuaHang/init"><i class="icon icon-fullscreen"></i> <span style="margin-left: 5px">Thông tin Cửa Hàng</span></a></li>
         </ul>

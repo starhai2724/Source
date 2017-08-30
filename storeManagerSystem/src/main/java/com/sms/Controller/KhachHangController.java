@@ -310,6 +310,19 @@ public class KhachHangController {
 			form.setMessageErr("Xử lý xóa không thành công.");
 			form.setMessage("");
 		}
+		
+		//reset
+		form.setIdKhachHang("");
+		form.setTenKhachHang("");
+		form.setLoaiThe("");
+		form.setGioiTinh("");
+		form.setDiaChi("");
+		form.setNgaySinh("");
+		form.setSoDienThoai("");
+		form.setSoDiem("");
+		//Flag update
+		form.setFlagUpdate("0");
+		
 		//init data
 		initData(form, pathJSP);
 		
