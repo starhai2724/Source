@@ -25,12 +25,24 @@ app.factory('Excel',function($window){
 		$scope.btnUpdate = function(id){
 			update($scope, $window, id);
 		}
+		
+		$scope.btnHuyQLDT = function(){
+			huyQLDT($scope);
+		}
 });
 //export Excel (E)	
+
 
 function update($scope, $window, id){
 	var url = "/storeManagerSystem/thoiGianSuDung/update/"+id;
 	document.getElementById("ThoiHanSuDungForm").action = url;
 	document.getElementById("ThoiHanSuDungForm").method = "POST";
+	document.getElementById("ThoiHanSuDungForm").submit();
+}
+
+function huyQLDT($scope){
+	var url = "/storeManagerSystem/thoiGianSuDung/init";
+	document.getElementById("ThoiHanSuDungForm").action = url;
+	document.getElementById("ThoiHanSuDungForm").method = "GET";
 	document.getElementById("ThoiHanSuDungForm").submit();
 }

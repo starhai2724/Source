@@ -48,7 +48,7 @@
                  </c:forEach>    --%>
                 	<div class="col-md-3 col-sm-3 col-sm-12" ng-click="btnOpenStep3('01');">
                         <div class=" product-item wow">
-                            <div class="product-img"><a><img ng-src="/storeManagerSystem/view/templateDK/layout1.PNG" class="img-responsive" alt="Bán hàng 01"></a></div>
+                            <div class="product-img"><a><img ng-src="/storeManagerSystem/view/templateDK/layout2.PNG" class="img-responsive" alt="Bán hàng 01"></a></div>
                             <span class="circle-new">Mới</span>
                             <div class="product-info">
                                 <h2 class="name"><a href="javascript:void(0)">Bán hàng 01</a></h2>
@@ -64,7 +64,7 @@
                     </div>
                    <div class="col-md-3 col-sm-3 col-sm-12" ng-click="btnOpenStep3('01');">
                         <div class=" product-item wow">
-                            <div class="product-img"><a><img ng-src="/storeManagerSystem/view/templateDK/layout2.PNG" class="img-responsive" alt="Bán hàng 01"></a></div>
+                            <div class="product-img"><a><img ng-src="/storeManagerSystem/view/templateDK/layout1.PNG" class="img-responsive" alt="Bán hàng 01"></a></div>
                             <span class="circle-new">Mới</span>
                             <div class="product-info">
                                 <h2 class="name"><a href="javascript:void(0)">Bán hàng 01</a></h2>

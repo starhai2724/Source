@@ -11,7 +11,7 @@
 			<div class="col-lg-12">
 				<h1 class="page-header">Quản trị thời gian sử dụng</h1>
 			</div>
-			<i style="font-size:24px;margin-left: 1500px;margin-top: -10px" data-toggle="collapse" data-target="#demo" class="fa">&#xf106;</i>
+<!-- 			<i style="font-size:24px;margin-left: 1500px;margin-top: -10px" data-toggle="collapse" data-target="#demo" class="fa">&#xf106;</i> -->
 			<!-- /.col-lg-12 -->
 		</div>
 		<div id="demo" class="collapse in">
@@ -20,8 +20,14 @@
 		<div class="row" align="right">
 			<div class="col-sm-12">
 				<div class="form-group">
-					<input type="button" name="" class="btn btn-info " ng-click="exportToExcel('#tableExport')" value="In">
-					<input type="button" name="" class="btn btn-info " ng-click = "btnHuyQLDT()"  value="Hủy">
+					<button type="button" class="btn btn-info"  ng-click="exportToExcel('#tableExport')" >
+					  <i class="glyphicon glyphicon-save-file"></i> Export excel
+					</button>
+					<button style="margin-right: 30px" type="button" class="btn btn-info" ng-click = "btnHuyQLDT()">
+					  <i class="glyphicon glyphicon-refresh"></i> Refesh
+					</button>
+<!-- 					<input type="button" name="" class="btn btn-info " ng-click="exportToExcel('#tableExport')" value="In"> -->
+<!-- 					<input type="button" name="" class="btn btn-info " ng-click = "btnHuyQLDT()"  value="Hủy"> -->
 				</div>
 			</div>
 		</div>
@@ -61,9 +67,9 @@
                                     </tr>
                                 </thead>
                                 <tbody style="overflow: auto; height:50px">
-                                	<c:forEach var="items" items="${ThoiHanSuDungForm.lst }">
+                                	<c:forEach var="items" items="${ThoiHanSuDungForm.lst }" varStatus="status">
 		                                <tr class="odd gradeX">
-		                                         <td class="center" style="text-align: center">${items.no}</td>
+		                                         <td class="center" style="text-align: center">${status.index + 1 }</td>
 		                                         <td >${items.tenCuaHang}</td>
 		                                         <td >${items.pathJSP}</td>
 		                                         <td >${items.email}</td>
@@ -84,6 +90,6 @@
                </div>
 <%--                </c:if>          --%>
 		</form:form>
-		<script src="/storeManagerSystem/view/js/thoiHanSuDung.js"></script>
+<!-- 		<script src="/storeManagerSystem/view/js/thoiHanSuDung.js"></script> -->
           <!-- Detail (E) -->
 	</div>

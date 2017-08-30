@@ -63,13 +63,32 @@ public class ThanhToanController {
 		}
 		double totalMoney = 0;
 		SanPhamOutputBean sanPhamOutputBean = CreateTableProductDAO.intances.getProductByList(path, listId);
+		List<KhoHangOutBean> lstKhoSP = KhoHangDAO.intances.getAllKhoHang(path);
+		String message = "";
+		boolean check = true;
 		for (SanPhamOutputRowBean sanPhamOutputRowBean : sanPhamOutputBean.getLst()) {
+			for(KhoHangOutBean khoHangOutBean : lstKhoSP){
+				if(khoHangOutBean.getIdSanPham().equals(sanPhamOutputRowBean.getIdSanPham())){
+					int conHang = Integer.parseInt(khoHangOutBean.getSoLuong()) - getSoLuongSanPham(parts, sanPhamOutputRowBean.getSEQ()); 
+					if(conHang < 0){
+						message += "Sản phẩm "+sanPhamOutputRowBean.getIdSanPham()+" chỉ còn "+khoHangOutBean.getSoLuong()+" mặt hàng"+"\n";
+						check = false; 
+					}
+				}
+			}
+			
 			if (sanPhamOutputRowBean.getGiaBanKM() != null && !"".equals(sanPhamOutputRowBean.getGiaBanKM())) {
 				totalMoney += Double.parseDouble(sanPhamOutputRowBean.getGiaBanKM())* getSoLuongSanPham(parts, sanPhamOutputRowBean.getSEQ());
 			} else {
 				totalMoney += Double.parseDouble(sanPhamOutputRowBean.getGiaBan())* getSoLuongSanPham(parts, sanPhamOutputRowBean.getSEQ());
 			}
 		}
+		if(!check){
+			form.setMessage("");
+			form.setMessageErr(message);
+			return PAGE_CART;
+		}
+		
 		KhachHangSession khachHangSession = (KhachHangSession) session.getAttribute("KhachHangSession");
 		HoaDonInputBean hoaDonInputBean = new HoaDonInputBean();
 		hoaDonInputBean.setIdHoaDon("");

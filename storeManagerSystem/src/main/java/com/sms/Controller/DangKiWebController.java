@@ -90,7 +90,8 @@ public class DangKiWebController {
 			session.setAttribute(PAGECENTER, PAGE_STEP1);
 			return PAGE;
 		}
-		
+		form.setMessage("");
+		form.setMessageErr("");
 		// get cac loai kinh doanh
 		form.getLstLoaiKinhDoanh().clear();
 		LoaiKinhDoanhForm loaiKinhDoanhForm;
@@ -114,7 +115,8 @@ public class DangKiWebController {
 	 */
 	@RequestMapping(value="/buoc3/{idTemplate}", method = RequestMethod.POST)
 	public String step3(@ModelAttribute("DangKiWebForm") DangKiWebForm form, HttpSession session, @PathVariable("idTemplate") String idTemplate){
-		
+		form.setMessage("");
+		form.setMessageErr("");
 		// get cac loai kinh doanh
 		form.getLstLoaiKinhDoanh().clear();
 		LoaiKinhDoanhForm loaiKinhDoanhForm;
@@ -316,8 +318,6 @@ public class DangKiWebController {
 			cnt = CreateTableProductDAO.intances.insert(input);
 			cnt = KhoHangDAO.intances.insertKhoHang(pathJSP, "0", input.getIdSanPham());
 		}
-		
-		
 	}
 	
 	private void createDataLoaiThe(String pathJSP){
