@@ -60,14 +60,14 @@
 		<div class="row">
 			<div class="col-sm-5" style="margin-left: 10px">
 				<button type="button" class="btn btn-info" ng-click="btnCreate()">
-				  <i class="glyphicon glyphicon-plus"></i> Đăng kí SP
+				  <i class="glyphicon glyphicon-plus"></i> Đăng kí nhóm SP
 				</button>
 <!-- 				<input type="button" name=""  class="btn btn-info " ng-click="btnCreate()" value="Đăng kí nhóm SP"> -->
 			</div>
 		<c:if test="${!empty RegisterProductCategory.checkShow }">
 			<div class="col-sm-5" style="margin-left: -40px">
 				<button type="button" class="btn btn-info" ng-click="btnDangKyLSP()">
-				  <i class="glyphicon glyphicon-plus"></i> Đăng kí SP
+				  <i class="glyphicon glyphicon-plus"></i> Đăng kí loại SP
 				</button>
 <!-- 				<input type="button" name=""  class="btn btn-info " ng-click="btnDangKyLSP()" value="Đăng kí loại SP"> -->
 				<!-- <input type="button" name=""  class="btn btn-info " ng-click="btnThemDong()" value="Thêm loại SP"> -->

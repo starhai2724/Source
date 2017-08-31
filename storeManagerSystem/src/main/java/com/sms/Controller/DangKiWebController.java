@@ -175,6 +175,55 @@ public class DangKiWebController {
 		inputBean.setPathJSP(form.getPathJSP());
 		inputBean.setTenWebSite(form.getTenWebSite());
 		
+		FileInputStream fileInputStream;
+		SanPhamInputBean input;
+		File file;
+		byte[] bFile_1 = null; 
+		file = new File("D:/LVTN/GitHup/Source/Source/storeManagerSystem/src/main/webapp/fontend/template_2/image/header1.jpg");
+		try {
+			fileInputStream = new FileInputStream(file);
+			bFile_1 = new byte[(int) file.length()];
+			fileInputStream.read(bFile_1);
+			inputBean.setHinh1(bFile_1);
+		} catch (IOException e) {
+		}
+		byte[] bFile_2 = null; 
+		file = new File("D:/LVTN/GitHup/Source/Source/storeManagerSystem/src/main/webapp/fontend/template_2/image/header2.jpg");
+		try {
+			fileInputStream = new FileInputStream(file);
+			bFile_2 = new byte[(int) file.length()];
+			fileInputStream.read(bFile_2);
+			inputBean.setHinh2(bFile_2);
+		} catch (IOException e) {
+		}
+		byte[] bFile_3 = null; 
+		file = new File("D:/LVTN/GitHup/Source/Source/storeManagerSystem/src/main/webapp/fontend/template_2/image/header3.jpg");
+		try {
+			fileInputStream = new FileInputStream(file);
+			bFile_3 = new byte[(int) file.length()];
+			fileInputStream.read(bFile_3);
+			inputBean.setHinh3(bFile_3);
+		} catch (IOException e) {
+		}
+		byte[] bFile_4 = null; 
+		file = new File("D:/LVTN/GitHup/Source/Source/storeManagerSystem/src/main/webapp/fontend/template_2/image/header4.jpg");
+		try {
+			fileInputStream = new FileInputStream(file);
+			bFile_4 = new byte[(int) file.length()];
+			fileInputStream.read(bFile_4);
+			inputBean.setHinh4(bFile_4);
+		} catch (IOException e) {
+		}
+		byte[] bFile_5 = null; 
+		file = new File("D:/LVTN/GitHup/Source/Source/storeManagerSystem/src/main/webapp/fontend/template_2/image/header5.jpg");
+		try {
+			fileInputStream = new FileInputStream(file);
+			bFile_5 = new byte[(int) file.length()];
+			fileInputStream.read(bFile_5);
+			inputBean.setHinh5(bFile_5);
+		} catch (IOException e) {
+		}
+		
 		//insert
 		int cnt = DangKiWebDAO.intances.insert(inputBean);
 	
@@ -277,7 +326,7 @@ public class DangKiWebController {
 		SanPhamInputBean input;
 		File file;
 		byte[] bFile_1; 
-		file = new File("D:/THISIS/images.jpg");
+		file = new File("D:/LVTN/GitHup/Source/Source/storeManagerSystem/src/main/webapp/fontend/image/images.jpg");
 		fileInputStream = new FileInputStream(file);
 		bFile_1 = new byte[(int) file.length()];
 		try {
@@ -302,7 +351,7 @@ public class DangKiWebController {
 			cnt = KhoHangDAO.intances.insertKhoHang(pathJSP, "0", input.getIdSanPham());
 		}		
 		
-		for(int i = 4; i < 7; i++){
+		for(int i = 4; i < 6; i++){
 			input = new SanPhamInputBean();
 			input.setSEQ("");
 			input.setPathJSP(pathJSP);
@@ -443,6 +492,10 @@ public class DangKiWebController {
 		response.setContentType("image/jpeg, image/jpg, image/png,image/gif");
 		response.getOutputStream().write(bFile);
 		response.getOutputStream().close();
+	}
+	public static void main(String[] args) throws FileNotFoundException {
+		DangKiWebController dangKiWebController = new DangKiWebController();
+		dangKiWebController.createDataSanPham("cuahangthoitrang");
 	}
 	
 }

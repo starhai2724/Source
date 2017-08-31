@@ -77,15 +77,19 @@ public class DangKiWebDAO {
 			//id cua hang va id nguoi dung cung mot gia tri
 			query.setParameter(0, id);
 			// Username se duoc gan bang gia tri cua email
-			query.setParameter(1, "");
-			query.setParameter(2, "");
-			query.setParameter(3, inputBean.getDiaChi());
-			query.setParameter(4, inputBean.getLoaiKinhDoanh());
-			query.setParameter(5, inputBean.getEmail());
-			query.setParameter(6, "");
-			query.setParameter(7, inputBean.getPathJSP());
-			query.setParameter(8, inputBean.getTenWebSite());
-			query.setParameter(9, inputBean.getSdt());
+			query.setParameter(1, inputBean.getHinh1());
+			query.setParameter(2, inputBean.getHinh2());
+			query.setParameter(3, inputBean.getHinh3());
+			query.setParameter(4, inputBean.getHinh4());
+			query.setParameter(5, inputBean.getHinh5());
+			
+			query.setParameter(6, inputBean.getDiaChi());
+			query.setParameter(7, inputBean.getLoaiKinhDoanh());
+			query.setParameter(8, inputBean.getEmail());
+			query.setParameter(9, "");
+			query.setParameter(10, inputBean.getPathJSP());
+			query.setParameter(11, inputBean.getTenWebSite());
+			query.setParameter(12, inputBean.getSdt());
 			cnt = query.executeUpdate();
 			tx.commit();
 		} catch (Exception e) {
@@ -388,8 +392,11 @@ public class DangKiWebDAO {
 		sb.append("   INSERT INTO STORE_INFO    ");
 		sb.append("   (                         ");
 		sb.append("    ID_STORE 	                ");
-		sb.append("   ,IMAGEFOOTER               ");
-		sb.append("   ,IMAGEHEADER               ");
+		sb.append("  		,IMAGEHEADER1      ");
+		sb.append("  		,IMAGEHEADER2    	");
+		sb.append("  		,IMAGEHEADER3    	");
+		sb.append("  		,IMAGEHEADER4     	");
+		sb.append("  		,IMAGEHEADER5   	");
 		sb.append("   ,ADDRESS 	                ");
 		sb.append("   ,CATEGORY 	                ");
 		sb.append("   ,EMAIL 		            ");
@@ -400,6 +407,9 @@ public class DangKiWebDAO {
 		sb.append("   )VALUES                   ");
 		sb.append("   (                         ");
 		sb.append("    ?                         ");
+		sb.append("   ,?                         ");
+		sb.append("   ,?                         ");
+		sb.append("   ,?                         ");
 		sb.append("   ,?                         ");
 		sb.append("   ,?                         ");
 		sb.append("   ,?                         ");
