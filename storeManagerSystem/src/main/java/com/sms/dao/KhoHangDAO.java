@@ -261,6 +261,39 @@ public class KhoHangDAO {
 		return outputRowBean;
 	}
 	
+	
+	/**
+	 * 
+	 * 
+	 * @return
+	 * @throws IOException 
+	 */
+	public KhoHangOutBean getAllKhoHangBySEQ(String pathJSP, String id) {
+		Session session = HibernateUtil.getSessionDAO();
+		String hql = getSQLKhoHangBySEQ(pathJSP);
+		KhoHangOutBean outputRowBean = null;
+		try {
+			Transaction tx = session.beginTransaction();
+			SQLQuery query = session.createSQLQuery(hql);
+			query.setParameter(0, id);
+			List<Object[]> data = query.list();
+			for (Object[] object : data) {
+				outputRowBean = new KhoHangOutBean();
+				outputRowBean.setIdSanPham(SMSComons.convertString(object[0]));
+				outputRowBean.setSoLuong(SMSComons.convertString(object[1]));
+			}
+			tx.commit();
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		} finally {
+			session.flush();
+			session.clear();
+			session.close();
+		}
+		return outputRowBean;
+	}
+	
 	/**
 	 * function insert
 	 * 
@@ -954,6 +987,23 @@ public class KhoHangDAO {
 		sb.append("  FROM                                                                                  ");
 		sb.append("  	" + tableName+ "      KHOHANG                                          ");
 		sb.append("  WHERE KHOHANG.ID_SP = ?            ");
+		return sb.toString();
+	}
+	
+	/**
+	 * insert  product
+	 * @return
+	 */
+	private String getSQLKhoHangBySEQ(String pathJSP) {
+		StringBuffer sb = new StringBuffer();
+		String tableName = pathJSP+"_KHOHANG";                                                         
+		sb.append("  	SELECT                                                                             ");
+		sb.append("  	KHOHANG.ID_SP,                                                                   ");
+		sb.append("  	KHOHANG.SO_LUONG                                                                   ");
+		sb.append("  FROM                                                                                  ");
+		sb.append("  	" + tableName+ "      KHOHANG                                          ");
+		sb.append("  INNER JOIN "+pathJSP+"_product PRODUCT ON KHOHANG.ID_SP = PRODUCT.ID_SP            ");
+		sb.append("  WHERE PRODUCT.SEQ = ?            ");
 		return sb.toString();
 	}
 	

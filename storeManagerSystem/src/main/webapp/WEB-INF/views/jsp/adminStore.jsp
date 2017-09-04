@@ -215,6 +215,7 @@
     <li><a href="/storeManagerSystem/datHang/init"><i class="icon icon-tint"></i> <span style="margin-left: 5px">Đặt hàng</span></a></li>
     <li><a href="/storeManagerSystem/khoHang/init"><i class="icon icon-pencil"></i> <span style="margin-left: 5px">Kho hàng</span></a></li>
     <li class="submenu"> <a href="/storeManagerSystem/dotKhuyenMai/init"><i class="icon icon-file"></i> <span style="margin-left: 5px">Đợt khuyến mãi</span> </a></li>
+    <li class="submenu"> <a href="/storeManagerSystem/sanPhamTrangChu/init"><i class="icon icon-file"></i> <span style="margin-left: 5px">Đăng kí SP trang chủ</span> </a></li>
     <li class="submenu"> 
     <a href="/storeManagerSystem/thongKe/init"><i class="icon icon-info-sign"></i> <span style="margin-left: 5px">Thống kê</span> </a>
     <a href="/storeManagerSystem/thongKe/sanPham/init"><i class="icon icon-info-sign"></i> <span style="margin-left: 5px">TK theo SP</span> </a>

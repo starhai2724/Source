@@ -9,10 +9,8 @@ import org.hibernate.Transaction;
 
 import com.sms.common.SMSComons;
 import com.sms.dao.common.HibernateUtil;
-import com.sms.form.DangKiWebForm;
 import com.sms.input.DangKiWebInputBean;
 import com.sms.input.QuenMatKhauInputBean;
-import com.sms.input.SanPhamInputBean;
 import com.sms.output.DangKiWebOutputBean;
 
 public class DangKiWebDAO {

@@ -19,7 +19,6 @@ public class LayoutForm extends AbstractForm {
 	private String timKiem_TenSP;
 	
 	
-	
 	//su dung cho phan trang (S)
 	
 	private String indexPage;

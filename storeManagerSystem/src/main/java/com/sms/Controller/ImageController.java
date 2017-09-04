@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.sms.dao.CreateTableProductDAO;
 import com.sms.dao.DangKiWebDAO;
 import com.sms.dao.LayoutDAO;
+import com.sms.dao.SystemProductDAO;
 import com.sms.output.DangKiWebOutputBean;
 import com.sms.output.ImageOutputBean;
 
@@ -52,6 +53,18 @@ public class ImageController {
 			return ;
 		}
 		ImageOutputBean imageOutputBean = CreateTableProductDAO.intances.getImage(path, "", id);
+		if(imageOutputBean !=null &&  imageOutputBean.getHinh() != null){
+			byte[] bFile = imageOutputBean.getHinh();
+			response.setContentType("image/jpeg, image/jpg, image/png,image/gif");
+			response.getOutputStream().write(bFile);
+			response.getOutputStream().close();
+		}
+	}
+	
+	@RequestMapping(value = "/trangChu/imageDisplay/{id}", method = RequestMethod.GET)
+	public void getImageSystem(HttpServletResponse response, HttpServletRequest request, @PathVariable("id") String id, HttpSession session)
+			throws ServletException, IOException {
+		ImageOutputBean imageOutputBean = SystemProductDAO.intances.getImage("", id);
 		if(imageOutputBean !=null &&  imageOutputBean.getHinh() != null){
 			byte[] bFile = imageOutputBean.getHinh();
 			response.setContentType("image/jpeg, image/jpg, image/png,image/gif");
