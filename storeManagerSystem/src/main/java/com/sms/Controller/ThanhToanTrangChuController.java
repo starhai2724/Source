@@ -71,7 +71,7 @@ public class ThanhToanTrangChuController {
 			if(khoHangOutBean != null){
 					int conHang = Integer.parseInt(khoHangOutBean.getSoLuong()) - getSoLuongSanPham(parts, sanPhamOutputRowBean.getSEQ()); 
 					if(conHang < 0){
-						message += "Sản phẩm "+sanPhamOutputRowBean.getIdSanPham()+" chỉ còn "+khoHangOutBean.getSoLuong()+" mặt hàng"+"\n";
+						message += "Sản phẩm "+sanPhamOutputRowBean.getTenSP()+" chỉ còn "+khoHangOutBean.getSoLuong()+" mặt hàng"+"\n";
 						check = false; 
 					}
 			}
@@ -210,6 +210,7 @@ public class ThanhToanTrangChuController {
 		form.setSoDienThoai("01644123876");
 		form.setDiaChi("120 Phạm  Văn Chiêu quận Gò Vấp");
 		form.setTenCuaHang("Red shop");
+		form.setPathJSP("cuahangthoitrang");
 		return PAGE_CART;
 	}
 	

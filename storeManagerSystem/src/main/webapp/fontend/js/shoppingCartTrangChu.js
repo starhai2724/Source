@@ -104,29 +104,29 @@ function purchase($scope,$window ,price, priceSaleOff, idSanPham){
 	if(session_price != null && session_price != "0"){
 		if($scope.InputQuantity != null && $scope.InputQuantity != ""){
 			if(priceSaleOff != ""){
-				$scope.cartPrice = parseInt(session_price) + parseInt(priceSaleOff)*parseInt($scope.InputQuantity);
+				$scope.cartPrice = parseFloat(session_price) + parseFloat(priceSaleOff)*parseInt($scope.InputQuantity);
 			}else{
-				$scope.cartPrice = parseInt(session_price) + parseInt(price)*parseInt($scope.InputQuantity);
+				$scope.cartPrice = parseFloat(session_price) + parseFloat(price)*parseInt($scope.InputQuantity);
 			}
 		}else{
 			if(priceSaleOff != ""){
-				$scope.cartPrice = parseInt(session_price) + parseInt(priceSaleOff);
+				$scope.cartPrice = parseFloat(session_price) + parseInt(priceSaleOff);
 			}else{
-				$scope.cartPrice = parseInt(session_price) + parseInt(price);
+				$scope.cartPrice = parseFloat(session_price) + parseInt(price);
 			}
 		}	
 	}else{
 		if($scope.InputQuantity != null && $scope.InputQuantity != ""){
 			if(priceSaleOff != ""){
-				$scope.cartPrice = parseInt(priceSaleOff)*parseInt($scope.InputQuantity);
+				$scope.cartPrice = parseFloat(priceSaleOff)*parseInt($scope.InputQuantity);
 			}else{
-				$scope.cartPrice = parseInt(price)*parseInt($scope.InputQuantity);
+				$scope.cartPrice = parseFloat(price)*parseInt($scope.InputQuantity);
 			}
 		}else{
 			if(priceSaleOff != ""){
-				$scope.cartPrice = parseInt(priceSaleOff);
+				$scope.cartPrice = parseFloat(priceSaleOff);
 			}else{
-				$scope.cartPrice = parseInt(price);
+				$scope.cartPrice = parseFloat(price);
 			}
 		}
 	}
@@ -138,8 +138,7 @@ function purchase($scope,$window ,price, priceSaleOff, idSanPham){
 				session_listProduct += "," +  idSanPham.replace(/^\s+|\s+$/g, '');
 			}
 			listProduct = session_listProduct;
-			alert("list: "+session_listProduct)
-			$scope.cartQuantity = parseInt(session_quantity) + parseInt($scope.InputQuantity);
+			$scope.cartQuantity = parseFloat(session_quantity) + parseInt($scope.InputQuantity);
 		}else {
 			listProduct = session_listProduct +"," +  idSanPham.replace(/^\s+|\s+$/g, '');
 			$scope.cartQuantity = parseInt(session_quantity) + 1;
@@ -151,7 +150,6 @@ function purchase($scope,$window ,price, priceSaleOff, idSanPham){
 				listProductTMP += "," +  idSanPham.replace(/^\s+|\s+$/g, '');
 			}
 			listProduct = listProductTMP;
-			alert("list2: "+listProductTMP);
 			$scope.cartQuantity = parseInt($scope.InputQuantity);
 		}else {
 			listProduct = ","+ idSanPham;
@@ -311,17 +309,17 @@ function remove($scope, $window, id, price, priceSaleOff){
 	
 	
 	if(priceSaleOff != ""){
-		$scope.cartPrice =  parseInt(session_price) - parseInt(priceSaleOff);
-		$scope.thanhTien[id] = parseInt($scope.thanhTien[id]) - parseInt(priceSaleOff);
-		$scope.tongThanhTien = parseInt($scope.tongThanhTien) - parseInt(priceSaleOff);
+		$scope.cartPrice =  parseFloat(session_price) - parseFloat(priceSaleOff);
+		$scope.thanhTien[id] = parseFloat($scope.thanhTien[id]) - parseFloat(priceSaleOff);
+		$scope.tongThanhTien = parseFloat($scope.tongThanhTien) - parseFloat(priceSaleOff);
 	}else{
-		$scope.cartPrice =  parseInt(session_price) - parseInt(price);
-		$scope.tongThanhTien = parseInt($scope.tongThanhTien) - parseInt(price);
+		$scope.cartPrice =  parseFloat(session_price) - parseFloat(price);
+		$scope.tongThanhTien = parseFloat($scope.tongThanhTien) - parseFloat(price);
 	}
 	//tong tien don hang
-	$scope.tongDonHang = parseInt($scope.tongDonHang) - parseInt(price);
+	$scope.tongDonHang = parseFloat($scope.tongDonHang) - parseFloat(price);
 	//tong tien giam gia
-	$scope.tongTienGiamGia = parseInt($scope.tongDonHang) - parseInt($scope.tongThanhTien);
+	$scope.tongTienGiamGia = parseFloat($scope.tongDonHang) - parseFloat($scope.tongThanhTien);
 	
 	$scope.cartQuantity= parseInt(session_quantity) - 1;
 	listProduct = session_listProduct.replace("," + id,"");

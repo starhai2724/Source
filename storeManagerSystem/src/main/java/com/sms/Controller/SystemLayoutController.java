@@ -52,6 +52,7 @@ public class SystemLayoutController {
 	
 	@RequestMapping(value="/trangChu")
 	public String init(@ModelAttribute("LayoutForm") LayoutForm form, HttpSession session){
+		
 		//get loai san pham (S)
 		createDataNhomSP(form);
 		//get loai san pham (E)	
@@ -74,7 +75,7 @@ public class SystemLayoutController {
 			productFormRow.setNgayChinhSua(sanPhamOutputRowBean.getNgayChinhSua());
 			productFormRow.setMoTa(sanPhamOutputRowBean.getMoTa());
 			form.getProducts().add(productFormRow);
-			form.getProducts_SearchByMenu().add(productFormRow);
+//			form.getProducts_SearchByMenu().add(productFormRow);
 			}
 //			form.setPathJSP(path);
 			form.setCartPrice("0");
@@ -84,6 +85,7 @@ public class SystemLayoutController {
 			form.setTenCuaHang("Red shop");
 			form.setDkGiaoHangFree("");
 			form.setLinkFanpage("https://www.facebook.com/C%E1%BB%ADa-h%C3%A0ng-th%E1%BB%9Di-trang-255302581636729/");
+			form.setPathJSP("cuahangthoitrang");
 		return PAGE;
 	}
 	
@@ -297,7 +299,7 @@ public class SystemLayoutController {
 			form.setTongThanhTien(totalMoney +"");
 			
 			form.setTongTienGiamGia( tongDonHang - totalMoney +"");
-			
+			form.setPathJSP("cuahangthoitrang");
 			form.setListId(listId);
 		return PAGE_CART;
 	}
@@ -342,6 +344,7 @@ public class SystemLayoutController {
 		form.setDiaChi("120 Phạm  Văn Chiêu quận Gò Vấp");
 		form.setTenCuaHang("Red shop");
 		form.setLinkFanpage("");
+		form.setPathJSP("cuahangthoitrang");
 		return CHITIET_2;
 	}
 	
@@ -351,23 +354,25 @@ public class SystemLayoutController {
 		createDataNhomSP(form);
 		//get loai san pham (E)
 
-		SanPhamOutputBean sanPhamOutputBean = SystemProductDAO.intances.getProductBysByNameProduct("",form.getTimKiem_TenSP());
-
+		SanPhamOutputBean sanPhamOutputBean ;
 		ProductFormRow productFormRow;
-		for(SanPhamOutputRowBean sanPhamOutputRowBean : sanPhamOutputBean.getLst()){
-			productFormRow = new ProductFormRow();
-			productFormRow.setSEQ(sanPhamOutputRowBean.getSEQ());
-			productFormRow.setIdSanPham(sanPhamOutputRowBean.getIdSanPham());
-			productFormRow.setTenSP(sanPhamOutputRowBean.getTenSP());
-			productFormRow.setTenLoaiSP(sanPhamOutputRowBean.getTenLoaiSP());
-			productFormRow.setGiaMua(sanPhamOutputRowBean.getGiaMua());
-			productFormRow.setGiaBanKM(sanPhamOutputRowBean.getGiaBanKM());
-			productFormRow.setGiaBan(sanPhamOutputRowBean.getGiaBan());
-			productFormRow.setNgayTao(sanPhamOutputRowBean.getNgayTao());
-			productFormRow.setNgayChinhSua(sanPhamOutputRowBean.getNgayChinhSua());
-			productFormRow.setMoTa(sanPhamOutputRowBean.getMoTa());
-			form.getProducts().add(productFormRow);
-		}
+//		sanPhamOutputBean = SystemProductDAO.intances.getProductBysByNameProduct("",form.getTimKiem_TenSP());
+
+//		for(SanPhamOutputRowBean sanPhamOutputRowBean : sanPhamOutputBean.getLst()){
+//			productFormRow = new ProductFormRow();
+//			productFormRow.setSEQ(sanPhamOutputRowBean.getSEQ());
+//			productFormRow.setIdSanPham(sanPhamOutputRowBean.getIdSanPham());
+//			productFormRow.setTenSP(sanPhamOutputRowBean.getTenSP());
+//			productFormRow.setTenLoaiSP(sanPhamOutputRowBean.getTenLoaiSP());
+//			productFormRow.setGiaMua(sanPhamOutputRowBean.getGiaMua());
+//			productFormRow.setGiaBanKM(sanPhamOutputRowBean.getGiaBanKM());
+//			productFormRow.setGiaBan(sanPhamOutputRowBean.getGiaBan());
+//			productFormRow.setNgayTao(sanPhamOutputRowBean.getNgayTao());
+//			productFormRow.setNgayChinhSua(sanPhamOutputRowBean.getNgayChinhSua());
+//			productFormRow.setMoTa(sanPhamOutputRowBean.getMoTa());
+//			form.getProducts().add(productFormRow);
+//		}
+		
 		 sanPhamOutputBean = SystemProductDAO.intances.getProductBysByNameProduct("",form.getTimKiem_TenSP());
 		for(SanPhamOutputRowBean sanPhamOutputRowBean : sanPhamOutputBean.getLst()){
 			productFormRow = new ProductFormRow();
@@ -383,32 +388,29 @@ public class SystemLayoutController {
 			productFormRow.setMoTa(sanPhamOutputRowBean.getMoTa());
 			form.getProducts_SearchByMenu().add(productFormRow);
 		}
+			form.setIdLoaiSP("00");
+			form.setTenLSP("Sản phẩm");
 		
-			form.setTimKiem_TenSP("");
-			form.setCartPrice("0");
-			form.setCartQuantity("0");
+//			form.setCartPrice("0");
+//			form.setCartQuantity("0");
 			form.setSoDienThoai("01644123876");
 			form.setDiaChi("120 Phạm  Văn Chiêu quận Gò Vấp");
 			form.setTenCuaHang("Red shop");
+			form.setPathJSP("cuahangthoitrang");
 			form.setCheckSearchBtn("1");
 		return PAGE;
 	}
 //	
 	@RequestMapping(value="/trangChu/timKiemSanPham/{id}", method = RequestMethod.GET)
-	public String timKiemSanPhamTheoMenu(@ModelAttribute("LayoutForm") LayoutForm form, @PathVariable("path") String path,
+	public String timKiemSanPhamTheoMenu(@ModelAttribute("LayoutForm") LayoutForm form,
 			@PathVariable("id") String id, HttpSession session){
-		//check pathJSP
-		if(!LayoutDAO.intances.checkPathJSP(path)){
-			//quay ve trang login
-//					return new ModelAndView("redirect:/");
-			return "redirect:/";
-		}
 		//get loai san pham (S)
 		createDataNhomSP(form);
 		//get loai san pham (E)
 
 		SanPhamInputBean input = new SanPhamInputBean();
-		SanPhamOutputBean sanPhamOutputBean = CreateTableProductDAO.intances.getSanPhamTimKiemTheoMenu(path, id);
+		SanPhamOutputBean sanPhamOutputBean = SystemProductDAO.intances.getSanPhamTimKiemTheoMenu("", id);
+		System.out.println("sanPhamOutputBean.getLst(): "+sanPhamOutputBean.getLst().size());
 		ProductFormRow productFormRow;
 		for(SanPhamOutputRowBean sanPhamOutputRowBean : sanPhamOutputBean.getLst()){
 			productFormRow = new ProductFormRow();
@@ -423,7 +425,15 @@ public class SystemLayoutController {
 			productFormRow.setNgayChinhSua(sanPhamOutputRowBean.getNgayChinhSua());
 			productFormRow.setMoTa(sanPhamOutputRowBean.getMoTa());
 			form.getProducts().add(productFormRow);
+			form.getProducts_SearchByMenu().add(productFormRow);
 		}
+			for(RegisterProductCategoryFormRow registerProductCategoryFormRow : form.getLoaiSanPham()){
+				if(registerProductCategoryFormRow.getIdProductCategory().equals(id)){
+					form.setIdLoaiSP("00");
+					form.setTenLSP(registerProductCategoryFormRow.getNameProductCategory());
+				}
+			}
+			
 //			form.setTimKiem_TenSP("");
 //			form.setPathJSP(path);
 //			form.setCartPrice("0");
@@ -431,7 +441,7 @@ public class SystemLayoutController {
 			form.setSoDienThoai("01644123876");
 			form.setDiaChi("120 Phạm  Văn Chiêu quận Gò Vấp");
 			form.setTenCuaHang("Red shop");
-			form.setPathJSP(path);
+			form.setPathJSP("cuahangthoitrang");
 		return PAGE;
 	}
 //	

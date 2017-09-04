@@ -99,7 +99,7 @@
                     <p style="color: red;">{{password_err}}</p>
                 </div>
                 <div class ="form-group has-feedback" align="left">
-					<a href ="javascript:void(0)" ng-click="btnRegister();">Đăng kí</a>
+					<a href ="/storeManagerSystem/buoc1" >Đăng kí</a>
 					</br>
 					<a href ="/storeManagerSystem/quenMatKhau/init" >Quên mật khẩu</a>
 					</br>

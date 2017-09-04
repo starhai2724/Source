@@ -164,11 +164,11 @@ public class SanPhamTrangChuController {
 		SanPhamOutputRowBean outputRowBean;
 		int cnt = 0;
 		if(lst != null && form.getLst().size() > 0){
-			for(int i = 0; lst.size() > i; i++){
+			for(int i = 0;  i < form.getLst().size() ; i++){
 				formRow = lst.get(i);	
 				input = new SanPhamInputBean();
 				input.setPathJSP(pathJSP);
-				input.setIdSanPham(pathJSP+"_"+formRow.getSEQ());
+				input.setIdSanPham(formRow.getIdSanPham());
 				input.setSEQ(formRow.getSEQ());
 				outputBean = SystemProductDAO.intances.getProductById_2(input);
 				// check ton tai
@@ -191,19 +191,20 @@ public class SanPhamTrangChuController {
 						cnt = SystemProductDAO.intances.insertSPKM(input);
 					}
 				}
-				if(cnt != 1){
-					form.setMessage("Xử lý đăng kí thành công.");
-					form.setMessageErr("");
-					initData(form, pathJSP);
-					session.setAttribute("PAGEIDSTORE", PAGE);
-					return  SystemCommon.ADMIN_STORE;
-				}else {
-					form.setMessage("Xử lý đăng kí thành công.");
-					form.setMessageErr("");
-				}
 			}
 		}
-		initData(form, pathJSP);
+		
+		if(cnt != 1){
+			form.setMessage("Xử lý đăng kí thành công.");
+			form.setMessageErr("");
+			initData(form, pathJSP);
+			session.setAttribute("PAGEIDSTORE", PAGE);
+			return  SystemCommon.ADMIN_STORE;
+		}else {
+			form.setMessage("Xử lý đăng kí thành công.");
+			form.setMessageErr("");
+			initData(form, pathJSP);
+		}
 		
 		session.setAttribute("PAGEIDSTORE", PAGE);
 		return  SystemCommon.ADMIN_STORE;
@@ -221,6 +222,7 @@ public class SanPhamTrangChuController {
 		form.getLstCategory().put("01", "Điện tử");
 		form.getLstCategory().put("02", "Thời trang");
 		form.getLstCategory().put("03", "Đồng hồ&Phụ kiện");
+		form.getLstCategory().put("04", "Đồ chơi");
 		
 		//reset datail
 		form.getLst().clear();

@@ -92,9 +92,33 @@ public class LayoutForm extends AbstractForm {
 	//Lien He (E)
 	
 	
+	// su dung cho trang chu cua he thong (S)
+	private String idLoaiSP;
+	
+	private String tenLSP;
+	
+	// su dung cho trang chu cua he thong (E)
+	
+	
 	
 	public LienHeForm getLienHeForm() {
 		return lienHeForm;
+	}
+
+	public String getIdLoaiSP() {
+		return idLoaiSP;
+	}
+
+	public void setIdLoaiSP(String idLoaiSP) {
+		this.idLoaiSP = idLoaiSP;
+	}
+
+	public String getTenLSP() {
+		return tenLSP;
+	}
+
+	public void setTenLSP(String tenLSP) {
+		this.tenLSP = tenLSP;
 	}
 
 	public String getIndexPage() {

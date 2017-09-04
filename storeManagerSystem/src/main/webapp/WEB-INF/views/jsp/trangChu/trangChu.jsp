@@ -28,7 +28,6 @@
     <link href="/storeManagerSystem/view/template_2/runecom22.runtime.vn/../static.runtime.vn/App_Themes/RUN022/style.css" rel="stylesheet" type="text/css" />
     <link href="/storeManagerSystem/view/template_2/runecom22.runtime.vn/../static.runtime.vn/App_Themes/RUN022/responsive.css" rel="stylesheet" type="text/css" />
     
-    
     <style type="text/css">
     #wrap{margin:0 auto;
     position:relative;}
@@ -96,7 +95,7 @@
                     </ul>
                         <ul class="nav navbar-nav navbar-right topmenu  hidden-xs hidden-sm">
                             <li class="hotline"><a href="#"><i class="fa fa-phone"></i>Hotline: ${LayoutForm.soDienThoai}</a></li>
-                            <li class="order-cart"><a href="gio-hang.html"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a></li>
+                            <li class="order-cart"><a href="javascript:void(0)"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a></li>
                             <li class="account-login"><a href="/storeManagerSystem/${LayoutForm.pathJSP }/dangNhap"></i>Đăng nhập </a></li>
                             <li class="account-register"><a href="/storeManagerSystem/${LayoutForm.pathJSP }/dangkitaikhoan"><i class="fa fa-key"></i>Đăng ký </a></li>
                         </ul>
@@ -232,7 +231,7 @@
 								<li><a style="padding-top: 18px" ng-click="btnGioiThieu()"><span style="font-size: 16px">Giới thiệu</span></a></li>
 								<c:forEach var="items" items="${LayoutForm.loaiSanPham }">
 							        <li>
-							            <a style="padding-top: 18px" href="#" data-toggle="dropdown"><span style="font-size: 16px">${items.nameProductCategory }</span> <b class="caret"></b></a>
+							            <a style="padding-top: 18px" href="/storeManagerSystem/trangChu/timKiemSanPham/${items.idProductCategory }" ><span style="font-size: 16px">${items.nameProductCategory }</span> </a>
 							        </li>
 						        </c:forEach>
 								<li> <a style="padding-top: 18px" ng-click="btnTinTuc()"><span style="font-size: 16px">Tin tức</span></a></li>
@@ -278,26 +277,62 @@
                 </div>
             </div>
     <div class="main">
-        <div class="container" style="width: 1700px">
+        <div class="container" style="width: 1500px">
             <div class="row">
                     <div class="col-md-12">
+    <c:if test="${(!empty LayoutForm.products) && (LayoutForm.idLoaiSP ne ('00'))}">        
+    <c:forEach var="items_2" items="${LayoutForm.loaiSanPham }">                
     <section class="product-content clearfix">
-        <h1 class="title clearfix"><span>Sản phẩm</span></h1>
-        <!-- <nav class="navbar navbar-default product-filter">
-            <ul class="display">
-                <li id="grid" class="active grid"><a href="#" title="Grid"><i class="fa fa-th-large"></i></a></li>
-                <li id="list" class="list"><a href="#" title="List"><i class="fa fa-th-list"></i></a></li>
-            </ul>
-            <div class="limit">
-                <span>Sản phẩm/trang</span>
-            </div>
-        </nav> -->
+        <h1 class="title clearfix"><span>${items_2.nameProductCategory}</span></h1>
         <!-- San pham (S)  -->
-        <div class="product-block product-grid clearfix row" style="width: 1700px">
+        <div class="product-block product-grid clearfix row" style="width: 1500px">
+        <c:forEach var="items" items="${LayoutForm.products }">
+        		<c:if test="${items.idLoaiSP eq items_2.idProductCategory}">
+                <div class="col-sm-3 col-sm-3 col-xs-14 product-item-box">
+                    <div class="product-item " style="height: 550px; width: 320px; text-align: center;" >
+                        <div style="width: 200px; text-align: center">
+                            <a title="${items.tenSP}" href="<c:url value="/trangChu/chiTietSP/${items.SEQ}" />">
+                                <img style="width: 300px;" src="/storeManagerSystem/myImage/trangChu/imageDisplay/${items.SEQ}"  />
+                            </a>
+                        </div>
+                        <div class="right-block">
+                            <h2 class="name">
+                                <a style="font-size: 17px"  title="${items.tenSP}">${items.tenSP}</a>
+                            </h2>
+                            <div class="price">
+                                    <c:if test="${!empty items.giaBanKM }">
+										<strike class="price-old"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBan}" /> VNĐ</strike>
+									</c:if>
+									<c:if test="${empty items.giaBanKM }">
+										<span class="price-new"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBan}" /> VNĐ</span>
+									</c:if>
+									<c:if test="${!empty items.giaBanKM }">
+										<span class="price-new"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBanKM}" /> VNĐ</span>
+									</c:if>
+                            </div>
+                            <div class="addtocart-button clearfix">
+                                <a class="add-to-cart" ng-click="btnPurchase('${items.giaBan}','${items.giaBanKM }' ,'${items.SEQ} ')"><span></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </c:if>
+        </c:forEach> 
+                <!-- San pham (E)  -->        
+        </div>
+    </section>
+    </c:forEach>
+    </c:if>
+    <!-- San pham khi search (S)  -->
+    <c:if test="${!empty LayoutForm.products_SearchByMenu }">        
+    <section class="product-content clearfix">
+        <h1 class="title clearfix"><span>${LayoutForm.tenLSP}</span></h1>
+        <!-- San pham (S)  -->
+        <div class="product-block product-grid clearfix row" style="width: 1500px">
         <c:forEach var="items" items="${LayoutForm.products_SearchByMenu }">
-                <div class="col-md-3 col-sm-3 col-xs-14 product-item-box">
-                    <div class="product-item " style="height: 600px; text-align: center;" >
-                        <div style="width: 300px; text-align: center">
+                <div class="col-sm-3 col-sm-3 col-xs-14 product-item-box">
+                    <div class="product-item " style="height: 550px; width: 320px; text-align: center;" >
+                        <div style="width: 200px; text-align: center">
                             <a title="${items.tenSP}" href="<c:url value="/trangChu/chiTietSP/${items.SEQ}" />">
                                 <img style="width: 300px;" src="/storeManagerSystem/myImage/trangChu/imageDisplay/${items.SEQ}"  />
                             </a>
@@ -327,46 +362,9 @@
                 <!-- San pham (E)  -->        
         </div>
     </section>
-    <!-- San pham (S)  -->
-    <section class="product-content clearfix">
-        <h1 class="title clearfix"><span>Đồng hồ</span></h1>
-        <div class="product-block product-grid clearfix row" style="width: 1600px">
-        <c:forEach var="items" items="${LayoutForm.products_SearchByMenu }">
-                <div class="col-md-3 col-sm-3 col-xs-14 product-item-box">
-                    <div class="product-item " style="height: 600px" >
-                        <div style="width: 300px">
-                            <a title="${items.tenSP}" href="<c:url value="/trangChu/chiTietSP/${items.SEQ}" />">
-                                <img style="width: 300px" src="/storeManagerSystem/myImage/trangChu/imageDisplay/${items.SEQ}"  />
-                            </a>
-                                <!-- <span class="promotion">-20%</span> -->
-                        </div>
-                        <div class="right-block">
-                            <h2 class="name">
-                                <a style="font-size: 17px"  title="${items.tenSP}">${items.tenSP}</a>
-                            </h2>
-                            <div class="price">
-                                    <c:if test="${!empty items.giaBanKM }">
-										<strike class="price-old"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBan}" /> VNĐ</strike>
-									</c:if>
-									<c:if test="${empty items.giaBanKM }">
-										<span class="price-new"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBan}" /> VNĐ</span>
-									</c:if>
-									<c:if test="${!empty items.giaBanKM }">
-										<span class="price-new"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBanKM}" /> VNĐ</span>
-									</c:if>
-                            </div>
-                            <div class="addtocart-button clearfix">
-                                <a class="add-to-cart" ng-click="btnPurchase('${items.giaBan}','${items.giaBanKM }' ,'${items.SEQ} ')"><span></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </c:forEach> 
-        </div>
-    </section>
-    <!-- San pham (E)  -->
-    
-                    </div>
+    </c:if>
+    <!-- San pham khi search (E)  -->
+              </div>
             </div>
         </div>
     </div>
@@ -445,7 +443,6 @@
                                 <li><a href="https://www.facebook.com/C%E1%BB%ADa-h%C3%A0ng-th%E1%BB%9Di-trang-255302581636729/" target="_blank"><i class="fa fa-facebook"></i></a></li>
                                 <li><a target="_blank"><i class="fa fa-youtube"></i></a></li>
                                 <li><a target="_blank"><i class="fa fa-twitter "></i></a></li>
-                                
                                 <div id="fb-root"></div>
 
                             </ul>

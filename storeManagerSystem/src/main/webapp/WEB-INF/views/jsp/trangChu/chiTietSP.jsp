@@ -227,14 +227,7 @@
 								<li><a style="padding-top: 18px" ng-click="btnGioiThieu()"><span style="font-size: 16px">Giới thiệu</span></a></li>
 								<c:forEach var="items" items="${LayoutForm.loaiSanPham }">
 							        <li>
-							            <a style="padding-top: 18px" href="#" data-toggle="dropdown"><span style="font-size: 16px">${items.nameProductCategory }</span> <b class="caret"></b></a>
-							            <c:if test="${!empty items.menuRowForms }">
-								            <ul id="sub">
-											            <c:forEach var="menus" items="${items.menuRowForms }">
-											            			<li><a style="font-size: 14px" href="/storeManagerSystem/${LayoutForm.pathJSP }/searchByMenu/${menus.idLoaiSp}/${items.nameProductCategory}" ><span style="font-size: 16px">${menus.tenLoaiSp }</span></a></li>
-											            </c:forEach>
-								            </ul>
-							            </c:if>
+							            <a style="padding-top: 18px" href="/storeManagerSystem/trangChu/timKiemSanPham/${items.idProductCategory }" ><span style="font-size: 16px">${items.nameProductCategory }</span> </a>
 							        </li>
 						        </c:forEach>
 								<!-- <li> <a style="padding-top: 18px" ng-click="btnTinTuc()"><span style="font-size: 16px">Tin tức</span></a></li>
@@ -277,7 +270,7 @@
 				        <div class="product-block clearfix">
 				            <div class="row">
 				                <div class="col-md-6 col-sm-6 col-xs-12 product-image clearfix">
-				                    <div class="sp-loading"><img src="/storeManagerSystem/myImage/trangChu/imageDisplay/${items.SEQ}" alt=""><br></div>
+				                    <div class="sp-loading"><img style="width: 300px;" src="/storeManagerSystem/myImage/trangChu/imageDisplay/${items.SEQ}" alt=""><br></div>
 				                    <div class="sp-wrap">
 				                    </div>
 				                </div>
@@ -527,6 +520,6 @@
 </form:form> 
 </div>   
 </body>
-<script src="/storeManagerSystem/view/js/shoppingCart.js"></script>
+<script src="/storeManagerSystem/view/js/shoppingCartTrangChu.js"></script>
 </html>
 
