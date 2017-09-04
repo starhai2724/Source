@@ -32,7 +32,7 @@
 		content="RUNTIME.VN cung cấp dịch vụ thiết kế web bán hàng chuyên nghiệp, thiết kế website giá rẻ, chuẩn SEO, tạo web tự động trong 30s, trải nghiệm miễn phí với thiết kế chất lượng cao, chuyên nghiệp và uy tín"
 		name="description">
 		<meta name="keywords">
-			<link href="http://runtime.vn/Uploads/images/logo/logo-runtime.png"
+			<link href="#"
 				rel="shortcut icon" type="image/x-icon">
 				<meta name="viewport" content="width=device-width, initial-scale=1">
 					<meta content="vi_VN" property="og:locale">
@@ -43,8 +43,8 @@
 								<meta
 									content="RUNTIME.VN cung cấp dịch vụ thiết kế web bán hàng chuyên nghiệp, thiết kế website giá rẻ, chuẩn SEO, tạo web tự động trong 30s, trải nghiệm miễn phí với thiết kế chất lượng cao, chuyên nghiệp và uy tín"
 									property="og:description">
-									<meta content="http://runtime.vn" property="og:image">
-										<meta content="http://runtime.vn/" property="og:url">
+									<meta content="#" property="og:image">
+										<meta content="#" property="og:url">
 											<meta content="CÔNG TY TNHH PHÁT TRIỂN CÔNG NGHỆ RUNTIME"
 												property="og:site_name">
 
@@ -184,14 +184,14 @@
 							<div class="container">
 								<div class="navbar-header">
 									<a class="navbar-brand hidden-xs hidden-sm"
-										href="http://runtime.vn/"> <img
+										href="#"> <img
 										style="width: 350px; height: 40px" alt="runtime"
 										class="scroller-logo"
 										src="/storeManagerSystem/view/layoutHeader/img/logo.png">
 											<img src="/storeManagerSystem/view/layoutHeader/img/logo.png"
 											class="default-logo img-responsive" alt="runtime"></a> <a
 										class="navbar-brand logo-mobile hidden-md hidden-lg"
-										href="http://runtime.vn/"> <img alt="runtime"
+										href="#"> <img alt="runtime"
 										class="scroller-logo"
 										src="/storeManagerSystem/view/trangChuAdmin_files/logo-runtime.png">
 											<img
@@ -458,7 +458,7 @@
 														<p style="text-align: justify;">&nbsp;</p>
 
 														<a class="pull-right"
-															href="http://runtime.vn/tinh-nang.html#feature01"><i
+															href="#"><i
 															class="fa fa-angle-double-right"></i> Xem thêm</a>
 													</div>
 												</div>
@@ -486,7 +486,7 @@
 														</p>
 
 														<a class="pull-right"
-															href="http://runtime.vn/tinh-nang.html#feature02"><i
+															href="#"><i
 															class="fa fa-angle-double-right"></i> Xem thêm</a>
 													</div>
 												</div>
@@ -513,7 +513,7 @@
 														</p>
 
 														<a class="pull-right"
-															href="http://runtime.vn/tinh-nang.html#feature03"><i
+															href="#"><i
 															class="fa fa-angle-double-right"></i> Xem thêm</a>
 													</div>
 												</div>
@@ -541,7 +541,7 @@
 														</p>
 
 														<a class="pull-right"
-															href="http://runtime.vn/tinh-nang.html#feature04"><i
+															href="#"><i
 															class="fa fa-angle-double-right"></i> Xem thêm</a>
 													</div>
 												</div>
@@ -568,7 +568,7 @@
 														</p>
 
 														<a class="pull-right"
-															href="http://runtime.vn/tinh-nang.html#feature05"><i
+															href="#"><i
 															class="fa fa-angle-double-right"></i> Xem thêm</a>
 													</div>
 												</div>
@@ -594,7 +594,7 @@
 														</p>
 
 														<a class="pull-right"
-															href="http://runtime.vn/tinh-nang.html#feature05"><i
+															href="#"><i
 															class="fa fa-angle-double-right"></i> Xem thêm</a>
 													</div>
 												</div>
@@ -624,7 +624,7 @@
 														</p>
 
 														<a class="pull-right"
-															href="http://runtime.vn/tinh-nang.html#feature05"><i
+															href="#"><i
 															class="fa fa-angle-double-right"></i> Xem thêm</a>
 													</div>
 												</div>
@@ -649,7 +649,7 @@
 														</p>
 
 														<a class="pull-right"
-															href="http://runtime.vn/tinh-nang.html#feature05"><i
+															href="#"><i
 															class="fa fa-angle-double-right"></i> Xem thêm</a>
 													</div>
 												</div>
@@ -675,7 +675,7 @@
 														</p>
 
 														<a class="pull-right"
-															href="http://runtime.vn/tinh-nang.html#feature05"><i
+															href="#"><i
 															class="fa fa-angle-double-right"></i> Xem thêm</a>
 													</div>
 												</div>

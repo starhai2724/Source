@@ -55,6 +55,10 @@
                     </button>
                 </div>
                 <div class="">
+                									<ul class="create-menu navbar-right hidden-xs">
+										<li><a class="btn btn-primary"
+											href="/storeManagerSystem/buoc1">Tạo web</a></li>
+									</ul>
 									<ul
 										class="nav navbar-nav navbar-right menu-top collapse navbar-collapse"
 										id="menu" aria-expanded="false">

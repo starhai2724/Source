@@ -138,7 +138,6 @@ function purchase($scope,$window ,price, priceSaleOff, idSanPham){
 				session_listProduct += "," +  idSanPham.replace(/^\s+|\s+$/g, '');
 			}
 			listProduct = session_listProduct;
-			alert("list: "+session_listProduct)
 			$scope.cartQuantity = parseInt(session_quantity) + parseInt($scope.InputQuantity);
 		}else {
 			listProduct = session_listProduct +"," +  idSanPham.replace(/^\s+|\s+$/g, '');
@@ -151,7 +150,6 @@ function purchase($scope,$window ,price, priceSaleOff, idSanPham){
 				listProductTMP += "," +  idSanPham.replace(/^\s+|\s+$/g, '');
 			}
 			listProduct = listProductTMP;
-			alert("list2: "+listProductTMP);
 			$scope.cartQuantity = parseInt($scope.InputQuantity);
 		}else {
 			listProduct = ","+ idSanPham;

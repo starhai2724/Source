@@ -55,6 +55,10 @@
                     </button>
                 </div>
                 <div class="">
+                									<ul class="create-menu navbar-right hidden-xs">
+										<li><a class="btn btn-primary"
+											href="/storeManagerSystem/buoc1">Tạo web</a></li>
+									</ul>
 									<ul
 										class="nav navbar-nav navbar-right menu-top collapse navbar-collapse"
 										id="menu" aria-expanded="false">
@@ -96,7 +100,7 @@
 	<br>
 	<a href="http:/#" target="_blank">Xem hướng dẫn thanh toán thẻ quốc tế</a><br>
 	<br>
-	<a href="http://runtime.vn/thanh-toan.html#" target="_blank">Xem hướng dẫn thanh toán&nbsp;chuyển khoản online bằng thẻ nội địa ATM</a><br>
+	<a href="#" target="_blank">Xem hướng dẫn thanh toán&nbsp;chuyển khoản online bằng thẻ nội địa ATM</a><br>
 	<br>
 	<strong>2. Thu phí tận nơi</strong></p>
 <p>
@@ -114,7 +118,7 @@
 <p>
 	Thời gian cung cấp dịch vụ: Ngay lập tức.</p>
 <p>
-	<strong>4. Thanh toán qua chuyển khoản ngân hàng (<a href="http://runtime.vn/thanh-toan.html#" target="_blank">Xem hướng dẫn chi tiết</a>)</strong></p>
+	<strong>4. Thanh toán qua chuyển khoản ngân hàng (<a href="#" target="_blank">Xem hướng dẫn chi tiết</a>)</strong></p>
 <p>
 	Để thuận tiện và tiết kiệm thời gian di chuyển, khách hàng có thể thanh toán qua chuyển khoản ngân hàng hoặc Internet banking.</p>
 <p>
