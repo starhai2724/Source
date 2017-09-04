@@ -61,24 +61,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 	<!-- header-section-ends -->
-			<div class="banner-top">
-		<div class="container">
-				<nav class="navbar navbar-default" role="navigation">
-	    <div class="navbar-header">
-	        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-		        <span class="sr-only">Toggle navigation</span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-	        </button>
-				<div class="logo">
-					<h1><a href="/storeManagerSystem/${LayoutForm.pathJSP }"><span>E</span> -Trang chủ</a></h1>
-				</div>
-	    </div>
-	</nav>
-	<!--/.navbar-->
-</div>
-</div>
 		<!-- content-section-starts-here -->
 		<div class="container">
 			<div class="main-content">

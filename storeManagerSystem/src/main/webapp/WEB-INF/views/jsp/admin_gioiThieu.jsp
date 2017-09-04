@@ -55,6 +55,10 @@
                     </button>
                 </div>
                 <div class="">
+                									<ul class="create-menu navbar-right hidden-xs">
+										<li><a class="btn btn-primary"
+											href="/storeManagerSystem/buoc1">Tạo web</a></li>
+									</ul>
 									<ul
 										class="nav navbar-nav navbar-right menu-top collapse navbar-collapse"
 										id="menu" aria-expanded="false">
@@ -101,7 +105,7 @@
 			<article class="clearfix">
 				<div class="col-md-5">
 					<div class="box-img">
-						<img class="img-responsive" src="/storeManagerSystem/view/gioiThieu_files/7_150.jpg"></div>
+						<img class="img-responsive" src="/storeManagerSystem/view/templateDK/7_150.jpg"></div>
 				</div>
 				<div class="col-md-7">
 					<p style="text-align: justify;">
@@ -126,7 +130,7 @@
 				</div>
 				<div class="col-md-5 ">
 					<div class="box-img">
-						<img class="img-responsive" src="/storeManagerSystem/view/gioiThieu_files/img2.jpg"></div>
+						<img class="img-responsive" src="/storeManagerSystem/view/templateDK/img2.jpg"></div>
 				</div>
 			</article>
 			<article class="clearfix list-content">

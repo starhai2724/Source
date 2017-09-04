@@ -105,7 +105,6 @@
                     </ul>
                         <ul class="nav navbar-nav navbar-right topmenu  hidden-xs hidden-sm">
                             <li class="hotline"><a href="#"><i class="fa fa-phone"></i>Hotline: ${LayoutForm.soDienThoai}</a></li>
-                            <li class="order-cart"><a href="gio-hang.html"><i class="fa fa-shopping-cart"></i>Giỏ hàng</a></li>
                             <li class="account-login"><a href="/storeManagerSystem/${LayoutForm.pathJSP }/dangNhap"></i>Đăng nhập </a></li>
                             <li class="account-register"><a href="/storeManagerSystem/${LayoutForm.pathJSP }/dangkitaikhoan"><i class="fa fa-key"></i>Đăng ký </a></li>
                         </ul>
@@ -323,7 +322,9 @@
 				                        </div>
 				                    </div>
 				                    <div class="button" >
-				                        <a  class="btn btn-primary" href="javascript:void(0)" ng-click="btnPurchase('${items.giaBan}','${items.giaBanKM }' ,'${items.SEQ} ')"><i class="glyphicon glyphicon-shopping-cart"></i>Thêm giỏ hàng</a>
+				                        <%-- <a  class="btn btn-primary" href="javascript:void(0)" ng-click="btnPurchase('${items.giaBan}','${items.giaBanKM }' ,'${items.SEQ} ')"><i class="glyphicon glyphicon-shopping-cart"></i>Thêm giỏ hàng</a> --%>
+				                     <a href="javascript:void(0)" href="javascript:void(0)" ng-click="btnPurchase('${items.giaBan}','${items.giaBanKM }' ,'${items.SEQ} ')"class="btn btn-default"><i class="glyphicon glyphicon-shopping-cart"></i>Thêm giỏ hàng</a>
+                       				 <a href="javascript:void(0)" ng-click="btnCart();" class="btn btn-primary"><i class="glyphicon glyphicon-ok"></i>Mua ngay</a>
 				                    </div>
 				                </div>
 				            </div>
@@ -417,7 +418,45 @@
 
           </div>
           <div class="col-md-3">
-			
+			    <!--Begin-->
+    <div class="box-sale-policy ng-scope" ng-controller="moduleController" ng-init="initSalePolicyController(&#39;Shop&#39;)">
+        <h3><span>Chính sách bán hàng</span></h3>
+        <div class="sale-policy-block">
+            <ul>
+                <li>Giao hàng TOÀN QUỐC</li>
+                <li>Thanh toán khi nhận hàng</li>
+                <li>Đổi trả trong <span>15 ngày</span></li>
+                <li>Hoàn ngay tiền mặt</li>
+                <li>Chất lượng đảm bảo</li>
+                <li>Miễn phí vận chuyển:<span>Đơn hàng từ 3 món trở lên</span></li>
+            </ul>
+        </div>
+        <div class="buy-guide">
+            <h3>Hướng Dẫn Mua Hàng</h3>
+            <ul>
+                <li>
+                    Mua hàng trực tiếp tại website
+                    <b class="ng-binding"> http://www.agb.vn</b>
+                </li>
+                <li>
+                    Gọi điện thoại <strong class="ng-binding">
+                        ${LayoutForm.soDienThoai}
+                    </strong> để mua hàng
+                </li>
+                <li>
+                    Mua tại Trung tâm CSKH:<br>
+                    <strong class="ng-binding">${LayoutForm.diaChi}</strong>
+                    <a href="http://runecom22.runtime.vn/ban-do.html" rel="nofollow" target="_blank">Xem Bản Đồ</a>
+                </li>
+                <li>
+                    Mua sỉ/buôn xin gọi <strong class="ng-binding">
+                        0908 77 00 95
+                    </strong> để được
+                    hỗ trợ.
+                </li>
+            </ul>
+        </div>
+    </div>
 		</div>
      </div>
   </div>

@@ -171,8 +171,8 @@
                                 <thead >
                                     <tr >
                                     	<!-- <th style="text-align: center; width: 5px;"></th> -->
-                                        <th style="text-align: center; width: 10px;padding-left: 0px;padding-right: 0px; ">STT</th>
-										<th style="text-align: center; width: 50px;padding-left: 5px;padding-right: 4px; ">Mã SP</th>
+                                        <th style="text-align: center; width: 35px;padding-left: 0px;padding-right: 0px; ">STT</th>
+										<th style="text-align: center; width: 40px;padding-left: 5px; ">Mã SP</th>
 										<th style="text-align: center; width: 150px">Tên sản phẩm</th>
 										<th style="text-align: center; width: 120px">Loại SP</th>
 										<th style="text-align: center; width: 80px;padding-left: 5px;padding-right: 4px; ">Giá mua</th>

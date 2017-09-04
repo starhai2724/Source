@@ -35,6 +35,10 @@ public class TestController {
 	public String admingioithieu(){
 		return "admin_gioiThieu";
 	}
+	@RequestMapping(value ="/chiTiet", method = RequestMethod.GET)	
+	public String chitiet(){
+		return "template_2/chiTiet";
+	}
 	
 	@RequestMapping(value ="/checkout", method = RequestMethod.GET)	
 	public String checkout(){
