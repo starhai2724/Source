@@ -189,6 +189,31 @@ public class SystemProductDAO {
 		return cnt;
 	}
 	
+	/**
+	 * function delete 
+	 * 
+	 */
+	public int deleteProductBySEQ(String seq){
+		//session
+		Session session = HibernateUtil.getSessionDAO();
+		int cnt = 0; 
+		Transaction tx = session.beginTransaction();
+		//sql 
+		String hql = getSQlDeleteById();
+		try {
+			SQLQuery query = session.createSQLQuery(hql);
+			query.setParameter(0, seq);
+			cnt = query.executeUpdate();
+			tx.commit();
+		} catch (Exception e) {
+		} finally {
+			session.flush();
+			session.clear();
+			session.close();
+		}
+		return cnt;
+	}
+	
 	
 	/**
 	 * 
@@ -740,6 +765,53 @@ public class SystemProductDAO {
 		}
 		return outputBean;
 	}
+	/**
+	 * 
+	 * 
+	 * @return
+	 * @throws IOException 
+	 */
+	public SanPhamOutputBean getSanPhamApDung_3() {
+		Session session = HibernateUtil.getSessionDAO();
+		String hql = getSQLSanPhamApDung_3();
+		SanPhamOutputBean outputBean = new SanPhamOutputBean();
+		SanPhamOutputRowBean outputRowBean = null;
+		try {
+			session.getTransaction().begin();
+			SQLQuery query = session.createSQLQuery(hql);
+			List<Object[]> data = query.list();
+			for (Object[] object : data) {
+				outputRowBean = new SanPhamOutputRowBean();
+				outputRowBean.setIdSanPham(SMSComons.convertString(object[0]));
+				outputRowBean.setTenSP(SMSComons.convertString(object[1]));
+				outputRowBean.setIdCuaHang(SMSComons.convertString(object[2]));
+				outputRowBean.setIdLoaiSP(SMSComons.convertString(object[3]));
+				outputRowBean.setGiaMua(SMSComons.convertString(object[4]));
+				outputRowBean.setGiaBan(SMSComons.convertString(object[5]));
+				outputRowBean.setGiaBanKM(SMSComons.convertString(object[6]));
+				outputRowBean.setHinh((byte[]) object[7]);
+				outputRowBean.setMoTa(SMSComons.convertString(object[8]));
+				outputRowBean.setTrangThai(SMSComons.convertString(object[9]));
+				outputRowBean.setNgayTao(SMSComons.convertString(object[10]));
+				outputRowBean.setNgayChinhSua(SMSComons.convertString(object[11]));
+				outputRowBean.setSEQ(SMSComons.convertString(object[12]));
+				outputRowBean.setHinhChiTiet1((byte[]) object[13]);
+				outputRowBean.setHinhChiTiet2((byte[]) object[14]);
+				outputRowBean.setHinhChiTiet3((byte[]) object[15]);
+				outputBean.getLst().add(outputRowBean);
+			}
+			
+			session.getTransaction().commit();
+		} catch (HibernateException e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		} finally {
+			session.flush();
+			session.clear();
+			session.close();
+		}
+		return outputBean;
+	}
 
 	/**
 	 * 
@@ -1008,6 +1080,35 @@ public class SystemProductDAO {
 	if(!"".equals(limit)){
 		sb.append("     	LIMIT 10 OFFSET "+limit+"                                                              ");
 	}
+		return sb.toString();
+	}
+	
+	/**
+	 * getSQlMaxIdStoreOwner
+	 * @return
+	 */
+	private String getSQLSanPhamApDung_3() {
+		StringBuffer sb = new StringBuffer();
+	sb.append("  	SELECT                           ");
+	sb.append("  	product.ID_SP,                   ");
+	sb.append("  	product.TEN_SP,                  ");
+	sb.append("  	product.ID_CUAHANG,              ");
+	sb.append("  	product.ID_LOAI_SP,              ");
+	sb.append("  	product.GIA_MUA,                 ");
+	sb.append("  	product.GIA_BAN,                 ");
+	sb.append("  	product.GIA_BAN_KM,              ");
+	sb.append("  	product.HINH,                    ");
+	sb.append("  	product.MO_TA,                   ");
+	sb.append("  	product.TRANG_THAI,              ");
+	sb.append("  	product.NGAY_TAO,                ");
+	sb.append("  	product.NGAY_CHINH_SUA,          ");
+	sb.append("  	product.SEQ,                     ");
+	sb.append("  	product.CHITIET_1,               ");
+	sb.append("  	product.CHITIET_2,               ");
+	sb.append("  	product.CHITIET_3                ");
+	sb.append("  FROM                                ");
+	sb.append("  	PRODUCT product                  ");
+	sb.append("  	ORDER BY   product.ID_SP                ");
 		return sb.toString();
 	}
 	
@@ -1345,7 +1446,7 @@ private String getSQLProductByNgayTao(String pathJSP,String ngayTao) {
 		StringBuffer sb = new StringBuffer();
 		sb.append("  DELETE  ");
 		sb.append("  FROM "+tableName+"  ");
-		sb.append("  WHERE ID_SP = ?  ");
+		sb.append("  WHERE SEQ = ?  ");
 		return sb.toString();
 	}
 	

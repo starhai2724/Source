@@ -70,6 +70,30 @@ public class ThoiHanSuDungDAO {
 		return cnt;
 	}
 	
+	/**
+	 * function update 
+	 * 
+	 */
+	public int updateStoreOnwer(String id, String deleteFlag){
+		//session
+		Session session = HibernateUtil.getSessionDAO();
+		int cnt = 0; 
+		Transaction tx = session.beginTransaction();
+		//sql 
+		String hql = getSQLUpdate();
+		try {
+			SQLQuery query = session.createSQLQuery(hql);
+			query.setParameter(0, deleteFlag);
+			query.setParameter(1, id);
+			cnt = query.executeUpdate();
+			tx.commit();
+		} catch (Exception e) {
+		} finally {
+			session.close();
+		}
+		return cnt;
+	}
+	
 	//--------------------------------------------------------------------------
 	/**
 	 * getSQlMaxIdStoreOwner
@@ -95,9 +119,9 @@ public class ThoiHanSuDungDAO {
 	 */
 	private String getSQLUpdate() {
 		StringBuffer sb = new StringBuffer();
-		sb.append("  UPDATE  store_info     		");
-		sb.append("  		 SET TIME_USE 	= ?	        ");
-		sb.append("  		 WHERE ID_STORE = ?        ");
+		sb.append("  UPDATE  store_owner     		");
+		sb.append("  		 SET DELETE_FLAG 	= ?	        ");
+		sb.append("  		 WHERE ID_STORE_OWNER = ?        ");
 		return sb.toString();
 	}
 }

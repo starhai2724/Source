@@ -35,7 +35,6 @@ public class ThoiHanSuDungController {
 		session.setAttribute(SystemCommon.PAGE_ID, THOI_HAN_SD);
 		return SystemCommon.PAGE_HOME;
 	}
-	
 	/**
 	 * 
 	 * @param form
@@ -82,6 +81,7 @@ public class ThoiHanSuDungController {
 		
 		String d = year + month + day;
 		int cnt = ThoiHanSuDungDAO.intances.update(idStore, d);
+		ThoiHanSuDungDAO.intances.updateStoreOnwer(idStore, "0");
 		
 		if(cnt == 1){
 			form.setMessage("Gia hạn thành công.");

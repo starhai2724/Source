@@ -26,8 +26,6 @@
 					<button style="margin-right: 30px" type="button" class="btn btn-info" ng-click = "btnHuyQLDT()">
 					  <i class="glyphicon glyphicon-refresh"></i> Refesh
 					</button>
-<!-- 					<input type="button" name="" class="btn btn-info " ng-click="exportToExcel('#tableExport')" value="In"> -->
-<!-- 					<input type="button" name="" class="btn btn-info " ng-click = "btnHuyQLDT()"  value="Hủy"> -->
 				</div>
 			</div>
 		</div>
@@ -52,7 +50,7 @@
 		</div>
 		<!--Message (E)-->
 		<!-- Detail (S) -->
-		<%-- <c:if test="${!empty ThoiHanSuDungForm.lst }"> --%>
+		<c:if test="${!empty ThoiHanSuDungForm.lst }">
 		<div class="panel-body">
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
@@ -79,17 +77,17 @@
 														<button class="btn" type="button" >
 															<span class="fa fa-list-alt" data-toggle="tooltip" data-original-title="Gia hạn" ng-click="btnUpdate('${items.idStoreOnwer}');"></span>
 														</button>
-														<button class="btn" type="button" >
+														<%-- <button class="btn" type="button" >
 															<span class="glyphicon glyphicon-check" data-toggle="tooltip" data-original-title="Vô hiệu" ng-click="btnVoHieu('${items.idStoreOnwer}');"></span>
-														</button>
+														</button> --%>
 		                                        </td>
 		                                 </tr>
 		                             </c:forEach>    
                                 </tbody>
                             </table>
                </div>
-<%--                </c:if>          --%>
+               </c:if>         
 		</form:form>
-<!-- 		<script src="/storeManagerSystem/view/js/thoiHanSuDung.js"></script> -->
+		<script src="/storeManagerSystem/view/js/thoiHanSuDung.js"></script>
           <!-- Detail (E) -->
 	</div>

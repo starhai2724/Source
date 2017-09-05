@@ -271,9 +271,10 @@
           <!-- <li>
             <a href="/storeManagerSystem/storeOwnerList"><i class="fa fa-dashboard fa-fw"></i> Người dùng</a>
           </li> -->
-              <li class="active"><a href="href="/storeManagerSystem/storeOwnerList""><i class="icon icon-home"></i><span style="margin-left: 5px">  Người dùng</span></a> </li>
+              <li class="active"><a href="/storeManagerSystem/storeOwnerList"><i class="icon icon-home"></i><span style="margin-left: 5px">  Người dùng</span></a> </li>
 <!--     <li> <a href="/storeManagerSystem/customer/init"><i class="icon icon-signal"></i> <span style="margin-left: 5px">  Khách hàng</span></a> </li> -->
-    <li> <a href="/storeManagerSystem/thoiGianSuDung/init"><i class="icon icon-inbox"></i> <span style="margin-left: 5px">   Quản lý thời gian sử dụng</span></a> </li>
+    		<li> <a href="/storeManagerSystem/thoiGianSuDung/init"><i class="icon icon-inbox"></i> <span style="margin-left: 5px">   Quản lý thời gian sử dụng</span></a> </li>
+    		<li> <a href="/storeManagerSystem/quanLySanPhamTrangChu/init"><i class="icon icon-inbox"></i> <span style="margin-left: 5px">   Quản lý sản phẩm</span></a> </li>
         </ul>
       </div>
       <!-- /.sidebar-collapse -->

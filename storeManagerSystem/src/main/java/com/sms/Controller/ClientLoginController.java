@@ -14,13 +14,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sms.OutputRows.ThoiHanSuDungOutputRowBean;
 import com.sms.common.MD5HashingExample;
+import com.sms.common.SMSComons;
 import com.sms.common.SystemCommon;
+import com.sms.dao.ThoiHanSuDungDAO;
 import com.sms.form.KhachHangForm;
 import com.sms.form.LoginForm;
 import com.sms.form.StoreOwnerForm;
+import com.sms.form.ThoiHanSuDungRowForm;
 import com.sms.impl.ClientLoginImpl;
 import com.sms.models.User;
+import com.sms.output.ThoiHanSuDungOutputBean;
 @Controller
 public class ClientLoginController {
 
@@ -30,7 +35,6 @@ public class ClientLoginController {
 	
 	@RequestMapping(value ="/", method = RequestMethod.GET)	
 	public String home(@ModelAttribute("LoginForm") LoginForm loginForm, HttpSession session, Model model, BindingResult result){
-//		model.addAttribute("LoginForm", loginForm);
 		if (result.hasErrors()) {
 			return SystemCommon.PAGE_ERROR;
 	    }
@@ -39,10 +43,15 @@ public class ClientLoginController {
 	
 	@RequestMapping(value="/login", method = RequestMethod.POST)
 	public String checkLogin(@ModelAttribute("LoginForm") LoginForm loginForm, ModelMap model, HttpSession session, BindingResult result){
-//		model.addAttribute("username", username);
-//		model.addAttribute("password", password);
-//		model.addAttribute("message", "Sai Tên đăng nhập hoặc mật khẩu");
-		
+		ThoiHanSuDungOutputBean outputBean = ThoiHanSuDungDAO.intances.getAll();
+		String onlineDT = SMSComons.getDate();
+		if (outputBean != null && outputBean.getLst().size() > 0) {
+			for(ThoiHanSuDungOutputRowBean thoiHanSuDungOutputRowBean : outputBean.getLst()){
+				if(SMSComons.compareDate(thoiHanSuDungOutputRowBean.getThoiGianSuDung(), onlineDT) < 0){
+					ThoiHanSuDungDAO.intances.updateStoreOnwer(thoiHanSuDungOutputRowBean.getIdStoreOnwer(), "1");
+				}
+			}
+		}
 		model.addAttribute("LoginForm", loginForm);
 		loginForm.setMessageErr("Sai Tên đăng nhập hoặc mật khẩu");
 		User req = new User();

@@ -88,6 +88,7 @@ public class DangKiWebDAO {
 			query.setParameter(10, inputBean.getPathJSP());
 			query.setParameter(11, inputBean.getTenWebSite());
 			query.setParameter(12, inputBean.getSdt());
+			query.setParameter(13, "20180401");
 			cnt = query.executeUpdate();
 			tx.commit();
 		} catch (Exception e) {
@@ -402,9 +403,11 @@ public class DangKiWebDAO {
 		sb.append("   ,PATHJSP 	                ");
 		sb.append("   ,STORENAME 	            ");
 		sb.append("   ,TELEPHONE                 ");
+		sb.append("   ,TIME_USE                 ");
 		sb.append("   )VALUES                   ");
 		sb.append("   (                         ");
 		sb.append("    ?                         ");
+		sb.append("   ,?                         ");
 		sb.append("   ,?                         ");
 		sb.append("   ,?                         ");
 		sb.append("   ,?                         ");
