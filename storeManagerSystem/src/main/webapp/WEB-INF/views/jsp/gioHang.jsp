@@ -155,7 +155,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 													<td align="right">
 														<c:if test="${!empty items.giaBanKM }">
 														<span class="item_price" style="font-size: 15px" ><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBanKM}" /> VNĐ</span></br>
-														<strike class="item_price" ><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBanKM}" /> VNĐ</strike>
+														<strike class="item_price" ><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBan}" /> VNĐ</strike>
 														</c:if>
 														<c:if test="${empty items.giaBanKM }">
 														<span class="item_price" style="font-size: 15px"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBan}" /> VNĐ</span>

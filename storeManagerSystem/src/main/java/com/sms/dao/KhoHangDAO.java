@@ -958,6 +958,7 @@ public class KhoHangDAO {
 		sb.append("  FROM                                                                                  ");
 		sb.append("  	" + tableName+ "      KHOHANG                                          ");
 		sb.append("  LEFT JOIN "+pathJSP+"_product PRODUCT ON KHOHANG.ID_SP = PRODUCT.ID_SP            ");
+		sb.append("  GROUP BY KHOHANG.ID_SP            ");
 		return sb.toString();
 	}
 	

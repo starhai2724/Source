@@ -57,7 +57,7 @@
 										<tr class="gradeX">
 												   <th class="center" style="text-align: left">${items.tenSp}</th>
 								                   <td style="text-align: right">${items.soLuong}</td>
-								                   <td>Còn hàng</td>
+								                   <td>${items.trangThai}</td>
 								         </tr>
 								 	</c:forEach> 
                                 </tbody>
