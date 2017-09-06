@@ -139,7 +139,6 @@
     </div>
     <div class="reserved">
         <div class="container">
-            <p class="text-left col-md-12">© Copyright 2014. All rights reserved. Runtime.vn - Giải pháp thương mại điện tử hàng đầu Việt nam</p>
         </div>
     </div>
 </footer>

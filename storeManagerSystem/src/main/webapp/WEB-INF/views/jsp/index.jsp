@@ -51,14 +51,24 @@
                         <span class="icon-bar"></span>
                     </button>
                 </div>
-                <div class="">
-                    <ul class="nav navbar-nav navbar-right menu-top collapse navbar-collapse" id="menu" aria-expanded="false">
-                        <li><a href="gioi-thieu.html" id="" class="">Giới thiệu</a></li>
-                        <li><a href="kho-giao-dien.html" id="">Kho giao diện</a></li>
-                        <li><a href="bang-gia.html" id="">Bảng giá</a></li>
-                        <li><a href="/storeManagerSystem" id="">Đăng nhập</a></li>
-                    </ul>
-                </div><!--/.nav-collapse -->
+                								<div class="">
+									<ul class="create-menu navbar-right hidden-xs">
+										<li><a class="btn btn-primary"
+											href="/storeManagerSystem/buoc1">Tạo web</a></li>
+									</ul>
+									<ul
+										class="nav navbar-nav navbar-right menu-top collapse navbar-collapse"
+										id="menu" aria-expanded="false">
+										<li><a href="http://localhost:8080/storeManagerSystem/trangChuAdmin" id=""
+											class="" style="font-size: 16px">Trang chủ</a></li>
+										<li><a href="http://localhost:8080/storeManagerSystem/adminGioiThieu" id=""
+											class="" style="font-size: 16px">Giới thiệu</a></li>
+										<li><a style="font-size: 16px" href="http://localhost:8080/storeManagerSystem/admin_khoGiaoDien" id="">Kho
+												giao diện</a></li>
+										<li><a style="font-size: 16px" href="http://localhost:8080/storeManagerSystem/adminTinhNang" id="">Tính
+												năng</a></li>
+									</ul>
+								</div>
             </div>
         </nav>
         <!-- End navbar -->
@@ -119,7 +129,6 @@
     </div>
     <div class="reserved">
         <div class="container">
-            <p class="text-left col-md-12">© Copyright 2014. All rights reserved. Runtime.vn - Giải pháp thương mại điện tử hàng đầu Việt nam</p>
         </div>
     </div>
 </footer>

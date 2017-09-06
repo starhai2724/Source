@@ -202,7 +202,7 @@ public class ChiTietDKMController {
 						input.setHinh(outputRowBean.getHinh());
 						input.setMoTa(outputRowBean.getMoTa());
 						input.setTrangThai("0");
-						input.setNgayTao("20170831");
+						input.setNgayTao(SMSComons.getDate());
 						input.setNgayChinhSua(outputRowBean.getNgayChinhSua());
 						input.setGiaBanKM(form.getLst().get(i).getGiaBanKM());
 						input.setId_DKM(idDKM);
