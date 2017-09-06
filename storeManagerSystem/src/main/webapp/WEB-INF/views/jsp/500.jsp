@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-loi 500
+<script type="text/javascript">
+window.location = "http://localhost:8080/storeManagerSystem/trangChuAdmin";
+</script>
 </body>
 </html>

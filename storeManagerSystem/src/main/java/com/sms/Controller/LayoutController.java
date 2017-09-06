@@ -388,7 +388,8 @@ public class LayoutController {
 			form.setTongThanhTien(totalMoney +"");
 			
 			form.setTongTienGiamGia( tongDonHang - totalMoney +"");
-			
+			DangKiWebOutputBean output = DangKiWebDAO.intances.getDataByPathJSP(path);
+			form.setTenCuaHang(output.getTenWebSite());
 			form.setPathJSP(path);
 			form.setListId(listId);
 		return PAGE_CART;
