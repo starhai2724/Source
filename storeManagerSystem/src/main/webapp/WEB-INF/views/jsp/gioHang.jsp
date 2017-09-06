@@ -154,27 +154,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 													<td style="text-align: center;"><span ng-model="soLuong[${items.SEQ }]" ng-init="soLuong[${items.SEQ }] ='${items.soLuong }'">{{soLuong[${items.SEQ }]}}</span></td>
 													<td align="right">
 														<c:if test="${!empty items.giaBanKM }">
-														<span class="item_price" ><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBanKM}" /> VNĐ</span>
+														<span class="item_price" style="font-size: 15px" ><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBanKM}" /> VNĐ</span></br>
+														<strike class="item_price" ><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBanKM}" /> VNĐ</strike>
 														</c:if>
 														<c:if test="${empty items.giaBanKM }">
-														<span class="item_price" ><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBan}" /> VNĐ</span>
+														<span class="item_price" style="font-size: 15px"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBan}" /> VNĐ</span>
 														</c:if>	
 													</td>
 													<td style="text-align: center;padding-top: 20px"  ><span style="font-size: 30px" class="glyphicon glyphicon-trash" ng-click="btnRemove('${items.SEQ }', '${items.giaBan }', '${items.giaBanKM }')" data-toggle="tooltip" data-original-title="Xóa"></span></td>
-													<td style="text-align: right;" ng-model="thanhTien[${items.SEQ }]" ng-init="thanhTien[${items.SEQ }] ='${items.thanhTien }'">{{thanhTien[${items.SEQ }] | number}} VNĐ</td>		
+													<td style="text-align: right; font-size: 15px" ng-model="thanhTien[${items.SEQ }]" ng-init="thanhTien[${items.SEQ }] ='${items.thanhTien }'">{{thanhTien[${items.SEQ }] | number}} VNĐ</td>		
 												</tr>
 											</c:forEach>
-												<tr>
+												<%-- <tr>
 										      		<td colspan="5" style="text-align: right;font-weight: bold">Tổng đơn hàng</td>
 													<td style="text-align: right;" ng-model="tongDonHang" ng-init="tongDonHang = '${LayoutForm.tongDonHang}'">{{tongDonHang | number}} VNĐ</td>
 												</tr>
 												<tr>
 										      		<td colspan="5" style="text-align: right;font-weight: bold">Tồng tiền giảm giá</td>
 													<td style="text-align: right;" ng-model="tongTienGiamGia" ng-init="tongTienGiamGia = '${LayoutForm.tongTienGiamGia}'">{{tongTienGiamGia | number}} VNĐ</td>
-												</tr>
+												</tr> --%>
 												<tr>
 										      		<td colspan="5" style="text-align: right;font-weight: bold">Tổng thành tiền</td>
-													<td style="text-align: right;" ng-model="tongThanhTien" ng-init="tongThanhTien = '${LayoutForm.tongThanhTien}'">{{tongThanhTien | number}} VNĐ</td>
+													<td style="text-align: right; font-weight: bold; font-size: 15px" ng-model="tongThanhTien" ng-init="tongThanhTien = '${LayoutForm.tongThanhTien}'">{{tongThanhTien | number}} VNĐ</td>
 												</tr>
 												<tr>
 										      		<td colspan="5" style="text-align: right;font-weight: bold"></td>
