@@ -281,25 +281,25 @@
     </ol>
 
     <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-      <div class="item active">
-        <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplayHeader/hinh1" alt="Los Angeles" style="width:100%;">
+    <div class="carousel-inner" style="width:1666px;height: 596px">
+      <div class="item active" > 
+        <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplayHeader/hinh1" alt="Los Angeles" style="width:1666px;height: 596px">
       </div>
 
       <div class="item">
-        <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplayHeader/hinh2" alt="Los Angeles" style="width:100%;">
+        <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplayHeader/hinh2" alt="Los Angeles" style="width:1666px;height: 596px">
       </div>
     
       <div class="item">
-        <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplayHeader/hinh3" alt="Los Angeles" style="width:100%;">
+        <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplayHeader/hinh3" alt="Los Angeles" style="width:1666px;height: 596px">
       </div>
       
       <div class="item">
-        <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplayHeader/hinh4" alt="Los Angeles" style="width:100%;">
+        <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplayHeader/hinh4" alt="Los Angeles" style="width:1666px;height: 596px">
       </div>
       
       <div class="item">
-        <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplayHeader/hinh5" alt="Los Angeles" style="width:100%;">
+        <img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplayHeader/hinh5" alt="Los Angeles" style="width:1656px;height: 596px">
       </div>
     </div>
 
@@ -360,7 +360,7 @@
                     <div class="product-item " style="height: 500px" >
                         <div style="width: 300px">
                             <a title="${items.tenSP}" href="<c:url value="/${LayoutForm.pathJSP }/chiTietSP/${items.SEQ}" />">
-                                <img style="width: 300px" src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplay/${items.SEQ}"  />
+                                <img style="height: 380px;width: 300px;" src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplay/${items.SEQ}"  />
                             </a>
                                 <!-- <span class="promotion">-20%</span> -->
                         </div>

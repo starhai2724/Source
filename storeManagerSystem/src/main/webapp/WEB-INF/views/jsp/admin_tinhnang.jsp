@@ -11,7 +11,7 @@
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
     <title>Hệ thống bán hàng</title>
     <meta name="keywords" />
-    <link href="/storeManagerSystem/view/templateDK/logo-AGB.png" rel="shortcut icon" type="image/x-icon" />
+   <link href="/storeManagerSystem/view/layoutHeader/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta content="vi_VN" property="og:locale" />
     <meta content="website" property="og:type" />
@@ -54,15 +54,16 @@
                         <span class="icon-bar"></span>
                     </button>
                 </div>
-                <div class="">
-                									<ul class="create-menu navbar-right hidden-xs">
+                								<div class="">
+									<ul class="create-menu navbar-right hidden-xs">
 										<li><a class="btn btn-primary"
 											href="/storeManagerSystem/buoc1">Tạo web</a></li>
 									</ul>
 									<ul
 										class="nav navbar-nav navbar-right menu-top collapse navbar-collapse"
 										id="menu" aria-expanded="false">
-
+										<li><a href="http://localhost:8080/storeManagerSystem/trangChuAdmin" id=""
+											class="" style="font-size: 16px">Trang chủ</a></li>
 										<li><a href="http://localhost:8080/storeManagerSystem/adminGioiThieu" id=""
 											class="" style="font-size: 16px">Giới thiệu</a></li>
 										<li><a style="font-size: 16px" href="http://localhost:8080/storeManagerSystem/admin_khoGiaoDien" id="">Kho
@@ -70,7 +71,7 @@
 										<li><a style="font-size: 16px" href="http://localhost:8080/storeManagerSystem/adminTinhNang" id="">Tính
 												năng</a></li>
 									</ul>
-                </div><!--/.nav-collapse -->
+								</div>
             </div>
         </nav>
         <!-- End navbar -->

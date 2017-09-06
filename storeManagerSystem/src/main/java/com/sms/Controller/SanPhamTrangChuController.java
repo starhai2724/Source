@@ -219,10 +219,9 @@ public class SanPhamTrangChuController {
 	
 	private void initData(ProductForm form, String pathJSP){
 		
-		form.getLstCategory().put("01", "Điện tử");
-		form.getLstCategory().put("02", "Thời trang");
-		form.getLstCategory().put("03", "Đồng hồ&Phụ kiện");
-		form.getLstCategory().put("04", "Đồ chơi");
+		form.getLstCategory().put("01", "Thời trang");
+		form.getLstCategory().put("02", "Mỹ phẩm");
+		form.getLstCategory().put("03", "Nội thất");
 		
 		//reset datail
 		form.getLst().clear();

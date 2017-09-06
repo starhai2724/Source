@@ -11,7 +11,7 @@
     <title>Tạo web nhanh, Thiết kế web b&#225;n h&#224;ng, thiết kế website gi&#225; rẻ, tạo web miễn ph&#237;</title>
     <meta content="RUNTIME.VN cung cấp dịch vụ thiết kế web b&#225;n h&#224;ng chuy&#234;n nghiệp, thiết kế website gi&#225; rẻ, chuẩn SEO, tạo web tự động trong 30s, trải nghiệm miễn ph&#237; với thiết kế chất lượng cao, chuy&#234;n nghiệp v&#224; uy t&#237;n" name="description" />
     <meta name="keywords" />
-    <link href="/storeManagerSystem/view/templateDK/logo-runtime.png" rel="shortcut icon" type="image/x-icon" />
+     <link href="/storeManagerSystem/view/layoutHeader/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta content="vi_VN" property="og:locale" />
     <meta content="website" property="og:type" />

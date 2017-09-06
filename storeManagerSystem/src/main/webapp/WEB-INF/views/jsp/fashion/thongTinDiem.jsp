@@ -8,7 +8,7 @@
 <html>
 <head>
 
-<title>Cửa hàng thời trang</title>
+<title>${LayoutForm.tenCuaHang}</title>
 <link href="/storeManagerSystem/view/fontend_index2/css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="/storeManagerSystem/view/fontend_index2/js/jquery.min.js"></script>

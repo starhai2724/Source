@@ -26,14 +26,9 @@
 </style>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-	<title>Tạo web nhanh, Thiết kế web bán hàng, thiết kế website
-		giá rẻ, tạo web miễn phí</title>
-	<meta
-		content="RUNTIME.VN cung cấp dịch vụ thiết kế web bán hàng chuyên nghiệp, thiết kế website giá rẻ, chuẩn SEO, tạo web tự động trong 30s, trải nghiệm miễn phí với thiết kế chất lượng cao, chuyên nghiệp và uy tín"
-		name="description">
+	<title>Hệ thống bán hàng</title>
 		<meta name="keywords">
-			<link href="#"
-				rel="shortcut icon" type="image/x-icon">
+			<link href="/storeManagerSystem/view/layoutHeader/font-awesome/css/font-awesome.css" rel="stylesheet" />
 				<meta name="viewport" content="width=device-width, initial-scale=1">
 					<meta content="vi_VN" property="og:locale">
 						<meta content="website" property="og:type">
@@ -197,11 +192,7 @@
 											<img
 											src="/storeManagerSystem/view/trangChuAdmin_files/logo-runtime.png"
 											class="default-logo img-responsive" alt="runtime"></a>
-									<ul
-										class="create-menu navbar-right pull-right hidden-md hidden-sm hidden-lg">
-										<li><a class="btn btn-default"
-											href="/storeManagerSystem/buoc1">Tạo web</a></li>
-									</ul>
+									
 									<button type="button"
 										class="navbar-toggle collapsed pull-right "
 										data-toggle="collapse" data-target="#menu"
@@ -218,7 +209,8 @@
 									<ul
 										class="nav navbar-nav navbar-right menu-top collapse navbar-collapse"
 										id="menu" aria-expanded="false">
-
+										<li><a href="http://localhost:8080/storeManagerSystem/trangChuAdmin" id=""
+											class="" style="font-size: 16px">Trang chủ</a></li>
 										<li><a href="http://localhost:8080/storeManagerSystem/adminGioiThieu" id=""
 											class="" style="font-size: 16px">Giới thiệu</a></li>
 										<li><a style="font-size: 16px" href="http://localhost:8080/storeManagerSystem/admin_khoGiaoDien" id="">Kho

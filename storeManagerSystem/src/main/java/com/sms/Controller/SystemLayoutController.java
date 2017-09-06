@@ -410,7 +410,6 @@ public class SystemLayoutController {
 
 		SanPhamInputBean input = new SanPhamInputBean();
 		SanPhamOutputBean sanPhamOutputBean = SystemProductDAO.intances.getSanPhamTimKiemTheoMenu("", id);
-		System.out.println("sanPhamOutputBean.getLst(): "+sanPhamOutputBean.getLst().size());
 		ProductFormRow productFormRow;
 		for(SanPhamOutputRowBean sanPhamOutputRowBean : sanPhamOutputBean.getLst()){
 			productFormRow = new ProductFormRow();
@@ -739,25 +738,24 @@ public class SystemLayoutController {
 	private void createDataNhomSP(LayoutForm form){
 		RegisterProductCategoryFormRow productCategoryFormRow;
 		productCategoryFormRow = new RegisterProductCategoryFormRow();
-		productCategoryFormRow.setIdProductCategory("01");
-		productCategoryFormRow.setNameProductCategory("Điện tử");
+		productCategoryFormRow.setIdProductCategory("03");
+		productCategoryFormRow.setNameProductCategory("Nội thất");
 		form.getLoaiSanPham().add(productCategoryFormRow);
 		
 		productCategoryFormRow = new RegisterProductCategoryFormRow();
 		productCategoryFormRow.setIdProductCategory("02");
+		productCategoryFormRow.setNameProductCategory("Mỹ phẩm");
+		form.getLoaiSanPham().add(productCategoryFormRow);
+		
+		productCategoryFormRow = new RegisterProductCategoryFormRow();
+		productCategoryFormRow.setIdProductCategory("01");
 		productCategoryFormRow.setNameProductCategory("Thời trang");
 		form.getLoaiSanPham().add(productCategoryFormRow);
 		
-		productCategoryFormRow = new RegisterProductCategoryFormRow();
-		productCategoryFormRow.setIdProductCategory("03");
-		productCategoryFormRow.setNameProductCategory("Đồng hồ&Phụ kiện");
-		form.getLoaiSanPham().add(productCategoryFormRow);
-		
-		productCategoryFormRow = new RegisterProductCategoryFormRow();
-		productCategoryFormRow.setIdProductCategory("04");
-		productCategoryFormRow.setNameProductCategory("Đồ chơi");
-		form.getLoaiSanPham().add(productCategoryFormRow);
-		
+//		productCategoryFormRow = new RegisterProductCategoryFormRow();
+//		productCategoryFormRow.setIdProductCategory("04");
+//		productCategoryFormRow.setNameProductCategory("Đồ chơi");
+//		form.getLoaiSanPham().add(productCategoryFormRow);
 	}
 	
 	

@@ -7,7 +7,7 @@
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
     <title>Hệ thống bán hàng</title>
     <meta name="keywords" />
-    <link href="/storeManagerSystem/view/templateDK/logo-runtime.png" rel="shortcut icon" type="image/x-icon" />
+     <link href="/storeManagerSystem/view/layoutHeader/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta content="vi_VN" property="og:locale" />
     <meta content="website" property="og:type" />

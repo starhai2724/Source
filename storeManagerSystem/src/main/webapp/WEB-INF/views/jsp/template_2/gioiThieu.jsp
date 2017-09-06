@@ -7,7 +7,7 @@
  <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%> 
  <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> 
  <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-    <title>Thời trang cao cấp</title>
+<title>${LayoutForm.tenCuaHang}</title>
     <meta content="" name="keywords" />
     <link rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -232,7 +232,8 @@
 							            <c:if test="${!empty items.menuRowForms }">
 								            <ul id="sub">
 											            <c:forEach var="menus" items="${items.menuRowForms }">
-											            			<li><a style="font-size: 14px" href="#"><span style="font-size: 16px">${menus.tenLoaiSp }</span></a></li>
+											            			<li><a style="font-size: 14px" href="/storeManagerSystem/${LayoutForm.pathJSP }/searchByMenu/${menus.idLoaiSp}/${items.nameProductCategory}" ><span style="font-size: 16px">${menus.tenLoaiSp }</span></a></li>
+											            			<%-- <li><a style="font-size: 14px" ng-click="btnTimKiemMenu('${menus.idLoaiSp }')" href="javascript:void(0)"><span style="font-size: 16px" >${menus.tenLoaiSp }</span></a></li> --%>
 											            </c:forEach>
 								            </ul>
 							            </c:if>
@@ -324,9 +325,15 @@
                     </h3>
                 </div>
                 <ul>
-						<li> <a ng-click="btnGioiThieu()">Về chúng tôi</a></li>
                         <li>
-                            <a ng-click="btnLienHe()">Hỏi đáp</a>
+                            <a ng-click="btnGioiThieu()">
+                                Về ch&#250;ng t&#244;i
+                            </a>
+                        </li>
+                        <li>
+                            <a ng-click="btnLienHe()">
+                                Hỏi đ&#225;p
+                            </a>
                         </li>
                 </ul>
             </div>
@@ -337,7 +344,7 @@
                     </h3>
                 </div>
                 <ul>
-<li><a ng-click="btnHuongDan()">Hướng dẫn thanh toán</a></li>
+                    <li><a ng-click="btnHuongDan()">Hướng dẫn thanh toán</a></li>
                 </ul>
             </div>
                 <div class="footer-box box-address col-md-3 col-sm-12 col-xs-12">
@@ -360,6 +367,7 @@
                         <h3>
                             Facebook
                         </h3>
+                        <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
                         <div class="fb-like-box" data-href="https://www.facebook.com/C%E1%BB%ADa-h%C3%A0ng-th%E1%BB%9Di-trang-255302581636729/" data-width="289"
                              data-height="190" data-colorscheme="dark" data-show-faces="true" data-header="false"
                              data-stream="false" data-show-border="false">
@@ -370,10 +378,20 @@
                                 <li><a href="https://www.facebook.com/C%E1%BB%ADa-h%C3%A0ng-th%E1%BB%9Di-trang-255302581636729/" target="_blank"><i class="fa fa-facebook"></i></a></li>
                                 <li><a target="_blank"><i class="fa fa-youtube"></i></a></li>
                                 <li><a target="_blank"><i class="fa fa-twitter "></i></a></li>
+                                
+                                <div id="fb-root"></div>
+
                             </ul>
                         </div>
                     </div>
-
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/nl_NL/sdk.js#xfbml=1&version=v2.10";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
                 </div>
                 <div class="footer-box box-letter col-md-3 col-sm-12 col-xs-12 hide">
                     <div class="item">

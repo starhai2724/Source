@@ -274,17 +274,17 @@
 				    <span></span>
 				        <!--Begin-->
 				        <div class="product-block clearfix">
-				            <div class="row">
-				                <div class="col-md-6 col-sm-6 col-xs-12 product-image clearfix">
-				                    <div class="sp-loading"><img src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplay/${items.SEQ}" alt=""><br></div>
+				            <div class="row" >
+				                <div style="margin-left: -100px" class="col-md-6 col-sm-6 col-xs-12 product-image clearfix">
+				                    <div class="sp-loading"><img style="width: 500px; height: 500px" src="/storeManagerSystem/myImage/${LayoutForm.pathJSP }/imageDisplay/${items.SEQ}" alt=""><br></div>
 				                    <div class="sp-wrap">
 				                        <!-- <a href="%7b%7bitem.html" ng-repeat="item in ProductImages"><img src="%7b%7bitem.html"></a> -->
 				                    </div>
 				                </div>
-				                <div class="col-md-6 col-sm-6 col-xs-12 clearfix">
+				                <div style="margin-left: 80px" class="col-md-6 col-sm-6 col-xs-12 clearfix">
 				                    <h2>${items.tenSP }</h2>
 				                    <div class="price">
-				                        <div ng-if="IsPromotion==true">
+				                        <div>
 											<c:if test="${!empty items.giaBanKM }">
 												<strike class="price-new"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBan}" /> VNĐ</strike>
 											</c:if>
@@ -323,8 +323,8 @@
 				                    </div>
 				                    <div class="button" >
 				                        <%-- <a  class="btn btn-primary" href="javascript:void(0)" ng-click="btnPurchase('${items.giaBan}','${items.giaBanKM }' ,'${items.SEQ} ')"><i class="glyphicon glyphicon-shopping-cart"></i>Thêm giỏ hàng</a> --%>
-				                     <a href="javascript:void(0)" href="javascript:void(0)" ng-click="btnPurchase('${items.giaBan}','${items.giaBanKM }' ,'${items.SEQ} ')"class="btn btn-default"><i class="glyphicon glyphicon-shopping-cart"></i>Thêm giỏ hàng</a>
-                       				 <a href="javascript:void(0)" ng-click="btnCart();" class="btn btn-primary"><i class="glyphicon glyphicon-ok"></i>Mua ngay</a>
+				                     <a href="javascript:void(0)" ng-click="btnPurchase('${items.giaBan}','${items.giaBanKM }' ,'${items.SEQ} ')"class="btn btn-primary">
+				                     <i class="glyphicon glyphicon-shopping-cart"></i>Thêm giỏ hàng</a>
 				                    </div>
 				                </div>
 				            </div>
@@ -491,7 +491,7 @@
                     </h3>
                 </div>
                 <ul>
-<li><a ng-click="btnHuongDan()">Hướng dẫn thanh toán</a></li>
+                    <li><a ng-click="btnHuongDan()">Hướng dẫn thanh toán</a></li>
                 </ul>
             </div>
                 <div class="footer-box box-address col-md-3 col-sm-12 col-xs-12">
@@ -563,7 +563,7 @@
             </div>
         </div>
     </div>
-</div>
+        </div>
 </form:form> 
 </div>   
 </body>

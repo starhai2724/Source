@@ -7,7 +7,7 @@
  <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%> 
  <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> 
  <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-    <title>Red Shop</title>
+    <title>Hệ thống bán hàng</title>
     <meta content="" name="keywords" />
     <link rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -289,10 +289,10 @@
         <c:forEach var="items" items="${LayoutForm.products }">
         		<c:if test="${items.idLoaiSP eq items_2.idProductCategory}">
                 <div class="col-sm-3 col-sm-3 col-xs-14 product-item-box">
-                    <div class="product-item " style="height: 550px; width: 320px; text-align: center;" >
+                    <div class="product-item " style="height: 500px; width: 320px; text-align: center;" >
                         <div style="width: 200px; text-align: center">
                             <a title="${items.tenSP}" href="<c:url value="/trangChu/chiTietSP/${items.SEQ}" />">
-                                <img style="width: 300px;" src="/storeManagerSystem/myImage/trangChu/imageDisplay/${items.SEQ}"  />
+                                <img style="height: 380px;width: 300px;" src="/storeManagerSystem/myImage/trangChu/imageDisplay/${items.SEQ}"  />
                             </a>
                         </div>
                         <div class="right-block">
@@ -331,10 +331,10 @@
         <div class="product-block product-grid clearfix row" style="width: 1500px">
         <c:forEach var="items" items="${LayoutForm.products_SearchByMenu }">
                 <div class="col-sm-3 col-sm-3 col-xs-14 product-item-box">
-                    <div class="product-item " style="height: 550px; width: 320px; text-align: center;" >
+                    <div class="product-item " style="height: 500px; width: 320px; text-align: center;" >
                         <div style="width: 200px; text-align: center">
                             <a title="${items.tenSP}" href="<c:url value="/trangChu/chiTietSP/${items.SEQ}" />">
-                                <img style="width: 300px;" src="/storeManagerSystem/myImage/trangChu/imageDisplay/${items.SEQ}"  />
+                                <img style="height: 380px;width: 300px;" src="/storeManagerSystem/myImage/trangChu/imageDisplay/${items.SEQ}"  />
                             </a>
                         </div>
                         <div class="right-block">

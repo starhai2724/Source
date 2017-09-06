@@ -176,7 +176,7 @@
                         </div>
                     </div>
                     <div class="col-md-9 col-xs-12 col-sm-12 header-right" style="margin-left: -120px">
-                	 	<div class="search hidden-sm hidden-xs" s>
+                	 	<div class="search hidden-sm hidden-xs" >
                             <div class="input-cat form-search clearfix">
                                 <div class="form-search-controls">
                                 	<input style="width: 400px" type="text" placeholder="Nhập sản phẩm muốn tìm kiếm" path="timKiem_TenSP"  name="timKiem_TenSP" ng-model = "timKiem_TenSP"  ng-init ="timKiem_TenSP = '${LayoutForm.timKiem_TenSP}'" />
@@ -277,7 +277,7 @@
 				                <div class="col-md-6 col-sm-6 col-xs-12 clearfix">
 				                    <h2>${items.tenSP }</h2>
 				                    <div class="price">
-				                        <div ng-if="IsPromotion==true">
+				                        <div>
 											<c:if test="${!empty items.giaBanKM }">
 												<strike class="price-new"><fmt:formatNumber type = "number"  maxFractionDigits = "3" value = "${items.giaBan}" /> VNĐ</strike>
 											</c:if>
